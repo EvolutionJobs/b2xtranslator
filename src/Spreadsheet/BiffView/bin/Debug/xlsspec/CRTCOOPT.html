@@ -1,0 +1,172 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>CRTCOOPT: Color options for Chart series in Mac Office 11 (8cbh)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>CRTCOOPT: Color options for Chart series in Mac Office 11 (8cbh)</h2>
+     <p class="Text">This is a <span class="CodeInlineChar">Chart FRT </span> <span> record.  
+It stores the series
+color options. </span></p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="588" style='width:441.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="96" style='width:72.0pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:297.0pt; border-bottom: solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">4</p>
+   </td>
+   <td width="96" style='width:72.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar">rt </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">2</p>
+   </td>
+   <td width="396" style='width:297.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> <span> in the first two bytes of the
+ record;   
+=08c9h </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">6</p>
+   </td>
+   <td width="96" style='width:72.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitFrt </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">2</p>
+   </td>
+   <td width="396" style='width:297.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>FRT </span> </span>
+ flags; must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">8</p>
+   </td>
+   <td width="96" style='width:72.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>padding </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">8</p>
+   </td>
+   <td width="396" style='width:297.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">Reserved; must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">16</p>
+   </td>
+   <td width="96" style='width:72.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>iScheme </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">4</p>
+   </td>
+   <td width="396" style='width:297.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">Color Scheme</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">20</p>
+   </td>
+   <td width="96" style='width:72.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbit </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">2</p>
+   </td>
+   <td width="396" style='width:297.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">Format flags</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbit </span> <span> field contains the following option flags.<sub><span style='letter-spacing:-.25pt'> </span>
+</sub> </span></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="67" style='width:50.0pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="119" style='width:89.5pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td width="230" style='width:172.5pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="67" style='width:50.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >0001h</p>
+   </td>
+   <td width="119" style='width:89.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" ><span class="CodeInlineChar">fShaded </span></p>
+   </td>
+   <td width="230" style='width:172.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >1= Vary by shade</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="67" style='width:50.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >0002h</p>
+   </td>
+   <td width="119" style='width:89.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" ><span class="CodeInlineChar">fGrayscale</p>
+   </td>
+   <td width="230" style='width:172.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >1= Grayscale shade</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >15-2</p>
+   </td>
+   <td width="67" style='width:50.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >FFFCh</p>
+   </td>
+   <td width="119" style='width:89.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="230" style='width:172.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >Reserved; must be
+ zero</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

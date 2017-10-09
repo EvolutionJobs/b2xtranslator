@@ -1,0 +1,350 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>ROW: Describes a Row (208h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>ROW: Describes a Row (208h)</h2>
+     <p class="Text">A <span class="CodeInlineChar">ROW </span> <span> record describes a single row on an Excel sheet.  </span> <span class="CodeInlineChar">ROW </span> <span> records and their associated cell records occur in blocks of up to
+32 rows.  
+Each block ends with a </span> <span class="CodeInlineChar">DBCELL </span> <span> record. 
+For more information about row blocks and
+about optimizing your code when searching for cell records, see “<span class="LinkText"><u><a href="#_Unicode_Strings_in_BIFF8">Finding Cell Records in
+BIFF Files</a>
+</u> </span> <span class="LinkID">EXB0250 </span>
+”. </span></p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="85" style='width:63.95pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="49" style='width:36.65pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="399" style='width:299.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar">rw </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Row number.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>colMic </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">First defined column in the row.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>colMac </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Last defined column in the row, plus 1.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>miyRw </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Row height.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">12</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>irwMac </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text"><span>Used by Excel to optimize loading <br />
+ the file; if you are creating a BIFF file, set </span> <span class="CodeInlineChar">irwMac </span>
+ to 0.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">14</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbit </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Option flags.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">18</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ixfe </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">If <span class="CodeInlineChar">fGhostDirty=1 </span>
+ (see <span class="CodeInlineChar">grbit </span>
+ field), this is the index to the <span class="CodeInlineChar">XF </span> <span> record for the row.  
+Otherwise, this field is undefined.<br />
+ <b>Note</b>
+: </span> <span class="CodeInlineChar">ixfe </span> <span> uses only the low-order 12 bits of the field (bits 11–0).  
+Bit 12 is </span> <span class="CodeInlineChar">fExAsc </span>
+, bit 13 is <span class="CodeInlineChar">fExDsc </span> <span>, and bits 14 and 15 are
+ reserved.  </span> <span class="CodeInlineChar">fExAsc </span>
+ and <span class="CodeInlineChar">fExDsc </span>
+ are set to true if the row has
+ a thick border on top or on bottom, respectively.</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbit </span>
+ field contains the following option flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="40" style='width:30.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="56" style='width:42.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="118" style='width:88.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td style='width:239.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="40" style='width:30.0pt;'>
+     <p class="Text">2–0</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">07h</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>iOutLevel </span> </span></p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">Outline level of the row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="40" style='width:30.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">08h</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="40" style='width:30.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">10h</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fCollapsed </span> </span></p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">=1 if the row is collapsed in outlining</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="40" style='width:30.0pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">20h</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fDyZero </span> </span></p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">=1 if the row height is set to 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="40" style='width:30.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">40h</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fUnsynced </span> </span></p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">=1 if the font height and row height are not
+ compatible</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="40" style='width:30.0pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">80h</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fGhostDirty </span> </span></p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">=1 if the row has been formatted, even if it
+ contains all blank cells</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="40" style='width:30.0pt;'>
+     <p class="Text">7–0</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">FFh</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text"><span>  </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">rw </span> <span> field contains the 0-based row number. 
+The </span> <span class="CodeInlineChar">colMic </span>
+ and <span class="CodeInlineChar">colMac </span>
+ fields give the range of defined columns in the row.</p>
+     <p class="Text">The <span class="CodeInlineChar">miyRw </span>
+ field contains the row height, in units of 1/20
+<sup><span style='font-size:7.0pt'>th </span>
+</sup> <span> of a
+point.  
+The </span> <span class="CodeInlineChar">miyRw </span>
+ field may have the 8000h (2
+<sup><span style='font-size:7.0pt'>15 </span>
+</sup> <span>) bit set,
+indicating that the row is standard height. 
+The low-order 15 bits must still contain the row height. 
+If you hide the row<span style='letter-spacing: -1.75pt'> </span>
+—<span style='letter-spacing:-1.75pt'> </span>
+either by
+setting row height to 0 (zero) or by using the <b>Hide</b>
+ command<span style='letter-spacing:-1.75pt'> </span>
+—<span style='letter-spacing:-1.75pt'> </span> </span> <span class="CodeInlineChar">miyRw <span> still contains the original row
+height.  
+This allows Excel to restore the
+original row height when you click the <b>Unhide</b>
+ button. </span></p>
+     <p class="Text"><span>Each row can have default cell attributes that
+control the format of all undefined cells in the row. 
+By specifying default cell attributes for a
+particular row, you are effectively formatting all the undefined cells in the
+row without using memory for those cells. 
+Default cell attributes do not affect the formats of cells that are
+explicitly defined. </span></p>
+     <p class="Text"><span>For example, if you want all of row 3 to be
+left-aligned, you could define all 256 cells in the row and specify that each
+individual cell be left-aligned.  
+This
+would require storage for each of the 256 cells. 
+An easy alternative would be to set the
+default cell for row 3 to be left-aligned and not define any individual cells
+in row 3. </span></p>
+</div>
+</body>
+</html>
+

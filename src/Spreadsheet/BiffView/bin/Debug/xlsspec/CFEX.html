@@ -1,0 +1,471 @@
+<html>
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <title>CFEX: Conditional Formatting Extension (87Bh)</title>
+   <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>CFEX: Conditional Formatting Extension (87Bh)</h2>
+     <p class="Text">
+This <span class="CodeInlineChar">FRT </span> record saves conditional format
+condition information that is new for Office Excel 2007. This information is
+used on load to round trip conditional formatting that was not supported in
+previous versions.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="166" style='width:124.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="319" style='width:239.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>    
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="166" style='width:124.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rt </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> in the first two bytes of the record; =087Bh</p>
+   </td>
+ </tr>    
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="166" style='width:124.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">grbitFrt </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">FRT </span> cell reference flag; =0 currently</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="166" style='width:124.5pt;'>
+     <p class="MsoNormal"><span style='font-size:10.0pt; font-family:Verdana'>(Reserved) </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">Currently not used, and set to 0</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="166" style='width:124.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">fIsCF12 </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">if non-zero this
+ is an Office Excel 2007-specific CF</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">20</p>
+   </td>
+   <td width="166" style='width:124.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">nID </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">Unique ID of parent <span class="CodeInlineChar">CONDFMT </span></p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">22</p>
+   </td>
+   <td width="166" style='width:124.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">rgbExt </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">only present if <span class="CodeInlineChar">fIsCF12 </span> = 0</p>
+   </td>
+ </tr>  
+</table>
+     <p class="Text">&nbsp; </p>
+     <p class="Text"> <span class="CodeInlineChar">rgbExt </span> – For conditions that have been already written out as <span class="CodeInlineChar">CF </span> records, this structure will contain
+the information needed to restore new for Office Excel 2007 capabilities.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="154" style='width:115.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="288" style='width:216.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="154" style='width:115.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">icfNon12 </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">index of this
+ condition out of all the non-Office-Excel-2007-specific conditions of the
+ parent conditional format</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="154" style='width:115.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">cp </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">Conditional formatting operator</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="154" style='width:115.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">icfTemplate </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">template index</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="154" style='width:115.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">ipriority </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">condition priority</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="154" style='width:115.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">grbitCFEX </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">see text below</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="154" style='width:115.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">fHasDxf </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">=1 if <span class="CodeInlineChar">dxf </span> structure follows</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="154" style='width:115.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">rgbdxf </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">only present if <span class="CodeInlineChar">fHasDxf </span>=1</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="154" style='width:115.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar"><span style='font-size:10.0pt'>cbTemplateParm </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">count of template bytes (&lt; =16)</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="154" style='width:115.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">rgbTemplateParm </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">template parameter bytes</p>
+   </td>
+ </tr>  
+</table>
+     <p class="Text">&nbsp; </p>
+        
+     <p class="Text">
+The <span class="CodeInlineChar">grbitCFEX </span> field is defined as follow:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="41" style='width:31.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="66" style='width:49.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="108" style='width:81.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="282" style='width:211.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>  
+ </thead>
+ <tr>
+   <td width="41" style='width:31.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">0001h</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fActive </span> </span></p>
+   </td>
+   <td width="282" style='width:211.5pt;'>
+     <p class="Text">if =1 cfvo evaluation failed so we don’t want
+ to draw this rule.</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="41" style='width:31.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">0002h</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fStopIfTrue </span> </span></p>
+   </td>
+   <td width="282" style='width:211.5pt;'>
+     <p class="Text">if =1 stop evaluating conditions after this
+ rule if result is true.</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="41" style='width:31.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">0004h</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="MsoNormal"><span style='font-size:10.0pt; font-family:Verdana'>(Reserved) </span> <span style='font-family:Verdana'> </span></p>
+   </td>
+   <td width="282" style='width:211.5pt;'>
+     <p class="Text">Reserved; must be 0 (zero)</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="41" style='width:31.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">0008h</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fListCol </span> </span></p>
+   </td>
+   <td width="282" style='width:211.5pt;'>
+     <p class="Text">if =1 rule applies to list column</p>
+   </td>
+ </tr>  
+</table>
+     <p class="Text">&nbsp; </p>
+     <p class="Text">Note: if the parent conditional format is a filter type format (<span class="CodeInlineChar">ct </span>
+=5) then <span class="CodeInlineChar">rgbTemplateParm </span> contains the following content:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="136" style='width:102.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="306" style='width:229.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="136" style='width:102.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">grbitFilter </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="306" style='width:229.5pt;'>
+     <p class="Text">see text</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="136" style='width:102.0pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar"><span style='font-size:10.0pt'>iParam </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="306" style='width:229.5pt;'>
+     <p class="Text">filter parameter
+ value</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="136" style='width:102.0pt;'>
+     <p class="MsoNormal"><span style='font-size:10.0pt; font-family:Verdana'>(Reserved) </span> <span style='font-family:Verdana'> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">13</p>
+   </td>
+   <td width="306" style='width:229.5pt;'>
+     <p class="Text">Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>  
+</table>
+     <p class="Text">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbitFilter </span> field is defined as follow:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="63" style='width:47.1pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="57" style='width:42.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="96" style='width:72.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="282" style='width:211.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>  
+ </thead>
+ <tr>
+   <td width="63" style='width:47.1pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="57" style='width:42.4pt;'>
+     <p class="Text">01h</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fTop </span> </span></p>
+   </td>
+   <td width="282" style='width:211.5pt;'>
+     <p class="Text">if =1 filter top results</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="63" style='width:47.1pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="57" style='width:42.4pt;'>
+     <p class="Text">02h</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">Percent </span></p>
+   </td>
+   <td width="282" style='width:211.5pt;'>
+     <p class="Text">if =1 format values that are in the given % of the selected range</p>
+   </td>
+ </tr>  
+ <tr>
+   <td width="63" style='width:47.1pt;'>
+     <p class="Text">3..7</p>
+   </td>
+   <td width="57" style='width:42.4pt;'>
+     <p class="Text">FCh</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="MsoNormal"><span style='font-size:10.0pt; font-family:Verdana'>(Reserved) </span></p>
+   </td>
+   <td width="282" style='width:211.5pt;'>
+     <p class="Text">Reserved; must be 0 (zero)</p>
+   </td>
+ </tr>    
+</table>
+</div>
+</body>
+</html>
+

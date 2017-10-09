@@ -1,0 +1,142 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>PANE: Number of Panes and Their Position (41h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>PANE: Number of Panes and Their Position (41h)</h2>
+     <p class="Text">The <span class="CodeInlineChar">PANE </span>
+ record describes the number and position of unfrozen panes in a
+window.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="85" style='width:63.95pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="49" style='width:36.65pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="399" style='width:299.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">x </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Horizontal
+ position of the split; 0 (zero) if none</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">y </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Vertical position
+ of the split; 0 (zero) if none</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rwTop </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Top row visible in
+ the bottom pane</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colLeft </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Leftmost column
+ visible in the right pane</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >12</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">pnnAct </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Pane number of the
+ active pane</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">x </span>
+ and <span class="CodeInlineChar">y </span>
+ fields contain the position of the vertical and horizontal splits,
+respectively, in units of 1/20
+<sup><span style='font-size: 7.0pt'>th </span>
+</sup> <span> of a point. 
+Either of these fields can be 0 (zero),
+indicating that the window is not split in the corresponding direction. </span></p>
+     <p class="Text">For a window with a horizontal split, the <span class="CodeInlineChar">rwTop </span> <span> field is the topmost row visible
+in the bottom pane or panes.  
+For a
+window with a vertical split, the </span> <span class="CodeInlineChar">colLeft </span>
+ field contains the leftmost column visible in the right pane or
+panes.</p>
+     <p class="Text">The <span class="CodeInlineChar">pnnAct </span> <span> field indicates which pane is the active pane. 
+The </span> <span class="CodeInlineChar">pnnAct </span>
+ field contains one of the following values:</p>
+     <p class="TextIndented" style='page-break-after:avoid'><span>0 = lower
+right<br />
+1 = upper right<br />
+2 = lower left<br />
+3 = upper left </span></p>
+     <p class="Text">If the window has frozen panes, as specified in
+the <span class="CodeInlineChar">WINDOW2 </span>
+ record, <span class="CodeInlineChar">x </span>
+ and <span class="CodeInlineChar">y </span> <span> have special meaning.  
+If
+there is a vertical split, </span> <span class="CodeInlineChar">x </span> <span> contains the number of columns visible in the top pane. 
+If there is a horizontal split, </span> <span class="CodeInlineChar">y </span> <span> contains the number of rows visible in
+the left pane.  
+Both types of splits can
+be present in a window, as in unfrozen panes. </span></p>
+</div>
+</body>
+</html>
+

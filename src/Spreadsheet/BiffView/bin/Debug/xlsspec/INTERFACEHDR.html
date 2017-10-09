@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>INTERFACEHDR: Beginning of User Interface Records (E1h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>INTERFACEHDR: Beginning of User Interface Records (E1h)</h2>
+     <p class="Text">This record marks the beginning of the user
+interface section of the <span class="CodeInlineChar">Book </span> <span> (Workbook) stream.  
+In BIFF7
+and earlier, it has no record data field. 
+In BIFF8 and later, the </span> <span class="CodeInlineChar">INTERFACEHDR </span> <span> record data field contains a 2-byte word that is the code
+page.  
+This is exactly the same as the </span> <span class="CodeInlineChar">cv </span>
+ field of the the <span class="CodeInlineChar">CODEPAGE </span>
+ record.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF8 </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="587" style='width:440.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="106" style='width:79.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="372" style='width:279.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cv </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="372" style='width:279.0pt;'>
+     <p class="Text"><span>Code page the file is saved in:<br />
+ 01B5h (437 dec.) = IBM
+ PC (Multiplan)<br />
+ 8000h (32768 dec.) = Apple
+ Macintosh<br />
+ 04E4h (1252 dec.) = ANSI (Microsoft Windows) </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

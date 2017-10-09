@@ -1,0 +1,412 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>HEADERFOOTER: Header Footer (89Ch)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            <a name="_Toc157240523"><span>HEADERFOOTER: Header Footer </span>(89Ch) </a>
+        </h2>
+        <p class="Text">
+            The <span class="CodeInlineChar">HEADERFOOTER </span>record stores information added
+            in Office Excel 2007 for headers/footers.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="166" style='width: 124.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="319" style='width: 239.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>in the
+                        first two bytes of the record; =089Ch</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>grbitFrt </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Currently not used, and set to 0 <span class="CodeInlineChar"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>guidSview </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        If this header <span class="CodeInlineChar">FRT </span>belongs to a specific sheet
+                        view ( <span class="CodeInlineChar">sview </span>), the sheet view’s GUID will be
+                        saved here.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        32</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>grbitFlags </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        see text</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        34</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>cchHeaderEven </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        length of even header text</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        36</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>cchFooterEven </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        length of even footer text</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        38</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>cchHeaderFirst </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        length of first page header text</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        40</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>cchFooterFirst </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        length of first page footer text</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        42</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>rgchHeaderEven </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        even header text if non-zero length</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>rgchFooterEven </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        even footer text if non-zero length</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>rgchHeaderFirst </span>
+                        </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        first page header text if non-zero length</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>rgchFooterFirst </span>
+                        </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        first page footer text if non-zero length</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbitFlags </span>field contains the fields listed
+            in the following table.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="53" style='width: 40.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="62" style='width: 46.75pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 115.25pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 207.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="62" style='width: 46.75pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="154" style='width: 115.25pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fHFDiffOddEven </span></span></p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        =1 if different odd/even pages</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="62" style='width: 46.75pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="154" style='width: 115.25pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fHFDiffFirst </span></span>
+                    </p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        =1 if different first page</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="62" style='width: 46.75pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td width="154" style='width: 115.25pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fHFScaleWithDoc </span>
+                        </span>
+                    </p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        =1 scales header/footer with document</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="62" style='width: 46.75pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td width="154" style='width: 115.25pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fHFAlignMargins </span>
+                    </p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        =1 align header/footer with page margins</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        4..15</p>
+                </td>
+                <td width="62" style='width: 46.75pt;'>
+                    <p class="Text">
+                        FFF0h</p>
+                </td>
+                <td width="154" style='width: 115.25pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

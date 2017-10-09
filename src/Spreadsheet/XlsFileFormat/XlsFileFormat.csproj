@@ -1,0 +1,676 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{92295756-46BB-4D1F-B0FD-CA7DF03F6C65}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat</RootNamespace>
+    <AssemblyName>DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BiffRecord.cs" />
+    <Compile Include="BiffRecordAttribute.cs" />
+    <Compile Include="BiffString.cs" />
+    <Compile Include="ChartAxisIdGenerator.cs" />
+    <Compile Include="ChartFormatIdGenerator.cs" />
+    <Compile Include="ChartSequences\AiSequence.cs" />
+    <Compile Include="ChartSequences\AttachedLabelSequence.cs" />
+    <Compile Include="ChartSequences\AutoFilterSequence.cs" />
+    <Compile Include="ChartSequences\AxesSequence.cs" />
+    <Compile Include="ChartSequences\AxisParentSequence.cs" />
+    <Compile Include="ChartSequences\AxmSequence.cs" />
+    <Compile Include="ChartSequences\AxsSequence.cs" />
+    <Compile Include="ChartSequences\ChartFormatsSequence.cs" />
+    <Compile Include="ChartSequences\ChartSheetContentSequence.cs" />
+    <Compile Include="ChartSequences\ChartSheetSequence.cs" />
+    <Compile Include="ChartSequences\BackgroundSequence.cs" />
+    <Compile Include="ChartSequences\CustomViewSequence.cs" />
+    <Compile Include="ChartSequences\ProtectionSequence.cs" />
+    <Compile Include="ChartSequences\CrtMlfrtSequence.cs" />
+    <Compile Include="ChartSequences\CrtSequence.cs" />
+    <Compile Include="ChartSequences\DataSheetSequence.cs" />
+    <Compile Include="ChartSequences\DatSequence.cs" />
+    <Compile Include="ChartSequences\DftTextSequence.cs" />
+    <Compile Include="ChartSequences\DropBarSequence.cs" />
+    <Compile Include="ChartSequences\DvAxisSequence.cs" />
+    <Compile Include="ChartSequences\FontListSequence.cs" />
+    <Compile Include="ChartSequences\FrameSequence.cs" />
+    <Compile Include="ChartSequences\GelFrameSequence.cs" />
+    <Compile Include="ChartSequences\IvAxisSequence.cs" />
+    <Compile Include="ChartSequences\LdSequence.cs" />
+    <Compile Include="ChartSequences\ObjectsSequence.cs" />
+    <Compile Include="ChartSequences\ObjSequence.cs" />
+    <Compile Include="ChartSequences\OfficeGraphBiffRecordSequence.cs" />
+    <Compile Include="ChartSequences\PageSetupSequence.cs" />
+    <Compile Include="ChartSequences\PicfSequence.cs" />
+    <Compile Include="ChartSequences\SeriesAxisSequence.cs" />
+    <Compile Include="ChartSequences\SeriesDataSequence.cs" />
+    <Compile Include="ChartSequences\SeriesFormatSequence.cs" />
+    <Compile Include="ChartSequences\ShapePropsSequence.cs" />
+    <Compile Include="ChartSequences\SortData12Sequence.cs" />
+    <Compile Include="ChartSequences\SsSequence.cs" />
+    <Compile Include="ChartSequences\TextObjectSequence.cs" />
+    <Compile Include="ChartSequences\TextPropsSequence.cs" />
+    <Compile Include="ChartSequences\WindowSequence.cs" />
+    <Compile Include="DataContainer\AbstractCellData.cs" />
+    <Compile Include="DataContainer\BlankCell.cs" />
+    <Compile Include="DataContainer\ChartSheetData.cs" />
+    <Compile Include="DataContainer\ColumnInfoData.cs" />
+    <Compile Include="DataContainer\CRNData.cs" />
+    <Compile Include="DataContainer\ExternSheetData.cs" />
+    <Compile Include="DataContainer\FormulaCell.cs" />
+    <Compile Include="DataContainer\HyperlinkData.cs" />
+    <Compile Include="DataContainer\MergeCellData.cs" />
+    <Compile Include="DataContainer\NumberCell.cs" />
+    <Compile Include="DataContainer\RowData.cs" />
+    <Compile Include="DataContainer\SharedFormulaData.cs" />
+    <Compile Include="DataContainer\SheetData.cs" />
+    <Compile Include="DataContainer\SSTData.cs" />
+    <Compile Include="DataContainer\StringCell.cs" />
+    <Compile Include="DataContainer\StringFormatAssignment.cs" />
+    <Compile Include="DataContainer\SupBookData.cs" />
+    <Compile Include="DataContainer\WorkBookData.cs" />
+    <Compile Include="DataContainer\XCTData.cs" />
+    <Compile Include="DataContainer\XTIData.cs" />
+    <Compile Include="DataExtraction\ParseException.cs" />
+    <Compile Include="DataExtraction\WorksheetExtractor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Exception\ExtractorException.cs" />
+    <Compile Include="Exception\RecordParseException.cs" />
+    <Compile Include="DataExtraction\Extractor.cs" />
+    <Compile Include="DataExtraction\FileInformationExtractor.cs" />
+    <Compile Include="ExcelHelperClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ptg\AbstractPtg.cs" />
+    <Compile Include="Ptg\FtabValues.cs" />
+    <Compile Include="Ptg\PtgAdd.cs" />
+    <Compile Include="Ptg\PtgArea.cs" />
+    <Compile Include="Ptg\PtgArea3d.cs" />
+    <Compile Include="Ptg\PtgAreaErr.cs" />
+    <Compile Include="Ptg\PtgAreaErr3d.cs" />
+    <Compile Include="Ptg\PtgAreaN.cs" />
+    <Compile Include="Ptg\PtgAttrChoose.cs" />
+    <Compile Include="Ptg\PtgAttrGoto.cs" />
+    <Compile Include="Ptg\PtgAttrIf.cs" />
+    <Compile Include="Ptg\PtgAttrSemi.cs" />
+    <Compile Include="Ptg\PtgAttrSpace.cs" />
+    <Compile Include="Ptg\PtgAttrSum.cs" />
+    <Compile Include="Ptg\PtgBool.cs" />
+    <Compile Include="Ptg\PtgConcat.cs" />
+    <Compile Include="Ptg\PtgDiv.cs" />
+    <Compile Include="Ptg\PtgEq.cs" />
+    <Compile Include="Ptg\PtgErr.cs" />
+    <Compile Include="Ptg\PtgExp.cs" />
+    <Compile Include="Ptg\PtgFunc.cs" />
+    <Compile Include="Ptg\PtgFuncVar.cs" />
+    <Compile Include="Ptg\PtgGe.cs" />
+    <Compile Include="Ptg\PtgGt.cs" />
+    <Compile Include="Ptg\PtgInt.cs" />
+    <Compile Include="Ptg\PtgIsect.cs" />
+    <Compile Include="Ptg\PtgLe.cs" />
+    <Compile Include="Ptg\PtgLt.cs" />
+    <Compile Include="Ptg\PtgMemErr.cs" />
+    <Compile Include="Ptg\PtgMemFunc.cs" />
+    <Compile Include="Ptg\PtgMissArg.cs" />
+    <Compile Include="Ptg\PtgMul.cs" />
+    <Compile Include="Ptg\PtgName.cs" />
+    <Compile Include="Ptg\PtgNameX.cs" />
+    <Compile Include="Ptg\PtgNe.cs" />
+    <Compile Include="Ptg\PtgNotDocumented.cs" />
+    <Compile Include="Ptg\PtgNum.cs" />
+    <Compile Include="Ptg\PtgNumber.cs" />
+    <Compile Include="Ptg\PtgParen.cs" />
+    <Compile Include="Ptg\PtgPercent.cs" />
+    <Compile Include="Ptg\PtgPower.cs" />
+    <Compile Include="Ptg\PtgRef.cs" />
+    <Compile Include="Ptg\PtgRef3d.cs" />
+    <Compile Include="Ptg\PtgRefErr.cs" />
+    <Compile Include="Ptg\PtgRefErr3d.cs" />
+    <Compile Include="Ptg\PtgRefN.cs" />
+    <Compile Include="Ptg\PtgStr.cs" />
+    <Compile Include="Ptg\PtgSub.cs" />
+    <Compile Include="Ptg\PtgUminus.cs" />
+    <Compile Include="Ptg\PtgUnion.cs" />
+    <Compile Include="Ptg\PtgUplus.cs" />
+    <Compile Include="DataContainer\WorkSheetData.cs" />
+    <Compile Include="DataExtraction\StreamExtractor.cs" />
+    <Compile Include="DataExtraction\WorkbookExtractor.cs" />
+    <Compile Include="Records\AbstractCellContent.cs" />
+    <Compile Include="Records\Addin.cs" />
+    <Compile Include="Records\Addmenu.cs" />
+    <Compile Include="Records\AlRuns.cs" />
+    <Compile Include="Records\Area.cs" />
+    <Compile Include="Records\AreaFormat.cs" />
+    <Compile Include="Records\Array.cs" />
+    <Compile Include="Records\AttachedLabel.cs" />
+    <Compile Include="Records\AutoFilter.cs" />
+    <Compile Include="Records\AutoFilter12.cs" />
+    <Compile Include="Records\AutoFilterInfo.cs" />
+    <Compile Include="Records\AUTOWEBPUB.cs" />
+    <Compile Include="Records\AxcExt.cs" />
+    <Compile Include="Records\AxesUsed.cs" />
+    <Compile Include="Records\Axis.cs" />
+    <Compile Include="Records\AxisLine.cs" />
+    <Compile Include="Records\AxisParent.cs" />
+    <Compile Include="Records\Backup.cs" />
+    <Compile Include="Records\Bar.cs" />
+    <Compile Include="Records\Begin.cs" />
+    <Compile Include="Records\BkHim.cs" />
+    <Compile Include="Records\Blank.cs" />
+    <Compile Include="Records\BlankGraph.cs" />
+    <Compile Include="Records\BOF.cs" />
+    <Compile Include="Records\BookBool.cs" />
+    <Compile Include="Records\BookExt.cs" />
+    <Compile Include="Records\BoolErr.cs" />
+    <Compile Include="Records\BopPop.cs" />
+    <Compile Include="Records\BopPopCustom.cs" />
+    <Compile Include="Records\BottomMargin.cs" />
+    <Compile Include="Records\BoundSheet8.cs" />
+    <Compile Include="Records\BRAI.cs" />
+    <Compile Include="Records\CalcCount.cs" />
+    <Compile Include="Records\CalcMode.cs" />
+    <Compile Include="Records\CatLab.cs" />
+    <Compile Include="Records\CatSerRange.cs" />
+    <Compile Include="Records\CellWatch.cs" />
+    <Compile Include="Records\CF.cs" />
+    <Compile Include="Records\CF12.cs" />
+    <Compile Include="Records\CFEx.cs" />
+    <Compile Include="Records\Chart.cs" />
+    <Compile Include="Records\Chart3d.cs" />
+    <Compile Include="Records\Chart3DBarShape.cs" />
+    <Compile Include="Records\ChartFormat.cs" />
+    <Compile Include="Records\ChartFrtInfo.cs" />
+    <Compile Include="Records\ClrtClient.cs" />
+    <Compile Include="Records\CodeName.cs" />
+    <Compile Include="Records\CodePage.cs" />
+    <Compile Include="Records\ColInfo.cs" />
+    <Compile Include="Records\Compat12.cs" />
+    <Compile Include="Records\CompressPictures.cs" />
+    <Compile Include="Records\CondFmt.cs" />
+    <Compile Include="Records\CondFmt12.cs" />
+    <Compile Include="Records\Continue.cs" />
+    <Compile Include="Records\ContinueFrt.cs" />
+    <Compile Include="Records\ContinueFrt11.cs" />
+    <Compile Include="Records\ContinueFrt12.cs" />
+    <Compile Include="Records\COORDLIST.cs" />
+    <Compile Include="Records\CrtMlFrtContinue.cs" />
+    <Compile Include="Records\CrtMlFrt.cs" />
+    <Compile Include="Records\Country.cs" />
+    <Compile Include="Records\CrErr.cs" />
+    <Compile Include="Records\CRN.cs" />
+    <Compile Include="Records\CRTCOOPT.cs" />
+    <Compile Include="Records\CrtLayout12.cs" />
+    <Compile Include="Records\CrtLine.cs" />
+    <Compile Include="Records\CrtLink.cs" />
+    <Compile Include="Records\Dat.cs" />
+    <Compile Include="Records\DataFormat.cs" />
+    <Compile Include="Records\DataLabExt.cs" />
+    <Compile Include="Records\DataLabExtContents.cs" />
+    <Compile Include="Records\Date1904.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Records\DBCell.cs" />
+    <Compile Include="Records\DBQueryExt.cs" />
+    <Compile Include="Records\DCon.cs" />
+    <Compile Include="Records\DConBin.cs" />
+    <Compile Include="Records\DConn.cs" />
+    <Compile Include="Records\DConName.cs" />
+    <Compile Include="Records\DConRef.cs" />
+    <Compile Include="Records\DefaultRowHeight.cs" />
+    <Compile Include="Records\DefaultText.cs" />
+    <Compile Include="Records\DefColWidth.cs" />
+    <Compile Include="Records\DELMENU.cs" />
+    <Compile Include="Records\CalcDelta.cs" />
+    <Compile Include="Records\Dimensions.cs" />
+    <Compile Include="Records\DocRoute.cs" />
+    <Compile Include="Records\DropBar.cs" />
+    <Compile Include="Records\DropDownObjIds.cs" />
+    <Compile Include="Records\DSF.cs" />
+    <Compile Include="Records\Dv.cs" />
+    <Compile Include="Records\DVal.cs" />
+    <Compile Include="Records\DXF.cs" />
+    <Compile Include="Records\EDG.cs" />
+    <Compile Include="Records\End.cs" />
+    <Compile Include="Records\EndBlock.cs" />
+    <Compile Include="Records\EndObject.cs" />
+    <Compile Include="Records\EOF.cs" />
+    <Compile Include="Records\Excel9File.cs" />
+    <Compile Include="Records\EXTERNCOUNT.cs" />
+    <Compile Include="Records\ExternName.cs" />
+    <Compile Include="Records\ExternSheet.cs" />
+    <Compile Include="Records\ExtSST.cs" />
+    <Compile Include="Records\ExtString.cs" />
+    <Compile Include="Records\Fbi.cs" />
+    <Compile Include="Records\Fbi2.cs" />
+    <Compile Include="Records\Feat.cs" />
+    <Compile Include="Records\Feature11.cs" />
+    <Compile Include="Records\Feature12.cs" />
+    <Compile Include="Records\FeatHdr.cs" />
+    <Compile Include="Records\FeatHdr11.cs" />
+    <Compile Include="Records\FEATINFO.cs" />
+    <Compile Include="Records\FEATINFO11.cs" />
+    <Compile Include="Records\FilePass.cs" />
+    <Compile Include="Records\FileSharing.cs" />
+    <Compile Include="Records\FILESHARING2.cs" />
+    <Compile Include="Records\FilterMode.cs" />
+    <Compile Include="Records\FMQRY.cs" />
+    <Compile Include="Records\FMSQRY.cs" />
+    <Compile Include="Records\BuiltInFnGroupCount.cs" />
+    <Compile Include="Records\FnGroupName.cs" />
+    <Compile Include="Records\FnGrp12.cs" />
+    <Compile Include="Records\Font.cs" />
+    <Compile Include="Records\FontX.cs" />
+    <Compile Include="Records\Footer.cs" />
+    <Compile Include="Records\ForceFullCalculation.cs" />
+    <Compile Include="Records\Format.cs" />
+    <Compile Include="Records\Formula.cs" />
+    <Compile Include="Records\Frame.cs" />
+    <Compile Include="Records\FrtFontList.cs" />
+    <Compile Include="Records\FrtWrapper.cs" />
+    <Compile Include="Records\GCW.cs" />
+    <Compile Include="Records\GelFrame.cs" />
+    <Compile Include="Records\GridSet.cs" />
+    <Compile Include="Records\GUIDTypeLib.cs" />
+    <Compile Include="Records\Guts.cs" />
+    <Compile Include="Records\HCenter.cs" />
+    <Compile Include="Records\Header.cs" />
+    <Compile Include="Records\HeaderFooter.cs" />
+    <Compile Include="Records\HFPicture.cs" />
+    <Compile Include="Records\HideObj.cs" />
+    <Compile Include="Records\HLink.cs" />
+    <Compile Include="Records\HLinkTooltip.cs" />
+    <Compile Include="Records\HorizontalPageBreaks.cs" />
+    <Compile Include="Records\IFmtRecord.cs" />
+    <Compile Include="Records\IMDATA.cs" />
+    <Compile Include="Records\Index.cs" />
+    <Compile Include="Records\InterfaceEnd.cs" />
+    <Compile Include="Records\InterfaceHdr.cs" />
+    <Compile Include="Records\CalcIter.cs" />
+    <Compile Include="Records\Label.cs" />
+    <Compile Include="Records\LabelSst.cs" />
+    <Compile Include="Records\Lbl.cs" />
+    <Compile Include="Records\LeftMargin.cs" />
+    <Compile Include="Records\Legend.cs" />
+    <Compile Include="Records\LegendException.cs" />
+    <Compile Include="Records\LHNGRAPH.cs" />
+    <Compile Include="Records\LHRECORD.cs" />
+    <Compile Include="Records\Line.cs" />
+    <Compile Include="Records\LineFormat.cs" />
+    <Compile Include="Records\List12.cs" />
+    <Compile Include="Records\LISTCF.cs" />
+    <Compile Include="Records\LISTCONDFMT.cs" />
+    <Compile Include="Records\LISTDV.cs" />
+    <Compile Include="Records\LISTFIELD.cs" />
+    <Compile Include="Records\LISTOBJ.cs" />
+    <Compile Include="Records\LNEXT.cs" />
+    <Compile Include="Records\LPr.cs" />
+    <Compile Include="Records\MarkerFormat.cs" />
+    <Compile Include="Records\MDB.cs" />
+    <Compile Include="Records\MDTInfo.cs" />
+    <Compile Include="Records\MDXKPI.cs" />
+    <Compile Include="Records\MDXProp.cs" />
+    <Compile Include="Records\MDXSet.cs" />
+    <Compile Include="Records\MDXStr.cs" />
+    <Compile Include="Records\MDXTuple.cs" />
+    <Compile Include="Records\MergeCells.cs" />
+    <Compile Include="Records\MKREXT.cs" />
+    <Compile Include="Records\Mms.cs" />
+    <Compile Include="Records\MsoDrawing.cs" />
+    <Compile Include="Records\MsoDrawingGroup.cs" />
+    <Compile Include="Records\MsoDrawingSelection.cs" />
+    <Compile Include="Records\MTRSettings.cs" />
+    <Compile Include="Records\MulBlank.cs" />
+    <Compile Include="Records\MulRk.cs" />
+    <Compile Include="Records\NameCmt.cs" />
+    <Compile Include="Records\NameFnGrp12.cs" />
+    <Compile Include="Records\NamePublish.cs" />
+    <Compile Include="Records\Note.cs" />
+    <Compile Include="Records\Number.cs" />
+    <Compile Include="Records\Obj.cs" />
+    <Compile Include="Records\ObjectLink.cs" />
+    <Compile Include="Records\ObjProtect.cs" />
+    <Compile Include="Records\ObProj.cs" />
+    <Compile Include="Records\OleDbConn.cs" />
+    <Compile Include="Records\OleObjectSize.cs" />
+    <Compile Include="Records\Palette.cs" />
+    <Compile Include="Records\Pane.cs" />
+    <Compile Include="Records\DbOrParamQry.cs" />
+    <Compile Include="Records\Password.cs" />
+    <Compile Include="Records\PicF.cs" />
+    <Compile Include="Records\Pie.cs" />
+    <Compile Include="Records\PieFormat.cs" />
+    <Compile Include="Records\PivotChartBits.cs" />
+    <Compile Include="Records\PlotArea.cs" />
+    <Compile Include="Records\PlotGrowth.cs" />
+    <Compile Include="Records\Pls.cs" />
+    <Compile Include="Records\PLV.cs" />
+    <Compile Include="Records\Pos.cs" />
+    <Compile Include="Records\CalcPrecision.cs" />
+    <Compile Include="Records\PrintGrid.cs" />
+    <Compile Include="Records\PrintRowCol.cs" />
+    <Compile Include="Records\PrintSize.cs" />
+    <Compile Include="Records\Prot4Rev.cs" />
+    <Compile Include="Records\Prot4RevPass.cs" />
+    <Compile Include="Records\Protect.cs" />
+    <Compile Include="Records\PUB.cs" />
+    <Compile Include="Records\Qsi.cs" />
+    <Compile Include="Records\Qsif.cs" />
+    <Compile Include="Records\Qsir.cs" />
+    <Compile Include="Records\QsiSXTag.cs" />
+    <Compile Include="Records\Radar.cs" />
+    <Compile Include="Records\RealTimeData.cs" />
+    <Compile Include="Records\RecalcId.cs" />
+    <Compile Include="Records\RecipName.cs" />
+    <Compile Include="Records\CalcRefMode.cs" />
+    <Compile Include="Records\RefreshAll.cs" />
+    <Compile Include="Records\RichTextStream.cs" />
+    <Compile Include="Records\RightMargin.cs" />
+    <Compile Include="Records\RK.cs" />
+    <Compile Include="Records\Row.cs" />
+    <Compile Include="Records\RSTRING.cs" />
+    <Compile Include="Records\CalcSaveRecalc.cs" />
+    <Compile Include="Records\SBaseRef.cs" />
+    <Compile Include="Records\Scatter.cs" />
+    <Compile Include="Records\SCENARIO.cs" />
+    <Compile Include="Records\ScenMan.cs" />
+    <Compile Include="Records\ScenarioProtect.cs" />
+    <Compile Include="Records\Scl.cs" />
+    <Compile Include="Records\Selection.cs" />
+    <Compile Include="Records\SerAuxErrBar.cs" />
+    <Compile Include="Records\SerAuxTrend.cs" />
+    <Compile Include="Records\SerFmt.cs" />
+    <Compile Include="Records\Series.cs" />
+    <Compile Include="Records\SeriesList.cs" />
+    <Compile Include="Records\SeriesText.cs" />
+    <Compile Include="Records\SerParent.cs" />
+    <Compile Include="Records\SerToCrt.cs" />
+    <Compile Include="Records\Setup.cs" />
+    <Compile Include="Records\ShapePropsStream.cs" />
+    <Compile Include="Records\SheetExt.cs" />
+    <Compile Include="Records\ShrFmla.cs" />
+    <Compile Include="Records\ShtProps.cs" />
+    <Compile Include="Records\SIIndex.cs" />
+    <Compile Include="Records\Sort.cs" />
+    <Compile Include="Records\SortData.cs" />
+    <Compile Include="Records\SOUND.cs" />
+    <Compile Include="Records\SST.cs" />
+    <Compile Include="Records\DxGCol.cs" />
+    <Compile Include="Records\StartBlock.cs" />
+    <Compile Include="Records\StartObject.cs" />
+    <Compile Include="Records\String.cs" />
+    <Compile Include="Records\Style.cs" />
+    <Compile Include="Records\StyleExt.cs" />
+    <Compile Include="Records\SUB.cs" />
+    <Compile Include="Records\SupBook.cs" />
+    <Compile Include="Records\Surf.cs" />
+    <Compile Include="Records\SXAddl.cs" />
+    <Compile Include="Records\SXADDL12.cs" />
+    <Compile Include="Records\SXDB.cs" />
+    <Compile Include="Records\SXDBEx.cs" />
+    <Compile Include="Records\SXDI.cs" />
+    <Compile Include="Records\SXDXF.cs" />
+    <Compile Include="Records\SXEx.cs" />
+    <Compile Include="Records\SXFDBType.cs" />
+    <Compile Include="Records\SxFilt.cs" />
+    <Compile Include="Records\SxFmla.cs" />
+    <Compile Include="Records\SxFormat.cs" />
+    <Compile Include="Records\SXFormula.cs" />
+    <Compile Include="Records\SXStreamID.cs" />
+    <Compile Include="Records\SxItm.cs" />
+    <Compile Include="Records\SxIvd.cs" />
+    <Compile Include="Records\SXLI.cs" />
+    <Compile Include="Records\SxName.cs" />
+    <Compile Include="Records\SXPair.cs" />
+    <Compile Include="Records\SXPI.cs" />
+    <Compile Include="Records\SXPIEx.cs" />
+    <Compile Include="Records\SxRule.cs" />
+    <Compile Include="Records\SxSelect.cs" />
+    <Compile Include="Records\SXString.cs" />
+    <Compile Include="Records\SXTbl.cs" />
+    <Compile Include="Records\SxTbpg.cs" />
+    <Compile Include="Records\SXTBRGIITM.cs" />
+    <Compile Include="Records\SXTH.cs" />
+    <Compile Include="Records\Sxvd.cs" />
+    <Compile Include="Records\SXVDEx.cs" />
+    <Compile Include="Records\SXVDTEx.cs" />
+    <Compile Include="Records\SXVI.cs" />
+    <Compile Include="Records\SxView.cs" />
+    <Compile Include="Records\SXViewEx.cs" />
+    <Compile Include="Records\SXViewEx9.cs" />
+    <Compile Include="Records\SXViewLink.cs" />
+    <Compile Include="Records\SXVS.cs" />
+    <Compile Include="Records\RRTabId.cs" />
+    <Compile Include="Records\TABIDCONF.cs" />
+    <Compile Include="Records\Table.cs" />
+    <Compile Include="Records\TableStyle.cs" />
+    <Compile Include="Records\TableStyleElement.cs" />
+    <Compile Include="Records\TableStyles.cs" />
+    <Compile Include="Records\Template.cs" />
+    <Compile Include="Records\Text.cs" />
+    <Compile Include="Records\TextPropsStream.cs" />
+    <Compile Include="Records\Theme.cs" />
+    <Compile Include="Records\Tick.cs" />
+    <Compile Include="Records\TopMargin.cs" />
+    <Compile Include="Records\TxO.cs" />
+    <Compile Include="Records\TxtQry.cs" />
+    <Compile Include="Records\UDDESC.cs" />
+    <Compile Include="Records\Uncalced.cs" />
+    <Compile Include="Records\Units.cs" />
+    <Compile Include="Records\UnknownBiffRecord.cs" />
+    <Compile Include="Records\UserBView.cs" />
+    <Compile Include="Records\UserSViewBegin.cs" />
+    <Compile Include="Records\UserSViewEnd.cs" />
+    <Compile Include="Records\UsesELFs.cs" />
+    <Compile Include="Records\ValueRange.cs" />
+    <Compile Include="Records\VCenter.cs" />
+    <Compile Include="Records\VerticalPageBreaks.cs" />
+    <Compile Include="Records\WebPub.cs" />
+    <Compile Include="Records\WinDoc.cs" />
+    <Compile Include="Records\Window1.cs" />
+    <Compile Include="Records\Window2.cs" />
+    <Compile Include="Records\WinProtect.cs" />
+    <Compile Include="Records\WOpt.cs" />
+    <Compile Include="Records\WriteAccess.cs" />
+    <Compile Include="Records\WriteProtect.cs" />
+    <Compile Include="Records\WsBool.cs" />
+    <Compile Include="Records\XCT.cs" />
+    <Compile Include="Records\XF.cs" />
+    <Compile Include="Records\XFCRC.cs" />
+    <Compile Include="Records\XFExt.cs" />
+    <Compile Include="Records\XL5MODIFY.cs" />
+    <Compile Include="Records\YMult.cs" />
+    <Compile Include="RecordType.cs" />
+    <Compile Include="Structures\CFrtId.cs" />
+    <Compile Include="Structures\ChartNumNillable.cs" />
+    <Compile Include="Structures\ChartParsedFormula.cs" />
+    <Compile Include="Structures\ControlInfo.cs" />
+    <Compile Include="Structures\FtCbls.cs" />
+    <Compile Include="Structures\FtCblsData.cs" />
+    <Compile Include="Structures\FtCf.cs" />
+    <Compile Include="Structures\FtCmo.cs" />
+    <Compile Include="Structures\FtEdoData.cs" />
+    <Compile Include="Structures\FtGmo.cs" />
+    <Compile Include="Structures\FtMacro.cs" />
+    <Compile Include="Structures\FtNts.cs" />
+    <Compile Include="Structures\FtPictFmla.cs" />
+    <Compile Include="Structures\FtPioGrbit.cs" />
+    <Compile Include="Structures\FtRbo.cs" />
+    <Compile Include="Structures\FtRboData.cs" />
+    <Compile Include="Structures\FtSbs.cs" />
+    <Compile Include="Structures\ObjectParsedFormula.cs" />
+    <Compile Include="Structures\ObjFmla.cs" />
+    <Compile Include="Structures\ObjLinkFmla.cs" />
+    <Compile Include="Structures\OfficeArtClientAnchorSheet.cs" />
+    <Compile Include="Structures\PictFmlaEmbedInfo.cs" />
+    <Compile Include="Structures\Run.cs" />
+    <Compile Include="Structures\SheetExtOptional.cs" />
+    <Compile Include="Structures\TxOLastRun.cs" />
+    <Compile Include="Structures\TxORuns.cs" />
+    <Compile Include="Structures\XmlTkHeightPercent.cs" />
+    <Compile Include="Structures\XmlTkRotXFrt.cs" />
+    <Compile Include="Structures\XmlTkRotYFrt.cs" />
+    <Compile Include="Structures\XmlTkPerspectiveFrt.cs" />
+    <Compile Include="Structures\XmlTkRAngAxOffFrt.cs" />
+    <Compile Include="Structures\XmlTkPieComboFrom12Frt.cs" />
+    <Compile Include="Structures\XmlTkSymbolFrt.cs" />
+    <Compile Include="Structures\XmlTkOverlay.cs" />
+    <Compile Include="Structures\XmlTkEnd.cs" />
+    <Compile Include="Structures\XmlTkEndSurface.cs" />
+    <Compile Include="Structures\XmlTkTpb.cs" />
+    <Compile Include="Structures\XmlTkSpb.cs" />
+    <Compile Include="Structures\XmlTkStart.cs" />
+    <Compile Include="Structures\XmlTkStartSurface.cs" />
+    <Compile Include="Structures\XmlTkDispBlanksAsFrt.cs" />
+    <Compile Include="Structures\XmlTkFloorThicknessFrt.cs" />
+    <Compile Include="Structures\XmlTkBackWallThicknessFrt.cs" />
+    <Compile Include="Structures\XmlTkShowDLblsOverMax.cs" />
+    <Compile Include="Structures\XmlTkMinorUnitFrt.cs" />
+    <Compile Include="Structures\XmlTkMinorUnitTypeFrt.cs" />
+    <Compile Include="Structures\XmlTkMajorUnitTypeFrt.cs" />
+    <Compile Include="Structures\XmlTkString.cs" />
+    <Compile Include="Structures\XmlTkFormatCodeFrt.cs" />
+    <Compile Include="Structures\XmlTkBaseTimeUnitFrt.cs" />
+    <Compile Include="Structures\XmlTkToken.cs" />
+    <Compile Include="Structures\XmlTkTickLabelPositionFrt.cs" />
+    <Compile Include="Structures\XmlTkMajorUnitFrt.cs" />
+    <Compile Include="Structures\XmlTkTickMarkSkipFrt.cs" />
+    <Compile Include="Structures\XmlTkTickLabelSkipFrt.cs" />
+    <Compile Include="Structures\XmlTkBool.cs" />
+    <Compile Include="Structures\XmlTkNoMultiLvlLbl.cs" />
+    <Compile Include="Structures\XmlTkColorMappingOverride.cs" />
+    <Compile Include="Structures\XmlTkBlob.cs" />
+    <Compile Include="Structures\XmlTkThemeOverride.cs" />
+    <Compile Include="Structures\XmlTkDWord.cs" />
+    <Compile Include="Structures\XmlTkStyle.cs" />
+    <Compile Include="Structures\XmlTkLogBaseFrt.cs" />
+    <Compile Include="Structures\XmlTkMinFrt.cs" />
+    <Compile Include="Structures\XmlTkMaxFrt.cs" />
+    <Compile Include="Structures\XmlTkHeader.cs" />
+    <Compile Include="Structures\XmlTkDouble.cs" />
+    <Compile Include="Structures\DateUnit.cs" />
+    <Compile Include="Structures\PaneType.cs" />
+    <Compile Include="Structures\RefU.cs" />
+    <Compile Include="Structures\XmlTkChain.cs" />
+    <Compile Include="Structures\FixedPointNumber.cs" />
+    <Compile Include="Structures\FontInfo.cs" />
+    <Compile Include="Structures\FormatRun.cs" />
+    <Compile Include="Structures\FrtHeader.cs" />
+    <Compile Include="Structures\FrtHeaderOld.cs" />
+    <Compile Include="Structures\ShortXLUnicodeString.cs" />
+    <Compile Include="Structures\XLUnicodeString.cs" />
+    <Compile Include="Structures\XLUnicodeStringMin2.cs" />
+    <Compile Include="Structures\XLUnicodeStringNoCch.cs" />
+    <Compile Include="StyleData\BorderData.cs" />
+    <Compile Include="StyleData\BorderPartData.cs" />
+    <Compile Include="StyleData\FillData.cs" />
+    <Compile Include="StyleData\StyleEnum.cs" />
+    <Compile Include="StyleData\FontData.cs" />
+    <Compile Include="StyleData\FormatData.cs" />
+    <Compile Include="StyleData\StyleData.cs" />
+    <Compile Include="StyleData\XFData.cs" />
+    <Compile Include="XlsDocument.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj">
+      <Project>{0F0F6BAF-BC5D-4DC6-AE53-8257305EE5CA}</Project>
+      <Name>CommonTranslatorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\OfficeDrawing\OfficeDrawing.csproj">
+      <Project>{AA46A3F1-919F-48FB-970C-753F58A857F6}</Project>
+      <Name>OfficeDrawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\StructuredStorage\StructuredStorage.csproj">
+      <Project>{CBD9BEE2-1E01-477A-BB44-1EC9F8C91AB7}</Project>
+      <Name>StructuredStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Tools\Tools.csproj">
+      <Project>{B44FAEE0-B32E-4682-AA42-618C893F14C6}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

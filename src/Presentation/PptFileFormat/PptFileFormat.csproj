@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6EAD0A6A-8DF0-4CA3-8D5E-3C871E7FCB62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DIaLOGIKa.b2xtranslator.PptFileFormat</RootNamespace>
+    <AssemblyName>DIaLOGIKa.b2xtranslator.PptFileFormat</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <StartupObject>
+    </StartupObject>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.7.2.20, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CharacterRun.cs" />
+    <Compile Include="ColorMappingAtom.cs" />
+    <Compile Include="ColorSchemeAtom.cs" />
+    <Compile Include="BlipCollection9Container.cs" />
+    <Compile Include="AnimationInfoContainer.cs" />
+    <Compile Include="MouseClickInteractiveInfoContainer.cs" />
+    <Compile Include="ExHyperlinkContainer.cs" />
+    <Compile Include="OutlineTextProps9Container.cs" />
+    <Compile Include="NormalViewSetInfoContainer.cs" />
+    <Compile Include="ExObjListContainer.cs" />
+    <Compile Include="RoundTripCompositeMasterId12Atom.cs" />
+    <Compile Include="TextCFExceptionAtom.cs" />
+    <Compile Include="TextPFExceptionAtom.cs" />
+    <Compile Include="DefaultRulerAtom.cs" />
+    <Compile Include="TextRulerAtom.cs" />
+    <Compile Include="TextSpecialInfoAtom.cs" />
+    <Compile Include="SlideShowSlideInfoAtom.cs" />
+    <Compile Include="Handout.cs" />
+    <Compile Include="NotesAtom.cs" />
+    <Compile Include="Note.cs" />
+    <Compile Include="FooterMCAtom.cs" />
+    <Compile Include="SlideHeadersFootersContainer.cs" />
+    <Compile Include="MasterTextPropAtom.cs" />
+    <Compile Include="ProgBinaryTagDataBlob.cs" />
+    <Compile Include="TextMasterStyle9Atom.cs" />
+    <Compile Include="CStringAtom.cs" />
+    <Compile Include="CurrentUserAtom.cs" />
+    <Compile Include="DocumentAtom.cs" />
+    <Compile Include="EndDocument.cs" />
+    <Compile Include="Environment.cs" />
+    <Compile Include="FontCollection.cs" />
+    <Compile Include="FontEntityAtom.cs" />
+    <Compile Include="GPointAtom.cs" />
+    <Compile Include="GRatioAtom.cs" />
+    <Compile Include="GrColorAtom.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="ITextDataRecord.cs" />
+    <Compile Include="List.cs" />
+    <Compile Include="MainMaster.cs" />
+    <Compile Include="OEPlaceholderAtom.cs" />
+    <Compile Include="OriginalMainMasterId.cs" />
+    <Compile Include="OutlineTextRefAtom.cs" />
+    <Compile Include="ParagraphRun.cs" />
+    <Compile Include="PersistDirectoryAtom.cs" />
+    <Compile Include="PersistDirectoryEntry.cs" />
+    <Compile Include="Pictures.cs" />
+    <Compile Include="PowerpointDocument.cs" />
+    <Compile Include="PPDrawing.cs" />
+    <Compile Include="PPDrawingGroup.cs" />
+    <Compile Include="DocumentContainer.cs" />
+    <Compile Include="ProgBinaryTag.cs" />
+    <Compile Include="ProgTags.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundTripContentMasterId12.cs" />
+    <Compile Include="RoundTripContentMasterInfo12.cs" />
+    <Compile Include="RoundTripOArtTextStyles12.cs" />
+    <Compile Include="RoundTripShapeId12.cs" />
+    <Compile Include="Slide.cs" />
+    <Compile Include="SlideAtom.cs" />
+    <Compile Include="SlideListWithText.cs" />
+    <Compile Include="SlidePersistAtom.cs" />
+    <Compile Include="SSlideLayoutAtom.cs" />
+    <Compile Include="TextRunStyleAtom.cs" />
+    <Compile Include="TextAtom.cs" />
+    <Compile Include="TextBytesAtom.cs" />
+    <Compile Include="TextCharsAtom.cs" />
+    <Compile Include="TextHeaderAtom.cs" />
+    <Compile Include="TextStyleAtom.cs" />
+    <Compile Include="Theme.cs" />
+    <Compile Include="TextMasterStyleAtom.cs" />
+    <Compile Include="UserEditAtom.cs" />
+    <Compile Include="VbaInfoAtom.cs" />
+    <Compile Include="VBAInfoContainer.cs" />
+    <Compile Include="VbaProjectAtom.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj">
+      <Project>{0F0F6BAF-BC5D-4DC6-AE53-8257305EE5CA}</Project>
+      <Name>CommonTranslatorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\OfficeDrawing\OfficeDrawing.csproj">
+      <Project>{AA46A3F1-919F-48FB-970C-753F58A857F6}</Project>
+      <Name>OfficeDrawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\OpenXmlLib\OpenXmlLib.csproj">
+      <Project>{4C10271C-CD9B-49F5-9479-3C6EB7404E75}</Project>
+      <Name>OpenXmlLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\StructuredStorage\StructuredStorage.csproj">
+      <Project>{CBD9BEE2-1E01-477A-BB44-1EC9F8C91AB7}</Project>
+      <Name>StructuredStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Tools\Tools.csproj">
+      <Project>{B44FAEE0-B32E-4682-AA42-618C893F14C6}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\ZipUtils\ZipUtils.csproj">
+      <Project>{05A5C68E-B901-4AD0-87F1-5E43DDC759CE}</Project>
+      <Name>ZipUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\key.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

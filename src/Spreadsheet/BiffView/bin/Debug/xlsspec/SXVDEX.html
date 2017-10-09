@@ -1,0 +1,281 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXVDEX: Extended PivotTable View Fields (100h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXVDEX: Extended PivotTable View Fields (100h)</h2>
+        <p class="Text">
+            This record contains extended PivotTable view fields information.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — BIFF8 </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="591"
+            style='width: 443.2pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="58" style='width: 43.2pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="104" style='width: 77.8pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 286.2pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit1 </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        =0001h, <span class="CodeInlineChar">fShowAllItems </span><span style='letter-spacing: -1.75pt'>
+                        </span><span>—<span style='letter-spacing: -1.75pt'> </span>show all items for this
+                            field.<br />
+                            =0002h, </span><span class="CodeInlineChar">fDragToRow </span><span style='letter-spacing: -1.75pt'>
+                            </span><span>—<span style='letter-spacing: -1.75pt'> </span>user can drag field to row
+                                area.<br />
+                                =0004h, </span><span class="CodeInlineChar">fDragToColumn </span><span style='letter-spacing: -1.75pt'>
+                                </span><span>—<span style='letter-spacing: -1.75pt'> </span>user can drag field to column
+                                    area.<br />
+                                    =0008h, </span><span class="CodeInlineChar">fDragToPage </span><span style='letter-spacing: -1.75pt'>
+                                    </span><span>—<span style='letter-spacing: -1.75pt'> </span>user can drag field to page
+                                        area.<br />
+                                        =0010h, </span><span class="CodeInlineChar">fDragToHide </span><span style='letter-spacing: -1.75pt'>
+                                        </span><span>—<span style='letter-spacing: -1.75pt'> </span>user can remove field from
+                                            view.<br />
+                                            =0060h, reserved.<br />
+                                            =0080h, </span><span class="CodeInlineChar">fServerBased </span>
+                        <span style='letter-spacing: -1.75pt'></span><span>—<span style='letter-spacing: -1.75pt'>
+                        </span>this field is a server-based field in the page area.<br />
+                            =0100h, reserved.<br />
+                            =0200h, </span><span class="CodeInlineChar">fAutoSort </span><span style='letter-spacing: -1.75pt'>
+                            </span><span>—<span style='letter-spacing: -1.75pt'> </span>autosort is enabled.<br />
+                                =0400h, </span><span class="CodeInlineChar">fAscendSort </span><span style='letter-spacing: -1.75pt'>
+                                </span><span>—<span style='letter-spacing: -1.75pt'> </span>autosort ascending.<br />
+                                    =0800h, </span><span class="CodeInlineChar">fAutoShow </span><span style='letter-spacing: -1.75pt'>
+                                    </span><span>—<span style='letter-spacing: -1.75pt'> </span>autoshow is enabled.<br />
+                                        =1000h, </span><span class="CodeInlineChar">fAscendShow </span><span style='letter-spacing: -1.75pt'>
+                                        </span><span>—<span style='letter-spacing: -1.75pt'> </span>show top values.<br />
+                                            =2000h, </span><span class="CodeInlineChar">fCalculatedField </span>
+                        <span style='letter-spacing: -1.75pt'></span><span>—<span style='letter-spacing: -1.75pt'>
+                        </span>calculated field.<br />
+                            XL9: =4000h, </span><span class="CodeInlineChar">fPageBreaksBetweenItems </span>
+                        – a page break is put between item changes in the Pivot Table view</p>
+                    <p class="Text">
+                        XL9: =8000h, <span class="CodeInlineChar">fHideNewItems </span>– new items that
+                        come in during a Pivot Table refresh are not shown in the view by default</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit2 </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        =1Fh, reserved.</p>
+                    <p class="Text">
+                        XL9: =20h, <span class="CodeInlineChar">fOutline </span>– layout this field in outline
+                        form on the Pivot Table view</p>
+                    <p class="Text">
+                        XL9: =40h, <span class="CodeInlineChar">fInsertBlankRow </span>– a blank line is
+                        put between item changes in the Pivot Table view</p>
+                    <p class="Text">
+                        XL9: =80h, <span class="CodeInlineChar">fSubtotalAtTop </span>–- when <span class="CodeInlineChar">
+                            fOutline=1 </span>then display subtotals at the top of the list of items instead
+                        of at the bottom</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">citmShow </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        Number of items to show for AutoShow, default is 10.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">isxdiSort</span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        <span>0-based index of data field that AutoSort is based on or<span style='letter-spacing: -1.75pt'>
+                            <br />
+                        </span>–1 for current field. </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">isxdiShow </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        0-based index of data field that AutoShow is based on.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ifmt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        Number format of field or 0 if none.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cchSubName </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        XL9: Length of unicode string in <span class="CodeInlineChar">stSubName </span><span>
+                            . FFh means no custom subtotal name was specified </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        XL9:</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        XL9:</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="58" style='width: 43.2pt;'>
+                    <p class="Text">
+                        26</p>
+                </td>
+                <td width="104" style='width: 77.8pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stSubName </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="382" style='width: 286.2pt;'>
+                    <p class="Text">
+                        XL9: Custom subtotal name represented in unicode</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

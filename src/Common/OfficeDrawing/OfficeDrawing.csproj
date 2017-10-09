@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AA46A3F1-919F-48FB-970C-753F58A857F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DIaLOGIKa.b2xtranslator.OfficeDrawing</RootNamespace>
+    <AssemblyName>DIaLOGIKa.b2xtranslator.OfficeDrawing</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BitmapBlip.cs" />
+    <Compile Include="BlipStoreContainer.cs" />
+    <Compile Include="BlipStoreEntry.cs" />
+    <Compile Include="ChildAnchor.cs" />
+    <Compile Include="ClientAnchor.cs" />
+    <Compile Include="ClientData.cs" />
+    <Compile Include="ClientTextbox.cs" />
+    <Compile Include="BlipBooleanProperties.cs" />
+    <Compile Include="Shapetypes\TextArchUpPour.cs" />
+    <Compile Include="Shapetypes\TextCirclePour.cs" />
+    <Compile Include="Shapetypes\TextCurveDown.cs" />
+    <Compile Include="Shapetypes\TextDeflateInflate.cs" />
+    <Compile Include="Shapetypes\TextRingInside.cs" />
+    <Compile Include="Shapetypes\TextStop.cs" />
+    <Compile Include="Shapetypes\TextWave4.cs" />
+    <Compile Include="ThreeDObjectBooleanProperties.cs" />
+    <Compile Include="ThreeDStyleBooleanProperties.cs" />
+    <Compile Include="Shapetypes\TextArchUpCurve.cs" />
+    <Compile Include="Shapetypes\TextCanDown.cs" />
+    <Compile Include="Shapetypes\TextCascadeUp.cs" />
+    <Compile Include="Shapetypes\TextCurveUp.cs" />
+    <Compile Include="Shapetypes\TextDeflate.cs" />
+    <Compile Include="Shapetypes\TextDeflateBottom.cs" />
+    <Compile Include="Shapetypes\TextFadeUp.cs" />
+    <Compile Include="Shapetypes\TextPlainText.cs" />
+    <Compile Include="Shapetypes\TextSlantUp.cs" />
+    <Compile Include="Shapetypes\TextTriangle.cs" />
+    <Compile Include="Shapetypes\TextWave1.cs" />
+    <Compile Include="Shapetypes\TextWave3.cs" />
+    <Compile Include="TextBooleanProperties.cs" />
+    <Compile Include="FillStyleBooleanProperties.cs" />
+    <Compile Include="GeometryTextBooleanProperties.cs" />
+    <Compile Include="ShadowStyleBooleanProperties.cs" />
+    <Compile Include="Shapetypes\LineType.cs" />
+    <Compile Include="SolverContainer.cs" />
+    <Compile Include="DiagramBooleans.cs" />
+    <Compile Include="DrawingContainer.cs" />
+    <Compile Include="DrawingGroup.cs" />
+    <Compile Include="DrawingGroupRecord.cs" />
+    <Compile Include="DrawingRecord.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="GeometryBooleans.cs" />
+    <Compile Include="GroupContainer.cs" />
+    <Compile Include="GroupShapeBooleans.cs" />
+    <Compile Include="GroupShapeRecord.cs" />
+    <Compile Include="LineStyleBooleans.cs" />
+    <Compile Include="PathParser.cs" />
+    <Compile Include="PathSegment.cs" />
+    <Compile Include="ProtectionBooleans.cs" />
+    <Compile Include="Shapetypes\AccentBorderCallout1Type.cs" />
+    <Compile Include="Shapetypes\AccentBorderCallout2Type.cs" />
+    <Compile Include="Shapetypes\AccentBorderCallout3Type.cs" />
+    <Compile Include="Shapetypes\AccentBorderCallout90Type.cs" />
+    <Compile Include="Shapetypes\AccentCallout1Type.cs" />
+    <Compile Include="Shapetypes\AccentCallout2Type.cs" />
+    <Compile Include="Shapetypes\AccentCallout3Type.cs" />
+    <Compile Include="Shapetypes\AccentCallout90Type.cs" />
+    <Compile Include="Shapetypes\ArcType.cs" />
+    <Compile Include="Shapetypes\BentArrowType.cs" />
+    <Compile Include="Shapetypes\BentUpArrowType.cs" />
+    <Compile Include="Shapetypes\BevelType.cs" />
+    <Compile Include="Shapetypes\BlockArcType.cs" />
+    <Compile Include="Shapetypes\BorderCallout1Type.cs" />
+    <Compile Include="Shapetypes\BorderCallout2Type.cs" />
+    <Compile Include="Shapetypes\BorderCallout3Type.cs" />
+    <Compile Include="Shapetypes\BorderCallout90Type.cs" />
+    <Compile Include="Shapetypes\BracePairType.cs" />
+    <Compile Include="Shapetypes\BracketPairType.cs" />
+    <Compile Include="Shapetypes\Callout1Type.cs" />
+    <Compile Include="Shapetypes\Callout2Type.cs" />
+    <Compile Include="Shapetypes\Callout3Type.cs" />
+    <Compile Include="Shapetypes\Callout90Type.cs" />
+    <Compile Include="Shapetypes\CanType.cs" />
+    <Compile Include="Shapetypes\ChevronType.cs" />
+    <Compile Include="Shapetypes\CircularArrowType.cs" />
+    <Compile Include="Shapetypes\CloudCalloutType.cs" />
+    <Compile Include="Shapetypes\CubeType.cs" />
+    <Compile Include="Shapetypes\CurvedDownArrowType.cs" />
+    <Compile Include="Shapetypes\CurvedLeftArrowType.cs" />
+    <Compile Include="Shapetypes\CurvedRightArrowType.cs" />
+    <Compile Include="Shapetypes\CurvedUpArrowType.cs" />
+    <Compile Include="Shapetypes\DonutType.cs" />
+    <Compile Include="Shapetypes\DoubleWaveType.cs" />
+    <Compile Include="Shapetypes\DownArrowCalloutType.cs" />
+    <Compile Include="Shapetypes\DownArrowType.cs" />
+    <Compile Include="Shapetypes\EllipsedRibbon2Type.cs" />
+    <Compile Include="Shapetypes\EllipseRibbonType.cs" />
+    <Compile Include="Shapetypes\FlowChartAlternateProcessType.cs" />
+    <Compile Include="Shapetypes\FlowChartCollateType.cs" />
+    <Compile Include="Shapetypes\FlowChartConnectorType.cs" />
+    <Compile Include="Shapetypes\FlowChartDecisionType.cs" />
+    <Compile Include="Shapetypes\FlowChartDelayType.cs" />
+    <Compile Include="Shapetypes\FlowChartDisplayType.cs" />
+    <Compile Include="Shapetypes\FlowChartDocumentType.cs" />
+    <Compile Include="Shapetypes\FlowChartExtractType.cs" />
+    <Compile Include="Shapetypes\FlowChartInputOutputType.cs" />
+    <Compile Include="Shapetypes\FlowChartInternalStorageType.cs" />
+    <Compile Include="Shapetypes\FlowChartMagneticDiskType.cs" />
+    <Compile Include="Shapetypes\FlowChartMagneticDrumType.cs" />
+    <Compile Include="Shapetypes\FlowChartMagneticTapeType.cs" />
+    <Compile Include="Shapetypes\FlowChartManualInputType.cs" />
+    <Compile Include="Shapetypes\FlowChartManualOperationType.cs" />
+    <Compile Include="Shapetypes\FlowChartMergeType.cs" />
+    <Compile Include="Shapetypes\FlowChartMultidocumentType.cs" />
+    <Compile Include="Shapetypes\FlowChartOffpageConnectorType.cs" />
+    <Compile Include="Shapetypes\FlowChartOnlineStorageType.cs" />
+    <Compile Include="Shapetypes\FlowChartOrType.cs" />
+    <Compile Include="Shapetypes\FlowChartPredefinedProcessType.cs" />
+    <Compile Include="Shapetypes\FlowChartPreparationType.cs" />
+    <Compile Include="Shapetypes\FlowChartProcessType.cs" />
+    <Compile Include="Shapetypes\FlowChartPunchedCardType.cs" />
+    <Compile Include="Shapetypes\FlowChartPunchedTapeType.cs" />
+    <Compile Include="Shapetypes\FlowChartSortType.cs" />
+    <Compile Include="Shapetypes\FlowChartSummingJunctionType.cs" />
+    <Compile Include="Shapetypes\FlowChartTerminatorType.cs" />
+    <Compile Include="Shapetypes\FoldedCornerType.cs" />
+    <Compile Include="Shapetypes\HeartType.cs" />
+    <Compile Include="Shapetypes\HomePlateType.cs" />
+    <Compile Include="Shapetypes\HorizontalScrollType.cs" />
+    <Compile Include="Shapetypes\IrregularSealOneType.cs" />
+    <Compile Include="Shapetypes\IrregularSealTwo.cs" />
+    <Compile Include="Shapetypes\LeftArrowCalloutType.cs" />
+    <Compile Include="Shapetypes\LeftArrowType.cs" />
+    <Compile Include="Shapetypes\LeftBraceType.cs" />
+    <Compile Include="Shapetypes\LeftBracketType.cs" />
+    <Compile Include="Shapetypes\LeftRightArrowCalloutType.cs" />
+    <Compile Include="Shapetypes\LeftRightArrowType.cs" />
+    <Compile Include="Shapetypes\LeftRightUpArrow.cs" />
+    <Compile Include="Shapetypes\LeftUpArrowType.cs" />
+    <Compile Include="Shapetypes\LightningBoltType.cs" />
+    <Compile Include="Shapetypes\MoonType.cs" />
+    <Compile Include="Shapetypes\NoSmokingType.cs" />
+    <Compile Include="Shapetypes\NotchedRightArrowType.cs" />
+    <Compile Include="Shapetypes\OvalType.cs" />
+    <Compile Include="Shapetypes\PentagonType.cs" />
+    <Compile Include="Shapetypes\PlaqueType.cs" />
+    <Compile Include="Shapetypes\PlusType.cs" />
+    <Compile Include="Shapetypes\DiamondType.cs" />
+    <Compile Include="Shapetypes\HexagonType.cs" />
+    <Compile Include="Shapetypes\IsoscelesTriangleType.cs" />
+    <Compile Include="MetafilePictBlip.cs" />
+    <Compile Include="OfficeRecordAttribute.cs" />
+    <Compile Include="OfficeShapeTypeAttribute.cs" />
+    <Compile Include="Shapetypes\OctagonType.cs" />
+    <Compile Include="Shapetypes\ParallelogramType.cs" />
+    <Compile Include="Shapetypes\PictureFrameType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Record.cs" />
+    <Compile Include="Shapetypes\QuadArrowCalloutType.cs" />
+    <Compile Include="Shapetypes\QuadArrowType.cs" />
+    <Compile Include="Shapetypes\RectangleType.cs" />
+    <Compile Include="RegularContainer.cs" />
+    <Compile Include="Shapetypes\RightArrowCalloutType.cs" />
+    <Compile Include="Shapetypes\Seal16Type.cs" />
+    <Compile Include="Shapetypes\Seal24Type.cs" />
+    <Compile Include="Shapetypes\Seal32Type.cs" />
+    <Compile Include="Shapetypes\Seal4Type.cs" />
+    <Compile Include="Shapetypes\Seal8Type.cs" />
+    <Compile Include="Shapetypes\StripedRightArrowType.cs" />
+    <Compile Include="Shapetypes\SunType.cs" />
+    <Compile Include="Shapetypes\UpArrowCalloutType.cs" />
+    <Compile Include="Shapetypes\UpDownArrowCalloutType.cs" />
+    <Compile Include="Shapetypes\UturnArrowType.cs" />
+    <Compile Include="Shapetypes\VerticalScrollType.cs" />
+    <Compile Include="Shapetypes\WaveType.cs" />
+    <Compile Include="XmlStringAtom.cs" />
+    <Compile Include="Shapetypes\RibbonDownType.cs" />
+    <Compile Include="Shapetypes\RibbonUpType.cs" />
+    <Compile Include="Shapetypes\RightArrowType.cs" />
+    <Compile Include="Shapetypes\RightBracetype.cs" />
+    <Compile Include="Shapetypes\RightBracketType.cs" />
+    <Compile Include="Shapetypes\RightTriangleType.cs" />
+    <Compile Include="Shapetypes\RoundedRectangleType.cs" />
+    <Compile Include="Shapetypes\SmileyFaceType.cs" />
+    <Compile Include="Shapetypes\Startype.cs" />
+    <Compile Include="Shapetypes\TrapezoidType.cs" />
+    <Compile Include="Shapetypes\UpArrowType.cs" />
+    <Compile Include="Shapetypes\UpDownArrowType.cs" />
+    <Compile Include="Shapetypes\WedgeEllipseCalloutType.cs" />
+    <Compile Include="Shapetypes\WedgeRectCalloutType.cs" />
+    <Compile Include="Shapetypes\WedgeRoundedRectCalloutType.cs" />
+    <Compile Include="XmlContainer.cs" />
+    <Compile Include="Shape.cs" />
+    <Compile Include="ShapeContainer.cs" />
+    <Compile Include="ShapeOptions.cs" />
+    <Compile Include="Shapetypes\ShapeType.cs" />
+    <Compile Include="Shapetypes\StraightConnectorType.cs" />
+    <Compile Include="Shapetypes\TextboxType.cs" />
+    <Compile Include="UnknownRecord.cs" />
+    <Compile Include="XmlRecord.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonTranslatorLib\CommonTranslatorLib.csproj">
+      <Project>{0F0F6BAF-BC5D-4DC6-AE53-8257305EE5CA}</Project>
+      <Name>CommonTranslatorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{B44FAEE0-B32E-4682-AA42-618C893F14C6}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZipUtils\ZipUtils.csproj">
+      <Project>{05A5C68E-B901-4AD0-87F1-5E43DDC759CE}</Project>
+      <Name>ZipUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

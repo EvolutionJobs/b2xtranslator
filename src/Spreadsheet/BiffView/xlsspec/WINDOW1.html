@@ -1,0 +1,470 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>WINDOW1: Window Information (3Dh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            WINDOW1: Window Information (3Dh)</h2>
+        <p class="Text">
+            The <span class="CodeInlineChar">WINDOW1 </span><span>record contains workbook-level
+                window attributes. The </span><span class="CodeInlineChar">xWn </span>and <span class="CodeInlineChar">
+                    yWn </span>fields contain the location of the window in units of 1/20 <sup><span
+                        style='font-size: 7.0pt'>th </span></sup><span>of a point, relative to the upper-left
+                            corner of the Excel window client area. The </span><span class="CodeInlineChar">dxWn
+                            </span>and <span class="CodeInlineChar">dyWn </span>fields contain
+            the window size, also in units of 1/20 <sup><span style='font-size: 7.0pt'>th </span>
+            </sup>of a point.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="605"
+            style='width: 453.4pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="94" style='width: 70.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="50" style='width: 37.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="94" style='width: 70.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xWn </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Horizontal position of the window.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="94" style='width: 70.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">yWn </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Vertical position of the window.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="94" style='width: 70.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dxWn </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Width of the window.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="94" style='width: 70.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dyWn </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Height of the window.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="94" style='width: 70.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Option flags.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td width="94" style='width: 70.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">itabCur </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Index of the selected workbook tab (0-based).</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="94" style='width: 70.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">itabFirst </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Index of the first displayed workbook tab (0-based).</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="94" style='width: 70.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ctabSel </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Number of workbook tabs that are selected.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="94" style='width: 70.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">wTabRatio </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Ratio of the width of the workbook tabs to the width of the horizontal scroll bar;
+                        to obtain the ratio, convert to decimal and then divide by 1000.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains the following option
+            flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="56" style='width: 42.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 100.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 221.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="134" style='width: 100.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fHidden </span>
+                    </p>
+                </td>
+                <td width="295" style='width: 221.5pt;'>
+                    <p class="Text">
+                        =1 if the window is hidden</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="134" style='width: 100.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fIconic </span>
+                    </p>
+                </td>
+                <td width="295" style='width: 221.5pt;'>
+                    <p class="Text">
+                        =1 if the window is currently displayed as an icon</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        04h</p>
+                </td>
+                <td width="134" style='width: 100.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="295" style='width: 221.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        08h</p>
+                </td>
+                <td width="134" style='width: 100.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDspHScroll </span>
+                    </p>
+                </td>
+                <td width="295" style='width: 221.5pt;'>
+                    <p class="Text">
+                        =1 if the horizontal scroll bar is displayed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        10h</p>
+                </td>
+                <td width="134" style='width: 100.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDspVScroll </span>
+                    </p>
+                </td>
+                <td width="295" style='width: 221.5pt;'>
+                    <p class="Text">
+                        =1 if the vertical scroll bar is displayed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        20h</p>
+                </td>
+                <td width="134" style='width: 100.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fBotAdornment </span>
+                    </p>
+                </td>
+                <td width="295" style='width: 221.5pt;'>
+                    <p class="Text">
+                        =1 if the workbook tabs are displayed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        40h</p>
+                </td>
+                <td width="134" style='width: 100.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fNoAFDateGroup </span>
+                    </p>
+                </td>
+                <td width="295" style='width: 221.5pt;'>
+                    <p class="Text">
+                        =1 if the AutoFilter should not group dates (Excel 11 (2003) behavior)</p>
+                    <p class="Text">
+                        (New for Office Excel 2007)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        80h</p>
+                </td>
+                <td width="134" style='width: 100.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="295" style='width: 221.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        7–0</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        FFh</p>
+                </td>
+                <td width="134" style='width: 100.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="295" style='width: 221.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

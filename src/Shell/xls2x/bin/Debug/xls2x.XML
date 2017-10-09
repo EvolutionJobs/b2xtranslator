@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>xls2x</name>
+    </assembly>
+    <members>
+        <member name="M:DIaLOGIKa.b2xtranslator.xls2x.CustomInstaller.addContextMenuEntry">
+            <summary>
+            Creates the context menu entry
+            </summary>
+        </member>
+        <member name="M:DIaLOGIKa.b2xtranslator.xls2x.CustomInstaller.removeContextMenuEntry">
+            <summary>
+            Removes the context menu entry if it is present 
+            and if it was created by the installer.
+            </summary>
+        </member>
+        <member name="M:DIaLOGIKa.b2xtranslator.xls2x.CustomInstaller.getShellKey(System.String)">
+            <summary>
+            Returns the shell key that is related to the given extension
+            </summary>
+            <param name="triggerExtension"></param>
+            <returns></returns>
+        </member>
+        <member name="F:DIaLOGIKa.b2xtranslator.xls2x.CustomInstaller.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DIaLOGIKa.b2xtranslator.xls2x.CustomInstaller.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DIaLOGIKa.b2xtranslator.xls2x.CustomInstaller.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

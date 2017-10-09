@@ -1,0 +1,84 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXDBEX: PivotTable Cache Data (122h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXDBEX: PivotTable Cache Data (122h)</h2>
+        <p class="Text">
+            The <span class="CodeInlineChar">SXDBEX </span>record is an extension of the <span
+                class="CodeInlineChar">SXDB </span><span>record. Both records contain PivotTable cache
+                    data. </span>
+        </p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — BIFF8 </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="106" style='width: 79.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="42" style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="385" style='width: 289.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="106" style='width: 79.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numDate </span></span></p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="385" style='width: 289.0pt;'>
+                    <p class="Text">
+                        <span>Date the PivotTable cache was created or was last refreshed. The date is stored
+                            as an 8-byte IEEE floating-point number. </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="106" style='width: 79.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cSxFormula </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="385" style='width: 289.0pt;'>
+                    <p class="Text">
+                        Count of <span class="CodeInlineChar">SXFORMULA</span> records for this cache.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

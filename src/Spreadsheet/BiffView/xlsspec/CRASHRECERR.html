@@ -1,0 +1,140 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>CRASHRECERR: Crash Recovery Error (865h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>CRASHRECERR: Crash Recovery Error (865h)</h2>
+     <p class="Text">Introducted in Excel 10 (2002) this record is an
+ <span class="CodeInlineChar">FRT </span> <span> record. 
+This BIFF record is used by Excel’s crash
+recovery mechanism to report to the user errors detected during crash recovery
+of the workbook (BIFF file).  
+The
+meaningful info in this record is the error message text contained in the </span> <span class="CodeInlineChar">cch </span>
+ and <span class="CodeInlineChar">rgch </span>
+ fields, with possible <span class="CodeInlineChar">CONTINUE </span>
+ record(s) following, if the
+error message text spans more than one BIFF record.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="391" style='width:293.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rt </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> <span> in the first two bytes of the
+ record;   
+=0865h </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitFrt </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>FRT </span> </span>
+ flags; must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text">(unused)</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text">Must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cb </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text">Fixed size of this record minus 4 bytes for
+ BIFF header ( <span class="CodeInlineChar">rt </span>
+ and <span class="CodeInlineChar">cb </span>
+), plus only 1 byte from <span class="CodeInlineChar">rgch </span> <span>.  
+=13h </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">20</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cch </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text">Length of the string containing error
+ message(s); number of actual characters.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">22</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgch </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text"><span>String containing localized text of one or
+ more line(s) of crash recovery error message(s).<br />
+ (See section titled<span style='color:red'> </span>
+<a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in Biff8</a> <span style='color:lime'> </span> <span style='color:red'>  </span>
+for more information about Unicode
+ encodings.)<span style='color:red'> </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,254 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>ADDMENU: Menu Addition (C2h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            ADDMENU: Menu Addition (C2h)</h2>
+        <p class="Text">
+            The <span class="CodeInlineChar">ADDMENU</span> record stores a menu addition. When
+            a menu object (a menu bar, a menu, a menu item, or a submenu item) is added to the
+            user interface, Excel writes a group of <span class="CodeInlineChar">ADDMENU</span>
+            records for each object. The first record stores the menu bar, the second stores
+            the menu, the third stores the menu item, and the fourth stores the submenu item
+            (<b>Note</b> : this is identical to the menu hierarchy in the user interface). The
+            number of records in the group depends on the level of the menu structure at which
+            the addition occurs. For example, adding a menu to a menu bar causes two <span class="CodeInlineChar">
+                ADDMENU</span> records to be written. Adding a submenu item to a menu item causes
+            four records to be written.
+        </p>
+        <p class="Text">
+            If <span class="CodeInlineChar">fInsert</span> is true (equal to <span class="CodeInlineChar">
+                01h</span>), the menu object is added at this level of the hierarchy. For example,
+            if <span class="CodeInlineChar">fInsert</span> is true in the second <span class="CodeInlineChar">
+                ADDMENU</span> record of the group, Excel adds a new menu to an existing menu
+            bar. If <span class="CodeInlineChar">fInsert</span> is false (equal to <span class="CodeInlineChar">
+                00h</span>), the record is a placeholder, and one of the following <span class="CodeInlineChar">
+                    ADDMENU</span> records in the group defines the menu addition.
+        </p>
+        <p class="Text">
+            For menu items and submenu items, the <span class="CodeInlineChar">icetab</span>
+            field stores the index to the added command, if the item is attached to a built-in
+            command. The <span class="CodeInlineChar">icetabBefore</span> field stores the index
+            to the existing command prior to where the new command was insertd in the list.
+            If either of these indexes equals <span class="CodeInlineChar">FFFFh</span>, the
+            corresponding string from the <span class="CodeInlineChar">rgch</span> field is
+            used instead of a built-in command.</p>
+        <p class="Text">
+            The <span class="CodeInlineChar">caitm</span> field is equal to the number of following
+            <span class="CodeInlineChar">ADDMENU</span> records to insert at this level
+            of the menu hierarchy.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='width: 446.0pt;
+            border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td style='width: 90.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Field Name</p>
+                    </td>
+                    <td style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 280.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td style='width: 44.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 90.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icetabItem </span>
+                    </p>
+                </td>
+                <td style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icetab</span> of the command</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td style='width: 90.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icetabBefore </span>
+                    </p>
+                </td>
+                <td style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icetab</span> of the existing command prior to where
+                        the new command was inserted</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 90.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">caitm</span>
+                    </p>
+                </td>
+                <td style='width: 31.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Number of <span class="CodeInlineChar">ADDMENU</span> records at the next level
+                        of the menu hierarchy
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.5pt;'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td style='width: 90.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fInsert</span>
+                    </p>
+                </td>
+                <td style='width: 31.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        <span>=1, insert this menu object<br />
+                            =0, this is a placeholder record </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.5pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 90.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgch</span>
+                    </p>
+                </td>
+                <td style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stItem</span>, <span class="CodeInlineChar">stBefore</span>,
+                        <span class="CodeInlineChar">stMacro</span>, <span class="CodeInlineChar">stStatus</span>,
+                        <span class="CodeInlineChar">stHelp </span>strings (see text)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">rgch</span> field stores five concatenated strings,
+            as described in the following table. Null strings appear in the <span class="CodeInlineChar">
+                rgch</span> field as a single byte (<span class="CodeInlineChar">00h</span>).
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td style='width: 79.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        String</p>
+                </td>
+                <td style='width: 366.6pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 79.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stItem </span>
+                    </p>
+                </td>
+                <td style='width: 366.6pt;'>
+                    <p class="Text">
+                        Text of the menu object</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 79.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stBefore </span>
+                    </p>
+                </td>
+                <td style='width: 366.6pt;'>
+                    <p class="Text">
+                        Text of the item this item was added ahead of</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 79.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stMacro </span>
+                    </p>
+                </td>
+                <td style='width: 366.6pt;'>
+                    <p class="Text">
+                        <span>Macro name, encoded using a technique similar to the encoded file names in the
+                            <a href="#_EXTERNSHEET:_External_Reference_(17">EXTERNSHEET</a> record </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 79.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stStatus </span></span>
+                    </p>
+                </td>
+                <td style='width: 366.6pt;'>
+                    <p class="Text">
+                        Status bar text (for add-ins)</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 79.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stHelp </span>
+                    </p>
+                </td>
+                <td style='width: 366.6pt;'>
+                    <p class="Text">
+                        Help file name and context ID (for add-ins)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

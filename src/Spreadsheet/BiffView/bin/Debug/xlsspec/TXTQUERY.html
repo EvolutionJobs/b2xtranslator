@@ -1,0 +1,723 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>TXTQUERY: Text Query Information (805h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            TXTQUERY: Text Query Information (805h)</h2>
+        <p class="Text">
+            This is a <span class="CodeInlineChar">FRT </span><span>record. It contains the information
+                for a Text Query. </span>
+        </p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="104" style='width: 78.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="381" style='width: 286.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span><span>in the
+                            first two bytes of the record; =0805h </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitFrt </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>flags; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        Options; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rowStartAt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        Row in source file where where the query information starts</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">delimFlags </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        Delimiter flags; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">itwf </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        Fields in each row of data</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">chDecimal </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        ANSI character; which character is used for the decimal separator</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        23</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">chThousSep </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        ANSI character, which character is used for the thousands separator</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgtxtwf </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        Array of <span class="CodeInlineChar">itwf TXTWF </span>structures (see below)</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="104" style='width: 78.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgchFile </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="381" style='width: 286.0pt;'>
+                    <p class="Text">
+                        Name of the text file that is the source for the query</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains following option flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="45" style='width: 34.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="55" style='width: 41.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td width="139" style='width: 104.2pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="355" style='width: 266.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="55" style='width: 41.3pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="139" style='width: 104.2pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="355" style='width: 266.5pt;'>
+                    <p class="Text">
+                        Reserved; must be one</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="55" style='width: 41.3pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="139" style='width: 104.2pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDelimited </span>
+                    </p>
+                </td>
+                <td width="355" style='width: 266.5pt;'>
+                    <p class="Text">
+                        0= The data fields are of fixed size</p>
+                    <p class="Text">
+                        1= The data is delimited</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        3-2</p>
+                </td>
+                <td width="55" style='width: 41.3pt;'>
+                    <p class="Text">
+                        000Ch</p>
+                </td>
+                <td width="139" style='width: 104.2pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iCpid </span>
+                    </p>
+                </td>
+                <td width="355" style='width: 266.5pt;'>
+                    <p class="Text">
+                        File Origin;
+                    </p>
+                    <p class="Text">
+                        1= Macintosh</p>
+                    <p class="Text">
+                        2= Windows (ANSI)</p>
+                    <p class="Text">
+                        3= MS-DOS (PC-8)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="55" style='width: 41.3pt;'>
+                    <p class="Text">
+                        0010h</p>
+                </td>
+                <td width="139" style='width: 104.2pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fPromptForFile </span>
+                    </p>
+                </td>
+                <td width="355" style='width: 266.5pt;'>
+                    <p class="Text">
+                        0= Refresh data from saved file location</p>
+                    <p class="Text">
+                        1= Browse for a file to open when refreshing</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        14-5</p>
+                </td>
+                <td width="55" style='width: 41.3pt;'>
+                    <p class="Text">
+                        7FE0h</p>
+                </td>
+                <td width="139" style='width: 104.2pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iCpidNew </span>
+                    </p>
+                </td>
+                <td width="355" style='width: 266.5pt;'>
+                    <p class="Text">
+                        <span>XL10: File's original <a href="#_CODEPAGE:_Default_Code_Page (42h)">codepage</a>
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td width="55" style='width: 41.3pt;'>
+                    <p class="Text">
+                        8000h</p>
+                </td>
+                <td width="139" style='width: 104.2pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fUseNewiCpid </span>
+                    </p>
+                </td>
+                <td width="355" style='width: 266.5pt;'>
+                    <p class="Text">
+                        XL10: 1= use <span class="CodeInlineChar">iCpidNew </span>( <span class="CodeInlineChar">
+                            iCpid </span>set to 2)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">delimFlags </span>field contains following option
+            flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="50" style='width: 37.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="52" style='width: 39.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td width="108" style='width: 81.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 244.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="52" style='width: 39.0pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="108" style='width: 81.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fTab </span>
+                    </p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        1= Treat the tab character as a field delimiter</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="52" style='width: 39.0pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="108" style='width: 81.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fSpace </span>
+                    </p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        1= Treat the space character as a field delimiter</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="52" style='width: 39.0pt;'>
+                    <p class="Text">
+                        04h</p>
+                </td>
+                <td width="108" style='width: 81.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fComma </span>
+                    </p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        1= Treat the comma character as a field delimiter</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="52" style='width: 39.0pt;'>
+                    <p class="Text">
+                        08h</p>
+                </td>
+                <td width="108" style='width: 81.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fSemiColon </span>
+                    </p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        1= Treat the semicolon character as a field delimiter</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="52" style='width: 39.0pt;'>
+                    <p class="Text">
+                        10h</p>
+                </td>
+                <td width="108" style='width: 81.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fCustom </span>
+                    </p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        1= Use the custom delimiter character specified in the chCustom field</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="52" style='width: 39.0pt;'>
+                    <p class="Text">
+                        20h</p>
+                </td>
+                <td width="108" style='width: 81.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fConsective </span>
+                    </p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        <span>0= Consecutive delimiters are all treated as separate delimiters<br />
+                            1= Consecutive delimiters are treated as one delimiter </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        7-6</p>
+                </td>
+                <td width="52" style='width: 39.0pt;'>
+                    <p class="Text">
+                        C0h</p>
+                </td>
+                <td width="108" style='width: 81.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iTextDelm </span>
+                    </p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        <span>Text delimiter;
+                            <br />
+                            0= Quotation mark<br />
+                            1= Apostrophe<br />
+                            2-3= No text delimiter </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        2-1</p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        15-0</p>
+                </td>
+                <td width="52" style='width: 39.0pt;'>
+                    <p class="Text">
+                        FFFFh</p>
+                </td>
+                <td width="108" style='width: 81.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">chCustom </span>
+                    </p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Custom text delimiter character</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        7-0</p>
+                </td>
+                <td width="52" style='width: 39.0pt;'>
+                    <p class="Text">
+                        FFh</p>
+                </td>
+                <td width="108" style='width: 81.0pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">TXTWF </span>structure is shown in the following
+            table.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="100" style='width: 75.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="42" style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="391" style='width: 293.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="100" style='width: 75.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fieldType </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="391" style='width: 293.5pt;'>
+                    <p class="Text">
+                        Field data type:</p>
+                    <p class="Text">
+                        =00h, Automatic</p>
+                    <p class="Text">
+                        =01h, Text</p>
+                    <p class="Text">
+                        =02h, Date in the order month, day then year</p>
+                    <p class="Text">
+                        =03h, Date in the order day, month then year</p>
+                    <p class="Text">
+                        =04h, Date in the order year, month then day</p>
+                    <p class="Text">
+                        =05h, Date in the order month, year then day</p>
+                    <p class="Text">
+                        =06h, Date in the order day, year then month</p>
+                    <p class="Text">
+                        =07h, Date in the order year, day then month</p>
+                    <p class="Text">
+                        =08h, Skip importing this field</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="100" style='width: 75.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fieldStart </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="391" style='width: 293.5pt;'>
+                    <p class="Text">
+                        The character position (zero-based) this field starts at if delimiters are not being
+                        used to determine where fields start and end</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,553 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>QSIR: Query Table Formatting (806h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>QSIR: Query Table Formatting (806h)</h2>
+     <p class="Text">Introduced in Excel 9 (2000) this is a <span class="CodeInlineChar">FRT </span> <span> record. 
+It stores the formatting information for a
+Query Table.  
+This record is followed
+immediately by a set of </span> <span class="CodeInlineChar">QSIF </span>
+ records.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="62" style='width:46.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td style='width:101.85pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="49" style='width:36.6pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:261.4pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar">rt </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> <span> in the first two bytes of the record;   
+=0806h </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitFrt </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>FRT </span> </span>
+ flags; <span class="CodeInlineChar">bitfFrtRef </span>
+ must be set to 1; see <span class="CodeInlineChar">FRT </span>
+ Record Description</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>REF </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>REF </span> </span>
+ structure; see <span class="CodeInlineChar">FRT </span>
+ Record Description</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cbQsirSaved </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Number of bytes in the <span class="CodeInlineChar">QSIR </span>
+ structure as saved (starting with
+ the <span class="CodeInlineChar">grbit </span>
+ field and
+ ending with the <span class="CodeInlineChar">rgbEx </span>
+ field, inclusive)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">18</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cbQsifSaved </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Number of bytes in each <span class="CodeInlineChar">QSIF </span>
+ structure as saved (starting with
+ the <span class="CodeInlineChar">grbit </span>
+ field and
+ ending with the <span class="CodeInlineChar">rgbEx </span>
+ field, inclusive)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">20</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbit </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Query table flags; see table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">24</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>iSortCustom </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">ID of custom sort order applied</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">28</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cQsif </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Count of <span class="CodeInlineChar">QSIF </span>
+ structures; these records immediately follow the <span class="CodeInlineChar">QSIR </span>
+ record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">32</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cpstDeleted </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Count of strings; these are the columns that
+ are in the database query but have been removed from the query table; stored
+ in the <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgbTitle </span> </span>
+ array, below</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">36</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>idFieldNext </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">First ID number available for assignment to a
+ newly-created <span class="CodeInlineChar">QSIF </span>
+ structure</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">40</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ccolExtraLeft </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Columns to the left of the Query Table that
+ are to be sorted with the Query Table</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">42</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ccolExtraRight </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Columns to the right of the Query Table that
+ are to be sorted with the Query Table</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">44</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>idList </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">XL11: Table ID if linked to a Table</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">48</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgbEx </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Bytes reserved for extra information to be
+ written by future versions of Excel; the size of this field is determined by <span class="CodeInlineChar">cbQsirSaved </span></p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="136" style='width:101.85pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgbTitle </span> </span></p>
+   </td>
+   <td width="49" style='width:36.6pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Unicode strings; these are the names of the
+ database fields that have been removed from the Query Table</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbit </span>
+ field contains the following option flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td colspan=2 style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="64" style='width:47.65pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="69" style='width:51.85pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td style='width:100.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td style='width:202.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">0001h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fPersist </span> </span></p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text"><span>0= Restore original field order and formatting
+ on refresh<br />
+ 1= Keep user’s formatting and field order changes when refreshing </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">0002h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fPersistSort </span> </span></p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text"><span>0= Restore data to original order on refresh<br />
+ 1= Apply sort to data on refresh </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">0004h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fPersistAutofilter </span> </span></p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text"><span>0= Unapply autofilter on refresh<br />
+ 1= Keep autofilter on refresh </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">15-3</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">FFF8h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">Reserved; must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">3-0</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">000Fh</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">Reserved; must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">0010h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSorted </span> </span></p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">1= A sort has been applied to the Query Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">0020h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fCaseSensSort </span> </span></p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">1= Sort is case-sensitive</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">0040h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fHdrRowSort </span> </span></p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">1= Query Table sort accounted for a header row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">0080h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fidWrapped </span> </span></p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">1= id numbers of <span class="CodeInlineChar">Qsif </span>
+ structures has wrapped around the
+ upper bound; Excel will have to check for duplicate ids</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">0100h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">Reserved; must be zero</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">9</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">0200h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fTitlesOld </span> </span></p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">1= The Query Table had titles last time it was
+ refreshed</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">14-10</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">7C00h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>wVersionBeforeRefreshAlert </span> </span></p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">Used as a 5-bit integer to indicate the latest
+ version of Excel that needs to give a warning alert on refresh</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="46" style='width:34.55pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="77" colspan="2" style='width:57.6pt;'>
+     <p class="Text">15</p>
+   </td>
+   <td width="69" style='width:51.85pt;'>
+     <p class="Text">8000h</p>
+   </td>
+   <td width="133" style='width:100.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="269" style='width:202.0pt;'>
+     <p class="Text">Reserved; must be zero</p>
+   </td>
+ </tr>
+ <![if !supportMisalignedColumns]>
+ <tr height="0">
+   <td width="45" style='border:none'>
+   </td>
+   <td width="13" style='border:none'>
+   </td>
+   <td width="52" style='border:none'>
+   </td>
+   <td width="61" style='border:none'>
+   </td>
+   <td width="245" style='border:none'>
+   </td>
+   <td width="179" style='border:none'>
+   </td>
+ </tr>
+ <![endif]>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text"><span class="Bold">Note </span> <span>   
+the flags </span> <span class="CodeInlineChar">fPersist </span>
+, <span class="CodeInlineChar">fPersistSort </span>
+, <span class="CodeInlineChar">fPersistAutofilter </span>
+, and <span class="CodeInlineChar">fMapFields
+ must have the same value.</p>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

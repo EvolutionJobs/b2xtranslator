@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<html>
+ <head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+   <title>COMPRESSPICTURES: Automatic Picture Compression Mode (89Bh)</title>
+   <link href="styles.css" rel="Stylesheet" type="text/css"/>
+ </head>
+ <body>
+   <div id="container">
+     <h2>COMPRESSPICTURES: Automatic Picture Compression Mode (89Bh)</h2>
+     <p class="Text">
+        This record stores the status of the automatic
+picture compression mode for the current workbook.</p>
+     <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style="width:446.0pt; border-collapse:collapse; ">
+ <tr>
+   <td width="61" style="width:46.0pt; border-bottom:solid windowtext 1.0pt; ">
+     <p class="Header">
+              Offset</p>
+   </td>
+   <td width="196" style="width:147.0pt; border-bottom:solid windowtext 1.0pt; ">
+     <p class="Header">
+              Name</p>
+   </td>
+   <td width="42" style="width:31.5pt; border-bottom:solid windowtext 1.0pt; ">
+     <p class="Header">
+              Size</p>
+   </td>
+   <td width="295" style="width:221.5pt; border-bottom:solid windowtext 1.0pt; ">
+     <p class="Header">
+              Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              4</p>
+   </td>
+   <td width="196" style="width:147.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; ">rt </span> </span></p>
+   </td>
+   <td width="42" style="width:31.5pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              2</p>
+   </td>
+   <td width="295" style="width:221.5pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              Record type; this
+ matches the BIFF 
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; ">rt </span> </span>
+               in the first two bytes of the record; =089Bh</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              6</p>
+   </td>
+   <td width="196" style="width:147.0pt; ">
+     <p class="CodeInline">
+              grbitFrt</p>
+   </td>
+   <td width="42" style="width:31.5pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              2</p>
+   </td>
+   <td width="295" style="width:221.5pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; ">FRT </span> </span>
+               cell reference flag; =0 currently</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              8</p>
+   </td>
+   <td width="196" style="width:147.0pt; ">
+     <p class="Text">
+              (Reserved)
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; "/> </span></p>
+   </td>
+   <td width="42" style="width:31.5pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              8</p>
+   </td>
+   <td width="295" style="width:221.5pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              Currently not
+ used, and set to 0
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; "/> </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              16</p>
+   </td>
+   <td width="196" style="width:147.0pt; ">
+     <p class="CodeInline">
+              fAuto&#xAD; Compress&#xAD; Pictures
+             <span class="CodeInlineChar">
+               <span style="font-family:Verdana; ; color:windowtext; "/> </span></p>
+   </td>
+   <td width="42" style="width:31.5pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              4</p>
+   </td>
+   <td width="295" style="width:221.5pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              =1 if pictures
+ must be compressed for the current workbook. Stored as 4-byte integer value</p>
+   </td>
+ </tr>
+     </table>
+   </div>
+ </body>
+</html>

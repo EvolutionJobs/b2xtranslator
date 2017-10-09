@@ -1,0 +1,1145 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>XFEXT: XF Extension (87Dh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            XFEXT: XF Extension (87Dh)</h2>
+        <p class="Text">
+            When writing <span class="CodeInlineChar">XF </span>records to BIFF8 format from
+            Office Excel 2007 or later, if the <span class="CodeInlineChar">XF </span>record
+            uses new formatting properties then a BIFF8 compatible <span class="CodeInlineChar">
+                XF </span>record will be written followed by an <span class="CodeInlineChar"><span
+                    style='font-size: 11.0pt;'>XFEXT </span></span>record that references that
+            <span class="CodeInlineChar">XF </span>and contains additional information that
+            can be used to restore the new properties when the document is opened again in Office
+            Excel 2007 or later.</p>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 38.7pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 280.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>in the
+                        first two bytes of the record; =087Dh</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar">grbitFrt </span>
+                    </p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Currently not used, and set to 0</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">version </span>
+                    </p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Record version; =0 currently – Office Excel 2007 will ignore this record on load
+                        if not 0.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar">ixfe </span>
+                    </p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Index of to <span class="CodeInlineChar">XF </span>record this extension modifies</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Currently not used, and set to 0</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>cexts </span></span>
+                    </p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Number of extension properties that follow</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>rgb </span></span>
+                    </p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Array of extension properties.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The data for each extension property starts with a common header:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 38.7pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 280.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">extType </span>
+                    </p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Indicates extension property type</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>cb </span></span>
+                    </p>
+                </td>
+                <td style='width: 38.7pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 280.0pt;'>
+                    <p class="Text">
+                        Length of this extension in bytes including header.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            This header is followed by a variable amount of data specified by the extension
+            property type. Unknown extension types are skipped on load. BIFF12 defines the following
+            extension property types:</p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 410.4pt;
+            margin-left: 36.0pt; border-collapse: collapse;'>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Header">
+                        Extension type</p>
+                </td>
+                <td style='width: 42.3pt; border: solid black 1.0pt; border-left: none;'>
+                    <p class="Header">
+                        Value</p>
+                </td>
+                <td style='width: 227.7pt; border: solid black 1.0pt; border-left: none;'>
+                    <p class="Header">
+                        Comments</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextRGBForeColor </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets cell interior forecolor to RGB</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextRGBBackColor </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets cell interior backcolor to RGB</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        reserved</p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Reserved; not used</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        reserved</p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Reserved; not used</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextForeColor </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets cell interior forecolor</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextBackColor </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets cell interior backcolor</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextGradientTint </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets cell interior to a specified gradient</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextBorderColorTop </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets specified cell border color</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextBorderColorBottom </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets specified cell border color</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextBorderColorLeft </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets specified cell border color</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextBorderColorRight </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets specified cell border color</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextBorderColorDiag </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets specified cell border color</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        reserved</p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Reserved; not used</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextTextColor </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Sets cell text color</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextFontScheme </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Set cell font to use specified font scheme</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 140.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xfextIndent </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td style='width: 227.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Set cell indentation level ( indents &gt; 15)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            RGB color extensions ( <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                xfextRGBForeColor </span></span>, <span class="CodeInlineChar">xfextRGBBackColor </span>
+            ) data format:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 34.2pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 247.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgbColor </span>
+                    </p>
+                </td>
+                <td style='width: 34.2pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 247.5pt;'>
+                    <p class="Text">
+                        rgb color (alpha is ignored)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            Full color extensions ( <span class="CodeInlineChar">xfextForeColor </span>, <span
+                class="CodeInlineChar">xfextBackColor </span>, <span class="CodeInlineChar">xfextBorderColor
+                </span>*, <span class="CodeInlineChar">xfextTextColor </span>):</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 34.2pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 247.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrType </span>
+                    </p>
+                </td>
+                <td style='width: 34.2pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 247.5pt;'>
+                    <p class="Text">
+                        Color type</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">nTintShade </span>
+                    </p>
+                </td>
+                <td style='width: 34.2pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 247.5pt;'>
+                    <p class="Text">
+                        signed tint and shade value</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrValue </span>
+                    </p>
+                </td>
+                <td style='width: 34.2pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 247.5pt;'>
+                    <p class="Text">
+                        Color value – value based on color type</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td style='width: 34.2pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 247.5pt;'>
+                    <p class="Text">
+                        Reserved; not used</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            <span class="CodeInlineChar">xclrType </span>– Excel supports the following color
+            types, <span class="CodeInlineChar">xclrValue </span>varies by type as noted in
+            the comments.</p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 410.4pt;
+            margin-left: 36.0pt; border-collapse: collapse;'>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt;'>
+                    <p class="Header">
+                        Color type</p>
+                </td>
+                <td style='width: 42.3pt; border: solid black 1.0pt; border-left: none;'>
+                    <p class="Header">
+                        Value</p>
+                </td>
+                <td style='width: 245.7pt; border: solid black 1.0pt; border-left: none;'>
+                    <p class="Header">
+                        Comments</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrAuto </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td style='width: 245.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        Automatic foreground/background colors</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrIndexed </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td style='width: 245.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrValue </span>= BIFF8 indexed palette color (icv)</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrRGB </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 245.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrValue </span>= RGB color</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrThemed </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td style='width: 245.7pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrValue </span>= Theme color index</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            <span class="CodeInlineChar">nTintShade </span>– signed short that is used to represent
+            how the color should be tinted or shaded. This value is mapped to the range (-1.0
+            to 1.0). Positive values make the color value lighter, negative values make the
+            color value darker. A 0.0 value means do not tint/shade the color.</p>
+        <p class="Text" style='margin-left: 36.0pt'>
+            &nbsp;
+        </p>
+        <p class="Text">
+            Font scheme extension (<span class="CodeInlineChar">xfextFontScheme</span>) data
+            format:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 34.2pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 247.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fontScheme </span>
+                    </p>
+                </td>
+                <td style='width: 34.2pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td style='width: 247.5pt;'>
+                    <p class="Text">
+                        font scheme (1 = Major, 2 = Minor)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            Indentation level extension ( <span class="CodeInlineChar">xfextIndent </span>)
+            data format:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 34.2pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 247.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cIndent </span>
+                    </p>
+                </td>
+                <td style='width: 34.2pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 247.5pt;'>
+                    <p class="Text">
+                        indent level (0..250) { Biff8 XF max was 15 }</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            Gradient fill extension ( <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                xfextGradientTint </span></span>):</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 120.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 32.6pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 210.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 120.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">type </span>
+                    </p>
+                </td>
+                <td style='width: 32.6pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 210.4pt;'>
+                    <p class="Text">
+                        Gradient type. Two gradient types are currently supported – linear (0) and rectangular
+                        (1)</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 120.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numDegree </span>
+                    </p>
+                </td>
+                <td style='width: 32.6pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 210.4pt;'>
+                    <p class="Text">
+                        Gradient angle. Used for linear gradients to determine the angle at which the gradient
+                        strokes will be drawn (vertical, horizontal, or diagonal)</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td style='width: 120.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numFillToLeft </span>
+                    </p>
+                </td>
+                <td style='width: 32.6pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 210.4pt;'>
+                    <p class="Text">
+                        Left coordinate. Used for rectangular gradients to determine the coordinates of
+                        the rectangle where the gradient should converge</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td style='width: 120.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numFillToRight </span>
+                    </p>
+                </td>
+                <td style='width: 32.6pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 210.4pt;'>
+                    <p class="Text">
+                        Right coordinate. Used for rectangular gradients to determine the coordinates of
+                        the rectangle where the gradient should converge</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        32</p>
+                </td>
+                <td style='width: 120.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numFillToTop </span>
+                    </p>
+                </td>
+                <td style='width: 32.6pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 210.4pt;'>
+                    <p class="Text">
+                        Top coordinate. Used for rectangular gradients to determine the coordinates of the
+                        rectangle where the gradient should converge</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        40</p>
+                </td>
+                <td style='width: 120.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numFillToBottom </span>
+                    </p>
+                </td>
+                <td style='width: 32.6pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 210.4pt;'>
+                    <p class="Text">
+                        Bottom coordinate. Used for rectangular gradients to determine the coordinates of
+                        the rectangle where the gradient should converge</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        48</p>
+                </td>
+                <td style='width: 120.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cGradStops </span>
+                    </p>
+                </td>
+                <td style='width: 32.6pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 210.4pt;'>
+                    <p class="Text">
+                        The number of gradient stop definitions to follow. A valid gradient must have at
+                        least one gradient stop and no more than 256</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        52</p>
+                </td>
+                <td style='width: 120.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgGradStops </span>
+                    </p>
+                </td>
+                <td style='width: 32.6pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td style='width: 210.4pt;'>
+                    <p class="Text">
+                        Array of gradient stops</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            Each <span class="CodeInlineChar">rgGradStops </span>entry has the following data
+            format:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 93.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 198.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td style='width: 93.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrType </span>
+                    </p>
+                </td>
+                <td style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 198.0pt;'>
+                    <p class="Text">
+                        Color type. See previous definition for Excel color types/values</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 93.0pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>xclrValue </span></span>
+                    </p>
+                </td>
+                <td style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 198.0pt;'>
+                    <p class="Text">
+                        Color value. See previous definition for Excel color types/values</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td style='width: 93.0pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar">numPosition </span>
+                    </p>
+                </td>
+                <td style='width: 36.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 198.0pt;'>
+                    <p class="Text">
+                        Position within the gradient range where this gradient stop’s color should begin</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 93.0pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>numTint </span></span>
+                    </p>
+                </td>
+                <td style='width: 36.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 198.0pt;'>
+                    <p class="Text">
+                        Tint and shade value. Same as <span class="CodeInlineChar">nTintShade </span>but
+                        expressed as double. This value is used to represent how the color should be tinted
+                        or shaded. This value is ranges from (-1.0 to 1.0). Positive values make the color
+                        value lighter, negative values make the color value darker. A 0.0 value means do
+                        not tint/shade the color.</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXVIEWEX: Pivot Table OLAP Extensions (80Ch)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXVIEWEX: Pivot Table OLAP Extensions (80Ch)</h2>
+        <p class="Text">
+            Introduced in Excel 9 (2000) this is a <span class="CodeInlineChar">FRT </span><span>
+                record. It stores counts of the records for OLAP extensions to PivotTables. The
+            </span><span class="CodeInlineChar">SXTH </span>records immediately follow the <span
+                class="CodeInlineChar">SXVIEWEX </span>record, followed by the <span class="CodeInlineChar">
+                    SXPIEX </span>records and the <span class="CodeInlineChar">SXVDTEX </span>
+            <span>records. The count of each of these is specified in the </span><span class="CodeInlineChar">
+                SXVIEWEX </span>record.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="100" style='width: 75.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="44" style='width: 33.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="389" style='width: 292.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="100" style='width: 75.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="44" style='width: 33.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="389" style='width: 292.0pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span><span>in the
+                            first two bytes of the record; =080Ch </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="100" style='width: 75.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitFrt </span>
+                    </p>
+                </td>
+                <td width="44" style='width: 33.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="389" style='width: 292.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>flags; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="100" style='width: 75.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">csxth </span>
+                    </p>
+                </td>
+                <td width="44" style='width: 33.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="389" style='width: 292.0pt;'>
+                    <p class="Text">
+                        Count of <span class="CodeInlineChar">SXTH </span>records</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="100" style='width: 75.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">csxpi </span>
+                    </p>
+                </td>
+                <td width="44" style='width: 33.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="389" style='width: 292.0pt;'>
+                    <p class="Text">
+                        Count of <span class="CodeInlineChar">SXPIEX </span>records</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="100" style='width: 75.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">csvdtex </span>
+                    </p>
+                </td>
+                <td width="44" style='width: 33.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="389" style='width: 292.0pt;'>
+                    <p class="Text">
+                        Count of <span class="CodeInlineChar">SXVDTEX </span>records</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="100" style='width: 75.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cbFuture </span>
+                    </p>
+                </td>
+                <td width="44" style='width: 33.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="389" style='width: 292.0pt;'>
+                    <p class="Text">
+                        Count of bytes from future versions of Excel</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td width="100" style='width: 75.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgbFuture </span>
+                    </p>
+                </td>
+                <td width="44" style='width: 33.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="389" style='width: 292.0pt;'>
+                    <p class="Text">
+                        Information from future versions of Excel</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

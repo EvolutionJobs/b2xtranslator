@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{598B4D7A-F1DB-496F-BC79-5F7BE596A239}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DIaLOGIKa.b2xtranslator.OfficeGraph</RootNamespace>
+    <AssemblyName>DIaLOGIKa.b2xtranslator.OfficeGraph</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BiffRecords\AlRuns.cs" />
+    <Compile Include="BiffRecords\Area.cs" />
+    <Compile Include="BiffRecords\AreaFormat.cs" />
+    <Compile Include="BiffRecords\AttachedLabel.cs" />
+    <Compile Include="BiffRecords\AxcExt.cs" />
+    <Compile Include="BiffRecords\AxesUsed.cs" />
+    <Compile Include="BiffRecords\Axis.cs" />
+    <Compile Include="BiffRecords\AxisLine.cs" />
+    <Compile Include="BiffRecords\AxisParent.cs" />
+    <Compile Include="BiffRecords\Bar.cs" />
+    <Compile Include="BiffRecords\Begin.cs" />
+    <Compile Include="BiffRecords\BOF.cs" />
+    <Compile Include="BiffRecords\BOFDatasheet.cs" />
+    <Compile Include="BiffRecords\BopPop.cs" />
+    <Compile Include="BiffRecords\BopPopCustom.cs" />
+    <Compile Include="BiffRecords\BRAI.cs" />
+    <Compile Include="BiffRecords\CatLab.cs" />
+    <Compile Include="BiffRecords\CatSerRange.cs" />
+    <Compile Include="BiffRecords\Chart.cs" />
+    <Compile Include="BiffRecords\Chart3D.cs" />
+    <Compile Include="BiffRecords\Chart3DBarShape.cs" />
+    <Compile Include="BiffRecords\ChartColors.cs" />
+    <Compile Include="BiffRecords\ChartFormat.cs" />
+    <Compile Include="BiffRecords\ChartFrtInfo.cs" />
+    <Compile Include="BiffRecords\ClrtClient.cs" />
+    <Compile Include="BiffRecords\CodePage.cs" />
+    <Compile Include="BiffRecords\ColumnWidth.cs" />
+    <Compile Include="BiffRecords\Continue.cs" />
+    <Compile Include="BiffRecords\Country.cs" />
+    <Compile Include="BiffRecords\CrtLine.cs" />
+    <Compile Include="BiffRecords\CrtLink.cs" />
+    <Compile Include="BiffRecords\Dat.cs" />
+    <Compile Include="BiffRecords\DataFormat.cs" />
+    <Compile Include="BiffRecords\DataLabExt.cs" />
+    <Compile Include="BiffRecords\DataLabExtContents.cs" />
+    <Compile Include="BiffRecords\Date1904.cs" />
+    <Compile Include="BiffRecords\DefaultText.cs" />
+    <Compile Include="BiffRecords\Dimensions.cs" />
+    <Compile Include="BiffRecords\DropBar.cs" />
+    <Compile Include="BiffRecords\End.cs" />
+    <Compile Include="BiffRecords\EndBlock.cs" />
+    <Compile Include="BiffRecords\EndObject.cs" />
+    <Compile Include="BiffRecords\EOF.cs" />
+    <Compile Include="BiffRecords\ExcludeColumns.cs" />
+    <Compile Include="BiffRecords\ExcludeRows.cs" />
+    <Compile Include="BiffRecords\Fbi.cs" />
+    <Compile Include="BiffRecords\Fbi2.cs" />
+    <Compile Include="BiffRecords\Font.cs" />
+    <Compile Include="BiffRecords\FontX.cs" />
+    <Compile Include="BiffRecords\Format.cs" />
+    <Compile Include="BiffRecords\Frame.cs" />
+    <Compile Include="BiffRecords\FrtFontList.cs" />
+    <Compile Include="BiffRecords\GelFrame.cs" />
+    <Compile Include="BiffRecords\IFmtRecord.cs" />
+    <Compile Include="BiffRecords\Label.cs" />
+    <Compile Include="BiffRecords\Legend.cs" />
+    <Compile Include="BiffRecords\LegendException.cs" />
+    <Compile Include="BiffRecords\Line.cs" />
+    <Compile Include="BiffRecords\LineFormat.cs" />
+    <Compile Include="BiffRecords\LinkedSelection.cs" />
+    <Compile Include="BiffRecords\MainWindow.cs" />
+    <Compile Include="BiffRecords\MarkerFormat.cs" />
+    <Compile Include="BiffRecords\MaxStatus.cs" />
+    <Compile Include="BiffRecords\Number.cs" />
+    <Compile Include="BiffRecords\ObjectLink.cs" />
+    <Compile Include="BiffRecords\Orient.cs" />
+    <Compile Include="BiffRecords\Palette.cs" />
+    <Compile Include="BiffRecords\PicF.cs" />
+    <Compile Include="BiffRecords\Pie.cs" />
+    <Compile Include="BiffRecords\PieFormat.cs" />
+    <Compile Include="BiffRecords\PlotArea.cs" />
+    <Compile Include="BiffRecords\PlotGrowth.cs" />
+    <Compile Include="BiffRecords\Pos.cs" />
+    <Compile Include="BiffRecords\Radar.cs" />
+    <Compile Include="BiffRecords\RadarArea.cs" />
+    <Compile Include="BiffRecords\Scatter.cs" />
+    <Compile Include="BiffRecords\Scl.cs" />
+    <Compile Include="BiffRecords\Selection.cs" />
+    <Compile Include="BiffRecords\SerAuxErrBar.cs" />
+    <Compile Include="BiffRecords\SerAuxTrend.cs" />
+    <Compile Include="BiffRecords\SerFmt.cs" />
+    <Compile Include="BiffRecords\Series.cs" />
+    <Compile Include="BiffRecords\SeriesList.cs" />
+    <Compile Include="BiffRecords\SeriesText.cs" />
+    <Compile Include="BiffRecords\SerParent.cs" />
+    <Compile Include="BiffRecords\SerToCrt.cs" />
+    <Compile Include="BiffRecords\ShtProps.cs" />
+    <Compile Include="BiffRecords\StartBlock.cs" />
+    <Compile Include="BiffRecords\StartObject.cs" />
+    <Compile Include="BiffRecords\Surf.cs" />
+    <Compile Include="BiffRecords\Text.cs" />
+    <Compile Include="BiffRecords\Tick.cs" />
+    <Compile Include="BiffRecords\TxO.cs" />
+    <Compile Include="BiffRecords\Units.cs" />
+    <Compile Include="BiffRecords\UnknownGraphRecord.cs" />
+    <Compile Include="BiffRecords\ValueRange.cs" />
+    <Compile Include="BiffRecords\WinDoc.cs" />
+    <Compile Include="BiffRecords\Window1.cs" />
+    <Compile Include="BiffRecords\Window1_10.cs" />
+    <Compile Include="BiffRecords\Window2Graph.cs" />
+    <Compile Include="BiffRecords\YMult.cs" />
+    <Compile Include="OfficeGraphBiffRecord.cs" />
+    <Compile Include="OfficeGraphBiffRecordAttribute.cs" />
+    <Compile Include="RecordNumbers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structures\Enums.cs" />
+    <Compile Include="Structures\FixedPointNumber.cs" />
+    <Compile Include="Structures\FontInfo.cs" />
+    <Compile Include="Structures\FormatRun.cs" />
+    <Compile Include="Structures\FrtHeader.cs" />
+    <Compile Include="Structures\FrtHeaderOld.cs" />
+    <Compile Include="Structures\ShortXLUnicodeString.cs" />
+    <Compile Include="Structures\XLUnicodeString.cs" />
+    <Compile Include="Structures\XLUnicodeStringMin2.cs" />
+    <Compile Include="Structures\XLUnicodeStringNoCch.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StructuredStorage\StructuredStorage.csproj">
+      <Project>{CBD9BEE2-1E01-477A-BB44-1EC9F8C91AB7}</Project>
+      <Name>StructuredStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{B44FAEE0-B32E-4682-AA42-618C893F14C6}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

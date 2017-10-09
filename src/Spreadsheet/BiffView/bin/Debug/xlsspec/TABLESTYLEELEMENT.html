@@ -1,0 +1,654 @@
+﻿<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>TABLESTYLEELEMENT: Table Style Element (890h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            <a name="_Toc157240664"><span>TABLESTYLEELEMENT: Table Style Element </span>(890h) </a>
+        </h2>
+        <p class="MsoNormal">
+            This record represents each custom table style in use in the document.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="166" style='width: 124.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="319" style='width: 239.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>in the
+                        first two bytes of the record; =0890h</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>grbitFrt </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Currently not used, and set to 0 <span class="CodeInlineChar"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseType </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Type of table style element</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>size </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Number of items in each band for row or column stripped elements.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>dxfid </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Index of <span class="CodeInlineChar">DXF </span>record with formatting for this
+                        table style element.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text" style='margin-left: 36.0pt'>
+            Excel supports the following table style element types:</p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 410.4pt;
+            margin-left: 36.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="115" style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Header">
+                        tseType</p>
+                </td>
+                <td style='width: 42.3pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Header">
+                        Value</p>
+                </td>
+                <td style='width: 281.7pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Header">
+                        Comments</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseWholeTable </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Applies to whole table</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseHeaderRow </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Header row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseTotalRow </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Total row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseFirstColumn </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        First column formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseLastColumn </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Last column formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseRowStripe1 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        First row stripe formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseRowStripe2 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Second row stripe formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseColumnStripe1 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        First column stripe formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseColumnStripe2 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Second column stripe formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseFirstHeaderCell </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        First cell of header row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseLastHeaderCell </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Last cell of header row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseFirstTotalCell </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        First cell of total row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseLastTotalCell </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Last cell of total row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseSubtotalColumn1 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Top level subtotals column formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseSubtotalColumn2 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Alternating even column subtotals formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseSubtotalColumn3 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Alternating odd column subtotals formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseSubtotalRow1 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Top level subtotals row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseSubtotalRow2 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        17</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Alternating even subtotals row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseSubtotalRow3 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Alternating odd subtotals row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseBlankRow </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        19</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Blank row formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseColumnSubheading1 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Top level column subheading formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseColumnSubheading2 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        21</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Alternating even column subheading formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseColumnSubheading3 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Alternating odd column subheading formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseRowSubheading1 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        23</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Top level row subheading formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseRowSubheading2 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Alternating even row subheading formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tseRowSubheading3 </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        25</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Alternating odd row subheading formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tsePageFieldLabels </span>
+                    </p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        26</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Page field label formatting</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 86.4pt; border: solid black 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tsePageFieldValues</span></p>
+                </td>
+                <td style='width: 42.3pt; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        27</p>
+                </td>
+                <td style='width: 281.7pt; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt;
+                    padding: 0cm 5.4pt 0cm 5.4pt'>
+                    <p class="Text">
+                        Page field values formatting</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

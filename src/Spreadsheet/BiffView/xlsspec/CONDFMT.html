@@ -1,0 +1,323 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>CONDFMT: Conditional Formatting Range Information (1B0h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>CONDFMT: Conditional Formatting Range Information (1B0h)</h2>
+     <p class="Text">This record stores conditional formatting range
+information.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF8 </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="611" style='width:458.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ccf </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >Number of
+ conditional formats</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbit </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >Option flags</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rwFirst </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >First row to
+ conditionally format (0-based)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rwLast </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >Last row to
+ conditionally format (0-based)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >12</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colFirst </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >First column to
+ conditionally format (0-based)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >14</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colLast </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >Last column to conditionally
+ format (0-based)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >16</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rgbSqref </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >Array of <span class="CodeInlineChar">sqref </span>
+ structures</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar"><span style='font-size:11.0pt'>grbit </span> </span>
+ field
+contains the following options:</p>
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='width:458.25pt; border-collapse:collapse;'>
+ <tr>
+   <td width="53" style='width:40.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="54" style='width:40.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="120" style='width:90.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td width="384" style='width:288.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">01h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt'>fToughRecalc </span> </span></p>
+   </td>
+   <td width="384" style='width:288.0pt;'>
+     <p class="Text">=1 if the appearance of the cell requires
+ significant processing</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">15–1</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">FFFEh</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar"><span style='font-size:11.0pt'>nID </span> </span></p>
+   </td>
+   <td width="384" style='width:288.0pt;'>
+     <p class="Text" >an integer ID
+ which links a <span class="CodeInlineChar"><span style='font-size:11.0pt'>CONDFMT </span> </span>
+ record to
+ corresponding records of type <span class="CodeInlineChar"><span style='font-size:11.0pt'>CONDFMT12 </span> </span>
+&nbsp; and <span class="CodeInlineChar"><span style='font-size:11.0pt'>CFEX </span> </span>
+, which have the same <span class="CodeInlineChar"><span style='font-size:11.0pt'>nID </span> </span>
+ value</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">sqref </span> <span> structure stores a union of multiple areas on a worksheet. 
+The </span> <span class="CodeInlineChar">sqref </span>
+ structure is:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="611" style='width:458.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Var Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">irefMac </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >Number of areas
+ that follow</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">reref </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >Array of <span class="CodeInlineChar">ref </span>
+ structures</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">ref </span>
+ structure is:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="611" style='width:458.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rwFirst </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >First row in the
+ reference</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rwLast </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >Last row in the
+ reference</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colFirst </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >First column in
+ the reference</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colLast </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text" >Last column in the
+ reference</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

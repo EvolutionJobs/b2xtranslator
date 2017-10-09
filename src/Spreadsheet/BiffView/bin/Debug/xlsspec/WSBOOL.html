@@ -1,0 +1,388 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>WSBOOL: Additional Workspace Information (81h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            WSBOOL: Additional Workspace Information (81h)</h2>
+        <p class="Text">
+            This record stores information about workspace settings.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Option flags</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains the following option
+            flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="42" style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="54" style='width: 40.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 109.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 220.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fShowAutoBreaks </span>
+                    </p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        =1 if automatic page breaks are visible</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        3–1</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        E0h</p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        10h</p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fDialog </span></span>
+                    </p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        =1 if the sheet is a dialog sheet</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        20h</p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fApplyStyles </span></span>
+                    </p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        =0 if automatic styles are applied to an outline</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        40h</p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fRwSumsBelow </span></span>
+                    </p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        =1 if summary rows appear below detail in an outline</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        80h</p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fColSumsRight </span></span>
+                    </p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        =1 if summary columns appear to the right of detail in an outline</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fFitToPage </span></span>
+                    </p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        <span>=1 if the <b>Fit</b> option is on (<b>Page Setup</b> dialog box, <b>Page</b> tab)
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        3–2</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        06h</p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fDspGuts </span></span>
+                    </p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        =1 if outline symbols are displayed</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        5–4</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAee </span></span>
+                    </p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        <span>=1 if the <b>Alternate Expression Evaluation</b> option is on (<b>Options</b>
+                            dialog box, <b>Calculation</b> tab) </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="146" style='width: 109.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAfe </span>
+                    </p>
+                </td>
+                <td width="293" style='width: 220.0pt;'>
+                    <p class="Text">
+                        <span>=1 if the <b>Alternate Formula Entry</b> option is on (<b>Options</b> dialog box,
+                            <b>Calculation</b> tab) </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

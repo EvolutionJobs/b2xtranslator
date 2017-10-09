@@ -1,0 +1,634 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>USERBVIEW: Workbook Custom View Settings (1A9h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            USERBVIEW: Workbook Custom View Settings (1A9h)</h2>
+        <p class="Text">
+            The <span class="CodeInlineChar">USERBVIEW </span>record stores settings for a custom
+            view in the workbook.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — BIFF8 </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="136" style='width: 102.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="349" style='width: 262.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iViewId </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        ID for the custom view.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iTabid </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Tab index for the active sheet (1-based).</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">guid </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Globally unique identifier for the custom view.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        28</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">x </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Horizontal position of window.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        32</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">y </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Vertical position of window.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        36</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dx </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Width of window.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        40</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dy </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Height of window.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        44</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">wTabRatio </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Ratio of the width of the workbook tabs to the width of the horizontal scroll bar;
+                        to obtain the ratio, convert to decimal and then divide by 1000.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        46</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit1 </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Option flags.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        48</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit2 </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Option flags.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        50</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">wMergeInterval </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Time interval between automatic merges of shared workbook in minutes.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        52</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">st </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        <span>Name of custom view as a <a href="#_Unicode_Strings_in_BIFF8">unicode string</a>
+                            . </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit1 </span>field contains the following option
+            flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="47" style='width: 35.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="54" style='width: 40.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 108.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 262.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDspFmlaBar </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if the formula bar is displayed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDspStatus </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if the status bar is displayed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        3-2</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        000Ch</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">mdNoteDisp </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =0 if the comment indicator is off</p>
+                    <p class="Text">
+                        =1 if the comment indicator is on</p>
+                    <p class="Text">
+                        =2 if the comment indicator is on and a comment is displayed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0010h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDspHScroll </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if the horizontal scroll bar is displayed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0020h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDspVScroll </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if the vertical scroll bar is displayed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0040h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fBotAdornment </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if the workbook tabs are displayed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0080h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fZoom </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if the workbook window is maximized</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        <span>9<span style='letter-spacing: -1.75pt'> </span>–<span style='letter-spacing: -1.75pt'>
+                        </span>8 </span>
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0300h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fHideObj </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        <span>=0 if the <b>Show All</b> option is turned on<br />
+                            =1 if the <b>Show Placeholders</b> option is turned on<br />
+                            =2 if the <b>Hide All</b> option is turned on </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0400h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fPrintIncl </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if include print settings</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0800h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fRowColIncl </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if include row/column settings</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        1000h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fInvalidTabId </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if sheet was deleted or hidden</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        2000h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fTimedUpdate </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if timed update mode</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        4000h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAllMemChanges </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if Shared Workbook local session changes only</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        8000h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fOnlySync </span></p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        =1 if Shared Workbook conflict mode</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit2 </span>field contains the following option
+            flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="47" style='width: 35.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="54" style='width: 40.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td width="126" style='width: 94.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="367" style='width: 275.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="126" style='width: 94.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fPersonalView </span>
+                    </p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        =1 if using timed update mode flags</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="126" style='width: 94.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fIconic</span></p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        =1 if icon maximized in view</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        15–2</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        FFFCh</p>
+                </td>
+                <td width="126" style='width: 94.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

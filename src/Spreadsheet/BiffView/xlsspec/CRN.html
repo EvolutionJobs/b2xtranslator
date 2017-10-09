@@ -1,0 +1,369 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>CRN: Nonresident Operands (5Ah)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>CRN: Nonresident Operands (5Ah)</h2>
+     <p class="Text">The <span class="CodeInlineChar">CRN </span> <span> record describes nonresident operands in a formula. 
+For example, if you have a worksheet with the
+formula </span> <span class="CodeInlineChar">=EXT.XLS!A1*A3 </span> </span>
+,
+where <span class="CodeInlineChar">EXT.XLS </span>
+ is not the
+active workbook, the nonresident operand <span class="CodeInlineChar">EXT.XLS!A1 </span>
+ generates a <span class="CodeInlineChar">CRN </span> <span> record describing cell A1. 
+If the nonresident operand contains more than one row, there is one </span> <span class="CodeInlineChar">CRN </span> <span> record for each row. 
+For example, if the formula </span> <span class="CodeInlineChar">=EXT.XLS!A1:A4*4 </span>
+ is an array-entered on
+a worksheet, there will be four <span class="CodeInlineChar">CRN </span>
+ records.</p>
+     <p class="Text">If a worksheet contains two different formulas
+and each formula has multiple nonresident operands, Excel may create one or
+more <span class="CodeInlineChar">CRN </span> <span> records,
+depending on how the nonresident cells are arranged. 
+For example, suppose a worksheet contains two
+formulas (in different cells), </span> <span class="CodeInlineChar">=EXT.XLS!A1*2 </span>
+ and <span class="CodeInlineChar">=EXT.XLS!B1*2 </span> <span>.  
+Because the nonresident
+operands are in a row and are not separated by an empty cell, Excel creates
+only one </span> <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>CRN </span> </span>
+ record
+containing information about cells A1 and B1.</p>
+     <p class="Text">If, however, the formulas are <span class="CodeInlineChar">=EXT.XLS!A1*2 </span>
+ and <span class="CodeInlineChar">=EXT.XLS!C1*2 </span>
+, Excel creates two <span class="CodeInlineChar">CRN </span>
+ records because an empty cell (B1)
+separates the two operands, A1 and C1.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="54" style='width:40.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="379" style='width:284.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colLast </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="379" style='width:284.5pt;'>
+     <p class="Text" >Last column of the
+ nonresident operand</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >5</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colFirst </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="379" style='width:284.5pt;'>
+     <p class="Text" >First column of
+ the nonresident operand</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rw </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="379" style='width:284.5pt;'>
+     <p class="Text" >Row of the
+ nonresident operand</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">OPER </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="379" style='width:284.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">OPER </span>
+ structure; see the following description</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">OPER </span> <span> structure repeats for each cell in the nonresident operand. 
+For example, the formula </span> <span class="CodeInlineChar">=SUM(EXT.XLS!A1:A3) </span>
+ produces one <span class="CodeInlineChar">CRN </span>
+ record with three <span class="CodeInlineChar">OPER </span>
+ structures.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>OPER Structure If the Cell Contains a
+Number </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:289.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbit </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=01h for a cell
+ that contains a number</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">num </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >IEEE
+ floating-point number</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>OPER Structure If the Cell Contains a
+String </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbit </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=02h for a cell
+ that contains a string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">cch </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Number of
+ characters in the string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rgch </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >String</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>OPER Structure If the Cell Contains a
+Boolean Value </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbit </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">=04h for a cell that contains a Boolean value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>f </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text"><span>=1 if TRUE<br />
+ =0 if FALSE </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text">(unused)</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text"><span>  </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>OPER Structure If the Cell Contains an
+Error Value </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="106" style='width:79.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbit </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=10h for a cell
+ that contains an error value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">err </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Error value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >3</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" >(unused)</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" ><span> </p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

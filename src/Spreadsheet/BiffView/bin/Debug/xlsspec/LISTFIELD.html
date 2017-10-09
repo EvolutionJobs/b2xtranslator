@@ -1,0 +1,251 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>LISTFIELD: List Field (8c2h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>LISTFIELD: List Field (8c2h)</h2>
+     <p class="Text">This is a Mac Excel <span class="CodeInlineChar">FRT </span> <span> record. 
+It stores one record for each field in the
+parent list object. </span></p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="582" style='width:436.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="102" style='width:76.5pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="390" style='width:292.5pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">4</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">rt</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">2</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> <span> in the first two bytes of the
+ record;   
+=08c2h </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">6</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">grbitFrt</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">2</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar">FRT </span> </span>
+ flags; <span class="CodeInlineChar">bitfFrtRef </span>
+ must be set to 1; see <span class="CodeInlineChar">FRT </span>
+ Record Description</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">8</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">REF</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">8</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>REF </span> </span>
+ structure; see <span class="CodeInlineChar">FRT </span> <span> Record Description. 
+ 
+Contains a </span> <span class="CodeInlineChar">REF </span>
+ that can be adjusted by a non-list-aware version of Excel</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">16</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">wFileFlags</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">2</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">Flags</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">18</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">ref</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">8</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>REF </span> </span>
+ structure; location of field on sheet as known by list-aware version of Excel</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">26</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">rwCount</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">4</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>Rw </span> </span>
+ to calc
+ against (offset from <span class="CodeInlineChar">frtheader.ref.ewFirst </span>
+) or max count</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">30</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">wFieldFlags</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">2</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">32</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">cchName</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">2</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">38</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">cchFmla</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">2</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="48" style='width:36.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">40</p>
+   </td>
+   <td width="102" style='width:76.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">Rgb</p>
+   </td>
+   <td width="42" style='width:31.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">var</p>
+   </td>
+   <td width="390" style='width:292.5pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text">Name, <span class="CodeInlineChar">fmla </span>
+, <span class="CodeInlineChar">xfmtr </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">wFileFlags
+ field contains the following option flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="582" style='width:436.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="44" style='width:32.85pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="56" style='width:42.3pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="110" style='width:82.35pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td width="372" style='width:279.0pt; border-bottom:solid windowtext 1.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="44" style='width:32.85pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="56" style='width:42.3pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >0001h</p>
+   </td>
+   <td width="110" style='width:82.35pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">fHasDval</p>
+   </td>
+   <td width="372" style='width:279.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >1=</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="44" style='width:32.85pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="56" style='width:42.3pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >0002h</p>
+   </td>
+   <td width="110" style='width:82.35pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="CodeInline">fHasCondFmt</p>
+   </td>
+   <td width="372" style='width:279.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >1=</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="44" style='width:32.85pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >15-2</p>
+   </td>
+   <td width="56" style='width:42.3pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >FFFCh</p>
+   </td>
+   <td width="110" style='width:82.35pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="372" style='width:279.0pt; padding:0cm 0cm 0cm 0cm'>
+     <p class="Text" >Reserved; must be
+ zero</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

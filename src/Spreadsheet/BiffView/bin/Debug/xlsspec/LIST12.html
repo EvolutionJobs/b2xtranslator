@@ -1,0 +1,733 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>LIST12: Extra Table Data Introduced in Excel 2007 (877h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>LIST12: Extra Table Data Introduced in Excel 2007 (877h)</h2>
+     <p class="Text">This record stores additional information about
+a specified Table.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF8 only </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="108" style='width:81.3pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="95" style='width:71.3pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="330" style='width:247.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rt </span></p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >Record type; this
+ matches the BIFF <span class="CodeInlineChar">rt </span>
+ in the first two bytes of the record; =0877h</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="CodeInline">grbitFrt</p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" ><span class="CodeInlineChar">FRT </span>
+ cell reference flag; =0 currently</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="Text">(Reserved) <span class="CodeInlineChar"> </span></p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >Currently not
+ used, and set to 0 <span class="CodeInlineChar"> </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >16</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="CodeInline">lsd <span class="CodeInlineChar"><span style='font-family:Verdana; ; color:windowtext;'> </span> </span></p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >Type of Table data
+ contained in this record (see below for details)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >18</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="CodeInline">idList</p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >Table unique ID</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >22</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="CodeInline">rgb</p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >Data of the record
+ (see below for details)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">lsd </span>
+ field contains one of the following values:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="77" style='width:58.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">lsd</p>
+   </td>
+   <td width="517" style='width:388.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Table data type</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >00h</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >Block-level
+ formatting</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >01h</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >Table style client
+ information</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >02h</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >Display name</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">If <span class="CodeInlineChar">lsd </span>
+ field contains 00h (block-level formatting), then the following
+data is stored in <span class="CodeInlineChar">rgb </span>
+ block:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="208" style='width:156.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="277" style='width:208.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">cbdxfHeader </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>Count of bytes in
+ the Table header cells’ <a href="#_DXF_records">DXF</a>
+, =0 if no <a href="#_DXF_records">DXF</a>
+is recorded in </span> <span class="CodeInlineChar">dxfHeader </span>
+ below; stored as 4-byte integer</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">istnHeader </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" >The Table header
+ cells’ style number, =-1 if no style name is recorded in <span class="CodeInlineChar">stHeader </span>
+ below; stored as 4-byte
+ integer</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">cbdxfData </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>Count of bytes in
+ the Table data cells’ <a href="#_DXF_records">DXF</a>
+, =0 if no <a href="#_DXF_records">DXF</a>
+is recorded in </span> <span class="CodeInlineChar">dxfData </span>
+ below; stored as 4-byte integer <span class="CodeInlineChar"> </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >12</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">istnData </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" >The Table data
+ cells’ style number, =-1 if no style name is recorded in <span class="CodeInlineChar">stData </span>
+ below; stored as 4-byte integer</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >16</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">cbdxfAgg </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>Count of bytes in
+ the Table aggregate cells’ <a href="#_DXF_records">DXF</a>
+, =0 if no <a href="#_DXF_records">DXF</a>
+is recorded in </span> <span class="CodeInlineChar">dxfAgg </span>
+ below; stored as 4-byte integer</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >20</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">istnAgg</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" >The Table
+ aggregate cells’ style number, =-1 if no style name is recorded in <span class="CodeInlineChar">stAgg </span>
+ below; stored as 4-byte integer</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >24</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">cbdxfBorder</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>Count of bytes in
+ the Table data cells border’s <a href="#_DXF_records">DXF</a>
+, =0 if no <a href="#_DXF_records">DXF</a>
+is recorded in </span> <span class="CodeInlineChar">dxfBorder </span>
+ below; stored as 4-byte integer</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >28</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">cbdxfHeader­Border</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>Count of bytes in
+ the Table header cells border’s <a href="#_DXF_records">DXF</a>
+, =0 if no <a href="#_DXF_records">DXF</a>
+is recorded in </span> <span class="CodeInlineChar">dxfHeaderBorder </span>
+ below; stored as 4-byte integer</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >32</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">cbdxfAgg­Border</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>Count of bytes in
+ the Table aggregate cells border’s <a href="#_DXF_records">DXF</a>
+, =0 if no <a href="#_DXF_records">DXF</a>
+is recorded in </span> <span class="CodeInlineChar">dxfAggBorder </span>
+ below; stored as 4-byte integer</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >36</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">dxfHeader</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>The Table header
+ cells’ <a href="#_DXF_records">DXF</a> </span></p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">dxfData</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>The Table data
+ cells’ <a href="#_DXF_records">DXF</a> </span></p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">dxfAgg</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>The Table
+ aggregated cells’ <a href="#_DXF_records">DXF</a> </span></p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">dxfBorder</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>The Table data
+ cells border’s <a href="#_DXF_records">DXF</a> </span></p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">dxfHeader­Border</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>The Table header
+ cells border’s <a href="#_DXF_records">DXF</a> </span></p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">dxfAgg­Border</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" ><span>The Table
+ aggregate cells border’s <a href="#_DXF_records">DXF</a> </span></p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">stHeader</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" >The Table header
+ cells’ style; string</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">stData</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" >The Table data
+ cells’ style; string</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="208" style='width:156.0pt;'>
+     <p class="CodeInline">stAgg</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" >The Table
+ aggregate cells’ style; string</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">If <span class="CodeInlineChar">lsd </span>
+ field contains 01h (Table style information), then the following
+data is stored in <span class="CodeInlineChar">rgb </span>
+ block:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="190" style='width:142.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="66" style='width:49.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="277" style='width:208.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="190" style='width:142.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbitList­StyleClient </span></p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" >The Table style
+ client flags (see below for details)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="190" style='width:142.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">stListStyle­Name </span></p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="277" style='width:208.0pt;'>
+     <p class="Text" >The Table style
+ name; string</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbitListStyleClient </span>
+ field contains the following flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="60" style='width:45.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="156" style='width:117.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="271" style='width:203.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text">0001h</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fFirstColumn </span> </span></p>
+   </td>
+   <td width="271" style='width:203.5pt;'>
+     <p class="Text">=1 if the first column style is enabled</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text">0002h</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fLastColumn </span> </span></p>
+   </td>
+   <td width="271" style='width:203.5pt;'>
+     <p class="Text">=1 if the last column style is enabled</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text">0004h</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fRowStripes </span> </span></p>
+   </td>
+   <td width="271" style='width:203.5pt;'>
+     <p class="Text">=1 if the row banding is enabled</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text">0008h</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fColumn­Stripes </span> </span></p>
+   </td>
+   <td width="271" style='width:203.5pt;'>
+     <p class="Text">=1 if the column banding is enabled</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text">0010h</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fRowHeaders </span> </span></p>
+   </td>
+   <td width="271" style='width:203.5pt;'>
+     <p class="Text">=1 if the row header style is enabled</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text">0020h</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fColumn­Headers </span> </span></p>
+   </td>
+   <td width="271" style='width:203.5pt;'>
+     <p class="Text">=1 if the column header style is enabled</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text">0040h</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fDefaultStyle </span> </span></p>
+   </td>
+   <td width="271" style='width:203.5pt;'>
+     <p class="Text">=1 if this is the default Table style</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">7-15</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text">FF80h</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="271" style='width:203.5pt;'>
+     <p class="Text">Currently not used, and set to 0</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">If <span class="CodeInlineChar">lsd </span>
+ field contains 02h (display name), then the following data is
+stored in <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgb </span> </span>
+ block:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="148" style='width:111.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="55" style='width:41.6pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="330" style='width:247.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="148" style='width:111.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">stListName </span></p>
+   </td>
+   <td width="55" style='width:41.6pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >The Table name</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="148" style='width:111.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">stList­Comment</p>
+   </td>
+   <td width="55" style='width:41.6pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >The Table comment</p>
+   </td>
+ </tr>
+</table>
+</div>
+</body>
+</html>
+

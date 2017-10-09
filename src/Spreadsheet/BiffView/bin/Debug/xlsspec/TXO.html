@@ -1,0 +1,420 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>TXO: Text Object (1B6h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            TXO: Text Object (1B6h)</h2>
+        <p class="Text">
+            <span>This record stores a text object. The </span><span class="CodeInlineChar">TXO
+            </span>record is followed by two <span class="CodeInlineChar">CONTINUE </span><span>
+                records. The first </span><span class="CodeInlineChar">CONTINUE </span>contains
+            the text data, and the second <span class="CodeInlineChar">CONTINUE </span><span>contains
+                the formatting runs. If the text box contains no text, then these </span><span class="CodeInlineChar">
+                    CONTINUE </span>records are not written to the file.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — BIFF8 </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Option flags; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rot </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        <span>Orientation of text within the object boundary:<br />
+                            =0, no rotation (text appears left to right)<br />
+                            =1, text appears top to bottom; letters are upright<br />
+                            =2, text is rotated 90 degrees counterclockwise<br />
+                            =3, text is rotated 90 degrees clockwise </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cchText </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Length (in characters) of text (in first <span class="CodeInlineChar">CONTINUE </span>
+                        record)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cbRuns </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Length of formatting runs (in second <span class="CodeInlineChar">CONTINUE </span>
+                        record)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains the following option
+            flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="56" style='width: 42.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td width="100" style='width: 74.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 283.35pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="100" style='width: 74.65pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="378" style='width: 283.35pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        3–1</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        000Eh</p>
+                </td>
+                <td width="100" style='width: 74.65pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">alcH </span>
+                    </p>
+                </td>
+                <td width="378" style='width: 283.35pt;'>
+                    <p class="Text">
+                        <span>Horizontal text alignment:<br />
+                            1= left-aligned<br />
+                            2= centered<br />
+                            3= right-aligned<br />
+                            4= justified </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6–4</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        0070h</p>
+                </td>
+                <td width="100" style='width: 74.65pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">alcV </span>
+                    </p>
+                </td>
+                <td width="378" style='width: 283.35pt;'>
+                    <p class="Text">
+                        <span>Vertical text alignment:<br />
+                            1= top<br />
+                            2= center<br />
+                            3= bottom<br />
+                            4= justify </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8–7</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        0180h</p>
+                </td>
+                <td width="100" style='width: 74.65pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="378" style='width: 283.35pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        0200h</p>
+                </td>
+                <td width="100" style='width: 74.65pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fLockText </span>
+                    </p>
+                </td>
+                <td width="378" style='width: 283.35pt;'>
+                    <p class="Text">
+                        <span>=1 if the <b>Lock Text</b> option is on (<b>Format Text Box</b> dialog box, <b>
+                            Protection</b> tab) </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        15–10</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        FC00h</p>
+                </td>
+                <td width="100" style='width: 74.65pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="378" style='width: 283.35pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The first <span class="CodeInlineChar">CONTINUE </span>record contains the text
+            ( <span class="CodeInlineChar">grbit </span>/ <span class="CodeInlineChar">rgb </span>
+            <span>fields as defined for <a href="#_Unicode_Strings_in_BIFF8">unicode strings</a>
+                ) the length (in characters) is given by </span><span class="CodeInlineChar">cchText
+                </span>.</p>
+        <p class="Text">
+            The second <span class="CodeInlineChar">CONTINUE </span>record contains an array
+            of formatting runs structures ( <span class="CodeInlineChar">TXORUNS </span><span>).
+                A </span><span class="CodeInlineChar">TXORUNS </span><span>structure contains formatting
+                    information about the object text string. A </span><span class="CodeInlineChar">TXORUNS
+                    </span><span>structure occurs every time the text formatting changes. The </span>
+            <span class="CodeInlineChar">TXORUNS </span>structure is described in the following
+            table.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ichFirst </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Index to the first character where formatting applies</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ifnt </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Index to the <span class="CodeInlineChar">FONT </span>record</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            There are always at least two <span class="CodeInlineChar">TXORUNS </span>structures
+            in the second <span class="CodeInlineChar">CONTINUE </span>record, even if the entire
+            text string is normal font ( <span class="CodeInlineChar">ifnt=0 </span><span>). The
+                last </span><span class="CodeInlineChar">TXORUNS </span>structure, which ends
+            the formatting information for the string, always has <span class="CodeInlineChar">
+            ichFirst=cchText</span>.</p>
+    </div>
+</body>
+</html>

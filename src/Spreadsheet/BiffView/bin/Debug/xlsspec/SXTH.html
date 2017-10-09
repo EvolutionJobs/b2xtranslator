@@ -1,0 +1,683 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXTH: Pivot Table OLAP Hierarchy (80Dh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXTH: Pivot Table OLAP Hierarchy (80Dh)</h2>
+        <p class="Text">
+            Introduced in Excel 9 (2000) this is a <span class="CodeInlineChar">FRT </span><span>
+                record. It contains OLAP Pivot Table hierarchy information. </span>
+        </p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td style='width: 126.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td width="42" style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 244.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span><span>in the
+                            first two bytes of the record; =080Dh </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitFrt </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>flags; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dwFlags </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        OLAP options; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">sxaxis </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        The ID of the axis element;
+                    </p>
+                    <p class="Text">
+                        1= <span class="CodeInlineChar">sxaxisRw </span>; the row header region of the PivotTable</p>
+                    <p class="Text">
+                        2= <span class="CodeInlineChar">sxaxisCol </span>; the column header region of the
+                        PivotTable</p>
+                    <p class="Text">
+                        4= <span class="CodeInlineChar">sxaxisPage </span>; the page field dropdown of the
+                        PivotTable</p>
+                    <p class="Text">
+                        8= <span class="CodeInlineChar">sxaxisData </span>; the body of the PivotTable</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">isxvd </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Index into array of dimensions; these are loaded in the <span class="CodeInlineChar">
+                            SXVD </span>records; only applicable if the <span class="CodeInlineChar">sxaxis </span>
+                        is <span class="CodeInlineChar">sxaxisPage </span>or <span class="CodeInlineChar">sxaxisData
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">csxvdXl </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Count of fields fetched from the OLAP database</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">sxDragTh </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Field drag flags; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        26</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stUnique </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Unicode string; Unique name for the hierarchy</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stDisplay </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Unicode string; Display name for the hierarchy</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stDefaultUnique </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Unicode string; Unique name of the default member</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stAllUnique </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Unicode string; Unique name of the All member</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stDimensionUnique </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Unicode string; Unique name of the dimension</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cisxvd </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Count of <span class="CodeInlineChar">isxvd </span>items in the <span class="CodeInlineChar">
+                            rgb </span>field; this has the same value as <span class="CodeInlineChar">csxvdXl </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgisxvd </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Set of <span class="CodeInlineChar">isxvd </span>items; each is a 4-byte identifier
+                        that points to a specific <span class="CodeInlineChar">SXVD </span>record</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="168" style='width: 126.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgb </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="325" style='width: 244.0pt;'>
+                    <p class="Text">
+                        Set of strings describing which members have been hidden; see text below</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">dwFlags </span>field contains the following option
+            flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="597"
+            style='width: 447.9pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="47" style='width: 35.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="54" style='width: 40.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 139.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 232.4pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="186" style='width: 139.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fMeasure </span>
+                    </p>
+                </td>
+                <td width="310" style='width: 232.4pt;'>
+                    <p class="Text">
+                        1= This hierarchy is a measure; it can only be moved to the data area</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="186" style='width: 139.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="310" style='width: 232.4pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td width="186" style='width: 139.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fOutlineMode </span>
+                    </p>
+                </td>
+                <td width="310" style='width: 232.4pt;'>
+                    <p class="Text">
+                        XL10: 1= When new levels are added to the PivotTable view for this hierarchy default
+                        to showing them in outline layout</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td width="186" style='width: 139.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fEnableMultiplePageItems </span>
+                    </p>
+                </td>
+                <td width="310" style='width: 232.4pt;'>
+                    <p class="Text">
+                        XL10: 1= Allow the user to select two or more OLAP cube members in this hierarchy
+                        when the hierarchy is in the page area</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0010h</p>
+                </td>
+                <td width="186" style='width: 139.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fSubtotalAtTop </span>
+                    </p>
+                </td>
+                <td width="310" style='width: 232.4pt;'>
+                    <p class="Text">
+                        XL10: 1= When new levels are added to the PivotTable view for this hierarchy default
+                        to showing subtotals at the top of the item list</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0020h</p>
+                </td>
+                <td width="186" style='width: 139.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fSet </span>
+                    </p>
+                </td>
+                <td width="310" style='width: 232.4pt;'>
+                    <p class="Text">
+                        XL10: 1= This hierarchy is a custom set</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0040h</p>
+                </td>
+                <td width="186" style='width: 139.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDontShowInFldList </span>
+                    </p>
+                </td>
+                <td width="310" style='width: 232.4pt;'>
+                    <p class="Text">
+                        XL10: 1= This hierarchy should not be shown in the field list control/window</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        31-7</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="186" style='width: 139.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="310" style='width: 232.4pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">sxDragTh </span>field contains the following option
+            flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="591"
+            style='width: 442.95pt; border-collapse: collapse;'>
+            <tr>
+                <td width="62" style='width: 46.35pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="64" style='width: 47.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td style='width: 100.45pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="331" style='width: 248.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="64" style='width: 47.65pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="134" style='width: 100.45pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDragToRow </span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.5pt;'>
+                    <p class="Text">
+                        1= This field can be dragged to a row field</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="64" style='width: 47.65pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="134" style='width: 100.45pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDragToColumn </span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.5pt;'>
+                    <p class="Text">
+                        1= This field can be dragged to a column field</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="64" style='width: 47.65pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td width="134" style='width: 100.45pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDragToPage </span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.5pt;'>
+                    <p class="Text">
+                        1= This field can be dragged to a page field</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="64" style='width: 47.65pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td width="134" style='width: 100.45pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDragToData </span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.5pt;'>
+                    <p class="Text">
+                        1= This field can be dragged to a data field</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="64" style='width: 47.65pt;'>
+                    <p class="Text">
+                        0010h</p>
+                </td>
+                <td width="134" style='width: 100.45pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDragToHide </span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.5pt;'>
+                    <p class="Text">
+                        1= This field can be hidden</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        15-5</p>
+                </td>
+                <td width="64" style='width: 47.65pt;'>
+                    <p class="Text">
+                        FFE0h</p>
+                </td>
+                <td width="134" style='width: 100.45pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="331" style='width: 248.5pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">rgb </span><span>field contains a structured list of
+                elements hidden in the PivotTable. First is a count of the number of sets. The sets
+                follow. Each set contains a count of the number of strings in that set, followed
+                by the strings in that set. <b>Note</b> : this can easily make the record larger
+                than the limit for a single BIFF record, so one or more </span><span class="CodeInlineChar">
+                    CONTINUEFRT</span> records may be needed.</p>
+    </div>
+</body>
+</html>

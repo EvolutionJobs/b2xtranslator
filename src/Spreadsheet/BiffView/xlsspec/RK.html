@@ -1,0 +1,294 @@
+﻿<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>RK: Cell Value, RK Number (7Eh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2 style='margin-left: 0cm'>
+            RK: Cell Value, RK Number (7Eh)</h2>
+        <p class="Text">
+            Excel uses an internal number type, called an <span class="CodeInlineChar">RK</span>
+            number, to save memory and disk space.</p>
+        <p class="Text" style='margin-bottom: 0cm; margin-bottom: .0001pt; page-break-after: avoid;
+            background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data</span></b></p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="608"
+            style='width: 455.85pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="53" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="420" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="61" style='width: 45.65pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rw</span></p>
+                </td>
+                <td width="53" style='width: 39.4pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="420" style='width: 314.95pt;'>
+                    <p class="Text">
+                        Row number</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="61" style='width: 45.65pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">col</span></p>
+                </td>
+                <td width="53" style='width: 39.4pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="420" style='width: 314.95pt;'>
+                    <p class="Text">
+                        Column number</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="61" style='width: 45.65pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ixfe</span></p>
+                </td>
+                <td width="53" style='width: 39.4pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="420" style='width: 314.95pt;'>
+                    <p class="Text">
+                        Index to the <span class="CodeInlineChar">XF</span> record that contains the cell
+                        format</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="61" style='width: 45.65pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rk</span></p>
+                </td>
+                <td width="53" style='width: 39.4pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="420" style='width: 314.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">RK</span> number (see the following description)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            An <span class="CodeInlineChar">RK</span> number is either a 30-bit integer or the
+            most significant 30 bits of an IEEE number. The two LSBs of the 32-bit <span class="CodeInlineChar">
+                rk</span> field are always reserved for <span class="CodeInlineChar">RK</span>
+            type encoding; this is why the <span class="CodeInlineChar">RK</span> numbers are
+            30 bits, not the full 32. See the following diagram.</p>
+        <p class="Figure">
+            <img width="566" height="302" src="RK001.gif" /></p>
+        <p class="Text">
+            There are four different <span class="CodeInlineChar">RK</span> number types, as
+            described in the following table.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="68" style='width: 50.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        RK<br />
+                        type</p>
+                </td>
+                <td width="71" style='width: 52.9pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Encode<br />
+                        priority</p>
+                </td>
+                <td width="150" style='width: 112.45pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Number
+                        <br />
+                        (decimal)</p>
+                </td>
+                <td width="141" style='width: 105.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        RK number
+                        <br />
+                        (hex)</p>
+                </td>
+                <td width="166" style='width: 124.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Description of
+                        <br />
+                        30&#8209;bit encoding</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="68" style='width: 50.95pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="71" style='width: 52.9pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="150" style='width: 112.45pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="141" style='width: 105.4pt;'>
+                    <p class="Text">
+                        3F F0 00 00</p>
+                </td>
+                <td width="166" style='width: 124.3pt;'>
+                    <p class="Text">
+                        IEEE number</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="68" style='width: 50.95pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="71" style='width: 52.9pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="150" style='width: 112.45pt;'>
+                    <p class="Text">
+                        1.23</p>
+                </td>
+                <td width="141" style='width: 105.4pt;'>
+                    <p class="Text">
+                        40 5E C0 01</p>
+                </td>
+                <td width="166" style='width: 124.3pt;'>
+                    <p class="Text">
+                        IEEE number x 100</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="68" style='width: 50.95pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="71" style='width: 52.9pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="150" style='width: 112.45pt;'>
+                    <p class="Text">
+                        12345678</p>
+                </td>
+                <td width="141" style='width: 105.4pt;'>
+                    <p class="Text">
+                        02 F1 85 3A</p>
+                </td>
+                <td width="166" style='width: 124.3pt;'>
+                    <p class="Text">
+                        Integer</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="68" style='width: 50.95pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="71" style='width: 52.9pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="150" style='width: 112.45pt;'>
+                    <p class="Text">
+                        123456.78</p>
+                </td>
+                <td width="141" style='width: 105.4pt;'>
+                    <p class="Text">
+                        02 F1 85 3B</p>
+                </td>
+                <td width="166" style='width: 124.3pt;'>
+                    <p class="Text">
+                        Integer x 100</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            Excel always attempts to store a number as an <span class="CodeInlineChar">RK</span>
+            number instead of an IEEE number. There is also a specific priority of <span class="CodeInlineChar">
+                RK</span> number encoding that the program uses. The following flowchart is
+            a simplified version of the encoding algorithm. The algorithm always begins with
+            an IEEE (full 64-bit) number.</p>
+        <p class="Figure">
+            <img src="RK002.png" /></p>
+        <p class="Text">
+            You can use the following C code to demonstrate how to decode <span class="CodeInlineChar">
+                RK</span> numbers:</p>
+        <pre>
+double NumFromRk(long rk)
+{
+    double num;
+    
+    if(rk & 0x02)
+    {
+        // int
+        num = (double) (rk >> 2);
+    }
+    else
+    {
+        // hi words of IEEE num
+        *((long *)&num+1) = rk & 0xfffffffc;
+        *((long *)&num) = 0;
+    }
+
+    if(rk & 0x01)
+        // divide by 100
+        num /= 100;
+
+    return num;
+}
+
+main()
+{
+    printf("%f\n", NumFromRk (0x02f1853b));
+}
+        </pre>
+        <p class="Text">
+            If you write a <span class="CodeInlineChar">NUMBER</span> record to a BIFF file,
+            Excel may convert the number to an <span class="CodeInlineChar">RK</span> number
+            when it reads the file.</p>
+    </div>
+</body>
+</html>

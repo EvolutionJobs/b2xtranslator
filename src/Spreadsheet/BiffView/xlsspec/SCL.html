@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>SCL: Window Zoom Magnification (A0h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>SCL: Window Zoom Magnification (A0h)</h2>
+     <p class="Text">This record stores the window zoom
+magnification.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="85" style='width:63.95pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="49" style='width:36.65pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="399" style='width:299.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">nscl </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Numerator of a
+ reduced fraction</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">dscl </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Denominator of a
+ reduced fraction</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text"><span>The magnification is stored as a reduced
+fraction.  
+For example, if the
+magnification is 75 percent, </span> <span class="CodeInlineChar">nscl=03h </span>
+ and <span class="CodeInlineChar">dscl=04h </span> <span> (3/4 = 0.75 = 75%).  
+If the magnification
+is 11 percent, </span> <span class="CodeInlineChar">nscl=0Bh </span>
+ (11 decimal) and <span class="CodeInlineChar">dscl=64h </span> <span> (100 decimal).  
+If the BIFF
+file does not contain the </span> <span class="CodeInlineChar">SCL </span>
+ record, the magnification is 100 percent.</p>
+</div>
+</body>
+</html>
+

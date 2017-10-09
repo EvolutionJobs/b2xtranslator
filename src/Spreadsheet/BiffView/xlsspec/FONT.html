@@ -1,0 +1,390 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FONT: Font Description (231h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>FONT: Font
+Description (231h)</h2>
+     <p class="Text">The workbook font table contains at least five <span class="CodeInlineChar">FONT </span> <span> records.  </span> <span class="CodeInlineChar">FONT </span>
+ records are numbered as follows: <span class="CodeInlineChar">ifnt=00h </span>
+ (the first <span class="CodeInlineChar">FONT </span>
+ record in the table), <span class="CodeInlineChar">ifnt=01h </span>
+, <span class="CodeInlineChar">ifnt=02h </span>
+, <span class="CodeInlineChar">ifnt=03h </span>
+, <span class="CodeInlineChar">ifnt=05h </span>
+ (minimum table), and then <span class="CodeInlineChar">ifnt=06h </span>
+, <span class="CodeInlineChar">ifnt=07h </span> <span>, and so on.  
+<b>Note</b>
+: </span> <span class="CodeInlineChar">ifnt=04h </span> <span> never appears in a BIFF
+file.  
+This is for backward-compatibility
+with previous versions of Excel.  
+If you
+read </span> <span class="CodeInlineChar">FONT </span>
+ records,
+remember to index the table correctly, skipping <span class="CodeInlineChar">ifnt=04h </span>
+.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="85" style='width:63.95pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="49" style='width:36.65pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="399" style='width:299.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">dyHeight</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text"><span>Height of the font (in units of 1/20<sup>th</sup>
+ of a point). </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">grbit</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Font attributes (see the following table).</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">icv</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Index to the color palette.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">bls</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Bold style; a number from 100dec to 1000dec
+ (64h to 3E8h) that indicates the character weight (“boldness”). The default
+ values are 190h for normal text and 2BCh for bold text.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">12</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">sss</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text"><span>Superscript/subscript:<br />
+ 00h= None<br />
+ 01h= Superscript<br />
+ 02h= Subscript </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">14</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">uls</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text"><span>Underline style:<br />
+ 00h= None<br />
+ 01h= Single<br />
+ 02h= Double<br />
+ 21h= Single Accounting<br />
+ 22h= Double Accounting </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">15</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">bFamily</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Font family, as defined by the Windows API
+ LOGFONT structure.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">bCharSet</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Character set, as defined by the Windows API
+ LOGFONT structure.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">17</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Reserved; must be 0 (zero).</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">18</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">cch</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Length of the font name.</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">19</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="CodeInline">rgch</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Font name.</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbit </span>
+ field contains the following font attributes:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="593" style='width:445.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="58" style='width:43.2pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="104" style='width:78.3pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td style='width:247.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="58" style='width:43.2pt;'>
+     <p class="Text" >01h</p>
+   </td>
+   <td width="104" style='width:78.3pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="330" style='width:247.5pt;'>
+     <p class="Text" >Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="58" style='width:43.2pt;'>
+     <p class="Text" >02h</p>
+   </td>
+   <td width="104" style='width:78.3pt;'>
+     <p class="CodeInline">fItalic</p>
+   </td>
+   <td width="330" style='width:247.5pt;'>
+     <p class="Text" >=1 if the font is
+ italic</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="58" style='width:43.2pt;'>
+     <p class="Text" >04h</p>
+   </td>
+   <td width="104" style='width:78.3pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="330" style='width:247.5pt;'>
+     <p class="Text" >Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >3</p>
+   </td>
+   <td width="58" style='width:43.2pt;'>
+     <p class="Text" >08h</p>
+   </td>
+   <td width="104" style='width:78.3pt;'>
+     <p class="CodeInline">fStrikeout</p>
+   </td>
+   <td width="330" style='width:247.5pt;'>
+     <p class="Text" >=1 if the font is
+ struck out</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="58" style='width:43.2pt;'>
+     <p class="Text" >10h</p>
+   </td>
+   <td width="104" style='width:78.3pt;'>
+     <p class="CodeInline">fOutline</p>
+   </td>
+   <td width="330" style='width:247.5pt;'>
+     <p class="Text" >=1 if the font is
+ outline style (Macintosh only)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >5</p>
+   </td>
+   <td width="58" style='width:43.2pt;'>
+     <p class="Text" >20h</p>
+   </td>
+   <td width="104" style='width:78.3pt;'>
+     <p class="CodeInline">fShadow</p>
+   </td>
+   <td width="330" style='width:247.5pt;'>
+     <p class="Text" >=1 if the font is
+ shadow style (Macintosh only)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" ><span>7<span style='letter-spacing:-1.75pt'> </span>
+–<span style='letter-spacing:-1.75pt'> </span>
+6 </span></p>
+   </td>
+   <td width="58" style='width:43.2pt;'>
+     <p class="Text" >C0h</p>
+   </td>
+   <td width="104" style='width:78.3pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="330" style='width:247.5pt;'>
+     <p class="Text" >Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" ><span>7<span style='letter-spacing:-1.75pt'> </span>
+–<span style='letter-spacing:-1.75pt'> </span>
+0 </span></p>
+   </td>
+   <td width="58" style='width:43.2pt;'>
+     <p class="Text" >FFh</p>
+   </td>
+   <td width="104" style='width:78.3pt;'>
+     <p class="Text" >(unused)</p>
+   </td>
+   <td width="330" style='width:247.5pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

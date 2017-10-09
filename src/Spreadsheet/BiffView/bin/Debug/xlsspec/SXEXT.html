@@ -1,0 +1,535 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXEXT: External Source Information (DCh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXEXT: External Source Information (DCh)</h2>
+        <p class="Text">
+            <span>This record stores information about the SQL query string that retrieves external
+                data for a PivotTable. The record is followed by </span><span class="CodeInlineChar">
+                    SXSTRING </span>records that contain the SQL strings and then by a <span class="CodeInlineChar">
+                        SXSTRING </span>record that contains the SQL server connection string.</p>
+        <p class="Text">
+            <b>Note: </b><span></span><span class="CodeInlineChar">PARAMQRY </span>has the same
+            record number as <span class="CodeInlineChar">SXEXT </span><span>. This has no adverse
+                ramifications in a BIFF file because </span><span class="CodeInlineChar">PARAMQRY </span>
+            always occurs in conjunction with an <span class="CodeInlineChar">SXEXT </span>record.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — BIFF8 </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="112" style='width: 84.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 280.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span></p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Options flags; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cparams </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Number of parameter strings</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cstQuery </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Number of strings for SQL statement or URL</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cstWebPost </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Number of strings for post method of Web query</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cstSQLSav </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Number of strings for SQL statement for server-based page fields</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cstOdbcConn </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Number of strings for ODBC connection string</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains the following flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="594"
+            style='width: 445.65pt; border-collapse: collapse;'>
+            <tr>
+                <td width="47" style='width: 35.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="62" style='width: 46.15pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td style='width: 115.85pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 248.15pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        2–0</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0007h</p>
+                </td>
+                <td width="154" style='width: 115.85pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dbt </span></span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.15pt;'>
+                    <p class="Text">
+                        <span>=1 ODBC data source<br />
+                            =2 DAO recordset (no actual information about the recordset is saved)<br />
+                            =3 reserved<br />
+                            =4 Web (WWW) query </span>
+                    </p>
+                    <p class="Text">
+                        XL9: 5= OLE database</p>
+                    <p class="Text">
+                        XL9: 6= Text query</p>
+                    <p class="Text">
+                        XL9: 7= ADO query</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td width="154" style='width: 115.85pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fOdbcConn </span></span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.15pt;'>
+                    <p class="Text">
+                        =1 for ODBC connection</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0010h</p>
+                </td>
+                <td width="154" style='width: 115.85pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSql </span></span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.15pt;'>
+                    <p class="Text">
+                        =1 for ODBC connection</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0020h</p>
+                </td>
+                <td width="154" style='width: 115.85pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSqlSav </span></span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.15pt;'>
+                    <p class="Text">
+                        =1 for server-based page fields</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0040h</p>
+                </td>
+                <td width="154" style='width: 115.85pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fWeb </span></span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.15pt;'>
+                    <p class="Text">
+                        =1 for a Web (WWW) query</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0080h</p>
+                </td>
+                <td width="154" style='width: 115.85pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSavePwd </span></span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.15pt;'>
+                    <p class="Text">
+                        <span>=1 if the <b>Save Password</b> option is on </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0100h</p>
+                </td>
+                <td width="154" style='width: 115.85pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fTablesOnlyHTML </span>
+                        </span>
+                    </p>
+                </td>
+                <td width="331" style='width: 248.15pt;'>
+                    <p class="Text">
+                        <span>=1 if the <b>Save Tables in HTML Only</b> option is on </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="47" style='width: 35.5pt;'>
+                    <p class="Text">
+                        15–9</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        FE00h</p>
+                </td>
+                <td width="154" style='width: 115.85pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="331" style='width: 248.15pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The following records occur after a <span class="CodeInlineChar">SXEXT </span>record:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="113" style='width: 85.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Record name</p>
+                </td>
+                <td width="481" style='width: 361.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="113" style='width: 85.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>SXSTRING<br />
+                            SXSTRING </span></span><span>
+                                <br />
+                                . . . </span>
+                    </p>
+                </td>
+                <td width="481" style='width: 361.0pt;'>
+                    <p class="Text">
+                        Collection of <span class="CodeInlineChar">cstQuery SXSTRING </span>records to concatenate
+                        to give the URL (Web query), SQL string (ODBC query) or parameterized SQL string
+                        (for server-based page field)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="113" style='width: 85.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>SXSTRING<br />
+                            SXSTRING </span></span><span>
+                                <br />
+                                . . . </span>
+                    </p>
+                </td>
+                <td width="481" style='width: 361.0pt;'>
+                    <p class="Text">
+                        Collection of <span class="CodeInlineChar">cstOdbcConn </span><span class="CodeInlineChar">
+                            SXSTRING </span>records to concatenate to give the ODBC connection string (ODBC
+                        queries only)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="113" style='width: 85.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>SXSTRING<br />
+                            SXSTRING </span></span><span>
+                                <br />
+                                . . . </span>
+                    </p>
+                </td>
+                <td width="481" style='width: 361.0pt;'>
+                    <p class="Text">
+                        Collection of <span class="CodeInlineChar">cstWebPost SXSTRING </span>records to
+                        concatenate to give the post method data (Web query only, optional)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="113" style='width: 85.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>PARAMQRY<br />
+                            PARAMQRY </span></span><span>
+                                <br />
+                                . . . </span>
+                    </p>
+                </td>
+                <td width="481" style='width: 361.0pt;'>
+                    <p class="Text">
+                        Collection of <span class="CodeInlineChar">cparams </span><span class="CodeInlineChar">
+                            PARAMQRY </span>parameter definition records</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="113" style='width: 85.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>SXSTRING<br />
+                            SXSTRING </span></span><span>
+                                <br />
+                                . . . </span>
+                    </p>
+                </td>
+                <td width="481" style='width: 361.0pt;'>
+                    <p class="Text">
+                        Collection of <span class="CodeInlineChar">cstSQLSav SXSTRING </span>records to
+                        concatenate to give the original SQL string for an ODBC query with server-based
+                        page fields</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — BIFF7 and earlier </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="69" style='width: 52.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="77" style='width: 57.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="69" style='width: 52.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="77" style='width: 57.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>id </span></span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Connection ID of the SQL server</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="69" style='width: 52.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="77" style='width: 57.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fError </span></span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        =1 if an error occurred during the last attempt to communicate with the server</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="69" style='width: 52.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="77" style='width: 57.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cstSQL </span></span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Number of <span class="CodeInlineChar">SXSTRING</span> records that follow</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

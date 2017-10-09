@@ -1,0 +1,295 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SELECTION: Current Selection (1Dh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SELECTION: Current Selection (1Dh)</h2>
+        <p class="Text">
+            The <span class="CodeInlineChar">SELECTION </span>record stores the selection.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">pnn </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Number of the pane described</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rwAct </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Row number of the active cell</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">colAct </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Column number of the active cell</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">irefAct </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ref </span>number of the active cell</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cref </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Number of refs in the selection</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgref </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Array of <span class="CodeInlineChar">ref </span>s</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">pnn </span><span>field indicates which pane is described.
+                It contains one of the following values: </span>
+        </p>
+        <p class="TextIndented">
+            <span>0 = lower right<br />
+                1 = upper right<br />
+                2 = lower left<br />
+                3 = upper left </span>
+        </p>
+        <p class="Text">
+            For a window that has no splits, the <span class="CodeInlineChar">pnn </span>field
+            =3.</p>
+        <p class="Text">
+            The <span class="CodeInlineChar">rwAct </span>and <span class="CodeInlineChar">colAct
+            </span>fields specify the active cell.</p>
+        <p class="Text">
+            The <span class="CodeInlineChar">irefAct </span>field is a 0-based index into the
+            array of <span class="CodeInlineChar">ref </span>structures ( <span class="CodeInlineChar">
+                ref </span>s), specifying which <span class="CodeInlineChar">ref </span><span>contains
+                    the active cell. The </span><span class="CodeInlineChar">rgref </span><span>is an array
+                        because it is possible to create a multiple selection. In the case of a multiple
+                        selection, each selection is described by a </span><span class="CodeInlineChar">ref
+                        </span>, including the active cell (even if it is included in one of
+            the other selections).</p>
+        <p class="Text">
+            The selection (of cells) is described by the <span class="CodeInlineChar">rgref </span>
+            <span>array. The number of </span><span class="CodeInlineChar">ref </span>s in the
+            <span class="CodeInlineChar">rgref </span>field is equal to <span class="CodeInlineChar">
+                cref </span><span>. Each ref in the array is 6 bytes long and contains the fields listed
+                    in the following table. </span>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rwFirst </span></span></p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        First row in the reference</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rwLast </span></span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Last row in the reference</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>colFirst </span></span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        First column in the reference</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>colLast </span></span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Last column in the reference</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            If a selection is so large that it exceeds the maximum BIFF record size, it is parsed
+            into multiple consecutive <span class="CodeInlineChar">SELECTION </span><span>records.
+                Each record contains a portion of the larger selection. Only the </span><span class="CodeInlineChar">
+                    cref </span>and <span class="CodeInlineChar">rgref </span>fields vary in
+            the multiple records; the <span class="CodeInlineChar">pnn </span>, <span class="CodeInlineChar">
+                rwAct </span>, <span class="CodeInlineChar">colAct </span>, and <span class="CodeInlineChar">
+            irefAct</span> fields are the same across all records in the group.</p>
+    </div>
+</body>
+</html>

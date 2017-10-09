@@ -1,0 +1,194 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>TABLESTYLES: Table Styles (88Eh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            <a name="_Toc157240665"><span>TABLESTYLES: </span>Table Styles (88Eh) </a>
+        </h2>
+        <p class="MsoNormal">
+            This record supports custom Table styles that are in use in the document and persists
+            the current default Table and PivotTable styles.</p>
+        <p class="MsoNormal">
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="166" style='width: 124.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="319" style='width: 239.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>in the
+                        first two bytes of the record; =088Eh</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar">grbitFrt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Currently not used, and set to 0 <span class="CodeInlineChar"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cts </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        count of <span class="CodeInlineChar">TABLESTYLE </span>records to follow</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar">cchDefListStyle </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Length of default list table style name in 2 byte characters</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar">cchDefPivotStyle </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        Length of default pivot table style name in 2 byte characters.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar">rgchDefListStyle </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        default list table style name</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="166" style='width: 124.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar">rgchDefPivotStyle </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="319" style='width: 239.5pt;'>
+                    <p class="Text">
+                        default pivot table style name</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

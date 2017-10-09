@@ -1,0 +1,267 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>SHRFMLA: Shared Formula (BCh)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>SHRFMLA: Shared Formula (BCh)</h2>
+     <p class="Text">The <span class="CodeInlineChar">SHRFMLA </span> <span> record is a file size optimization. 
+It is used with the </span> <span class="CodeInlineChar">FORMULA </span>
+ record to compress the amount of storage required for the parsed
+expression ( <span class="CodeInlineChar">rgce </span> <span>).  
+In earlier versions of
+Excel, if you read a </span> <span class="CodeInlineChar">FORMULA </span>
+ record in which the <span class="CodeInlineChar">rgce </span>
+ field contained a <span class="CodeInlineChar">ptgExp </span>
+ parse token, the <span class="CodeInlineChar">FORMULA </span> <span> record contained an array formula. 
+In Excel 5.0 and later, this could indicate either an array formula or a
+shared formula. </span></p>
+     <p class="Text">If the record following the <span class="CodeInlineChar">FORMULA </span>
+ is an <span class="CodeInlineChar">ARRAY </span>
+ record, the <span class="CodeInlineChar">FORMULA </span> <span> record contains an array
+formula.  
+If the record following the </span> <span class="CodeInlineChar">FORMULA </span>
+ is a <span class="CodeInlineChar">SHRFMLA </span>
+ record, the <span class="CodeInlineChar">FORMULA </span> <span> record contains a shared
+formula.  
+You can also test the </span> <span class="CodeInlineChar">fShrFmla </span>
+ bit in the <span class="CodeInlineChar">FORMULA </span>
+ record’s <span class="CodeInlineChar">grbit </span>
+ field to determine this.</p>
+     <p class="Text">When reading a file, you must convert the <span class="CodeInlineChar">FORMULA </span>
+ and <span class="CodeInlineChar">SHRFMLA </span>
+ records to an equivalent <span class="CodeInlineChar">FORMULA </span> <span> record if you plan to use the
+parsed expression.  
+To do this, take all
+of the </span> <span class="CodeInlineChar">FORMULA </span> </span>
+ record
+up to (but not including) the <span class="CodeInlineChar">cce </span>
+ field, and then append to that the <span class="CodeInlineChar">SHRFMLA </span>
+ record from its <span class="CodeInlineChar">cce </span> <span> field to the end.  
+You must then convert some </span> <span class="CodeInlineChar">ptg </span>
+s; this is explained later in this
+article.</p>
+     <p class="Text">Following the <span class="CodeInlineChar">SHRFMLA </span>
+ record are one or more <span class="CodeInlineChar">FORMULA </span>
+ records containing <span class="CodeInlineChar">ptgExp </span>
+ tokens that have the same <span class="CodeInlineChar">rwFirst </span>
+ and <span class="CodeInlineChar">colFirst </span>
+ fields as those in the <span class="CodeInlineChar">ptgExp </span>
+ in the first <span class="CodeInlineChar">FORMULA </span> <span>.  
+There is only one </span> <span class="CodeInlineChar">SHRFMLA </span>
+ record for each shared-formula
+record group.</p>
+     <p class="Text">To convert the <span class="CodeInlineChar">ptg </span>
+s, search the <span class="CodeInlineChar">rgce </span>
+ field from the <span class="CodeInlineChar">SHRFMLA </span>
+ record for any <span class="CodeInlineChar">ptgRefN </span>
+, <span class="CodeInlineChar">ptgRefNV </span>
+, <span class="CodeInlineChar">ptgRefNA </span>
+, <span class="CodeInlineChar">ptgAreaN </span>
+, <span class="CodeInlineChar">ptgAreaNV </span>
+, or <span class="CodeInlineChar">ptgAreaNA </span> <span> tokens. 
+Add the corresponding </span> <span class="CodeInlineChar">FORMULA </span>
+ record’s <span class="CodeInlineChar">rw </span>
+ and <span class="CodeInlineChar">col </span>
+ fields to the <span class="CodeInlineChar">rwFirst </span>
+ and <span class="CodeInlineChar">colFirst </span>
+ fields in the <span class="CodeInlineChar">ptg </span>
+s from the <span class="CodeInlineChar">SHRFMLA </span> <span>. 
+Finally, convert the </span> <span class="CodeInlineChar">ptg </span>
+s as shown in the following table.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td style='width:81.45pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header"><span>Convert <br />
+ this ptg </span></p>
+   </td>
+   <td style='width:364.55pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header"><span><br />
+ To this ptg </span></p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="109" style='width:81.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgRefN </span></p>
+   </td>
+   <td width="486" style='width:364.55pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgRef </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="109" style='width:81.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgRefNV </span></p>
+   </td>
+   <td width="486" style='width:364.55pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgRefV </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="109" style='width:81.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgRefNA </span></p>
+   </td>
+   <td width="486" style='width:364.55pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgRefA </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="109" style='width:81.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgAreaN </span></p>
+   </td>
+   <td width="486" style='width:364.55pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgArea </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="109" style='width:81.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgAreaNV </span></p>
+   </td>
+   <td width="486" style='width:364.55pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgAreaV </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="109" style='width:81.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgAreaNA </span></p>
+   </td>
+   <td width="486" style='width:364.55pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ptgAreaA </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">For more information about <span class="CodeInlineChar">ptg </span> <span>s and parsed expressions, see “<span class="LinkText"><u><a href="#_Microsoft_Excel_Formulas">Microsoft Excel Formulas</a>
+</u> </span> <span class="LinkID">EXB0251 </span>
+”. </span></p>
+     <p class="Text">Remember that <span class="CodeInlineChar">STRING </span>
+ records can appear after <span class="CodeInlineChar">FORMULA </span>
+ records if the formula evaluates to a string.</p>
+     <p class="Text">If your code writes a BIFF file, always write
+standard <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>FORMULA </span> </span>
+records; do not attempt to use the <span class="CodeInlineChar">SHRFMLA </span>
+ optimization.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="85" style='width:63.95pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="49" style='width:36.65pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="399" style='width:299.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rwFirst </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">First row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rwLast </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Last row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>colFirst </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">First column</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">9</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>colLast </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Last column</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">12</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cce </span> </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Length of the parsed expression</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">14</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgce </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Parsed expression</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

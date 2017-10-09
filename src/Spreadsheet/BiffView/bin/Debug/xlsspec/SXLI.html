@@ -1,0 +1,370 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXLI: Line Item Array (B5h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXLI: Line Item Array (B5h)</h2>
+        <p class="Text">
+            The <span class="CodeInlineChar">SXLI </span>record stores an array of variable-length
+            <span class="CodeInlineChar">SXLI </span><span>structures, which describe the row and
+                column items in a PivotTable. There are two </span><span class="CodeInlineChar">SXLI
+                </span>records for each PivotTable: the first stores row items, and the second
+            stores column items.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgsxli </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Array of <span class="CodeInlineChar">SXLI </span>structures</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">SXLI </span>structure has variable length but always
+            is at least 10 bytes long, with one element in the <span class="CodeInlineChar">rgisxvi
+            </span>array (the index to the <span class="CodeInlineChar">SXVI </span><span>record
+                for the item). The </span><span class="CodeInlineChar">SXLI </span>structure
+            is shown in the following table.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cSic </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Count of items identical to the previous element in <span class="CodeInlineChar">rgsxvi
+                        </span>; <span class="CodeInlineChar">for 0&lt; =i&lt; cSic </span>, <span class="CodeInlineChar">
+                            rgisxvi[i] </span>is the same as the previous line.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">itmtype </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        <span>Item type:<br />
+                            =00h, Data<br />
+                            =01h, Default<br />
+                            =02h, SUM<br />
+                            =03h, COUNTA<br />
+                            =04h, COUNT<br />
+                            =05h, AVERAGE<br />
+                            =06h, MAX<br />
+                            =07h, MIN<br />
+                            =08h, PRODUCT<br />
+                            =09h, STDEV<br />
+                            =0Ah, STDEVP<br />
+                            =0Bh, VAR<br />
+                            =0Ch, VARP<br />
+                            =0Dh, Grand total </span>
+                    </p>
+                    <p class="Text">
+                        XL9: =0Eh, blank line</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">isxviMac </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Maximum index to the <span class="CodeInlineChar">rgisxvi[i] </span>array.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Option flags; see the following table.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgisxvi </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Array of indexes to <span class="CodeInlineChar">SXVI </span>records; the number
+                        of elements in the array is <span class="CodeInlineChar">(isxviMac+1) </span>.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains the following flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="53" style='width: 40.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="54" style='width: 40.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 117.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 202.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="156" style='width: 117.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fMultiDataName </span>
+                    </p>
+                </td>
+                <td width="270" style='width: 202.5pt;'>
+                    <p class="Text">
+                        =1, use the data field name for the subtotal (instead of using “Total”).</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        8–1</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        01F7h</p>
+                </td>
+                <td width="156" style='width: 117.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iData </span>
+                    </p>
+                </td>
+                <td width="270" style='width: 202.5pt;'>
+                    <p class="Text">
+                        For a multidata subtotal, <span class="CodeInlineChar">iData </span>is the index
+                        to the data field.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0200h</p>
+                </td>
+                <td width="156" style='width: 117.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fSbt </span>
+                    </p>
+                </td>
+                <td width="270" style='width: 202.5pt;'>
+                    <p class="Text">
+                        =1, this item is a subtotal.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0400h</p>
+                </td>
+                <td width="156" style='width: 117.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fBlock </span>
+                    </p>
+                </td>
+                <td width="270" style='width: 202.5pt;'>
+                    <p class="Text">
+                        =1, this item is a block total.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0800h</p>
+                </td>
+                <td width="156" style='width: 117.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fGrand </span>
+                    </p>
+                </td>
+                <td width="270" style='width: 202.5pt;'>
+                    <p class="Text">
+                        =1, this item is a grand total.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        1000h</p>
+                </td>
+                <td width="156" style='width: 117.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fMultiDataOnAxis </span>
+                    </p>
+                </td>
+                <td width="270" style='width: 202.5pt;'>
+                    <p class="Text">
+                        =1, this axis contains multi-data.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="53" style='width: 40.0pt;'>
+                    <p class="Text">
+                        15–13</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        E000h</p>
+                </td>
+                <td width="156" style='width: 117.0pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="270" style='width: 202.5pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero).</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

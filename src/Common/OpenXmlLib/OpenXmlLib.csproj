@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C10271C-CD9B-49F5-9479-3C6EB7404E75}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DIaLOGIKa.b2xtranslator.OpenXmlLib</RootNamespace>
+    <AssemblyName>DIaLOGIKa.b2xtranslator.OpenXmlLib</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppPropertiesPart.cs" />
+    <Compile Include="ContentPart.cs" />
+    <Compile Include="ViewPropertiesPart.cs" />
+    <Compile Include="DrawingML\ChartPart.cs" />
+    <Compile Include="DrawingML\DrawingML.cs" />
+    <Compile Include="SpreadsheetML\ChartsheetPart.cs" />
+    <Compile Include="DrawingML\DrawingsPart.cs" />
+    <Compile Include="SpreadsheetML\SpreadsheetML.cs" />
+    <Compile Include="VmlPart.cs" />
+    <Compile Include="ExternalRelationship.cs" />
+    <Compile Include="PresentationML\HandoutMasterPart.cs" />
+    <Compile Include="PresentationML\NotesMasterPart.cs" />
+    <Compile Include="PresentationML\NotePart.cs" />
+    <Compile Include="PresentationML\PresentationPart.cs" />
+    <Compile Include="PresentationML\SlideLayoutPart.cs" />
+    <Compile Include="PresentationML\SlideMasterPart.cs" />
+    <Compile Include="PresentationML\SlidePart.cs" />
+    <Compile Include="SpreadsheetML\ExternalLinkPart.cs" />
+    <Compile Include="SpreadsheetML\SharedStringPart.cs" />
+    <Compile Include="SpreadsheetML\StylesPart.cs" />
+    <Compile Include="SpreadsheetML\WorksheetPart.cs" />
+    <Compile Include="VbaDataPart.cs" />
+    <Compile Include="VbaProjectPart.cs" />
+    <Compile Include="WordprocessingML\CommentsPart.cs" />
+    <Compile Include="ContentTypes.cs" />
+    <Compile Include="CorePropertiesPart.cs" />
+    <Compile Include="CustomXmlPart.cs" />
+    <Compile Include="CustomXmlPropertiesPart.cs" />
+    <Compile Include="WordprocessingML\EndnotesPart.cs" />
+    <Compile Include="WordprocessingML\FontTablePart.cs" />
+    <Compile Include="WordprocessingML\FooterPart.cs" />
+    <Compile Include="WordprocessingML\FootnotesPart.cs" />
+    <Compile Include="WordprocessingML\GlossaryPart.cs" />
+    <Compile Include="WordprocessingML\HeaderPart.cs" />
+    <Compile Include="ImagePart.cs" />
+    <Compile Include="WordprocessingML\KeyMapCustomizationsPart.cs" />
+    <Compile Include="WordprocessingML\MainDocumentPart.cs" />
+    <Compile Include="OpenXmlPackage.cs" />
+    <Compile Include="OpenXmlPart.cs" />
+    <Compile Include="OpenXmlPartContainer.cs" />
+    <Compile Include="OpenXmlWriter.cs" />
+    <Compile Include="PresentationML\PresentationDocument.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpreadsheetML\SpreadsheetDocument.cs" />
+    <Compile Include="WordprocessingML\NumberingDefinitionsPart.cs" />
+    <Compile Include="EmbeddedObjectPart.cs" />
+    <Compile Include="WordprocessingML\SettingsPart.cs" />
+    <Compile Include="WordprocessingML\StyleDefinitionsPart.cs" />
+    <Compile Include="ThemePart.cs" />
+    <Compile Include="WordprocessingML\ToolbarsPart.cs" />
+    <Compile Include="WordprocessingML\WordprocessingDocument.cs" />
+    <Compile Include="SpreadsheetML\WorkbookPart.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagramOpenXmlLib.cd" />
+    <None Include="..\..\key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZipUtils\ZipUtils.csproj">
+      <Project>{05A5C68E-B901-4AD0-87F1-5E43DDC759CE}</Project>
+      <Name>ZipUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

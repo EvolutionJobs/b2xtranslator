@@ -1,0 +1,211 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>STYLE: Style Information (293h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            STYLE: Style Information (293h)</h2>
+        <p class="Text">
+            <span>Each style in an Excel workbook, whether built-in or user-defined, requires a
+                style record in the BIFF file. When Excel saves the workbook, it writes the </span>
+            <span class="CodeInlineChar">STYLE </span>records in alphabetical order, which is
+            the order in which the styles appear in the drop-down list box.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — Built-in Styles </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="124" style='width: 93.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td width="60" style='width: 45.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 262.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="124" style='width: 93.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ixfe </span></p>
+                </td>
+                <td width="60" style='width: 45.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Index to the style <span class="CodeInlineChar">XF </span><span>record.<br />
+                            <b>Note: </b></span><span class="CodeInlineChar">ixfe </span><span>uses only the low-order
+                                12 bits of the field (bits 11–0). Bits 12, 13, and 14 are unused, and bit 15 ( </span>
+                        <span class="CodeInlineChar">fBuiltIn </span>) is 1 for built-in styles.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="124" style='width: 93.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>istyBuiltIn </span></span>
+                    </p>
+                </td>
+                <td width="60" style='width: 45.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        <span>Built-in style numbers:<br />
+                            =00h Normal
+                            <br />
+                            =01h RowLevel_n<br />
+                            =02h ColLevel_n<br />
+                            =03h Comma<br />
+                            =04h Currency<br />
+                            =05h Percent<br />
+                            =06h Comma[0]<br />
+                            =07h Currency[0] </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="124" style='width: 93.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>iLevel </span></span>
+                    </p>
+                </td>
+                <td width="60" style='width: 45.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Level of the outline style RowLevel_n or ColLevel_n (see text).</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — User-Defined Styles </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ixfe </span></span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Index to the style <span class="CodeInlineChar">XF </span><span>record.<br />
+                            <b>Note: </b></span><span class="CodeInlineChar">ixfe </span><span>uses only the low-order
+                                12 bits of the field (bits 11–0). Bits 12, 13, and 14 are unused, and bit 15 ( </span>
+                        <span class="CodeInlineChar">fBuiltIn </span>) is 0 for user-defined styles.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cch </span></span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Length of the style name.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgch </span></span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Style name.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            <span>The automatic outline styles<span style='letter-spacing: -1.75pt'> </span>—<span
+                style='letter-spacing: -1.75pt'> </span>RowLevel_1 through RowLevel_7, and ColLevel_1
+                through ColLevel_7<span style='letter-spacing: -1.75pt'> </span>—<span style='letter-spacing: -1.75pt'>
+                </span>are stored by setting </span><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                    istyBuiltIn </span></span>to 01h or 02h and then setting <span class="CodeInlineChar">
+                        iLevel </span>to the style level minus 1. If the style is not an automatic outline style,
+                            ignore this field. 
+        </p>
+    </div>
+</body>
+</html>

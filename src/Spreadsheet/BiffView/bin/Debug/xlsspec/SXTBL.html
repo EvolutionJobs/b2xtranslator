@@ -1,0 +1,182 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXTBL: Multiple Consolidation Source Info (D0h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXTBL: Multiple Consolidation Source Info (D0h)</h2>
+        <p class="Text">
+            This record stores information about multiple-consolidation PivotTable source data.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="106" style='width: 79.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="42" style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="385" style='width: 289.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="106" style='width: 79.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cdref </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="385" style='width: 289.0pt;'>
+                    <p class="Text">
+                        Count (1-based) of <span class="CodeInlineChar">DCONREF </span>or <span class="CodeInlineChar">
+                            DCONNAME </span>records that follow the <span class="CodeInlineChar">SXTBL </span>
+                        record</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="106" style='width: 79.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">csxtbpg </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="385" style='width: 289.0pt;'>
+                    <p class="Text">
+                        Count (1-based) of <span class="CodeInlineChar">SXTBPG </span>records that follow
+                        the <span class="CodeInlineChar">DCONREF </span>or <span class="CodeInlineChar">DCONNAME
+                        </span>records</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="106" style='width: 79.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitPages </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="385" style='width: 289.0pt;'>
+                    <p class="Text">
+                        (See the following table)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbitPages </span>field contains an encoded count
+            of page fields, as shown in the following table.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="56" style='width: 42.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="56" style='width: 42.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td width="93" style='width: 69.6pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="329" style='width: 246.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        14–0</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        7FFFh</p>
+                </td>
+                <td width="93" style='width: 69.6pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cPages </span>
+                    </p>
+                </td>
+                <td width="329" style='width: 246.4pt;'>
+                    <p class="Text">
+                        Count (1-based) of page fields</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td width="56" style='width: 42.0pt;'>
+                    <p class="Text">
+                        8000h</p>
+                </td>
+                <td width="93" style='width: 69.6pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAutoPage </span>
+                    </p>
+                </td>
+                <td width="329" style='width: 246.4pt;'>
+                    <p class="Text">
+                        <span>=1 if the user selected the <b>Create A Single Page Field For Me</b> option in
+                            the <b>PivotTable Wizard</b> dialog box </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

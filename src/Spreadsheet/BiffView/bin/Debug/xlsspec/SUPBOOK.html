@@ -1,0 +1,354 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>SUPBOOK: Supporting Workbook (1AEh)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>SUPBOOK: Supporting Workbook (1AEh)</h2>
+     <p class="Text">This record stores data about a supporting
+external workbook.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF8 </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="54" style='width:40.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="379" style='width:284.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">ctab </span> </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="379" style='width:284.5pt;'>
+     <p class="Text">Number of tabs in the workbook</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>stVirtPath </span> </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="379" style='width:284.5pt;'>
+     <p class="Text"><span>Encoded file name of the workbook as a <a href="#_Unicode_Strings_in_BIFF8">unicode string</a>
+ (see text for file name
+ encoding characters) </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgst </span> </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="379" style='width:284.5pt;'>
+     <p class="Text">Array of <span class="CodeInlineChar">ctab </span> <span> sheet tab names as <a href="#_Unicode_Strings_in_BIFF8">unicode
+ strings</a>
+. </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+<h3><a name="_Toc157240623">File name Encoding
+</a>
+</h3>
+     <p class="Text"><span>Whenever possible, file names are encoded to
+make BIFF files transportable across file systems. 
+Encoded file names are identified by the
+first character of the </span> <span class="CodeInlineChar">rgch </span> <span> field.  
+The first character
+of the </span> <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgch </span> </span>
+ field may
+be any one of the values listed in the following table.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="83" style='width:62.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="55" style='width:41.25pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Value</p>
+   </td>
+   <td style='width:342.25pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Meaning</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="83" style='width:62.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">chEmpty </span></p>
+   </td>
+   <td width="55" style='width:41.25pt;'>
+     <p class="Text" >00</p>
+   </td>
+   <td width="456" style='width:342.25pt;'>
+     <p class="Text" >Reference to an
+ empty workbook name (see text)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="83" style='width:62.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">chEncode </span></p>
+   </td>
+   <td width="55" style='width:41.25pt;'>
+     <p class="Text" >01</p>
+   </td>
+   <td width="456" style='width:342.25pt;'>
+     <p class="Text" >File name has been
+ encoded (see the following table)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="83" style='width:62.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">chSelf </span></p>
+   </td>
+   <td width="55" style='width:41.25pt;'>
+     <p class="Text" >02</p>
+   </td>
+   <td width="456" style='width:342.25pt;'>
+     <p class="Text" >Self-referential
+ external reference (see text)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chEmpty </span> </span>
+indicates the file name is an external reference to an empty workbook name, as
+in the formula <span class="CodeInlineChar">=Sheet1!$A$1 </span>
+.</p>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chSelf </span> </span> <span>
+indicates the file name is an external reference in which the dependent and
+source workbooks are the same.  
+An
+example of this is the workbook SALES.XLS, which contains the formula </span> <span class="CodeInlineChar">=SALES.XLS!$A$1 </span>
+.</p>
+     <p class="Text">A <span class="CodeInlineChar">chDDE </span>
+ key (03h) can occur in the <span class="CodeInlineChar">rgch </span>
+ field; it is not necessarily the first character in the field, as
+are <span class="CodeInlineChar">chEmpty </span>
+, <span class="CodeInlineChar">chEncode </span>
+, and <span class="CodeInlineChar">chSelf </span> <span>. 
+This key indicates that the external reference is a DDE or OLE
+link.  
+In a DDE link, the </span> <span class="CodeInlineChar">chDDE </span> <span> key replaces the | (pipe)
+character that separates the DDE application and topic. 
+In an OLE link, </span> <span class="CodeInlineChar">chDDE </span>
+ separates the classname and file
+name.</p>
+     <p class="Text">A <span class="CodeInlineChar">chEncode </span>
+ at the beginning of <span class="CodeInlineChar">rgch </span> <span> indicates the file name of the source workbook was encoded to a
+less system-dependent file name.  
+The
+special keys listed in the following table are recognized in the </span> <span class="CodeInlineChar">rgch </span>
+ field.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="117" style='width:88.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="86" style='width:64.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Value</p>
+   </td>
+   <td style='width:153.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">PC file systems</p>
+   </td>
+   <td style='width:140.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Macintosh file system</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="117" style='width:88.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chVolume </span> </span></p>
+   </td>
+   <td width="86" style='width:64.5pt;'>
+     <p class="Text">01</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="Text"><span>Represents an MS-DOS drive letter.  
+It is followed by the drive letter.  
+For example, the formula </span> <span class="CodeInlineChar">=‘D:\SALES.XLS’!A1 </span>
+ generates the <span class="CodeInlineChar">chVolume </span> <span> key when the dependent
+ workbook is not on the D drive.  
+UNC
+ file names, such as </span> <span class="CodeInlineChar">\\server\share\myfile.xls </span>
+, generate an @ character after the <span class="CodeInlineChar">chVolume </span>
+ key; this replaces the
+ initial double backslash (\\).</p>
+   </td>
+   <td width="187" style='width:140.5pt;'>
+     <p class="Text"><span>Represents a single-character volume
+ name.  
+Because single-character volume
+ names are uncommon on the Macintosh, the </span> <span class="CodeInlineChar">chLongVolume </span>
+ key is used to represent volume names that are longer than a
+ single character.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="117" style='width:88.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chSameVolume </span> </span></p>
+   </td>
+   <td width="86" style='width:64.5pt;'>
+     <p class="Text">02</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="Text"><span>Indicates the source workbook is on the same
+ drive as the dependent workbook (the drive letter is omitted).  
+For example, the formula </span> <span class="CodeInlineChar">=‘\SALES.XLS’!A1 </span>
+ generates the <span class="CodeInlineChar">chSameVolume </span>
+ key when the dependent
+ workbook is not in the root directory.</p>
+   </td>
+   <td width="187" style='width:140.5pt;'>
+     <p class="Text">Indicates the source workbook is in the same
+ volume as the dependent workbook (the volume name is omitted).</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="117" style='width:88.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ChDownDir </span> </span></p>
+   </td>
+   <td width="86" style='width:64.5pt;'>
+     <p class="Text">03</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="Text"><span>Indicates the source workbook is in a
+ subdirectory of the current directory. 
+ 
+For example, the formula </span> <span class="CodeInlineChar">=‘XL\SALES.XLS’!A1 </span>
+ generates the <span class="CodeInlineChar">chDownDir </span> <span> key.  
+The subdirectory name
+ precedes the </span> <span class="CodeInlineChar">chDownDir </span>
+ key, and the file name follows it.</p>
+   </td>
+   <td width="187" style='width:140.5pt;'>
+     <p class="Text"><span>Indicates the source workbook is in a folder
+ in the current folder.  
+For example,
+ the formula </span> <span class="CodeInlineChar">=‘:XL:Sales1992’!A1 </span>
+ generates the <span class="CodeInlineChar">chDownDir </span> <span> key.  
+The folder name
+ precedes the </span> <span class="CodeInlineChar">chDownDir </span>
+ key, and the file name follows it.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="117" style='width:88.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chUpDir </span> </span></p>
+   </td>
+   <td width="86" style='width:64.5pt;'>
+     <p class="Text">04</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="Text"><span>Indicates the source workbook is in the parent
+ directory of the current directory. 
+ 
+For example, the formula </span> <span class="CodeInlineChar">=‘..\SALES.XLS’!A1 </span>
+ generates the <span class="CodeInlineChar">chUpDir </span>
+ key.</p>
+   </td>
+   <td width="187" style='width:140.5pt;'>
+     <p class="Text"><span>Indicates the source workbook is in the parent
+ folder of the current folder.  
+For
+ example, the formula </span> <span class="CodeInlineChar">=‘::Sales1992’!A1 </span>
+ generates the <span class="CodeInlineChar">chUpDir </span>
+ key.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="117" style='width:88.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chLongVolume </span> </span></p>
+   </td>
+   <td width="86" style='width:64.5pt;'>
+     <p class="Text">05</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="Text">(unused)</p>
+   </td>
+   <td width="187" style='width:140.5pt;'>
+     <p class="Text">The <span class="CodeInlineChar">chLongVolume </span>
+ key is followed by the length of the name (1 byte) and then by
+ the volume name string.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="117" style='width:88.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chStartupDir </span> </span></p>
+   </td>
+   <td width="86" style='width:64.5pt;'>
+     <p class="Text">06</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="Text">Indicates the source workbook is in the
+ startup directory (the Xlstart subdirectory of the directory that contains
+ Excel.exe).</p>
+   </td>
+   <td width="187" style='width:140.5pt;'>
+     <p class="Text">Indicates the source workbook is in the Excel
+ Startup Folder (5), which is in the System Folder.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="117" style='width:88.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chAltStartupDir </span> </span></p>
+   </td>
+   <td width="86" style='width:64.5pt;'>
+     <p class="Text">07</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="Text">Indicates the source workbook is in the
+ alternate startup directory.</p>
+   </td>
+   <td width="187" style='width:140.5pt;'>
+     <p class="Text">Indicates the source workbook is in the
+ alternate startup folder.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="117" style='width:88.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chLibDir </span></p>
+   </td>
+   <td width="86" style='width:64.5pt;'>
+     <p class="Text">08</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="Text">Indicates the source workbook is in the
+ Library directory.</p>
+   </td>
+   <td width="187" style='width:140.5pt;'>
+     <p class="Text">Indicates the source workbook is in the Macro
+ Library folder.</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

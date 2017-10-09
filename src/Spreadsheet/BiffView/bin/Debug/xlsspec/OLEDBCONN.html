@@ -1,0 +1,186 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>OLEDBCONN: OLE Database Connection (80Ah)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>OLEDBCONN: OLE Database Connection (80Ah)</h2>
+     <p class="Text">Introduced in Excel 9 (2000) this is a <span class="CodeInlineChar">FRT </span> <span> record. 
+It contains the connection information for an
+OLE database connection. </span></p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="62" style='width:46.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="123" style='width:92.3pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="62" style='width:46.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="349" style='width:261.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="123" style='width:92.3pt;'>
+     <p class="Text"><span class="CodeInlineChar">rt </span> </span></p>
+   </td>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> <span> in the first two bytes of the
+ record;   
+=080Ah </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="123" style='width:92.3pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitFrt </span> </span></p>
+   </td>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>FRT </span> </span>
+ flags; must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="123" style='width:92.3pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitConn </span> </span></p>
+   </td>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Connection flags; see following table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="123" style='width:92.3pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cst </span> </span></p>
+   </td>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Count of following <span class="CodeInlineChar">ExtString </span>
+ records; these records will
+ be concatenated together to make the connection string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">12</p>
+   </td>
+   <td width="123" style='width:92.3pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Reserved; must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="123" style='width:92.3pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgbFuture </span> </span></p>
+   </td>
+   <td width="62" style='width:46.15pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="349" style='width:261.4pt;'>
+     <p class="Text">Information from future versions of Excel</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbitConn </span>
+ field contains the following option flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="62" style='width:46.35pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="70" style='width:52.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="116" style='width:86.9pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="347" style='width:260.6pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="70" style='width:52.15pt;'>
+     <p class="Text">0001h</p>
+   </td>
+   <td width="116" style='width:86.9pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fPasswd </span> </span></p>
+   </td>
+   <td width="347" style='width:260.6pt;'>
+     <p class="Text">0= The connection password has been stripped</p>
+     <p class="Text">1= The password for the connection is present</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="70" style='width:52.15pt;'>
+     <p class="Text">0002h</p>
+   </td>
+   <td width="116" style='width:86.9pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fLocal </span></p>
+   </td>
+   <td width="347" style='width:260.6pt;'>
+     <p class="Text">1= This is a local connection string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text">15-2</p>
+   </td>
+   <td width="70" style='width:52.15pt;'>
+     <p class="Text">FFFCh</p>
+   </td>
+   <td width="116" style='width:86.9pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="347" style='width:260.6pt;'>
+     <p class="Text">Reserved; must be zero</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

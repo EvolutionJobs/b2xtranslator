@@ -1,0 +1,404 @@
+﻿<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>WOPT: Web Options (80Bh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            WOPT: Web Options (80Bh)</h2>
+        <p class="Text">
+            Introduced in Excel 9 (2000) this is a <span class="CodeInlineChar">FRT </span><span>
+                record. It stores the information from the <b>Web Options</b> dialog. </span>
+        </p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="599"
+            style='width: 449.5pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="220" style='width: 165.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="42" style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="276" style='width: 207.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="220" style='width: 165.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span><span>in the
+                            first two bytes of the record;
+                            <br />
+                            =080Bh </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="220" style='width: 165.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitFrt </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>flags; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="220" style='width: 165.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        Options; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="220" style='width: 165.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">bScreenSize </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        Target monitor screen size</p>
+                    <p class="Text">
+                        0= 544x376</p>
+                    <p class="Text">
+                        1= 640x480</p>
+                    <p class="Text">
+                        2= 720x512</p>
+                    <p class="Text">
+                        3= 800x600</p>
+                    <p class="Text">
+                        4= 1024x768</p>
+                    <p class="Text">
+                        5= 1152x882</p>
+                    <p class="Text">
+                        6= 1152x900</p>
+                    <p class="Text">
+                        7= 1280x1024</p>
+                    <p class="Text">
+                        8= 1600x1200</p>
+                    <p class="Text">
+                        9= 1800x1440</p>
+                    <p class="Text">
+                        10= 1920x1200</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td width="220" style='width: 165.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dwPixelsPerInch </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        Target monitor pixels per inch</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td width="220" style='width: 165.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">uiCodePage </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        Code page index value</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        19</p>
+                </td>
+                <td width="220" style='width: 165.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cchLocationOfComponents </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        length of the string in <span class="CodeInlineChar">rgbLocationOfComponents </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        21</p>
+                </td>
+                <td width="220" style='width: 165.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgbLocationOfComponents </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        Unicode string; the path to the location for download of the Microsoft Office Web
+                        Components</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="220" style='width: 165.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgbFuture </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        Space reserved for bytes from future versions of Excel</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains following option flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="62" style='width: 46.35pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="70" style='width: 52.15pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 138.9pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 208.6pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="70" style='width: 52.15pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="185" style='width: 138.9pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fRelyOnCSS </span>
+                    </p>
+                </td>
+                <td width="278" style='width: 208.6pt;'>
+                    <p class="Text">
+                        1= Do not write HTML information that is already written in CSS</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="70" style='width: 52.15pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="185" style='width: 138.9pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fOrganizeInFolder </span>
+                    </p>
+                </td>
+                <td width="278" style='width: 208.6pt;'>
+                    <p class="Text">
+                        <span>0= Write HTML files all to the same location<br />
+                            1= Create a folder for the supporting files for files saved as HTML </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="70" style='width: 52.15pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td width="185" style='width: 138.9pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fUseLongFileNames </span>
+                    </p>
+                </td>
+                <td width="278" style='width: 208.6pt;'>
+                    <p class="Text">
+                        1= Use Long filenames when writing HTML files</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="70" style='width: 52.15pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td width="185" style='width: 138.9pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDownloadComponents </span>
+                    </p>
+                </td>
+                <td width="278" style='width: 208.6pt;'>
+                    <p class="Text">
+                        1= Download Microsoft Office Web Components</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="70" style='width: 52.15pt;'>
+                    <p class="Text">
+                        0010h</p>
+                </td>
+                <td width="185" style='width: 138.9pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fRelyOnVML </span>
+                    </p>
+                </td>
+                <td width="278" style='width: 208.6pt;'>
+                    <p class="Text">
+                        0= Write out image files for objects</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="70" style='width: 52.15pt;'>
+                    <p class="Text">
+                        0020h</p>
+                </td>
+                <td width="185" style='width: 138.9pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAllowPNG </span>
+                    </p>
+                </td>
+                <td width="278" style='width: 208.6pt;'>
+                    <p class="Text">
+                        1= Use PNG format for images</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.35pt;'>
+                    <p class="Text">
+                        15-6</p>
+                </td>
+                <td width="70" style='width: 52.15pt;'>
+                    <p class="Text">
+                        FFC0h</p>
+                </td>
+                <td width="185" style='width: 138.9pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="278" style='width: 208.6pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

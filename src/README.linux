@@ -1,0 +1,33 @@
+For using the b2xtranslator under Linux, Mono (http://www.mono-project.com/)
+is required. Additionally, the zlib must be available to mono.
+
+### Precompiled version of zlibwapi ###
+# The precompiled Linux version can be found here: ../lib/libzlibwapi.so
+
+### Steps for compiling zlibwapi ###
+# 
+# Change to folder zlib123:
+#  cd AdditionalTools/zlib123
+#  
+# Compile the source code by executing the following command
+# ./makezlibwapi
+#
+# The output is the shared library libzlibwapi.so in the folder 
+# AdditionalTools/zlib123/contrib/minizip.
+
+### Making the library available to Mono ###
+#
+# You have to make sure that Mono is able to find this library.
+#
+# The following information is taken from the Mono documentation:
+# Mono looks for libraries in three places:
+# * In the current directory
+# * In directories specified by the $LD_LIBRARY_PATH environment variable
+# * By querying the system's dynamic linker (ldconfig)'s cache (/etc/ld.so.cache)
+#
+# Hence, the library can be copied to the directory in which the executable is
+# located.
+
+### Executing the converter ###
+# The converter (e.g. doc2x.exe) can be executed as follows:
+# mono doc2x.exe <input_file>

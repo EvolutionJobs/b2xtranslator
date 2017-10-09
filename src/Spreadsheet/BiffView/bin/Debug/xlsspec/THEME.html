@@ -1,0 +1,144 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>THEME: Theme (896h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            <a name="_Toc157240667"><span style="">THEME: Theme </span>(896h) </a>
+        </h2>
+        <p class="Text" style="margin-bottom: 3.0pt">
+            The <span class="CodeInlineChar"><span style="font-size: 11.0pt;">THEME </span></span>
+            record stores information about the current theme in use in the document. The record
+            contains a default theme version value that if non-zero indicates which default
+            theme to use. If the theme version is 0 then the document uses a custom theme which
+            will be serialized to a byte stream containing the zip package with the theme contents
+            (see Office Open XML specification (Ecma Internation Standard #376) for further
+            details). This byte stream is be appended on to the <span class="CodeInlineChar"><span
+                style="font-size: 11.0pt;">THEME </span></span>record and as many <span class="CodeInlineChar">
+                    <span style="font-size: 11.0pt;">CONTINUEFRT12 </span></span>records as
+            needed to hold its contents.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
+            <tr>
+                <td width="61" style="width: 46.0pt; border-bottom: solid windowtext 1.0pt;">
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="166" style="width: 124.5pt; border-bottom: solid windowtext 1.0pt;">
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style="width: 36.0pt; border-bottom: solid windowtext 1.0pt;">
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="319" style="width: 239.5pt; border-bottom: solid windowtext 1.0pt;">
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style="width: 46.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        4</p>
+                </td>
+                <td width="166" style="width: 124.5pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        <span class="CodeInlineChar"><span style="font-size: 11.0pt;">rt </span></span>
+                    </p>
+                </td>
+                <td width="48" style="width: 36.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        2</p>
+                </td>
+                <td width="319" style="width: 239.5pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        Record type; this matches the BIFF <span class="CodeInlineChar"><span style="font-size: 11.0pt;">
+                            rt </span></span>in the first two bytes of the record; =0896h</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style="width: 46.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        6</p>
+                </td>
+                <td width="166" style="width: 124.5pt;">
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style="font-size: 10.0pt">grbitFrt </span></span>
+                    </p>
+                </td>
+                <td width="48" style="width: 36.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        2</p>
+                </td>
+                <td width="319" style="width: 239.5pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        <span class="CodeInlineChar"><span style="font-size: 11.0pt;">FRT </span></span>
+                        cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style="width: 46.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        8</p>
+                </td>
+                <td width="166" style="width: 124.5pt;">
+                    <p class="MsoNormal">
+                        <span style="font-size: 10.0pt; font-family: Verdana">(Reserved) </span><span style="font-family: Verdana" />
+                    </p>
+                </td>
+                <td width="48" style="width: 36.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        8</p>
+                </td>
+                <td width="319" style="width: 239.5pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        Currently not used, and set to 0 <span class="CodeInlineChar"><span style="font-size: 11.0pt;" />
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style="width: 46.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        16</p>
+                </td>
+                <td width="166" style="width: 124.5pt;">
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style="font-size: 10.0pt">dwThemeVersion </span></span>
+                    </p>
+                </td>
+                <td width="48" style="width: 36.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        8</p>
+                </td>
+                <td width="319" style="width: 239.5pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        default theme version; =0 if custom theme</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style="width: 46.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        24</p>
+                </td>
+                <td width="166" style="width: 124.5pt;">
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style="font-size: 10.0pt">rgb </span></span>
+                    </p>
+                </td>
+                <td width="48" style="width: 36.0pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        var</p>
+                </td>
+                <td width="319" style="width: 239.5pt;">
+                    <p class="Text" style="margin-bottom: 3.0pt">
+                        beginning of serialized package bytes</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

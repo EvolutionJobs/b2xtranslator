@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>DBCELL: Stream Offsets (D7h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>DBCELL: Stream Offsets (D7h)</h2>
+     <p class="Text">The <span class="CodeInlineChar">DBCELL </span> <span> record stores stream offsets for the BIFF file. 
+There is one </span> <span class="CodeInlineChar">DBCELL </span>
+ record for each block of <span class="CodeInlineChar">ROW </span> <span> records and associated cell
+records.  
+Each block can contain data for
+up to 32 rows.  
+For more information
+about the </span> <span class="CodeInlineChar">DBCELL </span> </span> <span> record,
+see “<span class="LinkText"><u><a href="#_Finding_Cell_Records_in BIFF Files">Finding
+Cell Records in BIFF Files</a>
+</u> </span> <span class="LinkID">EXB0250 </span>
+”. </span></p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dbRtrw </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Offset from the start of the <span class="CodeInlineChar">DBCELL </span>
+ record to the start of the
+ first <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ROW </span> </span>
+ record
+ in the block; this is an offset to an earlier position in the stream.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgdb </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Array of stream offsets (2 bytes each).</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

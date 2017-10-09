@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<html>
+ <head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+   <title>NAMECMT: Name Comment (894h)</title>
+   <link href="styles.css" rel="Stylesheet" type="text/css"/>
+ </head>
+ <body>
+   <div id="container">
+     <h2>NAMECMT: Name Comment (894h)</h2>
+     <p class="Text">
+        This record stores a comment associated with a
+specified name.</p>
+     <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style="width:446.0pt; border-collapse:collapse; ">
+ <tr>
+   <td width="61" style="width:46.0pt; border-bottom:solid windowtext 1.0pt; ">
+     <p class="Header">
+              Offset</p>
+   </td>
+   <td width="108" style="width:81.3pt; border-bottom:solid windowtext 1.0pt; ">
+     <p class="Header">
+              Name</p>
+   </td>
+   <td width="95" style="width:71.3pt; border-bottom:solid windowtext 1.0pt; ">
+     <p class="Header">
+              Size</p>
+   </td>
+   <td width="330" style="width:247.4pt; border-bottom:solid windowtext 1.0pt; ">
+     <p class="Header">
+              Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              4</p>
+   </td>
+   <td width="108" style="width:81.3pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; ">rt </span> </span></p>
+   </td>
+   <td width="95" style="width:71.3pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              2</p>
+   </td>
+   <td width="330" style="width:247.4pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              Record type; this
+ matches the BIFF 
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; ">rt </span> </span>
+               in the first two bytes of the record; =0894h</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              6</p>
+   </td>
+   <td width="108" style="width:81.3pt; ">
+     <p class="CodeInline">
+              grbitFrt</p>
+   </td>
+   <td width="95" style="width:71.3pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              2</p>
+   </td>
+   <td width="330" style="width:247.4pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; ">FRT </span> </span>
+               cell reference flag; =0 currently</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              8</p>
+   </td>
+   <td width="108" style="width:81.3pt; ">
+     <p class="Text">
+              (Reserved)
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; "/> </span></p>
+   </td>
+   <td width="95" style="width:71.3pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              8</p>
+   </td>
+   <td width="330" style="width:247.4pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              Currently not
+ used, and set to 0
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; "/> </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              16</p>
+   </td>
+   <td width="108" style="width:81.3pt; ">
+     <p class="CodeInline">
+              cachName
+             <span class="CodeInlineChar">
+               <span style="font-family:Verdana; ; color:windowtext; "/> </span></p>
+   </td>
+   <td width="95" style="width:71.3pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              2</p>
+   </td>
+   <td width="330" style="width:247.4pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              Number of
+ characters in the name; 2-byte unsigned integer value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              18</p>
+   </td>
+   <td width="108" style="width:81.3pt; ">
+     <p class="CodeInline">
+              cachComment</p>
+   </td>
+   <td width="95" style="width:71.3pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              2</p>
+   </td>
+   <td width="330" style="width:247.4pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              Number of
+ characters in the comment; 2-byte unsigned integer value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style="width:46.0pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              20</p>
+   </td>
+   <td width="108" style="width:81.3pt; ">
+     <p class="CodeInline">
+              rgach</p>
+   </td>
+   <td width="95" style="width:71.3pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              var</p>
+   </td>
+   <td width="330" style="width:247.4pt; ">
+     <p class="Text" style="margin-bottom:3.0pt">
+              ASCII name string
+ of length 
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; ">cachName </span> </span>
+               immediately followed by ASCII comment string of length 
+             <span class="CodeInlineChar">
+               <span style="font-size:11.0pt; ">cachComment </span> </span></p>
+   </td>
+ </tr>
+     </table>
+   </div>
+ </body>
+</html>

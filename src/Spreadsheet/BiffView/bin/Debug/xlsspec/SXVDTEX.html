@@ -1,0 +1,375 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXVDTEX: View Dimension OLAP Extensions (80Fh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXVDTEX: View Dimension OLAP Extensions (80Fh)</h2>
+        <p class="Text">
+            Introduced in Excel 9 (2000) this is a <span class="CodeInlineChar">FRT </span><span>
+                record. It stores OLAP extensions to the </span><span class="CodeInlineChar">SXVD </span>
+            record.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="62" style='width: 46.15pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="118" style='width: 88.35pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="50" style='width: 37.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="365" style='width: 274.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="118" style='width: 88.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="365" style='width: 274.0pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span><span>in the
+                            first two bytes of the record; =080Fh </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="118" style='width: 88.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitFrt </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="365" style='width: 274.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>flags; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="118" style='width: 88.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">wTensorFlags </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="365" style='width: 274.0pt;'>
+                    <p class="Text">
+                        OLAP options; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="118" style='width: 88.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">isxth </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="365" style='width: 274.0pt;'>
+                    <p class="Text">
+                        Which OLAP hierarchy</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="118" style='width: 88.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">isxtl </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="365" style='width: 274.0pt;'>
+                    <p class="Text">
+                        OLAP level</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="118" style='width: 88.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">csxvi </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="365" style='width: 274.0pt;'>
+                    <p class="Text">
+                        Count of 2-byte items in rgsxvi</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="118" style='width: 88.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgsxvi </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="365" style='width: 274.0pt;'>
+                    <p class="Text">
+                        Sets of PivotTable item flags; see following table for flags</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">wTensorFlags </span>field contains the following
+            option flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="45" style='width: 34.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="64" style='width: 48.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td width="130" style='width: 97.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="355" style='width: 266.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="130" style='width: 97.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fTensorSort </span>
+                    </p>
+                </td>
+                <td width="355" style='width: 266.5pt;'>
+                    <p class="Text">
+                        1= The results are returned in the same order as they are arranged on the server</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="130" style='width: 97.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDrilledLevel </span>
+                    </p>
+                </td>
+                <td width="355" style='width: 266.5pt;'>
+                    <p class="Text">
+                        1= The user drilled to this level; this is always 1 for the first level in the OLAP
+                        hierarchy</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        15-2</p>
+                </td>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        FFFCh</p>
+                </td>
+                <td width="130" style='width: 97.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="355" style='width: 266.5pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">rgsxvi </span>fields contain the following option
+            flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="45" style='width: 34.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="64" style='width: 48.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 102.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 262.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fDrilledMember </span>
+                    </p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        0= This element's children are hidden</p>
+                    <p class="Text">
+                        1= This element's child nodes are expanded</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fChildrenKnown </span>
+                    </p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        0= Excel does not know if this node has child nodes</p>
+                    <p class="Text">
+                        1= Excel knows whether this node has child nodes</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fHasChildren </span>
+                    </p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Must be zero if <span class="CodeInlineChar">fChildrenKnown</span> is zero</p>
+                    <p class="Text">
+                        0= This node has no child nodes</p>
+                    <p class="Text">
+                        1= This node has child nodes</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="45" style='width: 34.0pt;'>
+                    <p class="Text">
+                        15-3</p>
+                </td>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        FFF8h</p>
+                </td>
+                <td width="136" style='width: 102.0pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="349" style='width: 262.0pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

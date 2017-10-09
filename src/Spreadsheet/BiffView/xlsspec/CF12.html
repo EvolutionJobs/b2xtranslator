@@ -1,0 +1,1918 @@
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>CF12: Conditional Formatting Condition 12 (87Ah)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            CF12: Conditional Formatting Condition 12 (87Ah)
+        </h2>
+        <p class="Text">
+            This record stores a conditional formatting condition with content that is new for
+            Office Excel 2007.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="148" style='width: 111.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="42" style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="343" style='width: 257.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>in the
+                        first two bytes of the record; =087Ah</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>grbitFrt </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        Currently not used, and set to 0 <span class="CodeInlineChar"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ct </span></span></p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        <span>Conditional Formatting type
+                            <br />
+                            1 = &quot; Cell Value Is&quot;
+                            <br />
+                            2 = &quot; Formula Is&quot;
+                            <br />
+                            3 = “Gradient”<br />
+                            4 = “Databar”<br />
+                            5 = “Filter”<br />
+                            6 = “Multistate (KPI)” </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        17</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cp </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        Conditional Formatting operator (when <span class="CodeInlineChar">ct=1 </span><span>
+                            )<br />
+                            1 = &quot; between&quot;
+                            <br />
+                            2 = &quot; not between&quot;
+                            <br />
+                            3 = &quot; equal&quot;
+                            <br />
+                            4 = &quot; not equal&quot;
+                            <br />
+                            5 = &quot; greater than&quot;
+                            <br />
+                            6 = &quot; less than&quot;
+                            <br />
+                            7 = &quot; greater than or equal&quot;
+                            <br />
+                            8 = &quot; less than or equal&quot; </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cce1 </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        Count of bytes in <span class="CodeInlineChar">rgce1 </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cce2 </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        Count of bytes in <span class="CodeInlineChar">rgce2 </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgbdxf </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        Conditional format to apply, stored as a <span class="CodeInlineChar">DXF </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgce1 </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        First formula for this condition</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgce2 </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        Second formula for this condition</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cce3 </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        Count of bytes in <span class="CodeInlineChar">rgce3 </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgce3 </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        Third formula if needed</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitCF12 </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        see text below</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ipriority </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        condition priority</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icfTemplate </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        template index</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cbTemplateParm </span>
+                        </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        count of template bytes to follow (&lt; =16)</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgbTemplateParm </span>
+                        </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        template parameter bytes</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgbCT </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="343" style='width: 257.5pt;'>
+                    <p class="Text">
+                        type specific content follows; see text</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbitCF12</span> field is defined as follow:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="63" style='width: 47.1pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="92" style='width: 69.15pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 101.75pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 191.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fActive </span></span>
+                    </p>
+                </td>
+                <td width="255" style='width: 191.0pt;'>
+                    <p class="Text">
+                        if =1 cfvo evaluation failed so we don’t want to draw this rule.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fStopIfTrue </span></span>
+                    </p>
+                </td>
+                <td width="255" style='width: 191.0pt;'>
+                    <p class="Text">
+                        if =1 stop evaluating conditions after this rule if result is true.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        04h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="255" style='width: 191.0pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        08h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="255" style='width: 191.0pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        10h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fListCol </span></span>
+                    </p>
+                </td>
+                <td width="255" style='width: 191.0pt;'>
+                    <p class="Text">
+                        if =1 rule applies to list column</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        5-7</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        80h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        (Reserved) <span class="CodeInlineChar"></span>
+                    </p>
+                </td>
+                <td width="255" style='width: 191.0pt;'>
+                    <p class="Text">
+                        Reserved; unused</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgbCT </span></span>
+            <b></b>– This structure contains conditional format type specific information, it
+            is not present for <span class="CodeInlineChar">ct </span>=1 or <span class="CodeInlineChar">
+                ct </span>=2 types. Other types are listed below:</p>
+        <p class="Text" style='margin-left: 36.0pt'>
+            &nbsp;
+        </p>
+        <p class="Text">
+            <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgbCT </span></span>
+            <b></b><span>when </span><span class="CodeInlineChar">ct </span><span>=3<b> </b>(Gradient)<b></b>
+            </span>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+                <tr>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="144" style='width: 108.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="294" style='width: 220.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cbGradient </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        number of bytes to follow</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>bZero </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cInterpCurve </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        count of structures in <span class="CodeInlineChar">rgInterp </span>array</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cGradientCurve </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        count of structures in <span class="CodeInlineChar">rgCurve </span>array</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitGradient </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        see text below</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgInterp </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        array of interpolation formula structures</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgCurve </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        array of gradient color curve structures</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            <span><span></span>The </span><span class="CodeInlineChar">grbitGradient </span>
+            <b></b>field is defined as follow:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="63" style='width: 47.1pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="92" style='width: 69.15pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 101.75pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 155.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fClamp </span></span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        Currently always =1</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fBackground </span></span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        Currently always =1</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        2..7</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        FCh</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>(Reserved) </span></span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            <span><span></span>The </span><span class="CodeInlineChar">rgInterp </span><b></b>
+            array interpolation formula structures are defined as follows:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="144" style='width: 108.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="246" style='width: 184.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cfvoInterp </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="246" style='width: 184.5pt;'>
+                    <p class="Text">
+                        conditional format value object</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numDomain </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="246" style='width: 184.5pt;'>
+                    <p class="Text">
+                        three point linear interpolation domain. (Interpolation is used to take domain endpoints
+                        to range endpoints.)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text" style='margin-left: 36.0pt; text-indent: 36.0pt'>
+            <span>A conditional format value object (<b>cfvo</b> ) has the following structure:
+            </span>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="120" style='width: 90.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="42" style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="276" style='width: 207.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="120" style='width: 90.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cfvotype </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        <span>conditional format value type<br />
+                            1 = number<br />
+                            2 = min<br />
+                            3 = max<br />
+                            4 = percent<br />
+                            5 = percentile<br />
+                            6 = stddev<br />
+                            7 = formula </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="120" style='width: 90.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cceFmla </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        count of bytes for formula</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="120" style='width: 90.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgceFmla </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        formula bytes</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="120" style='width: 90.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numParmValue </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="276" style='width: 207.0pt;'>
+                    <p class="Text">
+                        only present if cceFmla = 0</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            The <span class="CodeInlineChar">rgCurve </span><b></b>array gradient color structures
+            are defined as follows:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="102" style='width: 76.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="42" style='width: 31.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="294" style='width: 220.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numGRange </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        gradient range</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrType </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        color type</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrValue </span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        color value – value based on color type</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        30</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>numTint </span></span>
+                    </p>
+                </td>
+                <td width="42" style='width: 31.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        tint and shade value</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            <span class="CodeInlineChar">rgbCT </span><span>when </span><span class="CodeInlineChar">
+                ct </span><span>= 4 (Databar) </span>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="144" style='width: 108.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="294" style='width: 220.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cbDataBar </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        number of bytes to follow</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>bZero </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitDatabar </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        see text below</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iPercentMin </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        min length of data bar as % of cell width</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iPercentMax </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        max length of data bar as % of cell width</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrType </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        color type</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">xclrValue </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        color value – value based on color type</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">numTint </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        tint and shade value</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        26</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cfvoDB1 </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        cfvo – formula 1</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cfvoDB2 </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        cfvo – formula 2</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbitDatabar </span><b></b>field is defined as
+            follow:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="63" style='width: 47.1pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="92" style='width: 69.15pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 101.75pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 155.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fRightToLeft </span></span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        direction of bar in cell</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fShowValue </span></span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        if =1 show values in cell</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        2..7</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        FCh</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            <span class="CodeInlineChar">rgbCT </span><b></b><span>when </span><span class="CodeInlineChar">
+                ct </span><span>=5 (Filter)<b></b> </span>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="144" style='width: 108.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="294" style='width: 220.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cbFilter </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        number of bytes to follow</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>bZero </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitFilter </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        see text below</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iParam </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        top/bottom parameter range</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbitFilter </span><b></b>field is defined as follow:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="63" style='width: 47.1pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="92" style='width: 69.15pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 101.75pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 155.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fTop </span></span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        if =1 filter top results</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fPercent </span></span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        <span>if =1 format values that are in the given % of the selected range </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        2..7</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        FCh</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            <span class="CodeInlineChar">rgbCT </span><b></b><span>when </span><span class="CodeInlineChar">
+                ct </span><span>= 6 (Multistate/KPI) </span>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="144" style='width: 108.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="294" style='width: 220.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cbMulti </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        number of bytes to follow</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>bZero </span></span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">csStates </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 3.0pt;
+                        margin-left: 36.0pt'>
+                        count of structures in <span class="CodeInlineChar">rgStates </span>array</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iIconSet </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        <span>index of icon set to use<br />
+                            0 = 3 Arrows<br />
+                            1 = 3 Arrows Gray<br />
+                            2 = 3 Flags<br />
+                            3 = 3 Traffic Lights 1<br />
+                            4 = 3 Traffic Lights 2<br />
+                            5 = 3 Signs<br />
+                            6 = 3 Symbols<br />
+                            7 = 3 Symbols 2<br />
+                            8 = 4 Arrows<br />
+                            9 = 4 Arrows Gray<br />
+                            10 = 4 Red To Black<br />
+                            11 = 4 Rating<br />
+                            12 = 4 Traffic Lights </span>
+                    </p>
+                    <p class="Text">
+                        <span>13 = 5 Arrows<br />
+                            14 = 5 Arrows Gray<br />
+                            15 = 5 Rating<br />
+                            16 = 5 Quarters </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitMulti </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        see text below</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgStates </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="294" style='width: 220.5pt;'>
+                    <p class="Text">
+                        array of state structures</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbitMulti </span>field is defined as follow:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="63" style='width: 47.1pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="92" style='width: 69.15pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 101.75pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 155.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fIconOnly </span></span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        if =1 show icon only in cell</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        must be 0</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        04h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fReverse </span></span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        if =1 reverse icon order</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="63" style='width: 47.1pt;'>
+                    <p class="Text">
+                        3..7</p>
+                </td>
+                <td width="92" style='width: 69.15pt;'>
+                    <p class="Text">
+                        F8h</p>
+                </td>
+                <td width="136" style='width: 101.75pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="207" style='width: 155.0pt;'>
+                    <p class="Text">
+                        reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            The <span class="CodeInlineChar">rgStates </span>array contains structures
+            with the following format:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="144" style='width: 108.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="246" style='width: 184.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cfvo </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="246" style='width: 184.5pt;'>
+                    <p class="Text">
+                        conditional format value object</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>fEqual </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="246" style='width: 184.5pt;'>
+                    <p class="Text">
+                        if =1 then use icon if “&gt; =”</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="246" style='width: 184.5pt;'>
+                    <p class="Text">
+                        Not used</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

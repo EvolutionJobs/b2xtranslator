@@ -1,0 +1,254 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>CONDFMT12: Conditional Formatting Range Information 12 (879h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2><a name="_Toc157240453"><span>CONDFMT12: Conditional Formatting Range
+Information 12<b> </b> </span>
+(879h)
+</a>
+</h2>
+     <p class="Text"><span>Office Excel 2007 introduced new kinds of
+condition types and formatting for conditional formats. When saving a
+conditional format to BIFF8, Excel will determine if any of the format’s
+conditions can be supported by previous versions. 
+If the conditional format refers to cells
+completely outside the Office Excel 2003 grid it will not be saved. If the
+format uses conditions or formatting that are only supported in Office Excel
+2007 then a </span> <span class="CodeInlineChar">CONDFMT12 </span>
+ record will be used to persist the format followed by one or more <span class="CodeInlineChar">CF12 </span>
+ records (both will be ignored by
+previous versions.) If the format contains conditions and formatting that can
+be supported in previous versions then a <span class="CodeInlineChar">CONDFMT </span>
+ record (truncating to the smaller grid as needed) will be saved.
+The <span class="CodeInlineChar">CONDFMT </span>
+ record will
+be followed by <span class="CodeInlineChar">CF </span>
+ (1B1h) records for the non-Office Excel 2007 specific conditions
+and then <span class="CodeInlineChar">CFEX </span> </span>
+ (87Bh)
+records for conditions only supported by Office Excel 2007 or later.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="106" style='width:79.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="54" style='width:40.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="373" style='width:280.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rt </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >Record type; this
+ matches the BIFF <span class="CodeInlineChar">rt </span>
+ in the first two bytes of the record; =0879h</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar"><span style='font-size:10.0pt'>grbitFrt </span> </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">FRT </span>
+ cell reference flag; =0 currently</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="MsoNormal"><span style='font-size:10.0pt; font-family:Verdana'>(Reserved) </span> <span style='font-family:Verdana'> </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >Currently not
+ used, and set to 0 <span class="CodeInlineChar"> </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >16</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ccf </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text">Number of <span class="CodeInlineChar">CF12 </span>
+ records to follow</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >18</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbitCF </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >Option flags</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >20</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rwFirst </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >First row to
+ conditionally format (0-based)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >22</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rwLast </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >Last row to
+ conditionally format (0-based)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >24</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colFirst </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >First column to
+ conditionally format (0-based)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >26</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colLast </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >Last column to
+ conditionally format (0-based)</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >28</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rgbSqref </span></p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >Array of <span class="CodeInlineChar">sqref </span>
+ structures</p>
+   </td>
+ </tr>
+</table>
+     <p class="Text">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbitCF </span>
+<b> </b>
+field is defined as follow:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="63" style='width:47.1pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="92" style='width:69.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td style='width:101.75pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td style='width:191.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="63" style='width:47.1pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="92" style='width:69.15pt;'>
+     <p class="Text">0001h</p>
+   </td>
+   <td width="136" style='width:101.75pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fToughRecalc </span> </span></p>
+   </td>
+   <td width="255" style='width:191.0pt;'>
+     <p class="Text">=1 if the appearance of the cell requires
+ significant processing</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="63" style='width:47.1pt;'>
+     <p class="Text">1..15</p>
+   </td>
+   <td width="92" style='width:69.15pt;'>
+     <p class="Text">FFFEh</p>
+   </td>
+   <td width="136" style='width:101.75pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>nID </span></p>
+   </td>
+   <td width="255" style='width:191.0pt;'>
+     <p class="Text">unique ID of this conditional format</p>
+   </td>
+ </tr>
+</table>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,1573 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>AUTOFILTER12: Auto-filter Data Introduced in Excel 2007 (87Eh)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            AUTOFILTER12: Auto-filter Data Introduced in Excel 2007 (87Eh)</h2>
+        <p class="Text">
+            This record stores data for Excel 2007 new auto-filter types.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — BIFF8 only </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="148" style='width: 111.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="55" style='width: 41.6pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="330" style='width: 247.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>in the
+                        first two bytes of the record; =087Eh</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        grbitFrt</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span>
+                    </p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Currently not used, and set to 0 <span class="CodeInlineChar"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        iEntry</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        The number of the column to which this filter applies, 0-based; stored as 2-byte
+                        integer number</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        fHideArrow</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        =1 if dropdown arrow is hidden</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        ft</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Filter type (see below for details)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        26</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        cft</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Custom filter type (see below for details)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        30</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        ccriteria</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Number of criteria</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        34</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        cdate­groupings</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Number of date groupings</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        38</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        grbit</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Auto-filter flags (see below for details)</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        40</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        wTop10Num</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Top 10 filter type (see below for details). Only defined when <span class="CodeInlineChar">
+                            fTop10 </span>in <span class="CodeInlineChar">grbit </span>is =1</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        44</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        idList</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Table unique ID, =0xFFFFFFFF if this is worksheet auto-filter; stored as unsigned
+                        4-byte integer number</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        48</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        guidSview</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        GUID of the associated custom view, if any; a 16-byte (128-bit) number</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        64</p>
+                </td>
+                <td width="148" style='width: 111.0pt;'>
+                    <p class="CodeInline">
+                        rgb</p>
+                </td>
+                <td width="55" style='width: 41.6pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">DXF </span>data or cell icon (see below for details)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">ft </span>field contains one of the following values:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="77" style='width: 58.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        ft</p>
+                </td>
+                <td width="517" style='width: 388.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Filter type</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        00h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Value</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Cell color</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Font color</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        03h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Cell icon</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">cft </span>field contains one of the following
+            values:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="77" style='width: 58.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        cft</p>
+                </td>
+                <td width="517" style='width: 388.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Custom filter type</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        00h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Nothing</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Above average</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Below average</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        03h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Top 10</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        04h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Equal to date</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        05h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Before date</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        06h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        After date</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        07h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Between dates</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        08h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Tomorrow</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        09h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Today</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        0Ah</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Yesterday</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        0Bh</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Next week</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        0Ch</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        This week</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        0Dh</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Last week</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        0Eh</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Next month</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        0Fh</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        This month</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        10h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Last month</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        11h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Next quarter</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        12h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        This quarter</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        13h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Last quarter</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        14h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Next year</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        15h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        This year</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        16h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Last year</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        17h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Year-to-date</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        18h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>1<sup>st</sup> quarter </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        19h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>2<sup>nd</sup> quarter </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        1Ah</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>3<sup>rd</sup> quarter </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        1Bh</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>4<sup>th</sup> quarter </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        1Ch</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>1<sup>st</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        1Dh</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>2<sup>nd</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        1Eh</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>3<sup>rd</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        1Fh</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>4<sup>th</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        20h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>5<sup>th</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        21h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>6<sup>th</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        22h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>7<sup>th</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        23h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>8<sup>th</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        24h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>9<sup>th</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        25h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>10<sup>th</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        26h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>11<sup>th</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        27h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        <span>12<sup>th</sup> month </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        28h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Not equal to date</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        29h</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Before or equal to date</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        2Ah</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        After or equal to date</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="77" style='width: 58.0pt;'>
+                    <p class="Text">
+                        2Bh</p>
+                </td>
+                <td width="517" style='width: 388.0pt;'>
+                    <p class="Text">
+                        Not between dates</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains the following flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="60" style='width: 45.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td width="198" style='width: 148.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="229" style='width: 172.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="60" style='width: 45.0pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="198" style='width: 148.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fTop10 </span></span></p>
+                </td>
+                <td width="229" style='width: 172.0pt;'>
+                    <p class="Text">
+                        =1 if this is Top 10 criterion</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="60" style='width: 45.0pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="198" style='width: 148.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fTop </span></span>
+                    </p>
+                </td>
+                <td width="229" style='width: 172.0pt;'>
+                    <p class="Text">
+                        =1 if top, =0 if bottom</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="60" style='width: 45.0pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td width="198" style='width: 148.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fPercent </span></span>
+                    </p>
+                </td>
+                <td width="229" style='width: 172.0pt;'>
+                    <p class="Text">
+                        =1 if percent, =0 if items</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="60" style='width: 45.0pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td width="198" style='width: 148.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fWorksheet­AutoFilter
+                        </span></span>
+                    </p>
+                </td>
+                <td width="229" style='width: 172.0pt;'>
+                    <p class="Text">
+                        =1 if this is worksheet AutoFilter</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4-15</p>
+                </td>
+                <td width="60" style='width: 45.0pt;'>
+                    <p class="Text">
+                        FFF0h</p>
+                </td>
+                <td width="198" style='width: 148.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="229" style='width: 172.0pt;'>
+                    <p class="Text">
+                        Currently not used, and set to 0</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            The <span class="CodeInlineChar">wTop10Num </span>field contains one of the following
+            values:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="113" style='width: 85.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        wTop10Num</p>
+                </td>
+                <td width="481" style='width: 361.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Top 10 filter type</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="113" style='width: 85.0pt;'>
+                    <p class="Text">
+                        00h</p>
+                </td>
+                <td width="481" style='width: 361.0pt;'>
+                    <p class="Text">
+                        Unknown</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="113" style='width: 85.0pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="481" style='width: 361.0pt;'>
+                    <p class="Text">
+                        Count</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="113" style='width: 85.0pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="481" style='width: 361.0pt;'>
+                    <p class="Text">
+                        Percent</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="113" style='width: 85.0pt;'>
+                    <p class="Text">
+                        03h</p>
+                </td>
+                <td width="481" style='width: 361.0pt;'>
+                    <p class="Text">
+                        Sum</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            <span style=''>If </span><span class="CodeInlineChar">ft </span><span style=''>field
+                contains 00h (value) </span>, then there is no data stored in <span class="CodeInlineChar">
+                    rgb </span>block. All criteria and date groupings data is stored in <span class="CodeInlineChar">
+                        CONTINUEFRT12 </span>(87Fh) records that follow <span class="CodeInlineChar">EZFILTER12
+                        </span>(87Eh) record as described below.</p>
+        <p class="Text">
+            First stored are <span class="CodeInlineChar">ccriteria </span><span class="CodeInlineChar">
+                CONTINUEFRT12 </span>records of the following form:</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — BIFF8 only </span></b>
+        </p>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" align="left"
+            style='border-collapse: collapse; margin-left: 6.75pt; margin-right: 6.75pt;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="108" style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="95" style='width: 71.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="330" style='width: 247.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>in the
+                        first two bytes of the record; =087Fh</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        grbitFrt</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        ref <span class="CodeInlineChar"><span style='font-family: Verdana; color: windowtext;'>
+                        </span></span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Area reference (range) to which the AutoFilter is applied <span class="CodeInlineChar">
+                            <span style='font-size: 11.0pt;'></span></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        doper</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        DOPER structure (described in <span class="CodeInlineChar">AUTOFILTER </span>(9Eh)
+                        record)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        26</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar">rgch </span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        String storage for vtString <span class="CodeInlineChar">DOPER </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="Text">
+            Criteria records are followed by <span class="CodeInlineChar">cdategroupings </span>
+            <span class="CodeInlineChar">CONTINUEFRT12 </span>records of the following form:</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data — BIFF8 only </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="108" style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="95" style='width: 71.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="330" style='width: 247.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>in the
+                        first two bytes of the record; =087Fh</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        grbitFrt</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        ref <span class="CodeInlineChar"><span style='font-family: Verdana; color: windowtext;'>
+                        </span></span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Area reference (range) to which the AutoFilter is applied <span class="CodeInlineChar">
+                            <span style='font-size: 11.0pt;'></span></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        yr</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>Year, 4-digit </span>
+                    </p>
+                </td>
+            </tr>
+             
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        mon</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Month, 1-12</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        dom</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Day of the month, 1-31</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        hour</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Hour, 0-23</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        26</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        min</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Minute, 0-59</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        28</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        sec</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Second, 0-59</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        30</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        wdy</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Day of the week, 1-7</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        32</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        fracsec</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Fractions of a second</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        34</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        wRound</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Rounding parameter:</p>
+                    <p class="Text">
+                        00h. Round to seconds</p>
+                    <p class="Text">
+                        <span>01h. Round to 10<sup>th</sup> of seconds </span>
+                    </p>
+                    <p class="Text">
+                        <span>02h. Round to 100<sup>th</sup> of seconds </span>
+                    </p>
+                    <p class="Text">
+                        <span>03h. Round to 1000<sup>th</sup> of seconds </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        36</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        dnt</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Date node type. Specifies which part of the date (Year/Month/Day/Hour/Minute/Second)
+                        is being used in the filter:</p>
+                    <p class="Text">
+                        00h. Year</p>
+                    <p class="Text">
+                        01h. Month</p>
+                    <p class="Text">
+                        02h. Day</p>
+                    <p class="Text">
+                        03h. Hour</p>
+                    <p class="Text">
+                        04h. Minute</p>
+                    <p class="Text">
+                        05h. Second</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            <span style=''>If </span><span class="CodeInlineChar">ft </span><span style=''>field
+                contains 01h </span>or 02h (cell color or font respectively <span style=''>) </span>
+            , then the following data is stored in <span class="CodeInlineChar">rgb </span>block:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="108" style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="95" style='width: 71.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="330" style='width: 247.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dxf </span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Cell or font color <span class="CodeInlineChar">DXF </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            <span style=''>If </span><span class="CodeInlineChar">ft </span><span style=''>field
+                contains 03h (cell icon) </span>, then the following data is stored in <span class="CodeInlineChar">
+                    <span style='font-size: 11.0pt;'>rgb </span></span>block:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="108" style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="95" style='width: 71.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="330" style='width: 247.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iiconset </span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Icon set number</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iicon</p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Icon number within the specified set</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

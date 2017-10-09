@@ -1,0 +1,121 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>MULRK: Multiple RK Cells (BDh)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>MULRK: Multiple RK Cells (BDh)</h2>
+     <p class="Text">The <span class="CodeInlineChar">MULRK </span>
+ record stores up to the equivalent of 256 <span class="CodeInlineChar">RK </span>
+ records; the <span class="CodeInlineChar">MULRK </span> <span> record is a file size
+optimization.  
+The number of 6-byte </span> <span class="CodeInlineChar">RKREC </span>
+ structures can be determined from
+the <span class="CodeInlineChar">ColLast </span>
+ field and is
+equal to <span class="CodeInlineChar">(colLast-colFirst+1) </span> </span> <span>.  
+The maximum length of the </span> <span class="CodeInlineChar">MULRK </span>
+ record is <span class="CodeInlineChar">(256x6+10)=1546 </span> <span> bytes, because Excel has
+at most 256 columns.  
+<b>Note</b>
+: storing 256 </span> <span class="CodeInlineChar">RK </span>
+ numbers in the <span class="CodeInlineChar">MULRK </span>
+ record takes 1,546 bytes as
+compared with 3,584 bytes for 256 <span class="CodeInlineChar">RK </span>
+ records.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="608" style='width:455.85pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="97" style='width:72.95pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="50" style='width:37.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="399" style='width:299.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="97" style='width:72.95pt;'>
+     <p class="CodeInline">rw</p>
+   </td>
+   <td width="50" style='width:37.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Row number (0-based)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="97" style='width:72.95pt;'>
+     <p class="CodeInline">colFirst</p>
+   </td>
+   <td width="50" style='width:37.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Column number (0-based) of the first column of
+ the multiple <span class="CodeInlineChar">RK </span>
+ record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="97" style='width:72.95pt;'>
+     <p class="CodeInline">rgrkrec</p>
+   </td>
+   <td width="50" style='width:37.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Array of 6-byte <span class="CodeInlineChar">RKREC </span>
+ structures</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="97" style='width:72.95pt;'>
+     <p class="CodeInline">colLast</p>
+   </td>
+   <td width="50" style='width:37.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text">Last column containing the <span class="CodeInlineChar">RKREC </span>
+ structure</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">RKREC
+ structure is defined as follows:</p>
+     <p class="Code">typedef struct rkrec</p>
+     <p class="Code">{</p>
+     <p class="Code"><span>     
+SHORT ixfe; /* index to XF record */ </span></p>
+     <p class="Code"><span>     
+long RK; /* RK number */ </span></p>
+     <p class="Code">}</p>
+     <p class="Code">RKREC; </p>
+     <p class="Code">&nbsp; </p>
+</div>
+</body>
+</html>
+

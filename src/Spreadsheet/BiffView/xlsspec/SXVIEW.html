@@ -1,0 +1,774 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXVIEW: View Definition (B0h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXVIEW: View Definition (B0h)</h2>
+        <p class="Text">
+            This record contains top-level PivotTable information.</p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="118" style='width: 88.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 275.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rwFirst </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        First row of the PivotTable</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rwLast </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Last row of the PivotTable</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">colFirst </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        First column of the PivotTable</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">colLast </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Last column of the PivotTable</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rwFirstHead </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        First row containing PivotTable headings</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rwFirstData </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        First row containing PivotTable data</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">colFirstData </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        First column containing PivotTable data</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iCache </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Index to the cache</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">sxaxis4Data </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Default axis for a data field</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        24</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ipos4Data </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Default position for a data field</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        26</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cDim </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Number of fields</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        28</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cDimRw </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Number of row fields</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        30</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cDimCol </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Number of column fields</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        32</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cDimPg </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Number of page fields</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        34</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cDimData </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Number of data fields</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        36</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cRw </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Number of data rows</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        38</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cCol </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Number of data columns</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        40</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Option flags</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        42</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">itblAutoFmt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Index to the PivotTable autoformat</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        44</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cchName </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Length of the PivotTable name</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        46</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cchData </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Length of the data field name</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        48</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgch </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        PivotTable name, followed by the name of a data field</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains the following option
+            flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="588"
+            style='width: 441.15pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="54" style='width: 40.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="62" style='width: 46.15pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 84.35pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 225.65pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fRwGrand </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        =1 if the PivotTable contains grand totals for rows</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fColGrand </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        =1 if the PivotTable contains grand totals for columns</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAutoFormat </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        =1 if the PivotTable has an autoformat applied</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0010h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fWH </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        =1 if the width/height autoformat is applied</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0020h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fFont </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        =1 if the font autoformat is applied</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0040h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAlign </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        =1 if the alignment autoformat is applied</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0080h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fBorder </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        =1 if the border autoformat is applied</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0100h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fPattern </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        =1 if the pattern autoformat is applied</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0200h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fNumber </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        =1 if the number autoformat is applied</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        15–10</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        FC00h</p>
+                </td>
+                <td width="112" style='width: 84.35pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="301" style='width: 225.65pt;'>
+                    <p class="Text">
+                        Reserved; must be 0 (zero)</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FILESHARING: File Sharing Information (5Bh)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>FILESHARING: File&#8209; Sharing Information (5Bh)</h2>
+     <p class="Text"><span>This record stores file-sharing options selected
+in the <b>Options</b>
+ dialog box, accessed
+by using the <b>Save As</b>
+ command (<b>File</b>
+ menu). 
+The write reservation password entered in the
+dialog box is encrypted to an integer, </span> <span class="CodeInlineChar">wResPass </span> <span>.  
+This record also contains
+the user name of the file’s creator, </span> <span class="CodeInlineChar">stUNWriteRes </span>
+.</p>
+<h3><a name="_Toc157240504">Changes for BIFF7
+</a>
+</h3>
+     <p class="Text"><span>There are minor changes to the behavior of this
+record in BIFF7.  
+For Excel 7.0 workbooks
+without shared lists, this record behaves as it does in BIFF5. </span></p>
+     <p class="Text">For Excel 7.0 workbooks with shared lists, there
+are both <span class="CodeInlineChar">FILESHARING </span> </span>
+and <span class="CodeInlineChar">FILESHARING2 </span>
+ records
+in the <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>Book </span> </span> <span>
+stream.  
+In this case, </span> <span class="CodeInlineChar">FILESHARING </span> <span> always contains a dummy
+password.  </span> <span class="CodeInlineChar">FILESHARING2
+ contains either a dummy
+password if the workbook is not write-protected or a valid password if the
+workbook is write-protected.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="118" style='width:88.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="373" style='width:280.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="CodeInline">fReadOnlyRec</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text"><span>=1 if the <b>Read Only Recommended</b>
+ option
+ is selected in the <b>Options</b>
+ dialog box </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="CodeInline">wResPass</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text">Encrypted password (if this field is 0 (zero),
+ there is no write reservation password)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="CodeInline">cch</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text">Length of the user name</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">9</p>
+   </td>
+   <td width="118" style='width:88.5pt;'>
+     <p class="CodeInline">stUNWriteRes</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text">User name</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

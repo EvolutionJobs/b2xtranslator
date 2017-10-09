@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>CONTINUE: Continues Long Records (3Ch)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>CONTINUE: Continues Long Records (3Ch)</h2>
+     <p class="Text"><span>Records longer than 8,228 bytes (2,084 bytes in
+BIFF7 and earlier) must be split into several records. 
+The first section appears in the base record; subsequent sections appear in </span> <span class="CodeInlineChar">CONTINUE </span>
+ records.</p>
+     <p class="Text">In BIFF8, the <span class="CodeInlineChar">TXO </span>
+ record is always followed by <span class="CodeInlineChar">CONTINUE </span>
+ records that store the string data and formatting runs.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="83" style='width:62.45pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text" >Continuation of
+ record data</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">If the continued data is a string, the <span class="CodeInlineChar">CONTINUE </span>
+ record also has a field to
+indicate whether the string is compressed or uncompressed unicode.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="106" style='width:79.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">grbit </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text"><span>0= Compressed unicode string<br />
+ 1= Uncompressed unicode string </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Continuation of record data</p>
+   </td>
+ </tr>
+</table>
+</div>
+</body>
+</html>
+

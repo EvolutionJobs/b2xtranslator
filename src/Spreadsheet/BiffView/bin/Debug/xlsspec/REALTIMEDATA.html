@@ -1,0 +1,508 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>REALTIMEDATA: Real-Time Data (RTD) (813h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>REALTIMEDATA: Real-Time Data (RTD) (813h)</h2>
+     <p class="Text">Introduced in Excel 10 (2002) this BIFF record
+is an <span class="CodeInlineChar">FRT </span> <span> record. 
+There is one </span> <span class="CodeInlineChar">REALTIMEDATA </span>
+ record for each <span class="CodeInlineChar">RTD </span> <span> (real-time data) topic in the
+workbook.  
+Each </span> <span class="CodeInlineChar">REALTIMEDATA </span>
+ record contains topic name,
+variant <span class="CodeInlineChar">RTD </span> </span>
+ data ( <span class="CodeInlineChar">RTDOPER </span>
+), and an array of <span class="CodeInlineChar">RTDE </span> <span> structures describing the set of
+cells associated with it.  
+If necessary,
+this record may continue with one or more </span> <span class="CodeInlineChar">CONTINUEFRT </span>
+ records following it.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="132" style='width:99.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:266.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="132" style='width:99.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rt </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="355" style='width:266.5pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> <span> in the first two bytes of the
+ record;    
+=0813h </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="132" style='width:99.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitFrt </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="355" style='width:266.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>FRT </span> </span>
+ flags; must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="132" style='width:99.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ichSamePrefix </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="355" style='width:266.5pt;'>
+     <p class="Text">Number of leading characters in common with
+ the previous Topic string (implicitly understood, and not to be repeated in
+ this record); basically the length of any common prefix between the Topic of
+ this record and the Topic of the previous <span class="CodeInlineChar">REALTIMEDATA </span> <span> record.  
+Zero if there is
+ no prefix in common, or if this is the first </span> <span class="CodeInlineChar">REALTIMEDATA </span>
+ record.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">12</p>
+   </td>
+   <td width="132" style='width:99.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cchTopic </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="355" style='width:266.5pt;'>
+     <p class="Text">Count of characters in the Topic string, not
+ including the implicit prefix if <span class="CodeInlineChar">ichSamePrefix </span>
+ is greater than zero.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="132" style='width:99.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgchTopic </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="355" style='width:266.5pt;'>
+     <p class="Text"><span>Topic string, not including the implicit
+ prefix, if any.  
+May be encoded as a
+ compressed or uncompressed Unicode string. 
+ 
+(See section titled<span style='color:red'> </span> <span style='color:lime'>‘<a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in
+ Biff8</a>
+’ </span>
+for more information about these encodings.)<span style='color:red'> </span> </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="132" style='width:99.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>RTDOPER </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="355" style='width:266.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>RTDOPER </span> </span>
+ contains variant type and data of <span class="CodeInlineChar">RTD </span>
+ data (similar to but not identical to <span class="CodeInlineChar">OPER </span>
+ structure used elsewhere)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="132" style='width:99.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgRTDE </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="355" style='width:266.5pt;'>
+     <p class="Text">Variable-length array of <span class="CodeInlineChar">RTDE </span>
+ structures, describing the set of
+ cells associated with the <span class="CodeInlineChar">RTD </span> <span> topic.  
+Each </span> <span class="CodeInlineChar">RTDE </span> <span> contains row, column, and sheet
+ tab index.  
+Length of array determined
+ by record size of this record and any </span> <span class="CodeInlineChar">CONTINUEFRT </span> <span style='color:lime'> </span>
+records.</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">RTDOPER </span>
+ structure can be one of the following formats:</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>RTDOPER Structure Which Contains a
+Number </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="83" style='width:62.45pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbit </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text" >=0001h for variant
+ <span class="CodeInlineChar">RTD </span>
+ data which
+ contains a number</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">num </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text" >IEEE
+ floating-point number</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>RTDOPER Structure Which Contains a
+String </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="83" style='width:62.45pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbit </span> </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text">=0002h or 1000h for variant <span class="CodeInlineChar">RTD </span>
+ data which contains a string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cch </span> </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text">Number of characters in the string rgch</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgch </span> </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text"><span>String<span style='color:red'>   </span>
+(See section titled <span style='color:blue'><a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in
+ Biff8</a> </span>
+) </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>RTDOPER Structure Which Contains a
+Boolean Value </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="83" style='width:62.45pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbit </span> </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text">=0004h for variant <span class="CodeInlineChar">RTD </span>
+ data which contains a Boolean
+ value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>f </span> </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text"><span>=1 if TRUE<br />
+ =0 if FALSE </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>RTDOPER Structure Which Contains an
+Error Value </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="83" style='width:62.45pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbit </span> </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text">=0010h for variant <span class="CodeInlineChar">RTD </span>
+ data which contains an error value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>err </span> </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text">Error value</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>RTDOPER Structure Which Contains an
+Integer </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="83" style='width:62.45pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbit </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text" >=0800h for variant
+ <span class="CodeInlineChar">RTD </span>
+ data which
+ contains an integer</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">w </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text" >32-bit signed
+ integer</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>RTDE Structure </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="83" style='width:62.45pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="48" style='width:36.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rw </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text" >Row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">col </span></p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text" >Column</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="83" style='width:62.45pt;'>
+     <p class="Text" ><span class="CodeInlineChar">Itab</p>
+   </td>
+   <td width="48" style='width:36.15pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="402" style='width:301.4pt;'>
+     <p class="Text" >Sheet tab index</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

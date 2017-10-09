@@ -1,0 +1,339 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>ARRAY: Array-Entered Formula (221h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            ARRAY: Array-Entered Formula (221h)</h2>
+        <p class="Text">
+            An <span class="CodeInlineChar">ARRAY </span><span>record describes a formula that was
+                array-entered into a range of cells. The range of cells in which the array is entered
+                is defined by the </span><span class="CodeInlineChar">rwFirst </span>, <span class="CodeInlineChar">
+                    rwLast </span>, <span class="CodeInlineChar">colFirst </span>, and <span class="CodeInlineChar">
+                        colLast </span>fields.</p>
+        <p class="Text">
+            The <span class="CodeInlineChar">ARRAY </span>record occurs directly after the <span
+                class="CodeInlineChar">FORMULA </span><span>record for the cell in the upper-left corner
+                    of the array<span style='letter-spacing: -1.75pt'> </span>—<span style='letter-spacing: -1.75pt'>
+                    </span>that is, the cell defined by the </span><span class="CodeInlineChar">rwFirst
+                    </span>and <span class="CodeInlineChar">colFirst </span>fields.</p>
+        <p class="Text">
+            <span>The parsed expression is the array formula, stored in the Excel internal format.
+                For an explanation of the parsed format, see “<span class="LinkText"><a href="#_Microsoft_Excel_Formulas">Microsoft
+                    Excel Formulas</a></span>”. </span>
+        </p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="118" style='width: 88.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Field Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="367" style='width: 275.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rwFirst </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        First row of the array</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rwLast </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Last row of the array</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">colFirst </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        First column of the array</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">colLast </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Last column of the array</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Option flags</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">chn </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        (See text)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cce </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        Length of the parsed expression</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="118" style='width: 88.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgce </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="367" style='width: 275.5pt;'>
+                    <p class="Text">
+                        <span><a href="#_Parsed_Expressions_and_Tokens">Parsed formula expression</a> </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            Ignore the <span class="CodeInlineChar">chn </span><span>field when reading the BIFF
+                file. If a BIFF file is written, the </span><span class="CodeInlineChar">chn </span>
+            field must be <span class="CodeInlineChar">00000000h </span>.</p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains the following option
+            flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="40" style='width: 30.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="54" style='width: 40.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td width="109" style='width: 82.05pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Flag Name</p>
+                </td>
+                <td style='width: 247.45pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="40" style='width: 30.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="109" style='width: 82.05pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAlwaysCalc </span>
+                    </p>
+                </td>
+                <td width="330" style='width: 247.45pt;'>
+                    <p class="Text">
+                        Always calculate the formula.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="40" style='width: 30.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="109" style='width: 82.05pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fCalcOnLoad </span>
+                    </p>
+                </td>
+                <td width="330" style='width: 247.45pt;'>
+                    <p class="Text">
+                        Calculate the formula when the file is opened.</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="40" style='width: 30.0pt;'>
+                    <p class="Text">
+                        7–2</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        FCh</p>
+                </td>
+                <td width="109" style='width: 82.05pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td width="330" style='width: 247.45pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="40" style='width: 30.0pt;'>
+                    <p class="Text">
+                        7–0</p>
+                </td>
+                <td width="54" style='width: 40.5pt;'>
+                    <p class="Text">
+                        FFh</p>
+                </td>
+                <td width="109" style='width: 82.05pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td width="330" style='width: 247.45pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,3264 @@
+<html> 
+<head>   
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <title>FEAT11: Shared Feature 11 Record (872h)</title>
+   <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body> 
+<div id="container"> 
+<h2>FEAT11: Shared Feature 11 Record (872h)</h2>
+     <p class="Text">Introduced in Excel 11 (2003) the Shared Feature 11 ( <span class="CodeInlineChar">FEAT11 </span> ) record describes a specific Shared Feature Data such as Tables.</p>
+     <p class="Text">Since the <span class="CodeInlineChar">FEAT </span>
+ record in Excel 2002 does not have as much extensibility for round-tripping future data structures through earlier versions of Excel, this new record type is introduced in Excel 2003 which is similar to <span class="CodeInlineChar">FEAT </span>
+ record but has more extensibility built in for better round-tripping stories through earlier versions of Excel.</p>
+     <p class="Text">Hence, starting from Excel 2003, the <span class="CodeInlineChar">FEAT </span> record, introduced in Excel 2002, is no-longer used for new feature data structures. Instead, <span class="CodeInlineChar">FEAT11 </span>
+ is used for saving the data structure for new features such as Tables.</p>
+     <p class="Text">Still, Excel has many different Shared Features such as Formula Error Checking, Protection, SmartTag etc., and Tables, only 3 types of Shared Feature may be created in Excel 2003: Protection, SmartTag, and Tables using either <span class="CodeInlineChar">FEAT </span>
+ or <span class="CodeInlineChar">FEAT11 </span>
+ records.</p>
+     <p class="Text" style='page-break-after: avoid; background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+ </b></p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead> 
+ <tr>
+   <td style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:289.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="CodeInline">rt</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> in the first two bytes of the record;   =0872h</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="CodeInline">grbitFrt</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">FRT </span> cell reference flag (see table below for details)</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="CodeInline">Ref</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text">Range reference to a worksheet cell region if <span class="CodeInlineChar">grbitFrt=1 </span>
+ ( <span class="CodeInlineChar">bitFrtRef </span>).  Otherwise blank.</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="CodeInline">isf</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text"><span>Shared feature type index<br /> =5 for Table </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">18</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="CodeInline">fHdr</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text">=0 since this is for <span class="CodeInlineChar">feat </span> not <span class="CodeInlineChar">feat </span> header</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">19</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text"><span>Reserved for future use<br /> =0 for Table </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">23</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="CodeInline">cref</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text">Count of ref ranges this feature is on</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">25</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="CodeInline">cbFeatData</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text">Count of byte for the current feature data.</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">29</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text">=0 currently not used</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">31</p>
+   </td>
+   <td style='width:75.0pt;'>
+     <p class="CodeInline">rgbFeat</p>
+   </td>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td style='width:289.0pt;'>
+     <p class="Text">Variable length byte of feature specific data (see section below for detail <span class="CodeInlineChar">FEAT </span> structures of each shared feature type)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">Where the <span class="CodeInlineChar">grbitFrt </span> flags has the following bits</p>
+ 
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'> 
+ <tr> 
+   <td width="53" style='width:40.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="72" style='width:54.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="144" style='width:108.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td width="325" style='width:244.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Description</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="72" style='width:54.0pt;'>
+     <p class="Text">0001h</p>
+   </td>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">bitFrtRef</p>
+   </td>
+   <td width="325" style='width:244.0pt;'>
+     <p class="Text">The <span class="CodeInlineChar">Ref </span> bits have value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="72" style='width:54.0pt;'>
+     <p class="Text">0002h</p>
+   </td>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">bitFrtVolatile</p>
+   </td>
+   <td width="325" style='width:244.0pt;'>
+     <p class="Text">Alert when saving in earlier versions of Excel</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">15-2</p>
+   </td>
+   <td width="72" style='width:54.0pt;'>
+     <p class="Text">FFFCh</p>
+   </td>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">bitFrtError</p>
+   </td>
+   <td width="325" style='width:244.0pt;'>
+     <p class="Text">There are error with this record</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">However, since each Shared Feature type has its own specific data structure, this <span class="CodeInlineChar">FEAT </span>
+ record has a different data structure layout in the <span class="CodeInlineChar">rgbFeat </span>
+ field according to the Shared Feature type (the <span class="CodeInlineChar">isf </span> field flags have different Shared Feature types). This is because the detailed data structure of <span class="CodeInlineChar">rgbFeat </span>
+ for the Protection and Factoid are listed in <span class="CodeInlineChar">FEAT </span> already.  Here, only the Table type is listed, and saved in <span class="CodeInlineChar">FEAT11 </span>
+ .</p>
+     <p class="Text" style='page-break-after: avoid; background:#F3F3F3'><b><span style='font-family:Arial;'>The rgbFeat structure for Excel 11 (2003) - If the feature type is a Table (isf=5) </span>
+ </b></p>
+     <p class="TableSpacingAfter">&nbsp; </p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'> 
+ <thead>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="126" style='width:94.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="150" style='width:112.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="259" style='width:194.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">lt </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text"><span>Table data source type:<br /> =0 for Excel Worksheet Table<br /> =1 for read-write SharePoint linked List<br />  =2 for XML mapper Table </span></p>
+     <p class="Text">=3 for Query Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">idList </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">The ID of the Table (unique per worksheet)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">crwHeader </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">How many header/title rows the Table has at the top</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">12</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">crwTotals </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">How many total rows the Table has at the bottom</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">idFieldNext </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Next id to try when assigning a unique id to a new field</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">20</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cbFSData </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">The size of the Fixed Data portion of the Table data structure.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">24</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rupBuild </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">the <span class="CodeInlineChar">rupBuild </span>
+ that generated the record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">26</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">unusedShort </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">UNUSED short that can be used later. The value is reserved during round-tripping.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">28</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">listFlags </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text"><span>Collection of bit flags:<br />
+  (see </span><span class="CodeInlineChar">listFlags </span><span style='color:#0000C4'>’ </span>
+ bit setting table below for detail.)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">32</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">lPosStmCache </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Table data stream position of cached data</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">36</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cbStmCache </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Count of bytes of cached data</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">40</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cchStmCache </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Count of characters of uncompressed cached data in the stream</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">44</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">lem </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text"><span>Table edit mode<br />
+  (see List (Table) Editing Mode ( </span><span class="CodeInlineChar">lem </span>
+ ) setting table below for details.)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">48</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbHashParam </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Hash value for SharePoint
+  Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">64</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cchName </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Count of characters in the Table name string <span class="CodeInlineChar">rgbName </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">66</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbName </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text"><span>Table name string using Unicode encoding
+ .    (See section titled <span class="MsoHyperlink"><a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in Biff8</a> </span>
+ for more information about these encodings.) </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cFieldData </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Number of column fields in the Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">Var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cchCSPName </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">listFlags.fLoadCSPName </span>
+ is TRUE</p>
+     <p class="Text">0 -otherwise</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Count of characters in the Cryptographic Service Provider Name string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbCSPName </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">Var</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Name of the Cryptographic Service Provider used to generate <span class="CodeInlineChar">rgbHashParam </span>
+ , of length <span class="CodeInlineChar">cbCSPName </span><span>. String saved using Unicode encoding
+ .   (See section titled <span class="MsoHyperlink"><a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in Biff8</a> </span>
+ for more information about these encodings.) </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cchEntryId </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">listFlags.fLoadEntryId </span>
+ is TRUE</p>
+     <p class="Text">0 -otherwise</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Count of characters in the Map Entry Id <span class="CodeInlineChar">rgbEntryId </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbEntryId </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">var –if <span class="CodeInlineChar">listFlags.fLoadEntryId </span>
+ is TRUE</p>
+     <p class="Text">0 -otherwise</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Map entry ID for <span class="CodeInlineChar">XDT </span><span style='color:#0000C4'>’s </span><span> using Unicode encoding
+ .   (See section titled <span class="MsoHyperlink"><a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in Biff8</a> </span>
+ for more information about these encodings.) </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgFieldData </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Array of <span class="CodeInlineChar">cFieldData </span>
+ many field data (see Field Data table for <span class="CodeInlineChar">rgFieldData </span>
+ below for detail bits layout)</p>
+   </td>
+ </tr>
+ <tr<span>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cIdDeleted </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">listFlags.fLoadPldwIdDeleted </span>
+ is TRUE</p>
+     <p class="Text">0 –otherwise</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Count of <span class="CodeInlineChar">rgIdDeleted </span>, may be non-zero only for a SharePoint
+  linked Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgIdDeleted </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">var –if <span class="CodeInlineChar">listFlags.cIdDelete </span><span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'>&gt; 0 </span> </span></p>
+     <p class="Text">0 –otherwise</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Array of <span class="CodeInlineChar">cIdDeleted </span> many, 4-byte IDs of rows that were deleted in a SharePoint
+ Table.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">cIdChanged </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">fLoadPldwIdChange </span>
+ is TRUE</p>
+     <p class="Text">0 –otherwise</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Count of <span class="CodeInlineChar">rgIdChanged </span>, may be non-zero only for a SharePoint
+  linked Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgIdChanged </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">var –if <span class="CodeInlineChar">cIdChanged </span><span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'>&gt; 0 </span> </span></p>
+     <p class="Text">0 –otherwise</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Array of <span class="CodeInlineChar">cIdChanged </span> many 4-byte IDs of rows in a SharePoint
+  Table changed since the last refresh operation.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="CodeInline"><span class="CodeInlineChar">cCellInvalid </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">2 –of <span class="CodeInlineChar">listFlags.fLoadPlstclInvalid </span>
+ is TRUE</p>
+     <p class="Text">0 -otherwise</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Count of <span class="CodeInlineChar">rgCellInvalid </span>, may be non-zero only for a SharePoint
+  Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgCellInvalid </span></p>
+   </td>
+   <td width="150" style='width:112.5pt;'>
+     <p class="Text">var –if <span class="CodeInlineChar">listFlags.cCellInvalid </span><span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'>&gt; 0 </span> </span></p>
+     <p class="Text">0 –otherwise</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Array of <span class="CodeInlineChar">cCellInvalid </span><span> many 8-byte Cells that contain invalid data that wasn’t caught by normal error checking. Each has:<br />
+  4 bytes for row index<br />
+  4 bytes for field index in a List </span></p>
+   </td>
+ </tr>
+ </table>
+     <p class="Text">&nbsp; </p>
+     <p class="Text">Where the <span class="CodeInlineChar">listFlags </span>’ bit setting table is:</p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="655" style='width:491.0pt; border-collapse:collapse;'>
+ <thead> 
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="90" style='width:67.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="222" style='width:166.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td width="283" style='width:212.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000001h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fActive </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the Table is Active</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000002h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fAutoFilter </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if an autofilter is applied to the Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000004h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fPersistAutoFilter </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the autofilter was cached when Table is deactivated</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000008h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fShowInsertRow </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the insert row is visible</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000010h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fInsertRowInsCells </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if cells were inserted to show the insert-row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000020h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadPldwIdDeleted </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if need to load the deleted row IDs</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000040h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fShownTotalRow </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the Table’s total row has been shown before.  The total row may not be showing on the Table currently though.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000080h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fInsNewRwInFilter </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if should insert a new row when in filter mode</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000100h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fNeedsCommit </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if there are changes made to the Table that haven’t been committed</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">9</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000200h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fSingleCell </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the Table is limited to a single cell</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000400h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fInDeletion </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the Table is in Deletion state</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">11</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000800h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fDoNotApplyFilter </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if should not filter out the records in the Table by AutoFiter</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">12</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00001000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fForceInsertToBeVisible </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the Table has no data rows and the insert row is forced to be visible</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">13</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00002000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fCompressedXml </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if Table XML data was compressed on save</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">14</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00004000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadCSPName </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the <span class="CodeInlineChar">pstCSPName </span>
+ field exists</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">15</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00008000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadPldwIdCached </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if need to load the changed row IDs</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">19-16</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">000F0000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">verXL </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">the <span class="CodeInlineChar">verXLCur </span>
+ generated this <span class="CodeInlineChar">LSTD </span><span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'><br /> </span> </span><span>=11 for Office Excel 2003<br />
+  =12 for Office Excel 2007 </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">20</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00100000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadEntryId </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the Table has Entry ID</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">21</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00200000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadPllstcInvalid </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if we need to load the array of invalid Table cells</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">22</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00400000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fGoodRupBld </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if <span class="CodeInlineChar">rupBld </span>
+ has been initialized correctly</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">23</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00800000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fDefaultListBdr </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the Table border is the default border, in other words, it has not been modified</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">24</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">01000000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">fPublished </span></p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">=1 if the Table is published</p>
+   </td>
+ </tr>
+ <tr<span>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">31-25</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">FE000000h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="283" style='width:212.5pt;'>
+     <p class="Text">Reserved; Must be zero.</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The List (Table) Editing Mode ( <span class="CodeInlineChar">lem </span> ) may take the following values to indicate various editing modes:</p>
+     <p class="TableSpacingAfter">&nbsp; </p>
+ 
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'> 
+ <thead>
+ <tr>
+   <td width="56" style='width:42.3pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Value</p>
+   </td>
+   <td width="261" style='width:195.65pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Edit Mode</p>
+   </td>
+   <td width="273" style='width:204.85pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Description</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemNormal </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">The Table can be edited as normal</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemRefreshCopy </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">The Table must be refreshed before editing is allowed because the user copied a Query Table type of Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemRefreshCache </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">The Table must be refreshed before editing is allowed because caching a user change failed</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemRefreshCacheUndo </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">The Table must be refreshed before editing is allowed because undoing a cached user change failed</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemRefreshLoaded </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">The Table must be refreshed before editing is allowed because on load we could not re-connect to the Table source</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemRefreshTemplate </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">The Table must be refreshed before editing is allowed because on load we didn't have a cache to load since the Query Table was saved without it is cell data</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemRefreshRefresh </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">The Table must be refreshed before editing is allowed because a previous refresh failed</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemNoInsRowsSPRequired </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">Rows can't be inserted into this SharePoint Table because there are hidden required columns</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemNoInsRowsSPDocLib </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">Rows can't be inserted into this SharePoint
+ Table because it is a document library</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">9</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemRefreshLoadDiscarded </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">The Table must be refreshed before editing is allowed because on load the user wanted to discard cached changes</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemRefreshLoadHashValidation </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">The Table must be refreshed before editing is allowed because on load the validation of the Table’s data area failed</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">11</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="Text"><span class="CodeInlineChar">lemNoEditSPModView </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">Can't allow the user to edit this Table due to the type of moderated view it is</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">12</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="CodeInline"><span style='color:windowtext'>(Reserved) </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">Reserved</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">13</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="CodeInline"><span style='color:windowtext'>(Reserved) </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">Reserved</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="56" style='width:42.3pt;'>
+     <p class="Text">14</p>
+   </td>
+   <td width="261" style='width:195.65pt;'>
+     <p class="CodeInline"><span style='color:windowtext'>(Reserved) </span></p>
+   </td>
+   <td width="273" style='width:204.85pt;'>
+     <p class="Text">Reserved</p>
+   </td>
+ </tr>
+ </table>
+     <p class="Text">&nbsp; </p>
+     <p class="Text">And the array <span class="CodeInlineChar">rgFiledData </span> of column data following this data structure for each of its items:</p>
+     <p class="TableSpacingAfter">&nbsp; </p>
+ <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="655" style='width:491.5pt; border-collapse:collapse;'> <thead>
+ <tr>
+   <td style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offst</p>
+   </td>
+   <td width="156" style='width:117.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="216" style='width:162.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="235" style='width:176.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">idField </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The ID of the Field</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">lfdt </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">data type of List field (see <span class="CodeInlineChar">lfdt </span>
+ table below for value definition)</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">lfxidt </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The Mso Xml Instance Data Type (see <span class="CodeInlineChar">lfxidt </span> table below for the value to data type map)</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">12</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">ilta </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Aggregate type of the List field (see table below for value map).</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cbFmtAgg </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Number of bytes for <span class="CodeInlineChar">rgbFmtAgg </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">20</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">istnAgg </span><span><span>      </span> </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">What style to apply to the field’s aggregate cell.</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">24</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">colFlags </span><span lang="DA"> </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text"><span>Collection of bit flags:<br />
+  (see </span><span class="CodeInlineChar">colFlags </span>
+ bit setting table below)</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">28</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cbFmtInsertRow </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Number of bytes <span class="CodeInlineChar">rgbFmtInsertRow </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">32</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">istnInsertRow </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Style for this InsertRow column</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">36</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cchFieldName </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Count of characters in the Field name <span class="CodeInlineChar">rgbFieldName </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">36</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbFieldName </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text"><span>field name string using Unicode encoding
+ .    (See section titled <span class="MsoHyperlink"><a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in Biff8</a> </span>
+ for more information about these encodings.) </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cchCaption </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">colFlags.fSingleCell </span><span> is FALSE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Count of characters in the Field Caption string <span class="CodeInlineChar">rgbCaption </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbCaption </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var -if <span class="CodeInlineChar">colFlags.fSingleCell </span><span> is FALSE<br />
+  0 –if </span><span class="CodeInlineChar">colFlags.fSingleCell </span>
+ is TRUE</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text"><span>Column caption string using Unicode encoding
+ .    (See section titled <span class="MsoHyperlink"><a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in Biff8</a> </span>
+ for more information about these encodings.) </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbFmtAgg </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Array of formats applied to aggregation cells, length of <span class="CodeInlineChar">cbFmtAgg </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbFmtInsertRow </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Array of formats applied to insert row cells, length of <span class="CodeInlineChar">cbFmtInsertRow </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cbAutoFilter </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4 –if <span class="CodeInlineChar">colFlags.fAutoFilter </span><span> is TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The AutoFitler data for this column (See <span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'>Feat </span> </span>
+ AutoFilter section in <span class="CodeInlineChar">FEATHEADER </span>
+ record).</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">idObj </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">colFlags.fAutoFilter </span><span> is TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The AutoFilter dropdown object ID</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">AutoFilter </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var –if <span class="CodeInlineChar">colFlags.fAutoFilter </span><span> is TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The AutoFilter record of size <span class="CodeInlineChar">cbAutoFilter </span>
+ (see <span class="CodeInlineChar">AUTOFILTER </span>
+ record for detail bits definition)</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">iXmapMac </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">colFlags.fLoadXmapi </span><span> is TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The count of <span class="CodeInlineChar">XMap </span>
+ data in <span class="CodeInlineChar">rgXMap </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgXmap </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var –if <span class="CodeInlineChar">colFlags.fLoadXmapi </span><span> is TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Array of <span class="CodeInlineChar">iXmpMac </span>
+ of <span class="CodeInlineChar">XMapData </span>
+ structures (see <span class="CodeInlineChar">XMapData </span>
+ table below for detail structure of each <span class="CodeInlineChar">XMap </span>
+ data)</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cceFmla </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">2 -if <span class="CodeInlineChar">colFlags.fLoadFmla </span><span> is TRUE<br />
+  0-otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Count of bytes in the calculated column’s formula.</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbFmla </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var -if <span class="CodeInlineChar">colFlags.fLoadFmla </span><span> is TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The calculated column formula string of length <span class="CodeInlineChar">cceFmla </span>
+ (see how formulas are generally persisted for detail).</p>
+   </td>
+ </tr>
+ <tr<span>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cceFmlaTotal </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">colFlags.fLoadTotalFmla </span>
+ is TRUE</p>
+     <p class="Text">0 -otherwise</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Count of bytes in the total row cell’s formula.</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbFmlaTotal </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var –if <span class="CodeInlineChar">colFlags.fLoadTotalFmla </span>
+ is TRUE</p>
+     <p class="Text">0- otherwise</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The total row cell formula string of length <span class="CodeInlineChar">cceFmlaTotal </span>
+ (see how formulas are generally persisted for detail).</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cchTotal </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">colFlags.fLoadTotalStr </span><span> is TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Count of characters in the total row cell string <span class="CodeInlineChar">rgbTotal </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbTotal </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var -if <span class="CodeInlineChar">colFlags.fLoadTotalStr </span><span> is TRUE<br />
+  0 –if </span><span class="CodeInlineChar">colFlags.fLoadTotalStr </span>
+ is FALSE</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text"><span>Column caption string using Unicode encoding
+ .    (See section titled <span class="MsoHyperlink"><a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in Biff8</a> </span>
+ for more information about these encodings.) </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">LCID </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4 –if the <span class="CodeInlineChar">rgbFeat.lt </span><span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'>=1<br /> </span> </span>
+ 0 –otherwise</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The LCID of the currency symbol to use</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cDec </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4 –if <span class="CodeInlineChar">rgbFeat.lt </span><span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'>=1<br /> </span> </span>
+ 0 –otherwise</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The number of decimal places for a numeric colum when <span class="CodeInlineChar">fDecSet </span>
+ is 1 (TRUE)</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">FmtSettings </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4 –if <span class="CodeInlineChar">rgbFeat.lt </span><span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'>=1<br /> </span> </span>
+ 0 -otherwise</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text"><span>Collection of misc. format settings<br />
+  (see </span><span class="CodeInlineChar">FmtSettings </span>
+  table below for details..)</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">DVSettings </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4 –if <span class="CodeInlineChar">rgbFeat.lt </span><span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'>=1 </span> </span><span><br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Collection of misc. validation settings (see table below)</p>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbDV </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var –if <span class="CodeInlineChar">DVSettings.fDefaultSet </span><span> is TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">The data validation string, whose size depends on the <span class="CodeInlineChar">lfdt </span>
+ data type (see <span class="CodeInlineChar">lftd </span>
+ vs. <span class="CodeInlineChar">rgbDV </span>
+ size table below)</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cchFormula </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">2 –if <span class="CodeInlineChar">DVSettings.fLoadFormula </span><span> is TRUE<br />
+  0-otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Count of characters in the validation formula string <span class="CodeInlineChar">rgbFormula </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rgbFormula </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">var -if <span class="CodeInlineChar">DVSettings.fLoadFormula </span><span> is TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text"><span>Validation formula string using Unicode encoding
+ .   (See section titled <span class="MsoHyperlink"><a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in Biff8</a> </span>
+ for more information about these encodings.) </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="156" style='width:117.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">cbRtdv </span></p>
+   </td>
+   <td width="216" style='width:162.0pt;'>
+     <p class="Text">4 –if <span class="CodeInlineChar">rgbFeat.lt </span><span class="CodeInlineChar"><span style='font-size:11.0pt; ; color:windowtext'>=1<br /> </span> </span>
+ 0 –otherwise</p>
+   </td>
+   <td width="235" style='width:176.5pt;'>
+     <p class="Text">Count of bytes of dv data – only used for Excel 2003 Beta1</p>
+   </td>
+ </tr>
+ </table>
+     <p class="Text">&nbsp; </p>
+     <p class="Text">Where <span class="CodeInlineChar">Ilta </span> has value map:</p>
+     <p class="TableSpacingAfter">&nbsp; </p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="100%" style='width:100.0%; border-collapse:collapse;'> <thead>
+ <tr>
+   <td width="14%" style='width:14.92%; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Value</p>
+   </td>
+   <td width="22%" style='width:22.06%; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="63%" style='width:63.02%; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Aggregation Function</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="14%" style='width:14.92%;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="22%" style='width:22.06%;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="63%" style='width:63.02%;'>
+     <p class="Text">No formula</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="14%" style='width:14.92%;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="22%" style='width:22.06%;'>
+     <p class="Text">Average</p>
+   </td>
+   <td width="63%" style='width:63.02%;'>
+     <p class="Text">Average</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="14%" style='width:14.92%;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="22%" style='width:22.06%;'>
+     <p class="Text">Count</p>
+   </td>
+   <td width="63%" style='width:63.02%;'>
+     <p class="Text">Count</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="14%" style='width:14.92%;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="22%" style='width:22.06%;'>
+     <p class="Text">CountNum</p>
+   </td>
+   <td width="63%" style='width:63.02%;'>
+     <p class="Text">Count Numbers</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="14%" style='width:14.92%;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="22%" style='width:22.06%;'>
+     <p class="Text">Max</p>
+   </td>
+   <td width="63%" style='width:63.02%;'>
+     <p class="Text">Max</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="14%" style='width:14.92%;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="22%" style='width:22.06%;'>
+     <p class="Text">Min</p>
+   </td>
+   <td width="63%" style='width:63.02%;'>
+     <p class="Text">Min</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="14%" style='width:14.92%;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="22%" style='width:22.06%;'>
+     <p class="Text">Sum</p>
+   </td>
+   <td width="63%" style='width:63.02%;'>
+     <p class="Text">Sum</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="14%" style='width:14.92%;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="22%" style='width:22.06%;'>
+     <p class="Text">StdDev</p>
+   </td>
+   <td width="63%" style='width:63.02%;'>
+     <p class="Text">Standard Deviation</p>
+   </td>
+ </tr>
+ <tr style='; height:18.0pt'>
+   <td width="14%" style='width:14.92%; height:18.0pt'>
+     <p class="Text">8</p>
+   </td>
+   <td width="22%" style='width:22.06%; height:18.0pt'>
+     <p class="Text">Var</p>
+   </td>
+   <td width="63%" style='width:63.02%; height:18.0pt'>
+     <p class="Text">Variance</p>
+   </td>
+ </tr>
+ <tr style='; height:18.0pt'>
+   <td width="14%" style='width:14.92%; height:18.0pt'>
+     <p class="Text">9</p>
+   </td>
+   <td width="22%" style='width:22.06%; height:18.0pt'>
+     <p class="Text">Custom</p>
+   </td>
+   <td width="63%" style='width:63.02%; height:18.0pt'>
+     <p class="Text">Any formula</p>
+   </td>
+ </tr>
+ </table>
+     <p class="Text">&nbsp; </p>
+     <p class="Text">And the <span class="CodeInlineChar">lfxidt </span> of Mso Xml Instance Data Type has the following value map:</p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'> 
+ <thead> 
+ <tr>
+   <td width="82" style='width:61.55pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Value</p>
+   </td>
+   <td width="202" style='width:151.65pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="148" style='width:110.65pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Data Type String</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtInvalid</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">NULL</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtUnknown</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">NULL</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2400</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtComplexContent</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">NULL</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2101</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtAnyType</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">anyType</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2102</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtAnyUri</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">anyURI</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2103</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtBase64Binary</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">base64Binary</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2104</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtBoolean</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">boolean</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2105</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtByte</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">byte</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2106</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtDate</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">date</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2107</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtDateTime</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">dateTime</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2108</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtDay</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">gDay</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2109</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtDecimal</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">decimal</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x210A</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtDouble</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">double</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x210B</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtDuration</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">duration</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x210C</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtEntities</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">ENTITIES</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x210D</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtEntity</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">ENTITY</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x210E</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtFloat</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">float</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x210F</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtHexBinary</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">hexBinary</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2110</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtId</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">ID</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2111</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtIdRef</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">IDREF</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2112</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtIdRefs</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">IDREFS</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2113</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtInt</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">int</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2114</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtInteger</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">integer</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2115</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtLanguage</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">language</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2116</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtLong</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">long</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2117</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtMonth</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">gMonth</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2118</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtMonthDay</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">gMonthDay</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2119</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtName</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">Name</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x211A</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtNCName</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">NCName</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x211B</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtNegativeInteger</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">negativeInteger</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x211C</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtNmToken</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">NMTOKEN</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x211D</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtNmTokens</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">NMTOKENS</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x211E</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtNonNegativeInteger</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">nonNegativeInteger</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x211F</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtNonPositiveInteger</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">nonPositiveInteger</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2120</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtNormalizedString</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">normalizedString</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2121</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtNotation</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">NOTATION</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2122</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtPositiveInteger</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">positiveInteger</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2123</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtQName</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">QName</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2124</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtShort</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">short</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2125</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtString</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2126</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtTime</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">time</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2127</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtToken</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">token</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2128</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtUnsignedByte</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">unsignedByte</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x2129</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtUnsignedInt</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">unsignedInt</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x212A</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtUnsignedLong</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">unsignedLong</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x212B</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtUnsignedShort</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">unsignedShort</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x212C</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtYear</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">gYear</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="82" style='width:61.55pt;'>
+     <p class="Text">0x212D</p>
+   </td>
+   <td width="202" style='width:151.65pt;'>
+     <p class="Text">msoxidtYearMonth</p>
+   </td>
+   <td width="148" style='width:110.65pt;'>
+     <p class="Text">gYearMonth</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">And the <span class="CodeInlineChar">colFlags </span>’ bit setting table is:</p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="697" style='width:522.5pt; border-collapse:collapse;'>
+ <thead> 
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="90" style='width:67.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="180" style='width:135.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Bit Name</p>
+   </td>
+   <td width="367" style='width:275.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000001h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fAutoFilter </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if has an AutoFilter</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000002h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fAutoFilterHidden </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text"><span lang="DA">=1 if the Autofilter is hidden </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000004h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadXmapi </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if the data source is XML Maper</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000008h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadCalcColFmla </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if has calculated column formula</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000010h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">calculated column refers more than rows for Excel 2003 Beta1, not used for Excel 2003</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000020h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fCalcColRefersTo </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if calculated column depend on this field</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000040h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadCalcColArray </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if need to load a calculated column array formula</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000080h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadTotalFmla </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if need to load total row cell formula</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000100h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadTotalArray </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if the total row cell formula is an array formula</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">9</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000200h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fSaveStyleName </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if need to load header row cell style name</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000400h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fLoadTotalStr </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if need to load total row cell string constant</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">11</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00008000h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">fAutoCreateCalcCol </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=1 if calculated column should be automatically created on load</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">31-12</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">FFFFF000h</p>
+   </td>
+   <td width="180" style='width:135.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Reserved; Must be zero.</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter"><span style='color:windowtext'>&nbsp; </span></p>
+     <p class="Text">The <span class="CodeInlineChar">FmtSettings </span> bits are:</p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="655" style='width:491.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="47" style='width:35.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="90" style='width:67.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="204" style='width:153.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bit Name</p>
+   </td>
+   <td width="313" style='width:235.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000001h</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="CodeInline">fPercent</p>
+   </td>
+   <td width="313" style='width:235.0pt;'>
+     <p class="Text">Whether the numeric values in the column are percentages</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000002h</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="CodeInline">fDecSet</p>
+   </td>
+   <td width="313" style='width:235.0pt;'>
+     <p class="Text">Whether the number of decimal places for a numeric column is set</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000004h</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="CodeInline">fDateOnly</p>
+   </td>
+   <td width="313" style='width:235.0pt;'>
+     <p class="Text">If only the date is displayed for a datetime column</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">4-3</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000018h</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="CodeInline">iReadingOrder</p>
+   </td>
+   <td width="313" style='width:235.0pt;'>
+     <p class="Text">Text column direction: context, ltr, rtl</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000020h</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="CodeInline">fRichText</p>
+   </td>
+   <td width="313" style='width:235.0pt;'>
+     <p class="Text">Whether this column contains rich text strings</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000040h</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="CodeInline">fUnkRTFormatting</p>
+   </td>
+   <td width="313" style='width:235.0pt;'>
+     <p class="Text">Whether there was rich text formatting that we didn’t recognize</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000080h</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="CodeInline">fAlertUnkRTFormatting</p>
+   </td>
+   <td width="313" style='width:235.0pt;'>
+     <p class="Text">Whether we need to alert the user about rich text formatting that we didn’t recognize</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">31-8</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">FFFFFF00h</p>
+   </td>
+   <td width="204" style='width:153.0pt;'>
+     <p class="Text">(unused)</p>
+   </td>
+   <td width="313" style='width:235.0pt;'>
+     <p class="Text">Currently not used.</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">DVSettings </span> bits are:</p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="655" style='width:491.0pt; border-collapse:collapse;'> <thead>
+ <tr>
+   <td width="47" style='width:35.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="90" style='width:67.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="174" style='width:130.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Bit Name</p>
+   </td>
+   <td width="343" style='width:257.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000001h</p>
+   </td>
+   <td width="174" style='width:130.5pt;'>
+     <p class="CodeInline">fReadOnly</p>
+   </td>
+   <td width="343" style='width:257.5pt;'>
+     <p class="Text">Whether the column is read only</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000002h</p>
+   </td>
+   <td width="174" style='width:130.5pt;'>
+     <p class="CodeInline">fRequired</p>
+   </td>
+   <td width="343" style='width:257.5pt;'>
+     <p class="Text">Whether entries in the column are required</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000004h</p>
+   </td>
+   <td width="174" style='width:130.5pt;'>
+     <p class="CodeInline">fMinSet</p>
+   </td>
+   <td width="343" style='width:257.5pt;'>
+     <p class="Text">Whether the minimum value for a numeric column is set</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000008h</p>
+   </td>
+   <td width="174" style='width:130.5pt;'>
+     <p class="CodeInline">fMaxSet</p>
+   </td>
+   <td width="343" style='width:257.5pt;'>
+     <p class="Text">Whether the maximum value for a numeric column is set</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000010h</p>
+   </td>
+   <td width="174" style='width:130.5pt;'>
+     <p class="CodeInline">fDefaultSet</p>
+   </td>
+   <td width="343" style='width:257.5pt;'>
+     <p class="Text">Whether there is a default value for the column</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000020h</p>
+   </td>
+   <td width="174" style='width:130.5pt;'>
+     <p class="CodeInline">fDefaultDateToday</p>
+   </td>
+   <td width="343" style='width:257.5pt;'>
+     <p class="Text">Whether the default value for the column is today’s date</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000040h</p>
+   </td>
+   <td width="174" style='width:130.5pt;'>
+     <p class="CodeInline">fLoadFormula</p>
+   </td>
+   <td width="343" style='width:257.5pt;'>
+     <p class="Text">TRUE if <span class="CodeInlineChar">pstFormula!=NULL </span>
+ on load/save</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000080h</p>
+   </td>
+   <td width="174" style='width:130.5pt;'>
+     <p class="CodeInline">fAllowFillIn</p>
+   </td>
+   <td width="343" style='width:257.5pt;'>
+     <p class="Text">TRUE if the choice field allows custom user entries</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text">31-8</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">FFFFFF00h</p>
+   </td>
+   <td width="174" style='width:130.5pt;'>
+     <p class="Text">(unused)</p>
+   </td>
+   <td width="343" style='width:257.5pt;'>
+     <p class="Text">Currently not used.</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">And the array of <span class="CodeInlineChar">rgXMap </span>
+ has the following data structure for each of its element:</p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="82" style='width:61.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="192" style='width:144.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="259" style='width:194.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="82" style='width:61.5pt;'>
+     <p class="CodeInline">grbit</p>
+   </td>
+   <td width="192" style='width:144.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Collection of bit flags.  (see <span class="CodeInlineChar">grbit </span> setting table below for possible values).</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="82" style='width:61.5pt;'>
+     <p class="CodeInline">dwMapID</p>
+   </td>
+   <td width="192" style='width:144.0pt;'>
+     <p class="Text">4 –if <span class="CodeInlineChar">grbit. fLoadXMap </span><span> = TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">The XML map item ID</p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="82" style='width:61.5pt;'>
+     <p class="CodeInline">cbXPath</p>
+   </td>
+   <td width="192" style='width:144.0pt;'>
+     <p class="Text">2 – if <span class="CodeInlineChar">grbit.fLoadXMap </span><span> = TRUE<br />
+  0 -otherwise </span></p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">Count of bytes of <span class="CodeInlineChar">XPath </span> string <span class="CodeInlineChar">rgbXPath </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="82" style='width:61.5pt;'>
+     <p class="CodeInline">rgbXPath</p>
+   </td>
+   <td width="192" style='width:144.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="259" style='width:194.5pt;'>
+     <p class="Text">The <span class="CodeInlineChar">XPath </span>, of length <span class="CodeInlineChar">cbXPath </span></p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">Where the <span class="CodeInlineChar">grbit </span>
+ has the following possible values:</p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="593" style='width:445.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="41" style='width:31.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="90" style='width:67.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="120" style='width:90.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td width="65" style='width:48.75pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="277" style='width:207.75pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="41" style='width:31.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000001h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">fFilled</p>
+   </td>
+   <td width="65" style='width:48.75pt;'>
+     <p class="Text">1 bit</p>
+   </td>
+   <td width="277" style='width:207.75pt;'>
+     <p class="Text">for data was filled down due to flattening</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="41" style='width:31.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000002h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline"><![if !supportLists]><span><span style=''>36.<span style='font:7.0pt "Times New Roman"'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span> </span> </span>
+ <![endif]>fLoadXMap</p>
+   </td>
+   <td width="65" style='width:48.75pt;'>
+     <p class="Text">1 bit</p>
+   </td>
+   <td width="277" style='width:207.75pt;'>
+     <p class="Text">for <span class="CodeInlineChar">pstXMap </span> is non-null</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="41" style='width:31.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000004h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline"><![if !supportLists]><span><span style=''>37.<span style='font:7.0pt "Times New Roman"'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span> </span> </span>
+ <![endif]>fCanBeSingle</p>
+   </td>
+   <td width="65" style='width:48.75pt;'>
+     <p class="Text">1 bit</p>
+   </td>
+   <td width="277" style='width:207.75pt;'>
+     <p class="Text">for it can be a single cell</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="41" style='width:31.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000008h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline"><![if !supportLists]><span><span style=''>38.<span style='font:7.0pt "Times New Roman"'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span> </span> </span>
+ <![endif]>fDefaultSet</p>
+   </td>
+   <td width="65" style='width:48.75pt;'>
+     <p class="Text">1 bit</p>
+   </td>
+   <td width="277" style='width:207.75pt;'>
+     <p class="Text">for default value is set for <span class="CodeInlineChar">XDT </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="41" style='width:31.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">FFFFFFF0h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text">(unused)</p>
+   </td>
+   <td width="65" style='width:48.75pt;'>
+     <p class="Text">28 bits</p>
+   </td>
+   <td width="277" style='width:207.75pt;'>
+     <p class="Text">for currently not used bits</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">And the value match for the data type <span class="CodeInlineChar">lfdt </span>
+ and the corresponding <span class="CodeInlineChar">rgbDV </span>
+ size table:</p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="593" style='width:445.0pt; border-collapse:collapse;'> <thead>
+ <tr>
+   <td width="89" style='width:67.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">lfdt</p>
+   </td>
+   <td width="108" style='width:81.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Data Type</p>
+   </td>
+   <td width="396" style='width:297.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">rgbDV Size</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Short text</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">Length-pre-fixed wide character string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Number</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">8</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Yes/No</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">4</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Data time</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">8 -if <span class="CodeInlineChar">DVSettings.fDefaultDateToday </span><span> = FALSE<br />
+  0 -otherwise </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Multi-line text</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">0</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Currency</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">8</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Lookup</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">0</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Choice</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">Length-prefixed wide character string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">9</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Hyperlink</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">0</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Counter</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">0</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="89" style='width:67.0pt;'>
+     <p class="Text">11</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="Text">Multi-choice</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text">Length-prefixed wide character string</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text"><b>Note </b>
+ : One or more <span class="CodeInlineChar">CONTINUEFRT11 </span>
+ record(s) maybe used if the <span class="CodeInlineChar">rgbFeat
+ is larger than the maximum record size which is 8,228 bytes.</p>
+ </div>
+ </body>
+ </html>
+ 

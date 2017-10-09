@@ -1,0 +1,10 @@
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\bin\Debug\zlibwapi.dll
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\bin\Debug\libzlibwapi.so
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\bin\Debug\DIaLOGIKa.b2xtranslator.OpenXmlLib.dll
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\bin\Debug\DIaLOGIKa.b2xtranslator.OpenXmlLib.pdb
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\bin\Debug\DIaLOGIKa.b2xtranslator.ZipUtils.dll
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\bin\Debug\DIaLOGIKa.b2xtranslator.ZipUtils.pdb
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\obj\Debug\OpenXmlLib.csprojResolveAssemblyReference.cache
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\obj\Debug\OpenXmlLib.csproj.CoreCompileInputs.cache
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\obj\Debug\DIaLOGIKa.b2xtranslator.OpenXmlLib.dll
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\OpenXmlLib\obj\Debug\DIaLOGIKa.b2xtranslator.OpenXmlLib.pdb

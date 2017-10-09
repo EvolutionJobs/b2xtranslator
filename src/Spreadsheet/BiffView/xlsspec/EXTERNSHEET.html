@@ -1,0 +1,431 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>EXTERNSHEET: External Reference (17h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>EXTERNSHEET: External Reference (17h)</h2>
+     <p class="Text">The <span class="CodeInlineChar">EXTERNSHEET </span> <span> record specifies externally referenced workbooks. 
+In BIFF7 and earlier, multiple </span> <span class="CodeInlineChar">EXTERNSHEET </span> <span> records form a table in the
+file.  
+The </span> <span class="CodeInlineChar">cxals </span>
+ field of the <span class="CodeInlineChar">EXTERNCOUNT </span>
+ record specifies the number
+of <span class="CodeInlineChar">EXTERNSHEET </span> <span>
+records.  
+You should not change the order
+of </span> <span class="CodeInlineChar">EXTERNSHEET </span>
+ records.</p>
+     <p class="Text">In BIFF8, the <span class="CodeInlineChar">SUPBOOK </span> <span> record stores the encoded pathname and file name. 
+There is one </span> <span class="CodeInlineChar">SUPBOOK </span> <span> record for each externally
+referenced workbook.  
+The </span> <span class="CodeInlineChar">EXTERNSHEET </span>
+ record contains a table ( <span class="CodeInlineChar">rgXTI </span>
+) that points to the <span class="CodeInlineChar">SUPBOOK </span> <span> records. 
+Several </span> <span class="CodeInlineChar">ptg </span>
+s in a BIFF8 formula contain an <span class="CodeInlineChar">ixti </span>
+ field; this is the 0-based index to the <span class="CodeInlineChar">rgXTI </span>
+ table in the <span class="CodeInlineChar">EXTERNSHEET </span>
+ record.</p>
+     <p class="Text"><span>An externally referenced workbook is called a
+source workbook.  
+The workbook that
+refers to it is called a dependent workbook. </span></p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF8 </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="106" style='width:79.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="CodeInline">cXTI</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Number of <span class="CodeInlineChar">XTI </span>
+ structures that follow</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="CodeInline">rgXTI</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Array of <span class="CodeInlineChar">XTI </span>
+ structures</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">Each 6&#8209; byte <span class="CodeInlineChar">XTI </span>
+ structure contains the following
+data.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="106" style='width:79.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="CodeInline">iSUPBOOK</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Index (0-based) to
+ table of <span class="CodeInlineChar">SUPBOOK </span> </span>
+ redcords</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="CodeInline">itabFirst</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Index (0-based) to
+ first sheet tab in the reference</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="CodeInline">itabLast</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Index (0-based) to
+ last sheet tab in the reference</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF7 and earlier </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="106" style='width:79.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="CodeInline">cch</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Length of the file
+ name</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >5</p>
+   </td>
+   <td width="106" style='width:79.5pt;'>
+     <p class="CodeInline">rgch</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >File name</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">cch </span> <span> field contains the length of the source workbook file name. 
+The </span> <span class="CodeInlineChar">rgch </span>
+ field contains the source workbook file name.</p>
+<h3><a name="_Toc157240492">File name Encoding
+</a>
+</h3>
+     <p class="Text"><span>Whenever possible, file names are encoded to
+make BIFF files transportable across file systems. 
+Encoded file names are identified by the
+first character of the </span> <span class="CodeInlineChar">rgch </span> <span> field.  
+The first character
+of the </span> <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rgch </span> </span>
+ field may
+be any one of the values listed in the following table.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="83" style='width:62.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="66" style='width:49.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Value</p>
+   </td>
+   <td width="445" style='width:334.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Meaning</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="83" style='width:62.5pt;'>
+     <p class="CodeInline">chEmpty</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text" >00</p>
+   </td>
+   <td width="445" style='width:334.0pt;'>
+     <p class="Text" >Reference to an
+ empty workbook name (see text)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="83" style='width:62.5pt;'>
+     <p class="CodeInline">chEncode</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text" >01</p>
+   </td>
+   <td width="445" style='width:334.0pt;'>
+     <p class="Text" >File name has been
+ encoded (see the following table)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="83" style='width:62.5pt;'>
+     <p class="CodeInline">chSelf</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text" >02</p>
+   </td>
+   <td width="445" style='width:334.0pt;'>
+     <p class="Text" >Self-referential
+ external reference (see text)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chEmpty </span> </span>
+indicates the file name is an external reference to an empty workbook name, as
+in the formula <span class="CodeInlineChar">=Sheet1!$A$1 </span>
+.</p>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>chSelf </span> </span> <span>
+indicates the file name is an external reference in which the dependent and
+source workbooks are the same.  
+An
+example of this is the workbook SALES.XLS, which contains the formula </span> <span class="CodeInlineChar">=SALES.XLS!$A$1 </span>
+.</p>
+     <p class="Text">A <span class="CodeInlineChar">chDDE </span>
+ key ( <span class="CodeInlineChar">03h </span>
+) can occur in the <span class="CodeInlineChar">rgch </span>
+ field; it is not necessarily the first character in the field, as
+are <span class="CodeInlineChar">chEmpty </span>
+, <span class="CodeInlineChar">chEncode </span>
+, and <span class="CodeInlineChar">chSelf </span> <span>. 
+This key indicates that the external reference is a DDE or OLE
+link.  
+In a DDE link, the </span> <span class="CodeInlineChar">chDDE </span> <span> key replaces the | (pipe)
+character that separates the DDE application and topic. 
+In an OLE link, </span> <span class="CodeInlineChar">chDDE </span>
+ separates the classname and file
+name.</p>
+     <p class="Text">A <span class="CodeInlineChar">chEncode </span>
+ at the beginning of <span class="CodeInlineChar">rgch </span> <span> indicates the file name of the source workbook was encoded to a
+less system-dependent file name.  
+The
+special keys listed in the following table are recognized in the </span> <span class="CodeInlineChar">rgch </span>
+ field.</p>
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='width:451.0pt; margin-left:-5.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td style='width:108.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Key Name</p>
+   </td>
+   <td width="54" style='width:40.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Value</p>
+   </td>
+   <td style='width:302.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">PC file systems</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">chVolume</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">01</p>
+   </td>
+   <td width="403" style='width:302.5pt;'>
+     <p class="Text"><span>Represents an MS-DOS drive letter.  
+It is followed by the drive letter.  
+For example, the formula </span> <span class="CodeInlineChar">=‘D:\SALES.XLS’!A1 </span>
+ generates the <span class="CodeInlineChar">chVolume </span> <span> key when the dependent
+ workbook is not on the D drive.  
+UNC
+ file names, such as </span> <span class="CodeInlineChar">\\server\share\myfile.xls </span>
+, generate an @ character after the <span class="CodeInlineChar">chVolume </span>
+ key; this replaces the
+ initial double backslash (\\).</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">chSameVolume</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">02</p>
+   </td>
+   <td width="403" style='width:302.5pt;'>
+     <p class="Text"><span>Indicates the source workbook is on the same
+ drive as the dependent workbook (the drive letter is omitted).  
+For example, the formula </span> <span class="CodeInlineChar">=‘\SALES.XLS’!A1 </span>
+ generates the <span class="CodeInlineChar">chSameVolume </span>
+ key when the dependent
+ workbook is not in the root directory.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">ChDownDir</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">03</p>
+   </td>
+   <td width="403" style='width:302.5pt;'>
+     <p class="Text"><span>Indicates the source workbook is in a
+ subdirectory of the current directory. 
+ 
+For example, the formula </span> <span class="CodeInlineChar">=‘XL\SALES.XLS’!A1 </span>
+ generates the <span class="CodeInlineChar">chDownDir </span> <span> key.  
+The subdirectory name
+ precedes the </span> <span class="CodeInlineChar">chDownDir </span>
+ key, and the file name follows it.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">chUpDir</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">04</p>
+   </td>
+   <td width="403" style='width:302.5pt;'>
+     <p class="Text"><span>Indicates the source workbook is in the parent
+ directory of the current directory. 
+ 
+For example, the formula </span> <span class="CodeInlineChar">=‘..\SALES.XLS’!A1 </span>
+ generates the <span class="CodeInlineChar">chUpDir
+ key.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">chLongVolume</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">05</p>
+   </td>
+   <td width="403" style='width:302.5pt;'>
+     <p class="Text">(Not used)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">chStartupDir</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">06</p>
+   </td>
+   <td width="403" style='width:302.5pt;'>
+     <p class="Text">Indicates the source workbook is in the
+ startup directory (the Xlstart subdirectory of the directory that contains
+ Excel.exe).</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">chAltStartupDir</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">07</p>
+   </td>
+   <td width="403" style='width:302.5pt;'>
+     <p class="Text">Indicates the source workbook is in the
+ alternate startup directory.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="144" style='width:108.0pt;'>
+     <p class="CodeInline">chLibDir</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text">08</p>
+   </td>
+   <td width="403" style='width:302.5pt;'>
+     <p class="Text">Indicates the source workbook is in the
+ Library directory.</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

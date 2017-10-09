@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>MULBLANK: Multiple Blank Cells (BEh)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>MULBLANK: Multiple Blank Cells (BEh)</h2>
+     <p class="Text">The <span class="CodeInlineChar">MULBLANK </span>
+ record stores up to the equivalent of 256 <span class="CodeInlineChar">BLANK </span>
+ records; the <span class="CodeInlineChar">MULBLANK </span> <span> record is a file size
+optimization.  
+The number of </span> <span class="CodeInlineChar">ixfe </span>
+ fields can be determined from the <span class="CodeInlineChar">ColLast </span>
+ field and is equal to ( <span class="CodeInlineChar">colLast-colFirst+1 </span> <span>). 
+The maximum length of the </span> <span class="CodeInlineChar">MULBLANK </span>
+ record is <span class="CodeInlineChar">(256x2+10)=522 </span> <span> bytes, because Excel can
+have at most 256 columns.  
+<b>Note</b>
+: storing 256 blank cells in the </span> <span class="CodeInlineChar">MULBLANK </span>
+ record takes 522 bytes as compared with 2,560 bytes for 256 <span class="CodeInlineChar">BLANK </span>
+ records.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rw</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Row number (0-based)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">colFirst</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Column number (0-based) of the first column of
+ the multiple <span class="CodeInlineChar">RK </span>
+ record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rgixfe</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Array of indexes to <span class="CodeInlineChar">XF </span>
+ records</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">colLast</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Last column containing the <span class="CodeInlineChar">BLANKREC </span>
+ structure</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

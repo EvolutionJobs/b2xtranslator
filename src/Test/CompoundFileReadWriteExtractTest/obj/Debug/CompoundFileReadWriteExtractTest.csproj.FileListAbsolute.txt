@@ -1,0 +1,11 @@
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\bin\Debug\CompoundFileReadWriteExtractTest.exe
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\bin\Debug\CompoundFileReadWriteExtractTest.pdb
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\bin\Debug\DIaLOGIKa.b2xtranslator.StructuredStorage.dll
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\bin\Debug\DIaLOGIKa.b2xtranslator.Tools.dll
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\bin\Debug\DIaLOGIKa.b2xtranslator.StructuredStorage.pdb
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\bin\Debug\DIaLOGIKa.b2xtranslator.Tools.pdb
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\obj\Debug\CompoundFileReadWriteExtractTest.csprojResolveAssemblyReference.cache
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\obj\Debug\CompoundFileReadWriteExtractTest.csproj.CoreCompileInputs.cache
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\obj\Debug\CompoundFileReadWriteExtractTest.exe
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\obj\Debug\CompoundFileReadWriteExtractTest.pdb
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileReadWriteExtractTest\bin\Debug\CompoundFileReadWriteExtractTest.exe.config

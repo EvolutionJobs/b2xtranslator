@@ -1,0 +1,7 @@
+#!/bin/sh
+
+dos2unix ./configure
+./configure --shared
+make test
+cd contrib/minizip
+make

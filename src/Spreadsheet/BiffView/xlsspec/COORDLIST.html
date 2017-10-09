@@ -1,0 +1,98 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>COORDLIST: Polygon Object Vertex Coordinates (A9h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            COORDLIST: Polygon Object Vertex Coordinates (A9h)</h2>
+        <p class="Text">
+            This record stores the coordinates of the vertices in a polygon object.</p>
+        <p class="Text" style='margin-bottom: 0cm; margin-bottom: .0001pt; background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data</span></b></p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="596"
+            style='width: 447.35pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" valign="top" style='width: 46.0pt; border: none; border-bottom: solid windowtext 1.0pt;
+                    mso-border-bottom-alt: solid windowtext .5pt; padding: 0cm 4.0pt 0cm 4.0pt'>
+                    <p class="HeaderULKWN">
+                        <span>Offset</span></p>
+                </td>
+                <td width="100" valign="top" style='width: 75.0pt; border: none; border-bottom: solid windowtext 1.0pt;
+                    mso-border-bottom-alt: solid windowtext .5pt; padding: 0cm 4.0pt 0cm 4.0pt'>
+                    <p class="HeaderULKWN">
+                        <span>Field Name</span></p>
+                </td>
+                <td width="42" valign="top" style='width: 31.5pt; border: none; border-bottom: solid windowtext 1.0pt;
+                    mso-border-bottom-alt: solid windowtext .5pt; padding: 0cm 4.0pt 0cm 4.0pt'>
+                    <p class="HeaderULKWN">
+                        <span>Size</span></p>
+                </td>
+                <td width="393" valign="top" style='width: 294.85pt; border: none; border-bottom: solid windowtext 1.0pt;
+                    mso-border-bottom-alt: solid windowtext .5pt; padding: 0cm 4.0pt 0cm 4.0pt'>
+                    <p class="HeaderULKWN">
+                        <span>Contents</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" valign="top" style='width: 46.0pt; padding: 0cm 4.0pt 0cm 4.0pt'>
+                    <p class="Text" style='margin-bottom: 3.0pt'>
+                        <span>4</span></p>
+                </td>
+                <td width="100" valign="top" style='width: 75.0pt; padding: 0cm 4.0pt 0cm 4.0pt'>
+                    <p class="Text" style='margin-bottom: 3.0pt'>
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt; mso-bidi-font-size: 10.0pt'>
+                            rgVTX<o:p></o:p></span></span></p>
+                </td>
+                <td width="42" valign="top" style='width: 31.5pt; padding: 0cm 4.0pt 0cm 4.0pt'>
+                    <p class="Text" style='margin-bottom: 3.0pt'>
+                        <span>var</span></p>
+                </td>
+                <td width="393" valign="top" style='width: 294.85pt; padding: 0cm 4.0pt 0cm 4.0pt'>
+                    <p class="Text" style='margin-bottom: 3.0pt'>
+                        <span>Array of vertex coordinates</span></p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            <span>
+                <o:p>&nbsp;</o:p>
+            </span>
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">VTX</span> structure is:</p>
+        <p class="Code">
+            <span>typedef struct _vtx</span></p>
+        <p class="Code">
+            <span>{</span></p>
+        <p class="Code">
+            <span>&nbsp;&nbsp;unsigned short int x;</span></p>
+        <p class="Code">
+            <span>&nbsp;&nbsp;unsigned short int y;</span></p>
+        <p class="Code">
+            <span>}</span></p>
+        <p class="Code">
+            <span>VTX;</span></p>
+        <p class="Code">
+            <span>
+                <o:p>&nbsp;</o:p>
+            </span>
+        </p>
+        <p class="Text">
+            <span>The upper-left corner of a polygon’s bounding rectangle is (x&nbsp;=&nbsp;0h,&nbsp;y&nbsp;=&nbsp;0h),
+                and the lower-right corner is (x&nbsp;=&nbsp;4000h,&nbsp;y&nbsp;=&nbsp;4000h), as
+                shown in the following illustration.</span></p>
+        <p class="Figure">
+            <span>
+                <img width="460" height="454" src="COORDLIST.gif" v:shapes="_x0000_i1025"></span></p>
+        <p class="Text">
+            <span>After the polygon is drawn, Excel normalizes the coordinates in </span><span
+                class="CodeInlineChar">rgVTX</span><span lang="EN-US"> to the bounding rectangle. The
+                    actual size of the polygon can be derived from the size of the bounding rectangle
+                    in the common object fields section of the </span><span class="CodeInlineChar">OBJ</span><span>
+                        record.</span></p>
+    </div>
+</body>
+</html>

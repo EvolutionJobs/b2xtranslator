@@ -1,0 +1,1053 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>AUTOFILTER: AutoFilter Data (9Eh)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>AUTOFILTER: AutoFilter Data (9Eh)</h2>
+     <p class="Text">This record stores data for an active
+AutoFilter.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF7 and Later </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="108" style='width:81.3pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="95" style='width:71.3pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="330" style='width:247.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="Text" ><span class="CodeInlineChar">iEntry </span></p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >Index of the
+ active AutoFilter</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbit </span></p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >Option flags</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="Text" ><span class="CodeInlineChar">doper1 </span></p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" ><span class="CodeInlineChar">DOPER </span>
+ structure for the first filter condition</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >18</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="Text" ><span class="CodeInlineChar">doper2 </span></p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" ><span class="CodeInlineChar">DOPER </span>
+ structure for the second filter condition</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >28</p>
+   </td>
+   <td width="108" style='width:81.3pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rgch </span></p>
+   </td>
+   <td width="95" style='width:71.3pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="330" style='width:247.4pt;'>
+     <p class="Text" >String storage for
+ <span class="CodeInlineChar">vtString </span>
+ <span class="CodeInlineChar">DOPER </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbit </span>
+ field contains the following option flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="56" style='width:42.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="64" style='width:48.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="82" style='width:61.8pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="331" style='width:248.2pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text"><span>1<span style='letter-spacing:-1.75pt'> </span>
+–<span style='letter-spacing:-1.75pt'> </span>
+0 </span></p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">0003h</p>
+   </td>
+   <td width="82" style='width:61.8pt;'>
+     <p class="Text"><span class="CodeInlineChar">wJoin </span> </span></p>
+   </td>
+   <td width="331" style='width:248.2pt;'>
+     <p class="Text"><span>=1 if the custom filter conditions are ANDed<br />
+ =0 if the custom filter conditions are ORed </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">0004h</p>
+   </td>
+   <td width="82" style='width:61.8pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSimple1 </span> </span></p>
+   </td>
+   <td width="331" style='width:248.2pt;'>
+     <p class="Text">=1 if the first condition is a simple equality
+ (for optimization)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">0008h</p>
+   </td>
+   <td width="82" style='width:61.8pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSimple2 </span> </span></p>
+   </td>
+   <td width="331" style='width:248.2pt;'>
+     <p class="Text">=1 if the second condition is a simple
+ equality (for optimization)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">0010h</p>
+   </td>
+   <td width="82" style='width:61.8pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fTop10 </span> </span></p>
+   </td>
+   <td width="331" style='width:248.2pt;'>
+     <p class="Text">=1 if the condition is a Top 10 AutoFilter</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">0020h</p>
+   </td>
+   <td width="82" style='width:61.8pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fTop </span> </span></p>
+   </td>
+   <td width="331" style='width:248.2pt;'>
+     <p class="Text">=1 if the Top 10 AutoFilter shows the top
+ items; =0 if it shows the bottom items</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">0040h</p>
+   </td>
+   <td width="82" style='width:61.8pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fPercent </span> </span></p>
+   </td>
+   <td width="331" style='width:248.2pt;'>
+     <p class="Text">=1 if the Top 10 AutoFilter shows percentage; =0 if it shows items</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text"><span>15<span style='letter-spacing:-1.75pt'> </span>
+–<span style='letter-spacing:-1.75pt'> </span>
+7 </span></p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">FF80h</p>
+   </td>
+   <td width="82" style='width:61.8pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>wTop10 </span> </span></p>
+   </td>
+   <td width="331" style='width:248.2pt;'>
+     <p class="Text">The number of items to show (from 1 to 500
+ decimal, expressed as a binary number)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF5 </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="120" style='width:90.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="81" style='width:60.6pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="333" style='width:249.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">iEntry </span></p>
+   </td>
+   <td width="81" style='width:60.6pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="333" style='width:249.4pt;'>
+     <p class="Text" >Index of the
+ active AutoFilter</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbit </span></p>
+   </td>
+   <td width="81" style='width:60.6pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="333" style='width:249.4pt;'>
+     <p class="Text" >Option flags</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">doper1 </span></p>
+   </td>
+   <td width="81" style='width:60.6pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="333" style='width:249.4pt;'>
+     <p class="Text" ><span class="CodeInlineChar">DOPER </span>
+ structure for first filter condition</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >18</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">doper2 </span></p>
+   </td>
+   <td width="81" style='width:60.6pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="333" style='width:249.4pt;'>
+     <p class="Text" ><span class="CodeInlineChar">DOPER </span>
+ structure for the second filter condition</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >28</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rgch </span></p>
+   </td>
+   <td width="81" style='width:60.6pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="333" style='width:249.4pt;'>
+     <p class="Text" >String storage for
+ vtString <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>DOPER </span> </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbit </span>
+ field contains the following option flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="64" style='width:48.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="88" style='width:66.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="333" style='width:250.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text"><span>1<span style='letter-spacing:-1.75pt'> </span>
+–<span style='letter-spacing:-1.75pt'> </span>
+0 </span></p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">03h</p>
+   </td>
+   <td width="88" style='width:66.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>wJoin </span> </span></p>
+   </td>
+   <td width="333" style='width:250.0pt;'>
+     <p class="Text"><span>=1 if the custom filter conditions are ANDed<br />
+ =0 if the custom filter conditions are ORed </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">04h</p>
+   </td>
+   <td width="88" style='width:66.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSimple1 </span> </span></p>
+   </td>
+   <td width="333" style='width:250.0pt;'>
+     <p class="Text">=1 if the first condition is a simple equality
+ (for optimization)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">08h</p>
+   </td>
+   <td width="88" style='width:66.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSimple2 </span> </span></p>
+   </td>
+   <td width="333" style='width:250.0pt;'>
+     <p class="Text">=1 if the second condition is a simple
+ equality (for optimization)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text"><span>7<span style='letter-spacing:-1.75pt'> </span>
+–<span style='letter-spacing:-1.75pt'> </span>
+4 </span></p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">F0h</p>
+   </td>
+   <td width="88" style='width:66.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="333" style='width:250.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text"><span>7<span style='letter-spacing:-1.75pt'> </span>
+–<span style='letter-spacing:-1.75pt'> </span>
+0 </span></p>
+   </td>
+   <td width="64" style='width:48.0pt;'>
+     <p class="Text">FFh</p>
+   </td>
+   <td width="88" style='width:66.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="333" style='width:250.0pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+<h3><a name="_Toc157240429">DOPER Structures
+</a>
+</h3>
+     <p class="Text">The database <span class="CodeInlineChar">oper </span>
+ structures ( <span class="CodeInlineChar">DOPER </span> <span>s) are 10-byte parsed definitions of the filter conditions that
+appear in the <b>Custom AutoFilter</b>
+ dialog box. 
+The </span> <span class="CodeInlineChar">DOPER </span>
+ structures are defined in the following sections.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>DOPER Structure for RK Numbers (vt=02h) </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="391" style='width:293.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">vt </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >Data type</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbitSgn </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >Comparison code</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rk </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" ><span><a href="#_RK:_Cell_Value,_RK Number (7Eh)">RK</a>
+ number </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>DOPER Structure for IEEE Floating&#8209; Point
+Numbers (vt=04h) </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="391" style='width:293.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">vt </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >Data type</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbitSgn </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >Comparison code</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">num </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >IEEE floating&#8209; point
+ number</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>DOPER Structure for Strings (vt=06h) </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="596" style='width:446.85pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:294.35pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>vt </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="392" style='width:294.35pt;'>
+     <p class="Text">Data type</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitSgn </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="392" style='width:294.35pt;'>
+     <p class="Text">Comparison code</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="392" style='width:294.35pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cch </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="392" style='width:294.35pt;'>
+     <p class="Text">Length of the string (the string is stored in
+ the <span class="CodeInlineChar">rgch </span>
+ field that
+ follows the <span class="CodeInlineChar">DOPER </span>
+ structures)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="392" style='width:294.35pt;'>
+     <p class="Text">&nbsp; </p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>DOPER Structure for Boolean and Error
+Values (vt=08h) </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="85" style='width:63.95pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td width="49" style='width:36.65pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="399" style='width:299.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">vt </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Data type</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">grbitSgn </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Comparison code</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">fError </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Boolean/error flag</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >3</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" ><span class="CodeInlineChar">bBoolErr </span></p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >Boolean value or
+ error value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="85" style='width:63.95pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="49" style='width:36.65pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="399" style='width:299.4pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">bBoolErr </span>
+ field contains the Boolean or error value, as determined by the <span class="CodeInlineChar">fError </span> <span> field. 
+If the </span> <span class="CodeInlineChar">fError </span>
+ field contains a 0 (zero), the <span class="CodeInlineChar">bBoolErr </span>
+ field contains a Boolean value; if the <span class="CodeInlineChar">fError </span>
+ field contains a 1, the <span class="CodeInlineChar">bBoolErr </span>
+ field contains an error value.</p>
+     <p class="Text">Boolean values are 1 for true and 0 for false.</p>
+     <p class="Text">Error values are listed in the following table.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td style='width:148.65pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Error value</p>
+   </td>
+   <td style='width:148.65pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Value (hex)</p>
+   </td>
+   <td style='width:148.7pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Value (dec.)</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" ><b>#NULL!
+</b></p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >00h</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >0</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" ><b>#DIV/0!
+</b></p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >07h</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >7</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" ><b>#VALUE!
+</b></p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >0Fh</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >15</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" ><b>#REF!
+</b></p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >17h</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >23</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" ><b>#NAME?
+</b></p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >1Dh</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >29</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" ><b>#NUM!
+</b></p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >24h</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >36</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" ><b>#N/A
+</b></p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >2Ah</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >42</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">vt </span>
+ field contains the data type of the <span class="CodeInlineChar">DOPER </span> <span>, as shown in the following
+table.  
+For the </span> <span class="CodeInlineChar">DOPER </span>
+ types <span class="CodeInlineChar">00h </span>
+, <span class="CodeInlineChar">0Ch </span>
+, and <span class="CodeInlineChar">0Eh </span>
+, the remaining 9 bytes of the <span class="CodeInlineChar">DOPER </span>
+ are ignored.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="77" style='width:58.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">vt</p>
+   </td>
+   <td width="517" style='width:388.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">DOPER type</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >00h</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >Filter condition
+ not used</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >02h</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">RK </span>
+ number</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >04h</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >IEEE number</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >06h</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >String</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >08h</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >Boolean or error
+ value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >0Ch</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >Match all blanks</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >0Eh</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >Match all non&#8209; blanks</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbitSgn
+ field corresponds to the following comparison operators:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="77" style='width:58.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">grbitSgn</p>
+   </td>
+   <td style='width:388.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Operator</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >01</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >&lt; &nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >02</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >=</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >03</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >&lt; =</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >04</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >&gt; &nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >05</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >&lt; &gt; &nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="77" style='width:58.0pt;'>
+     <p class="Text" >06</p>
+   </td>
+   <td width="517" style='width:388.0pt;'>
+     <p class="Text" >&gt; =</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

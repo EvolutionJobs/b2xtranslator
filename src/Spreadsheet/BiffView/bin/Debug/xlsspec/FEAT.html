@@ -1,0 +1,626 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FEAT: Shared Feature Record (868h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>FEAT: Shared Feature Record (868h)</h2>
+     <p class="Text">Introduced in Excel 10 (2002) the Shared Feature
+( <span class="CodeInlineChar">FEAT </span>
+) record
+describes specific Shared Feature Data such as a Protection setting, or a
+SmartTag setting.</p>
+     <p class="Text">Though currently Excel has many different Shared
+Features such as Formula Error Checking, Protection, SmartTag etc only 2 types
+of Shared Feature ( <span class="CodeInlineChar">FEAT </span>
+) may be created in Excel 2000: Protection and SmartTag.</p>
+     <p class="Text"><b>Special note
+</b>
+: in
+Excel 2000, the <span class="CodeInlineChar">ref </span>
+ field within the structure of <span class="CodeInlineChar">FRTHEADER </span>
+, which is documented in the <span class="CodeInlineChar">FRT </span>
+ record description, is used to store the <span class="CodeInlineChar">ref </span>
+ range of the <span class="CodeInlineChar">FEAT </span>
+ data so that round-tripping the
+BIFF file through an earlier version would not damage the <span class="CodeInlineChar">FEAT </span> <span> data so easily. 
+But this </span> <span class="CodeInlineChar">ref </span>
+ in <span class="CodeInlineChar">FRTHEADER </span>
+ is no longer used, and is set to NULL for all <span class="CodeInlineChar">FEAT </span>
+ data in Excel 2003 and later.</p>
+     <p class="Text"><b>Special note
+</b>
+: In
+Excel 2003 and later, this <span class="CodeInlineChar">FEAT </span>
+ is not used anymore for new shared features, such as Tables, since
+a new record of <span class="CodeInlineChar">FEAT11 </span>
+ was introduced for better feature data round-tripping scenarios
+through earlier versions of Excel.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="66" style='width:49.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:275.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rt</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> <span> in the first two bytes of the
+ record;   
+=0868h </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">grbitFrt</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text"><span class="CodeInlineChar">FRT </span> </span>
+ cell
+ reference flag (see table below)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">Ref</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Range reference to a worksheet cell region if <span class="CodeInlineChar">grbitFrt=1 </span>
+ ( <span class="CodeInlineChar">bitFrtRef </span> <span>).  
+Otherwise blank. </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">isf</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text"><span>Shared feature type index (see table below for
+ possible values).<br />
+ =2 for Enhanced Protection<br />
+ =4 for SmartTag </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">18</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">fHdr</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=0 since this is for feat not feat header</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">19</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text"><span>Reserved for future use<br />
+ =0 for Enhanced Protection or SmartTag </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">23</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">cref</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Count of ref ranges this feature is on</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">25</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">cbFeatData</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Count of byte for the current feature data</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">29</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">=0, currently not used</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">31</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">REFs</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">8* <span class="CodeInlineChar">cref </span></p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>REF </span> </span>
+s are
+ written if <span class="CodeInlineChar">cref!=0 </span>
+.</p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rgbFeat</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Variable length byte of feature specific data
+ (see section below for detail <span class="CodeInlineChar">FEAT </span>
+ structures of each shared feature type)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">Where the <span class="CodeInlineChar">grbitFrt </span>
+ flag has the following bits</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="53" style='width:40.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="54" style='width:40.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="138" style='width:103.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bit Name</p>
+   </td>
+   <td width="349" style='width:262.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Description</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >0001h</p>
+   </td>
+   <td width="138" style='width:103.5pt;'>
+     <p class="CodeInline">bitFrtRef</p>
+   </td>
+   <td width="349" style='width:262.0pt;'>
+     <p class="Text" >The <span class="CodeInlineChar">Ref </span>
+ bits have value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >0002h</p>
+   </td>
+   <td width="138" style='width:103.5pt;'>
+     <p class="CodeInline">bitFrtVolatile</p>
+   </td>
+   <td width="349" style='width:262.0pt;'>
+     <p class="Text" >Alert when saving
+ in earlier versions of Excel</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text" >15-2</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >FFFCh</p>
+   </td>
+   <td width="138" style='width:103.5pt;'>
+     <p class="CodeInline">bitFrtError</p>
+   </td>
+   <td width="349" style='width:262.0pt;'>
+     <p class="Text" >There are errors
+ associated with this record</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">Since each Shared Feature type has its own
+specific data structure, each <span class="CodeInlineChar">FEAT </span>
+ record has a different data structure layout in <span class="CodeInlineChar">rgbFeat </span>
+ field according to the Shared
+Feature type (i.e., according to each <span class="CodeInlineChar">isf </span>
+ field value).</p>
+     <p class="Text">The detailed data structure of <span class="CodeInlineChar">rgbFeat </span>
+ for the 2 different <span class="CodeInlineChar">FEAT </span>
+ types are as follows:</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>The rgbFeat structure If the feature
+type is a Protection (isf=2) </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="96" style='width:72.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="120" style='width:90.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="319" style='width:239.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="CodeInline">grbit</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">=1 if this record has <span class="CodeInlineChar">SDRel </span> <span>, the Relative Security
+ Descriptor data.<br />
+ =0 if has no </span> <span class="CodeInlineChar">SDRel </span>
+ data</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="CodeInline">wPassword</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">The encrypted password</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="CodeInline">cbTitle</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">Count of bytes of <span class="CodeInlineChar">rgbTitle </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="CodeInline">rgbTitle</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">Title string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="CodeInline">cbSD</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text">4 –if <span class="CodeInlineChar"><span style='font-size:11.0pt;'>grbit&gt; 0<br /> </span> </span>
+0 –otherwise</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">Count of byte of the Security Descriptor data</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="CodeInline">SD</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text">var -if <span class="CodeInlineChar"><span style='font-size:11.0pt;'>grbit&gt; 0<br /> </span> </span>
+0 -otherwise</p>
+   </td>
+   <td width="319" style='width:239.5pt;'>
+     <p class="Text">The Security Descriptor data block</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>The rgbFeat Structure If the feature
+type is a SmartTag (isf=4) </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="112" style='width:84.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="373" style='width:280.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="112" style='width:84.0pt;'>
+     <p class="CodeInline">wHash</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >The hash value of
+ the SmartTag Tag or cell string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="112" style='width:84.0pt;'>
+     <p class="CodeInline">cSmartTags</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >number of
+ SmartTags in this cell</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >5</p>
+   </td>
+   <td width="112" style='width:84.0pt;'>
+     <p class="CodeInline">rgSmartTags</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >Array of
+ cSmartTags of SmartTag data stuctures</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">rgFactoid </span>
+ has the following data structure for each of its elements:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="102" style='width:76.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="CodeInline">grbit</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Flags indicating whether the SmartTag is
+ deleted or is XML-based (i.e., no indicator is necessary)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="CodeInline">pBagId</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">The property bag Id</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="CodeInline">cProp</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Count of properties</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">5</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="CodeInline">cbUnknown</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Count of byte of Unknown data</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="CodeInline">rgProperty</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Array of <span class="CodeInlineChar">cProp </span>
+ of properties (see table below for property data structure)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">rgProperty </span>
+ has the following data structure for each of its elements:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="108" style='width:81.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="54" style='width:40.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="373" style='width:280.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="CodeInline">wKeyIndex</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >The property <span class="CodeInlineChar">steKey </span>
+ index</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="108" style='width:81.0pt;'>
+     <p class="CodeInline">wValueIndex</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="373" style='width:280.0pt;'>
+     <p class="Text" >The property <span class="CodeInlineChar">steValue </span>
+ index</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text"><b>Note
+</b>
+: One or more <span class="CodeInlineChar">CONTINUEFRT </span>
+ record(s) may be used if <span class="CodeInlineChar">rgbFeat
+ is larger than the maximum record size which is 8,228 bytes.</p>
+</div>
+</body>
+</html>
+

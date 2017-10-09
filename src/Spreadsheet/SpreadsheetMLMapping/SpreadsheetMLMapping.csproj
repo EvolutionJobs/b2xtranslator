@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7085D1EB-E797-4841-A564-68EF63688A24}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping</RootNamespace>
+    <AssemblyName>DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChartMapping\AbstractAxisMapping.cs" />
+    <Compile Include="ChartMapping\AbstractChartGroupMapping.cs" />
+    <Compile Include="ChartMapping\AbstractChartMapping.cs" />
+    <Compile Include="ChartMapping\AreaChartMapping.cs" />
+    <Compile Include="ChartMapping\AreaFormatMapping.cs" />
+    <Compile Include="ChartMapping\AxisMapping.cs" />
+    <Compile Include="ChartMapping\BarChartMapping.cs" />
+    <Compile Include="ChartMapping\BubbleChartMapping.cs" />
+    <Compile Include="ChartMapping\CatMapping.cs" />
+    <Compile Include="ChartMapping\ChartContext.cs" />
+    <Compile Include="ChartMapping\ChartspaceMapping.cs" />
+    <Compile Include="ChartMapping\DataLabelMapping.cs" />
+    <Compile Include="ChartMapping\DataPointMapping.cs" />
+    <Compile Include="ChartMapping\LegendMapping.cs" />
+    <Compile Include="ChartMapping\LineFormatMapping.cs" />
+    <Compile Include="ChartMapping\ShapePropertiesMapping.cs" />
+    <Compile Include="ChartsheetMapping.cs" />
+    <Compile Include="ChartMapping\LayoutMapping.cs" />
+    <Compile Include="ChartMapping\LineChartMapping.cs" />
+    <Compile Include="ChartMapping\OfPieChartMapping.cs" />
+    <Compile Include="ChartMapping\PieChartMapping.cs" />
+    <Compile Include="ChartMapping\PlotAreaMapping.cs" />
+    <Compile Include="ChartMapping\RadarChartMapping.cs" />
+    <Compile Include="ChartMapping\ScatterChartMapping.cs" />
+    <Compile Include="ChartMapping\SeriesMapping.cs" />
+    <Compile Include="ChartMapping\SurfaceChartMapping.cs" />
+    <Compile Include="ChartMapping\TitleMapping.cs" />
+    <Compile Include="ChartMapping\ValMapping.cs" />
+    <Compile Include="Converter.cs" />
+    <Compile Include="DrawingMapping.cs" />
+    <Compile Include="ExcelContext.cs" />
+    <Compile Include="ExcelMapping.cs" />
+    <Compile Include="ExternalLinkMapping.cs" />
+    <Compile Include="MacroBinaryMapping.cs" />
+    <Compile Include="PageSetupMapping.cs" />
+    <Compile Include="StyleMappingHelper.cs" />
+    <Compile Include="FormulaMapping.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SSTMapping.cs" />
+    <Compile Include="StylesMapping.cs" />
+    <Compile Include="TextBodyMapping.cs" />
+    <Compile Include="WindowMapping.cs" />
+    <Compile Include="WorkbookMapping.cs" />
+    <Compile Include="WorksheetMapping.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj">
+      <Project>{0F0F6BAF-BC5D-4DC6-AE53-8257305EE5CA}</Project>
+      <Name>CommonTranslatorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\OfficeDrawing\OfficeDrawing.csproj">
+      <Project>{AA46A3F1-919F-48FB-970C-753F58A857F6}</Project>
+      <Name>OfficeDrawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\OpenXmlLib\OpenXmlLib.csproj">
+      <Project>{4C10271C-CD9B-49F5-9479-3C6EB7404E75}</Project>
+      <Name>OpenXmlLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\StructuredStorage\StructuredStorage.csproj">
+      <Project>{CBD9BEE2-1E01-477A-BB44-1EC9F8C91AB7}</Project>
+      <Name>StructuredStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Tools\Tools.csproj">
+      <Project>{B44FAEE0-B32E-4682-AA42-618C893F14C6}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\ZipUtils\ZipUtils.csproj">
+      <Project>{05A5C68E-B901-4AD0-87F1-5E43DDC759CE}</Project>
+      <Name>ZipUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XlsFileFormat\XlsFileFormat.csproj">
+      <Project>{92295756-46BB-4D1F-B0FD-CA7DF03F6C65}</Project>
+      <Name>XlsFileFormat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Test\CompoundFileExtractTest\CompoundFileExtractTest.csproj">
+      <Project>{01308A7D-882B-4822-A78B-EBAD044044FC}</Project>
+      <Name>CompoundFileExtractTest</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

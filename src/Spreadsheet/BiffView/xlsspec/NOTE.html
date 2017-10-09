@@ -1,0 +1,451 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>NOTE: Comment Associated with a Cell (1Ch)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>NOTE: Comment Associated with a Cell (1Ch)</h2>
+     <p class="Text">The <span class="CodeInlineChar">NOTE </span> <span> record specifies a comment associated with a particular cell. 
+In Excel 95 (BIFF7) and earlier versions,
+this record stores a note (cell note). 
+This feature was significantly enhanced in Excel 97, so the name was
+changed to “comment”. </span></p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF8 </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rw</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Row of the comment</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">col</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Column of the
+ comment</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">grbit</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Options flag (see
+ table below)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">idObj</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Object id for <span class="CodeInlineChar">OBJ </span>
+ record that contains the comment</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >12</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">stAuthor</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" ><span>Name of the
+ original comment author (as <a href="#_Unicode_Strings_in_BIFF8">Unicode
+ string</a>
+) </span></p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbit </span>
+ field contains the following option flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="56" style='width:42.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="90" style='width:67.75pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Name</p>
+   </td>
+   <td style='width:290.25pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">0001h</p>
+   </td>
+   <td width="90" style='width:67.75pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="387" style='width:290.25pt;'>
+     <p class="Text">Reserved; must be 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">0002h</p>
+   </td>
+   <td width="90" style='width:67.75pt;'>
+     <p class="CodeInline">fShow</p>
+   </td>
+   <td width="387" style='width:290.25pt;'>
+     <p class="Text">=0 if the comment does not show when a mouse
+ is not hovering over the cell (default)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text"><span>15<span style='letter-spacing:-1.75pt'> </span>
+–<span style='letter-spacing:-1.75pt'> </span>
+2 </span></p>
+   </td>
+   <td width="56" style='width:42.0pt;'>
+     <p class="Text">FFFCh</p>
+   </td>
+   <td width="90" style='width:67.75pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="387" style='width:290.25pt;'>
+     <p class="Text">Reserved; must be 0 (zero)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">rw </span>
+ and <span class="CodeInlineChar">col </span> <span> fields specify the cell that contains the comment. 
+The </span> <span class="CodeInlineChar">rw </span>
+ field contains the 0-based row number; the <span class="CodeInlineChar">col </span>
+ field contains the 0-based column
+number.</p>
+     <p class="Text">The <span class="CodeInlineChar">idObj </span>
+ field denotes the id of the graphic object ( <span class="CodeInlineChar">OBJ </span> <span> record) that contains the
+comment.  
+Each comment has a
+corresponding </span> <span class="CodeInlineChar">OBJ </span>
+record in which the <span class="CodeInlineChar">ot </span> <span> field specifies the object type as a Comment Shape. 
+The text of the comment (as well as the
+formatting information) is in the corresponding </span> <span class="CodeInlineChar">OBJ </span>
+ record and its supporting records.</p>
+     <p class="Text">The <span class="CodeInlineChar">stAuthor </span> <span> field contains the name of the original author of the comment, as a
+byte-counted string; the count is an unsigned short (2-bytes) that precedes the
+string.  
+The string itself is padded with
+NULL bytes until it is word-aligned.  
+The
+NULLs appear after the count and before the string data. </span></p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data — BIFF7 and earlier </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="596" style='width:446.85pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:289.85pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rw</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="386" style='width:289.85pt;'>
+     <p class="Text" >Row of the note</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">col</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="386" style='width:289.85pt;'>
+     <p class="Text" >Column of the note</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">cch</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="386" style='width:289.85pt;'>
+     <p class="Text" >Length of the note
+ (bytes)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rgch</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="386" style='width:289.85pt;'>
+     <p class="Text" >Text of the note</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The cell is denoted by the <span class="CodeInlineChar">rw </span>
+ and <span class="CodeInlineChar">col </span> <span> fields. 
+The </span> <span class="CodeInlineChar">rw </span> <span> field contains the 0-based row number. 
+The </span> <span class="CodeInlineChar">col </span>
+ field contains the 0-based column number.</p>
+     <p class="Text">The <span class="CodeInlineChar">cch </span> <span> field contains the length of the note in bytes. 
+The </span> <span class="CodeInlineChar">rgch </span>
+ field contains the text of the note in ASCII format.</p>
+     <p class="Text">Notes longer than 2,048 characters (bytes) must
+be divided into several <span class="CodeInlineChar">NOTE </span> <span> records, with each record containing no more than 2,048
+characters.  
+In this case, the first </span> <span class="CodeInlineChar">NOTE </span>
+ record contains the fields listed
+in the following table.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="599" style='width:449.15pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:292.15pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rw</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="390" style='width:292.15pt;'>
+     <p class="Text" >Row of the note</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">col</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="390" style='width:292.15pt;'>
+     <p class="Text" >Column of the note</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">cch</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="390" style='width:292.15pt;'>
+     <p class="Text" >Total length of
+ the note</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rgch</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2048</p>
+   </td>
+   <td width="390" style='width:292.15pt;'>
+     <p class="Text" >First 2,048
+ characters of the note</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">Each successive <span class="CodeInlineChar">NOTE </span>
+ record contains the following
+fields:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:289.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rw</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=–1 always (FFFFh)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">cch</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Length of this
+ section of the note</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rgch</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >This section of
+ the note</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

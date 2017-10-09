@@ -1,0 +1,380 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>BOOKEXT: Extra Book Info (863h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>BOOKEXT: Extra Book Info (863h)</h2>
+     <p class="Text">Introduced in Excel 10 (2002) this record is an <span class="CodeInlineChar">FRT </span> <span> record. 
+This record contains workbook-specific
+information new to Excel 10 (2002) and Excel 11 (2003). 
+The </span> <span class="CodeInlineChar">rgf </span>
+ and <span class="CodeInlineChar">rgf2 </span>
+ fields contain several bit flags and other fields, as described in
+the tables below.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="611" style='width:458.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="96" style='width:72.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="414" style='width:310.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="Text"><span class="CodeInlineChar">rt </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="414" style='width:310.5pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>
+ in the first two bytes of the
+ record; =0863h</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitFrt </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="414" style='width:310.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>FRT </span> </span>
+ flags; must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="Text">(unused)</p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="414" style='width:310.5pt;'>
+     <p class="Text">Must be zero</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cb </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="414" style='width:310.5pt;'>
+     <p class="Text">Record size minus 4 (excludes <span class="CodeInlineChar">rt </span>
+ and <span class="CodeInlineChar">cb </span> <span> in record header)<br />
+ =014h in Excel 10,<br />
+ =015h in Excel 11,<br />
+ may be larger in future releases </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">20</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbit </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="414" style='width:310.5pt;'>
+     <p class="Text">Flags and other fields; see description below</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">24</p>
+   </td>
+   <td width="96" style='width:72.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbit2 </span> </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="414" style='width:310.5pt;'>
+     <p class="Text">In Excel 11 this indicates there are more
+ flags if it is set to 1. In Excel 10 this is 0. This field may be larger in
+ the future.</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter"><span style='color:windowtext'>&nbsp; </span></p>
+     <p class="Text">The <span class="CodeInlineChar">grbit </span>
+ field contains the following flags and fields:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="617" style='width:463.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="53" style='width:40.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="90" style='width:67.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td style='width:157.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Flag or Field Name</p>
+   </td>
+   <td style='width:198.0pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000001h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fDontAutoRecover </span> </span></p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text"><span>=1 if Auto Recover is disabled for this
+ workbook; <br />
+ =0 otherwise. </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000002h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fHidePivotTableFList </span> </span></p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text"><span>=1 if pivot table field list should be hidden
+ for this workbook; <br />
+ =0 if it should be shown.  </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000004h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fFilterPrivacy </span> </span></p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text"><span>=1 if personal information should be removed
+ from File / Properties on save; <br />
+ =0 otherwise. </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">3</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000008h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fEmbedSmartTags </span> </span></p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text"><span>=1 if smart tags should be embedded in this
+ workbook on save; <br />
+ =0 otherwise. </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">5-4</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000030h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>mdSmartTagsDisplay </span> </span></p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text"><span>Corresponding to a control in the
+ Tools/AutoCorrect Options…./Smart Tags dialog tab:<br />
+ =0 </span> <span class="CodeInlineChar">mdSmartTagsDisplayAll </span> <span>, if both button and indicator should be shown for each smart tag; <br />
+ =1 </span> <span class="CodeInlineChar">mdSmartTagsDisplayNone </span> <span>, if  
+smart tags should not
+ be shown at all; <br />
+ =2 </span> <span class="CodeInlineChar">mdSmartTagsDisplayNoIndicator </span> <span>,<br />
+ if only the button (but no indicator) should be shown for each smart tag. </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000040h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSavedDuringRecovery </span> </span></p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text"><span>=1 if the workbook was saved during auto
+ recovery; <br />
+ =0 otherwise </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000080h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fCreatedViaMinimalSave </span> </span></p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text"><span>=1 if the workbook was created by means of
+ minimal save; <br />
+ =0 otherwise </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000100h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fOpenedViaDataRecovery </span> </span></p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text"><span>=1 if this workbook was opened by means of
+ data recovery; <br />
+ =0 otherwise </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">9</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">00000200h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fOpenedViaSafeLoad </span> </span></p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text"><span>=1 if the workbook has been opened in safe
+ load mode; <br />
+ =0 otherwise </span></p>
+   </td>
+ </tr>
+ <tr style=''>
+   <td width="53" style='width:40.0pt;'>
+     <p class="Text">31-10</p>
+   </td>
+   <td width="90" style='width:67.5pt;'>
+     <p class="Text">FFFFFC00h</p>
+   </td>
+   <td width="210" style='width:157.5pt;'>
+     <p class="Text">(unused)</p>
+   </td>
+   <td width="264" style='width:198.0pt;'>
+     <p class="Text">Reserved; must be zero</p>
+   </td>
+ </tr>
+</table>
+     <p class="Text">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbit2 </span>
+ field contains the following flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="617" style='width:463.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="52" style='width:39.3pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="55" style='width:41.2pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="222" style='width:166.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td width="288" style='width:216.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="52" style='width:39.3pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="55" style='width:41.2pt;'>
+     <p class="Text">01h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fBuggedUserAboutSolution </span> </span></p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text"><span>In Excel 11:<br />
+ =1 if the user doesn't want to be prompted to load smart doc components; <br />
+ =0 otherwise </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="52" style='width:39.3pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="55" style='width:41.2pt;'>
+     <p class="Text">02h</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fShowInkAnnotation </span></p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text"><span>In Excel 11:<br />
+ =1 if inking annotations should be displayed in this workbook; <br />
+ =0 otherwise </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="52" style='width:39.3pt;'>
+     <p class="Text">7-2</p>
+   </td>
+   <td width="55" style='width:41.2pt;'>
+     <p class="Text">FCh</p>
+   </td>
+   <td width="222" style='width:166.5pt;'>
+     <p class="Text">(unused)</p>
+   </td>
+   <td width="288" style='width:216.0pt;'>
+     <p class="Text">Unused</p>
+   </td>
+ </tr>
+</table>
+</div>
+</body>
+</html>
+

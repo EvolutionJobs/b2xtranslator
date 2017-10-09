@@ -1,0 +1,135 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>DELMENU: Menu Deletion (C3h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>DELMENU: Menu Deletion (C3h)</h2>
+     <p class="Text">The <span class="CodeInlineChar">DELMENU </span>
+ record stores a menu deletion and is very similar to the <span class="CodeInlineChar">ADDMENU </span> <span> record. 
+For more information about menu system
+modification, see “<span class="LinkText"><u><a href="#_ADDMENU:_Menu_Addition_(C2h)">ADDMENU</a>
+</u> </span> <span class="LinkID">EXB0104 </span>
+”. </span></p>
+     <p class="Text">If <span class="CodeInlineChar">fDelete </span>
+ is true (equal to <span class="CodeInlineChar">01h </span> <span>), the menu object is deleted at this level of the hierarchy. 
+For example, if </span> <span class="CodeInlineChar">fDelete </span>
+ is true in the second <span class="CodeInlineChar">DELMENU </span> <span> record of the group, Excel
+deletes the specified menu from a menu bar. 
+If </span> <span class="CodeInlineChar">fDelete </span> </span>
+ is
+false (equal to <span class="CodeInlineChar">00h </span>
+), the record is a placeholder, and one of the following <span class="CodeInlineChar">DELMENU </span>
+ records in the group will define
+the menu deletion.</p>
+     <p class="Text">For menu items and submenu items, the <span class="CodeInlineChar">icetabItem </span> <span> field stores the index to the
+deleted command if the item is attached to a built-in command. 
+If </span> <span class="CodeInlineChar">icetabItem </span>
+ equals <span class="CodeInlineChar">FFFFh </span>
+, the <span class="CodeInlineChar">stItem </span>
+ string from the <span class="CodeInlineChar">rgch </span>
+ field is used instead.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">icetabItem</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icetab </span> </span>
+ of
+ the command</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">cditm</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">Number of <span class="CodeInlineChar">DELMENU </span>
+ records at the next level of the menu hierarchy</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">fDelete</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text"><span>=1, delete this menu object<br />
+ =0, this is a placeholder record </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">fMultiple</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text">=1 if this item has subitems</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">9</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rgch</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>stItem </span> </span>
+ (see
+ text)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The first byte of the <span class="CodeInlineChar">stItem
+ string is the byte count, and the
+last byte is reserved.</p>
+</div>
+</body>
+</html>
+

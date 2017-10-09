@@ -1,0 +1,264 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>CONTINUEFRT11: Continue FRT 11 (875h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>CONTINUEFRT11: Continue FRT 11 (875h)</h2>
+     <p class="Text">Introduced in Office Excel 2003 this is a <span class="CodeInlineChar">FRT </span> <span> record. 
+It is used to extend a </span> <span class="CodeInlineChar">FRT </span> <span> record that is larger than the
+maximum record size.  
+This record differs
+from the </span> <span class="CodeInlineChar">CONTINUEFRT </span> </span>
+with an additional <span class="CodeInlineChar">ref </span> <span> range.  
+This is because the
+limitation of Excel 2000 on </span> <span class="CodeInlineChar">FRT </span>
+ causing the <span class="CodeInlineChar">CONTINUEFRT </span>
+ to be lost, round-tripping only the parent <span class="CodeInlineChar">FRT </span>
+ record.</p>
+     <p class="Text">Hence, for all new features starting from Office
+Excel 2003, this <span class="CodeInlineChar">CONTINUEFRT11 </span>
+ must be used to write a large <span class="CodeInlineChar">feat </span>
+ record instead of <span class="CodeInlineChar">CONTINUEFRT </span> <span>.  
+This ensures a continued
+record will round-trip with its </span> <span class="CodeInlineChar">FRT </span> <span> record through Excel 2000 and Excel 2002.  </span></p>
+     <p class="Text"><b>Special note
+</b>
+: to
+ensure the record will round-trip through Excel 2000 correctly, the <span class="CodeInlineChar">grbit </span>
+ field of the <span class="CodeInlineChar">CONTINUEFRT11 </span>
+ must be zero or the <span class="CodeInlineChar">Ref.colLast </span>
+ must not be equal to <span class="CodeInlineChar">0xFFFF </span>
+ (the limitation of Excel 2000 <span class="CodeInlineChar">FRT </span> <span> handling). 
+Office Excel 2003 sets this </span> <span class="CodeInlineChar">grbit </span>
+ to be 0, and the <span class="CodeInlineChar">ref </span>
+ to be NULL.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='width:458.4pt; margin-left:.4pt; border-collapse:collapse;'>
+ <tr>
+   <td width="59" style='width:44.4pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="102" style='width:76.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="402" style='width:301.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.4pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>Rt </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> <span> in the first two bytes of the
+ record;   
+=0875h </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.4pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitFrt </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>FRT </span> </span>
+ flags; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.4pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>Ref </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text">The rectangle range (see table below for bits
+ definition)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.4pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>Rgb </span> </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="402" style='width:301.5pt;'>
+     <p class="Text">Continued data</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">grbitFrt </span>
+ field contains the following option flags.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="611" style='width:458.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="62" style='width:46.35pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="70" style='width:52.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="144" style='width:108.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td width="336" style='width:252.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="70" style='width:52.15pt;'>
+     <p class="Text">0001h</p>
+   </td>
+   <td width="144" style='width:108.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>bitfFrtRef </span> </span></p>
+   </td>
+   <td width="336" style='width:252.0pt;'>
+     <p class="Text">1= a <span class="CodeInlineChar">REF </span>
+ structure is present in the <span class="CodeInlineChar">FRT </span>
+ header</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="70" style='width:52.15pt;'>
+     <p class="Text">0002h</p>
+   </td>
+   <td width="144" style='width:108.0pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>bitfFrtVolatile </span> </span></p>
+   </td>
+   <td width="336" style='width:252.0pt;'>
+     <p class="Text">1= Excel should give an alert when saving if
+ that version doesn't recognize the <span class="CodeInlineChar">FRT </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text">15-2</p>
+   </td>
+   <td width="70" style='width:52.15pt;'>
+     <p class="Text">FFFCh</p>
+   </td>
+   <td width="144" style='width:108.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="336" style='width:252.0pt;'>
+     <p class="Text">Reserved; must be zero</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">REF </span>
+ structure has the following fields.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="611" style='width:458.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="62" style='width:46.35pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="106" style='width:79.15pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="396" style='width:297.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="106" style='width:79.15pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rwFirst </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text" >The first row of
+ the range associated with the record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="106" style='width:79.15pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rwLast </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text" >The last row of
+ the range associated with the record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="106" style='width:79.15pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colFirst </span></p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text" >The first column
+ of the range associated with the record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="62" style='width:46.35pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="106" style='width:79.15pt;'>
+     <p class="Text" ><span class="CodeInlineChar">colLast</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="396" style='width:297.0pt;'>
+     <p class="Text" >The last column of
+ the range associated with the record</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

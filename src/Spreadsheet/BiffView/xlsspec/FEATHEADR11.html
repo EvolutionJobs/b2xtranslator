@@ -1,0 +1,356 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FEATHEADR11: Shared Feature Header 11 (871h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>FEATHEADR11: Shared Feature Header 11 (871h)</h2>
+     <p class="Text">Introduced in Excel 11 (2003) the <span class="CodeInlineChar">FEATHEADR11 </span> <span> record describes common
+information (header) for shared features such as Tables. 
+For example, if you have a worksheet that
+contains Table(s), a Shared Feature Header ( </span> <span class="CodeInlineChar">FEATHEADER11 </span> <span>) record is created for all Tables. 
+Though Tables from the same or different sheets may have specific data
+that are different which are saved in the Feature Data 11 (see </span> <span class="CodeInlineChar">FEAT11 </span>
+ record for detail) portion, their
+common settings are stored in this header block record.</p>
+     <p class="Text">A worksheet may contain one or more different
+types of Shared Feature and each type of Shared Feature has its own Shared
+Feature Header ( <span class="CodeInlineChar">FEATHEADER11 </span> <span>) record to store common information across all Shared Feature of
+the same type.  
+For example, if a
+Workbook has both Table and some future shared feature, there is one Shared
+Feature Header ( </span> <span class="CodeInlineChar">FEATHEADER11 </span>
+) created for Table, and another Shared Feature Header ( <span class="CodeInlineChar">FEATHEADER11 </span> <span>) created for the future
+feature.  
+Therefore, the data block of
+the Shared Feature Header ( </span> <span class="CodeInlineChar">FEATHEADER11 </span> <span>) may have a different data structure depending on which Shared
+Feature Type the record is for.  
+Hence,
+the </span> <span class="CodeInlineChar">FEATHEADER11 </span>
+ record
+will have a different data structure layout according to the Shared Feature
+type (the <span class="CodeInlineChar">isf </span> </span>
+ field
+flags differentiate Shared Feature types).</p>
+     <p class="Text">Though Excel currently has many different Shared
+Features such as Formula Error Checking, Protection, Factoid (SmartTag etc.),
+only 3 types of Shared Feature are persisted in Excel 2003: Protection, Factoid
+(SmartTag), and Table.</p>
+     <p class="Text">In Excel 2003, Table uses the <span class="CodeInlineChar">FEATHEADER11 </span>
+ structure, even though the <span class="CodeInlineChar">FEATHEADER </span> <span> is still used for existing
+Excel 10 (2002) features such as Protection and Factoid (SmartTag) etc. 
+This new record of </span> <span class="CodeInlineChar">FEATHEADER11 </span>
+, though it has exactly the
+same structure as <span class="CodeInlineChar">FEATHEADER </span>
+, was introduced to persist header records in combination with <span class="CodeInlineChar">FEAT11 </span>
+ (introduced to address bugs in
+round-tripping scenario of <span class="CodeInlineChar">FEAT </span> <span>) through earlier versions. 
+Therefore, if a shared feature is saved using </span> <span class="CodeInlineChar">FEAT11 </span>
+, it should be using <span class="CodeInlineChar">FEATHEADER11 </span>
+ instead of <span class="CodeInlineChar">FEATHEADER </span>
+.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="66" style='width:49.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="367" style='width:275.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rt</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Record type; this matches the BIFF <span class="CodeInlineChar">rt </span> <span> in the first two bytes of the
+ record;   
+=0871h </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">grbitFrt</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text"><span class="CodeInlineChar"><span style='font-size: 11.0pt;'>FRT </span> </span> <span> cell
+ reference flag<br />
+ =0 bitFrtNone </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text">(Reserved)</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Currently not used, and set to 0</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">16</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">isf</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text"><span>Shared feature type index<br />
+ =5 for Table </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">18</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">fHdr</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text"><span>=1 
+ 
+since this is a feat header </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">19</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">cbHdrData</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Size of <span class="CodeInlineChar"><span style='font-size:11.0pt;'>rgbHdrSData<br /> </span> </span> <span>=4 for simple feature headers<br />
+ =0 there is no </span> <span class="CodeInlineChar"><span style='font-size:11.0pt;'>rgbHdrData<br /> </span> </span>
+=-1 for complex feature headers and the size
+ of <span class="CodeInlineChar">rgbHdrData </span> <span> depends
+ on the isf type.<br />
+ (in Excel 2003, all features saved using </span> <span class="CodeInlineChar">FEATHEAER11 </span>
+ are complex features.)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">23</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rgbHdrData</p>
+   </td>
+   <td width="66" style='width:49.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Byte array of extra info, including from future
+ versions of Excel; length depends on <span class="CodeInlineChar">isf </span>
+ feature type.</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>The rgbHdrData block for Table (isf =
+5) </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="120" style='width:90.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="126" style='width:94.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="289" style='width:217.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">idObjTotal</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="289" style='width:217.0pt;'>
+     <p class="Text">The id of the dropdown object for the total
+ row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">idListNext</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="289" style='width:217.0pt;'>
+     <p class="Text">Next id to use when assigning a unique id to a
+ new Table</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">cFilterData</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="289" style='width:217.0pt;'>
+     <p class="Text">Count of <span class="CodeInlineChar">Feat </span>
+ Autofilters</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">10</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">rgFilterData</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="289" style='width:217.0pt;'>
+     <p class="Text">Array of <span class="CodeInlineChar">cFilterData </span>
+ many AutoFilter data structures (see table below).</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">refFilter</p>
+   </td>
+   <td width="126" style='width:94.5pt;'>
+     <p class="Text">8 –if <span class="CodeInlineChar"><span style='font-size:11.0pt;'>cFilterData&gt; 0<br /> </span> </span>
+0 -otherwise</p>
+   </td>
+   <td width="289" style='width:217.0pt;'>
+     <p class="Text">The <span class="CodeInlineChar">ref </span>
+ ( <span class="CodeInlineChar">rwFirst </span>
+, <span class="CodeInlineChar">rwLast </span>
+, <span class="CodeInlineChar">colFirst </span>
+, <span class="CodeInlineChar">colLast </span>
+) of the <span class="CodeInlineChar">Feat </span>
+ Autofilter range.</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">Where the structure for each item in the <span class="CodeInlineChar">rgFilterData </span>
+ array has the following
+layout for each filter data item:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="59" style='width:44.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="120" style='width:90.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="367" style='width:275.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">0</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">cbAutoFilter</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Count of Bytes of the <span class="CodeInlineChar">AutoFilter </span>
+ record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">idObj</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">Id of the AutoFilter drop down object</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="59" style='width:44.5pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">AutoFilter</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="367" style='width:275.5pt;'>
+     <p class="Text">The AutoFilter data of length <span class="CodeInlineChar">cbAutoFilter </span>
+ (see the <span class="CodeInlineChar">AutoFilter
+ record section for detailed
+ description of AutoFitler data)</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

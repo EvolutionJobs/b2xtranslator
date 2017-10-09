@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Default Design">
+  <a:themeElements>
+    <a:clrScheme name="Default Design 1">
+      <a:dk1>
+        <a:srgbClr val="000000" />
+      </a:dk1>
+      <a:lt1>
+        <a:srgbClr val="FFFFFF" />
+      </a:lt1>
+      <a:dk2>
+        <a:srgbClr val="000000" />
+      </a:dk2>
+      <a:lt2>
+        <a:srgbClr val="808080" />
+      </a:lt2>
+      <a:accent1>
+        <a:srgbClr val="BBE0E3" />
+      </a:accent1>
+      <a:accent2>
+        <a:srgbClr val="333399" />
+      </a:accent2>
+      <a:accent3>
+        <a:srgbClr val="FFFFFF" />
+      </a:accent3>
+      <a:accent4>
+        <a:srgbClr val="000000" />
+      </a:accent4>
+      <a:accent5>
+        <a:srgbClr val="DAEDEF" />
+      </a:accent5>
+      <a:accent6>
+        <a:srgbClr val="2D2D8A" />
+      </a:accent6>
+      <a:hlink>
+        <a:srgbClr val="009999" />
+      </a:hlink>
+      <a:folHlink>
+        <a:srgbClr val="99CC00" />
+      </a:folHlink>
+    </a:clrScheme>
+    <a:fontScheme name="Default Design">
+      <a:majorFont>
+        <a:latin typeface="Arial" />
+        <a:ea typeface="" />
+        <a:cs typeface="" />
+      </a:majorFont>
+      <a:minorFont>
+        <a:latin typeface="Arial" />
+        <a:ea typeface="" />
+        <a:cs typeface="" />
+      </a:minorFont>
+    </a:fontScheme>
+    <a:fmtScheme name="Office">
+      <a:fillStyleLst>
+        <a:solidFill>
+          <a:schemeClr val="phClr" />
+        </a:solidFill>
+        <a:gradFill rotWithShape="1">
+          <a:gsLst>
+            <a:gs pos="0">
+              <a:schemeClr val="phClr">
+                <a:tint val="50000" />
+                <a:satMod val="300000" />
+              </a:schemeClr>
+            </a:gs>
+            <a:gs pos="35000">
+              <a:schemeClr val="phClr">
+                <a:tint val="37000" />
+                <a:satMod val="300000" />
+              </a:schemeClr>
+            </a:gs>
+            <a:gs pos="100000">
+              <a:schemeClr val="phClr">
+                <a:tint val="15000" />
+                <a:satMod val="350000" />
+              </a:schemeClr>
+            </a:gs>
+          </a:gsLst>
+          <a:lin ang="16200000" scaled="1" />
+        </a:gradFill>
+        <a:gradFill rotWithShape="1">
+          <a:gsLst>
+            <a:gs pos="0">
+              <a:schemeClr val="phClr">
+                <a:shade val="51000" />
+                <a:satMod val="130000" />
+              </a:schemeClr>
+            </a:gs>
+            <a:gs pos="80000">
+              <a:schemeClr val="phClr">
+                <a:shade val="93000" />
+                <a:satMod val="130000" />
+              </a:schemeClr>
+            </a:gs>
+            <a:gs pos="100000">
+              <a:schemeClr val="phClr">
+                <a:shade val="94000" />
+                <a:satMod val="135000" />
+              </a:schemeClr>
+            </a:gs>
+          </a:gsLst>
+          <a:lin ang="16200000" scaled="0" />
+        </a:gradFill>
+      </a:fillStyleLst>
+      <a:lnStyleLst>
+        <a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
+          <a:solidFill>
+            <a:schemeClr val="phClr">
+              <a:shade val="95000" />
+              <a:satMod val="105000" />
+            </a:schemeClr>
+          </a:solidFill>
+          <a:prstDash val="solid" />
+        </a:ln>
+        <a:ln w="25400" cap="flat" cmpd="sng" algn="ctr">
+          <a:solidFill>
+            <a:schemeClr val="phClr" />
+          </a:solidFill>
+          <a:prstDash val="solid" />
+        </a:ln>
+        <a:ln w="38100" cap="flat" cmpd="sng" algn="ctr">
+          <a:solidFill>
+            <a:schemeClr val="phClr" />
+          </a:solidFill>
+          <a:prstDash val="solid" />
+        </a:ln>
+      </a:lnStyleLst>
+      <a:effectStyleLst>
+        <a:effectStyle>
+          <a:effectLst>
+            <a:outerShdw blurRad="40000" dist="20000" dir="5400000" rotWithShape="0">
+              <a:srgbClr val="000000">
+                <a:alpha val="38000" />
+              </a:srgbClr>
+            </a:outerShdw>
+          </a:effectLst>
+        </a:effectStyle>
+        <a:effectStyle>
+          <a:effectLst>
+            <a:outerShdw blurRad="40000" dist="23000" dir="5400000" rotWithShape="0">
+              <a:srgbClr val="000000">
+                <a:alpha val="35000" />
+              </a:srgbClr>
+            </a:outerShdw>
+          </a:effectLst>
+        </a:effectStyle>
+        <a:effectStyle>
+          <a:effectLst>
+            <a:outerShdw blurRad="40000" dist="23000" dir="5400000" rotWithShape="0">
+              <a:srgbClr val="000000">
+                <a:alpha val="35000" />
+              </a:srgbClr>
+            </a:outerShdw>
+          </a:effectLst>
+          <a:scene3d>
+            <a:camera prst="orthographicFront">
+              <a:rot lat="0" lon="0" rev="0" />
+            </a:camera>
+            <a:lightRig rig="threePt" dir="t">
+              <a:rot lat="0" lon="0" rev="1200000" />
+            </a:lightRig>
+          </a:scene3d>
+          <a:sp3d>
+            <a:bevelT w="63500" h="25400" />
+          </a:sp3d>
+        </a:effectStyle>
+      </a:effectStyleLst>
+      <a:bgFillStyleLst>
+        <a:solidFill>
+          <a:schemeClr val="phClr" />
+        </a:solidFill>
+        <a:gradFill rotWithShape="1">
+          <a:gsLst>
+            <a:gs pos="0">
+              <a:schemeClr val="phClr">
+                <a:tint val="40000" />
+                <a:satMod val="350000" />
+              </a:schemeClr>
+            </a:gs>
+            <a:gs pos="40000">
+              <a:schemeClr val="phClr">
+                <a:tint val="45000" />
+                <a:shade val="99000" />
+                <a:satMod val="350000" />
+              </a:schemeClr>
+            </a:gs>
+            <a:gs pos="100000">
+              <a:schemeClr val="phClr">
+                <a:shade val="20000" />
+                <a:satMod val="255000" />
+              </a:schemeClr>
+            </a:gs>
+          </a:gsLst>
+          <a:path path="circle">
+            <a:fillToRect l="50000" t="-80000" r="50000" b="180000" />
+          </a:path>
+        </a:gradFill>
+        <a:gradFill rotWithShape="1">
+          <a:gsLst>
+            <a:gs pos="0">
+              <a:schemeClr val="phClr">
+                <a:tint val="80000" />
+                <a:satMod val="300000" />
+              </a:schemeClr>
+            </a:gs>
+            <a:gs pos="100000">
+              <a:schemeClr val="phClr">
+                <a:shade val="30000" />
+                <a:satMod val="200000" />
+              </a:schemeClr>
+            </a:gs>
+          </a:gsLst>
+          <a:path path="circle">
+            <a:fillToRect l="50000" t="50000" r="50000" b="50000" />
+          </a:path>
+        </a:gradFill>
+      </a:bgFillStyleLst>
+    </a:fmtScheme>
+  </a:themeElements>
+  <a:objectDefaults />
+  <a:extraClrSchemeLst>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 1">
+        <a:dk1>
+          <a:srgbClr val="000000" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="000000" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="808080" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="BBE0E3" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="333399" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="FFFFFF" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="000000" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="DAEDEF" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="2D2D8A" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="009999" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="99CC00" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 2">
+        <a:dk1>
+          <a:srgbClr val="000000" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="000000" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="969696" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="FBDF53" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="FF9966" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="FFFFFF" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="000000" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="FDECB3" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="E78A5C" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="CC3300" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="996600" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 3">
+        <a:dk1>
+          <a:srgbClr val="000000" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="000000" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="808080" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="99CCFF" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="CCCCFF" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="FFFFFF" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="000000" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="CAE2FF" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="B9B9E7" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="3333CC" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="AF67FF" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 4">
+        <a:dk1>
+          <a:srgbClr val="000000" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="DEF6F1" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="000000" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="969696" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="FFFFFF" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="8DC6FF" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="ECFAF7" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="000000" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="FFFFFF" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="7FB3E7" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="0066CC" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="00A800" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 5">
+        <a:dk1>
+          <a:srgbClr val="000000" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFD9" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="000000" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="777777" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="FFFFF7" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="33CCCC" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="FFFFE9" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="000000" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="FFFFFA" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="2DB9B9" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="FF5050" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="FF9900" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 6">
+        <a:dk1>
+          <a:srgbClr val="005A58" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="008080" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="FFFF99" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="006462" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="6D6FC7" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="AAC0C0" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="DADADA" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="AAB8B7" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="6264B4" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="00FFFF" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="00FF00" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="dk2" tx1="lt1" bg2="dk1" tx2="lt2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 7">
+        <a:dk1>
+          <a:srgbClr val="5C1F00" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="800000" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="DFD293" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="CC3300" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="BE7960" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="C0AAAA" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="DADADA" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="E2ADAA" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="AC6D56" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="FFFF99" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="D3A219" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="dk2" tx1="lt1" bg2="dk1" tx2="lt2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 8">
+        <a:dk1>
+          <a:srgbClr val="003366" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="000099" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="CCFFFF" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="3366CC" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="00B000" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="AAAACA" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="DADADA" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="ADB8E2" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="009F00" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="66CCFF" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="FFE701" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="dk2" tx1="lt1" bg2="dk1" tx2="lt2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 9">
+        <a:dk1>
+          <a:srgbClr val="336699" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="000000" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="E3EBF1" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="003399" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="468A4B" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="AAAAAA" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="DADADA" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="AAADCA" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="3F7D43" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="66CCFF" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="F0E500" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="dk2" tx1="lt1" bg2="dk1" tx2="lt2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 10">
+        <a:dk1>
+          <a:srgbClr val="777777" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="686B5D" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="D1D1CB" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="909082" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="809EA8" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="B9BAB6" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="DADADA" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="C6C6C1" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="738F98" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="FFCC66" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="E9DCB9" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="dk2" tx1="lt1" bg2="dk1" tx2="lt2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 11">
+        <a:dk1>
+          <a:srgbClr val="3E3E5C" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="666699" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="60597B" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="6666FF" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="B8B8CA" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="DADADA" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="B6B5BF" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="5C5CE7" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="99CCFF" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="FFFF99" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="dk2" tx1="lt1" bg2="dk1" tx2="lt2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+    <a:extraClrScheme>
+      <a:clrScheme name="Default Design 12">
+        <a:dk1>
+          <a:srgbClr val="2D2015" />
+        </a:dk1>
+        <a:lt1>
+          <a:srgbClr val="FFFFFF" />
+        </a:lt1>
+        <a:dk2>
+          <a:srgbClr val="523E26" />
+        </a:dk2>
+        <a:lt2>
+          <a:srgbClr val="DFC08D" />
+        </a:lt2>
+        <a:accent1>
+          <a:srgbClr val="8C7B70" />
+        </a:accent1>
+        <a:accent2>
+          <a:srgbClr val="8F5F2F" />
+        </a:accent2>
+        <a:accent3>
+          <a:srgbClr val="B3AFAC" />
+        </a:accent3>
+        <a:accent4>
+          <a:srgbClr val="DADADA" />
+        </a:accent4>
+        <a:accent5>
+          <a:srgbClr val="C5BFBB" />
+        </a:accent5>
+        <a:accent6>
+          <a:srgbClr val="81552A" />
+        </a:accent6>
+        <a:hlink>
+          <a:srgbClr val="CCB400" />
+        </a:hlink>
+        <a:folHlink>
+          <a:srgbClr val="8C9EA0" />
+        </a:folHlink>
+      </a:clrScheme>
+      <a:clrMap bg1="dk2" tx1="lt1" bg2="dk1" tx2="lt2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink" />
+    </a:extraClrScheme>
+  </a:extraClrSchemeLst>
+</a:theme>

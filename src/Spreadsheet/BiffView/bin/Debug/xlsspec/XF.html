@@ -1,0 +1,3941 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>XF: Extended Format (E0h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            XF: Extended Format (E0h)</h2>
+        <p class="Text">
+            The <span class="CodeInlineChar">XF </span><span>record stores formatting properties.
+                There are two different </span><span class="CodeInlineChar">XF </span><span>records,
+                    one for cell records and another for style records. The </span><span class="CodeInlineChar">
+                        fStyle </span>bit is true if the <span class="CodeInlineChar">XF </span>
+            is a style <span class="CodeInlineChar">XF </span><span>. The </span><span class="CodeInlineChar">
+                ixfe </span>of a cell record ( <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                    BLANK </span></span>, <span class="CodeInlineChar">LABEL </span>, <span class="CodeInlineChar">
+                        NUMBER </span>, <span class="CodeInlineChar">RK </span><span>, and so on) points to
+                            a <i>cell</i> </span><span class="CodeInlineChar">XF </span>record,
+            and the <span class="CodeInlineChar">ixfe </span>of a <span class="CodeInlineChar">STYLE
+            </span><span>record points to a <i>style</i> </span><span class="CodeInlineChar">XF
+            </span><span>record. <b>Note</b> : in previous BIFF versions, the record number for
+                the </span><span class="CodeInlineChar">XF </span>record was 43h.</p>
+        <p class="Text">
+            Prior to BIFF5, all number format information was included in <span class="CodeInlineChar">
+                FORMAT </span><span>records in the BIFF file. Beginning with BIFF5, many of the built-in
+                    number formats were moved to an internal table and are no longer saved with the
+                    file as </span><span class="CodeInlineChar">FORMAT </span><span>records. Use the </span>
+            <span class="CodeInlineChar">ifmt </span>to associate the built-in number formats
+            with an <span class="CodeInlineChar">XF </span><span>record. However, the internal number
+                formats are no longer visible in the BIFF file. </span>
+        </p>
+        <p class="Text">
+            <span>The following table lists all the number formats that are now maintained internally.
+                <b>Note</b> : 17h through 24h are reserved for international versions and are undocumented
+                at this time. </span>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td style='width: 103.85pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            <span>Index to internal<br />
+                                format (ifmt) </span>
+                        </p>
+                    </td>
+                    <td style='width: 342.15pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            <span>
+                                <br />
+                                Format string </span>
+                        </p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        00h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        General</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        01h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        02h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        0.00</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        03h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        #,##0</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        04h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        #,##0.00</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        05h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        ($#,##0_); ($#,##0)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        06h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        ($#,##0_); [Red]($#,##0)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        07h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        ($#,##0.00_); ($#,##0.00)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        08h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        ($#,##0.00_); [Red]($#,##0.00)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        09h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        0%</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        0ah</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        0.00%</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        0bh</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        0.00E+00</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        0ch</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        # ?/?</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        0dh</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        # ??/??</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        0eh</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        m/d/yy</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        0fh</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        d-mmm-yy</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        10h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        d-mmm</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        11h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        mmm-yy</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        12h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        h:mm AM/PM</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        13h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        h:mm:ss AM/PM</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        14h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        h:mm</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        15h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        h:mm:ss</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        16h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        m/d/yy h:mm</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        25h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        (#,##0_); (#,##0)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        26h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        (#,##0_); [Red](#,##0)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        27h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        (#,##0.00_); (#,##0.00)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        28h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        (#,##0.00_); [Red](#,##0.00)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        29h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        _(* #,##0_); _(* (#,##0); _(* &quot; -&quot; _); _(@_)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        2ah</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        _($* #,##0_); _($* (#,##0); _($* &quot; -&quot; _); _(@_)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        2bh</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        _(* #,##0.00_); _(* (#,##0.00); _(* &quot; -&quot; ??_); _(@_)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        2ch</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        _($* #,##0.00_); _($* (#,##0.00); _($* &quot; -&quot; ??_); _(@_)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        2dh</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        mm:ss</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        2eh</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        [h]:mm:ss</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        2fh</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        mm:ss.0</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        30h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        ##0.0E+0</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="138" style='width: 103.85pt;'>
+                    <p class="Text">
+                        31h</p>
+                </td>
+                <td width="456" style='width: 342.15pt;'>
+                    <p class="Text">
+                        @</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            A BIFF file can contain as many <span class="CodeInlineChar">XF </span><span>records
+                as are necessary to describe the different cell formats and styles in a workbook.
+                The </span><span class="CodeInlineChar">XF </span>records are written in a table
+            in the workbook ( <span class="CodeInlineChar">Book </span>) stream, and the index
+            to the <span class="CodeInlineChar">XF </span>record table is a 0-based number called
+            <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ixfe </span></span>
+            .</p>
+        <p class="Text">
+            The workbook stream must contain a minimum <span class="CodeInlineChar">XF </span>
+            table consisting of 15 style <span class="CodeInlineChar">XF </span>records and
+            one cell <span class="CodeInlineChar">XF </span>record ( <span class="CodeInlineChar">
+                ixfe=0 </span>through <span class="CodeInlineChar">ixfe=15 </span><span>). The first
+                </span><span class="CodeInlineChar">XF </span>record ( <span class="CodeInlineChar">
+                    ixfe=0 </span>) is the <span class="CodeInlineChar">XF </span><span>record for the Normal
+                        style. The next 14 records ( </span><span class="CodeInlineChar">ixfe=1 </span>
+            through <span class="CodeInlineChar">ixfe=14 </span>) are <span class="CodeInlineChar">
+                XF </span><span>records that correspond to outline styles RowLevel_1, ColLevel_1, RowLevel_2,
+                    ColLevel_2, and so on. The last record ( </span><span class="CodeInlineChar">ixfe=15
+                    </span>) is the default cell <span class="CodeInlineChar">XF </span>for
+            the workbook.</p>
+        <p class="Text">
+            Following these <span class="CodeInlineChar">XF </span>records are five additional
+            style <span class="CodeInlineChar">XF </span>records (not strictly required) that
+            correspond to the Comma, Comma [0], Currency, Currency [0], and Percent styles.</p>
+        <h3>
+            <a name="_Toc157240689"></a><a name="_Cell_XF_Record"></a><span><span>Cell XF Record<span
+                style='letter-spacing: -1.75pt'> </span>—<span style='letter-spacing: -1.75pt'> </span>
+                BIFF8 </span></span>
+        </h3>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 446.05pt;
+            border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td style='width: 43.2pt; border: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td style='width: 41.8pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td style='width: 67.5pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 90.0pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 203.55pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFFFh</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ifnt </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the <span class="CodeInlineChar">FONT </span>record.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFFFh</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ifmt </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the <span class="CodeInlineChar">FORMAT </span>record.</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="5" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fLocked </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the cell is locked.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fHidden </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the cell is hidden.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fStyle </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =0 for cell <span class="CodeInlineChar">XF </span><span>.<br />
+                            =1 for style </span><span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>f123Prefix </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>If the <b>Transition Navigation Keys</b> option is <i>off</i> (<b>Options</b>
+                            dialog box, <b>Transition</b> tab), </span><span class="CodeInlineChar">f123Prefix=1
+                            </span><span>indicates that a leading apostrophe (single quotation mark) is being used
+                                to coerce the cell’s contents to a simple string.<br />
+                                If the <b>Transition Navigation Keys</b> option is <i>on</i> , </span><span class="CodeInlineChar">
+                                    f123Prefix=1 </span><span>indicates that the cell formula begins with one of the four
+                                        Lotus 1-2-3 alignment prefix characters:<br />
+                                        ' left<br />
+                                        &quot; right<br />
+                                        ^ centered<br />
+                                        \ fill </span>
+                    </p>
+                    <p class="Text">
+                        This bit is always 0 if <span class="CodeInlineChar">fStyle=1 </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–4</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFF0h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ixfParent </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the <span class="CodeInlineChar">XF </span><span>record of the parent style.
+                            Every cell </span><span class="CodeInlineChar">XF </span>must have a parent
+                        style <span class="CodeInlineChar">XF </span>, which is usually <span class="CodeInlineChar">
+                            ixfeNormal=0 </span><span>.<br />
+                                This field is always FFFh if </span><span class="CodeInlineChar">fStyle=1 </span>
+                        .</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="5" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0007h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>alc </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>Alignment:<br />
+                            0= general<br />
+                            1= left<br />
+                            2= center<br />
+                            3= right<br />
+                            4= fill<br />
+                            5= justify<br />
+                            6= center across selection </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fWrap </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 wrap text in cell.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–4</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0070h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>alcV </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>Vertical alignment:<br />
+                            0= top<br />
+                            1= center<br />
+                            2= bottom<br />
+                            3= justify </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0080h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fJustLast </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (Used only in East Asian versions of Excel).</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–8</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FF00h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>trot </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Rotation, in degrees; 0–90dec is up 0–90 deg., 91–180dec is down 1–90 deg, and 255dec
+                        is vertical.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td rowspan="11" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        000Fh</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>cIndent </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>Indent value (<b>Format Cells</b> dialog box, <b>Alignment</b> tab). </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0010h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fShrinkToFit </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>=1 if <b>Shrink To Fit</b> option is on (<b>Format Cells</b> dialog box, <b>Alignment</b>
+                            tab). </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0020h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fMergeCell </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>=1 if <b>Merge Cells</b> option is on (<b>Format Cells</b> dialog box, <b>Alignment</b>
+                            tab). </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        7–6</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        00C0h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>iReadOrder </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>Reading direction (East Asian versions only):<br />
+                            0= Context<br />
+                            1= Left-to-right<br />
+                            2= Right-to-left </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        9–8</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0300h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0400h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrNum </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the <span class="CodeInlineChar">ifmt </span>is not equal to the <span class="CodeInlineChar">
+                            ifmt </span>of the parent style <span class="CodeInlineChar">XF </span><span>.<br />
+                                This bit is N/A if </span><span class="CodeInlineChar">fStyle=1 </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0800h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrFnt </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the <span class="CodeInlineChar">ifnt </span>is not equal to the <span class="CodeInlineChar">
+                            ifnt </span>of the parent style <span class="CodeInlineChar">XF </span><span>.
+                                <br />
+                                This bit is N/A if </span><span class="CodeInlineChar">fStyle=1 </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrAlc </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if either the <span class="CodeInlineChar">alc </span>or the <span class="CodeInlineChar">
+                            fWrap </span>field is not equal to the corresponding field of the parent style
+                        <span class="CodeInlineChar">XF </span><span>.
+                            <br />
+                            This bit is N/A if </span><span class="CodeInlineChar">fStyle=1 </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrBdr </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if any border line field ( <span class="CodeInlineChar">dgTop </span>, and so
+                        on) is not equal to the corresponding field of the parent style <span class="CodeInlineChar">
+                            XF </span><span>.
+                                <br />
+                                This bit is N/A if </span><span class="CodeInlineChar">fStyle=1 </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrPat </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if any pattern field ( <span class="CodeInlineChar">fls </span>, <span class="CodeInlineChar">
+                            icvFore </span>, <span class="CodeInlineChar">icvBack </span>) is not equal
+                        to the corresponding field of the parent style <span class="CodeInlineChar">XF </span>
+                        <span>.
+                            <br />
+                            This bit is N/A if </span><span class="CodeInlineChar">fStyle=1 </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrProt </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if either the <span class="CodeInlineChar">fLocked </span>field or the <span class="CodeInlineChar">
+                            fHidden </span>field is not equal to the corresponding field of the parent style
+                        <span class="CodeInlineChar">XF </span><span>.
+                            <br />
+                            This bit is N/A if </span><span class="CodeInlineChar">fStyle=1 </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td rowspan="4" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        000Fh</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dgLeft </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Border line style (see the following table).</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        7–4</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        00F0h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dgRight </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Border line style (see the following table).</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        11–8</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0F00h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dgTop </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Border line style (see the following table).</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–12</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        F000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dgBottom </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Border line style (see the following table).</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td rowspan="3" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        007Fh</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvLeft </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the left border color.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13–7</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3F80h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvRight </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the right border color.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–14</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        C000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>grbitDiag </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1=diag down, 2=diag up, 3=both.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td rowspan="6" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0000007Fh</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvTop </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the top border color.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13–7</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        00003F80h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvBottom </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the bottom border color.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        20–14</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        001FC000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvDiag </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        for diagonal borders.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        24–21</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        01E00000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dgDiag </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Border line style (see the following table).</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        25</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        02000000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fHasXFExt </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>=1 when a subsequent XFEXT record may modify the properties of this XF. </span>
+                    </p>
+                    <p class="Text">
+                        New for Office Excel 2007</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        31–26</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FC000000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fls </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Fill pattern.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td rowspan="4" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        007Fh</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvFore </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the foreground color of the fill pattern.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13–7</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3F80h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvBack </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the background color of the fill pattern.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSxButton </span></span>
+                    </p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the <span class="CodeInlineChar">XF </span><span>record is attached to a PivotTable
+                            button.<br />
+                            This bit is always 0 if </span><span class="CodeInlineChar">fStyle=1 </span>
+                        .</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 41.8pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8000h</p>
+                </td>
+                <td style='width: 90.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td style='width: 203.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <h3>
+            <a name="_Toc157240690"></a><a name="_Border_Line_Styles_(BIFF8)"></a><span><span>Style
+                XF Record<span style='letter-spacing: -1.75pt'> </span>—<span style='letter-spacing: -1.75pt'>
+                </span>BIFF8 </span></span>
+        </h3>
+        <p class="Text">
+            The style <span class="CodeInlineChar">XF </span>record is identical in structure
+            to the cell <span class="CodeInlineChar">XF </span>record, with the differences
+            in meaning summarized as follows:</p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 449.2pt;
+            border-collapse: collapse;'>
+            <tr>
+                <td width="58" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 46.3pt; border: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td style='width: 73.7pt; border: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td style='width: 84.0pt; border: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 202.0pt; border: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fStyle </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 for style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">f123Prefix </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =0 for style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–4</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFF0h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ixfParent </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =FFFh for style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="6" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0400h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrNum </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        doesn't matter for style <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                            XF </span></span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0800h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrFnt </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        doesn't matter for style <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                            XF </span></span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrAlc </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        doesn't matter for style <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                            XF </span></span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrBdr </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        doesn't matter for style <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                            XF </span></span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrPat </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        doesn't matter for style <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                            XF </span></span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrProt </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        doesn't matter for style <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                            XF </span></span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        22</p>
+                </td>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fSxButton </span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =0 for style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <h4 style='margin-left: 0cm'>
+            <a name="_Toc57534484"></a><a name="_Border_Line_Styles_(BIFF8)_1"></a><a name="_Border_Line_Styles">
+            </a><span>Line Styles </span>
+        </h4>
+        <p class="Text">
+            <span>The border line style fields<span style='letter-spacing: -1.75pt'> </span>—<span
+                style='letter-spacing: -1.75pt'> </span></span><span class="CodeInlineChar">dgTop </span>
+            , <span class="CodeInlineChar">dgLeft </span><span>, and so on<span style='letter-spacing: -1.75pt'>
+            </span>—<span style='letter-spacing: -1.75pt'> </span>correspond to the options in the
+                <b>Format Cells</b> dialog box, <b>Border</b> tab, as shown in the following table.
+            </span>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="116" style='width: 87.2pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        dg* value</p>
+                </td>
+                <td width="478" style='width: 358.8pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Border line style</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="116" style='width: 87.2pt;'>
+                    <p class="Text">
+                        0</p>
+                    <p class="Text">
+                        1</p>
+                    <p class="Text">
+                        2</p>
+                    <p class="Text">
+                        3</p>
+                    <p class="Text">
+                        4</p>
+                    <p class="Text">
+                        5</p>
+                    <p class="Text">
+                        6</p>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td width="478" style='width: 358.8pt;'>
+                    <p class="Text">
+                        None</p>
+                    <p class="Text">
+                        Thin</p>
+                    <p class="Text">
+                        Medium</p>
+                    <p class="Text">
+                        Dashed</p>
+                    <p class="Text">
+                        Dotted</p>
+                    <p class="Text">
+                        Thick</p>
+                    <p class="Text">
+                        Double</p>
+                    <p class="Text">
+                        Hair</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="595" colspan="2" style='width: 446.0pt;'>
+                    <p class="Text">
+                        <span>The following are in <b>BIFF8</b> only: </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="116" style='width: 87.2pt;'>
+                    <p class="Text">
+                        8</p>
+                    <p class="Text">
+                        9</p>
+                    <p class="Text">
+                        10</p>
+                    <p class="Text">
+                        11</p>
+                    <p class="Text">
+                        12</p>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td width="478" style='width: 358.8pt;'>
+                    <p class="Text">
+                        <span>Medium dashed </span>
+                    </p>
+                    <p class="Text">
+                        <span>Dash-dot </span>
+                    </p>
+                    <p class="Text">
+                        <span>Medium dash-dot </span>
+                    </p>
+                    <p class="Text">
+                        Dash-dot-dot</p>
+                    <p class="Text">
+                        Medium dash-dot-dot</p>
+                    <p class="Text">
+                        Slanted dash-dot</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <h3>
+            <a name="_Toc157240691"><span>Cell XF Record<span style='letter-spacing: -1.75pt'> </span>
+                —<span style='letter-spacing: -1.75pt'> </span>BIFF7 and earlier </span></a>
+        </h3>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 446.0pt;
+            border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td style='width: 44.5pt; border: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td style='width: 40.5pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td style='width: 45.0pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 78.0pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 238.0pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td style='width: 44.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–0</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFFFh</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ifnt </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the <span class="CodeInlineChar">FONT </span>record.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–0</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFFFh</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ifmt </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the <span class="CodeInlineChar">FORMAT </span>record.</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="5" style='width: 44.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fLocked </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the cell is locked.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fHidden </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the cell is hidden.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fStyle </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =0 for cell <span class="CodeInlineChar">XF </span><span>.<br />
+                            =1 for style </span><span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>f123Prefix </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>If the <b>Transition Navigation Keys</b> option is <i>off</i> (<b>Options</b>
+                            dialog box, <b>Transition</b> tab), </span><span class="CodeInlineChar">f123Prefix=1
+                            </span><span>indicates that a leading apostrophe (single quotation mark) is being used
+                                to coerce the cell’s contents to a simple string.<br />
+                                If the <b>Transition Navigation Keys</b> option is <i>on</i> , </span><span class="CodeInlineChar">
+                                    f123Prefix=1 </span><span>indicates that the cell formula begins with one of the four
+                                        Lotus 1-2-3 alignment prefix characters:<br />
+                                        ' left<br />
+                                        &quot; right<br />
+                                        ^ centered<br />
+                                        \ fill </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–4</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFF0h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ixfParent </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the <span class="CodeInlineChar">XF </span><span>record of the parent style.
+                            Every cell </span><span class="CodeInlineChar">XF </span>must have a parent
+                        style <span class="CodeInlineChar">XF </span>, which is usually <span class="CodeInlineChar">
+                            ixfeNormal=0 </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="11" style='width: 44.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2–0</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0007h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>alc </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>Alignment:<br />
+                            0= general<br />
+                            1= left<br />
+                            2= center<br />
+                            3= right<br />
+                            4= fill<br />
+                            5= justify<br />
+                            6= center across selection </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fWrap </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        = 1 wrap text in cell.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–4</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0070h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>alcV </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>Vertical alignment:<br />
+                            0= top<br />
+                            1= center<br />
+                            2= bottom<br />
+                            3= justify </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        7</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0080h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fJustLast </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (Used only in East Asian versions of Excel.)</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        9–8</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0300h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ori </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>Orientation of text in cell:<br />
+                            =0 no rotation.<br />
+                            =1 text appears top-to-bottom; letters are upright.<br />
+                            =2 text is rotated 90 degrees counterclockwise.<br />
+                            =3 text is rotated 90 degrees clockwise. </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0400h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrNum </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the <span class="CodeInlineChar">ifmt </span>is not equal to the <span class="CodeInlineChar">
+                            ifmt </span>of the parent style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0800h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrFnt </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the <span class="CodeInlineChar">ifnt </span>is not equal to the <span class="CodeInlineChar">
+                            ifnt </span>of the parent style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1000h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrAlc </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if either the <span class="CodeInlineChar">alc </span>or the <span class="CodeInlineChar">
+                            fWrap </span>field is not equal to the corresponding field of the parent style
+                        <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2000h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrBdr </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if any border line field ( <span class="CodeInlineChar">dgTop </span>, and so
+                        on) is not equal to the corresponding field of the parent style <span class="CodeInlineChar">
+                            XF </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4000h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrPat </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if any pattern field ( <span class="CodeInlineChar">fls </span>, <span class="CodeInlineChar">
+                            icvFore </span>, <span class="CodeInlineChar">icvBack </span>) is not equal
+                        to the corresponding field of the parent style <span class="CodeInlineChar">XF </span>
+                        .</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8000h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrProt </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if either the <span class="CodeInlineChar">fLocked </span>field or the <span class="CodeInlineChar">
+                            fHidden </span>field is not equal to the corresponding field of the parent style
+                        <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td rowspan="4" style='width: 44.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–0</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        007Fh</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvFore </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the foreground color of the fill pattern.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        12–7</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1F80h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvBack </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the background color of the fill pattern.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2000h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSxButton </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if the <span class="CodeInlineChar">XF </span>record is attached to a PivotTable
+                        button.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–14</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        C000h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td rowspan="3" style='width: 44.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        5–0</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        003Fh</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fls </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Fill pattern.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8–6</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        01C0h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dgBottom </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>bottom Border <a href="#_Border_Line_Styles_(BIFF8)_1">line style </a>(see previous
+                            table) </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–9</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FE00h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvBottom </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the bottom border color.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td rowspan="4" style='width: 44.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2–0</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0007h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dgTop </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        top Border line style (see previous table).</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        5–3</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0038h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dgLeft </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        left Border line style (see previous table).</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8–6</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        01C0h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dgRight </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        right Border line style (see previous table).</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–9</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FE00h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvTop </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the top border color.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td rowspan="3" style='width: 44.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–0</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        007Fh</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvLeft </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the left border color.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13–7</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3F80h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>icvRight </span></span>
+                    </p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Index to the color palette for the right border color.</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–14</p>
+                </td>
+                <td style='width: 45.0pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        C000h</p>
+                </td>
+                <td style='width: 78.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td style='width: 238.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <h3>
+            <a name="_Toc157240692"><span>Style XF Record<span style='letter-spacing: -1.75pt'>
+            </span>—<span style='letter-spacing: -1.75pt'> </span>BIFF7 and earlier </span></a>
+        </h3>
+        <p class="Text">
+            The BIFF7 style <span class="CodeInlineChar">XF </span>record is identical in structure
+            to the BIFF7 cell <span class="CodeInlineChar">XF </span>record, with the differences
+            in meaning summarized as follows:</p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 449.2pt;
+            border-collapse: collapse;'>
+            <tr>
+                <td style='width: 43.2pt; border: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td style='width: 46.3pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td style='width: 73.7pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td style='width: 84.0pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 202.0pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fStyle </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 for style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>f123Prefix </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =0 for style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15–4</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFF0h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>ixfParent </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =FFFh for style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="6" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0400h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrNum </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>=0 if the style includes Number (<b>Style</b> dialog box). </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0800h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrFnt </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>=0 if the style includes Font (<b>Style</b> dialog box). </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrAlc </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>=0 if the style includes Alignment (<b>Style</b> dialog box). </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrBdr </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>=0 if the style includes Border (<b>Style</b> dialog box). </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrPat </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>=0 if the style includes Patterns (shading) (<b>Style</b> dialog box). </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        8000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fAtrProt </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>=0 if the style includes Protection (cell protection) (<b>Style</b> dialog box).
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td style='width: 46.3pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td style='width: 73.7pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2000h</p>
+                </td>
+                <td style='width: 84.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fSxButton </span></span>
+                    </p>
+                </td>
+                <td style='width: 202.0pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =0 for style <span class="CodeInlineChar">XF </span>.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <h3>
+            <a name="_Toc157240693"></a><a name="_Toc57534485"></a><a name="_DXF_records"></a>
+            <span><span>DXF records </span></span>
+        </h3>
+        <p class="Text">
+            Related to the <span class="CodeInlineChar">XF </span>record is the <span class="CodeInlineChar">
+                DXF </span>record used by <span class="CodeInlineChar">CF </span>, <span class="CodeInlineChar">
+                    SXDXF </span>, <span class="CodeInlineChar">EZFILTER12 </span>and <span class="CodeInlineChar">
+                        LIST12 </span><span>. The </span><span class="CodeInlineChar">DXF </span>
+            record is a way to partially modify or define a format.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Option flags</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit2 </span>
+                    </p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        Option flags</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains the following flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="64" style='width: 48.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="58" style='width: 43.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td width="110" style='width: 82.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 226.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        8-0</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        01FFh</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        9</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        0200h</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrNum </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        1= a <span class="CodeInlineChar">DXFNUM </span>record follows</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        10</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        0400h</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrFnt </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        1= a <span class="CodeInlineChar">DXFFNT </span>record follows</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        11</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        0800h</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrAlc </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        1= a <span class="CodeInlineChar">DXFALC </span>record follows</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        1000h</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrBdr </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        1= a <span class="CodeInlineChar">DXFBDR </span>record follows</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        13</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        2000h</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrPat </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        1= a <span class="CodeInlineChar">DXFPAT </span>record follows</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        14</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        4000h</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAtrProt </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        1= a <span class="CodeInlineChar">DXFPROT </span>record follows</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        15</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        8000h</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit2 </span>field contains the following flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="64" style='width: 48.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="58" style='width: 43.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td width="110" style='width: 82.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="301" style='width: 226.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fIfmtUser </span>
+                    </p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        1= <span class="CodeInlineChar">DXFNUM </span>is user-defined format</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="64" style='width: 48.0pt;'>
+                    <p class="Text">
+                        15-1</p>
+                </td>
+                <td width="58" style='width: 43.5pt;'>
+                    <p class="Text">
+                        FFFEh</p>
+                </td>
+                <td width="110" style='width: 82.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="301" style='width: 226.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            <b><span style='font-size: 12.0pt'>DXFNUM </span></b>(2 bytes) <b><span style='font-size: 12.0pt'>
+            </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text" style='margin-top: 9.0pt'>
+            <b><span style='font-size: 12.0pt'>DXFFNT </span></b>(2 bytes) <b><span style='font-size: 12.0pt'>
+            </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="85" style='width: 63.95pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="49" style='width: 36.65pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="399" style='width: 299.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="85" style='width: 63.95pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="49" style='width: 36.65pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="399" style='width: 299.4pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text" style='margin-top: 9.0pt'>
+            <b><span style='font-size: 12.0pt'>DXFALC </span></b>(alignment - 8 bytes)</p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 446.05pt;
+            border-collapse: collapse;'>
+            <tr>
+                <td style='width: 35.5pt; border: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 40.5pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td style='width: 58.5pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td style='width: 81.0pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 230.55pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" style='width: 35.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2-0</p>
+                </td>
+                <td style='width: 58.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0007h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">alc </span>
+                    </p>
+                </td>
+                <td style='width: 230.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        alignment (see <span class="CodeInlineChar">XF </span>'s <span class="CodeInlineChar">
+                            alc </span>)</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15-3</p>
+                </td>
+                <td style='width: 58.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFF8h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td style='width: 230.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="4" style='width: 35.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3–0</p>
+                </td>
+                <td style='width: 58.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        000Fh</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cIndent </span>
+                    </p>
+                </td>
+                <td style='width: 230.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        indent value (see <span class="CodeInlineChar">XF </span>'s <span class="CodeInlineChar">
+                            cIndent </span>)</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        5–4</p>
+                </td>
+                <td style='width: 58.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0030h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td style='width: 230.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        7-6</p>
+                </td>
+                <td style='width: 58.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        00C0h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iReadOrder </span>
+                    </p>
+                </td>
+                <td style='width: 230.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        reading direction (see <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+                            XF </span></span>'s <span class="CodeInlineChar">iReadOrder </span>)</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15-8</p>
+                </td>
+                <td style='width: 58.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FF00h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td style='width: 230.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 35.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td style='width: 58.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">iIndent </span>
+                    </p>
+                </td>
+                <td style='width: 230.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        relative indent value</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text" style='margin-top: 9.0pt'>
+            <b><span style='font-size: 12.0pt'>DXFBDR </span></b>(borders - 8 bytes)</p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 446.05pt;
+            border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td style='width: 35.5pt; border: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 40.5pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td style='width: 67.5pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 81.0pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 221.55pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                        border-right: solid silver 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td rowspan="4" style='width: 35.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        000Fh</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dgLeft </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>left border <a href="#_Border_Line_Styles_(BIFF8)">line style</a> </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        7–4</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        00F0h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dgRight </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>right Border <a href="#_Border_Line_Styles">line style</a> </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        11-8</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0F00h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dgTop </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>top Border <a href="#_Border_Line_Styles_(BIFF8)_1">line style</a> </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15-12</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        F000h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dgBottom </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>bottom Border <a href="#_Border_Line_Styles_(BIFF8)_1">line style</a> </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" style='width: 35.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        007Fh</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icvLeft </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        left border color palette index</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13-7</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3F80h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icvRight </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        right border color palette index</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15-14</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        C000h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitDiag </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1=diag down, 2=diag up, 3=both.</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="5" style='width: 35.5pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–0</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0000007Fh</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icvTop </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        top border color palette index</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13-7</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        00003F80h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icvBottom </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        bottom border color palette index</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        20-14</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        001FC000h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icvDiag </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        diagonal line color palette index</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        24-21</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        01E00000h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">dgDiag </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span>diagonal <a href="#_Border_Line_Styles_(BIFF8)_1">line style</a> </span>
+                    </p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td style='width: 40.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        31-25</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FE000000h</p>
+                </td>
+                <td style='width: 81.0pt; border-left: none; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text" style='margin-top: 9.0pt'>
+            <b><span style='font-size: 12.0pt'>DXFPAT </span></b>(fill pattern – 4 bytes)</p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 446.05pt;
+            border-collapse: collapse;'>
+            <tr>
+                <td style='width: 43.2pt; border: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 44.65pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td style='width: 69.15pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td style='width: 67.5pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 221.55pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 44.65pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        9-0</p>
+                </td>
+                <td style='width: 69.15pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        03FFh</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.65pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15-10</p>
+                </td>
+                <td style='width: 69.15pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FC00h</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fls </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        Fill pattern.</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 44.65pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        6–0</p>
+                </td>
+                <td style='width: 69.15pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        007Fh</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icvFore </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        foreground color palette index.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.65pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        13–7</p>
+                </td>
+                <td style='width: 69.15pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        3F80h</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">icvBack </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        background color palette index.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.65pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15-14</p>
+                </td>
+                <td style='width: 69.15pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        C000h</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text" style='margin-top: 9.0pt'>
+            <b><span style='font-size: 12.0pt'>DXFPROT </span></b>(protection – 2 bytes)</p>
+        <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 446.05pt;
+            border-collapse: collapse;'>
+            <tr>
+                <td style='width: 43.2pt; border: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td style='width: 44.65pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td style='width: 69.15pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td style='width: 67.5pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td style='width: 221.55pt; border-top: solid silver 1.0pt; border-bottom: solid windowtext 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" style='width: 43.2pt; border: solid silver 1.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td style='width: 44.65pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td style='width: 69.15pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fLocked </span>
+                    </p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if locked</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.65pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td style='width: 69.15pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fHidden</span></p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        =1 if hidden</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='width: 44.65pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        15-2</p>
+                </td>
+                <td style='width: 69.15pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        FFFCh</p>
+                </td>
+                <td style='width: 67.5pt; border-bottom: solid silver 1.0pt; border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td style='width: 221.55pt; border-left: none; border-bottom: solid silver 1.0pt;
+                    border-right: solid silver 1.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

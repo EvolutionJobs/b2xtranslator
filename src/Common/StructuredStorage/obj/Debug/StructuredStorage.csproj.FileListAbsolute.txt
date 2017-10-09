@@ -1,0 +1,8 @@
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\StructuredStorage\bin\Debug\DIaLOGIKa.b2xtranslator.StructuredStorage.dll
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\StructuredStorage\bin\Debug\DIaLOGIKa.b2xtranslator.StructuredStorage.pdb
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\StructuredStorage\bin\Debug\DIaLOGIKa.b2xtranslator.Tools.dll
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\StructuredStorage\bin\Debug\DIaLOGIKa.b2xtranslator.Tools.pdb
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\StructuredStorage\obj\Debug\StructuredStorage.csprojResolveAssemblyReference.cache
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\StructuredStorage\obj\Debug\StructuredStorage.csproj.CoreCompileInputs.cache
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\StructuredStorage\obj\Debug\DIaLOGIKa.b2xtranslator.StructuredStorage.dll
+C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\StructuredStorage\obj\Debug\DIaLOGIKa.b2xtranslator.StructuredStorage.pdb

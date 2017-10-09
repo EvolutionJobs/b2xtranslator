@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FILEPASS: File Is Password Protected (2Fh)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>FILEPASS: File Is Password&#8209; Protected (2Fh)</h2>
+     <p class="Text"><span>If you type a protection password (<b>File</b>
+ menu, <b>Save As</b>
+ command, <b>Options</b>
+dialog box), the </span> <span class="CodeInlineChar">FILEPASS </span> <span> record appears in the BIFF file. 
+The </span> <span class="CodeInlineChar">wProtPass </span> </span> <span>
+field contains the encrypted password. 
+All records after </span> <span class="CodeInlineChar">FILEPASS </span>
+ are encrypted.</p>
+     <p class="Text"><b>Note
+</b>
+: this record specifies a file protection password, as opposed to
+the <span class="CodeInlineChar">PASSWORD 
+ record (type
+13h), which specifies a sheet-level or workbook-level protection password.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="593" style='width:445.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="65" style='width:48.45pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="102" style='width:76.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="54" style='width:40.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:279.55pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="65" style='width:48.45pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="102" style='width:76.5pt;'>
+     <p class="CodeInline">wProtPass</p>
+   </td>
+   <td width="54" style='width:40.5pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="373" style='width:279.55pt;'>
+     <p class="Text" >Encrypted password</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,213 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>BOOLERR: Cell Value, Boolean or Error (205h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>BOOLERR: Cell Value, Boolean or Error (205h)</h2>
+     <p class="Text">A <span class="CodeInlineChar">BOOLERR </span> <span> record describes a cell that contains a constant Boolean or error
+value.  
+The </span> <span class="CodeInlineChar">rw </span> <span> field contains the 0-based row
+number.  
+The </span> <span class="CodeInlineChar">col </span>
+ field contains the 0-based column
+number.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <thead>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="42" style='width:31.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:293.5pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ </thead>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">rw </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >Row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">col </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >Column</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">ixfe </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >Index to the <span class="CodeInlineChar">XF </span>
+ record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">bBoolErr </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >Boolean value or
+ error value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >11</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" ><span class="CodeInlineChar">fError </span></p>
+   </td>
+   <td width="42" style='width:31.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="391" style='width:293.5pt;'>
+     <p class="Text" >Boolean/error flag</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">bBoolErr </span>
+ field contains the Boolean or error value, as determined by the <span class="CodeInlineChar">fError </span> <span> field. 
+If the </span> <span class="CodeInlineChar">fError </span>
+ field contains a 0 (zero), the <span class="CodeInlineChar">bBoolErr </span>
+ field contains a Boolean value; if the <span class="CodeInlineChar">fError </span>
+ field contains a 1, the <span class="CodeInlineChar">bBoolErr </span>
+ field contains an error value.</p>
+     <p class="Text">Boolean values are 1 for true and 0 for false.</p>
+     <p class="Text">Error values are listed in the following table.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse:collapse;'>
+ <tr>
+   <td style='width:148.65pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Error value</p>
+   </td>
+   <td style='width:148.65pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Value (hex)</p>
+   </td>
+   <td width="198" style='width:148.7pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Value (dec.)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >#NULL!</p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >00h</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >0</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >#DIV/0!</p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >07h</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >7</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >#VALUE!</p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >0Fh</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >15</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >#REF!</p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >17h</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >23</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >#NAME?</p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >1Dh</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >29</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >#NUM!</p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >24h</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >36</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >#N/A</p>
+   </td>
+   <td width="198" style='width:148.65pt;'>
+     <p class="Text" >2Ah</p>
+   </td>
+   <td width="198" style='width:148.7pt;'>
+     <p class="Text" >42</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

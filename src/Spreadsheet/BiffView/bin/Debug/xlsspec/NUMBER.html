@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>NUMBER: Cell Value, Floating-Point Number (203h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>NUMBER: Cell Value, Floating-Point Number (203h)</h2>
+     <p class="Text">A <span class="CodeInlineChar">NUMBER </span> <span> record describes a cell containing a constant floating-point
+number.  
+The </span> <span class="CodeInlineChar">rw </span> <span> field contains the 0-based row
+number.  
+The </span> <span class="CodeInlineChar">col </span> <span> field contains the 0-based column
+number.  
+The number is contained in the </span> <span class="CodeInlineChar">num </span>
+ field in 8-byte IEEE floating-point
+format.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rw</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">col</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Column</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">ixfe</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Index to the <span class="CodeInlineChar">XF </span>
+ record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">num</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Floating-point
+ number value</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+</div>
+</body>
+</html>
+

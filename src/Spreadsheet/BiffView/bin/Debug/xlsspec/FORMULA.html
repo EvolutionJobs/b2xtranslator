@@ -1,0 +1,520 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FORMULA: Cell Formula (6h)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>FORMULA: Cell Formula (6h)</h2>
+     <p class="Text">A <span class="CodeInlineChar">FORMULA </span>
+ record describes a cell that contains a formula.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rw</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Row</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">col</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Column</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">ixfe</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Index to <span class="CodeInlineChar">XF </span>
+ record</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >10</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">num</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >8</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Current value of
+ the formula (see text)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >18</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">grbit</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Option flags</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >20</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">chn</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >4</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >(See text)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >24</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">cce</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Length of the
+ parsed expression</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >26</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rgce</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >var</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Parsed expression</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The <span class="CodeInlineChar">chn </span> <span> field should be ignored when you read the BIFF file. 
+If you write a BIFF file, the </span> <span class="CodeInlineChar">chn </span>
+ field must be 00000000h.</p>
+     <p class="Text">The <span class="CodeInlineChar">grbit </span>
+ field contains the following option flags:</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="587" style='width:440.5pt; border-collapse:collapse;'>
+ <tr>
+   <td width="47" style='width:35.5pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Bits</p>
+   </td>
+   <td width="60" style='width:45.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Mask</p>
+   </td>
+   <td width="120" style='width:90.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Flag Name</p>
+   </td>
+   <td width="360" style='width:270.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text" >0001h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">fAlwaysCalc</p>
+   </td>
+   <td width="360" style='width:270.0pt;'>
+     <p class="Text" >Always calculate
+ the formula.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text" >0002h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">fCalcOnLoad</p>
+   </td>
+   <td width="360" style='width:270.0pt;'>
+     <p class="Text" >Calculate the
+ formula when the file is opened.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text" >0004h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="360" style='width:270.0pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text" >3</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text" >0008h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="CodeInline">fShrFmla</p>
+   </td>
+   <td width="360" style='width:270.0pt;'>
+     <p class="Text" >=1 if the formula
+ is part of shared formula group.</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="47" style='width:35.5pt;'>
+     <p class="Text" >15–4</p>
+   </td>
+   <td width="60" style='width:45.0pt;'>
+     <p class="Text" >FFF0h</p>
+   </td>
+   <td width="120" style='width:90.0pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="360" style='width:270.0pt;'>
+     <p class="Text" >&nbsp; </p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text"><span>For more information about shared formulas, see
+“<span class="LinkText"><u><a href="#_SHRFMLA:_Shared_Formula_(BCh)">SHRFMLA</a>
+</u> </span> <span class="LinkID">EXB0174 </span>
+”. </span></p>
+     <p class="Text">The <span class="CodeInlineChar">rw </span> <span> field contains the 0-based row number. 
+The </span> <span class="CodeInlineChar">col </span>
+ field contains the 0-based column number.</p>
+     <p class="Text">If the formula evaluates to a number, the <span class="CodeInlineChar">num </span> <span> field contains the current
+calculated value of the formula in 8-byte IEEE format. 
+If the formula evaluates to a string, a
+Boolean value, or an error value, the most significant 2 bytes of the </span> <span class="CodeInlineChar">num </span>
+ field are <span class="CodeInlineChar">FFFFh </span>
+.</p>
+     <p class="Text">A Boolean value is stored in the <span class="CodeInlineChar">num </span> <span> field, as shown in the following
+table.  
+For more information about
+Boolean values, see “<span class="LinkText"><u><a href="#_BOOLERR:_Cell_Value,_Boolean or Err">BOOLERR</a>
+</u> </span> <span class="LinkID">EXB0030 </span>
+”. </span></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">otBool</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=1 always</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">f</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Boolean value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >3</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >3</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">fExprO</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=FFFFh</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">An error value is stored in the <span class="CodeInlineChar">num </span> <span> field, as shown in the following
+table.  
+For more information about error
+values, see “<span class="LinkText"><u><a href="#_BOOLERR:_Cell_Value,_Boolean or Err">BOOLERR</a>
+</u> </span> <span class="LinkID">EXB0030 </span>
+”. </span></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">otErr</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=2 always</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">err</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Error value</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >3</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >3</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">fExprO</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=FFFFh</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">If the formula evaluates to a string, the <span class="CodeInlineChar">num </span>
+ field has the structure shown in the
+following table.</p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style='width:446.0pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td width="385" style='width:289.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >0</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">otString</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=0 always</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >1</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="Text" >(Reserved)</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >5</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >Reserved; must be
+ 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text" >6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">fExprO</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text" >2</p>
+   </td>
+   <td width="385" style='width:289.0pt;'>
+     <p class="Text" >=FFFFh</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">The string value is not stored in the <span class="CodeInlineChar">num </span>
+ field; instead, it is stored in a <span class="CodeInlineChar">STRING </span>
+ record that immediately follows
+the <span class="CodeInlineChar">FORMULA </span>
+ record.</p>
+     <p class="Text">The <span class="CodeInlineChar">cce </span> <span> field contains the length of the formula. 
+The </span> <span class="CodeInlineChar">rgce </span> <span> field contains the formula in its parsed format. 
+For more information, see “<span class="LinkText"><u><a href="#_Microsoft_Excel_Formulas">Microsoft Excel Formulas</a>
+</u> </span> <span class="LinkID">EXB0251 </span>
+”. </span></p>
+</div>
+</body>
+</html>
+

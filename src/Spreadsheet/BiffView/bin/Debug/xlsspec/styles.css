@@ -1,0 +1,114 @@
+﻿/* Font Definitions */
+@font-face
+{
+	font-family: Verdana;
+}
+@font-face
+{
+	font-family: "Arial Narrow";
+}
+/* Style Definitions */
+#container
+{
+	width: 600px;
+}
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+{
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+h1
+{
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 0cm;
+	page-break-after: avoid;
+	font-size: 16.0pt;
+	font-family: Arial;
+}
+h2
+{
+	margin-top: 6.0pt;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0pt;
+	margin-bottom: .0001pt;
+	line-height: 20.0pt;
+	page-break-after: avoid;
+	font-size: 20.0pt;
+	font-family: "Arial Narrow";
+	color: #333333;
+	font-weight: normal;
+}
+p.Text, li.Text, div.Text
+{
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 6.0pt;
+	margin-left: 0cm;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: Verdana;
+}
+span.TextChar
+{
+	font-family: Verdana;
+}
+p.TableSpacingAfter, li.TableSpacingAfter, div.TableSpacingAfter
+{
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	line-height: 6.0pt;
+	font-size: 6.0pt;
+	font-family: Verdana;
+	color: olive;
+}
+p.CodeInline, li.CodeInline, div.CodeInline
+{
+	margin-top: 1.0pt;
+	margin-right: 0cm;
+	margin-bottom: 2.0pt;
+	margin-left: 0cm;
+	line-height: 10.0pt;
+	font-size: 11.0pt;
+	font-family: "Courier New";
+	color: #0000C4;
+}
+span.CodeInlineChar
+{
+	font-family: "Courier New";
+	font-size: 11.0pt;
+	color: #0000C4;
+}
+p.Header, li.Header, div.Header
+{
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 0cm;
+	line-height: 12.0pt;
+	page-break-after: avoid;
+	font-size: 10.0pt;
+	font-family: Verdana;
+	font-weight: bold;
+}
+span.h2Char
+{
+	font-family: "Arial Narrow";
+	color: #333333;
+}
+/* Style Definitions */
+table.MsoNormalTable
+{
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+	margin-bottom:3.0pt;
+}
+td
+{
+	vertical-align: top;
+	padding: 0cm 4.0pt 0cm 4.0pt;
+}

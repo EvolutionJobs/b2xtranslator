@@ -1,0 +1,484 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>WEBPUB: Web Publish Item (801h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            WEBPUB: Web Publish Item (801h)</h2>
+        <p class="Text">
+            This is a <span class="CodeInlineChar">FRT </span><span>record. It stores the information
+                for a single published web page. It appears in the sheet stream for the sheet from
+                which this item was published. </span>
+        </p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="606"
+            style='width: 454.6pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="102" style='width: 76.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td width="50" style='width: 37.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Size</p>
+                    </td>
+                    <td style='width: 296.1pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span><span>in the
+                            first two bytes of the record; = 0801h </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitFrt </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>flags; see <span class="CodeInlineChar">FRT
+                        </span>Records for more information</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">ref </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Range reference; see <span class="CodeInlineChar">FRT </span>Records for more information</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">tws </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Type of Web Source:</p>
+                    <p class="Text">
+                        1= <span class="CodeInlineChar">twsSheet </span>; Entire Sheet was published</p>
+                    <p class="Text">
+                        2= <span class="CodeInlineChar">twsPrintArea </span>; the Print Area was published</p>
+                    <p class="Text">
+                        3= <span class="CodeInlineChar">twsAutoFilter </span>; an AutoFilter was published</p>
+                    <p class="Text">
+                        4= <span class="CodeInlineChar">twsRef </span>; a range of cells was published</p>
+                    <p class="Text">
+                        5= <span class="CodeInlineChar">twsChart </span>; a Chart was published</p>
+                    <p class="Text">
+                        6= <span class="CodeInlineChar">twsPivotTable </span>; a PivotTable was published</p>
+                    <p class="Text">
+                        7= <span class="CodeInlineChar">twsQuery </span>; a Query Table was published</p>
+                    <p class="Text">
+                        8= <span class="CodeInlineChar">twsLabel </span>; a named range was published</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">twd </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Type of Web Page created:</p>
+                    <p class="Text">
+                        0= <span class="CodeInlineChar">twdHtmlPlain </span>; non-interactive page</p>
+                    <p class="Text">
+                        1= <span class="CodeInlineChar">twdHtmlCalc </span>; page uses Spreadsheet functionality</p>
+                    <p class="Text">
+                        2= <span class="CodeInlineChar">twdHtmlList </span>; page uses PivotTable functionality</p>
+                    <p class="Text">
+                        3= <span class="CodeInlineChar">twdHtmlChart </span>; page uses Chart functionality</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grfOptions </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Common options; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">nStyled </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Style number (usually the same as the number inside <span class="CodeInlineChar">stDivId
+                        </span>)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">cb </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Size of information that follows</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stSrcName </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Source data name (does not exist if <span class="CodeInlineChar">tws </span>is <span
+                            class="CodeInlineChar">twsRef </span>); zero length string if <span class="CodeInlineChar">
+                                tws </span>is a type that has no name (ie the item is the entire sheet or
+                        the AutoFilter)</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stFileDest </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Unicode string; name of the file that is written out; should never be zero length</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stDivId </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Unicode string identifier used for the DIV tag ID attribute; should never be zero
+                        length</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">stTitle </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Unicode string; title for published data in the HTML file; can be zero length</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">idCrtShape </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        XL10: if <span class="CodeInlineChar">tws=twsChart </span>, this is a 4-byte chart
+                        shape id; otherwise this is zero length</p>
+                </td>
+            </tr>
+            <tr style=''>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="102" style='width: 76.5pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rgb </span>
+                    </p>
+                </td>
+                <td width="50" style='width: 37.5pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="395" style='width: 296.1pt;'>
+                    <p class="Text">
+                        Future information</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text" style='margin-top: 6.0pt'>
+            The <span class="CodeInlineChar">grfOptions </span>field contains the following
+            option flags:</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Bits</p>
+                </td>
+                <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Mask</p>
+                </td>
+                <td width="144" style='width: 108.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="300" style='width: 225.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fNew </span>
+                    </p>
+                </td>
+                <td width="300" style='width: 225.0pt;'>
+                    <p class="Text">
+                        1= this item is not yet published</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fAutoRepublish </span>
+                    </p>
+                </td>
+                <td width="300" style='width: 225.0pt;'>
+                    <p class="Text">
+                        1= auto-republish is on</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="300" style='width: 225.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        3</p>
+                </td>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0008h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fMhtml</span></p>
+                </td>
+                <td width="300" style='width: 225.0pt;'>
+                    <p class="Text">
+                        1= publish in MHTML</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        15-4</p>
+                </td>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        FFF0h</p>
+                </td>
+                <td width="144" style='width: 108.0pt;'>
+                    <p class="Text">
+                        (unused)</p>
+                </td>
+                <td width="300" style='width: 225.0pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

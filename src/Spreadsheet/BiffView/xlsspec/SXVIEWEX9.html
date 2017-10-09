@@ -1,0 +1,352 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SXVIEWEX9: Pivot Table Extensions (810h)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            SXVIEWEX9: Pivot Table Extensions (810h)</h2>
+        <p class="Text">
+            Introduced in Excel 9 (2000) this is a <span class="CodeInlineChar">FRT </span><span>
+                record. It contains extensions to Pivot Tables new to XL2000. </span>
+        </p>
+        <p class="Text" style='background: #F3F3F3'>
+            <b><span style='font-family: Arial;'>Record Data </span></b>
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="112" style='width: 84.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="373" style='width: 280.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span><span>in the
+                            first two bytes of the record; =0810h </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbitFrt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>flags; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        12</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">grbit </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Options; see following table</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">itblAutoFmt </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Index to the PivotTable autoformat</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="112" style='width: 84.0pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">chGrand </span>
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        var</p>
+                </td>
+                <td width="373" style='width: 280.0pt;'>
+                    <p class="Text">
+                        Unicode string; the Grand Total name</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+        <p class="Text">
+            The <span class="CodeInlineChar">grbit </span>field contains following option flags.</p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="590"
+            style='width: 442.65pt; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <td width="59" style='width: 44.5pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Offset</p>
+                    </td>
+                    <td width="48" style='width: 36.0pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Bits</p>
+                    </td>
+                    <td width="62" style='width: 46.15pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Mask</p>
+                    </td>
+                    <td style='width: 129.35pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Name</p>
+                    </td>
+                    <td style='width: 186.65pt; border-bottom: solid windowtext 1.0pt;'>
+                        <p class="Header">
+                            Contents</p>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        0</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0001h</p>
+                </td>
+                <td width="172" style='width: 129.35pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="249" style='width: 186.65pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        1</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0002h</p>
+                </td>
+                <td width="172" style='width: 129.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fPrintTitles </span>
+                    </p>
+                </td>
+                <td width="249" style='width: 186.65pt;'>
+                    <p class="Text">
+                        1= Set Print Titles</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0004h</p>
+                </td>
+                <td width="172" style='width: 129.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fLineMode </span>
+                    </p>
+                </td>
+                <td width="249" style='width: 186.65pt;'>
+                    <p class="Text">
+                        1= One or more of the child records has the fOutline bit set</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        4-3</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0018h</p>
+                </td>
+                <td width="172" style='width: 129.35pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="249" style='width: 186.65pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        5</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        0020h</p>
+                </td>
+                <td width="172" style='width: 129.35pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">fRepeatItemsOnEachPrintedPage </span>
+                    </p>
+                </td>
+                <td width="249" style='width: 186.65pt;'>
+                    <p class="Text">
+                        1= Print the item label on each page when the PivotTable is printed</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        &nbsp;
+                    </p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        15-6</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        FFC0h</p>
+                </td>
+                <td width="172" style='width: 129.35pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="249" style='width: 186.65pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="59" style='width: 44.5pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="48" style='width: 36.0pt;'>
+                    <p class="Text">
+                        15-0</p>
+                </td>
+                <td width="62" style='width: 46.15pt;'>
+                    <p class="Text">
+                        FFFFh</p>
+                </td>
+                <td width="172" style='width: 129.35pt;'>
+                    <p class="Text">
+                        (Reserved)</p>
+                </td>
+                <td width="249" style='width: 186.65pt;'>
+                    <p class="Text">
+                        Reserved; must be zero</p>
+                </td>
+            </tr>
+        </table>
+        <p class="TableSpacingAfter">
+            &nbsp;
+        </p>
+    </div>
+</body>
+</html>

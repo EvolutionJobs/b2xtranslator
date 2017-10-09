@@ -1,0 +1,162 @@
+﻿<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>XFCRC: XF Extensions Checksum (87Ch)</title>
+    <link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <h2>
+            XFCRC: XF Extensions Checksum (87Ch)</h2>
+        <p class="Text">
+            This record is used in determining whether <span class="CodeInlineChar">XFEXT </span>
+            (87Dh) records should be applied when loading a document. This record if present
+            should come after all <span class="CodeInlineChar">XF </span>records. It contains
+            the number of <span class="CodeInlineChar">XF </span>records that were written and
+            a checksum of the data in those records. If the number of records and the checksum
+            match and the document was last saved with version 12 or later then <span class="CodeInlineChar">
+                XFEXT </span>records will be applied.</p>
+        <p class="Text">
+            &nbsp;
+        </p>
+        <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+            style='width: 446.0pt; border-collapse: collapse;'>
+            <tr>
+                <td width="61" style='width: 46.0pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Offset</p>
+                </td>
+                <td width="108" style='width: 81.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Name</p>
+                </td>
+                <td width="95" style='width: 71.3pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Size</p>
+                </td>
+                <td width="330" style='width: 247.4pt; border-bottom: solid windowtext 1.0pt;'>
+                    <p class="Header">
+                        Contents</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        4</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">rt </span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Record type; this matches the BIFF <span class="CodeInlineChar">rt </span>in the
+                        first two bytes of the record; =087Ch</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        6</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>grbitFrt </span></span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">FRT </span>cell reference flag; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="MsoNormal">
+                        <span style='font-size: 10.0pt; font-family: Verdana'>(Reserved) </span><span style='font-family: Verdana'>
+                        </span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        8</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Currently not used, and set to 0 <span class="CodeInlineChar"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        16</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="Text">
+                        <span class="CodeInlineChar">version </span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Record version; =0 currently</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        18</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>cxfs </span></span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Number of XF records written to disk</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="61" style='width: 46.0pt;'>
+                    <p class="Text">
+                        20</p>
+                </td>
+                <td width="108" style='width: 81.3pt;'>
+                    <p class="CodeInline">
+                        <span class="CodeInlineChar"><span style='font-size: 10.0pt'>crc </span></span>
+                    </p>
+                </td>
+                <td width="95" style='width: 71.3pt;'>
+                    <p class="Text">
+                        2</p>
+                </td>
+                <td width="330" style='width: 247.4pt;'>
+                    <p class="Text">
+                        Checksum of the written XF records.</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

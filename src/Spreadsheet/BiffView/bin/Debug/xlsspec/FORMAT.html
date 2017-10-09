@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FORMAT: Number Format (41Eh)</title>
+<link href="styles.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<h2>FORMAT: Number Format (41Eh)</h2>
+     <p class="Text">The <span class="CodeInlineChar">FORMAT </span>
+ record describes a number format in the workbook.</p>
+     <p class="Text">All the <span class="CodeInlineChar">FORMAT </span> <span> records should appear together in a BIFF file. 
+The order of </span> <span class="CodeInlineChar">FORMAT </span> <span> records in an existing BIFF file
+should not be changed.  
+It is possible to
+write custom number formats in a file, but they should be added at the end of
+the existing </span> <span class="CodeInlineChar">FORMAT </span>
+ records.</p>
+     <p class="Text" style='background:#F3F3F3'><b><span style='font-family:Arial;'>Record Data </span>
+</b></p>
+<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="596" style='width:446.85pt; border-collapse:collapse;'>
+ <tr>
+   <td width="61" style='width:46.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Offset</p>
+   </td>
+   <td width="100" style='width:75.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Field Name</p>
+   </td>
+   <td width="48" style='width:36.0pt; border-bottom:solid windowtext 1.0pt;'>
+     <p class="Header">Size</p>
+   </td>
+   <td style='width:289.85pt; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">4</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">ifmt</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="386" style='width:289.85pt;'>
+     <p class="Text">Format index code (for internal use only)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">6</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">cch</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">2</p>
+   </td>
+   <td width="386" style='width:289.85pt;'>
+     <p class="Text">Length of the string</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">7</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">grbit</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">1</p>
+   </td>
+   <td width="386" style='width:289.85pt;'>
+     <p class="Text"><span>Option Flags (described in <a href="#_Unicode_Strings_in_BIFF8">Unicode Strings in BIFF8</a>
+ section) </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width:46.0pt;'>
+     <p class="Text">8</p>
+   </td>
+   <td width="100" style='width:75.0pt;'>
+     <p class="CodeInline">rgb</p>
+   </td>
+   <td width="48" style='width:36.0pt;'>
+     <p class="Text">var</p>
+   </td>
+   <td width="386" style='width:289.85pt;'>
+     <p class="Text">Array of string characters</p>
+   </td>
+ </tr>
+</table>
+     <p class="TableSpacingAfter">&nbsp; </p>
+     <p class="Text">Excel uses the <span class="CodeInlineChar">ifmt </span> <span> field to identify built-in formats
+when it reads a file that was created by a different localized version. 
+For more information about built-in formats,
+see “<span class="LinkText"><u><a href="#_XF:_Extended_Format_(E0h)">XF</a>
+</u> </span> <span class="LinkID">EXB0240 </span>
+”. </span></p>
+</div>
+</body>
+</html>
+

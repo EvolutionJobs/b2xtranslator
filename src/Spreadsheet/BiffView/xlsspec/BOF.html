@@ -1,0 +1,550 @@
+<html>
+<head>
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+ <title>BOF: Beginning of File (809h)</title>
+ <link href="styles.css" rel="Stylesheet" type="text/css" />
+ 
+</head>
+<body>
+ <div id="container">
+ <h2>
+  <a name="_Toc157240435">BOF: Beginning of File (809h)</a>
+</h2>
+     <p class="Text">
+   The <span class="CodeInlineChar">BOF </span> </span>
+    record marks the beginning of the <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>Book </span> </span> <span> stream in the BIFF file. 
+It also marks the beginning of record groups (or
+      “substreams” of the </span> <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>
+       Book </span> </span> <span> stream) for sheets in the workbook. For BIFF2
+        through BIFF4, the BIFF version is found from the high-order byte of the record
+        number field, as shown in the following table. 
+        For BIFF5/BIFF7, and BIFF8 use the </span> <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>vers </span> </span>
+ field at offset 4 to determine
+          the BIFF version.</p>
+     <p class="Text" style='margin-bottom: 0cm; margin-bottom: .0001pt; page-break-after: avoid; background: #F3F3F3'>
+  <b><span style='font-family: Arial;'>BOF Record Number Field </span>
+</b></p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+   style='width: 446.0pt; border-collapse: collapse;'>
+ <tr>
+   <td width="61" style='width: 46.0pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Offset</p>
+   </td>
+   <td width="100" style='width: 75.0pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Field Name</p>
+   </td>
+   <td width="42" style='width: 31.5pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Size</p>
+   </td>
+   <td width="391" style='width: 293.5pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      0</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>vers </span> </span></p>
+   </td>
+   <td width="42" style='width: 31.5pt;'>
+     <p class="Text">
+      1</p>
+   </td>
+   <td width="391" style='width: 293.5pt;'>
+     <p class="Text">
+     <span>version:<br>
+       =00 BIFF2<br>
+       =02 BIFF3<br>
+       =04 BIFF4<br>
+       =08 BIFF5/BIFF7/BIFF8 </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      1</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>bof </span> </span></p>
+   </td>
+   <td width="42" style='width: 31.5pt;'>
+     <p class="Text">
+      1</p>
+   </td>
+   <td width="391" style='width: 293.5pt;'>
+     <p class="Text">
+      09h</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">
+  <span>
+   <o:p>&nbsp; </o:p> </span></p>
+     <p class="Text" style='margin-bottom: 0cm; margin-bottom: .0001pt; page-break-after: avoid; background: #F3F3F3'>
+  <b><span style='font-family: Arial;'>Record Data — BIFF8 </span>
+</b></p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595"
+   style='width: 446.0pt; border-collapse: collapse;'>
+ <tr>
+   <td width="61" style='width: 46.0pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Offset</p>
+   </td>
+   <td width="100" style='width: 75.0pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Field Name</p>
+   </td>
+   <td width="42" style='width: 31.5pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Size</p>
+   </td>
+   <td width="391" style='width: 293.5pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      4</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>vers </span> </span></p>
+   </td>
+   <td width="42" style='width: 31.5pt;'>
+     <p class="Text">
+      2</p>
+   </td>
+   <td width="391" style='width: 293.5pt;'>
+     <p class="Text">
+     <span>Version number:<br>
+       =0600 for BIFF8 </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      6</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dt </span> </span></p>
+   </td>
+   <td width="42" style='width: 31.5pt;'>
+     <p class="Text">
+      2</p>
+   </td>
+   <td width="391" style='width: 293.5pt;'>
+     <p class="Text">
+     <span>Substream type:<br>
+       0005h = Workbook globals<br>
+       0006h =
+       Visual Basic
+       module<br>
+       0010h = Worksheet or dialog sheet<br>
+       0020h = Chart<br>
+       0040h = Excel 4.0 macro sheet<br>
+       0100h = Workspace file </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      8</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rupBuild </span> </span></p>
+   </td>
+   <td width="42" style='width: 31.5pt;'>
+     <p class="Text">
+      2</p>
+   </td>
+   <td width="391" style='width: 293.5pt;'>
+     <p class="Text">
+      Build identifier (=0DBBh for Excel 97)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      10</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rupYear </span> </span></p>
+   </td>
+   <td width="42" style='width: 31.5pt;'>
+     <p class="Text">
+      2</p>
+   </td>
+   <td width="391" style='width: 293.5pt;'>
+     <p class="Text">
+      Build year (=07CCh for Excel 97)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      12</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>bfh </span> </span></p>
+   </td>
+   <td width="42" style='width: 31.5pt;'>
+     <p class="Text">
+      4</p>
+   </td>
+   <td width="391" style='width: 293.5pt;'>
+     <p class="Text">
+      File history flags</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      16</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>sfo </span> </span></p>
+   </td>
+   <td width="42" style='width: 31.5pt;'>
+     <p class="Text">
+      4</p>
+   </td>
+   <td width="391" style='width: 293.5pt;'>
+     <p class="Text">
+      Lowest BIFF version (see text)</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">
+  <span>
+   <o:p>&nbsp; </o:p> </span></p>
+     <p class="Text">
+   The <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rupBuild </span> </span>
+    and <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rupYear </span> </span>
+     fields contain numbers that identify the version (build) of Excel that wrote the
+     file. If you write a BIFF file, you can use the BiffView utility to
+     determine the current values of these fields by examining a <span class="CodeInlineChar">
+     <span style='font-size: 11.0pt;'>BOF </span> </span>
+ record in a workbook file.</p>
+     <p class="Text">
+   The <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>sfo </span> </span>
+    field contains the earliest version ( <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>vers </span> </span>
+ field) of Excel that can read all
+      records in this file.</p>
+     <p class="Text">
+   The <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>bfh </span> </span>
+    field contains the following flag bits:</p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="611"
+   style='width: 458.5pt; border-collapse: collapse;'>
+  <thead>
+ <tr>
+   <td width="54" style='width: 40.35pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+       Bits</p>
+   </td>
+   <td width="94" style='width: 70.55pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+       Mask</p>
+   </td>
+   <td width="100" style='width: 74.95pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+       Flag Name</p>
+   </td>
+   <td width="364" style='width: 272.65pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+       Contents</p>
+   </td>
+ </tr>
+  </thead>
+ <tr>
+   <td width="54" style='width: 40.35pt;'>
+     <p class="Text">
+      0</p>
+   </td>
+   <td width="94" style='width: 70.55pt;'>
+     <p class="Text">
+      00000001h</p>
+   </td>
+   <td width="100" style='width: 74.95pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fWin </span> </span></p>
+   </td>
+   <td width="364" style='width: 272.65pt;'>
+     <p class="Text">
+      =1 if the file was last edited by Excel for Windows</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="54" style='width: 40.35pt;'>
+     <p class="Text">
+      1</p>
+   </td>
+   <td width="94" style='width: 70.55pt;'>
+     <p class="Text">
+      00000002h</p>
+   </td>
+   <td width="100" style='width: 74.95pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fRisc </span> </span></p>
+   </td>
+   <td width="364" style='width: 272.65pt;'>
+     <p class="Text">
+      =1 if the file was last edited by Excel on a RISC platform</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="54" style='width: 40.35pt;'>
+     <p class="Text">
+      2</p>
+   </td>
+   <td width="94" style='width: 70.55pt;'>
+     <p class="Text">
+      00000004h</p>
+   </td>
+   <td width="100" style='width: 74.95pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fBeta </span> </span></p>
+   </td>
+   <td width="364" style='width: 272.65pt;'>
+     <p class="Text">
+      =1 if the file was last edited by a beta version of Excel</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="54" style='width: 40.35pt;'>
+     <p class="Text">
+      3</p>
+   </td>
+   <td width="94" style='width: 70.55pt;'>
+     <p class="Text">
+      00000008h</p>
+   </td>
+   <td width="100" style='width: 74.95pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fWinAny </span> </span></p>
+   </td>
+   <td width="364" style='width: 272.65pt;'>
+     <p class="Text">
+      =1 if the file has ever been edited by Excel for Windows</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="54" style='width: 40.35pt;'>
+     <p class="Text">
+      4</p>
+   </td>
+   <td width="94" style='width: 70.55pt;'>
+     <p class="Text">
+      00000010h</p>
+   </td>
+   <td width="100" style='width: 74.95pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fMacAny </span> </span></p>
+   </td>
+   <td width="364" style='width: 272.65pt;'>
+     <p class="Text">
+      =1 if the file has ever been edited by Excel for the Macintosh</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="54" style='width: 40.35pt;'>
+     <p class="Text">
+      5</p>
+   </td>
+   <td width="94" style='width: 70.55pt;'>
+     <p class="Text">
+      00000020h</p>
+   </td>
+   <td width="100" style='width: 74.95pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fBetaAny </span> </span></p>
+   </td>
+   <td width="364" style='width: 272.65pt;'>
+     <p class="Text">
+      =1 if the file has ever been edited by a beta version of Excel</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="54" style='width: 40.35pt;'>
+     <p class="Text">
+      7–6</p>
+   </td>
+   <td width="94" style='width: 70.55pt;'>
+     <p class="Text">
+      000000C0h</p>
+   </td>
+   <td width="100" style='width: 74.95pt;'>
+     <p class="Text">
+      (Reserved)</p>
+   </td>
+   <td width="364" style='width: 272.65pt;'>
+     <p class="Text">
+      Reserved; must be 0 (zero)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="54" style='width: 40.35pt;'>
+     <p class="Text">
+      8</p>
+   </td>
+   <td width="94" style='width: 70.55pt;'>
+     <p class="Text">
+      00000100h</p>
+   </td>
+   <td width="100" style='width: 74.95pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>fRiscAny </span> </span></p>
+   </td>
+   <td width="364" style='width: 272.65pt;'>
+     <p class="Text">
+      =1 if the file has ever been edited by Excel on a RISC platform</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="54" style='width: 40.35pt;'>
+     <p class="Text">
+     <span>31<span style='letter-spacing: -1.75pt'> </span>
+–<span style='letter-spacing: -1.75pt'> </span>
+9 </span></p>
+   </td>
+   <td width="94" style='width: 70.55pt;'>
+     <p class="Text">
+      FFFFFE00</p>
+   </td>
+   <td width="100" style='width: 74.95pt;'>
+     <p class="Text">
+      (Reserved)</p>
+   </td>
+   <td width="364" style='width: 272.65pt;'>
+     <p class="Text">
+      Reserved; must be 0 (zero)</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">
+  <span>
+   <o:p>&nbsp; </o:p> </span></p>
+     <p class="Text" style='margin-bottom: 0cm; margin-bottom: .0001pt; page-break-after: avoid; background: #F3F3F3'>
+  <b><span style='font-family: Arial;'>Record Data — BIFF5 and BIFF7 </span>
+</b></p>
+ <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="611"
+   style='width: 458.5pt; border-collapse: collapse;'>
+ <tr>
+   <td width="61" style='width: 46.0pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Offset</p>
+   </td>
+   <td width="100" style='width: 75.0pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Field Name</p>
+   </td>
+   <td width="48" style='width: 36.0pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Size</p>
+   </td>
+   <td width="402" style='width: 301.5pt; border: none; border-bottom: solid windowtext 1.0pt;'>
+     <p class="Header">
+      Contents</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      4</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>vers </span> </span></p>
+   </td>
+   <td width="48" style='width: 36.0pt;'>
+     <p class="Text">
+      2</p>
+   </td>
+   <td width="402" style='width: 301.5pt;'>
+     <p class="Text">
+      Version number (0500 for BIFF5 and BIFF7)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      6</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>dt </span> </span></p>
+   </td>
+   <td width="48" style='width: 36.0pt;'>
+     <p class="Text">
+      2</p>
+   </td>
+   <td width="402" style='width: 301.5pt;'>
+     <p class="Text">
+     <span>Substream type:<br>
+       0005h = Workbook globals<br>
+       0006h = Visual Basic
+       module<br>
+       0010h = Worksheet or dialog sheet<br>
+       0020h = Chart<br>
+       0040h = Excel 4.0 macro sheet<br>
+       0100h = Workspace file </span></p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      8</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rupBuild </span> </span></p>
+   </td>
+   <td width="48" style='width: 36.0pt;'>
+     <p class="Text">
+      2</p>
+   </td>
+   <td width="402" style='width: 301.5pt;'>
+     <p class="Text">
+      Build identifier (internal use only)</p>
+   </td>
+ </tr>
+ <tr>
+   <td width="61" style='width: 46.0pt;'>
+     <p class="Text">
+      10</p>
+   </td>
+   <td width="100" style='width: 75.0pt;'>
+     <p class="Text">
+     <span class="CodeInlineChar"><span style='font-size: 11.0pt;'>rupYear </span></p>
+   </td>
+   <td width="48" style='width: 36.0pt;'>
+     <p class="Text">
+      2</p>
+   </td>
+   <td width="402" style='width: 301.5pt;'>
+     <p class="Text">
+      Build year (internal use only)</p>
+   </td>
+ </tr>
+ </table>
+     <p class="TableSpacingAfter">
+  <span>
+   <o:p>&nbsp; </o:p> </span></p>
+ </div>
+</body>
+</html>
+

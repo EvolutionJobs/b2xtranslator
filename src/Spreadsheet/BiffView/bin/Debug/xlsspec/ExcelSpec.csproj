@@ -1,0 +1,347 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C187965F-A4A3-4CD1-A065-BDCBDC9152E1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExcelSpec</RootNamespace>
+    <AssemblyName>ExcelSpec</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="1904.html" />
+    <Content Include="ADDIN.html" />
+    <Content Include="ADDMENU.html" />
+    <Content Include="ARRAY.html" />
+    <Content Include="AUTOFILTER.html" />
+    <Content Include="AUTOFILTER12.html" />
+    <Content Include="AUTOFILTERINFO.html" />
+    <Content Include="AUTOWEBPUB.html" />
+    <Content Include="BACKUP.html" />
+    <Content Include="BLANK.html" />
+    <Content Include="BOF.html" />
+    <Content Include="BOOKBOOL.html" />
+    <Content Include="BOOKEXT.html" />
+    <Content Include="BOOLERR.html" />
+    <Content Include="BOTTOMMARGIN.html" />
+    <Content Include="BOUNDSHEET.html" />
+    <Content Include="CALCCOUNT.html" />
+    <Content Include="CALCMODE.html" />
+    <Content Include="CELLWATCH.html" />
+    <Content Include="CF.html" />
+    <Content Include="CF12.html" />
+    <Content Include="CFEX.html" />
+    <Content Include="CODENAME.html" />
+    <Content Include="CODEPAGE.html" />
+    <Content Include="COLINFO.html" />
+    <Content Include="COMPAT12.html" />
+    <Content Include="COMPRESSPICTURES.html" />
+    <Content Include="CONDFMT.html" />
+    <Content Include="CONDFMT12.html" />
+    <Content Include="CONTINUE.html" />
+    <Content Include="CONTINUEFRT.html" />
+    <Content Include="CONTINUEFRT11.html" />
+    <Content Include="CONTINUEFRT12.html" />
+    <Content Include="COORDLIST.html" />
+    <Content Include="COUNTRY.html" />
+    <Content Include="CRASHRECERR.html" />
+    <Content Include="CRN.html" />
+    <Content Include="CRTCOOPT.html" />
+    <Content Include="DATALABEXT.html" />
+    <Content Include="DATALABEXTCONTENTS.html" />
+    <Content Include="DBCELL.html" />
+    <Content Include="DBQUERYEXT.html" />
+    <Content Include="DCON.html" />
+    <Content Include="DCONBIN.html" />
+    <Content Include="DCONN.html" />
+    <Content Include="DCONNAME.html" />
+    <Content Include="DCONREF.html" />
+    <Content Include="DEFAULTROWHEIGHT.html" />
+    <Content Include="DEFCOLWIDTH.html" />
+    <Content Include="DELMENU.html" />
+    <Content Include="DELTA.html" />
+    <Content Include="DIMENSIONS.html" />
+    <Content Include="DOCROUTE.html" />
+    <Content Include="DROPDOWNOBJIDS.html" />
+    <Content Include="DSF.html" />
+    <Content Include="DV.html" />
+    <Content Include="DVAL.html" />
+    <Content Include="DXF.html" />
+    <Content Include="EDG.html" />
+    <Content Include="EOF.html" />
+    <Content Include="EXCEL9FILE.html" />
+    <Content Include="EXTERNCOUNT.html" />
+    <Content Include="EXTERNNAME.html" />
+    <Content Include="EXTERNSHEET.html" />
+    <Content Include="EXTSST.html" />
+    <Content Include="EXTSTRING.html" />
+    <Content Include="FEAT.html" />
+    <Content Include="FEAT11.html" />
+    <Content Include="FEAT12.html" />
+    <Content Include="FEATHEADR.html" />
+    <Content Include="FEATHEADR11.html" />
+    <Content Include="FEATINFO.html" />
+    <Content Include="FEATINFO11.html" />
+    <Content Include="FILEPASS.html" />
+    <Content Include="FILESHARING.html" />
+    <Content Include="FILESHARING2.html" />
+    <Content Include="FILTERMODE.html" />
+    <Content Include="FMQRY.html" />
+    <Content Include="FMSQRY.html" />
+    <Content Include="FNGROUPCOUNT.html" />
+    <Content Include="FNGROUPNAME.html" />
+    <Content Include="FNGRP12.html" />
+    <Content Include="FONT.html" />
+    <Content Include="FOOTER.html" />
+    <Content Include="FORCEFULLCALCULATION.html" />
+    <Content Include="FORMAT.html" />
+    <Content Include="FORMULA.html" />
+    <Content Include="GCW.html" />
+    <Content Include="GRIDSET.html" />
+    <Content Include="GUIDTYPELIB.html" />
+    <Content Include="GUTS.html" />
+    <Content Include="HCENTER.html" />
+    <Content Include="HEADER.html" />
+    <Content Include="HEADERFOOTER.html" />
+    <Content Include="HFPicture.html" />
+    <Content Include="HIDEOBJ.html" />
+    <Content Include="HLINK.html" />
+    <Content Include="HLINKTOOLTIP.html" />
+    <Content Include="HORIZONTALPAGEBREAKS.html" />
+    <Content Include="IMDATA.html" />
+    <Content Include="INDEX.html" />
+    <Content Include="INTERFACEEND.html" />
+    <Content Include="INTERFACEHDR.html" />
+    <Content Include="ITERATION.html" />
+    <Content Include="LABEL.html" />
+    <Content Include="LABELSST.html" />
+    <Content Include="LEFTMARGIN.html" />
+    <Content Include="LHNGRAPH.html" />
+    <Content Include="LHRECORD.html" />
+    <Content Include="LIST12.html" />
+    <Content Include="LISTCF.html" />
+    <Content Include="LISTCONDFMT.html" />
+    <Content Include="LISTDV.html" />
+    <Content Include="LISTFIELD.html" />
+    <Content Include="LISTOBJ.html" />
+    <Content Include="LNEXT.html" />
+    <Content Include="LPR.html" />
+    <Content Include="MDTB.html" />
+    <Content Include="MDTINFO.html" />
+    <Content Include="MDXKPI.html" />
+    <Content Include="MDXPROP.html" />
+    <Content Include="MDXSET.html" />
+    <Content Include="MDXSTR.html" />
+    <Content Include="MDXTUPLE.html" />
+    <Content Include="MERGECELLS.html" />
+    <Content Include="MKREXT.html" />
+    <Content Include="MMS.html" />
+    <Content Include="MSODRAWING.html" />
+    <Content Include="MSODRAWINGGROUP.html" />
+    <Content Include="MSODRAWINGSELECTION.html" />
+    <Content Include="MTRSETTINGS.html" />
+    <Content Include="MULBLANK.html" />
+    <Content Include="MULRK.html" />
+    <Content Include="NAME.html" />
+    <Content Include="NAMECMT.html" />
+    <Content Include="NAMEFNGRP12.html" />
+    <Content Include="NAMEPUBLISH.html" />
+    <Content Include="NOTE.html" />
+    <Content Include="NUMBER.html" />
+    <Content Include="OBJ.html" />
+    <Content Include="OBJPROTECT.html" />
+    <Content Include="OBPROJ.html" />
+    <Content Include="OLEDBCONN.html" />
+    <Content Include="OLESIZE.html" />
+    <Content Include="PALETTE.html" />
+    <Content Include="PANE.html" />
+    <Content Include="PARAMQRY.html" />
+    <Content Include="PASSWORD.html" />
+    <Content Include="PLS.html" />
+    <Content Include="PLV.html" />
+    <Content Include="PRECISION.html" />
+    <Content Include="PRINTGRIDLINES.html" />
+    <Content Include="PRINTHEADERS.html" />
+    <Content Include="PROT4REV.html" />
+    <Content Include="PROT4REVPASS.html" />
+    <Content Include="PROTECT.html" />
+    <Content Include="PUB.html" />
+    <Content Include="QSI.html" />
+    <Content Include="QSIF.html" />
+    <Content Include="QSIR.html" />
+    <Content Include="QSISXTAG.html" />
+    <Content Include="REALTIMEDATA.html" />
+    <Content Include="RECALCID.html" />
+    <Content Include="RECIPNAME.html" />
+    <Content Include="REFMODE.html" />
+    <Content Include="REFRESHALL.html" />
+    <Content Include="RIGHTMARGIN.html" />
+    <Content Include="RK.html" />
+    <Content Include="ROW.html" />
+    <Content Include="RSTRING.html" />
+    <Content Include="SAVERECALC.html" />
+    <Content Include="SCENARIO.html" />
+    <Content Include="SCENMAN.html" />
+    <Content Include="SCENPROTECT.html" />
+    <Content Include="SCL.html" />
+    <Content Include="SELECTION.html" />
+    <Content Include="SETUP.html" />
+    <Content Include="SHEETEXT.html" />
+    <Content Include="SHRFMLA.html" />
+    <Content Include="SORT.html" />
+    <Content Include="SORTDATA12.html" />
+    <Content Include="SOUND.html" />
+    <Content Include="SST.html" />
+    <Content Include="STANDARDWIDTH.html" />
+    <Content Include="STRING.html" />
+    <Content Include="STYLE.html" />
+    <Content Include="STYLEEXT.html" />
+    <Content Include="styles.css" />
+    <Content Include="SUB.html" />
+    <Content Include="SUPBOOK.html" />
+    <Content Include="SXADDL.html" />
+    <Content Include="SXADDL12.html" />
+    <Content Include="SXDB.html" />
+    <Content Include="SXDBEX.html" />
+    <Content Include="SXDI.html" />
+    <Content Include="SXDXF.html" />
+    <Content Include="SXEX.html" />
+    <Content Include="SXEXT.html" />
+    <Content Include="SXFDBTYPE.html" />
+    <Content Include="SXFILT.html" />
+    <Content Include="SXFMLA.html" />
+    <Content Include="SXFORMAT.html" />
+    <Content Include="SXFORMULA.html" />
+    <Content Include="SXIDSTM.html" />
+    <Content Include="SXITM.html" />
+    <Content Include="SXIVD.html" />
+    <Content Include="SXLI.html" />
+    <Content Include="SXNAME.html" />
+    <Content Include="SXPAIR.html" />
+    <Content Include="SXPI.html" />
+    <Content Include="SXPIEX.html" />
+    <Content Include="SXRULE.html" />
+    <Content Include="SXSELECT.html" />
+    <Content Include="SXSTRING.html" />
+    <Content Include="SXTBL.html" />
+    <Content Include="SXTBPG.html" />
+    <Content Include="SXTBRGIITM.html" />
+    <Content Include="SXTH.html" />
+    <Content Include="SXVD.html" />
+    <Content Include="SXVDEX.html" />
+    <Content Include="SXVDTEX.html" />
+    <Content Include="SXVI.html" />
+    <Content Include="SXVIEW.html" />
+    <Content Include="SXVIEWEX.html" />
+    <Content Include="SXVIEWEX9.html" />
+    <Content Include="SXVS.html" />
+    <Content Include="TABID.html" />
+    <Content Include="TABIDCONF.html" />
+    <Content Include="TABLE.html" />
+    <Content Include="TABLESTYLE.html" />
+    <Content Include="TABLESTYLEELEMENT.html" />
+    <Content Include="TABLESTYLES.html" />
+    <Content Include="TEMPLATE.html" />
+    <Content Include="THEME.html" />
+    <Content Include="TOPMARGIN.html" />
+    <Content Include="TXO.html" />
+    <Content Include="TXTQUERY.html" />
+    <Content Include="UDDESC.html" />
+    <Content Include="UNCALCED.html" />
+    <Content Include="USERBVIEW.html" />
+    <Content Include="USERSVIEWBEGIN.html" />
+    <Content Include="USERSVIEWEND.html" />
+    <Content Include="USESELFS.html" />
+    <Content Include="VCENTER.html" />
+    <Content Include="VERTICALPAGEBREAKS.html" />
+    <Content Include="Web.config" />
+    <Content Include="WEBPUB.html" />
+    <Content Include="WINDOW1.html" />
+    <Content Include="WINDOW2.html" />
+    <Content Include="WINDOWPROTECT.html" />
+    <Content Include="WOPT.html" />
+    <Content Include="WRITEACCESS.html" />
+    <Content Include="WRITEPROT.html" />
+    <Content Include="WSBOOL.html" />
+    <Content Include="XCT.html" />
+    <Content Include="XF.html" />
+    <Content Include="XFCRC.html" />
+    <Content Include="XFEXT.html" />
+    <Content Include="XL5MODIFY.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1342</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
