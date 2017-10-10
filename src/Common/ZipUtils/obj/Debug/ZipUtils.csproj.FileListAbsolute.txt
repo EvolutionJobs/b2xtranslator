@@ -1,8 +1,0 @@
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\ZipUtils\bin\Debug\zlibwapi.dll
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\ZipUtils\bin\Debug\libzlibwapi.so
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\ZipUtils\bin\Debug\DIaLOGIKa.b2xtranslator.ZipUtils.dll
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\ZipUtils\bin\Debug\DIaLOGIKa.b2xtranslator.ZipUtils.pdb
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\ZipUtils\obj\Debug\ZipUtils.csprojResolveAssemblyReference.cache
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\ZipUtils\obj\Debug\ZipUtils.csproj.CoreCompileInputs.cache
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\ZipUtils\obj\Debug\DIaLOGIKa.b2xtranslator.ZipUtils.dll
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\ZipUtils\obj\Debug\DIaLOGIKa.b2xtranslator.ZipUtils.pdb

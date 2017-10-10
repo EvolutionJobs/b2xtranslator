@@ -11,6 +11,3 @@ C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileExtractTest\ob
 C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileExtractTest\bin\Debug\CompoundFileExtractTest.exe.config
 C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileExtractTest\bin\Debug\CompoundFileExtractTest.exe.CodeAnalysisLog.xml
 C:\Users\henryk\Downloads\b2xtranslator-core\src\Test\CompoundFileExtractTest\bin\Debug\CompoundFileExtractTest.exe.lastcodeanalysissucceeded
-C:\Users\henryk\Documents\GitHub\b2xtranslator-core\src\Test\CompoundFileExtractTest\bin\Debug\CompoundFileExtractTest.exe.config
-C:\Users\henryk\Documents\GitHub\b2xtranslator-core\src\Test\CompoundFileExtractTest\obj\Debug\CompoundFileExtractTest.exe
-C:\Users\henryk\Documents\GitHub\b2xtranslator-core\src\Test\CompoundFileExtractTest\obj\Debug\CompoundFileExtractTest.pdb

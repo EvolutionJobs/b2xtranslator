@@ -1,8 +1,0 @@
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\Shell\bin\Debug\DIaLOGIKa.b2xtranslator.Shell.dll
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\Shell\bin\Debug\DIaLOGIKa.b2xtranslator.Shell.pdb
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\Shell\bin\Debug\DIaLOGIKa.b2xtranslator.Tools.dll
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\Shell\bin\Debug\DIaLOGIKa.b2xtranslator.Tools.pdb
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\Shell\obj\Debug\Shell.csprojResolveAssemblyReference.cache
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\Shell\obj\Debug\Shell.csproj.CoreCompileInputs.cache
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\Shell\obj\Debug\DIaLOGIKa.b2xtranslator.Shell.dll
-C:\Users\henryk\Downloads\b2xtranslator-core\src\Common\Shell\obj\Debug\DIaLOGIKa.b2xtranslator.Shell.pdb

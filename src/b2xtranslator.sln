@@ -21,53 +21,51 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architecture", "Architectur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundFileExtractTest", "Test\CompoundFileExtractTest\CompoundFileExtractTest.csproj", "{01308A7D-882B-4822-A78B-EBAD044044FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocFileFormat", "WordProcessing\DocFileFormat\DocFileFormat.csproj", "{70A244FD-C90E-4474-9E70-82BCF5147FF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocFileFormat", "WordProcessing\DocFileFormat\DocFileFormat.csproj", "{70A244FD-C90E-4474-9E70-82BCF5147FF9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocFileFormatTest", "Test\DocFileFormatTest\DocFileFormatTest.csproj", "{4D78B8B7-FCEB-4249-BF3D-83B9A8059870}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlLib", "Common\OpenXmlLib\OpenXmlLib.csproj", "{4C10271C-CD9B-49F5-9479-3C6EB7404E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenXmlLib", "Common\OpenXmlLib\OpenXmlLib.csproj", "{4C10271C-CD9B-49F5-9479-3C6EB7404E75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipUtils", "Common\ZipUtils\ZipUtils.csproj", "{05A5C68E-B901-4AD0-87F1-5E43DDC759CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZipUtils", "Common\ZipUtils\ZipUtils.csproj", "{05A5C68E-B901-4AD0-87F1-5E43DDC759CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlLibTest", "Test\OpenXmlLibTest\OpenXmlLibTest.csproj", "{1855519D-6C8C-44B2-B197-DB40DD648FB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Common\Tools\Tools.csproj", "{B44FAEE0-B32E-4682-AA42-618C893F14C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Common\Tools\Tools.csproj", "{B44FAEE0-B32E-4682-AA42-618C893F14C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTranslatorLib", "Common\CommonTranslatorLib\CommonTranslatorLib.csproj", "{0F0F6BAF-BC5D-4DC6-AE53-8257305EE5CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTranslatorLib", "Common\CommonTranslatorLib\CommonTranslatorLib.csproj", "{0F0F6BAF-BC5D-4DC6-AE53-8257305EE5CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordprocessingMLMapping", "WordProcessing\WordprocessingMLMapping\WordprocessingMLMapping.csproj", "{A4EFE5FA-BDEB-452B-8751-1A495E5C9759}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordprocessingMLMapping", "WordProcessing\WordprocessingMLMapping\WordprocessingMLMapping.csproj", "{A4EFE5FA-BDEB-452B-8751-1A495E5C9759}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructuredStorage", "Common\StructuredStorage\StructuredStorage.csproj", "{CBD9BEE2-1E01-477A-BB44-1EC9F8C91AB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StructuredStorage", "Common\StructuredStorage\StructuredStorage.csproj", "{CBD9BEE2-1E01-477A-BB44-1EC9F8C91AB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "doc2x", "Shell\doc2x\doc2x.csproj", "{2427A407-3161-401A-A7C4-545A7AC90E36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doc2x", "Shell\doc2x\doc2x.csproj", "{2427A407-3161-401A-A7C4-545A7AC90E36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiffView", "Spreadsheet\BiffView\BiffView.csproj", "{2C664677-C680-446F-805A-593B387D1D08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XlsFileFormat", "Spreadsheet\XlsFileFormat\XlsFileFormat.csproj", "{92295756-46BB-4D1F-B0FD-CA7DF03F6C65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XlsFileFormat", "Spreadsheet\XlsFileFormat\XlsFileFormat.csproj", "{92295756-46BB-4D1F-B0FD-CA7DF03F6C65}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PptFileFormat", "Presentation\PptFileFormat\PptFileFormat.csproj", "{6EAD0A6A-8DF0-4CA3-8D5E-3C871E7FCB62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PptFileFormat", "Presentation\PptFileFormat\PptFileFormat.csproj", "{6EAD0A6A-8DF0-4CA3-8D5E-3C871E7FCB62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PptDump", "Test\PptDump\PptDump.csproj", "{A6AF6065-0740-42A1-BC9D-02AACDAF1476}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppt2x", "Shell\ppt2x\ppt2x.csproj", "{90C862C6-C6CB-4C72-8E58-FA3F8625E93B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppt2x", "Shell\ppt2x\ppt2x.csproj", "{90C862C6-C6CB-4C72-8E58-FA3F8625E93B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeDrawing", "Common\OfficeDrawing\OfficeDrawing.csproj", "{AA46A3F1-919F-48FB-970C-753F58A857F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfficeDrawing", "Common\OfficeDrawing\OfficeDrawing.csproj", "{AA46A3F1-919F-48FB-970C-753F58A857F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationMLMapping", "Presentation\PresentationMLMapping\PresentationMLMapping.csproj", "{1D168A80-B748-4321-AED6-E03D557B5864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationMLMapping", "Presentation\PresentationMLMapping\PresentationMLMapping.csproj", "{1D168A80-B748-4321-AED6-E03D557B5864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xls2x", "Shell\xls2x\xls2x.csproj", "{B9CF0222-E113-4D87-95EB-FF1097A53E7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xls2x", "Shell\xls2x\xls2x.csproj", "{B9CF0222-E113-4D87-95EB-FF1097A53E7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadsheetMLMapping", "Spreadsheet\SpreadsheetMLMapping\SpreadsheetMLMapping.csproj", "{7085D1EB-E797-4841-A564-68EF63688A24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpreadsheetMLMapping", "Spreadsheet\SpreadsheetMLMapping\SpreadsheetMLMapping.csproj", "{7085D1EB-E797-4841-A564-68EF63688A24}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundFileReadWriteExtractTest", "Test\CompoundFileReadWriteExtractTest\CompoundFileReadWriteExtractTest.csproj", "{0633D500-337B-49BD-9566-C50F0FDAA6D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "Test\UnitTests\UnitTests.csproj", "{4CB51274-367D-46AA-A170-4827053A1C7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shell", "Common\Shell\Shell.csproj", "{3EF2F275-1148-4703-9B2E-56966E92DF32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shell", "Common\Shell\Shell.csproj", "{3EF2F275-1148-4703-9B2E-56966E92DF32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlePropertySet", "Common\OlePropertySet\OlePropertySet.csproj", "{0DBC205F-CBD3-43E5-BD27-8584333217D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OlePropertySet", "Common\OlePropertySet\OlePropertySet.csproj", "{0DBC205F-CBD3-43E5-BD27-8584333217D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeGraph", "Common\OfficeGraph\OfficeGraph.csproj", "{598B4D7A-F1DB-496F-BC79-5F7BE596A239}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfficeGraph", "Common\OfficeGraph\OfficeGraph.csproj", "{598B4D7A-F1DB-496F-BC79-5F7BE596A239}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,10 +117,6 @@ Global
 		{2427A407-3161-401A-A7C4-545A7AC90E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2427A407-3161-401A-A7C4-545A7AC90E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2427A407-3161-401A-A7C4-545A7AC90E36}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C664677-C680-446F-805A-593B387D1D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C664677-C680-446F-805A-593B387D1D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C664677-C680-446F-805A-593B387D1D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C664677-C680-446F-805A-593B387D1D08}.Release|Any CPU.Build.0 = Release|Any CPU
 		{92295756-46BB-4D1F-B0FD-CA7DF03F6C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92295756-46BB-4D1F-B0FD-CA7DF03F6C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92295756-46BB-4D1F-B0FD-CA7DF03F6C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -189,7 +183,6 @@ Global
 		{A4EFE5FA-BDEB-452B-8751-1A495E5C9759} = {6F47D61C-D3A4-4DC1-B19A-F97AD18E6E10}
 		{CBD9BEE2-1E01-477A-BB44-1EC9F8C91AB7} = {D8DB984C-ED04-4525-9923-798363B513FC}
 		{2427A407-3161-401A-A7C4-545A7AC90E36} = {B01712A7-034B-48C4-9997-8E3613908080}
-		{2C664677-C680-446F-805A-593B387D1D08} = {C7DD1BC2-02FA-40EB-810F-43B97D0B29C3}
 		{92295756-46BB-4D1F-B0FD-CA7DF03F6C65} = {C7DD1BC2-02FA-40EB-810F-43B97D0B29C3}
 		{6EAD0A6A-8DF0-4CA3-8D5E-3C871E7FCB62} = {D30AEB63-809F-4791-8DEF-78FB718A0716}
 		{A6AF6065-0740-42A1-BC9D-02AACDAF1476} = {23B4E6F7-CF43-4B43-ABCE-26C39E173ABD}
