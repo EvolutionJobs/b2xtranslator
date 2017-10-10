@@ -44,12 +44,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// A RwU that specifies the zero-based row number of the active cell.
         /// </summary>
-        public UInt16 rwAct;
+        public ushort rwAct;
 
         /// <summary>
         /// A ColU that specifies the zero-based column number of the active cell.
         /// </summary>
-        public UInt16 colAct;
+        public ushort colAct;
 
         /// <summary>
         /// A signed integer that specifies the zero-based index to the RefU in rgref that 
@@ -57,12 +57,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// is one of multiple contiguous Selection records, this value is the index to the 
         /// RefU across the aggregation of rgref arrays of all Selection records.
         /// </summary>
-        public Int16 irefAct;
+        public short irefAct;
 
         /// <summary>
         /// An unsigned integer that specifies the number of RefU in the rgref array of this record.
         /// </summary>
-        public UInt16 cref;
+        public ushort cref;
 
         /// <summary>
         /// An array of RefU that specifies ranges of selected cells in the sheet. 
@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public RefU[] rgref;
 
-        public Selection(IStreamReader reader, RecordType id, UInt16 length)
+        public Selection(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

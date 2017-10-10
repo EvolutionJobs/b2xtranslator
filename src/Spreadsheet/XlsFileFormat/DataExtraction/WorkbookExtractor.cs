@@ -92,7 +92,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                         case RecordType.BoundSheet8:
                             {
                                 // Extracts the Boundsheet data 
-                                BoundSheet8 bs = new BoundSheet8(this.StreamReader, bh.id, bh.length);
+                                var bs = new BoundSheet8(this.StreamReader, bh.id, bh.length);
                                 TraceLogger.DebugInternal(bs.ToString());
 
                                 SheetData sheetData = null;
@@ -103,12 +103,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                                         sheetData = new WorkSheetData();
                                         this.oldOffset = this.StreamReader.BaseStream.Position;
                                         this.StreamReader.BaseStream.Seek(bs.lbPlyPos, SeekOrigin.Begin);
-                                        WorksheetExtractor se = new WorksheetExtractor(this.StreamReader, sheetData as WorkSheetData);
+                                        var se = new WorksheetExtractor(this.StreamReader, sheetData as WorkSheetData);
                                         this.StreamReader.BaseStream.Seek(oldOffset, SeekOrigin.Begin);
                                         break;
 
                                     case BoundSheet8.SheetType.Chartsheet:
-                                        ChartSheetData chartSheetData = new ChartSheetData();
+                                        var chartSheetData = new ChartSheetData();
 
                                         this.oldOffset = this.StreamReader.BaseStream.Position;
                                         this.StreamReader.BaseStream.Seek(bs.lbPlyPos, SeekOrigin.Begin);
@@ -148,26 +148,26 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                                  * The problem here is, that the parser has to overread the continue biff record header 
                                 */
                                 SST sst;
-                                UInt16 length = bh.length;
+                                var length = bh.length;
 
                                 // save the old offset from this record begin 
                                 this.oldOffset = this.StreamReader.BaseStream.Position;
                                 // create a list of bytearrays to store the following continue records 
                                 // List<byte[]> byteArrayList = new List<byte[]>();
-                                byte[] buffer = new byte[length];
-                                LinkedList<VirtualStreamReader> vsrList = new LinkedList<VirtualStreamReader>();
+                                var buffer = new byte[length];
+                                var vsrList = new LinkedList<VirtualStreamReader>();
                                 buffer = this.StreamReader.ReadBytes((int)length);
                                 // byteArrayList.Add(buffer);
 
                                 // create a new memory stream and a new virtualstreamreader 
-                                MemoryStream bufferstream = new MemoryStream(buffer);
-                                VirtualStreamReader binreader = new VirtualStreamReader(bufferstream);
+                                var bufferstream = new MemoryStream(buffer);
+                                var binreader = new VirtualStreamReader(bufferstream);
                                 BiffHeader bh2;
                                 bh2.id = (RecordType)this.StreamReader.ReadUInt16();
 
                                 while (bh2.id == RecordType.Continue)
                                 {
-                                    bh2.length = (UInt16)(this.StreamReader.ReadUInt16());
+                                    bh2.length = (ushort)(this.StreamReader.ReadUInt16());
 
                                     buffer = new byte[bh2.length];
 
@@ -177,8 +177,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                                     // byteArrayList.Add(buffer);
 
                                     // create for each continue record a new streamreader !! 
-                                    MemoryStream contbufferstream = new MemoryStream(buffer);
-                                    VirtualStreamReader contreader = new VirtualStreamReader(contbufferstream);
+                                    var contbufferstream = new MemoryStream(buffer);
+                                    var contreader = new VirtualStreamReader(contbufferstream);
                                     vsrList.AddLast(contreader);
 
 
@@ -203,66 +203,66 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
 
                         case RecordType.ExternSheet:
                             {
-                                ExternSheet extsheet = new ExternSheet(this.StreamReader, bh.id, bh.length);
+                                var extsheet = new ExternSheet(this.StreamReader, bh.id, bh.length);
                                 this.externSheets.Add(extsheet);
                                 this.workBookData.addExternSheetData(extsheet);
                             }
                             break;
                         case RecordType.SupBook:
                             {
-                                SupBook supbook = new SupBook(this.StreamReader, bh.id, bh.length);
+                                var supbook = new SupBook(this.StreamReader, bh.id, bh.length);
                                 this.supBooks.Add(supbook);
                                 this.workBookData.addSupBookData(supbook);
                             }
                             break;
                         case RecordType.XCT:
                             {
-                                XCT xct = new XCT(this.StreamReader, bh.id, bh.length);
+                                var xct = new XCT(this.StreamReader, bh.id, bh.length);
                                 this.XCTList.Add(xct);
                                 this.workBookData.addXCT(xct);
                             }
                             break;
                         case RecordType.CRN:
                             {
-                                CRN crn = new CRN(this.StreamReader, bh.id, bh.length);
+                                var crn = new CRN(this.StreamReader, bh.id, bh.length);
                                 this.CRNList.Add(crn);
                                 this.workBookData.addCRN(crn);
                             }
                             break;
                         case RecordType.ExternName:
                             {
-                                ExternName externname = new ExternName(this.StreamReader, bh.id, bh.length);
+                                var externname = new ExternName(this.StreamReader, bh.id, bh.length);
                                 this.workBookData.addEXTERNNAME(externname);
                             }
                             break;
                         case RecordType.Format:
                             {
-                                Format format = new Format(this.StreamReader, bh.id, bh.length);
+                                var format = new Format(this.StreamReader, bh.id, bh.length);
                                 this.workBookData.styleData.addFormatValue(format);
                             }
                             break;
                         case RecordType.XF:
                             {
-                                XF xf = new XF(this.StreamReader, bh.id, bh.length);
+                                var xf = new XF(this.StreamReader, bh.id, bh.length);
                                 this.workBookData.styleData.addXFDataValue(xf);
                             }
                             break;
                         case RecordType.Style:
                             {
-                                Style style = new Style(this.StreamReader, bh.id, bh.length);
+                                var style = new Style(this.StreamReader, bh.id, bh.length);
                                 this.workBookData.styleData.addStyleValue(style);
                             }
                             break;
                         case RecordType.Font:
                             {
-                                Font font = new Font(this.StreamReader, bh.id, bh.length);
+                                var font = new Font(this.StreamReader, bh.id, bh.length);
                                 this.workBookData.styleData.addFontData(font);
                             }
                             break;
                         case RecordType.NAME:
                         case RecordType.Lbl:
                             {
-                                Lbl name = new Lbl(this.StreamReader, bh.id, bh.length);
+                                var name = new Lbl(this.StreamReader, bh.id, bh.length);
                                 this.workBookData.addDefinedName(name);
                             }
                             break;
@@ -283,14 +283,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                             break;
                         case RecordType.Palette:
                             {
-                                Palette palette = new Palette(this.StreamReader, bh.id, bh.length);
+                                var palette = new Palette(this.StreamReader, bh.id, bh.length);
                                 workBookData.styleData.setColorList(palette.rgbColorList);
                             }
                             break;
                         default:
                             {
                                 // this else statement is used to read BiffRecords which aren't implemented 
-                                byte[] buffer = new byte[bh.length];
+                                var buffer = new byte[bh.length];
                                 buffer = this.StreamReader.ReadBytes(bh.length);
                                 TraceLogger.Debug("Unknown record found. ID {0}", bh.id);
                             }

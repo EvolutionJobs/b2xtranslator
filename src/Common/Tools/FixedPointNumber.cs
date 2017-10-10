@@ -46,10 +46,10 @@ namespace DIaLOGIKa.b2xtranslator.Tools
     /// </summary>
     public class FixedPointNumber
     {
-        public UInt16 Integral;
-        public UInt16 Fractional;
+        public ushort Integral;
+        public ushort Fractional;
 
-        public FixedPointNumber(UInt16 integral, UInt16 fractional)
+        public FixedPointNumber(ushort integral, ushort fractional)
         {
             this.Integral = integral;
             this.Fractional = fractional;
@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.Tools
 
         public FixedPointNumber(UInt32 value)
         {
-            byte[] bytes = System.BitConverter.GetBytes(value);
+            var bytes = System.BitConverter.GetBytes(value);
             this.Integral = System.BitConverter.ToUInt16(bytes, 0);
             this.Fractional = System.BitConverter.ToUInt16(bytes, 2);
         }

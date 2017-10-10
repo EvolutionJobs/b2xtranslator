@@ -37,19 +37,19 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <summary>
         /// First row from the merge cell 
         /// </summary>
-        public UInt16 rwFirst;
+        public ushort rwFirst;
         /// <summary>
         /// Last row from the merge cell 
         /// </summary>
-        public UInt16 rwLast;
+        public ushort rwLast;
         /// <summary>
         /// First column of the merge cell 
         /// </summary>
-        public UInt16 colFirst;
+        public ushort colFirst;
         /// <summary>
         /// Last colum of the merge cell 
         /// </summary>
-        public UInt16 colLast;
+        public ushort colLast;
 
         /// <summary>
         /// Ctor 
@@ -63,7 +63,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <param name="rwLast">Last row</param>
         /// <param name="colFirst">First column</param>
         /// <param name="colLast">Last column</param>
-        public MergeCellData(UInt16 rwFirst, UInt16 rwLast, UInt16 colFirst, UInt16 colLast)
+        public MergeCellData(ushort rwFirst, ushort rwLast, ushort colFirst, ushort colLast)
         {
             this.rwFirst = rwFirst;
             this.rwLast = rwLast;
@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <returns></returns>
         public string getOXMLFormatedData()
         {
-            String returnvalue = "";
+            var returnvalue = "";
             returnvalue += ExcelHelperClass.intToABCString(this.colFirst, (this.rwFirst+1).ToString());
             returnvalue += ":";
             returnvalue += ExcelHelperClass.intToABCString(this.colLast, (this.rwLast+1).ToString());

@@ -57,10 +57,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         private void ReadHeader()
         {
-            InputHandler fileHandler = ((InputHandler)_ioHandler);
+            var fileHandler = ((InputHandler)_ioHandler);
 
             // Determine endian
-            byte[] byteArray16 = new byte[2];
+            var byteArray16 = new byte[2];
             fileHandler.ReadPosition(byteArray16, 0x1C);
             if (byteArray16[0] == 0xFF && byteArray16[1] == 0xFE)
             {

@@ -79,7 +79,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //type
             if (ole.fLinked)
             {
-                Uri link = new Uri(ole.Link);
+                var link = new Uri(ole.Link);
                 ExternalRelationship rel = _targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.OleObject, link);
                 _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, rel.Id);
                 _writer.WriteAttributeString("Type", "Link");
@@ -118,7 +118,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         private void copyEmbeddedObject(OleObject ole, EmbeddedObjectPart part)
         {
             //create a new storage
-            StructuredStorageWriter writer = new StructuredStorageWriter();
+            var writer = new StructuredStorageWriter();
 
             // Word will not open embedded charts if a CLSID is set.
             if(ole.Program.StartsWith("Excel.Chart") == false)

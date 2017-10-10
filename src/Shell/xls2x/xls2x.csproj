@@ -5,6 +5,10 @@
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj" />
+    <ProjectReference Include="..\..\Common\OpenXmlLib\OpenXmlLib.csproj" />
+    <ProjectReference Include="..\..\Common\Shell\Shell.csproj" />
+    <ProjectReference Include="..\..\Spreadsheet\SpreadsheetMLMapping\SpreadsheetMLMapping.csproj" />
     <ProjectReference Include="..\..\Spreadsheet\XlsFileFormat\XlsFileFormat.csproj" />
   </ItemGroup>
 </Project>

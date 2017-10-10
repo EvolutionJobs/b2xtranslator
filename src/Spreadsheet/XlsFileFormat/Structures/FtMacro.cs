@@ -40,7 +40,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// <summary>
         /// Reserved. MUST be 0x04.
         /// </summary>
-        public UInt16 ft;
+        public ushort ft;
 
         /// <summary>
         /// An ObjFmla that specifies the name of a macro. 

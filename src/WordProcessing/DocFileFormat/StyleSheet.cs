@@ -55,12 +55,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             IStreamReader tableReader = new VirtualStreamReader(tableStream);
 
             //read size of the STSHI
-            byte[] stshiLengthBytes = new byte[2];
+            var stshiLengthBytes = new byte[2];
             tableStream.Read(stshiLengthBytes, 0, stshiLengthBytes.Length, fib.fcStshf);
-            Int16 cbStshi = System.BitConverter.ToInt16(stshiLengthBytes, 0);
+            var cbStshi = System.BitConverter.ToInt16(stshiLengthBytes, 0);
 
             //read the bytes of the STSHI
-            byte[] stshi = tableReader.ReadBytes(fib.fcStshf + 2, cbStshi);
+            var stshi = tableReader.ReadBytes(fib.fcStshf + 2, cbStshi);
 
             //parses STSHI
             this.stshi = new StyleSheetInformation(stshi);
@@ -70,12 +70,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             for (int i = 0; i < this.stshi.cstd; i++)
             {
                 //get the cbStd
-                UInt16 cbStd = tableReader.ReadUInt16();
+                var cbStd = tableReader.ReadUInt16();
 
                 if (cbStd != 0)
                 {
                     //read the STD bytes
-                    byte[] std = tableReader.ReadBytes(cbStd);
+                    var std = tableReader.ReadBytes(cbStd);
 
                     //parse the STD bytes
                     this.Styles.Add(new StyleSheetDescription(std, (int)this.stshi.cbSTDBaseInFile, dataStream));

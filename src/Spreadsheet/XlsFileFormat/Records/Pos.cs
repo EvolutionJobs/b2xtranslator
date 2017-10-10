@@ -68,27 +68,27 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// A signed integer that specifies a position. <br/>
         /// The meaning is specified in the Valid Combinations of mdTopLt and mdBotRt by Type table.
         /// </summary>
-        public Int16 x1;
+        public short x1;
 
         /// <summary>
         /// A signed integer that specifies a position. <br/>
         /// The meaning is specified in the Valid Combinations of mdTopLt and mdBotRt by Type table.
         /// </summary>
-        public Int16 y1;
+        public short y1;
 
         /// <summary>
         /// A signed integer that specifies a position. <br/>
         /// The meaning is specified in the Valid Combinations of mdTopLt and mdBotRt by Type table.
         /// </summary>
-        public Int16 x2;
+        public short x2;
 
         /// <summary>
         /// A signed integer that specifies a position. <br/>
         /// The meaning is specified in the Valid Combinations of mdTopLt and mdBotRt by Type table.
         /// </summary>
-        public Int16 y2;
+        public short y2;
 
-        public Pos(IStreamReader reader, RecordType id, UInt16 length)
+        public Pos(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

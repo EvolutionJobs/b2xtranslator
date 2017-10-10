@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(20)]
+    [OfficeShapeType(20)]
     public class LineType : ShapeType
     {
     }

@@ -102,7 +102,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// The color MUST match the color specified by rgbFore.  <br/>
         /// The default value of this field is automatically set to match the color specified by rgbFore.
         /// </summary>
-        public UInt16 icvFore;
+        public ushort icvFore;
 
         /// <summary>
         /// An unsigned integer that specifies the interior color of the data marker.<br/>
@@ -111,7 +111,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// The color MUST match the color specified by rgbBack. <br/>
         /// The default value of this field is automatically set to match the color specified by rgbBack.
         /// </summary>
-        public UInt16 icvBack;
+        public ushort icvBack;
 
         /// <summary>
         /// An unsigned integer that specifies the size in twips of the data marker. <br/>
@@ -120,7 +120,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public UInt32 miSize;
 
-        public MarkerFormat(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public MarkerFormat(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -130,7 +130,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             this.rgbFore = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
             this.rgbBack = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
             this.imk = (MarkerType)reader.ReadUInt16();
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fAuto = Utils.BitmaskToBool(flags, 0x1);
             //0x2 - 0x8 are reserved
             this.fNotShowInt = Utils.BitmaskToBool(flags, 0x10);

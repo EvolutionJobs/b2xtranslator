@@ -38,7 +38,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <summary>
         /// String which stores the index to the sharedstringtable 
         /// </summary>
-        private String valueString;
+        private string valueString;
 
         /// <summary>
         /// This method is used to get the Value from this cell 

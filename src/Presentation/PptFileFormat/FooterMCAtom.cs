@@ -35,10 +35,10 @@ using DIaLOGIKa.b2xtranslator.Tools;
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
 
-    [OfficeRecordAttribute(4090)]
+    [OfficeRecord(4090)]
     public class FooterMCAtom: Record
     {
-        public Int32 Position;
+        public int Position;
         public FooterMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
@@ -46,10 +46,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4087)]
+    [OfficeRecord(4087)]
     public class DateTimeMCAtom : Record
     {
-        public Int32 Position;
+        public int Position;
         public byte index;
         public DateTimeMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
@@ -60,10 +60,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     }
 
 
-    [OfficeRecordAttribute(4089)]
+    [OfficeRecord(4089)]
     public class HeaderMCAtom : Record
     {
-        public Int32 Position;
+        public int Position;
         public HeaderMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
@@ -71,10 +71,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4056)]
+    [OfficeRecord(4056)]
     public class SlideNumberMCAtom : Record
     {
-        public Int32 Position;
+        public int Position;
         public SlideNumberMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
@@ -82,10 +82,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4088)]
+    [OfficeRecord(4088)]
     public class GenericDateMCAtom : Record
     {
-        public Int32 Position;
+        public int Position;
         public GenericDateMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {

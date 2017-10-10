@@ -62,12 +62,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// to one of the values listed in [MS-CTDOC] section 2.2 or in [MS-CTXLS] section 2.2 
         /// when the toolbar control is not a custom toolbar control.
         /// </summary>
-        public Int16 tcid;
+        public short tcid;
 
         /// <summary>
         /// Structure of type TBCSFlags that specifies toolbar control flags.
         /// </summary>
-        public Int32 tbct;
+        public int tbct;
 
         /// <summary>
         /// Unsigned integer that specifies the toolbar control priority for dropping and wrapping purposes. <br/>
@@ -82,13 +82,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// Unsigned integer that specifies the width, in pixels, of the toolbar control. <br/>
         /// MUST only exist if bFlagsTCR.fSaveDxy equals 1.
         /// </summary>
-        public UInt16 width;
+        public ushort width;
 
         /// <summary>
         /// Unsigned integer that specifies the height, in pixels, of the toolbar control. <br/>
         /// MUST only exist if bFlagsTCR.fSaveDxy equals 1.
         /// </summary>
-        public UInt16 height;
+        public ushort height;
 
         /// <summary>
         /// Structure of type Cid that specifies the command identifier for this toolbar control.<br/> 
@@ -137,7 +137,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// A help context id is a numeric identifier associated to a specific help topic. <br/>
         /// For this field to be used wstrHelpFile MUST be set.
         /// </summary>
-        public Int32 idHelpContext;
+        public int idHelpContext;
 
         /// <summary>
         /// Specifies a custom string used to store arbitrary information about the toolbar control.
@@ -260,12 +260,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                         bool fHyperlinkType = Utils.BitmaskToBool(bFlags, 0x20);
                         if (fCustomBitmap)
                         {
-                            ToolbarControlBitmap icon = new ToolbarControlBitmap(reader);
-                            ToolbarControlBitmap iconMask = new ToolbarControlBitmap(reader);
+                            var icon = new ToolbarControlBitmap(reader);
+                            var iconMask = new ToolbarControlBitmap(reader);
                         }
                         if (fCustomBtnFace)
                         {
-                            UInt16 iBtnFace = reader.ReadUInt16();
+                            var iBtnFace = reader.ReadUInt16();
                         }
                         if (fAccelerator)
                         {
@@ -279,7 +279,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     case ToolbarControlType.SplitButtonMRUPopup:
 
                         //TBC Menu Specific
-                        Int32 tbid = reader.ReadInt32();
+                        var tbid = reader.ReadInt32();
                         string name = Utils.ReadWString(reader.BaseStream);
 
                         break;
@@ -294,12 +294,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                         //TBC Combo Dropdown Specific
                         if (this.tcid == 1)
                         {
-                            Int16 cwstrItems = reader.ReadInt16();
+                            var cwstrItems = reader.ReadInt16();
                             string wstrList = Utils.ReadWString(reader.BaseStream);
-                            Int16 cwstrMRU = reader.ReadInt16();
-                            Int16 iSel = reader.ReadInt16();
-                            Int16 cLines = reader.ReadInt16();
-                            Int16 dxWidth = reader.ReadInt16();
+                            var cwstrMRU = reader.ReadInt16();
+                            var iSel = reader.ReadInt16();
+                            var cLines = reader.ReadInt16();
+                            var dxWidth = reader.ReadInt16();
                             string wstrEdit = Utils.ReadWString(reader.BaseStream);
                         }
 

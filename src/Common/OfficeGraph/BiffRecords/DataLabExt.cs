@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
 
         public FrtHeader frtHeader;
 
-        public DataLabExt(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public DataLabExt(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

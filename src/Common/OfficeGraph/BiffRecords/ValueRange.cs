@@ -170,7 +170,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         public bool fMaxCross;
 
 
-        public ValueRange(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public ValueRange(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -183,7 +183,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             this.numMinor = reader.ReadDouble();
             this.numCross = reader.ReadDouble();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fAutoMin = Utils.BitmaskToBool(flags, 0x0001);
             this.fAutoMax = Utils.BitmaskToBool(flags, 0x0002);
             this.fAutoMajor = Utils.BitmaskToBool(flags, 0x0004);

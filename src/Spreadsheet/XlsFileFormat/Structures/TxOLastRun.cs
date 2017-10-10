@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// 
         /// The value MUST be the count of characters specified in the cchText field of the preceding TxO record.
         /// </summary>
-        public UInt16 cchText;
+        public ushort cchText;
 
         public TxOLastRun(IStreamReader reader)
         {

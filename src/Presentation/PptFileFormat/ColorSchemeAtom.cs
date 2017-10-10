@@ -33,18 +33,18 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(2032)]
+    [OfficeRecord(2032)]
     public class ColorSchemeAtom : Record
     {
         public byte[] Bytes;
-        public Int32 Background;
-        public Int32 TextAndLines;
-        public Int32 Shadows;
-        public Int32 TitleText;
-        public Int32 Fills;
-        public Int32 Accent;
-        public Int32 AccentAndHyperlink;
-        public Int32 AccentAndFollowedHyperlink;
+        public int Background;
+        public int TextAndLines;
+        public int Shadows;
+        public int TitleText;
+        public int Fills;
+        public int Accent;
+        public int AccentAndHyperlink;
+        public int AccentAndFollowedHyperlink;
 
         public ColorSchemeAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {

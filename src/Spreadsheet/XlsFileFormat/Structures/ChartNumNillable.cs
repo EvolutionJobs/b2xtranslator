@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         public ChartNumNillable(IStreamReader reader)
         {
             //read the nullable double value 
-            byte[] b = reader.ReadBytes(8);
+            var b = reader.ReadBytes(8);
             if (b[6] == 0xFF && b[7] == 0xFF)
             {
                 this.value = null;

@@ -64,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         {
         }
         
-        public XLUnicodeStringNoCch(IStreamReader reader, UInt16 cch)
+        public XLUnicodeStringNoCch(IStreamReader reader, ushort cch)
         {
             this.fHighByte = Utils.BitmaskToBool(reader.ReadByte(), 0x0001);
 

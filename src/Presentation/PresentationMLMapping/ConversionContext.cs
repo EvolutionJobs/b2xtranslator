@@ -237,7 +237,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public List<SlideLayoutPart> GetAllLayoutParts()
         {
-            List<SlideLayoutPart> result = new List<SlideLayoutPart>();
+            var result = new List<SlideLayoutPart>();
 
             result.AddRange(this.InstanceIdToLayoutPart.Values);
             result.AddRange(this.LayoutFilenameToLayoutPart.Values);
@@ -249,7 +249,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public SlideLayoutPart AddLayoutPartWithInstanceId(UInt32 instanceId)
         {
-            SlideMasterPart masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
+            var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
             SlideLayoutPart layoutPart = masterPart.AddSlideLayoutPart();
 
             this.InstanceIdToLayoutPart.Add(instanceId, layoutPart);
@@ -264,13 +264,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public SlideLayoutPart GetOrCreateLayoutPartByLayoutType(SlideLayoutType type,
             PlaceholderEnum[] placeholderTypes)
         {
-            SlideMasterPart masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
+            var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
             string layoutFilename = Utils.SlideLayoutTypeToFilename(type, placeholderTypes);
 
             
             if (!this.LayoutFilenameToLayoutPart.ContainsKey(layoutFilename))
             {
-                XmlDocument slideLayoutDoc = Utils.GetDefaultDocument("slideLayouts." + layoutFilename);
+                var slideLayoutDoc = Utils.GetDefaultDocument("slideLayouts." + layoutFilename);
 
                 SlideLayoutPart layoutPart = masterPart.AddSlideLayoutPart();
                 slideLayoutDoc.WriteTo(layoutPart.XmlWriter);
@@ -284,12 +284,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public SlideLayoutPart GetOrCreateLayoutPartByCode(string xml)
         {
-            SlideMasterPart masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
+            var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
 
             if (!this.CodeToLayoutPart.ContainsKey(xml))
             {
 
-                XmlDocument doc = new XmlDocument();
+                var doc = new XmlDocument();
                 doc.LoadXml(xml);
 
                 SlideLayoutPart layoutPart = masterPart.AddSlideLayoutPart();
@@ -303,7 +303,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public SlideLayoutPart GetOrCreateLayoutPartForTitleMasterId(UInt32 titleMasterId)
         {
-            SlideMasterPart masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
+            var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
 
             if (!this.TitleMasterIdToLayoutPart.ContainsKey(titleMasterId))
             {

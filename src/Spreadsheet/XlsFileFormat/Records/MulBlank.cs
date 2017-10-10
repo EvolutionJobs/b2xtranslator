@@ -39,22 +39,22 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Row 
         /// </summary>
-        public UInt16 rw;
+        public ushort rw;
 
         /// <summary>
         /// First column number 
         /// </summary>
-        public UInt16 colFirst;
+        public ushort colFirst;
 
         /// <summary>
         /// The last affected column 
         /// </summary>
-        public UInt16 colLast;
+        public ushort colLast;
 
         /// <summary>
         /// List with format indexes 
         /// </summary>
-        public List<UInt16> ixfe;      // List records 
+        public List<ushort> ixfe;      // List records 
 
 
         /// <summary>
@@ -63,13 +63,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <param name="reader">Streamreader</param>
         /// <param name="id">Record ID - Recordtype</param>
         /// <param name="length">The recordlegth</param>
-        public MulBlank(IStreamReader reader, RecordType id, UInt16 length)
+        public MulBlank(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
-            this.ixfe = new List<UInt16>();
+            this.ixfe = new List<ushort>();
 
             // count records - 6 standard non variable values !!! 
             int count = (int)(this.Length - 6) / 2;

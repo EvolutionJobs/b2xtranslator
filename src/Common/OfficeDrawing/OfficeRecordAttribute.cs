@@ -39,16 +39,16 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
     {
         public OfficeRecordAttribute() { }
 
-        public OfficeRecordAttribute(params UInt16[] typecodes)
+        public OfficeRecordAttribute(params ushort[] typecodes)
         {
             this._typeCodes = typecodes;
         }
 
-        public UInt16[] TypeCodes
+        public ushort[] TypeCodes
         {
             get { return _typeCodes; }
         }
 
-        private UInt16[] _typeCodes = new UInt16[0];
+        private ushort[] _typeCodes = new ushort[0];
     }
 }

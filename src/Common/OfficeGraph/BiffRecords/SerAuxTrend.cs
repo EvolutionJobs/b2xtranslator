@@ -103,7 +103,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public double numBackcast;
 
-        public SerAuxTrend(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public SerAuxTrend(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -114,7 +114,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             this.ordUser = reader.ReadByte();
 
             //read the nullable double value (ChartNumNillable)
-            byte[] b = reader.ReadBytes(4);
+            var b = reader.ReadBytes(4);
             if (b[2] == 0xFF && b[3] == 0xFF)
             {
                 this.numIntercept = null;

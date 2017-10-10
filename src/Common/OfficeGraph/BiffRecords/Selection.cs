@@ -51,36 +51,36 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// MUST be greater than or equal to rwFirst.<br/> 
         /// MUST be less than or equal to rwLast.
         /// </summary>
-        public UInt16 rwAct;
+        public ushort rwAct;
 
         /// <summary>
         /// A Graph_Col that specifies the column number of the active cell.<br/>
         /// MUST be greater than or equal to colFirst.<br/> 
         /// MUST be less than or equal to colLast.
         /// </summary>
-        public UInt16 colAct;
+        public ushort colAct;
 
         /// <summary>
         /// Specifies the topmost row of the active selection.
         /// </summary>
-        public UInt16 rwFirst;
+        public ushort rwFirst;
 
         /// <summary>
         /// Specifies bottommost row of the active selection.
         /// </summary>
-        public UInt16 rwLast;
+        public ushort rwLast;
 
         /// <summary>
         /// Specifies the leftmost column of the active selection.
         /// </summary>
-        public UInt16 colFirst;
+        public ushort colFirst;
 
         /// <summary>
         /// Specifies the rightmost column of the active selection.
         /// </summary>
-        public UInt16 colLast;
+        public ushort colLast;
 
-        public Selection(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Selection(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

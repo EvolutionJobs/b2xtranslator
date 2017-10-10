@@ -61,7 +61,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public TablePropertyExceptions(ParagraphPropertyExceptions papx, VirtualStream dataStream)
         {
             this.grpprl = new List<SinglePropertyModifier>();
-            foreach (SinglePropertyModifier sprm in papx.grpprl)
+            foreach (var sprm in papx.grpprl)
             {
                 if (sprm.Type == SinglePropertyModifier.SprmType.TAP)
                 {
@@ -72,23 +72,23 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     IStreamReader reader = new VirtualStreamReader(dataStream);
 
                     //there is a native TAP in the data stream
-                    UInt32 fc = System.BitConverter.ToUInt32(sprm.Arguments, 0);
+                    var fc = System.BitConverter.ToUInt32(sprm.Arguments, 0);
                     
                     //get the size of the following grpprl
                     //byte[] sizebytes = new byte[2];
                     //dataStream.Read(sizebytes, 2, (int)fc);
-                    byte[] sizebytes = reader.ReadBytes(fc, 2);
-                    UInt16 grpprlSize = System.BitConverter.ToUInt16(sizebytes, 0);
+                    var sizebytes = reader.ReadBytes(fc, 2);
+                    var grpprlSize = System.BitConverter.ToUInt16(sizebytes, 0);
 
                     //read the grpprl
                     //byte[] grpprlBytes = new byte[grpprlSize];
                     //dataStream.Read(grpprlBytes);
-                    byte[] grpprlBytes = reader.ReadBytes(grpprlSize);
+                    var grpprlBytes = reader.ReadBytes(grpprlSize);
 
                     //parse the grpprl
-                    PropertyExceptions externalPx = new PropertyExceptions(grpprlBytes);
+                    var externalPx = new PropertyExceptions(grpprlBytes);
 
-                    foreach (SinglePropertyModifier sprmExternal in externalPx.grpprl)
+                    foreach (var sprmExternal in externalPx.grpprl)
                     {
                         if (sprmExternal.Type == SinglePropertyModifier.SprmType.TAP)
                         {

@@ -153,7 +153,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public void Apply(ShapeTreeMapping pparentShapeTreeMapping, ClientTextbox textbox, string footertext, string headertext, string datetext, bool insideTable)
         {
             parentShapeTreeMapping = pparentShapeTreeMapping;
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(textbox.Bytes);
+            var ms = new System.IO.MemoryStream(textbox.Bytes);
             Record rec = Record.ReadRecord(ms);
             TextHeaderAtom thAtom = null;
             TextStyleAtom style = null;
@@ -161,7 +161,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             TextSpecialInfoAtom sia = null;
             TextSpecialInfoAtom siaDefaults = null;
             TextRulerAtom ruler = null;
-            List<MouseClickInteractiveInfoContainer> mciics = new List<MouseClickInteractiveInfoContainer>();
+            var mciics = new List<MouseClickInteractiveInfoContainer>();
             MasterTextPropAtom masterTextProp = null;
             string text = "";
             string origText = "";
@@ -216,7 +216,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 masterTextProp = (MasterTextPropAtom)rec;
                                 break;
                             case 0xfd8: //SlideNumberMCAtom
-                                SlideNumberMCAtom snmca = (SlideNumberMCAtom)rec;
+                                var snmca = (SlideNumberMCAtom)rec;
 
                                 _writer.WriteStartElement("a", "p", OpenXmlNamespaces.DrawingML);
 
@@ -239,21 +239,21 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 mciics[mciics.Count-1].Range = (MouseClickTextInteractiveInfoAtom)rec;
                                 break;
                             case 0xff7: //DateTimeMCAtom
-                                DateTimeMCAtom d = (DateTimeMCAtom)rec;
-                                String date = System.DateTime.Now.ToString();
+                                var d = (DateTimeMCAtom)rec;
+                                var date = System.DateTime.Now.ToString();
 
                                 //_writer.WriteStartElement("a", "p", OpenXmlNamespaces.DrawingML);
 
                                 int runCount = 0;
-                                ParagraphRun p = GetParagraphRun(style, 0, ref runCount);
-                                MasterTextPropRun tp = GetMasterTextPropRun(masterTextProp, 0);
+                                var p = GetParagraphRun(style, 0, ref runCount);
+                                var tp = GetMasterTextPropRun(masterTextProp, 0);
                                 writeP(p, tp, so, ruler, defaultStyle,0);
 
                                 _writer.WriteStartElement("a", "fld", OpenXmlNamespaces.DrawingML);
                                 _writer.WriteAttributeString("id", "{1023E2E8-AA53-4FEA-8F5C-1FABD68F61AB}");
                                 _writer.WriteAttributeString("type", "datetime1");
 
-                                CharacterRun r = GetCharacterRun(style, 0);
+                                var r = GetCharacterRun(style, 0);
                                 if (r != null)
                                 {
                                     string dummy = "";
@@ -279,7 +279,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 }
                                 break;
                             case 0xff9: //HeaderMCAtom
-                                HeaderMCAtom hmca = (HeaderMCAtom)rec;
+                                var hmca = (HeaderMCAtom)rec;
                                 text = text.Replace(origText.Substring(hmca.Position, 1), headertext);
 
                                 foreach (CharacterRun run in style.CRuns)
@@ -297,7 +297,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 }
                                 break;
                             case 0xff8: //GenericDateMCAtom
-                                GenericDateMCAtom gdmca = (GenericDateMCAtom)rec;
+                                var gdmca = (GenericDateMCAtom)rec;
                                 text = text.Replace(origText.Substring(gdmca.Position, 1), datetext);
 
                                 foreach (CharacterRun run in style.CRuns)
@@ -314,7 +314,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     }
                     break;
                 case 3998:
-                    OutlineTextRefAtom otrAtom = (OutlineTextRefAtom)rec;
+                    var otrAtom = (OutlineTextRefAtom)rec;
                     SlideListWithText slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
                                   
                     List<TextHeaderAtom> thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
@@ -370,7 +370,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
             //combine sia and siaDefaults
-            Dictionary<TextSIRun, uint> lstSIRuns = new Dictionary<TextSIRun, uint>();
+            var lstSIRuns = new Dictionary<TextSIRun, uint>();
             uint pos = 0;
             if (siaDefaults != null)
             foreach (TextSIRun sirun in siaDefaults.Runs)
@@ -401,22 +401,22 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
             else
             {
-                String[] parlines = text.Split(new char[] { '\r' }); //text.Split(new char[] { '\v', '\r' });
+                var parlines = text.Split(new char[] { '\r' }); //text.Split(new char[] { '\v', '\r' });
                 int internalOffset = 0;
-                foreach (String parline in parlines)
+                foreach (var parline in parlines)
                 {
-                    String[] runlines = parline.Split(new char[] { '\v' });
+                    var runlines = parline.Split(new char[] { '\v' });
 
                     //each parline forms a paragraph
                     //each runline forms a run
                     
                     int runCount = 0;
-                    ParagraphRun p = GetParagraphRun(style, idx, ref runCount);
-                    MasterTextPropRun tp = GetMasterTextPropRun(masterTextProp, idx);
+                    var p = GetParagraphRun(style, idx, ref runCount);
+                    var tp = GetMasterTextPropRun(masterTextProp, idx);
 
                     if (p != null) lvl = p.IndentLevel;
 
-                    String runText;
+                    string runText;
 
                     writeP(p, tp, so, ruler, defaultStyle, runCount);
 
@@ -432,7 +432,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         if (!first)
                         {
                             _writer.WriteStartElement("a", "br", OpenXmlNamespaces.DrawingML);
-                            CharacterRun r = GetCharacterRun(style, idx + (uint)internalOffset + 1);
+                            var r = GetCharacterRun(style, idx + (uint)internalOffset + 1);
                             if (r != null)
                             {
                                 string dummy = "";
@@ -607,7 +607,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                     if (!textwritten)
                     {
-                        CharacterRun r = GetCharacterRun(style, idx + (uint)internalOffset);
+                        var r = GetCharacterRun(style, idx + (uint)internalOffset);
                         if (r != null)
                         {
                             string dummy = "";
@@ -811,7 +811,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
                 else if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.dxTextLeft) && so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.TextBooleanProperties))
                 {
-                    TextBooleanProperties props = new TextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.TextBooleanProperties].op);
+                    var props = new TextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.TextBooleanProperties].op);
                     if (props.fUsefAutoTextMargin && (props.fAutoTextMargin == false))
                     if (so.OptionsByID[ShapeOptions.PropertyId.dxTextLeft].op > 0)
                     _writer.WriteAttributeString("marL", so.OptionsByID[ShapeOptions.PropertyId.dxTextLeft].op.ToString());

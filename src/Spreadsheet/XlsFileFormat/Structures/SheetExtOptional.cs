@@ -75,7 +75,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 
         public SheetExtOptional(IStreamReader reader)
         {
-            UInt32 field = reader.ReadUInt32();
+            var field = reader.ReadUInt32();
             this.icvPlain = Utils.BitmaskToUInt32(field, 0x003F);
             this.fCondFmtCalc = Utils.BitmaskToBool(field, 0x0040);
             this.fNotPublished = Utils.BitmaskToBool(field, 0x0080);

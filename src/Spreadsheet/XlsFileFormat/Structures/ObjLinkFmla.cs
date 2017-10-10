@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// MUST be 0x000E if the cmo.ot field of the containing Obj is equal to 0x10, 0x11, 0x12, or 
         /// 0x14. Note that this ObjLinkFmla MUST NOT exist if cmo.ot is any other value.
         /// </summary>
-        public UInt16 ft;
+        public ushort ft;
 
         /// <summary>
         /// An ObjFmla that specifies the formula which specifies a range which 

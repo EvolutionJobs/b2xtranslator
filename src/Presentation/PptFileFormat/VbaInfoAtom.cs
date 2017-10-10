@@ -6,7 +6,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(0x0400)]
+    [OfficeRecord(0x0400)]
     public class VbaInfoAtom: Record
     {
         public UInt32 persistIdRef;

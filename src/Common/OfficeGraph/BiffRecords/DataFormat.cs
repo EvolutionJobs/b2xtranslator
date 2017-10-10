@@ -53,13 +53,13 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// This value MUST be less than or equal to 3999 for a chart that contains a Chart3d record. 
         /// This value MUST be 0xFFFF if the formatting information in this record is applied to a trendline or error bar.
         /// </summary>
-        public UInt16 xi;
+        public ushort xi;
 
         /// <summary>
         /// An unsigned integer that specifies the zero-based index into a Series record in the collection 
         /// of Series records in this chart sheet substream. SHOULD <45> be less than or equal to 254.
         /// </summary>
-        public UInt16 yi;
+        public ushort yi;
 
         /// <summary>
         /// An unsigned integer that specifies properties of the data series, trendline or error bar, 
@@ -82,9 +82,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         ///       then this field specifies a zero-based index into a Series record in the collection 
         ///       of Series records in the current chart sheet substream for which the error bar applies to.
         /// </summary>
-        public UInt16 iss;
+        public ushort iss;
 
-        public DataFormat(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public DataFormat(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

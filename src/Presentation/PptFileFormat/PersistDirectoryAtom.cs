@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(6002)]
+    [OfficeRecord(6002)]
     public class PersistDirectoryAtom : Record
     {
         /// <summary>
@@ -56,11 +56,11 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         override public string ToString(uint depth)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append(base.ToString(depth));
 
-            foreach (PersistDirectoryEntry entry in this.PersistDirEntries)
+            foreach (var entry in this.PersistDirEntries)
             {
                 sb.AppendLine();
                 sb.Append(entry.ToString(depth + 1));

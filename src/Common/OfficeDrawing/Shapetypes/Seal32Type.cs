@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(60)]
+    [OfficeShapeType(60)]
     class Seal32Type : ShapeType
     {
         public Seal32Type()
@@ -52,9 +52,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,center";
-            HandleOne.xrange="0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#0,center",
+                xrange = "0,10800"
+            };
 
 
             this.Handles.Add(HandleOne);

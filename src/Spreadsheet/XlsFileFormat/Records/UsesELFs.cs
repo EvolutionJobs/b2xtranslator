@@ -43,9 +43,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// =1 if this file was written by a version of Excel that can use natural-language formula input
         /// </summary>
-        public UInt16 fUsesElfs;
+        public ushort fUsesElfs;
         
-        public UsesELFs(IStreamReader reader, RecordType id, UInt16 length)
+        public UsesELFs(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

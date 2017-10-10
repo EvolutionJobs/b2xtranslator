@@ -46,19 +46,19 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteEndElement(); //shapelayout
 
             //v:shapetype
-            PictureFrameType type = new PictureFrameType();
+            var type = new PictureFrameType();
             type.Convert(new VMLShapeTypeMapping(_ctx, _writer));
 
-            foreach (ArrayList VMLEntry in VMLEntriesList)
+            foreach (var VMLEntry in VMLEntriesList)
             {                
 
                 bse = (BlipStoreEntry)VMLEntry[0];
-                ShapeOptions options = (ShapeOptions)VMLEntry[2];
-                Rectangle bounds = (Rectangle)VMLEntry[3];
+                var options = (ShapeOptions)VMLEntry[2];
+                var bounds = (Rectangle)VMLEntry[3];
                 string spid = (string)VMLEntry[4];
-                Point size = (Point)VMLEntry[5];
+                var size = (Point)VMLEntry[5];
 
-                ImagePart imgPart = copyPicture(bse, ref size);
+                var imgPart = copyPicture(bse, ref size);
                 if (imgPart != null)
                 {
                                         
@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     _writer.WriteAttributeString("id", spid);
                     _writer.WriteAttributeString("type", "#" + VMLShapeTypeMapping.GenerateTypeId(type));
 
-                    StringBuilder style = new StringBuilder();
+                    var style = new StringBuilder();
 
 
                     style.Append("position:absolute;");
@@ -84,19 +84,19 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             //BORDERS
 
                             case ShapeOptions.PropertyId.borderBottomColor:
-                                RGBColor bottomColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                                var bottomColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                                 _writer.WriteAttributeString("o", "borderbottomcolor", OpenXmlNamespaces.Office, "#" + bottomColor.SixDigitHexCode);
                                 break;
                             case ShapeOptions.PropertyId.borderLeftColor:
-                                RGBColor leftColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                                var leftColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                                 _writer.WriteAttributeString("o", "borderleftcolor", OpenXmlNamespaces.Office, "#" + leftColor.SixDigitHexCode);
                                 break;
                             case ShapeOptions.PropertyId.borderRightColor:
-                                RGBColor rightColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                                var rightColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                                 _writer.WriteAttributeString("o", "borderrightcolor", OpenXmlNamespaces.Office, "#" + rightColor.SixDigitHexCode);
                                 break;
                             case ShapeOptions.PropertyId.borderTopColor:
-                                RGBColor topColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                                var topColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                                 _writer.WriteAttributeString("o", "bordertopcolor", OpenXmlNamespaces.Office, "#" + topColor.SixDigitHexCode);
                                 break;
                         }
@@ -172,7 +172,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         case BlipStoreEntry.BlipType.msoblipWMF:
 
                             //it's a meta image
-                            MetafilePictBlip metaBlip = (MetafilePictBlip)mb;
+                            var metaBlip = (MetafilePictBlip)mb;
                             size = metaBlip.m_ptSize;
 
                             //meta images can be compressed
@@ -186,7 +186,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         case BlipStoreEntry.BlipType.msoblipTIFF:
 
                             //it's a bitmap image
-                            BitmapBlip bitBlip = (BitmapBlip)mb;
+                            var bitBlip = (BitmapBlip)mb;
                             outStream.Write(bitBlip.m_pvBits, 0, bitBlip.m_pvBits.Length);
 
                             break;

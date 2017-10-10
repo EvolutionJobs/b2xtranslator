@@ -13,7 +13,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
         public List<MacroData> MacroDatas;
 
-        public Dictionary<Int32, String> MacroNames;
+        public Dictionary<int, string> MacroNames;
 
         public List<KeyMapEntry> KeyMapEntries;
 
@@ -24,7 +24,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public CommandTable(FileInformationBlock fib, VirtualStream tableStream)
         {
             tableStream.Seek(fib.fcCmds, System.IO.SeekOrigin.Begin);
-            VirtualStreamReader reader = new VirtualStreamReader(tableStream);
+            var reader = new VirtualStreamReader(tableStream);
 
             //byte[] bytes = reader.ReadBytes((int)fib.lcbCmds);
             this.MacroDatas = new List<MacroData>();
@@ -74,15 +74,15 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                         break;
                     case 0x10:
                         //it's a TcgSttbf
-                        this.CommandStringTable = new StringTable(typeof(String), reader); 
+                        this.CommandStringTable = new StringTable(typeof(string), reader); 
                         break;
                     case 0x11:
                         //it's a MacroNames table
                         int iMacMn = reader.ReadInt16();
                         for (int i = 0; i < iMacMn; i++)
                         {
-                            Int16 ibst = reader.ReadInt16();
-                            Int16 cch = reader.ReadInt16();
+                            var ibst = reader.ReadInt16();
+                            var cch = reader.ReadInt16();
                             this.MacroNames[ibst] = Encoding.Unicode.GetString(reader.ReadBytes(cch * 2));
                             //skip the terminating zero
                             reader.ReadBytes(2);

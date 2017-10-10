@@ -44,20 +44,20 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// </summary>
         public CharacterPropertyExceptions[] grpchpx;
 
-        public FormattedDiskPageCHPX(VirtualStream wordStream, Int32 offset)
+        public FormattedDiskPageCHPX(VirtualStream wordStream, int offset)
         {
             this.Type = FKPType.Character;
             this.WordStream = wordStream;
 
             //read the 512 bytes (FKP)
-            byte[] bytes = new byte[512];
+            var bytes = new byte[512];
             wordStream.Read(bytes, 0, 512, offset);
 
             //get the count first
             this.crun = bytes[511];
 
             //create and fill the array with the adresses
-            this.rgfc = new Int32[this.crun + 1];
+            this.rgfc = new int[this.crun + 1];
             int j = 0;
             for (int i = 0; i < rgfc.Length; i++)
             {
@@ -84,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     byte cb = bytes[wordOffset * 2];
 
                     //read the bytes of chpx
-                    byte[] chpx = new byte[cb];
+                    var chpx = new byte[cb];
                     Array.Copy(bytes, (wordOffset * 2) + 1, chpx, 0, chpx.Length);
 
                     //parse CHPX and fill grpchpx
@@ -108,10 +108,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <returns></returns>
         public static List<FormattedDiskPageCHPX> GetAllCHPXFKPs(FileInformationBlock fib, VirtualStream wordStream, VirtualStream tableStream)
         {
-            List<FormattedDiskPageCHPX> list = new List<FormattedDiskPageCHPX>();
+            var list = new List<FormattedDiskPageCHPX>();
 
             //get bintable for CHPX
-            byte[] binTableChpx = new byte[fib.lcbPlcfBteChpx];
+            var binTableChpx = new byte[fib.lcbPlcfBteChpx];
             tableStream.Read(binTableChpx, 0, binTableChpx.Length, (int)fib.fcPlcfBteChpx);
 
             //there are n offsets and n-1 fkp's in the bin table

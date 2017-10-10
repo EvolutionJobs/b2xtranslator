@@ -65,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// This value MUST be unique for each instance of this record and MUST be less than or equal to 0x0009.
         /// </summary>
-        public UInt16 icrt;
+        public ushort icrt;
 
         public int[] AxisIds;
 
@@ -75,9 +75,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// NOTE: This information is added at parse time and is not stored in the binary file format.
         /// </summary>
-        public UInt16 idx;
+        public ushort idx;
 
-        public ChartFormat(IStreamReader reader, RecordType id, UInt16 length)
+        public ChartFormat(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

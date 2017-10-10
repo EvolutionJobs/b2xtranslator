@@ -14,11 +14,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fCalculatedParam2;
         public bool fCalculatedParam3;
 
-        public Int16 param1;
-        public Int16 param2;
-        public Int16 param3;
+        public short param1;
+        public short param2;
+        public short param3;
 
-        public GD(UInt16 flags, Int16 p1, Int16 p2, Int16 p3)
+        public GD(ushort flags, short p1, short p2, short p3)
         {
             sgf = flags & 0x1FFF;
           
@@ -40,7 +40,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public List<PathSegment> Segments { get; set; }
 
-        public UInt16 cbElemVert;
+        public ushort cbElemVert;
 
         public PathParser(byte[] pSegmentInfo, byte[] pVertices):this(pSegmentInfo,pVertices,null)
         {}
@@ -51,9 +51,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
             if (pGuides != null && pGuides.Length > 0)
             {
-                UInt16 nElemsG = System.BitConverter.ToUInt16(pGuides, 0);
-                UInt16 nElemsAllocG = System.BitConverter.ToUInt16(pGuides, 2);
-                UInt16 cbElemG = System.BitConverter.ToUInt16(pGuides, 4);
+                var nElemsG = System.BitConverter.ToUInt16(pGuides, 0);
+                var nElemsAllocG = System.BitConverter.ToUInt16(pGuides, 2);
+                var cbElemG = System.BitConverter.ToUInt16(pGuides, 4);
                 for (int i = 6; i < pGuides.Length; i += cbElemG)
                 {
                     this.Guides.Add(new GD(System.BitConverter.ToUInt16(pGuides, i), System.BitConverter.ToInt16(pGuides, i + 2), System.BitConverter.ToInt16(pGuides, i + 4),System.BitConverter.ToInt16(pGuides, i+6)));
@@ -65,9 +65,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
             this.Segments = new List<PathSegment>();
             if (pSegmentInfo != null && pSegmentInfo.Length > 0)
             {
-                UInt16 nElemsSeg = System.BitConverter.ToUInt16(pSegmentInfo, 0);
-                UInt16 nElemsAllocSeg = System.BitConverter.ToUInt16(pSegmentInfo, 2);
-                UInt16 cbElemSeg = System.BitConverter.ToUInt16(pSegmentInfo, 4);
+                var nElemsSeg = System.BitConverter.ToUInt16(pSegmentInfo, 0);
+                var nElemsAllocSeg = System.BitConverter.ToUInt16(pSegmentInfo, 2);
+                var cbElemSeg = System.BitConverter.ToUInt16(pSegmentInfo, 4);
                 for (int i = 6; i < pSegmentInfo.Length; i += 2)
                 {
                     this.Segments.Add(
@@ -79,8 +79,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
             // parse the values
             this.Values = new List<Point>();
-            UInt16 nElemsVert = System.BitConverter.ToUInt16(pVertices, 0);
-            UInt16 nElemsAllocVert = System.BitConverter.ToUInt16(pVertices, 2);
+            var nElemsVert = System.BitConverter.ToUInt16(pVertices, 0);
+            var nElemsAllocVert = System.BitConverter.ToUInt16(pVertices, 2);
             cbElemVert = System.BitConverter.ToUInt16(pVertices, 4);
             if (cbElemVert == 0xfff0) cbElemVert = 4;
             int x;

@@ -41,12 +41,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// <summary>
         /// Reserved. MUST be 0x08.
         /// </summary>
-        public UInt16 ft;
+        public ushort ft;
 
         /// <summary>
         /// Reserved. MUST be 0x02.
         /// </summary>
-        public UInt16 cb;
+        public ushort cb;
 
         public bool fAutoPict;
 
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
             this.ft = reader.ReadUInt16();
             this.cb = reader.ReadUInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fAutoPict = Utils.BitmaskToBool(flags, 0x0001);
             this.fDde = Utils.BitmaskToBool(flags, 0x0002);
             this.fPrintCalc = Utils.BitmaskToBool(flags, 0x0004);

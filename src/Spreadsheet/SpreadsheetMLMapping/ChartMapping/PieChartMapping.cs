@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 throw new Exception("Invalid chart type");
             }
 
-            Pie pie = crtSequence.ChartType as Pie;
+            var pie = crtSequence.ChartType as Pie;
 
             bool isDoughnutChart = (pie.pcDonut != 0);
             
@@ -73,7 +73,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 writeValueElement("varyColors", crtSequence.ChartFormat.fVaried ? "1" : "0");
 
                 // Pie Chart Series (CT_PieSer)
-                foreach (SeriesFormatSequence seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
+                foreach (var seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
                 {
                     if (seriesFormatSequence.SerToCrt != null && seriesFormatSequence.SerToCrt.id == crtSequence.ChartFormat.idx)
                     {
@@ -84,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         seriesFormatSequence.Convert(new SeriesMapping(this.WorkbookContext, this.ChartContext));
 
                         // c:explosion
-                        SsSequence sssBase = seriesFormatSequence.SsSequence[0];
+                        var sssBase = seriesFormatSequence.SsSequence[0];
                         if (sssBase.PieFormat != null)
                         {
                             writeValueElement("explosion", sssBase.PieFormat.pcExplode.ToString());
@@ -94,7 +94,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         for (int i = 1; i < seriesFormatSequence.SsSequence.Count; i++)
                         {
                             // write a dPt for each SsSequence
-                            SsSequence sss = seriesFormatSequence.SsSequence[i];
+                            var sss = seriesFormatSequence.SsSequence[i];
                             sss.Convert(new DataPointMapping(this.WorkbookContext, this.ChartContext, i-1));
                         }
 

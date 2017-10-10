@@ -166,7 +166,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         public static string GenerateTypeId(ShapeType shapeType)
         {
-            StringBuilder type = new StringBuilder();
+            var type = new StringBuilder();
             type.Append("_x0000_t");
             type.Append(shapeType.TypeCode);
             return type.ToString();

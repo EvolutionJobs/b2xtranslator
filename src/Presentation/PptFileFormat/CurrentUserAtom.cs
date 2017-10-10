@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4086)]
+    [OfficeRecord(4086)]
     public class CurrentUserAtom : Record
     {
         /// <summary>
@@ -67,13 +67,13 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// An unsigned integer that specifies the length, in bytes, of the  ansiUserName field.
         /// It MUST be less than or equal to 255. 
         /// </summary>
-        public UInt16 LengthUserName;
+        public ushort LengthUserName;
 
         /// <summary>
         /// An unsigned integer that specifies the document file version of the file.
         /// It MUST be 0x03F4. 
         /// </summary>
-        public UInt16 DocFileVersion;
+        public ushort DocFileVersion;
 
         /// <summary>
         /// An unsigned integer that specifies the major version of the storage format. 
@@ -154,14 +154,14 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             // Throw away reserved data
             this.Reader.ReadUInt16();
 
-            byte[] ansiUserNameBytes = this.Reader.ReadBytes(this.LengthUserName);
+            var ansiUserNameBytes = this.Reader.ReadBytes(this.LengthUserName);
             this.UserNameANSI = ANSIEncoding.GetString(ansiUserNameBytes);
 
             this.ReleaseVersion = this.Reader.ReadUInt32();
 
             if (this.Reader.BaseStream.Position != this.Reader.BaseStream.Length)
             {
-                byte[] unicodeUserNameBytes = this.Reader.ReadBytes(this.LengthUserName * 2);
+                var unicodeUserNameBytes = this.Reader.ReadBytes(this.LengthUserName * 2);
                 this.UserNameUnicode = Encoding.Unicode.GetString(unicodeUserNameBytes);
             }
         }

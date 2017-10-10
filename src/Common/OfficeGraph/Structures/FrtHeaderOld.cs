@@ -44,14 +44,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// MUST be identical to the record type identifier of the containing record.
         /// </summary>
-        public UInt16 rt;
+        public ushort rt;
 
         /// <summary>
         /// A FrtFlags that specifies attributes for this record. 
         /// 
         /// The value of grbitFrt.fFrtRef MUST be zero.
         /// </summary>
-        public UInt16 grbitFrt;
+        public ushort grbitFrt;
 
         public FrtHeaderOld(IStreamReader reader)
         {

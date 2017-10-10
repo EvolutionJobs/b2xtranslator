@@ -35,10 +35,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 {
     public class CharacterRange
     {
-        public Int32 CharacterPosition;
-        public Int32 CharacterCount;
+        public int CharacterPosition;
+        public int CharacterCount;
 
-        public CharacterRange(Int32 cp, Int32 ccp)
+        public CharacterRange(int cp, int ccp)
         {
             this.CharacterPosition = cp;
             this.CharacterCount = ccp;

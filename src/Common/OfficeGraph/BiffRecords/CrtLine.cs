@@ -82,7 +82,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public LineType lineId;
         
-        public CrtLine(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public CrtLine(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

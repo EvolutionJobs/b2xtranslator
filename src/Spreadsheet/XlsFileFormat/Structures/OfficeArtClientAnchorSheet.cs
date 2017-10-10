@@ -60,53 +60,53 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// at the extreme right of the column range due to column deletion, those columns 
         /// have this default formatting applied.
         /// </summary>
-        public UInt16 colL;
+        public ushort colL;
 
         /// <summary>
         /// A signed integer that specifies the x coordinate of the top left corner of the 
         /// bounding rectangle relative to the corner of the underlying cell. 
         /// The value is expressed as 1024th‘s of that cell‘s width.
         /// </summary>
-        public UInt16 dxL;
+        public ushort dxL;
 
         /// <summary>
         /// An unsigned integer that specifies the zero-based index of a row in 
         /// the sheet that contains this structure.
         /// </summary>
-        public UInt16 rwT;
+        public ushort rwT;
 
         /// <summary>
         /// A signed integer that specifies the y coordinate of the top left 
         /// corner of the bounding rectangle relative to the corner of the underlying cell. 
         /// The value is expressed as 1024th‘s of that cell‘s height.
         /// </summary>
-        public UInt16 dyT;
+        public ushort dyT;
 
         /// <summary>
         /// A Col256U that specifies the column of the cell under the bottom right 
         /// corner of the bounding rectangle of the shape.
         /// </summary>
-        public UInt16 colR;
+        public ushort colR;
 
         /// <summary>
         /// A signed integer that specifies the x coordinate of the bottom right corner
         /// of the bounding rectangle relative to the corner of the underlying cell. 
         /// The value is expressed as 1024th‘s of that cell‘s width.
         /// </summary>
-        public UInt16 dxR;
+        public ushort dxR;
 
         /// <summary>
         /// A RwU that specifies the row of the cell under the bottom right 
         /// corner of the bounding rectangle of the shape.
         /// </summary>
-        public UInt16 rwB;
+        public ushort rwB;
 
         /// <summary>
         /// A signed integer that specifies the y coordinate of the bottom right corner 
         /// of the bounding rectangle relative to the corner of the underlying cell. 
         /// The value is expressed as 1024th‘s of that cell‘s height.
         /// </summary>
-        public UInt16 dyB;
+        public ushort dyB;
 
         public OfficeArtClientAnchorSheet(byte[] rawData)
         {

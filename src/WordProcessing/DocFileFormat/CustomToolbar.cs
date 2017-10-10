@@ -17,7 +17,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// Signed integer that specifies the size, in bytes, of this structure excluding the name, cCtls, and rTBC fields. 
         /// Value is given by the following formula: cbTBData = sizeof(tb) + sizeof(rVisualData) + 12
         /// </summary>
-        public Int32 cbTBData;
+        public int cbTBData;
 
         /// <summary>
         /// Structure of type TB, as specified in [MS-OSHARED], that contains toolbar data.
@@ -34,12 +34,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// cCust field of the CTBWRAPPER structure that contains the rCustomizations array that 
         /// contains the Customization structure that contains this structure.
         /// </summary>
-        public Int32 iWCTB;
+        public int iWCTB;
 
         /// <summary>
         /// Signed integer that specifies the number of toolbar controls in this toolbar.
         /// </summary>
-        public Int32 cCtls;
+        public int cCtls;
 
         /// <summary>
         /// Zero-based index array of TBC structures. <br/>

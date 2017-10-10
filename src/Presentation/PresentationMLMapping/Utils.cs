@@ -41,23 +41,23 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
     {
         private static readonly double MC_PER_EMU = 1587.5;
 
-        public static Int32 MasterCoordToEMU(Int32 mc)
+        public static int MasterCoordToEMU(int mc)
         {
-            return (Int32) (mc * MC_PER_EMU);
+            return (int) (mc * MC_PER_EMU);
         }
 
-        public static Int32 EMUToMasterCoord(Int32 emu)
+        public static int EMUToMasterCoord(int emu)
         {
-            return (Int32) (emu / MC_PER_EMU);
+            return (int) (emu / MC_PER_EMU);
         }
                 
         public static XmlDocument GetDefaultDocument(string filename)
         {
-            Assembly a = Assembly.GetExecutingAssembly();
-            Stream s = a.GetManifestResourceStream(String.Format("{0}.Defaults.{1}.xml",
+            var a = Assembly.GetExecutingAssembly();
+            var s = a.GetManifestResourceStream(String.Format("{0}.Defaults.{1}.xml",
                 typeof(Utils).Namespace, filename));
 
-            XmlDocument doc = new XmlDocument();
+            var doc = new XmlDocument();
             doc.Load(s);
             return doc;
         }
@@ -168,7 +168,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 case SlideLayoutType.TitleAndBody:
                     {
-                        PlaceholderEnum body = placeholderTypes[1];
+                        var body = placeholderTypes[1];
 
                         if (body == PlaceholderEnum.Table)
                         {
@@ -196,8 +196,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 case SlideLayoutType.TwoColumnsAndTitle:
                     {
-                        PlaceholderEnum leftType = placeholderTypes[1];
-                        PlaceholderEnum rightType = placeholderTypes[2];
+                        var leftType = placeholderTypes[1];
+                        var rightType = placeholderTypes[2];
 
                         if (leftType == PlaceholderEnum.Body && rightType == PlaceholderEnum.Object)
                         {
@@ -239,7 +239,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 case SlideLayoutType.TwoColumnsLeftTwoRows:
                     {
-                        PlaceholderEnum rightType = placeholderTypes[2];
+                        var rightType = placeholderTypes[2];
 
                         if (rightType == PlaceholderEnum.Object)
                         {
@@ -260,7 +260,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 case SlideLayoutType.TwoColumnsRightTwoRows:
                     {
-                        PlaceholderEnum leftType = placeholderTypes[1];
+                        var leftType = placeholderTypes[1];
 
                         if (leftType == PlaceholderEnum.Object)
                         {
@@ -281,8 +281,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 case SlideLayoutType.TwoRowsAndTitle:
                     {
-                        PlaceholderEnum topType = placeholderTypes[1];
-                        PlaceholderEnum bottomType = placeholderTypes[2];
+                        var topType = placeholderTypes[1];
+                        var bottomType = placeholderTypes[2];
 
                         if (topType == PlaceholderEnum.Body && bottomType == PlaceholderEnum.Object)
                         {
@@ -319,7 +319,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public static string getRGBColorFromOfficeArtCOLORREF(uint value, RegularContainer slide, DIaLOGIKa.b2xtranslator.OfficeDrawing.ShapeOptions so, ref string SchemeType)
         {
-            byte[] bytes = BitConverter.GetBytes(value);
+            var bytes = BitConverter.GetBytes(value);
             bool fPaletteIndex = (bytes[3] & 1) != 0;
             bool fPaletteRGB = (bytes[3] & (1 << 1)) != 0;
             bool fSystemRGB = (bytes[3] & (1 << 2)) != 0;
@@ -335,7 +335,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             if (fSysIndex)
             {
-                UInt16 val = BitConverter.ToUInt16(bytes, 0);
+                var val = BitConverter.ToUInt16(bytes, 0);
                 string result = "";
                 switch (val & 0x00ff)
                 {

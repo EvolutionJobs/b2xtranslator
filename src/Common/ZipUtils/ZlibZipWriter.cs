@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
             {
                 // Small trick to get exact error message...
                 try {
-                    using (FileStream writer = File.Create(path)) {
+                    using (var writer = File.Create(path)) {
                         writer.WriteByte(0);
                     }
                     File.Delete(path);
@@ -107,7 +107,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
             int result;
             if (offset != 0)
             {
-                byte[] newBuffer = new byte[count];
+                var newBuffer = new byte[count];
                 Array.Copy(buffer, offset, newBuffer, 0, count);
                 result = ZipLib.zipWriteInFileInZip(handle, newBuffer, (uint)count);
             }

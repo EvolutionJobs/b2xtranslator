@@ -36,15 +36,15 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.Setup;
 
-        public UInt16 iPaperSize;
-        public UInt16 iScale;
-        public UInt16 iPageStart;
-        public UInt16 iFitWidth;
-        public UInt16 iFitHeight;
-        public UInt16 grbit;
-        public UInt16 iRes;
-        public UInt16 iVRes;
-        public UInt16 iCopies;
+        public ushort iPaperSize;
+        public ushort iScale;
+        public ushort iPageStart;
+        public ushort iFitWidth;
+        public ushort iFitHeight;
+        public ushort grbit;
+        public ushort iRes;
+        public ushort iVRes;
+        public ushort iCopies;
 
         public double numHdr;
         public double numFtr;
@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public bool fEndNotes;
         public int iErrors; 
 
-        public Setup(IStreamReader reader, RecordType id, UInt16 length)
+        public Setup(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

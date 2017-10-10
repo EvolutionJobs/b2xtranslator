@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public bool fExAsc;
         public bool fExDsc;
 
-        public DefaultRowHeight(IStreamReader reader, RecordType id, UInt16 length)
+        public DefaultRowHeight(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

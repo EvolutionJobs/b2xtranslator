@@ -33,7 +33,7 @@ using System.Drawing;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF009)]
+    [OfficeRecord(0xF009)]
     public class GroupShapeRecord : Record
     {
         /// <summary>
@@ -45,10 +45,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
             : base(_reader, size, typeCode, version, instance)
         { 
             //read the rectangle (16 bytes)
-            Int32 left = Math.Max(0, this.Reader.ReadInt32());
-            Int32 top = Math.Max(0, this.Reader.ReadInt32());
-            Int32 right = Math.Max(0, this.Reader.ReadInt32());
-            Int32 bottom = Math.Max(0, this.Reader.ReadInt32());
+            var left = Math.Max(0, this.Reader.ReadInt32());
+            var top = Math.Max(0, this.Reader.ReadInt32());
+            var right = Math.Max(0, this.Reader.ReadInt32());
+            var bottom = Math.Max(0, this.Reader.ReadInt32());
 
             this.rcgBounds = new Rectangle(
                 new Point(left, top),

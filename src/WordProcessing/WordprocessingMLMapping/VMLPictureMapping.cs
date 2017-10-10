@@ -33,25 +33,25 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         public void Apply(PictureDescriptor pict)
         {
-            ImagePart imgPart = copyPicture(pict.BlipStoreEntry);
+            var imgPart = copyPicture(pict.BlipStoreEntry);
             if (imgPart != null)
             {
-                Shape shape = (Shape)pict.ShapeContainer.Children[0];
+                var shape = (Shape)pict.ShapeContainer.Children[0];
                 List<ShapeOptions.OptionEntry> options = pict.ShapeContainer.ExtractOptions();
 
                 //v:shapetype
-                PictureFrameType type = new PictureFrameType();
+                var type = new PictureFrameType();
                 type.Convert(new VMLShapeTypeMapping(_writer));
 
                 //v:shape
                 _writer.WriteStartElement("v", "shape", OpenXmlNamespaces.VectorML);
                 _writer.WriteAttributeString("type", "#" + VMLShapeTypeMapping.GenerateTypeId(type));
                 
-                StringBuilder style = new StringBuilder();
+                var style = new StringBuilder();
                 double xScaling = pict.mx / 1000.0;
                 double yScaling = pict.my / 1000.0;
-                TwipsValue width = new TwipsValue(pict.dxaGoal * xScaling);
-                TwipsValue height = new TwipsValue(pict.dyaGoal * yScaling);
+                var width = new TwipsValue(pict.dxaGoal * xScaling);
+                var height = new TwipsValue(pict.dyaGoal * yScaling);
                 string widthString = Convert.ToString(width.ToPoints(), CultureInfo.GetCultureInfo("en-US"));
                 string heightString = Convert.ToString(height.ToPoints(), CultureInfo.GetCultureInfo("en-US"));
                 style.Append("width:").Append(widthString).Append("pt;");
@@ -72,19 +72,19 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         //BORDERS
 
                         case ShapeOptions.PropertyId.borderBottomColor:
-                            RGBColor bottomColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                            var bottomColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                             _writer.WriteAttributeString("o", "borderbottomcolor", OpenXmlNamespaces.Office, "#" + bottomColor.SixDigitHexCode);
                             break;
                         case ShapeOptions.PropertyId.borderLeftColor:
-                            RGBColor leftColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                            var leftColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                             _writer.WriteAttributeString("o", "borderleftcolor", OpenXmlNamespaces.Office, "#" + leftColor.SixDigitHexCode);
                             break;
                         case ShapeOptions.PropertyId.borderRightColor:
-                            RGBColor rightColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                            var rightColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                             _writer.WriteAttributeString("o", "borderrightcolor", OpenXmlNamespaces.Office, "#" + rightColor.SixDigitHexCode);
                             break;
                         case ShapeOptions.PropertyId.borderTopColor:
-                            RGBColor topColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                            var topColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                             _writer.WriteAttributeString("o", "bordertopcolor", OpenXmlNamespaces.Office, "#" + topColor.SixDigitHexCode);
                             break;
 
@@ -196,7 +196,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                             case BlipStoreEntry.BlipType.msoblipWMF:
 
                                 //it's a meta image
-                                MetafilePictBlip metaBlip = (MetafilePictBlip)bse.Blip;
+                                var metaBlip = (MetafilePictBlip)bse.Blip;
 
                                 //meta images can be compressed
                                 byte[] decompressed = metaBlip.Decrompress();
@@ -209,7 +209,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                             case BlipStoreEntry.BlipType.msoblipTIFF:
 
                                 //it's a bitmap image
-                                BitmapBlip bitBlip = (BitmapBlip)bse.Blip;
+                                var bitBlip = (BitmapBlip)bse.Blip;
                                 outStream.Write(bitBlip.m_pvBits, 0, bitBlip.m_pvBits.Length);
 
                                 break;

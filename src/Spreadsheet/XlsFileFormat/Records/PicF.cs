@@ -90,7 +90,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public double numScale;
 
-        public PicF(IStreamReader reader, RecordType id, UInt16 length)
+        public PicF(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -99,7 +99,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // initialize class members from stream
             this.ptyp = (LayoutType)reader.ReadInt16();
             reader.ReadBytes(2); //unused
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             // first 9 bits are reserved
             this.fTopBottom = Utils.BitmaskToBool(flags, 0x200);
             this.fBackFront = Utils.BitmaskToBool(flags, 0x400);

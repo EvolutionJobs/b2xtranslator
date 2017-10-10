@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(15)]
+    [OfficeShapeType(15)]
     class HomePlateType : ShapeType
     {
         public HomePlateType()
@@ -24,9 +24,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "0,0,10800,21600;0,0,16200,21600;0,0,21600,21600";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,topLeft";
-            HandleOne.xrange="0,21600";
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "0,21600"
+            };
 
 
             this.Handles.Add(HandleOne);

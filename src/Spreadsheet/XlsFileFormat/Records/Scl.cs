@@ -49,15 +49,15 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// A signed integer that specifies the numerator of the fraction.<br/> 
         /// The value MUST be greater than or equal to 1.
         /// </summary>
-        public Int16 nscl;
+        public short nscl;
 
         /// <summary>
         /// A signed integer that specifies the denominator of the fraction. <br/>
         /// The value MUST be greater than or equal to 1.
         /// </summary>
-        public Int16 dscl;
+        public short dscl;
 
-        public Scl(IStreamReader reader, RecordType id, UInt16 length)
+        public Scl(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

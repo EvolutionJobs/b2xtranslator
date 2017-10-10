@@ -219,11 +219,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         }
 
         [Obsolete("Use IStreamReader.ReadUInt16() instead.")]
-        public UInt16 ReadUInt16()
+        public ushort ReadUInt16()
         {
-            byte[] buffer = new byte[sizeof(UInt16)];
+            var buffer = new byte[sizeof(ushort)];
 
-            if (sizeof(UInt16) != Read(buffer))
+            if (sizeof(ushort) != Read(buffer))
             {
                 throw new ReadBytesAmountMismatchException();
             }
@@ -234,9 +234,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         [Obsolete("Use IStreamReader.ReadInt16() instead.")]
         public short ReadInt16()
         {
-            byte[] buffer = new byte[sizeof(Int16)];
+            var buffer = new byte[sizeof(short)];
 
-            if (sizeof(Int16) != Read(buffer))
+            if (sizeof(short) != Read(buffer))
             {
                 throw new ReadBytesAmountMismatchException();
             }
@@ -247,7 +247,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         [Obsolete("Use IStreamReader.ReadUInt32() instead.")]
         public UInt32 ReadUInt32()
         {
-            byte[] buffer = new byte[sizeof(UInt32)];
+            var buffer = new byte[sizeof(UInt32)];
 
             if (sizeof(UInt32) != Read(buffer))
             {
@@ -258,11 +258,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         }
 
         [Obsolete("Use IStreamReader.ReadInt32() instead.")]
-        public Int32 ReadInt32()
+        public int ReadInt32()
         {
-            byte[] buffer = new byte[sizeof(Int32)];
+            var buffer = new byte[sizeof(int)];
 
-            if (sizeof(Int32) != Read(buffer))
+            if (sizeof(int) != Read(buffer))
             {
                 throw new ReadBytesAmountMismatchException();
             }

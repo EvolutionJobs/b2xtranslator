@@ -45,9 +45,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// Shared Workbook Protection Password; the password is entered 
         /// in the Protect Shared Workbook dialog box)
         /// </summary>
-        public UInt16 wRevPass;
+        public ushort wRevPass;
 
-        public Prot4RevPass(IStreamReader reader, RecordType id, UInt16 length)
+        public Prot4RevPass(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

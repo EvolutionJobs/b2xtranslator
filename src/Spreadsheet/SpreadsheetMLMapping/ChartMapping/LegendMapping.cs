@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 if (ldSequence.TextPropsSequence != null)
                 {
                     // created by Excel 2007
-                    XmlDocument xmlTextProps = new XmlDocument();
+                    var xmlTextProps = new XmlDocument();
                     if (ldSequence.TextPropsSequence.TextPropsStream != null)
                     {
                         if (ldSequence.TextPropsSequence.TextPropsStream.rgb != null &&

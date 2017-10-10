@@ -44,16 +44,16 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// <summary>
         /// An unsigned integer that specifies number of items in the rgiser field.
         /// </summary>
-        public UInt16 cser;
+        public ushort cser;
 
         /// <summary>
         /// An array of 2-byte unsigned integers, each of which specifies a one-based index of 
         /// a Series record in the collection of Series records in the current chart sheet substream. 
         /// Each referenced Series specifies a series for the chart.
         /// </summary>
-        public UInt16[] rgiser;
+        public ushort[] rgiser;
 
-        public SeriesList(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public SeriesList(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -61,7 +61,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
 
             // initialize class members from stream
             this.cser = reader.ReadUInt16();
-            rgiser = new UInt16[this.cser];
+            rgiser = new ushort[this.cser];
             for (int i = 0; i < this.cser; i++)
             {
                 rgiser[i] = reader.ReadUInt16();

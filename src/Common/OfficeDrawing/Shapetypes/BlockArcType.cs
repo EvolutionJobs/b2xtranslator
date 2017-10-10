@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(95)]
+    [OfficeShapeType(95)]
     class BlockArcType : ShapeType
     {
         public BlockArcType()
@@ -63,12 +63,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "@36,@40,@37,@42";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#1,#0";
-            HandleOne.polar = "10800,10800";
-            HandleOne.radiusrange = "0,10800"; 
-            HandleOne.switchHandle = "true";
-            HandleOne.xrange = "0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#1,#0",
+                polar = "10800,10800",
+                radiusrange = "0,10800",
+                switchHandle = "true",
+                xrange = "0,10800"
+            };
             this.Handles.Add(HandleOne);
 
 

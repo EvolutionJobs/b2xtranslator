@@ -27,7 +27,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             UInt32 number;
             number = System.BitConverter.ToUInt32(rk, 0);
             // Select which type of number 
-            UInt32 type = number & 0x00000003;
+            var type = number & 0x00000003;
             // if the last two bits are 00 or 01 then it is floating point IEEE number 
             // type 0 and type 1 expects booth the same arithmetic 
             if (type == 0 || type == 1)
@@ -47,7 +47,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                 // (1 + (Mantisse / 2^18)) * 2 ^ (Exponent - 1023) 
                 num = (1 + (mant / System.Math.Pow(2.0, 18.0))) * System.Math.Pow(2, (double)(exp - high));
                 // now there is a sign bit too, the highest bit from the RK Record 
-                UInt32 signBit = number & 0x80000000;
+                var signBit = number & 0x80000000;
                 // shifting the value by 31 bit 
                 signBit = signBit >> 31;
                 // if the signBit is 0 it is a positive number, otherwise it is a negative number 
@@ -88,10 +88,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// create an almighty algorithm ;) 
         /// </summary>
         /// <returns>String</returns>
-        public static String intToABCString(int colnumber, String rownumber)
+        public static string intToABCString(int colnumber, string rownumber)
         {
 
-            String value = "";
+            var value = "";
             int remain = 0;
             if (colnumber < 26)
             {
@@ -124,10 +124,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// create an almighty algorithm ;) 
         /// </summary>
         /// <returns>String</returns>
-        public static String intToABCString(int colnumber, String rownumber, bool colRelative, bool rwRelative)
+        public static string intToABCString(int colnumber, string rownumber, bool colRelative, bool rwRelative)
         {
 
-            String value = "";
+            var value = "";
             int remain = 0;
             if (colnumber < 26)
             {
@@ -161,14 +161,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         }
 
 
-        public static Stack<AbstractPtg> getFormulaStack(IStreamReader reader, UInt16 cce)
+        public static Stack<AbstractPtg> getFormulaStack(IStreamReader reader, ushort cce)
         {
-            Stack<AbstractPtg> ptgStack = new Stack<AbstractPtg>();
+            var ptgStack = new Stack<AbstractPtg>();
             try
             {
                 for (uint i = 0; i < cce; i++)
                 {
-                    PtgNumber ptgtype = (PtgNumber)reader.ReadByte();
+                    var ptgtype = (PtgNumber)reader.ReadByte();
 
                     if ((int)ptgtype > 0x5D)
                     {
@@ -182,7 +182,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                     AbstractPtg ptg = null;
                     if (ptgtype == PtgNumber.Ptg0x19Sub)
                     {
-                        Ptg0x19Sub ptgtype2 = (Ptg0x19Sub)reader.ReadByte();
+                        var ptgtype2 = (Ptg0x19Sub)reader.ReadByte();
                         switch (ptgtype2)
                         {
                             case Ptg0x19Sub.PtgAttrSum: ptg = new PtgAttrSum(reader, ptgtype2); break;
@@ -260,7 +260,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             return ptgStack;
         }
 
-        public static String parseVirtualPath(String path)
+        public static string parseVirtualPath(string path)
         {
             // NOTE: A virtual path must be a string in the following grammar: 
             //
@@ -393,7 +393,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public static string getHyperlinkStringFromBiffRecord(IStreamReader reader)
         {
             string value = "";
-            UInt32 length = reader.ReadUInt32();
+            var length = reader.ReadUInt32();
             for (int i = 0; i < length; i++)
             {
                 value += System.BitConverter.ToChar(reader.ReadBytes(2), 0);

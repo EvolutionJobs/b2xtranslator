@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         // TODO: maybe we only need chartSheetContentSequence.ChartFormatsSequence here
         public void Apply(ChartSheetContentSequence chartSheetContentSequence)
         {
-            ChartFormatsSequence chartFormatsSequence = chartSheetContentSequence.ChartFormatsSequence;
+            var chartFormatsSequence = chartSheetContentSequence.ChartFormatsSequence;
 
             // c:chartspace
             _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElChartSpace, Dml.Chart.Ns);
@@ -64,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElChart, Dml.Chart.Ns);
                 {
                     // c:title
-                    foreach (AttachedLabelSequence attachedLabelSequence in chartFormatsSequence.AttachedLabelSequences)
+                    foreach (var attachedLabelSequence in chartFormatsSequence.AttachedLabelSequences)
                     {
                         if (attachedLabelSequence.ObjectLink != null && attachedLabelSequence.ObjectLink.wLinkObj == ObjectLink.ObjectType.Chart)
                         {
@@ -77,7 +77,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     chartFormatsSequence.Convert(new PlotAreaMapping(this.WorkbookContext, this.ChartContext));
 
                     // c:legend
-                    LdSequence firstLegend = chartFormatsSequence.AxisParentSequences[0].CrtSequences[0].LdSequence;
+                    var firstLegend = chartFormatsSequence.AxisParentSequences[0].CrtSequences[0].LdSequence;
                     if (firstLegend != null)
                     {
                         firstLegend.Convert(new LegendMapping(this.WorkbookContext, this.ChartContext));

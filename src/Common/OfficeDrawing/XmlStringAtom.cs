@@ -22,9 +22,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public XmlStringAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            byte[] bytes = this.Reader.ReadBytes((int)size);
+            var bytes = this.Reader.ReadBytes((int)size);
             Stream partStream = new MemoryStream(bytes);
-            XmlDocument partDoc = new XmlDocument();
+            var partDoc = new XmlDocument();
             partDoc.Load(partStream);
 
             this.XmlDocumentElement = partDoc.DocumentElement;

@@ -58,7 +58,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <item>In a chart with a surface chart group, this field specifies the zero-based index of a legend entry in the legend, where 0x0000 is the legend entry for the lowest band of the surface chart group.</item>
         /// </list>
         /// </summary>
-        public UInt16 iss;
+        public ushort iss;
 
         /// <summary>
         /// A bit that specifies whether the legend entry specified by iss has been deleted.
@@ -72,7 +72,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fLabel;
 
-        public LegendException(IStreamReader reader, RecordType id, UInt16 length)
+        public LegendException(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             // initialize class members from stream
             this.iss = reader.ReadUInt16();
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fDeleted = Utils.BitmaskToBool(flags, 0x1);
             this.fLabel = Utils.BitmaskToBool(flags, 0x2);
 

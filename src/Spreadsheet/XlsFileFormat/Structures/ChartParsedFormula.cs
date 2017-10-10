@@ -39,7 +39,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
     /// </summary>
     public class ChartParsedFormula
     {
-        private UInt16 cce;
+        private ushort cce;
         
         /// <summary>
         /// LinkedList with the Ptg records !!

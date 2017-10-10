@@ -37,13 +37,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// A signed integer that specifies the size, in bytes, of this structure.
         /// </summary>
-        public Int32 lcb;
+        public int lcb;
             
         /// <summary>
         /// An unsigned integer that specifies the number of bytes from the beginning of this structure to the beginning of binData. 
         /// MUST be 0x44. 
         /// </summary>
-        public Int16 cbHeader;
+        public short cbHeader;
 
         /// <summary>
         /// The interpretation of binData depends on the field type of the field containing the 
@@ -66,17 +66,17 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public NilPicfAndBinData(CharacterPropertyExceptions chpx, VirtualStream dataStream)
         {
             //Get start of the NilPicfAndBinData structure
-            Int32 fc = PictureDescriptor.GetFcPic(chpx);
+            var fc = PictureDescriptor.GetFcPic(chpx);
             if (fc >= 0)
             {
                 parse(dataStream, fc);
             }
         }
 
-        private void parse(VirtualStream stream, Int32 fc)
+        private void parse(VirtualStream stream, int fc)
         {
             stream.Seek(fc, System.IO.SeekOrigin.Begin);
-            VirtualStreamReader reader = new VirtualStreamReader(stream);
+            var reader = new VirtualStreamReader(stream);
 
             this.lcb = reader.ReadInt32();
             this.cbHeader = reader.ReadInt16();

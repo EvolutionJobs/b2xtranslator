@@ -11,19 +11,19 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// Signed integer that specifies the size in bytes of a TBDelta structure. <br/>
         /// MUST be 0x0012.
         /// </summary>
-        public Int16 cbTBD;
+        public short cbTBD;
 
         /// <summary>
         /// Signed integer that specifies the number of elements in the rCustomizations array. <br/>
         /// MUST be greater than 0x0000.
         /// </summary>
-        public Int16 cCust;
+        public short cCust;
 
         /// <summary>
         /// Signed integer that specifies the size, in bytes, of the rtbdc array.<br/> 
         /// MUST be greater or equal to 0x00000000.
         /// </summary>
-        public Int32 cbDTBC;
+        public int cbDTBC;
 
         /// <summary>
         /// 
@@ -40,7 +40,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             long startPos = reader.BaseStream.Position;
 
             //skip the first 7 bytes
-            byte[] skipped = reader.ReadBytes(7);
+            var skipped = reader.ReadBytes(7);
 
             this.cbTBD = reader.ReadInt16();
             this.cCust = reader.ReadInt16();

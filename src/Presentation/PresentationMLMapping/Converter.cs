@@ -68,14 +68,14 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             using (pptx)
             {
                 // Setup the writer
-                XmlWriterSettings xws = new XmlWriterSettings();
+                var xws = new XmlWriterSettings();
                 xws.OmitXmlDeclaration = false;
                 xws.CloseOutput = true;
                 xws.Encoding = Encoding.UTF8;
                 xws.ConformanceLevel = ConformanceLevel.Document;
 
                 // Setup the context
-                ConversionContext context = new ConversionContext(ppt);
+                var context = new ConversionContext(ppt);
                 context.WriterSettings = xws;
                 context.Pptx = pptx;
 

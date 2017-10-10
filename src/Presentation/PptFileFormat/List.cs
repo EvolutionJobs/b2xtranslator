@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
     // Wrongly listed in documentation as 1016
-    [OfficeRecordAttribute(2000)]
+    [OfficeRecord(2000)]
     public class List : RegularContainer
     {
         public List(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)

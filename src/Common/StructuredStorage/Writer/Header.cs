@@ -93,7 +93,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         internal void write()
         {
-            OutputHandler outputHandler = ((OutputHandler)_ioHandler);
+            var outputHandler = ((OutputHandler)_ioHandler);
 
             // Magic number
             outputHandler.write(BitConverter.GetBytes(MAGIC_NUMBER));
@@ -149,7 +149,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="stream">The stream to which is written to.</param>
         internal void writeToStream(Stream stream)
         {
-            OutputHandler outputHandler = ((OutputHandler)_ioHandler);
+            var outputHandler = ((OutputHandler)_ioHandler);
             outputHandler.writeToStream(stream);
         }
 

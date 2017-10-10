@@ -43,9 +43,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// =1 if the sheet or workbook is protected
         /// </summary>
-        public UInt16 fLock;
+        public ushort fLock;
 
-        public Protect(IStreamReader reader, RecordType id, UInt16 length)
+        public Protect(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

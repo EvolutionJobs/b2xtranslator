@@ -67,12 +67,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// <summary>
         /// Reserved. MUST be 0x15.
         /// </summary>
-        public UInt16 ft;
+        public ushort ft;
 
         /// <summary>
         /// Reserved. MUST be 0x12.
         /// </summary>
-        public UInt16 cb;
+        public ushort cb;
 
         /// <summary>
         /// An unsigned integer that specifies the type of object represented by the Obj record that contains this FtCmo
@@ -86,7 +86,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// The value of id MUST be unique among all Obj records within the Chart Sheet 
         /// Substream ABNF, Macro Sheet Substream ABNF and Worksheet Substream ABNF.
         /// </summary>
-        public UInt16 id;
+        public ushort id;
 
         /// <summary>
         /// A bit that specifies whether this object is locked.
@@ -146,7 +146,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
             this.ot = (ObjectType)reader.ReadUInt16();
             this.id = reader.ReadUInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fLocked = Utils.BitmaskToBool(flags, 0x0001);
 
             this.fDefaultSize = Utils.BitmaskToBool(flags, 0x0004);

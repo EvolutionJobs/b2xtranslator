@@ -44,12 +44,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         }
 
         public DateAndTime Dttm;
-        public Int16 Isbt;
+        public short Isbt;
         public RevisionType Type;
         public List<SinglePropertyModifier> Changes;
-        public Int32 RsidDel;
-        public Int32 RsidProp;
-        public Int32 Rsid;
+        public int RsidDel;
+        public int RsidProp;
+        public int Rsid;
 
         public RevisionData()
         {
@@ -76,7 +76,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         //author 
                         this.Isbt = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         //date
-                        byte[] dttmBytes = new byte[4];
+                        var dttmBytes = new byte[4];
                         Array.Copy(sprm.Arguments, 3, dttmBytes, 0, 4);
                         this.Dttm = new DateAndTime(dttmBytes);
                         break;

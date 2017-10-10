@@ -93,9 +93,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
 
             // fill fillList with none and grey value 
 
-            FillData none = new FillData(StyleEnum.FLSNULL, 0x0040, 0x0040);
+            var none = new FillData(StyleEnum.FLSNULL, 0x0040, 0x0040);
             this.fillDataList.Add(none);
-            FillData grey = new FillData(StyleEnum.FLSGRAY125, 0x0040, 0x0040);
+            var grey = new FillData(StyleEnum.FLSGRAY125, 0x0040, 0x0040);
             this.fillDataList.Add(grey);
 
 
@@ -108,7 +108,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
         public void addFormatValue(Format formatbiffrec)
         { 
 
-                FormatData fd = new FormatData(formatbiffrec.ifmt, formatbiffrec.rgb);
+                var fd = new FormatData(formatbiffrec.ifmt, formatbiffrec.rgb);
                 this.formatDataList.Add(fd);
 
         }
@@ -119,7 +119,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
         /// <param name="xf"></param>
         public void addXFDataValue(XF xf)
         {
-            XFData xfdata = new XFData();
+            var xfdata = new XFData();
             xfdata.fStyle = xf.fStyle;
             xfdata.ifmt = xf.ifmt;
             xfdata.ixfParent = xf.ixfParent;
@@ -186,29 +186,29 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
                 this.xfCellDataList.Add(xfdata);
             }
             int countxf = this.XFCellDataList.Count+this.xfCellStyleDataList.Count;
-            FillData fd = new FillData((StyleEnum)xf.fls, xf.icvFore, xf.icvBack);
+            var fd = new FillData((StyleEnum)xf.fls, xf.icvFore, xf.icvBack);
             int fillDataId = this.addFillDataValue(fd);
             TraceLogger.DebugInternal(fd.ToString() + " -- Number XF " + countxf.ToString() + " -- Number FillData: " + this.fillDataList.Count); 
             xfdata.fillId = fillDataId;
 
             // add border data 
-            BorderData borderData = new BorderData();
+            var borderData = new BorderData();
             // diagonal value 
             borderData.diagonalValue = (ushort)xf.grbitDiag; 
             // create and add borderparts 
-            BorderPartData top = new BorderPartData((ushort)xf.dgTop, xf.icvTop);
+            var top = new BorderPartData((ushort)xf.dgTop, xf.icvTop);
             borderData.top = top;
 
-            BorderPartData bottom = new BorderPartData((ushort)xf.dgBottom, xf.icvBottom);
+            var bottom = new BorderPartData((ushort)xf.dgBottom, xf.icvBottom);
             borderData.bottom = bottom;
 
-            BorderPartData left = new BorderPartData((ushort)xf.dgLeft, xf.icvLeft);
+            var left = new BorderPartData((ushort)xf.dgLeft, xf.icvLeft);
             borderData.left = left;
 
-            BorderPartData right = new BorderPartData((ushort)xf.dgRight, xf.icvRight);
+            var right = new BorderPartData((ushort)xf.dgRight, xf.icvRight);
             borderData.right = right;
 
-            BorderPartData diagonal = new BorderPartData((ushort)xf.dgDiag, xf.icvDiag);
+            var diagonal = new BorderPartData((ushort)xf.dgDiag, xf.icvDiag);
             borderData.diagonal = diagonal;
 
             int borderId = this.addBorderDataValue(borderData);
@@ -271,7 +271,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
 
         public void addFontData(Font font)
         {
-            FontData fontdata = new FontData();
+            var fontdata = new FontData();
             // fill the objectdatafields 
             fontdata.fontName = font.fontName.Value;
             // size in twips

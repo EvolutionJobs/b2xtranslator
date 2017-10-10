@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
     /// </summary>
     public class ObjFmla
     {
-        public UInt16 cbFmla;
+        public ushort cbFmla;
 
         //public ObjectParsedFormula fmla;
 

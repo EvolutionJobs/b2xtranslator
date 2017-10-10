@@ -105,7 +105,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public XLUnicodeStringMin2 rgchSep;
 
-        public DataLabExtContents(IStreamReader reader, RecordType id, UInt16 length)
+        public DataLabExtContents(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -114,7 +114,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // initialize class members from stream
             this.frtHeader = new FrtHeader(reader);
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fSerName = Utils.BitmaskToBool(flags, 0x0001);
             this.fCatName = Utils.BitmaskToBool(flags, 0x0002);
             this.fValue = Utils.BitmaskToBool(flags, 0x0004);

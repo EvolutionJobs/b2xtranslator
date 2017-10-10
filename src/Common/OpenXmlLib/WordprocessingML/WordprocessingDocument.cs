@@ -64,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
 
         public static WordprocessingDocument Create(string fileName, OpenXmlPackage.DocumentType type)
         {
-            WordprocessingDocument doc = new WordprocessingDocument(fileName, type);
+            var doc = new WordprocessingDocument(fileName, type);
             
             return doc;
         }

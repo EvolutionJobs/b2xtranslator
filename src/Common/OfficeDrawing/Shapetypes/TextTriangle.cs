@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(138)]
+    [OfficeShapeType(138)]
     public class TextTriangle : ShapeType
     {
         public TextTriangle()
@@ -24,9 +24,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("sum 21600 0 @1");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="topLeft,#0";
-            h1.yrange = "0,21600";
+            var h1 = new Handle
+            {
+                position = "topLeft,#0",
+                yrange = "0,21600"
+            };
             this.Handles.Add(h1);
         }
     }

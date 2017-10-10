@@ -86,7 +86,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be 0x0680.
         /// </summary>
-        public UInt16 version;
+        public ushort version;
 
         /// <summary>
         /// An unsigned integer that specifies the type of data contained in the substream. 
@@ -102,7 +102,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// An unsigned integer that specifies the build identifier of the application creating the substream.
         /// </summary>
-        public UInt16 rupBuild;
+        public ushort rupBuild;
 
         /// <summary>
         /// An unsigned integer that specifies the version of the file format. 
@@ -110,7 +110,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// This value MUST be 0x07CC or 0x07CD. 
         /// This value SHOULD be 0x07CD (1997).
         /// </summary>
-        public UInt16 rupYear;
+        public ushort rupYear;
 
         /// <summary>
         /// A bit that specifies whether this substream was last edited on a Windows platform. 
@@ -193,7 +193,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public Byte verLastXLSaved;
 
-        public BOF(IStreamReader reader, RecordType id, UInt16 length)
+        public BOF(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -211,7 +211,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.rupBuild = reader.ReadUInt16();
             this.rupYear = reader.ReadUInt16();
 
-            UInt32 flags = reader.ReadUInt32();
+            var flags = reader.ReadUInt32();
             this.fWin = Utils.BitmaskToBool(flags, 0x0001);
             this.fRisc = Utils.BitmaskToBool(flags, 0x0002);
             this.fBeta = Utils.BitmaskToBool(flags, 0x0004);

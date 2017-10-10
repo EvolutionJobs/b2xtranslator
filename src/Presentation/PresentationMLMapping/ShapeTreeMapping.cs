@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public void DynamicApply(Record record)
         {
             // Call Apply(record) with dynamic dispatch (selection based on run-time type of record)
-            MethodInfo method = this.GetType().GetMethod("Apply", new Type[] { record.GetType() });
+            var method = this.GetType().GetMethod("Apply", new Type[] { record.GetType() });
 
             //TraceLogger.DebugInternal(method.ToString());
 
@@ -97,7 +97,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             IEnumerator<Record> iter = group.Children.GetEnumerator();
             iter.MoveNext();
 
-            ShapeContainer header = iter.Current as ShapeContainer;
+            var header = iter.Current as ShapeContainer;
             WriteGroupShapeProperties(header);
 
             while (iter.MoveNext())
@@ -262,12 +262,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 {
                     uint TableRowPropertiesCount = ops.OptionsByID[ShapeOptions.PropertyId.tableRowProperties].op;
                     byte[] data = ops.OptionsByID[ShapeOptions.PropertyId.tableRowProperties].opComplex;
-                    UInt16 nElems = BitConverter.ToUInt16(data, 0);
-                    UInt16 nElemsAlloc = BitConverter.ToUInt16(data, 2);
-                    UInt16 cbElem = BitConverter.ToUInt16(data, 4);
+                    var nElems = BitConverter.ToUInt16(data, 0);
+                    var nElemsAlloc = BitConverter.ToUInt16(data, 2);
+                    var cbElem = BitConverter.ToUInt16(data, 4);
                     for (int i = 0; i < nElems; i++)
                     {
-                        Int32 height = BitConverter.ToInt32(data, 6 + i * cbElem);
+                        var height = BitConverter.ToInt32(data, 6 + i * cbElem);
                         //this is a workaround for a bug
                         //it should be analysed when to use 0 height
                         if (height > 53)
@@ -282,11 +282,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }                
             }
 
-            List<ShapeContainer> Cells = new List<ShapeContainer>();
+            var Cells = new List<ShapeContainer>();
             //Lines = new List<ShapeContainer>();
-            Dictionary<string, ShapeContainer> LinesByPosition = new Dictionary<string, ShapeContainer>();
+            var LinesByPosition = new Dictionary<string, ShapeContainer>();
            
-            SortedList<int, SortedList<int, ShapeContainer>> tablelist = new SortedList<int,SortedList<int,ShapeContainer>>();
+            var tablelist = new SortedList<int,SortedList<int,ShapeContainer>>();
             verticallinelist = new SortedList<int, SortedList<int, ShapeContainer>>();
             horizontallinelist = new SortedList<int, SortedList<int, ShapeContainer>>();
 
@@ -328,8 +328,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
             ColumnWidthsByYPos = new SortedDictionary<int, int>();
-            Dictionary<int, int> ColumnIndices = new Dictionary<int, int>(); //this list will contain all column limits
-            foreach (SortedList<int, ShapeContainer> rowlist in tablelist.Values)
+            var ColumnIndices = new Dictionary<int, int>(); //this list will contain all column limits
+            foreach (var rowlist in tablelist.Values)
             {
                 //rowlist contains all cells in a row
                 foreach (int y in rowlist.Keys)
@@ -353,10 +353,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }            
 
             //the table contains all cells at their correct position
-            ShapeContainer[,] table = new ShapeContainer[RowHeights.Count, ColumnWidthsByYPos.Count];
+            var table = new ShapeContainer[RowHeights.Count, ColumnWidthsByYPos.Count];
             int c;
             int r = 0;
-            foreach (SortedList<int, ShapeContainer> rowlst in tablelist.Values)
+            foreach (var rowlst in tablelist.Values)
             {
                 foreach (int y in rowlst.Keys)
                 {
@@ -424,11 +424,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 ClientData d = cont.FirstChildWithType<ClientData>();
                                 if (d != null)
                                 {
-                                    System.IO.MemoryStream ms = new System.IO.MemoryStream(d.bytes);
+                                    var ms = new System.IO.MemoryStream(d.bytes);
                                     Record rec = Record.ReadRecord(ms);
                                     if (rec is OEPlaceHolderAtom)
                                     {
-                                        OEPlaceHolderAtom placeholder2 = (OEPlaceHolderAtom)rec;
+                                        var placeholder2 = (OEPlaceHolderAtom)rec;
                                         if (placeholder2.PlacementId == PlaceholderEnum.MasterBody && (placeholder.PlacementId == PlaceholderEnum.Body || placeholder.PlacementId == PlaceholderEnum.Object))
                                         {
                                             if (placeholder2.Position != -1)
@@ -498,7 +498,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                     if (table[row, col] != null)
                     {
-                        ShapeContainer container = table[row, col];
+                        var container = table[row, col];
 
                         ChildAnchor anch = container.FirstChildWithType<ChildAnchor>();
                         int colWidth = ColumnWidthsByYPos[anch.Left];
@@ -581,7 +581,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                         {
-                            FillStyleBooleanProperties p = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                            var p = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                             if (p.fUsefFilled & p.fFilled) //  so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillType))
                             {
                                 new FillMapping(_ctx, _writer, parentSlideMapping).Apply(so);
@@ -596,7 +596,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         if (col > 0 && table[row, col - 1] != null)
                         {
-                            ShapeContainer previouscontainer = table[row, col-1];
+                            var previouscontainer = table[row, col-1];
                             ChildAnchor anch = previouscontainer.FirstChildWithType<ChildAnchor>();
 
                             if (anch.rcgBounds.Height > RowHeights[row] && GetRowSpanCount(anch, row) > 1)
@@ -616,7 +616,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         }
                         else if (row > 0 && col > 0 && table[row - 1, col - 1] != null) //this checks the cell above on the left
                         {
-                            ShapeContainer previouscontainer = table[row - 1, col - 1];
+                            var previouscontainer = table[row - 1, col - 1];
                             ChildAnchor anch = previouscontainer.FirstChildWithType<ChildAnchor>();
 
                             if (anch.rcgBounds.Width > ColumnWidthsByYPos[anch.Left])
@@ -627,7 +627,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                         if (row > 0 && table[row-1, col] != null) //this checks the cell on the left
                         {
-                            ShapeContainer previouscontainer = table[row-1, col];
+                            var previouscontainer = table[row-1, col];
                             ChildAnchor anch = previouscontainer.FirstChildWithType<ChildAnchor>();
                             int colWidth = ColumnWidthsByYPos[anch.Left];
 
@@ -644,7 +644,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         }
                         else if (row > 0 && col > 0  && table[row - 1, col - 1] != null) //this checks the cell above on the left
                         {
-                            ShapeContainer previouscontainer = table[row - 1, col-1];
+                            var previouscontainer = table[row - 1, col-1];
                             ChildAnchor anch = previouscontainer.FirstChildWithType<ChildAnchor>();
 
                             if (anch.rcgBounds.Height > RowHeights[row - 1])
@@ -681,7 +681,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void WriteTableLineProperties(int row, int col, ShapeContainer[,] table)
         {
-            ShapeContainer container = table[row, col];
+            var container = table[row, col];
             ChildAnchor anch = container.FirstChildWithType<ChildAnchor>();
             ShapeOptions so = container.FirstChildWithType<ShapeOptions>();
 
@@ -692,12 +692,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             foreach (int linetop in horizontallinelist.Keys)
             {
-                SortedList<int, ShapeContainer> lst = horizontallinelist[linetop];
+                var lst = horizontallinelist[linetop];
 
                 if (linetop == anch.Top)
                     foreach (int lineleft in lst.Keys)
                     {
-                        ShapeContainer line = lst[lineleft];
+                        var line = lst[lineleft];
                         int w = line.FirstChildWithType<ChildAnchor>().rcgBounds.Width;
 
                         if (lineleft <= anch.Left && lineleft + w >= anch.Right) topLine = line;
@@ -706,7 +706,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 if (linetop == anch.Bottom)
                     foreach (int lineleft in lst.Keys)
                     {
-                        ShapeContainer line = lst[lineleft];
+                        var line = lst[lineleft];
                         int w = line.FirstChildWithType<ChildAnchor>().rcgBounds.Width;
 
                         if (lineleft <= anch.Left && lineleft + w >= anch.Right) bottomLine = line;
@@ -715,11 +715,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             foreach (int linetop in verticallinelist.Keys)
             {
-                SortedList<int, ShapeContainer> lst = verticallinelist[linetop];
+                var lst = verticallinelist[linetop];
 
                 foreach (int lineleft in lst.Keys)
                 {
-                    ShapeContainer line = lst[lineleft];
+                    var line = lst[lineleft];
                     int h = line.FirstChildWithType<ChildAnchor>().rcgBounds.Height;
 
 
@@ -792,7 +792,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void WriteLineProperties(ShapeOptions soline)
         {
-            LineStyleBooleans fsb = new LineStyleBooleans(soline.OptionsByID[ShapeOptions.PropertyId.lineStyleBooleans].op);
+            var fsb = new LineStyleBooleans(soline.OptionsByID[ShapeOptions.PropertyId.lineStyleBooleans].op);
             if (fsb.fUsefLine && fsb.fLine)
             {
                 if (soline.OptionsByID.ContainsKey(ShapeOptions.PropertyId.lineColor))
@@ -1009,7 +1009,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 if (soline.OptionsByID.ContainsKey(ShapeOptions.PropertyId.lineStartArrowhead))
                 {
-                    ShapeOptions.LineEnd val = (ShapeOptions.LineEnd)soline.OptionsByID[ShapeOptions.PropertyId.lineStartArrowhead].op;
+                    var val = (ShapeOptions.LineEnd)soline.OptionsByID[ShapeOptions.PropertyId.lineStartArrowhead].op;
                     if (val != ShapeOptions.LineEnd.NoEnd)
                     {
                         _writer.WriteStartElement("a", "headEnd", OpenXmlNamespaces.DrawingML);
@@ -1051,7 +1051,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 if (soline.OptionsByID.ContainsKey(ShapeOptions.PropertyId.lineEndArrowhead))
                 {
-                    ShapeOptions.LineEnd val = (ShapeOptions.LineEnd)soline.OptionsByID[ShapeOptions.PropertyId.lineEndArrowhead].op;
+                    var val = (ShapeOptions.LineEnd)soline.OptionsByID[ShapeOptions.PropertyId.lineEndArrowhead].op;
                     if (val != ShapeOptions.LineEnd.NoEnd)
                     {
                         _writer.WriteStartElement("a", "tailEnd", OpenXmlNamespaces.DrawingML);
@@ -1150,7 +1150,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
 
             ShapeOptions sndSo = null;
-            String prstGeom = "";
+            var prstGeom = "";
             if (container.AllChildrenWithType<ShapeOptions>().Count > 1)
             {
                 sndSo = ((RegularContainer)sh.ParentRecord).AllChildrenWithType<ShapeOptions>()[1];
@@ -1162,12 +1162,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         ShapeOptions.OptionEntry metroBlob = sndSo.OptionsByID[ShapeOptions.PropertyId.metroBlob];
                         byte[] code = metroBlob.opComplex;
                         string path = System.IO.Path.GetTempFileName();
-                        System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create);
+                        var fs = new System.IO.FileStream(path, System.IO.FileMode.Create);
                         fs.Write(code, 0, code.Length);
                         fs.Close();
 
                         reader = ZipUtils.ZipFactory.OpenArchive(path);
-                        System.IO.StreamReader mems = new System.IO.StreamReader(reader.GetEntry("drs/shapexml.xml"));
+                        var mems = new System.IO.StreamReader(reader.GetEntry("drs/shapexml.xml"));
                         string xml = mems.ReadToEnd();
                         xml = Tools.Utils.replaceOutdatedNamespaces(xml);
                         //xml = xml.Substring(xml.IndexOf("<p:sp")); //remove xml declaration
@@ -1272,10 +1272,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     if (sh.fFlipV) _writer.WriteAttributeString("flipV", "1");
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.rotation))
                     {
-                        byte[] bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.rotation].op);
+                        var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.rotation].op);
                         int integral = BitConverter.ToInt16(bytes, 2);
                         uint fractional = BitConverter.ToUInt16(bytes, 0);
-                        Decimal result = integral +((decimal)fractional / (decimal)65536);
+                        var result = integral +((decimal)fractional / (decimal)65536);
 
                         Double w = anchor.Bottom - anchor.Top;
                         Double h = anchor.Right - anchor.Left;
@@ -1379,10 +1379,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     _writer.WriteStartElement("a", "xfrm", OpenXmlNamespaces.DrawingML);
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.rotation))
                     {
-                        byte[] bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.rotation].op);
+                        var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.rotation].op);
                         int integral = BitConverter.ToInt16(bytes, 2);
                         uint fractional = BitConverter.ToUInt16(bytes, 0);
-                        Decimal result = integral + ((decimal)fractional / (decimal)65536);
+                        var result = integral + ((decimal)fractional / (decimal)65536);
 
                         //if (result < 0 && sh.fFlipH == false) result = result * -1;
 
@@ -1496,7 +1496,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             
                             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.GeometryTextBooleanProperties))
                             {
-                                GeometryTextBooleanProperties gb = new GeometryTextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.GeometryTextBooleanProperties].op);
+                                var gb = new GeometryTextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.GeometryTextBooleanProperties].op);
                                 if (gb.fUsegtextFKern & gb.gtextFKern)
                                 {
                                     _writer.WriteAttributeString("kern", "10");
@@ -1510,7 +1510,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.lineStyleBooleans))
                             {
-                                LineStyleBooleans lb = new LineStyleBooleans(so.OptionsByID[ShapeOptions.PropertyId.lineStyleBooleans].op);
+                                var lb = new LineStyleBooleans(so.OptionsByID[ShapeOptions.PropertyId.lineStyleBooleans].op);
                                 if (lb.fUsefLine & lb.fLine)
                                 {
                                     _writer.WriteStartElement("a", "ln", OpenXmlNamespaces.DrawingML);
@@ -1530,7 +1530,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                     bool ignoreColor = false;
                                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.ThreeDObjectBooleanProperties))
                                     {
-                                        ThreeDObjectProperties tdo = new ThreeDObjectProperties(so.OptionsByID[ShapeOptions.PropertyId.ThreeDObjectBooleanProperties].op);
+                                        var tdo = new ThreeDObjectProperties(so.OptionsByID[ShapeOptions.PropertyId.ThreeDObjectBooleanProperties].op);
 
                                         if (tdo.fc3D && tdo.fUsefc3D)
                                         {
@@ -1552,7 +1552,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                             {
-                                FillStyleBooleanProperties p = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                                var p = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                                 if (p.fUsefFilled & p.fFilled)
                                 {
                                     new FillMapping(_ctx, _writer, parentSlideMapping).Apply(so);
@@ -1562,7 +1562,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             //shadow
                             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.ShadowStyleBooleanProperties))
                             {
-                                ShadowStyleBooleanProperties sp = new ShadowStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.ShadowStyleBooleanProperties].op);
+                                var sp = new ShadowStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.ShadowStyleBooleanProperties].op);
                                 if (sp.fUsefShadow & sp.fShadow)
                                 {
                                     new ShadowMapping(_ctx, _writer).Apply(so);
@@ -1590,11 +1590,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void WriteShapeProperties(Shape sh, bool isPlaceholder, RegularContainer slide)
         {
-            ShapeContainer container = (ShapeContainer)sh.ParentRecord;
+            var container = (ShapeContainer)sh.ParentRecord;
 
             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
             {
-                FillStyleBooleanProperties p = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                var p = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                 if (p.fUsefFilled & p.fFilled) //  so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillType))
                 {
                     new FillMapping(_ctx, _writer, parentSlideMapping).Apply(so);
@@ -1648,7 +1648,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     case 0: //solid
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.lineStyleBooleans))
                         {
-                            LineStyleBooleans lineStyle = new LineStyleBooleans(so.OptionsByID[ShapeOptions.PropertyId.lineStyleBooleans].op);
+                            var lineStyle = new LineStyleBooleans(so.OptionsByID[ShapeOptions.PropertyId.lineStyleBooleans].op);
                             if (lineStyle.fLine)
                             {
                                 string colorval = "000000";
@@ -1664,9 +1664,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         break;
                     case 1: //pattern
                         uint blipIndex = so.OptionsByID[ShapeOptions.PropertyId.lineFillBlip].op;
-                        DrawingGroup gr = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
-                        BlipStoreEntry bse = (BlipStoreEntry)gr.FirstChildWithType<BlipStoreContainer>().Children[(int)blipIndex - 1];
-                        BitmapBlip b = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                        var gr = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
+                        var bse = (BlipStoreEntry)gr.FirstChildWithType<BlipStoreContainer>().Children[(int)blipIndex - 1];
+                        var b = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
 
                         _writer.WriteStartElement("a", "pattFill", OpenXmlNamespaces.DrawingML);
 
@@ -1719,7 +1719,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             {
                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.lineStyleBooleans))
                 {
-                    LineStyleBooleans lineStyle = new LineStyleBooleans(so.OptionsByID[ShapeOptions.PropertyId.lineStyleBooleans].op);
+                    var lineStyle = new LineStyleBooleans(so.OptionsByID[ShapeOptions.PropertyId.lineStyleBooleans].op);
                     if (lineStyle.fLine)
                     {
                         string colorval = "000000";
@@ -1795,7 +1795,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.lineStartArrowhead))
             {
-                ShapeOptions.LineEnd val = (ShapeOptions.LineEnd)so.OptionsByID[ShapeOptions.PropertyId.lineStartArrowhead].op;
+                var val = (ShapeOptions.LineEnd)so.OptionsByID[ShapeOptions.PropertyId.lineStartArrowhead].op;
                 if (val != ShapeOptions.LineEnd.NoEnd)
                 {
                     _writer.WriteStartElement("a", "headEnd", OpenXmlNamespaces.DrawingML);
@@ -1829,7 +1829,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.lineEndArrowhead))
             {
-                ShapeOptions.LineEnd val = (ShapeOptions.LineEnd)so.OptionsByID[ShapeOptions.PropertyId.lineEndArrowhead].op;
+                var val = (ShapeOptions.LineEnd)so.OptionsByID[ShapeOptions.PropertyId.lineEndArrowhead].op;
                 if (val != ShapeOptions.LineEnd.NoEnd)
                 {
                     _writer.WriteStartElement("a", "tailEnd", OpenXmlNamespaces.DrawingML);
@@ -1873,7 +1873,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             //shadow
             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.ShadowStyleBooleanProperties))
             {
-                ShadowStyleBooleanProperties sp = new ShadowStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.ShadowStyleBooleanProperties].op);
+                var sp = new ShadowStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.ShadowStyleBooleanProperties].op);
                 if (sp.fUsefShadow & sp.fShadow)
                 {
                     new ShadowMapping(_ctx, _writer).Apply(so);
@@ -1884,7 +1884,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public Point scanEMFPictureForSize(BlipStoreEntry bse)
         {
             Record mb = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
-            Point size = new Point();
+            var size = new Point();
 
             //write the blip
             if (mb != null)
@@ -1895,7 +1895,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     case BlipStoreEntry.BlipType.msoblipWMF:
 
                         //it's a meta image
-                        MetafilePictBlip metaBlip = (MetafilePictBlip)mb;
+                        var metaBlip = (MetafilePictBlip)mb;
                         size = metaBlip.m_ptSize;
 
                         //meta images can be compressed
@@ -1935,7 +1935,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             _writer.WriteEndElement(); //nvGraphicFramePr   
 
-            Rectangle anchor = new Rectangle();
+            var anchor = new Rectangle();
             ClientAnchor clanchor = container.FirstChildWithType<ClientAnchor>();
             if (clanchor == null)
             {
@@ -2003,8 +2003,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             string name = oleContainer.AllChildrenWithType<CStringAtom>()[0].Text;
             string progId = oleContainer.AllChildrenWithType<CStringAtom>()[1].Text;
 
-            DrawingGroup gr = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
-            BlipStoreEntry bse = (BlipStoreEntry)gr.FirstChildWithType<BlipStoreContainer>().Children[(int)so.OptionsByID[ShapeOptions.PropertyId.Pib].op - 1];
+            var gr = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
+            var bse = (BlipStoreEntry)gr.FirstChildWithType<BlipStoreContainer>().Children[(int)so.OptionsByID[ShapeOptions.PropertyId.Pib].op - 1];
 
             //VmlPart vmlPart = null;
             //vmlPart = parentSlideMapping.targetPart.AddVmlPart();
@@ -2032,7 +2032,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
             //VMLPictureMapping vm = new VMLPictureMapping(vmlPart, _ctx.WriterSettings);
-            Point size = new Point();
+            var size = new Point();
             //vm.Apply(bse, sh, so, rec, _ctx, spid, ref size);
             addVMLEntry(bse, sh, so, rec, spid, ref size);
 
@@ -2061,7 +2061,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         private void addVMLEntry(BlipStoreEntry bse, Shape shape, ShapeOptions options, Rectangle bounds, string spid, ref Point size)
         {
             size = scanEMFPictureForSize(bse);
-            ArrayList newVMLEntries = new ArrayList();
+            var newVMLEntries = new ArrayList();
             newVMLEntries.Add(bse);
             newVMLEntries.Add(shape);
             newVMLEntries.Add(options);
@@ -2080,8 +2080,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 vmlPart.TargetDirectory = "..\\drawings";
                 System.IO.Stream vmlStream = vmlPart.GetStream();
 
-                VMLPictureMapping vm = new VMLPictureMapping(vmlPart, _ctx.WriterSettings);
-                Point size = new Point();
+                var vm = new VMLPictureMapping(vmlPart, _ctx.WriterSettings);
+                var size = new Point();
 
                 vm.Apply(VMLEntries, _ctx);
                 //vm.Apply(bse, sh, so, rec, _ctx, spid, ref size);
@@ -2118,8 +2118,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
             }
 
-            DrawingGroup gr = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
-            BlipStoreEntry bse = (BlipStoreEntry)gr.FirstChildWithType<BlipStoreContainer>().Children[(int)indexOfPicture];
+            var gr = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
+            var bse = (BlipStoreEntry)gr.FirstChildWithType<BlipStoreContainer>().Children[(int)indexOfPicture];
 
             //if (this.parentSlideMapping is MasterMapping) return;
             
@@ -2136,7 +2136,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 Record recBlip = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
                 if (recBlip is BitmapBlip)
                 {
-                    BitmapBlip b = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                    var b = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
 
                     ImagePart imgPart = null;
                     imgPart = parentSlideMapping.targetPart.AddImagePart(getImageType(b.TypeCode));
@@ -2148,7 +2148,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
                 else if (recBlip is MetafilePictBlip)
                 {
-                    MetafilePictBlip mb = (MetafilePictBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                    var mb = (MetafilePictBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
 
                     ImagePart imgPart = null;
                     imgPart = parentSlideMapping.targetPart.AddImagePart(getImageType(mb.TypeCode));
@@ -2347,7 +2347,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             //shadow
             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.ShadowStyleBooleanProperties))
             {
-                ShadowStyleBooleanProperties p = new ShadowStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.ShadowStyleBooleanProperties].op);
+                var p = new ShadowStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.ShadowStyleBooleanProperties].op);
                 if (p.fUsefShadow & p.fShadow)
                 {
                     new ShadowMapping(_ctx, _writer).Apply(so);
@@ -2366,13 +2366,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             //bool cancelAttributes = false;
             if (rec is ShapeContainer)
             {
-                ShapeContainer container = (ShapeContainer)rec;
+                var container = (ShapeContainer)rec;
                 switch (container.FirstChildWithType<Shape>().Instance)
                 {
                     case 0x88: // WordArt 1, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 18, 19, 25, 29, 30
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.GeometryTextBooleanProperties))
                         {
-                            GeometryTextBooleanProperties gbp = new GeometryTextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.GeometryTextBooleanProperties].op);
+                            var gbp = new GeometryTextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.GeometryTextBooleanProperties].op);
                             if (gbp.fUsegtextFVertical && gbp.gtextFVertical)
                             {
                                 _writer.WriteAttributeString("vert", "wordArtVert");
@@ -2494,7 +2494,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     case 0x9F: // WordArt 24
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.GeometryTextBooleanProperties))
                         {
-                            GeometryTextBooleanProperties gbp = new GeometryTextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.GeometryTextBooleanProperties].op);
+                            var gbp = new GeometryTextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.GeometryTextBooleanProperties].op);
                             if (gbp.fUsegtextFVertical && gbp.gtextFVertical)
                             {
                                 _writer.WriteAttributeString("vert", "wordArtVert");
@@ -2692,7 +2692,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             if (slide == null) slide = so.FirstAncestorWithType<Handout>();
             if (!no3D && so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.ThreeDObjectBooleanProperties))
             {
-                ThreeDObjectProperties tdo = new ThreeDObjectProperties(so.OptionsByID[ShapeOptions.PropertyId.ThreeDObjectBooleanProperties].op);
+                var tdo = new ThreeDObjectProperties(so.OptionsByID[ShapeOptions.PropertyId.ThreeDObjectBooleanProperties].op);
 
                 if (tdo.fc3D && tdo.fUsefc3D)
                 {
@@ -2708,22 +2708,22 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     double oy = -1;
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.c3DOriginX))
                     {
-                        byte[] data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DOriginX].op);
+                        var data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DOriginX].op);
                         ox = new FixedPointNumber(BitConverter.ToUInt16(data, 0), BitConverter.ToUInt16(data, 2)).Value;
                     }
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.c3DOriginY))
                     {
-                        byte[] data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DOriginY].op);
+                        var data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DOriginY].op);
                         oy = new FixedPointNumber(BitConverter.ToUInt16(data, 0), BitConverter.ToUInt16(data, 2)).Value;
                     }
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.c3DKeyX))
                     {
-                        byte[] data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DKeyX].op);
+                        var data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DKeyX].op);
                         x = new FixedPointNumber(BitConverter.ToUInt16(data, 0), BitConverter.ToUInt16(data, 2)).Value;
                     }
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.c3DKeyY))
                     {
-                        byte[] data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DKeyY].op);
+                        var data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DKeyY].op);
                         y = new FixedPointNumber(BitConverter.ToUInt16(data, 0), BitConverter.ToUInt16(data, 2)).Value;
                     }
                     string prst = "legacyObliqueRight";
@@ -2785,7 +2785,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             decimal yra = 0;
                             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.c3DXRotationAngle))
                             {
-                                byte[] data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DXRotationAngle].op);
+                                var data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DXRotationAngle].op);
                                 int integral = BitConverter.ToInt16(data, 2);
                                 uint fractional = BitConverter.ToUInt16(data, 0);
                                 xra = -1 * (integral + ((decimal)fractional / (decimal)65536));
@@ -2793,7 +2793,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             }
                             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.c3DYRotationAngle))
                             {
-                                byte[] data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DYRotationAngle].op);
+                                var data = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.c3DYRotationAngle].op);
                                 int integral = BitConverter.ToInt16(data, 2);
                                 uint fractional = BitConverter.ToUInt16(data, 0);
                                 yra = integral + ((decimal)fractional / (decimal)65536);
@@ -2850,7 +2850,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.TextBooleanProperties))
             {
-                TextBooleanProperties props = new TextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.TextBooleanProperties].op);
+                var props = new TextBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.TextBooleanProperties].op);
                 if (props.fFitShapeToText && props.fUsefFitShapeToText) _writer.WriteElementString("a", "spAutoFit", OpenXmlNamespaces.DrawingML, "");
             }
 
@@ -2865,7 +2865,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             if (clientData != null)
             {
 
-                System.IO.MemoryStream ms = new System.IO.MemoryStream(clientData.bytes);
+                var ms = new System.IO.MemoryStream(clientData.bytes);
 
                 if (ms.Length > 0)
                 {
@@ -2873,7 +2873,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     bool blnContinue = true; 
                     if (rec.TypeCode == 4116 && output)
                     {
-                        AnimationInfoContainer animinfo = (AnimationInfoContainer)rec;
+                        var animinfo = (AnimationInfoContainer)rec;
                         animinfos.Add(animinfo, _idCnt);
                         if (ms.Position < ms.Length)
                         {
@@ -2938,7 +2938,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                                     rec = Record.ReadRecord(ms);
                                                     if (rec is OEPlaceHolderAtom)
                                                     {
-                                                        OEPlaceHolderAtom placeholder2 = (OEPlaceHolderAtom)rec;
+                                                        var placeholder2 = (OEPlaceHolderAtom)rec;
                                                         if (placeholder2.PlacementId == PlaceholderEnum.MasterBody && (placeholder.PlacementId == PlaceholderEnum.Body || placeholder.PlacementId == PlaceholderEnum.Object))
                                                         {
                                                             if (placeholder2.Position != -1)
@@ -2963,11 +2963,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 }
                                 break;
                             case 4116:
-                                AnimationInfoContainer animinfo = (AnimationInfoContainer)rec;
+                                var animinfo = (AnimationInfoContainer)rec;
                                 animinfos.Add(animinfo, _idCnt);
                                 break;
                             case 5000:
-                                RegularContainer con = (RegularContainer)rec;
+                                var con = (RegularContainer)rec;
                                 foreach (ProgBinaryTag t in con.AllChildrenWithType<ProgBinaryTag>())
                                 {
                                     CStringAtom c = t.FirstChildWithType<CStringAtom>();
@@ -2990,7 +2990,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     }                    
                 }
             
-                RegularContainer container = (RegularContainer)(clientData.ParentRecord);
+                var container = (RegularContainer)(clientData.ParentRecord);
                 foreach (ClientTextbox b in container.AllChildrenWithType<ClientTextbox>())
                 {
                     ms = new System.IO.MemoryStream(b.Bytes);
@@ -3053,10 +3053,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteStartElement("a", "lstStyle", OpenXmlNamespaces.DrawingML);
             bool lvlRprWritten = false;
 
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(textbox.Bytes);
+            var ms = new System.IO.MemoryStream(textbox.Bytes);
             TextHeaderAtom thAtom = null;
             TextStyleAtom style = null;
-            List<int> lst = new List<int>();
+            var lst = new List<int>();
             string lang = "";
             string altLang = "";
             while (ms.Position < ms.Length)
@@ -3066,7 +3066,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 switch (rec.TypeCode)
                 {
                     case 0xf9e: //OutlineTextRefAtom
-                        OutlineTextRefAtom otrAtom = (OutlineTextRefAtom)rec;
+                        var otrAtom = (OutlineTextRefAtom)rec;
                         SlideListWithText slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
 
                         List<TextHeaderAtom> thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
@@ -3087,7 +3087,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         style.TextHeaderAtom = thAtom;
                         break;
                     case 0xfa2: //MasterTextPropAtom
-                        MasterTextPropAtom m = (MasterTextPropAtom)rec;
+                        var m = (MasterTextPropAtom)rec;
                         foreach(MasterTextPropRun r in m.MasterTextPropRuns)
                         {
                             if (!lst.Contains(r.indentLevel))
@@ -3111,7 +3111,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         thAtom.TextAtom = (TextAtom)rec;
                         break;
                     case 0xfaa: //TextSpecialInfoAtom
-                        TextSpecialInfoAtom sia = (TextSpecialInfoAtom)rec;
+                        var sia = (TextSpecialInfoAtom)rec;
                         if (sia.Runs.Count > 0)
                         {
                             if (sia.Runs[0].si.lang)
@@ -3408,8 +3408,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     break;
                 case 4: //complex
 
-                    Dictionary<Point, int> Escapes = new Dictionary<Point, int>();
-                    List<int> tempEscapes = new List<int>();
+                    var Escapes = new Dictionary<Point, int>();
+                    var tempEscapes = new List<int>();
                     int i = 0;
                     int start = 0;
                     int end;
@@ -3441,7 +3441,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         if (i == 0)
                         {
                             //check for escape codes
-                            foreach (Point p in Escapes.Keys)
+                            foreach (var p in Escapes.Keys)
                             {
                                 if (p.X == 0)
                                 {
@@ -3507,7 +3507,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 _writer.WriteAttributeString("h", (maxY - minY).ToString());
 
                                 //check for escape codes
-                                foreach (Point p in Escapes.Keys)
+                                foreach (var p in Escapes.Keys)
                                 {
                                     if (p.X <= i+1 && p.Y >= i+1)
                                     {
@@ -3581,8 +3581,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     else if ((prst == "wedgeRectCallout" || prst == "cloudCallout" || prst == "wedgeEllipseCallout") && so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.adjustValue))
                     {
                         //the following computations are based on experiments using Powerpoint 2003 and are not part of the spec
-                        Decimal val = (Decimal)(int)so.OptionsByID[ShapeOptions.PropertyId.adjustValue].op;
-                        Decimal percent = val / 21600 * 100;
+                        var val = (Decimal)(int)so.OptionsByID[ShapeOptions.PropertyId.adjustValue].op;
+                        var percent = val / 21600 * 100;
                         int newVal = 0;
                         if (percent >= 50)
                         {

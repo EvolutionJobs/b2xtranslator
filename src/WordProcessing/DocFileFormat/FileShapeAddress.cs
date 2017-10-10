@@ -20,27 +20,27 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// Shape Identifier. Used in conjunction with the office art data 
         /// (found via fcDggInfo in the FIB) to find the actual data for this shape.
         /// </summary>
-        public Int32 spid;
+        public int spid;
 
         /// <summary>
         /// Left of rectangle enclosing shape relative to the origin of the shape
         /// </summary>
-        public Int32 xaLeft;
+        public int xaLeft;
 
         /// <summary>
         /// Top of rectangle enclosing shape relative to the origin of the shape
         /// </summary>
-        public Int32 yaTop;
+        public int yaTop;
 
         /// <summary>
         /// Right of rectangle enclosing shape relative to the origin of the shape
         /// </summary>
-        public Int32 xaRight;
+        public int xaRight;
 
         /// <summary>
         /// Bottom of the rectangle enclosing shape relative to the origin of the shape
         /// </summary>
-        public Int32 yaBottom;
+        public int yaBottom;
 
         /// <summary>
         /// true in the undo doc when shape is from the header doc<br/>
@@ -76,7 +76,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 5 wrap tightly, but allow holes <br/>
         /// 6-15 reserved for future use
         /// </summary>
-        public UInt16 wr;
+        public ushort wr;
 
         /// <summary>
         /// Text wrapping mode type (valid only for wrapping modes 2 and 4)<br/>
@@ -85,7 +85,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 2 wrap only on right <br/>
         /// 3 wrap only on largest side
         /// </summary>
-        public UInt16 wrk;
+        public ushort wrk;
 
         /// <summary>
         /// When set, temporarily overrides bx, by, 
@@ -109,7 +109,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Count of textboxes in shape (undo doc only)
         /// </summary>
-        public Int32 cTxbx;
+        public int cTxbx;
 
         /// <summary>
         /// 
@@ -124,12 +124,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.xaRight = _reader.ReadInt32();
             this.yaBottom = _reader.ReadInt32();
 
-            UInt16 flag = _reader.ReadUInt16();
+            var flag = _reader.ReadUInt16();
             this.fHdr = Tools.Utils.BitmaskToBool(flag, 0x0001);
             this.bx = (AnchorType)Tools.Utils.BitmaskToInt(flag, 0x0006);
             this.by = (AnchorType)Tools.Utils.BitmaskToInt(flag, 0x0018);
-            this.wr = (UInt16)Tools.Utils.BitmaskToInt(flag, 0x01E0);
-            this.wrk = (UInt16)Tools.Utils.BitmaskToInt(flag, 0x1E00);
+            this.wr = (ushort)Tools.Utils.BitmaskToInt(flag, 0x01E0);
+            this.wrk = (ushort)Tools.Utils.BitmaskToInt(flag, 0x1E00);
             this.fRcaSimple = Tools.Utils.BitmaskToBool(flag, 0x2000);
             this.fBelowText = Tools.Utils.BitmaskToBool(flag, 0x4000);
             this.fAnchorLock = Tools.Utils.BitmaskToBool(flag, 0x8000);

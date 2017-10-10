@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(142)]
+    [OfficeShapeType(142)]
     public class TextRingInside : ShapeType
     {
         public TextRingInside()
@@ -17,9 +17,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.ConnectorLocations = "10800,0;10800,@0;0,10800;10800,21600;10800,@3;21600,10800";
             this.ConnectorAngles = "270,270,180,90,90,0";
             this.ExtrusionOk = true;
-            this.Lock = new ProtectionBooleans();
-            this.Lock.fUsefLockText = true;
-            this.Lock.fLockText = true;
+            this.Lock = new ProtectionBooleans
+            {
+                fUsefLockText = true,
+                fLockText = true
+            };
             this.LockShapeType = true;
 
             this.Formulas = new List<string>();
@@ -30,9 +32,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("sum @2 0 @1");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="center,#0";
-            h1.yrange = "10800,21600";
+            var h1 = new Handle
+            {
+                position = "center,#0",
+                yrange = "10800,21600"
+            };
             this.Handles.Add(h1);
         }
     }

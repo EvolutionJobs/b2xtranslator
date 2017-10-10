@@ -51,14 +51,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// A signed integer that specifies the size of imageBlob in bytes. <br/>
         /// MUST be greater than or equal to 1.
         /// </summary>
-        public Int32 lcb;
+        public int lcb;
 
         /// <summary>
         /// An array of bytes that specifies the image data for the given format.
         /// </summary>
         public byte[] imageBlob;
 
-        public BkHim(IStreamReader reader, RecordType id, UInt16 length)
+        public BkHim(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             this.cf = (ImageFormat)reader.ReadInt16();

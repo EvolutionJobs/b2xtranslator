@@ -35,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
     {
         public const PtgNumber ID = PtgNumber.PtgName;
 
-        public Int32 nameindex;
+        public int nameindex;
 
         public PtgName(IStreamReader reader, PtgNumber ptgid)
             :

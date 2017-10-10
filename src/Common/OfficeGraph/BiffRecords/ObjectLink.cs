@@ -51,7 +51,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 0x0007 = Series axis.
         /// 0x000C = Display units labels of an axis.
         /// </summary>
-        public UInt16 wLinkObj;
+        public ushort wLinkObj;
 
         /// <summary>
         /// An unsigned integer that specifies the zero-based index into a Series record in the collection 
@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// When the wLinkObj field is 4, MUST be less than or equal to 254. 
         /// When the wLinkObj field is not 4, MUST be zero, and MUST be ignored.
         /// </summary>
-        public UInt16 wLinkVar1;
+        public ushort wLinkVar1;
 
         /// <summary>
         /// An unsigned integer that specifies the zero-based index into the category (3) within the series 
@@ -70,9 +70,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// the value MUST be less than or equal to 31999. 
         /// When the wLinkObj field is not 4, MUST be zero, and MUST be ignored.
         /// </summary>
-        public UInt16 wLinkVar2;
+        public ushort wLinkVar2;
 
-        public ObjectLink(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public ObjectLink(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

@@ -43,9 +43,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// =1 then Refresh All should be done on all external data ranges and PivotTables when loading the workbook (the default is =0)
         /// </summary>
-        public UInt16 fRefreshAll;
+        public ushort fRefreshAll;
 
-        public RefreshAll(IStreamReader reader, RecordType id, UInt16 length)
+        public RefreshAll(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

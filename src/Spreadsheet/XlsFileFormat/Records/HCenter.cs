@@ -37,13 +37,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public bool hcenter; 
 
-        public HCenter(IStreamReader reader, RecordType id, UInt16 length)
+        public HCenter(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
-            UInt16 buffer = this.Reader.ReadUInt16();
+            var buffer = this.Reader.ReadUInt16();
             if (buffer == 1)
             {
                 this.hcenter = true;

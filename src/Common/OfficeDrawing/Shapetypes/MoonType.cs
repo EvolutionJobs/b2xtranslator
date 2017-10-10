@@ -5,7 +5,7 @@ using System.Text;
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
 
-    [OfficeShapeTypeAttribute(184)]
+    [OfficeShapeType(184)]
     class MoonType : ShapeType
     {
         public MoonType()
@@ -39,9 +39,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 
             this.TextboxRectangle = "@12,@15,@0,@16";
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,center";
-            HandleOne.xrange = "0,18900";
+            var HandleOne = new Handle
+            {
+                position = "#0,center",
+                xrange = "0,18900"
+            };
             this.Handles.Add(HandleOne);
 
         }

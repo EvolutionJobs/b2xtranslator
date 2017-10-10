@@ -51,7 +51,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// SHOULD <21> be less than or equal to catMax. If fAutoMin is set to 1, 
         /// MUST be ignored. If fDateAxis is set to 0, MUST be ignored.
         /// </summary>
-        public UInt16 catMin;
+        public ushort catMin;
 
         /// <summary>
         /// An unsigned integer that specifies the maximum date, as a date in the 
@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// SHOULD <22> be greater than or equal to catMin. If fAutoMax is set to 1, 
         /// MUST be ignored. If fDateAxis is set to 0, MUST be ignored.
         /// </summary>
-        public UInt16 catMax;
+        public ushort catMax;
 
         /// <summary>
         /// An unsigned integer that specifies the interval at which the major tick marks 
@@ -68,7 +68,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// MUST be greater than or equal to catMinor when duMajor is equal to duMinor. 
         /// If fAutoMajor is set to 1, MUST be ignored. If fDateAxis is set to 0, MUST be ignored.
         /// </summary>
-        public UInt16 catMajor;
+        public ushort catMajor;
 
         /// <summary>
         /// A DateUnit that specifies the unit of time to use for catMajor when 
@@ -83,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// MUST be less than or equal to catMajor when duMajor is equal to duMinor. 
         /// If fAutoMinor is set to 1, MUST be ignored. If fDateAxis is set to 0, MUST be ignored.
         /// </summary>
-        public UInt16 catMinor;
+        public ushort catMinor;
 
         /// <summary>
         /// A DateUnit that specifies the unit of time to use for catMinor when the 
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// crosses this axis. If fDateAxis is set to 0, MUST be ignored. 
         /// If fAutoCross is set to 1, MUST be ignored.
         /// </summary>
-        public UInt16 catCrossDate;
+        public ushort catCrossDate;
 
         /// <summary>
         /// A bit that specifies whether catMin is calculated automatically. 
@@ -199,7 +199,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fAutoDate;
 
-        public AxcExt(IStreamReader reader, RecordType id, UInt16 length)
+        public AxcExt(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -215,7 +215,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.duBase = (DateUnit)reader.ReadUInt16();
             this.catCrossDate = reader.ReadUInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fAutoMin = Utils.BitmaskToBool(flags, 0x0001);
             this.fAutoMax = Utils.BitmaskToBool(flags, 0x0002);
             this.fAutoMajor = Utils.BitmaskToBool(flags, 0x0004);

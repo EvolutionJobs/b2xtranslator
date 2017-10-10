@@ -40,17 +40,17 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Rownumber 
         /// </summary>
-        public UInt16 rw;
+        public ushort rw;
 
         /// <summary>
         /// Colnumber 
         /// </summary>
-        public UInt16 col;
+        public ushort col;
 
         /// <summary>
         /// index to the XF record 
         /// </summary>
-        public UInt16 ixfe;
+        public ushort ixfe;
 
         /// <summary>
         /// 8 byte calculated number / string / error of the formular 
@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// option flags 
         /// </summary>
-        public UInt16 grbit;
+        public ushort grbit;
 
         /// <summary>
         /// used for performance reasons only 
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// length of the formular data !!
         /// </summary>
-        public UInt16 cce;
+        public ushort cce;
 
         /// <summary>
         /// this attribute indicates if the formula is a shared formula 
@@ -92,7 +92,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public int errorValue;
         public bool fAlwaysCalc; 
 
-        public Formula(IStreamReader reader, RecordType id, UInt16 length)
+        public Formula(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -169,7 +169,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             return "Fomula at position: Row - " + this.rw.ToString() + " | Col - " + this.col.ToString();   
         }

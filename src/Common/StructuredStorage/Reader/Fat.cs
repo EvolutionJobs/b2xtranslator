@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         List<UInt32> _sectorsUsedByFat = new List<UInt32>();
         List<UInt32> _sectorsUsedByDiFat = new List<UInt32>();        
 
-        override internal UInt16 SectorSize
+        override internal ushort SectorSize
         {
             get { return _header.SectorSize; }
         }
@@ -77,7 +77,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>The next sector in the chain</returns>
         override protected UInt32 GetNextSectorInChain(UInt32 currentSector)
         {
-            UInt32 sectorInFile = _sectorsUsedByFat[(int)(currentSector / _addressesPerSector)];
+            var sectorInFile = _sectorsUsedByFat[(int)(currentSector / _addressesPerSector)];
             // calculation of position:
             // currentSector % _addressesPerSector = number of address in the sector address
             // address uses 32 bit = 4 bytes
@@ -136,7 +136,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
                 // Add all addresses contained in the current difat sector except the last address (it points to next difat sector)
                 for (int i = 0; i < _addressesPerSector - 1; i++)
                 {
-                    UInt32 fatSector = _fileHandler.ReadUInt32();
+                    var fatSector = _fileHandler.ReadUInt32();
                     if (fatSector == SectorId.FREESECT)
                     {
                         lastFatSectorFound = true;
@@ -151,7 +151,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
                 }
 
                 // Last address in difat sector points to next difat sector
-                UInt32 nextDiFatSector = _fileHandler.ReadUInt32();
+                var nextDiFatSector = _fileHandler.ReadUInt32();
                 if (nextDiFatSector == SectorId.FREESECT || nextDiFatSector == SectorId.ENDOFCHAIN)
                 {
                     break;

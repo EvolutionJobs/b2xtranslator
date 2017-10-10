@@ -84,9 +84,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             this.SeriesFormatSequences = new List<SeriesFormatSequence>();
             while (BiffRecord.GetNextRecordType(reader) == RecordType.Series)
             {
-                SeriesFormatSequence seriesFormatSequence = new SeriesFormatSequence(reader);
+                var seriesFormatSequence = new SeriesFormatSequence(reader);
                 // remember the index in the collection
-                seriesFormatSequence.order = (UInt16)this.SeriesFormatSequences.Count;
+                seriesFormatSequence.order = (ushort)this.SeriesFormatSequences.Count;
                 this.SeriesFormatSequences.Add(seriesFormatSequence);
             }
 

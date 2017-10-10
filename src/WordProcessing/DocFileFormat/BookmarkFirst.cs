@@ -13,12 +13,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// The entry found at said index specifies the location of the end of the bookmark associated with this FBKF. <br/>
         /// Ibkl MUST be unique for all FBKFs inside a given PlcfBkf or PlcfBkfd.
         /// </summary>
-        public Int16 ibkl;
+        public short ibkl;
 
         /// <summary>
         /// A BKC that specifies further information about the bookmark associated with this FBKF.
         /// </summary>
-        public Int16 bkc;
+        public short bkc;
 
         public BookmarkFirst(VirtualStreamReader reader, int length)
             : base(reader, length)

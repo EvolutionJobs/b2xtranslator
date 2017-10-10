@@ -34,8 +34,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
     {
         public const PtgNumber ID = PtgNumber.PtgExp;
 
-        public UInt16 rw;
-        public UInt16 col; 
+        public ushort rw;
+        public ushort col; 
 
         public PtgExp(IStreamReader reader, PtgNumber ptgid)
             :

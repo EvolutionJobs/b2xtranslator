@@ -35,7 +35,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
 
-    [OfficeRecordAttribute(4005)]
+    [OfficeRecord(4005)]
     public class TextPFExceptionAtom : Record
     {
         public ParagraphRun run;

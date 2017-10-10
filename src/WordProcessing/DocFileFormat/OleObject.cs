@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
 
             //find the class if of this object
-            foreach (DirectoryEntry entry in docStorage.AllEntries)
+            foreach (var entry in docStorage.AllEntries)
             {
                 if (entry.Name == this.ObjectId)
                 {
@@ -118,7 +118,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             try
             {
-                VirtualStreamReader reader = new VirtualStreamReader(_docStorage.GetStream(linkStream));
+                var reader = new VirtualStreamReader(_docStorage.GetStream(linkStream));
 
                 //there are two versions of the Link string, one contains ANSI characters, the other contains
                 //unicode characters.
@@ -126,8 +126,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 //The length prefix is a character count EXCLUDING the terminating zero
 
                 //Read the ANSI version
-                Int16 cch = reader.ReadInt16();
-                byte[] str = reader.ReadBytes(cch);
+                var cch = reader.ReadInt16();
+                var str = reader.ReadBytes(cch);
                 this.Link = Encoding.ASCII.GetString(str);
                 
                 //skip the terminating zero of the ANSI string
@@ -152,7 +152,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             try
             {
-                VirtualStreamReader reader = new VirtualStreamReader(_docStorage.GetStream(compStream));
+                var reader = new VirtualStreamReader(_docStorage.GetStream(compStream));
 
                 //skip the CompObjHeader
                 reader.ReadBytes(28);
@@ -168,13 +168,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             try
             {
-                VirtualStreamReader reader = new VirtualStreamReader(_docStorage.GetStream(oleStream));
+                var reader = new VirtualStreamReader(_docStorage.GetStream(oleStream));
 
                 //skip version
                 reader.ReadBytes(4);
 
                 //read the embedded/linked flag
-                Int32 flag = reader.ReadInt32();
+                var flag = reader.ReadInt32();
                 this.fLinked = Utils.BitmaskToBool(flag, 0x1);
 
                 //Link update option
@@ -187,7 +187,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             string ret = null;
 
-            foreach (SinglePropertyModifier sprm in chpx.grpprl)
+            foreach (var sprm in chpx.grpprl)
             {
                 if (sprm.OpCode == SinglePropertyModifier.OperationCode.sprmCPicLocation)
                 {

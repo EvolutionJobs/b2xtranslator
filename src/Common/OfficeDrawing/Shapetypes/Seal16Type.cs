@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(59)]
+    [OfficeShapeType(59)]
     class Seal16Type : ShapeType
     {
         public Seal16Type()
@@ -36,9 +36,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "@15,@15,@14,@14";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,center";
-            HandleOne.xrange="0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#0,center",
+                xrange = "0,10800"
+            };
 
 
             this.Handles.Add(HandleOne);

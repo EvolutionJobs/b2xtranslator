@@ -39,7 +39,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// Index to style descriptor of the style from which the 
         /// paragraph inherits its paragraph and character properties
         /// </summary>
-        public UInt16 istd;
+        public ushort istd;
 
         /// <summary>
         /// Creates a PAPX wich doesn't modify anything.<br/>
@@ -63,23 +63,23 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
             //There is a SPRM that points to an offset in the data stream, 
             //where a list of SPRM is saved.
-            foreach (SinglePropertyModifier sprm in this.grpprl)
+            foreach (var sprm in this.grpprl)
             {
                 if(sprm.OpCode == SinglePropertyModifier.OperationCode.sprmPHugePapx || (int)sprm.OpCode == 0x6646)
                 {
                     IStreamReader reader = new VirtualStreamReader(dataStream);
-                    UInt32 fc = System.BitConverter.ToUInt32(sprm.Arguments, 0);
+                    var fc = System.BitConverter.ToUInt32(sprm.Arguments, 0);
 
                     //parse the size of the external grpprl
-                    byte[] sizebytes = new byte[2];
+                    var sizebytes = new byte[2];
                     dataStream.Read(sizebytes, 0, 2, (int)fc);
-                    UInt16 size = System.BitConverter.ToUInt16(sizebytes, 0);
+                    var size = System.BitConverter.ToUInt16(sizebytes, 0);
                     
                     //parse the external grpprl
                     //byte[] grpprlBytes = new byte[size];
                     //dataStream.Read(grpprlBytes);
-                    byte[] grpprlBytes = reader.ReadBytes(size);
-                    PropertyExceptions externalPx = new PropertyExceptions(grpprlBytes);
+                    var grpprlBytes = reader.ReadBytes(size);
+                    var externalPx = new PropertyExceptions(grpprlBytes);
 
                     //assign the external grpprl
                     this.grpprl = externalPx.grpprl;

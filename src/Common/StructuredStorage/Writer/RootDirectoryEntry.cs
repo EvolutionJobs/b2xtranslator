@@ -65,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         internal override void writeReferencedStream()
         {
-            VirtualStream virtualMiniStream = new VirtualStream(_miniStream.BaseStream, Context.Fat, Context.Header.SectorSize, Context.TempOutputStream);
+            var virtualMiniStream = new VirtualStream(_miniStream.BaseStream, Context.Fat, Context.Header.SectorSize, Context.TempOutputStream);
             virtualMiniStream.write();
             this.StartSector = virtualMiniStream.StartSector;
             this.SizeOfStream = virtualMiniStream.Length;

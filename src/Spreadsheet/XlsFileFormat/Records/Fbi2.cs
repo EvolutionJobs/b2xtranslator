@@ -46,21 +46,21 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be greater than or equal to 0 and less than or equal to 0x7FFF.
         /// </summary>
-        public UInt16 dmixBasis;
+        public ushort dmixBasis;
 
         /// <summary>
         /// An unsigned integer that specifies the font height, in twips, when the font was first applied. 
         /// 
         /// MUST be greater than or equal to 0 and less than or equal to 0x7FFF.
         /// </summary>
-        public UInt16 dmiyBasis;
+        public ushort dmiyBasis;
 
         /// <summary>
         /// An unsigned integer that specifies the default font height in twips. 
         /// 
         /// MUST be greater than or equal to 20 and less than or equal to 8180.
         /// </summary>
-        public UInt16 twpHeightBasis;
+        public ushort twpHeightBasis;
 
         /// <summary>
         /// A Boolean that specifies the scale to use. The value MUST be one of the following values: 
@@ -71,10 +71,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool scab;
 
-        public UInt16 ifnt;
+        public ushort ifnt;
         // TODO: implement FontIndex???
 
-        public Fbi2(IStreamReader reader, RecordType id, UInt16 length)
+        public Fbi2(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

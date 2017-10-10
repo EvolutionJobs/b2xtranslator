@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// contained in the Continue records immediately following this record. <br/>
         /// MUST be less than or equal to 255.
         /// </summary>
-        public UInt16 cchText;
+        public ushort cchText;
 
         /// <summary>
         /// An unsigned integer that specifies the number of bytes of formatting run information in the 
@@ -88,23 +88,23 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// If cchText is 0, this value MUST be 0.<br/>
         /// Otherwise the value MUST be greater than or equal to 16 and MUST be a multiple of 8.
         /// </summary>
-        public UInt16 cbRuns;
+        public ushort cbRuns;
 
         /// <summary>
         /// A FontIndex that specifies the font when cchText is 0.<br/>
         /// </summary>
-        public UInt16 ifntEmpty;
+        public ushort ifntEmpty;
 
 
 
-        public TxO(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public TxO(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.hAlignment = (HorizontalAlignment)Utils.BitmaskToInt(flags, 0xE);
             this.vAlignment = (VerticalAlignment)Utils.BitmaskToInt(flags, 0x70);
             this.rot = (TextRotation)reader.ReadUInt16();

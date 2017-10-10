@@ -37,10 +37,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.HLink;
 
-        public UInt16 rwFirst;
-        public UInt16 rwLast;
-        public UInt16 colFirst;
-        public UInt16 colLast;
+        public ushort rwFirst;
+        public ushort rwLast;
+        public ushort colFirst;
+        public ushort colLast;
         public UInt32 streamVersion;
 
         public bool hlstmfIsAbsolute;
@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public byte[] fileTime; 
         
         
-        public HLink(IStreamReader reader, RecordType id, UInt16 length)
+        public HLink(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -72,7 +72,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             hlinkClsid = this.Reader.ReadBytes(16);
             streamVersion = this.Reader.ReadUInt32();
 
-            UInt32 buffer = this.Reader.ReadUInt32();
+            var buffer = this.Reader.ReadUInt32();
             bool hlstmfHasMoniker = Utils.BitmaskToBool(buffer, 0x01);
             this.hlstmfIsAbsolute = Utils.BitmaskToBool(buffer, 0x02);
             bool hlstmfSiteGaveDisplayName = Utils.BitmaskToBool(buffer, 0x04);
@@ -103,9 +103,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 {
                     // OleMoniker 
                     // read monikerClsid
-                    UInt32 Part1MonikerClsid = this.Reader.ReadUInt32();
-                    UInt16 Part2MonikerClsid = this.Reader.ReadUInt16();
-                    UInt16 Part3MonikerClsid = this.Reader.ReadUInt16();
+                    var Part1MonikerClsid = this.Reader.ReadUInt32();
+                    var Part2MonikerClsid = this.Reader.ReadUInt16();
+                    var Part3MonikerClsid = this.Reader.ReadUInt16();
 
                     byte Part4MonikerClsid = this.Reader.ReadByte();
                     byte Part5MonikerClsid = this.Reader.ReadByte();
@@ -119,7 +119,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                     // URL Moniker
                     if (Part1MonikerClsid == 0x79EAC9E0)
                     {
-                        UInt32 lenght = reader.ReadUInt32();
+                        var lenght = reader.ReadUInt32();
                         string value = "";
                         // read until the \0 value 
 
@@ -138,8 +138,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                     }
                     else if (Part1MonikerClsid == 0x00000303)
                     {
-                        UInt16 cAnti = this.Reader.ReadUInt16();
-                        UInt32 ansiLength = this.Reader.ReadUInt32();
+                        var cAnti = this.Reader.ReadUInt16();
+                        var ansiLength = this.Reader.ReadUInt32();
                         string ansiPath = "";
                         for (int i = 0; i < ansiLength; i++)
                         {
@@ -149,18 +149,18 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
 
                         ansiPath = ansiPath.Remove(ansiPath.Length - 1);
-                        UInt16 endServer = this.Reader.ReadUInt16();
-                        UInt16 versionNumber = this.Reader.ReadUInt16();
+                        var endServer = this.Reader.ReadUInt16();
+                        var versionNumber = this.Reader.ReadUInt16();
                         this.monikerString = ansiPath; 
                         // read 20 unused bytes 
                         this.Reader.ReadBytes(20);
-                        UInt32 cbUnicodePathSize = this.Reader.ReadUInt32();
+                        var cbUnicodePathSize = this.Reader.ReadUInt32();
                         string unicodePath = ""; 
 
                         if (cbUnicodePathSize != 0)
                         {
-                            UInt32 cbUnicodePathBytes = this.Reader.ReadUInt32();
-                            UInt16 usKeyValue = this.Reader.ReadUInt16();
+                            var cbUnicodePathBytes = this.Reader.ReadUInt32();
+                            var usKeyValue = this.Reader.ReadUInt16();
 
                             string value = "";
 

@@ -6,14 +6,14 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(2040)]
+    [OfficeRecord(2040)]
     public class BlipCollection9Container : RegularContainer
     {
         public BlipCollection9Container(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) { }
     }
 
-    [OfficeRecordAttribute(2041)]
+    [OfficeRecord(2041)]
     public class BlipEntityAtom : Record
     {
         public BitmapBlip blip;
@@ -26,7 +26,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             byte winBlipType = this.Reader.ReadByte();
             byte unused = this.Reader.ReadByte();
 
-            Record rec = Record.ReadRecord(this.Reader);
+            var rec = Record.ReadRecord(this.Reader);
 
             if (rec is BitmapBlip)
             {
@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4012)]
+    [OfficeRecord(4012)]
     public class StyleTextProp9Atom : Record
     {
         public List<ParagraphRun9> P9Runs = new List<ParagraphRun9>();
@@ -50,8 +50,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             {
                 try
                 {
-                    ParagraphRun9 pr = new ParagraphRun9();
-                    ParagraphMask pmask = (ParagraphMask)Reader.ReadUInt32();
+                    var pr = new ParagraphRun9();
+                    var pmask = (ParagraphMask)Reader.ReadUInt32();
                     pr.mask = pmask;
                     if ((pmask & ParagraphMask.BulletBlip) != 0)
                     {
@@ -69,10 +69,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                     }
                     P9Runs.Add(pr);
 
-                    CharacterMask cmask = (CharacterMask)Reader.ReadUInt32();
+                    var cmask = (CharacterMask)Reader.ReadUInt32();
                     if ((cmask & CharacterMask.pp11ext) != 0)
                     {
-                        byte[] rest = Reader.ReadBytes(4);
+                        var rest = Reader.ReadBytes(4);
                     }
 
                     si = new TextSIException(Reader);

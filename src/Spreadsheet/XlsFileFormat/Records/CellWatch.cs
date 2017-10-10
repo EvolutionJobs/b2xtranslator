@@ -35,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.CellWatch;
 
-        public CellWatch(IStreamReader reader, RecordType id, UInt16 length)
+        public CellWatch(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

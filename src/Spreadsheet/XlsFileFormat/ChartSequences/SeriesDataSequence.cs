@@ -29,10 +29,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                 this.SeriesGroups[i] = new SeriesGroup(reader);
                 
                 // build matrix from series data
-                this.DataMatrix[(UInt16)this.SeriesGroups[i].SIIndex.numIndex - 1] = new AbstractCellContent[this.Dimensions.colMac - this.Dimensions.colMic, this.Dimensions.rwMac - this.Dimensions.rwMic];
-                foreach (AbstractCellContent cellContent in this.SeriesGroups[i].Data)
+                this.DataMatrix[(ushort)this.SeriesGroups[i].SIIndex.numIndex - 1] = new AbstractCellContent[this.Dimensions.colMac - this.Dimensions.colMic, this.Dimensions.rwMac - this.Dimensions.rwMic];
+                foreach (var cellContent in this.SeriesGroups[i].Data)
                 {
-                    this.DataMatrix[(UInt16)this.SeriesGroups[i].SIIndex.numIndex - 1][cellContent.col, cellContent.rw] = cellContent;
+                    this.DataMatrix[(ushort)this.SeriesGroups[i].SIIndex.numIndex - 1][cellContent.col, cellContent.rw] = cellContent;
                 }
             }
         }

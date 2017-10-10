@@ -38,18 +38,18 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Unique List ID
         /// </summary>
-        public Int32 lsid;
+        public int lsid;
 
         /// <summary>
         /// Unique template code
         /// </summary>
-        public Int32 tplc;
+        public int tplc;
 
         /// <summary>
         /// Array of shorts containing the istd‘s linked to each level of the list, 
         /// or ISTD_NIL (4095) if no style is linked.
         /// </summary>
-        public Int16[] rgistd;
+        public short[] rgistd;
 
         /// <summary>
         /// True if this is a simple (one-level) list.<br/>
@@ -89,7 +89,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// </summary>
         public byte grfhic;
 
-        public const Int16 ISTD_NIL = 4095;
+        public const short ISTD_NIL = 4095;
         private const int LSTF_LENGTH = 28;
 
 
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.lsid = _reader.ReadInt32();
             this.tplc = _reader.ReadInt32();
 
-            this.rgistd = new Int16[9];
+            this.rgistd = new short[9];
             for (int i = 0; i < 9; i++)
             {
                 this.rgistd[i] = _reader.ReadInt16();

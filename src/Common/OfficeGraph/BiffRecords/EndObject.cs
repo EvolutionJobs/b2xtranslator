@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         public ObjectKind iObjectKind;
 
 
-        public EndObject(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public EndObject(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

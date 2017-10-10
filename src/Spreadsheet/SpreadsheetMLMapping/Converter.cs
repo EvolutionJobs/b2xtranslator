@@ -84,13 +84,17 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public static void Convert(XlsDocument xls, SpreadsheetDocument spreadsheetDocument)
         {
             //Setup the writer
-            XmlWriterSettings xws = new XmlWriterSettings();
-            xws.CloseOutput = true;
-            xws.Encoding = Encoding.UTF8;
-            xws.ConformanceLevel = ConformanceLevel.Document;
+            var xws = new XmlWriterSettings
+            {
+                CloseOutput = true,
+                Encoding = Encoding.UTF8,
+                ConformanceLevel = ConformanceLevel.Document
+            };
 
-            ExcelContext xlsContext = new ExcelContext(xls, xws);
-            xlsContext.SpreadDoc = spreadsheetDocument;
+            var xlsContext = new ExcelContext(xls, xws)
+            {
+                SpreadDoc = spreadsheetDocument
+            };
 
             // convert the shared string table
             if (xls.WorkBookData.SstData != null)
@@ -105,7 +109,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             }
 
             int sbdnumber = 1;
-            foreach (SupBookData sbd in xls.WorkBookData.supBookDataList)
+            foreach (var sbd in xls.WorkBookData.supBookDataList)
             {
                 if (!sbd.SelfRef)
                 {

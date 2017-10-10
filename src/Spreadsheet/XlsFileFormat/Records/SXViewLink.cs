@@ -36,13 +36,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.SXViewLink;
 
-        public UInt16 rt;
+        public ushort rt;
 
         public byte cch;
 
         public XLUnicodeStringNoCch XLUnicodeStringNoCch;
 
-        public SXViewLink(IStreamReader reader, RecordType id, UInt16 length)
+        public SXViewLink(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

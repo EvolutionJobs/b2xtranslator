@@ -84,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     if (bsd.defaultRowHeight >= 0)
                     {
-                        TwipsValue tv = new TwipsValue(bsd.defaultRowHeight);
+                        var tv = new TwipsValue(bsd.defaultRowHeight);
                         _writer.WriteAttributeString("defaultRowHeight", Convert.ToString(tv.ToPoints(), CultureInfo.GetCultureInfo("en-US")));
                     }
                     if (bsd.zeroHeight)
@@ -113,7 +113,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 if (bsd.colInfoDataTable.Count > 0)
                 {
                     _writer.WriteStartElement("cols");
-                    foreach (ColumnInfoData col in bsd.colInfoDataTable)
+                    foreach (var col in bsd.colInfoDataTable)
                     {
                         _writer.WriteStartElement("col");
                         // write min and max 
@@ -160,7 +160,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
                 _writer.WriteStartElement("sheetData");
                 //  bsd.rowDataTable.Values
-                foreach (RowData row in bsd.rowDataTable.Values)
+                foreach (var row in bsd.rowDataTable.Values)
                 {
                     // write row start tag
                     // Row 
@@ -211,7 +211,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
 
                     row.Cells.Sort();
-                    foreach (AbstractCellData cell in row.Cells)
+                    foreach (var cell in row.Cells)
                     {
                         // Col 
                         _writer.WriteStartElement("c");
@@ -228,10 +228,10 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         }
                         if (cell is FormulaCell)
                         {
-                            FormulaCell fcell = (FormulaCell)cell;
+                            var fcell = (FormulaCell)cell;
 
 
-                            if (((FormulaCell)cell).calculatedValue is String)
+                            if (((FormulaCell)cell).calculatedValue is string)
                             {
                                 _writer.WriteAttributeString("t", "str");
                             }
@@ -253,7 +253,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                             _writer.WriteStartElement("f");
                             if (!fcell.isSharedFormula)
                             {
-                                String value = FormulaInfixMapping.mapFormula(fcell.PtgStack, this._xlsContext);
+                                var value = FormulaInfixMapping.mapFormula(fcell.PtgStack, this._xlsContext);
 
 
                                 if (fcell.usesArrayRecord)
@@ -277,7 +277,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                             /// 
                             else
                             {
-                                SharedFormulaData sfd = bsd.checkFormulaIsInShared(cell.Row, cell.Col);
+                                var sfd = bsd.checkFormulaIsInShared(cell.Row, cell.Col);
                                 if (sfd != null)
                                 {
                                     // t="shared" 
@@ -289,7 +289,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                                         /// Write value and reference 
                                         _writer.WriteAttributeString("ref", sfd.getOXMLFormatedData());
 
-                                        String value = FormulaInfixMapping.mapFormula(sfd.PtgStack, this._xlsContext, sfd.rwFirst, sfd.colFirst);
+                                        var value = FormulaInfixMapping.mapFormula(sfd.PtgStack, this._xlsContext, sfd.rwFirst, sfd.colFirst);
                                         _writer.WriteString(value);
 
                                         sfd.RefCount++;
@@ -346,7 +346,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 {
                     _writer.WriteStartElement("mergeCells");
                     _writer.WriteAttributeString("count", bsd.MERGECELLSData.cmcs.ToString());
-                    foreach (MergeCellData mcell in bsd.MERGECELLSData.mergeCellDataList)
+                    foreach (var mcell in bsd.MERGECELLSData.mergeCellDataList)
                     {
                         _writer.WriteStartElement("mergeCell");
                         _writer.WriteAttributeString("ref", mcell.getOXMLFormatedData());
@@ -362,7 +362,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 {
                     _writer.WriteStartElement("hyperlinks");
                     bool writtenParentElement = false;
-                    foreach (HyperlinkData link in bsd.HyperLinkList)
+                    foreach (var link in bsd.HyperLinkList)
                     {
                     //    Uri url;
                     //    if (link.absolute)

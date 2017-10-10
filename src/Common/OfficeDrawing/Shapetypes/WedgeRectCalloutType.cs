@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(61)]
+    [OfficeShapeType(61)]
     public class WedgeRectCalloutType : ShapeType
     {
         public WedgeRectCalloutType()
@@ -58,8 +58,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.ConnectorLocations = "10800,0;0,10800;10800,21600;21600,10800;@34,@35";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,#1";
+            var HandleOne = new Handle
+            {
+                position = "#0,#1"
+            };
             Handles.Add(HandleOne);
 
 

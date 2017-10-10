@@ -33,7 +33,7 @@ using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(2005)]
+    [OfficeRecord(2005)]
     public class FontCollection : RegularContainer
     {
         public List<FontEntityAtom> entities = new List<FontEntityAtom>();
@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public FontCollection(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                foreach (Record rec in Children)
+                foreach (var rec in Children)
                 {
                     if (rec is FontEntityAtom)
                     {

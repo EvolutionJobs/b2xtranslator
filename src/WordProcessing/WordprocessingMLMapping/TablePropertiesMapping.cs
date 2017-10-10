@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         private XmlElement _tblGrid;
         private XmlElement _tblBorders;
         private StyleSheet _styles;
-        private List<Int16> _grid;
+        private List<short> _grid;
         private BorderCode brcLeft, brcTop, brcBottom, brcRight, brcHorz, brcVert;
 
         private enum WidthType
@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             dxa
         }
 
-        public TablePropertiesMapping(XmlWriter writer, StyleSheet styles, List<Int16> grid)
+        public TablePropertiesMapping(XmlWriter writer, StyleSheet styles, List<short> grid)
             : base(writer)
         {
             _styles = styles;
@@ -72,10 +72,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             XmlElement tblpPr = _nodeFactory.CreateElement("w", "tblpPr", OpenXmlNamespaces.WordprocessingML);
             XmlAttribute layoutType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
             layoutType.Value = "fixed";
-            Int16 tblIndent = 0;
-            Int16 gabHalf = 0;
-            Int16 marginLeft = 0;
-            Int16 marginRight = 0;
+            short tblIndent = 0;
+            short gabHalf = 0;
+            short marginLeft = 0;
+            short marginRight = 0;
 
             foreach (SinglePropertyModifier sprm in tapx.grpprl)
             {
@@ -87,7 +87,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //table definition
                     case SinglePropertyModifier.OperationCode.sprmTDefTable:
-                        SprmTDefTable tDef = new SprmTDefTable(sprm.Arguments);
+                        var tDef = new SprmTDefTable(sprm.Arguments);
                         //Workaround for retrieving the indent of the table:
                         //In some files there is a indent but no sprmTWidthIndent is set.
                         //For this cases we can calculate the indent of the table by getting the 
@@ -100,8 +100,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //preferred table width
                     case SinglePropertyModifier.OperationCode.sprmTTableWidth:
-                        WidthType fts = (WidthType)sprm.Arguments[0];
-                        Int16 width = System.BitConverter.ToInt16(sprm.Arguments, 1);
+                        var fts = (WidthType)sprm.Arguments[0];
+                        var width = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         XmlElement tblW = _nodeFactory.CreateElement("w", "tblW", OpenXmlNamespaces.WordprocessingML);
                         XmlAttribute w = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                         w.Value = width.ToString();
@@ -126,7 +126,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //style
                     case SinglePropertyModifier.OperationCode.sprmTIstd:
                     case SinglePropertyModifier.OperationCode.sprmTIstdPermute:
-                        Int16 styleIndex = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var styleIndex = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         if(_styles.Styles.Count> styleIndex)
                         {
                             string id = StyleSheetMapping.MakeStyleId(_styles.Styles[styleIndex]);
@@ -159,7 +159,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmTCellPaddingDefault:
                     case SinglePropertyModifier.OperationCode.sprmTCellPaddingOuter:
                         byte grfbrc = sprm.Arguments[2];
-                        Int16 wMar = System.BitConverter.ToInt16(sprm.Arguments, 4);
+                        var wMar = System.BitConverter.ToInt16(sprm.Arguments, 4);
                         if (Utils.BitmaskToBool((int)grfbrc, 0x01))
                             appendDxaElement(tblCellMar, "top", wMar.ToString(), true);
                         if (Utils.BitmaskToBool((int)grfbrc, 0x02))
@@ -191,13 +191,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //shading
                     case SinglePropertyModifier.OperationCode.sprmTSetShdTable:
-                        ShadingDescriptor desc = new ShadingDescriptor(sprm.Arguments);
+                        var desc = new ShadingDescriptor(sprm.Arguments);
                         appendShading(_tblPr, desc);
                         break;
 
                     //borders 80 exceptions
                     case SinglePropertyModifier.OperationCode.sprmTTableBorders80:
-                        byte[] brc80 = new byte[4];
+                        var brc80 = new byte[4];
                         //top border
                         Array.Copy(sprm.Arguments, 0, brc80, 0, 4);
                         brcTop = new BorderCode(brc80);
@@ -220,7 +220,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //border exceptions
                     case SinglePropertyModifier.OperationCode.sprmTTableBorders:
-                        byte[] brc = new byte[8];
+                        var brc = new byte[8];
                         //top border
                         Array.Copy(sprm.Arguments, 0, brc, 0, 8);
                         brcTop = new BorderCode(brc);
@@ -244,8 +244,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //floating table properties
                     case SinglePropertyModifier.OperationCode.sprmTPc:
                         byte flag = sprm.Arguments[0];
-                        Global.VerticalPositionCode pcVert = (Global.VerticalPositionCode)((flag & 0x30) >> 4);
-                        Global.HorizontalPositionCode pcHorz = (Global.HorizontalPositionCode)((flag & 0xC0) >> 6);
+                        var pcVert = (Global.VerticalPositionCode)((flag & 0x30) >> 4);
+                        var pcHorz = (Global.HorizontalPositionCode)((flag & 0xC0) >> 6);
                         appendValueAttribute(tblpPr, "horzAnchor", pcHorz.ToString());
                         appendValueAttribute(tblpPr, "vertAnchor", pcVert.ToString());
                         break;
@@ -362,7 +362,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             //append the grid
             _tblGrid = _nodeFactory.CreateElement("w", "tblGrid", OpenXmlNamespaces.WordprocessingML);
-            foreach (Int16 colW in _grid)
+            foreach (var colW in _grid)
             {
                 XmlElement gridCol = _nodeFactory.CreateElement("w", "gridCol", OpenXmlNamespaces.WordprocessingML);
                 XmlAttribute gridColW = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);

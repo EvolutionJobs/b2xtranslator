@@ -51,7 +51,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// </summary>
         public TxOLastRun lastRun;
 
-        public TxORuns(IStreamReader reader, UInt16 cbRuns)
+        public TxORuns(IStreamReader reader, ushort cbRuns)
         {
             int noOfRuns = (cbRuns / 8) - 1;
             this.rgTxoRuns = new Run[noOfRuns];
@@ -61,8 +61,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
                 if (i == 1028 && BiffRecord.GetNextRecordType(reader) == RecordType.Continue)
                 {
                     // yet another Continue record to be parsed -> skip record header
-                    UInt16 id = reader.ReadUInt16();
-                    UInt16 size = reader.ReadUInt16();
+                    var id = reader.ReadUInt16();
+                    var size = reader.ReadUInt16();
                 }
                 this.rgTxoRuns[i] = new Run(reader);
             }

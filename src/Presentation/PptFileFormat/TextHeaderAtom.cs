@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         QuarterBody
     };
 
-    [OfficeRecordAttribute(3999)]
+    [OfficeRecord(3999)]
     public class TextHeaderAtom : Record
     {
         public TextType TextType;
@@ -65,8 +65,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         {
             tdRecord.TextHeaderAtom = this;
 
-            TextAtom textAtom = tdRecord as TextAtom;
-            TextStyleAtom tsAtom = tdRecord as TextStyleAtom;
+            var textAtom = tdRecord as TextAtom;
+            var tsAtom = tdRecord as TextStyleAtom;
 
             if (textAtom != null)
             {

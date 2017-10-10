@@ -86,12 +86,12 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="immediateCycleCheck">Flag whether to check for cycles in every loop</param>
         internal List<UInt32> GetSectorChain(UInt32 startSector, UInt64 maxCount, string name, bool immediateCycleCheck)
         {
-            List<UInt32> result = new List<UInt32>();
+            var result = new List<UInt32>();
 
             result.Add(startSector);
             while (true)
             {
-                UInt32 nextSectorInStream = this.GetNextSectorInChain(result[result.Count - 1]);
+                var nextSectorInStream = this.GetNextSectorInChain(result[result.Count - 1]);
 
                 // Check for invalid sectors in chain
                 if (nextSectorInStream == SectorId.DIFSECT || nextSectorInStream == SectorId.FATSECT || nextSectorInStream == SectorId.FREESECT)
@@ -161,6 +161,6 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="position">The position in the sector to seek to</param>
         /// <returns></returns>
         abstract internal long SeekToPositionInSector(long sector, long position);
-        abstract internal UInt16 SectorSize { get; }
+        abstract internal ushort SectorSize { get; }
     }
 }

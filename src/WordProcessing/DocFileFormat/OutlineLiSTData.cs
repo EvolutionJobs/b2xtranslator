@@ -86,7 +86,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 for (int i = 0; i < 180; i += 20)
                 {
                     //copy the 20 byte pages
-                    byte[] page = new byte[20];
+                    var page = new byte[20];
                     Array.Copy(bytes, i, page, 0, 20);
                     this.rganlv[j] = new AutoNumberLevelDescriptor(page);
                     j++;

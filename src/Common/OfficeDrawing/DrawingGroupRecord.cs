@@ -32,7 +32,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF006)]
+    [OfficeRecord(0xF006)]
     public class DrawingGroupRecord : Record
     {
         public class FileIdCluster
@@ -48,7 +48,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
             public string ToString(uint depth)
             {
-                StringBuilder result = new StringBuilder();
+                var result = new StringBuilder();
 
                 result.Append(IndentationForDepth(depth));
                 result.AppendFormat("FileIdCluster: DrawingGroupId = {0}, CSpIdCur = {1}",
@@ -81,7 +81,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         override public string ToString(uint depth)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
             result.AppendLine(base.ToString(depth));
 
@@ -103,7 +103,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                 result.Append("Clusters:");
             }
 
-            foreach (FileIdCluster cluster in this.Clusters)
+            foreach (var cluster in this.Clusters)
             {
                 result.AppendLine();
                 result.Append(cluster.ToString(depth + 1));

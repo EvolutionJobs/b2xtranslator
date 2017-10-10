@@ -27,7 +27,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public int VertexCount { get; set; }
 
-        public PathSegment(UInt16 segment)
+        public PathSegment(ushort segment)
         {
             this.Type = (SegmentType)Utils.BitmaskToInt(segment, 0xE000);
 

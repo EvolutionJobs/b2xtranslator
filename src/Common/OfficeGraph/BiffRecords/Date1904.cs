@@ -56,7 +56,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public bool f1904DateSystem;
 
-        public Date1904(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Date1904(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

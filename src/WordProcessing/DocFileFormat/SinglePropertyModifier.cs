@@ -510,7 +510,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.OpCode = (OperationCode)System.BitConverter.ToUInt16(bytes, 0);
 
             //... whereof bit 9 is fSpec ...
-            UInt32 j = (UInt32)this.OpCode << 22;
+            var j = (UInt32)this.OpCode << 22;
             j = j >> 31;
             if (j == 1)
                 this.fSpec = true;
@@ -518,12 +518,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 this.fSpec = false;
 
             //... and bits 10,11,12 are the type ...
-            UInt32 i = (UInt32)this.OpCode << 19;
+            var i = (UInt32)this.OpCode << 19;
             i = i >> 29;
             this.Type = (SprmType)i;
 
             //... and last 3 bits are the spra
-            byte spra = (byte)((Int32)this.OpCode >> 13);
+            byte spra = (byte)((int)this.OpCode >> 13);
             byte opSize = GetOperandSize(spra);
             if (opSize == 255)
             {
@@ -532,7 +532,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     case OperationCode.sprmTDefTable:
                     case OperationCode.sprmTDefTable10:
                         //the variable length stand in the bytes 2 and 3
-                        Int16 opSizeTable = System.BitConverter.ToInt16(bytes, 2);
+                        var opSizeTable = System.BitConverter.ToInt16(bytes, 2);
                         //and the arguments start at the byte after that (byte3)
                         this.Arguments = new byte[opSizeTable-1];
                         //Arguments start at byte 4

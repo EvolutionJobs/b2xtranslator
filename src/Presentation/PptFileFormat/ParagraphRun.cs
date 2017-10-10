@@ -11,8 +11,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     {
         public class TabStop
         {
-            public UInt16 Distance;
-            public UInt16 Alignment;
+            public ushort Distance;
+            public ushort Alignment;
 
             public TabStop(BinaryReader reader)
             {
@@ -22,7 +22,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
 
         public UInt32 Length;
-        public UInt16 IndentLevel;
+        public ushort IndentLevel;
         public ParagraphMask Mask;
 
         public TabStop[] TabStops;
@@ -126,21 +126,21 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
         #endregion
 
-        public UInt16? BulletFlags;
+        public ushort? BulletFlags;
         public char? BulletChar;
-        public UInt16? BulletTypefaceIdx;
-        public Int16? BulletSize;
+        public ushort? BulletTypefaceIdx;
+        public short? BulletSize;
         public GrColorAtom BulletColor;
-        public Int16? Alignment;
-        public Int16? LineSpacing;
-        public Int16? SpaceBefore;
-        public Int16? SpaceAfter;
-        public Int16? LeftMargin;
-        public Int16? Indent;
-        public Int16? DefaultTabSize;
-        public UInt16? FontAlign;
-        public UInt16? LineBreakFlags;
-        public UInt16? TextDirection;
+        public short? Alignment;
+        public short? LineSpacing;
+        public short? SpaceBefore;
+        public short? SpaceAfter;
+        public short? LeftMargin;
+        public short? Indent;
+        public short? DefaultTabSize;
+        public ushort? FontAlign;
+        public ushort? LineBreakFlags;
+        public ushort? TextDirection;
 
         public ParagraphRun(BinaryReader reader, bool noIndentField)
         {
@@ -192,7 +192,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
                 if (this.TabStopsPresent)
                 {
-                    UInt16 tabStopsCount = reader.ReadUInt16();
+                    var tabStopsCount = reader.ReadUInt16();
                     this.TabStops = new TabStop[tabStopsCount];
 
                     for (int i = 0; i < tabStopsCount; i++)
@@ -229,7 +229,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public string ToString(uint depth)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
             string indent = Record.IndentationForDepth(depth);
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(108)]
+    [OfficeShapeType(108)]
     public class EllipsedRibbon2Type : ShapeType
     {
         public EllipsedRibbon2Type()
@@ -71,19 +71,25 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "@0,@22,@19,@1";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,topLeft";
-            HandleOne.xrange="@5,@43";
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "@5,@43"
+            };
             this.Handles.Add(HandleOne);
 
-            Handle HandleTwo = new Handle();
-            HandleTwo.position="center,#1";
-            HandleTwo.yrange="@39,@31";
+            var HandleTwo = new Handle
+            {
+                position = "center,#1",
+                yrange = "@39,@31"
+            };
             this.Handles.Add(HandleTwo);
 
-            Handle HandleThree = new Handle();
-            HandleThree.position="topLeft,#2";
-            HandleThree.yrange = "@41,@24";
+            var HandleThree = new Handle
+            {
+                position = "topLeft,#2",
+                yrange = "@41,@24"
+            };
             this.Handles.Add(HandleThree);
         }
     }

@@ -36,7 +36,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// 
         /// </summary>
-        public Int16 dyaLine;
+        public short dyaLine;
 
         /// <summary>
         /// 

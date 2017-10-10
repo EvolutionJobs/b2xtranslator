@@ -82,10 +82,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         internal void write()
         {
-            OutputHandler directoryStream = _context.DirectoryStream;
-            char[] unicodeName = _name.ToCharArray();
+            var directoryStream = _context.DirectoryStream;
+            var unicodeName = _name.ToCharArray();
             int paddingCounter = 0;
-            foreach (UInt16 unicodeChar in  unicodeName)
+            foreach (ushort unicodeChar in  unicodeName)
             {
                 directoryStream.writeUInt16(unicodeChar);
                 paddingCounter++;

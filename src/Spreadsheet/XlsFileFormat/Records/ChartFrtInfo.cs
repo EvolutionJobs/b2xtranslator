@@ -76,11 +76,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public WriterVersion verWriter;
 
-        public UInt16 cCFRTID;
+        public ushort cCFRTID;
 
         public CFrtId[] rgCFRTID;
 
-        public ChartFrtInfo(IStreamReader reader, RecordType id, UInt16 length)
+        public ChartFrtInfo(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

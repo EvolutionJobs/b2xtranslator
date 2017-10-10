@@ -41,11 +41,11 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         {
             if (fib.lcbPlfLfo > 0)
             {
-                VirtualStreamReader reader = new VirtualStreamReader(tableStream);
+                var reader = new VirtualStreamReader(tableStream);
                 reader.BaseStream.Seek((long)fib.fcPlfLfo, System.IO.SeekOrigin.Begin);
 
                 //read the count of LFOs
-                Int32 count = reader.ReadInt32();
+                var count = reader.ReadInt32();
 
                 //read the LFOs
                 for (int i = 0; i < count; i++)

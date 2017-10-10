@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// An option flag. See other members.
         /// </summary>
-        public UInt16 grbit;
+        public ushort grbit;
 
         //The grbit field contains the following flags:
         //Bits	Mask	Flag Name	Contents
@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 	    public UInt32 reserved2;	    //  15-9	FE00h
 
 
-        public BookBool(IStreamReader reader, RecordType id, UInt16 length)
+        public BookBool(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

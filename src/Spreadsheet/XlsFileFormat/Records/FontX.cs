@@ -53,9 +53,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// this chart sheet substream where the index is equal to 
         /// iFont – n, where n is the number of Font records in the workbook.
         /// </summary>
-        public UInt16 iFont;
+        public ushort iFont;
 
-        public FontX(IStreamReader reader, RecordType id, UInt16 length)
+        public FontX(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

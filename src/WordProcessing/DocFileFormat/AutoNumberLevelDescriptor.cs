@@ -155,32 +155,32 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Font code of auto number
         /// </summary>
-        public Int16 ftc;
+        public short ftc;
 
         /// <summary>
         /// Font half point size (0 = auto)
         /// </summary>
-        public UInt16 hps;
+        public ushort hps;
 
         /// <summary>
         /// Starting value
         /// </summary>
-        public UInt16 iStartAt;
+        public ushort iStartAt;
 
         /// <summary>
         /// Width of prefix text (same as indent)
         /// </summary>
-        public UInt16 dxaIndent;
+        public ushort dxaIndent;
 
         /// <summary>
         /// Minimum space between number and paragraph
         /// </summary>
-        public UInt16 dxaSpace;
+        public ushort dxaSpace;
 
         /// <summary>
         /// 24-bit color for Word 2000
         /// </summary>
-        public Int32 cv;
+        public int cv;
 
         /// <summary>
         /// Creates a new AutoNumberedListDataDescriptor with default values

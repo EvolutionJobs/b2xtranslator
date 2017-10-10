@@ -18,12 +18,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// 
         /// </summary>
-        public Int16 kcm1;
+        public short kcm1;
 
         /// <summary>
         /// 
         /// </summary>
-        public Int16 kcm2;
+        public short kcm2;
 
         /// <summary>
         /// 

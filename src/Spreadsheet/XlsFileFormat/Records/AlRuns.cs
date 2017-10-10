@@ -46,11 +46,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// An unsigned integer that specifies the number of rich text runs. 
         /// MUST be greater than or equal to 3 and less than or equal to 256.
         /// </summary>
-        public UInt16 cRuns;
+        public ushort cRuns;
 
         public FormatRun[] rgRuns;
 
-        public AlRuns(IStreamReader reader, RecordType id, UInt16 length)
+        public AlRuns(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

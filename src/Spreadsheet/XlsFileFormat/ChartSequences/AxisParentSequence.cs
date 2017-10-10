@@ -28,7 +28,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             this.Pos = (Pos)BiffRecord.ReadRecord(reader);
 
             // [AXES]
-            RecordType next = BiffRecord.GetNextRecordType(reader);
+            var next = BiffRecord.GetNextRecordType(reader);
             if (next == RecordType.Axis || next == RecordType.Text || next == RecordType.PlotArea)
             {
                 this.AxesSequence = new AxesSequence(reader);

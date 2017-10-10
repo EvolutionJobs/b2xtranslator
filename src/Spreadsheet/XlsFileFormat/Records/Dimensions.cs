@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// A ColU that specifies the first column in the sheet that contains a used cell.
         /// </summary>
-        public UInt16 colMic;
+        public ushort colMic;
 
         /// <summary>
         /// An unsigned integer that specifies the number of non-empty rows in the 
@@ -65,9 +65,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be less than or equal to 0x00FF.
         /// </summary>
-        public UInt16 colMac;
+        public ushort colMac;
 
-        public Dimensions(IStreamReader reader, RecordType id, UInt16 length)
+        public Dimensions(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

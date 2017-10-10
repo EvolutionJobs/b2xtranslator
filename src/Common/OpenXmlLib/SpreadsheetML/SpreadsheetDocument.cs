@@ -72,7 +72,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML
         /// <returns>The object itself</returns>
         public static SpreadsheetDocument Create(string fileName, OpenXmlPackage.DocumentType type)
         {
-            SpreadsheetDocument spreadsheet = new SpreadsheetDocument(fileName, type);
+            var spreadsheet = new SpreadsheetDocument(fileName, type);
             return spreadsheet;
         }
 

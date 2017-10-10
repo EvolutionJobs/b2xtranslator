@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                 try
                 {
-                    CultureInfo ci = new CultureInfo((int)lid.Code);
+                    var ci = new CultureInfo((int)lid.Code);
                     langcode = ci.ToString();
                 }
                 catch (Exception) 

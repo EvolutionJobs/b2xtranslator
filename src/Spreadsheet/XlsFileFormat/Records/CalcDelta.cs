@@ -35,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.CalcDelta;
 
-        public CalcDelta(IStreamReader reader, RecordType id, UInt16 length)
+        public CalcDelta(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

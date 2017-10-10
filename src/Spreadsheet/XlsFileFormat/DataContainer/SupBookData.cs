@@ -39,14 +39,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
     /// </summary>
     public class SupBookData : IVisitable
     {
-        private String virtPath;
-        public String VirtPath
+        private string virtPath;
+        public string VirtPath
         {
             get { return this.virtPath; }
         }
 
-        private String[] rgst;
-        public String[] RGST
+        private string[] rgst;
+        public string[] RGST
         {
             get { return this.rgst; }
         }
@@ -64,15 +64,15 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
             get { return this.xctDataList; }
         }
 
-        private LinkedList<String> externNames;
-        public LinkedList<String> ExternNames
+        private LinkedList<string> externNames;
+        public LinkedList<string> ExternNames
         {
             get { return this.externNames; }
 
         }
 
         public int ExternalLinkId;
-        public String ExternalLinkRef;
+        public string ExternalLinkRef;
         public int Number; 
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// </summary>
         /// <param name="index">searched index</param>
         /// <returns></returns>
-        public String getRgstString(int index)
+        public string getRgstString(int index)
         {
             return this.rgst[index]; 
         }
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <param name="xct"></param>
         public void addXCT(XCT xct)
         {
-            XCTData xctdata = new XCTData(xct);
+            var xctdata = new XCTData(xct);
             this.xctDataList.AddLast(xctdata); 
         }
 

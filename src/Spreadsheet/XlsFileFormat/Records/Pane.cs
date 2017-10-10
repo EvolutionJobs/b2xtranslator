@@ -36,17 +36,17 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.Pane;
 
-        public UInt16 x;
+        public ushort x;
 
-        public UInt16 y;
+        public ushort y;
 
-        public UInt16 rwTop;
+        public ushort rwTop;
 
-        public UInt16 colLeft;
+        public ushort colLeft;
 
         public PaneType pnnAcct;
 
-        public Pane(IStreamReader reader, RecordType id, UInt16 length)
+        public Pane(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

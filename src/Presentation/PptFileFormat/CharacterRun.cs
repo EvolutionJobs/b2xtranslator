@@ -66,12 +66,12 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         #endregion
 
         public StyleMask? Style;
-        public UInt16? TypefaceIdx;
-        public UInt16? FEOldTypefaceIdx;
-        public UInt16? ANSITypefaceIdx;
-        public UInt16? SymbolTypefaceIdx;
-        public UInt16? Size;
-        public UInt16? Position;
+        public ushort? TypefaceIdx;
+        public ushort? FEOldTypefaceIdx;
+        public ushort? ANSITypefaceIdx;
+        public ushort? SymbolTypefaceIdx;
+        public ushort? Size;
+        public ushort? Position;
         public GrColorAtom Color;
 
         public CharacterRun(BinaryReader reader)
@@ -114,7 +114,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public string ToString(uint depth)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
             string indent = Record.IndentationForDepth(depth);
             result.Append(indent);

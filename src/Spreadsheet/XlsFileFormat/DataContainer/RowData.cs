@@ -105,7 +105,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <returns>true if the cell exists and false if not</returns>
         public bool checkCellExists(AbstractCellData cell)
         {
-            foreach (AbstractCellData var in this.cells)
+            foreach (var var in this.cells)
             {
                 if (var.Col == cell.Col)
                 {

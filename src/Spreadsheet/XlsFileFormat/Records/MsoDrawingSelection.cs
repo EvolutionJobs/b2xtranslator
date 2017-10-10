@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public Record selection;
 
-        public MsoDrawingSelection(IStreamReader reader, RecordType id, UInt16 length)
+        public MsoDrawingSelection(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

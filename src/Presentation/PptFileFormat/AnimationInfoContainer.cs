@@ -6,22 +6,22 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4116)]
+    [OfficeRecord(4116)]
     public class AnimationInfoContainer : RegularContainer
     {
         public AnimationInfoContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) { }
     }
 
-    [OfficeRecordAttribute(4081)]
+    [OfficeRecord(4081)]
     public class AnimationInfoAtom : Record
     {
         public byte[] dimColor;
-        public Int16 flags;
+        public short flags;
         public byte[] soundIdRef;
-        public Int32 delayTime;
-        public Int16 orderID;
-        public UInt16 slideCount;
+        public int delayTime;
+        public short orderID;
+        public ushort slideCount;
         public AnimBuildTypeEnum animBuildType;
         public byte animEffect;
         public byte animEffectDirection;
@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             fHide = Tools.Utils.BitmaskToBool(flags, 0x1 << 12);
             fAnimateBg = Tools.Utils.BitmaskToBool(flags, 0x1 << 14);
 
-            Int16 reserved = this.Reader.ReadInt16();
+            var reserved = this.Reader.ReadInt16();
             soundIdRef = this.Reader.ReadBytes(4);
             delayTime = this.Reader.ReadInt32();
             orderID = this.Reader.ReadInt16();

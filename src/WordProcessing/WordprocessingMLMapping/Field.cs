@@ -63,13 +63,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             if (this.classicFieldFormat.IsMatch(field))
             {
-                Match classic = this.classicFieldFormat.Match(field);
+                var classic = this.classicFieldFormat.Match(field);
                 this.FieldCode = classic.Groups[2].Value;
                 this.FieldExpansion = classic.Groups[4].Value;
             }
             else if (this.shortFieldFormat.IsMatch(field))
             {
-                Match shortField = this.shortFieldFormat.Match(field);
+                var shortField = this.shortFieldFormat.Match(field);
                 this.FieldCode = shortField.Groups[2].Value;
             }
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(156)]
+    [OfficeShapeType(156)]
     public class TextWave1 : ShapeType
     {
         public TextWave1()
@@ -16,12 +16,16 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.ConnectorAngles = "270,180,90,0";
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="topLeft,#0";
-            h1.yrange="0,4459";
-            Handle h2 = new Handle();
-            h2.position="#1,bottomRight";
-            h2.xrange = "8640,12960";
+            var h1 = new Handle
+            {
+                position = "topLeft,#0",
+                yrange = "0,4459"
+            };
+            var h2 = new Handle
+            {
+                position = "#1,bottomRight",
+                xrange = "8640,12960"
+            };
             this.Handles.Add(h1);
             this.Handles.Add(h2);
 

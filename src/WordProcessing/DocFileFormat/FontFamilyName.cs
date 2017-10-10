@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Base weight of font
         /// </summary>
-        public Int16 wWeight;
+        public short wWeight;
 
         /// <summary>
         /// Character set identifier
@@ -74,12 +74,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Name of font
         /// </summary>
-        public String xszFtn;
+        public string xszFtn;
 
         /// <summary>
         /// Alternative name of the font
         /// </summary>
-        public String xszAlt;
+        public string xszAlt;
 
         /// <summary>
         /// Panose
@@ -122,13 +122,15 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.panose = _reader.ReadBytes(10);
 
             //read the 24 bytes FontSignature
-            this.fs = new FontSignature();
-            this.fs.UnicodeSubsetBitfield0 = _reader.ReadUInt32();
-            this.fs.UnicodeSubsetBitfield1 = _reader.ReadUInt32();
-            this.fs.UnicodeSubsetBitfield2 = _reader.ReadUInt32();
-            this.fs.UnicodeSubsetBitfield3 = _reader.ReadUInt32();
-            this.fs.CodePageBitfield0 = _reader.ReadUInt32();
-            this.fs.CodePageBitfield1 = _reader.ReadUInt32();
+            this.fs = new FontSignature
+            {
+                UnicodeSubsetBitfield0 = _reader.ReadUInt32(),
+                UnicodeSubsetBitfield1 = _reader.ReadUInt32(),
+                UnicodeSubsetBitfield2 = _reader.ReadUInt32(),
+                UnicodeSubsetBitfield3 = _reader.ReadUInt32(),
+                CodePageBitfield0 = _reader.ReadUInt32(),
+                CodePageBitfield1 = _reader.ReadUInt32()
+            };
 
             //read the next \0 terminated string
             long strStart = reader.BaseStream.Position;

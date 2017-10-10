@@ -4,6 +4,9 @@
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Records\NumberChart.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj" />
     <ProjectReference Include="..\..\Common\OfficeDrawing\OfficeDrawing.csproj" />
     <ProjectReference Include="..\..\Common\OfficeGraph\OfficeGraph.csproj" />

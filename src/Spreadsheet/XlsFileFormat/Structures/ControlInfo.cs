@@ -73,11 +73,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// 
         /// The value MUST be greater than or equal to 0x0000. A value of 0x0000 specifies there is no accelerator associated with this control.
         /// </summary>
-        public Int16 accel1;
+        public short accel1;
 
         public ControlInfo(IStreamReader reader)
         {
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fDefault = Utils.BitmaskToBool(flags, 0x0001);
             this.fHelp = Utils.BitmaskToBool(flags, 0x0002);
             this.fCancel = Utils.BitmaskToBool(flags, 0x0004);

@@ -45,9 +45,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// =1 if the Show Placeholders option is turned on
         /// =0 if the Show All option is turned on
         /// </summary>
-        public UInt16 fHideObj;
+        public ushort fHideObj;
         
-        public HideObj(IStreamReader reader, RecordType id, UInt16 length)
+        public HideObj(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4001)]
+    [OfficeRecord(4001)]
     public class TextRunStyleAtom : TextStyleAtom
     {
         public TextRunStyleAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -51,7 +51,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         override public void AfterTextHeaderSet()
         {
-            TextAtom textAtom = this.TextHeaderAtom.TextAtom;
+            var textAtom = this.TextHeaderAtom.TextAtom;
 
             /* This can legitimately happen... */
             if (textAtom == null)
@@ -66,7 +66,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                 long pos = this.Reader.BaseStream.Position;
                 uint length = this.Reader.ReadUInt32();
 
-                ParagraphRun run = new ParagraphRun(this.Reader, false);
+                var run = new ParagraphRun(this.Reader, false);
                 run.Length = length;
                 this.PRuns.Add(run);
 
@@ -84,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             {
                 uint length = this.Reader.ReadUInt32();
 
-                CharacterRun run = new CharacterRun(this.Reader);
+                var run = new CharacterRun(this.Reader);
                 run.Length = length;
                 this.CRuns.Add(run);
 

@@ -69,10 +69,10 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
             int count = 0;
             // create the string _entries 
-            foreach (String var in sstData.StringList)
+            foreach (var var in sstData.StringList)
             {
                 count++;
-                List<StringFormatAssignment> list = sstData.getFormatingRuns(count);
+                var list = sstData.getFormatingRuns(count);
 
                 _writer.WriteStartElement("si");
 

@@ -13,7 +13,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// cbDIB = sizeOf(biHeader) + sizeOf(colors) + sizeOf(bitmapData) + 10<br/>
         /// MUST be greater or equal to 40, and MUST be less or equal to 65576.
         /// </summary>
-        public Int32 cbDIB;
+        public int cbDIB;
 
         public ToolbarControlBitmap(VirtualStreamReader reader)
             : base(reader, ByteStructure.VARIABLE_LENGTH)

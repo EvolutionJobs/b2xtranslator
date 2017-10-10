@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(186)]
+    [OfficeShapeType(186)]
     public class BracePairType : ShapeType
     {
         public BracePairType()
@@ -37,10 +37,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "@13,@11,@14,@12";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="topLeft,#0";
-            HandleOne.switchHandle="true";
-            HandleOne.yrange = "0,5400";
+            var HandleOne = new Handle
+            {
+                position = "topLeft,#0",
+                switchHandle = "true",
+                yrange = "0,5400"
+            };
             this.Handles.Add(HandleOne);
 
             this.Limo = "10800,10800";

@@ -34,13 +34,13 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1007)]
+    [OfficeRecord(1007)]
     public class SlideAtom : Record
     {
         public SSlideLayoutAtom Layout;
         public UInt32 MasterId;
-        public Int32 NotesId;
-        public UInt16 Flags;
+        public int NotesId;
+        public ushort Flags;
 
         public SlideAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

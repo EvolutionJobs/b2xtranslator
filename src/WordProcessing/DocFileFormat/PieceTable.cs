@@ -43,12 +43,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// A dictionary with character positions as keys and the matching FCs as values
         /// </summary>
-        public Dictionary<Int32, Int32> FileCharacterPositions;
+        public Dictionary<int, int> FileCharacterPositions;
 
         /// <summary>
         /// A dictionary with file character positions as keys and the matching CPs as values
         /// </summary>
-        public Dictionary<Int32, Int32> CharacterPositions;
+        public Dictionary<int, int> CharacterPositions;
 
         /// <summary>
         /// Parses the pice table and creates a list of PieceDescriptors.
@@ -58,7 +58,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public PieceTable(FileInformationBlock fib, VirtualStream tableStream)
         {
             //Read the bytes of complex file information
-            byte[] bytes = new byte[fib.lcbClx];
+            var bytes = new byte[fib.lcbClx];
             tableStream.Read(bytes, 0, (int)fib.lcbClx, (int)fib.fcClx);
 
             this.Pieces = new List<PieceDescriptor>();
@@ -76,10 +76,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     //check if the type of the entry is a piece table
                     if (type == 2)
                     {
-                        Int32 lcb = System.BitConverter.ToInt32(bytes, pos + 1);
+                        var lcb = System.BitConverter.ToInt32(bytes, pos + 1);
   
                         //read the piece table
-                        byte[] piecetable = new byte[lcb];
+                        var piecetable = new byte[lcb];
                         Array.Copy(bytes, pos + 5, piecetable, 0, piecetable.Length);
 
                         //count of PCD _entries
@@ -90,26 +90,28 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                         {
                             //read the CP 
                             int indexCp = i * 4;
-                            Int32 cp = System.BitConverter.ToInt32(piecetable, indexCp);
+                            var cp = System.BitConverter.ToInt32(piecetable, indexCp);
 
                             //read the next CP
                             int indexCpNext = (i+1) * 4;
-                            Int32 cpNext = System.BitConverter.ToInt32(piecetable, indexCpNext);
+                            var cpNext = System.BitConverter.ToInt32(piecetable, indexCpNext);
 
                             //read the PCD
                             int indexPcd = ((n + 1) * 4) + (i * 8);
-                            byte[] pcdBytes = new byte[8];
+                            var pcdBytes = new byte[8];
                             Array.Copy(piecetable, indexPcd, pcdBytes, 0, 8);
-                            PieceDescriptor pcd = new PieceDescriptor(pcdBytes);
-                            pcd.cpStart = cp;
-                            pcd.cpEnd = cpNext;
-                            
+                            var pcd = new PieceDescriptor(pcdBytes)
+                            {
+                                cpStart = cp,
+                                cpEnd = cpNext
+                            };
+
                             //add pcd
                             this.Pieces.Add(pcd);
 
                             //add positions
-                            Int32 f = (Int32)pcd.fc;
-                            Int32 multi = 1;
+                            var f = (int)pcd.fc;
+                            var multi = 1;
                             if (pcd.encoding == Encoding.Unicode)
                             {
                                 multi = 2;
@@ -134,7 +136,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     //entry is no piecetable so goon
                     else if (type == 1)
                     {
-                        Int16 cb = System.BitConverter.ToInt16(bytes, pos + 1);
+                        var cb = System.BitConverter.ToInt16(bytes, pos + 1);
                         pos = pos + 1 + 2 + cb;
                     }
                     else
@@ -152,23 +154,23 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
         public List<char> GetAllChars(VirtualStream wordStream)
         {
-            List<char> chars = new List<char>();
-            foreach (PieceDescriptor pcd in this.Pieces)
+            var chars = new List<char>();
+            foreach (var pcd in this.Pieces)
             {
                 //get the FC end of this piece
-                Int32 pcdFcEnd = pcd.cpEnd - pcd.cpStart;
+                var pcdFcEnd = pcd.cpEnd - pcd.cpStart;
                 if (pcd.encoding == Encoding.Unicode)
                     pcdFcEnd *= 2;
-                pcdFcEnd += (Int32)pcd.fc;
+                pcdFcEnd += (int)pcd.fc;
 
-                int cb = pcdFcEnd - (Int32)pcd.fc;
-                byte[] bytes = new byte[cb];
+                int cb = pcdFcEnd - (int)pcd.fc;
+                var bytes = new byte[cb];
 
                 //read all bytes 
-                wordStream.Read(bytes, 0, cb, (Int32)pcd.fc);
+                wordStream.Read(bytes, 0, cb, (int)pcd.fc);
 
                 //get the chars
-                char[] plainChars = pcd.encoding.GetString(bytes).ToCharArray();
+                var plainChars = pcd.encoding.GetString(bytes).ToCharArray();
 
                 //add to list
                 foreach (char c in plainChars)
@@ -179,18 +181,18 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             return chars;
         }
 
-        public List<char> GetChars(Int32 fcStart, Int32 fcEnd, VirtualStream wordStream)
+        public List<char> GetChars(int fcStart, int fcEnd, VirtualStream wordStream)
         {
-            List<char> chars = new List<char>();
+            var chars = new List<char>();
             for (int i = 0; i < this.Pieces.Count; i++)
             {
-                PieceDescriptor pcd = this.Pieces[i];
+                var pcd = this.Pieces[i];
 
                 //get the FC end of this piece
-                Int32 pcdFcEnd = pcd.cpEnd - pcd.cpStart;
+                var pcdFcEnd = pcd.cpEnd - pcd.cpStart;
                 if (pcd.encoding == Encoding.Unicode)
                     pcdFcEnd *= 2;
-                pcdFcEnd += (Int32)pcd.fc;
+                pcdFcEnd += (int)pcd.fc;
 
                 if (pcdFcEnd < fcStart)
                 {
@@ -204,13 +206,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
                     //get count of bytes
                     int cb = pcdFcEnd - fcStart;
-                    byte[] bytes = new byte[cb];
+                    var bytes = new byte[cb];
 
                     //read all bytes
-                    wordStream.Read(bytes, 0, cb, (Int32)fcStart);
+                    wordStream.Read(bytes, 0, cb, (int)fcStart);
 
                     //get the chars
-                    char[] plainChars = pcd.encoding.GetString(bytes).ToCharArray();
+                    var plainChars = pcd.encoding.GetString(bytes).ToCharArray();
 
                     //add to list
                     foreach (char c in plainChars)
@@ -224,14 +226,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     //read from pc.fc to pcdFcEnd
 
                     //get count of bytes
-                    int cb = pcdFcEnd - (Int32)pcd.fc;
-                    byte[] bytes = new byte[cb];
+                    int cb = pcdFcEnd - (int)pcd.fc;
+                    var bytes = new byte[cb];
 
                     //read all bytes 
-                    wordStream.Read(bytes, 0, cb, (Int32)pcd.fc);
+                    wordStream.Read(bytes, 0, cb, (int)pcd.fc);
 
                     //get the chars
-                    char[] plainChars = pcd.encoding.GetString(bytes).ToCharArray();
+                    var plainChars = pcd.encoding.GetString(bytes).ToCharArray();
 
                     //add to list
                     foreach (char c in plainChars)
@@ -245,14 +247,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     //read from pcd.fc to fcEnd
 
                     //get count of bytes
-                    int cb = fcEnd - (Int32)pcd.fc;
-                    byte[] bytes = new byte[cb];
+                    int cb = fcEnd - (int)pcd.fc;
+                    var bytes = new byte[cb];
 
                     //read all bytes 
-                    wordStream.Read(bytes, 0, cb, (Int32)pcd.fc);
+                    wordStream.Read(bytes, 0, cb, (int)pcd.fc);
 
                     //get the chars
-                    char[] plainChars = pcd.encoding.GetString(bytes).ToCharArray();
+                    var plainChars = pcd.encoding.GetString(bytes).ToCharArray();
 
                     //add to list
                     foreach (char c in plainChars)
@@ -269,13 +271,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
                     //get count of bytes
                     int cb = fcEnd - fcStart;
-                    byte[] bytes = new byte[cb];
+                    var bytes = new byte[cb];
 
                     //read all bytes 
-                    wordStream.Read(bytes, 0, cb, (Int32)fcStart);
+                    wordStream.Read(bytes, 0, cb, (int)fcStart);
 
                     //get the chars
-                    char[] plainChars = pcd.encoding.GetString(bytes).ToCharArray();
+                    var plainChars = pcd.encoding.GetString(bytes).ToCharArray();
 
                     //set the list
                     chars = new List<char>(plainChars);

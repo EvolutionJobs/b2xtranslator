@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1017)]
+    [OfficeRecord(1017)]
     public class SlideShowSlideInfoAtom: Record
     {
         public int slideTime;
@@ -76,7 +76,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
     }
 
-    [OfficeRecordAttribute(12001)]
+    [OfficeRecord(12001)]
     public class Comment10Atom : Record
     {
         public Comment10Atom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -86,7 +86,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(12011)]
+    [OfficeRecord(12011)]
     public class SlideTime10Atom : Record
     {
         public byte[] fileTime;
@@ -97,7 +97,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61764)]
+    [OfficeRecord(61764)]
     public class ExtTimeNodeContainer : RegularContainer
     {
         public ExtTimeNodeContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -107,7 +107,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61735)]
+    [OfficeRecord(61735)]
     public class TimeNodeAtom : Record
     {
         public uint restart;
@@ -153,7 +153,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61757)]
+    [OfficeRecord(61757)]
     public class TimePropertyList4TimeNodeContainer : RegularContainer
     {
         public TimePropertyList4TimeNodeContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -163,7 +163,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(11003)]
+    [OfficeRecord(11003)]
     public class VisualShapeAtom : Record //can be VisualSoundAtom, VisualShapeChartElementAtom, VisualShapeGeneralAtom
     {
         public TimeVisualElementEnum type;
@@ -189,7 +189,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         SoundType = 2
     }
 
-    [OfficeRecordAttribute(11008)]
+    [OfficeRecord(11008)]
     public class HashCode10Atom : Record
     {
         public uint hash;
@@ -200,7 +200,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(11009)]
+    [OfficeRecord(11009)]
     public class VisualPageAtom : Record
     {
         public TimeVisualElementEnum type;
@@ -223,7 +223,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         AllTextRange
     }
 
-    [OfficeRecordAttribute(11010)]
+    [OfficeRecord(11010)]
     public class BuildListContainer : RegularContainer
     {
         public BuildListContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -233,7 +233,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61733)]
+    [OfficeRecord(61733)]
     public class TimeConditionContainer : RegularContainer
     {
         public TimeConditionContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -243,7 +243,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61762)]
+    [OfficeRecord(61762)]
     public class TimeVariantValue : Record //can be TimeVariantBool, TimeVariantInt, TimeVariantFloat or TimeVariantString
     {
         public TimeVariantTypeEnum type;
@@ -303,7 +303,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         String
     }
 
-    [OfficeRecordAttribute(61737)]
+    [OfficeRecord(61737)]
     public class TimeModifierAtom : Record 
     {
         public uint type;
@@ -323,7 +323,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61739)]
+    [OfficeRecord(61739)]
     public class TimeAnimateBehaviourContainer : RegularContainer
     {
         public TimeAnimateBehaviourContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -333,7 +333,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61745)]
+    [OfficeRecord(61745)]
     public class TimeSetBehaviourContainer : RegularContainer
     {
         public TimeSetBehaviourContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -343,7 +343,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61736)]
+    [OfficeRecord(61736)]
     public class TimeConditionAtom : Record
     {
         public TriggerObjectEnum triggerObject;
@@ -368,7 +368,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61748)]
+    [OfficeRecord(61748)]
     public class TimeAnimateBehaviorAtom : Record
     {
         public uint calcMode;
@@ -407,7 +407,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         Color
     }
 
-    [OfficeRecordAttribute(61759)]
+    [OfficeRecord(61759)]
     public class TimeAnimationValueListContainer : RegularContainer
     {
         public TimeAnimationValueListContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -417,7 +417,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61738)]
+    [OfficeRecord(61738)]
     public class TimeBehaviorContainer : RegularContainer
     {
         public TimeBehaviorContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -427,7 +427,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61747)]
+    [OfficeRecord(61747)]
     public class TimeBehaviorAtom : Record
     {
         public bool fAdditivePropertyUsed;
@@ -450,7 +450,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61758)]
+    [OfficeRecord(61758)]
     public class TimeStringListContainer : RegularContainer
     {
         public TimeStringListContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -460,7 +460,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61756)]
+    [OfficeRecord(61756)]
     public class ClientVisualElementContainer : RegularContainer
     {
         public ClientVisualElementContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -470,7 +470,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61763)]
+    [OfficeRecord(61763)]
     public class TimeAnimationValueAtom : Record
     {
         public int time;
@@ -481,7 +481,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61754)]
+    [OfficeRecord(61754)]
     public class TimeSetBehaviorAtom : Record
     {
         public bool fToPropertyUsed;
@@ -500,7 +500,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61761)]
+    [OfficeRecord(61761)]
     public class TimeSequenceDataAtom : Record
     {
         public uint concurrency;
@@ -526,7 +526,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61742)]
+    [OfficeRecord(61742)]
     public class TimeMotionBehaviorContainer : RegularContainer
     {
         public TimeMotionBehaviorContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -536,7 +536,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61751)]
+    [OfficeRecord(61751)]
     public class TimeMotionBehaviorAtom : Record
     {
         public bool fByPropertyUsed;
@@ -577,7 +577,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     }
 
 
-    [OfficeRecordAttribute(61744)]
+    [OfficeRecord(61744)]
     public class TimeScaleBehaviorContainer : RegularContainer
     {
         public TimeScaleBehaviorContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -587,7 +587,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61741)]
+    [OfficeRecord(61741)]
     public class TimeEffectBehaviorContainer : RegularContainer
     {
         public TimeEffectBehaviorContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -597,7 +597,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61750)]
+    [OfficeRecord(61750)]
     public class TimeEffectBehaviorAtom : Record
     {
         public bool fTransitionPropertyUsed;
@@ -618,7 +618,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61752)]
+    [OfficeRecord(61752)]
     public class TimeRotationBehaviorAtom : Record
     {
         public bool fByPropertyUsed;
@@ -649,7 +649,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61753)]
+    [OfficeRecord(61753)]
     public class TimeScaleBehaviorAtom : Record
     {
         public bool fByPropertyUsed;
@@ -685,7 +685,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61743)]
+    [OfficeRecord(61743)]
     public class TimeRotationBehaviorContainer : RegularContainer
     {
         public TimeRotationBehaviorContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -695,7 +695,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     }
 
 
-    [OfficeRecordAttribute(61746)]
+    [OfficeRecord(61746)]
     public class TimeCommandBehaviorContainer : RegularContainer
     {
         public TimeCommandBehaviorContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -704,21 +704,21 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61765)]
+    [OfficeRecord(61765)]
     public class SlaveContainer : RegularContainer
     {
         public SlaveContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) { }
     }
 
-    [OfficeRecordAttribute(61740)]
+    [OfficeRecord(61740)]
     public class TimeColorBehaviorContainer : RegularContainer
     {
         public TimeColorBehaviorContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) { }
     }
 
-    [OfficeRecordAttribute(61749)]
+    [OfficeRecord(61749)]
     public class TimeColorBehaviorAtom : Record
     {
         public bool fByPropertyUsed;
@@ -747,7 +747,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61755)]
+    [OfficeRecord(61755)]
     public class TimeCommandBehaviorAtom : Record
     {
         public bool fTypePropertyUsed;
@@ -766,7 +766,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(61760)]
+    [OfficeRecord(61760)]
     public class TimeIterateDataAtom : Record
     {
         public float iterateInterval;

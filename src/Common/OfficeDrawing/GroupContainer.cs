@@ -32,7 +32,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF003)]
+    [OfficeRecord(0xF003)]
     public class GroupContainer : RegularContainer
     {
         public int Index;
@@ -42,18 +42,18 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         {
             for (int i = 0; i < this.Children.Count; i++)
             {
-                Record groupChild = this.Children[i];
+                var groupChild = this.Children[i];
                 if (groupChild.TypeCode == 0xF003)
                 {
                     // the child is a subgroup
-                    GroupContainer group = (GroupContainer)this.Children[i];
+                    var group = (GroupContainer)this.Children[i];
                     group.Index = i;
                     this.Children[i] = group;
                 }
                 else if (groupChild.TypeCode == 0xF004)
                 {
                     // the child is a shape
-                    ShapeContainer shape = (ShapeContainer)this.Children[i];
+                    var shape = (ShapeContainer)this.Children[i];
                     shape.Index = i;
                     this.Children[i] = shape;
                 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(9)]
+    [OfficeShapeType(9)]
     public class HexagonType : ShapeType
     {
         public HexagonType()
@@ -30,9 +30,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "1800,1800,19800,19800;3600,3600,18000,18000;6300,6300,15300,15300";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,topLeft";
-            HandleOne.xrange = "0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "0,10800"
+            };
             Handles.Add(HandleOne);
 
         }

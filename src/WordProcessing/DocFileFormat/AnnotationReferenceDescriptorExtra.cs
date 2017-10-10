@@ -9,9 +9,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
     {
         public DateAndTime Date;
 
-        public Int32 CommentDepth;
+        public int CommentDepth;
 
-        public Int32 ParentOffset;
+        public int ParentOffset;
 
         public AnnotationReferenceDescriptorExtra(VirtualStreamReader reader, int length)
             : base(reader, length)
@@ -22,7 +22,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.ParentOffset = _reader.ReadInt32();
             if (length > 16)
             {
-                Int32 flag = _reader.ReadInt32();
+                var flag = _reader.ReadInt32();
             }
         }
     }

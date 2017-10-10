@@ -33,7 +33,7 @@ using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4080)]
+    [OfficeRecord(4080)]
     public class SlideListWithText : RegularContainer
     {
         public enum Instances
@@ -66,12 +66,12 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             SlidePersistAtom curSpAtom = null;
             TextHeaderAtom curThAtom = null;
 
-            foreach (Record r in this.Children)
+            foreach (var r in this.Children)
             {
-                SlidePersistAtom spAtom = r as SlidePersistAtom;
-                TextHeaderAtom thAtom = r as TextHeaderAtom;
-                ITextDataRecord tdRecord = r as ITextDataRecord;
-                TextSpecialInfoAtom tsiAtom = r as TextSpecialInfoAtom;
+                var spAtom = r as SlidePersistAtom;
+                var thAtom = r as TextHeaderAtom;
+                var tdRecord = r as ITextDataRecord;
+                var tsiAtom = r as TextSpecialInfoAtom;
 
                 if (spAtom != null)
                 {
@@ -109,12 +109,12 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public TextHeaderAtom FindTextHeaderForOutlineTextRef(OutlineTextRefAtom otrAtom)
         {
-            Slide slide = otrAtom.FirstAncestorWithType<Slide>();
+            var slide = otrAtom.FirstAncestorWithType<Slide>();
 
             if (slide == null)
                 throw new NotSupportedException("Can't find TextHeaderAtom for OutlineTextRefAtom which has no Slide ancestor");
 
-            List<TextHeaderAtom> thAtoms = this.SlideToPlaceholderTextHeaders[slide.PersistAtom];
+            var thAtoms = this.SlideToPlaceholderTextHeaders[slide.PersistAtom];
             return thAtoms[otrAtom.Index];
         }
     }

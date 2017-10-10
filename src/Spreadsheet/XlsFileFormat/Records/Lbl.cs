@@ -105,7 +105,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// The values 17 to 31 are user-defined values. User-defined values are specified in FnGroupName. 
         /// The values zero to 16 are defined as specified by the FunctionCategory enum.
         /// </summary>
-        public UInt16 fGrp;
+        public ushort fGrp;
 
         /// <summary>
         /// A bit that specifies whether the defined name is published. This bit is ignored 
@@ -138,14 +138,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// An unsigned integer that specifies length of rgce in bytes.
         /// </summary>
-        public UInt16 cce;
+        public ushort cce;
 
         /// <summary>
         /// An unsigned integer that specifies if the defined name is a local name, and if so, 
         /// which sheet it is on. If this is not 0, the defined name is a local name and the value 
         /// MUST be a one-based index to the collection of BoundSheet8 records as they appear in the Global Substream.
         /// </summary>
-        public UInt16 itab;
+        public ushort itab;
 
         /// <summary>
         /// An XLUnicodeStringNoCch that specifies the name for the defined name. If fBuiltin is zero, 
@@ -161,13 +161,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public Stack<AbstractPtg> rgce;
 
-        public Lbl(IStreamReader reader, RecordType id, UInt16 length)
+        public Lbl(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             //Debug.Assert(this.Id == ID);
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fHidden = Utils.BitmaskToBool(flags, 0x0001);
             this.fFunc = Utils.BitmaskToBool(flags, 0x0002);
             this.fOB = Utils.BitmaskToBool(flags, 0x0004);

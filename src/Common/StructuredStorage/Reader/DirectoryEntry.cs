@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             Name = _fileHandler.ReadString(64);
 
             // Name length check: lengthOfName = length of the element in bytes including Unicode NULL
-            UInt16 lengthOfName = _fileHandler.ReadUInt16();
+            var lengthOfName = _fileHandler.ReadUInt16();
             // Commented out due to trouble with odd unicode-named streams in PowerPoint -- flgr
             /*if (lengthOfName != (_name.Length + 1) * 2)
             {
@@ -86,7 +86,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             RightSiblingSid = _fileHandler.ReadUInt32();
             ChildSiblingSid = _fileHandler.ReadUInt32();
 
-            byte[] array = new byte[16];
+            var array = new byte[16];
             _fileHandler.Read(array);
             ClsId = new Guid(array);
 
@@ -97,8 +97,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             _fileHandler.ReadUInt64();
             StartSector = _fileHandler.ReadUInt32();
 
-            UInt32 sizeLow = _fileHandler.ReadUInt32();
-            UInt32 sizeHigh = _fileHandler.ReadUInt32();
+            var sizeLow = _fileHandler.ReadUInt32();
+            var sizeHigh = _fileHandler.ReadUInt32();
 
             if (_header.SectorSize == 512 && sizeHigh != 0x0)
             {

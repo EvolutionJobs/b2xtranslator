@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(62)]
+    [OfficeShapeType(62)]
     public class WedgeRoundedRectCalloutType : ShapeType
     {
         public WedgeRoundedRectCalloutType()
@@ -60,8 +60,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "791,791,20809,20809";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,#1";
+            var HandleOne = new Handle
+            {
+                position = "#0,#1"
+            };
             Handles.Add(HandleOne);
 
         }

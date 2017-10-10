@@ -35,11 +35,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.PivotChartBits;
 
-        public UInt16 rt;
+        public ushort rt;
 
         public bool fGXHide;
 
-        public PivotChartBits(IStreamReader reader, RecordType id, UInt16 length)
+        public PivotChartBits(IStreamReader reader, RecordType id, ushort length)
             :base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -50,7 +50,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             //unused
             reader.ReadBytes(2);
 
-            byte[] bytes = reader.ReadBytes(2);
+            var bytes = reader.ReadBytes(2);
 
             fGXHide = BitConverter.ToBoolean(bytes, 0x1);
 

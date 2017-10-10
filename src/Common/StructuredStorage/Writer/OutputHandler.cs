@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// Writes a UInt16 to the stream.
         /// </summary>
         /// <param name="value">The UInt16 to write.</param>
-        internal void writeUInt16(UInt16 value)
+        internal void writeUInt16(ushort value)
         {
             _stream.Write(_bitConverter.getBytes(value), 0, 2);
         }
@@ -122,7 +122,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="data">The data to write.</param>
         /// <param name="sectorSize">The size of a sector.</param>
         /// <param name="padding">The byte which is used for padding</param>
-        internal void writeSectors(byte[] data, UInt16 sectorSize, byte padding)
+        internal void writeSectors(byte[] data, ushort sectorSize, byte padding)
         {
             uint remaining = (uint)(data.LongLength % sectorSize);
             _stream.Write(data, 0, data.Length);
@@ -143,7 +143,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="data">The data to write.</param>
         /// <param name="sectorSize">The size of a sector.</param>
         /// <param name="padding">The UInt32 which is used for padding</param>
-        internal void writeSectors(byte[] data, UInt16 sectorSize, UInt32 padding)
+        internal void writeSectors(byte[] data, ushort sectorSize, UInt32 padding)
         {
             uint remaining = (uint)(data.LongLength % sectorSize);
             _stream.Write(data, 0, data.Length);
@@ -173,11 +173,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         {
             const int bytesToReadAtOnce = 512;
 
-            BinaryReader reader = new BinaryReader(BaseStream);
+            var reader = new BinaryReader(BaseStream);
             reader.BaseStream.Seek(0, SeekOrigin.Begin);
             while (true)
             {
-                byte[] array = reader.ReadBytes((int)bytesToReadAtOnce);
+                var array = reader.ReadBytes((int)bytesToReadAtOnce);
                 stream.Write(array, 0, array.Length);
                 if (array.Length != bytesToReadAtOnce)
                 {

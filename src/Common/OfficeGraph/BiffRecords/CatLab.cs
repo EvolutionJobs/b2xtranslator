@@ -92,7 +92,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// MUST be a value greater than or equal to 0 (0%) and less than or equal to 1000 (1000%).
         /// </summary>
-        public UInt16 wOffset;
+        public ushort wOffset;
 
         /// <summary>
         /// An unsigned integer that specifies the alignment of the axis label.
@@ -101,7 +101,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
 
         public CatLabelType cAutoCatLabelReal;
 
-        public CatLab(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public CatLab(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

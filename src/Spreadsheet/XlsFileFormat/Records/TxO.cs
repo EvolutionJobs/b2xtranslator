@@ -96,7 +96,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// contained in the Continue records immediately following this record. <br/>
         /// MUST be less than or equal to 255.
         /// </summary>
-        public UInt16 cchText;
+        public ushort cchText;
 
         /// <summary>
         /// An unsigned integer that specifies the number of bytes of formatting run information in the 
@@ -104,12 +104,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// If cchText is 0, this value MUST be 0.<br/>
         /// Otherwise the value MUST be greater than or equal to 16 and MUST be a multiple of 8.
         /// </summary>
-        public UInt16 cbRuns;
+        public ushort cbRuns;
 
         /// <summary>
         /// A FontIndex that specifies the font when cchText is 0.<br/>
         /// </summary>
-        public UInt16 ifntEmpty;
+        public ushort ifntEmpty;
 
         /// <summary>
         /// An ObjFmla that specifies the parsed expression of the formula for the text.
@@ -130,7 +130,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public TxORuns runs;
 
-        public TxO(IStreamReader reader, RecordType id, UInt16 length)
+        public TxO(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -148,7 +148,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             for (int noOfTries = 1; noOfTries < 3; noOfTries++)
             {
                 // initialize class members from stream
-                UInt16 flags = reader.ReadUInt16();
+                var flags = reader.ReadUInt16();
                 this.hAlignment = (HorizontalAlignment)Utils.BitmaskToInt(flags, 0xE);
                 this.vAlignment = (VerticalAlignment)Utils.BitmaskToInt(flags, 0x70);
                 this.rot = (TextRotation)reader.ReadUInt16();

@@ -43,9 +43,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// =0 if Precision As Displayed  option is selected
         /// </summary>
-        public UInt16 fFullPrec;
+        public ushort fFullPrec;
 
-        public CalcPrecision(IStreamReader reader, RecordType id, UInt16 length)
+        public CalcPrecision(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

@@ -33,7 +33,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
     public class PtgAreaErr3d : AbstractPtg
     {
         public const PtgNumber ID = PtgNumber.PtgAreaErr3d;
-        public UInt16 ixti;
+        public ushort ixti;
 
         public PtgAreaErr3d(IStreamReader reader, PtgNumber ptgid)
             :

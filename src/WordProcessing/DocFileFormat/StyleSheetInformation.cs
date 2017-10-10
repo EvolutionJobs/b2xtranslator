@@ -44,12 +44,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Count of styles in stylesheet
         /// </summary>
-        public UInt16 cstd;
+        public ushort cstd;
 	
         /// <summary>
         /// Length of STD Base as stored in a file
         /// </summary>
-        public UInt16 cbSTDBaseInFile;
+        public ushort cbSTDBaseInFile;
 	
         /// <summary>
         /// Are built-in stylenames stored?
@@ -59,30 +59,30 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Max sti known when this file was written
         /// </summary>
-        public UInt16 stiMaxWhenSaved;
+        public ushort stiMaxWhenSaved;
 
         /// <summary>
         /// How many fixed-index istds are there?
         /// </summary>
-	    public UInt16 istdMaxFixedWhenSaved;
+	    public ushort istdMaxFixedWhenSaved;
 
         /// <summary>
         /// Current version of built-in stylenames
         /// </summary>
-	    public UInt16 nVerBuiltInNamesWhenSaved;
+	    public ushort nVerBuiltInNamesWhenSaved;
 
         /// <summary>
         /// This is a list of the default fonts for this style sheet.<br/>
         /// The first is for ASCII characters (0-127), the second is for East Asian characters, 
         /// and the third is the default font for non-East Asian, non-ASCII text.
         /// </summary>
-	    public UInt16[] rgftcStandardChpStsh;	
+	    public ushort[] rgftcStandardChpStsh;	
 
 	    /// <summary>
 	    /// Size of each lsd in mpstilsd<br/>
         /// The count of lsd's is stiMaxWhenSaved
 	    /// </summary>
-        public UInt16 cbLSD;
+        public ushort cbLSD;
 
         /// <summary>
         /// latent style data (size == stiMaxWhenSaved upon save!)
@@ -106,7 +106,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.istdMaxFixedWhenSaved = System.BitConverter.ToUInt16(bytes, 8);
             this.nVerBuiltInNamesWhenSaved = System.BitConverter.ToUInt16(bytes, 10);
 
-            this.rgftcStandardChpStsh = new UInt16[4];
+            this.rgftcStandardChpStsh = new ushort[4];
             this.rgftcStandardChpStsh[0] = System.BitConverter.ToUInt16(bytes, 12);
             this.rgftcStandardChpStsh[1] = System.BitConverter.ToUInt16(bytes, 14);
             this.rgftcStandardChpStsh[2] = System.BitConverter.ToUInt16(bytes, 16);
@@ -122,8 +122,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 this.mpstilsd = new LatentStyleData[this.stiMaxWhenSaved];
                 for (int i = 0; i < this.mpstilsd.Length; i++)
                 {
-                    LatentStyleData lsd = new LatentStyleData();
-                    lsd.grflsd = System.BitConverter.ToUInt32(bytes, 22 + (i * cbLSD));
+                    var lsd = new LatentStyleData
+                    {
+                        grflsd = System.BitConverter.ToUInt32(bytes, 22 + (i * cbLSD))
+                    };
                     lsd.fLocked = Utils.BitmaskToBool((int)lsd.grflsd, 0x1);
                     this.mpstilsd[i] = lsd;
                 }

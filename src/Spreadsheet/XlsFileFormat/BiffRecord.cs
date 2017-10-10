@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// <param name="reader">Streamreader</param>
         /// <param name="id">Record ID - Recordtype</param>
         /// <param name="length">The recordlegth</param>
-        public BiffRecord(IStreamReader reader, RecordType id, UInt16 length)
+        public BiffRecord(IStreamReader reader, RecordType id, ushort length)
         {
             _reader = reader;
             _offset = _reader.BaseStream.Position;
@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             _length = length;
         }
 
-        private static Dictionary<UInt16, Type> TypeToRecordClassMapping = new Dictionary<UInt16, Type>();
+        private static Dictionary<ushort, Type> TypeToRecordClassMapping = new Dictionary<ushort, Type>();
 
         static BiffRecord()
         {
@@ -64,13 +64,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                 typeof(BOF).Namespace);
         }
 
-        public static void UpdateTypeToRecordClassMapping(Assembly assembly, String ns)
+        public static void UpdateTypeToRecordClassMapping(Assembly assembly, string ns)
         {
-            foreach (Type t in assembly.GetTypes())
+            foreach (var t in assembly.GetTypes())
             {
                 if (ns == null || t.Namespace == ns)
                 {
-                    object[] attrs = t.GetCustomAttributes(typeof(BiffRecordAttribute), false);
+                    var attrs = t.GetCustomAttributes(typeof(BiffRecordAttribute), false);
 
                     BiffRecordAttribute attr = null;
 
@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                     if (attr != null)
                     {
                         // Add the type codes of the array
-                        foreach (UInt16 typeCode in attr.TypeCodes)
+                        foreach (ushort typeCode in attr.TypeCodes)
                         {
                             if (TypeToRecordClassMapping.ContainsKey(typeCode))
                             {
@@ -101,8 +101,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             long position = reader.BaseStream.Position;
                 
             // read type of the next record
-            RecordType nextRecord = (RecordType)reader.ReadUInt16();
-            UInt16 length = reader.ReadUInt16();
+            var nextRecord = (RecordType)reader.ReadUInt16();
+            var length = reader.ReadUInt16();
 
             // skip leading StartBlock/EndBlock records
             if (nextRecord == RecordType.StartBlock
@@ -119,7 +119,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             else if (nextRecord == RecordType.FrtWrapper)
             {
                 // return type of wrapped Biff record
-                FrtWrapper frtWrapper = new FrtWrapper(reader, nextRecord, length);
+                var frtWrapper = new FrtWrapper(reader, nextRecord, length);
                 reader.BaseStream.Position = position;
                 return frtWrapper.wrappedRecord.Id;
             }
@@ -136,8 +136,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             BiffRecord result = null;
             try
             {
-                RecordType id = (RecordType)reader.ReadUInt16();
-                UInt16 length = reader.ReadUInt16();
+                var id = (RecordType)reader.ReadUInt16();
+                var length = reader.ReadUInt16();
 
                 // skip leading StartBlock/EndBlock records
                 if (id == RecordType.StartBlock ||
@@ -155,15 +155,15 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                 else if (id == RecordType.FrtWrapper)
                 {
                     // return type of wrapped Biff record
-                    FrtWrapper frtWrapper = new FrtWrapper(reader, id, length);
+                    var frtWrapper = new FrtWrapper(reader, id, length);
                     return frtWrapper.wrappedRecord;
                 }
 
                 Type cls;
-                if (TypeToRecordClassMapping.TryGetValue((UInt16)id, out cls))
+                if (TypeToRecordClassMapping.TryGetValue((ushort)id, out cls))
                 {
-                    ConstructorInfo constructor = cls.GetConstructor(
-                        new Type[] { typeof(IStreamReader), typeof(RecordType), typeof(UInt16) }
+                    var constructor = cls.GetConstructor(
+                        new Type[] { typeof(IStreamReader), typeof(RecordType), typeof(ushort) }
                         );
 
                     try

@@ -53,12 +53,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// For more information about built-in formats, see <code>XF</code> Extended Format (E0h). 
         /// </summary>
-        public UInt16 ifmt;	
+        public ushort ifmt;	
 
         /// <summary>
         /// Length of the string
         /// </summary>
-        public UInt16 cch;	
+        public ushort cch;	
 
         /// <summary>
         /// Option Flags (described in Unicode Strings in BIFF8 section) 
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public string rgb;	
 
 
-        public Format(IStreamReader reader, RecordType id, UInt16 length)
+        public Format(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

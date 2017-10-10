@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(84)]
+    [OfficeShapeType(84)]
     public class BevelType : ShapeType
     {
         public BevelType()
@@ -32,10 +32,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 
             this.TextboxRectangle = "@0,@0,@1,@2";
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,topLeft";
-            HandleOne.switchHandle="true";
-            HandleOne.xrange = "0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                switchHandle = "true",
+                xrange = "0,10800"
+            };
             this.Handles.Add(HandleOne);
 
             this.Limo = "10800,10800";

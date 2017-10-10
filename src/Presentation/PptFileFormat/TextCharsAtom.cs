@@ -33,7 +33,7 @@ using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4000)]
+    [OfficeRecord(4000)]
     public class TextCharsAtom : TextAtom
     {
         public static Encoding ENCODING = Encoding.Unicode;

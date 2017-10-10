@@ -19,7 +19,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public XmlTkChain xmltkChain;
 
-        public CrtMlFrt(IStreamReader reader, RecordType id, UInt16 length)
+        public CrtMlFrt(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             long pos = reader.BaseStream.Position;

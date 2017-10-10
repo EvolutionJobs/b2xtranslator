@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// A signed integer that specifies the number of colors in the rgColor array. 
         /// The value MUST be 56.
         /// </summary>
-        public Int16 ccv;
+        public short ccv;
 
         /// <summary>
         /// An array of LongRGB that specifies the colors of the color palette. 
@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public RGBColor[] rgColor;
 
-        public Palette(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Palette(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

@@ -46,15 +46,15 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         }
 
         #region FibBase
-        public UInt16 wIdent;
+        public ushort wIdent;
         public FibVersion nFib;
-        public UInt16 lid;
-        public Int16 pnNext;
+        public ushort lid;
+        public short pnNext;
         public bool fDot;
         public bool fGlsy;
         public bool fComplex;
         public bool fHasPic;
-        public UInt16 cQuickSaves;
+        public ushort cQuickSaves;
         public bool fEncrypted;
         public bool fWhichTblStm;
         public bool fReadOnlyRecommended;
@@ -63,31 +63,31 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public bool fLoadOverwrite;
         public bool fFarEast;
         public bool fCrypto;
-        public UInt16 nFibBack;
-        public Int32 lKey;
+        public ushort nFibBack;
+        public int lKey;
         public byte envr;
         public bool fMac;
         public bool fEmptySpecial;
         public bool fLoadOverridePage;
         public bool fFutureSavedUndo;
         public bool fWord97Saved;
-        public Int32 fcMin;
-        public Int32 fcMac;
+        public int fcMin;
+        public int fcMac;
         #endregion
 
         #region RgW97
-        public Int16 lidFE;
+        public short lidFE;
         #endregion
 
         #region RgLw97
-        public Int32 cbMac;
-        public Int32 ccpText;
-        public Int32 ccpFtn;
-        public Int32 ccpHdr;
-        public Int32 ccpAtn;
-        public Int32 ccpEdn;
-        public Int32 ccpTxbx;
-        public Int32 ccpHdrTxbx;
+        public int cbMac;
+        public int ccpText;
+        public int ccpFtn;
+        public int ccpHdr;
+        public int ccpAtn;
+        public int ccpEdn;
+        public int ccpTxbx;
+        public int ccpHdrTxbx;
         #endregion
 
         #region FibWord97
@@ -447,14 +447,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
         #region FibNew
         public FibVersion nFibNew;
-        public UInt16 cQuickSavesNew;
+        public ushort cQuickSavesNew;
         #endregion
 
         #region others
-        public UInt16 csw;
-        public UInt16 cslw;
-        public UInt16 cbRgFcLcb;
-        public UInt16 cswNew;
+        public ushort csw;
+        public ushort cslw;
+        public ushort cbRgFcLcb;
+        public ushort cswNew;
         #endregion
 
         //*****************************************************************************************
@@ -463,7 +463,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
         public FileInformationBlock(VirtualStreamReader reader)
         {
-            UInt16 flag16 = 0;
+            ushort flag16 = 0;
             byte flag8 = 0;
 
             //read the FIB base
@@ -477,7 +477,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.fGlsy = Utils.BitmaskToBool((int)flag16, 0x0002);
             this.fComplex = Utils.BitmaskToBool((int)flag16, 0x0002);
             this.fHasPic = Utils.BitmaskToBool((int)flag16, 0x0008);
-            this.cQuickSaves = (UInt16)(((int)flag16 & 0x00F0) >> 4);
+            this.cQuickSaves = (ushort)(((int)flag16 & 0x00F0) >> 4);
             this.fEncrypted = Utils.BitmaskToBool((int)flag16, 0x0100);
             this.fWhichTblStm = Utils.BitmaskToBool((int)flag16, 0x0200);
             this.fReadOnlyRecommended = Utils.BitmaskToBool((int)flag16, 0x0400);

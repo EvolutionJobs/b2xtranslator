@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public DefaultTextType defaultTextId;
 
-        public DefaultText(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public DefaultText(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

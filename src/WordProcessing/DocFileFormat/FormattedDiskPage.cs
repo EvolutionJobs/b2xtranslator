@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Each value is the limit of a paragraph or run of exception text
         /// </summary>
-        public Int32[] rgfc;
+        public int[] rgfc;
 
     }
 }

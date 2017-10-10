@@ -13,14 +13,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// the MacroNames such that MacroName.ibst equals ibst. <br/>
         /// MacroNames MUST contain such an entry.
         /// </summary>
-        public Int16 ibst;
+        public short ibst;
 
         /// <summary>
         /// An unsigned integer that specifies the index into the 
         /// CommandStringTable (CommandTable.CommandStringTable)
         /// where the macro‘s name and arguments are specified.
         /// </summary>
-        public Int16 ibstName;
+        public short ibstName;
 
         private const int MCD_LENGTH = 24;
 

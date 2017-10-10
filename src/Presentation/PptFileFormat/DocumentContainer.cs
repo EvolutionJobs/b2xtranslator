@@ -33,7 +33,7 @@ using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1000)]
+    [OfficeRecord(1000)]
     public class DocumentContainer : RegularContainer
     {
         /// <summary>
@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         {
             
 
-            foreach (SlideListWithText collection in this.AllChildrenWithType<SlideListWithText>())
+            foreach (var collection in this.AllChildrenWithType<SlideListWithText>())
             {
                 List<SlidePersistAtom> target = null;
 
@@ -82,7 +82,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
                 if (target != null)
                 {
-                    foreach (SlidePersistAtom atom in collection.AllChildrenWithType<SlidePersistAtom>())
+                    foreach (var atom in collection.AllChildrenWithType<SlidePersistAtom>())
                         target.Add(atom);
                 }
             }
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public SlidePersistAtom SlidePersistAtomForSlideWithIdx(uint idx)
         {
-            foreach (SlidePersistAtom atom in this.SlidePersistList)
+            foreach (var atom in this.SlidePersistList)
                 // idx is zero-based, psr-reference is one-based
                 if (atom.PersistIdRef == idx + 1)
                     return atom;

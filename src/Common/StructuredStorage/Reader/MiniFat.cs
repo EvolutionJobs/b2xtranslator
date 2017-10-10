@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         UInt32 _miniStreamStart;
         UInt64 _sizeOfMiniStream;
 
-        override internal UInt16 SectorSize
+        override internal ushort SectorSize
         {
             get { return _header.MiniSectorSize; }
         }
@@ -96,7 +96,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>The next sector in the chain</returns>
         override protected UInt32 GetNextSectorInChain(UInt32 currentSector)
         {
-            UInt32 sectorInFile = _sectorsUsedByMiniFat[(int)(currentSector / _addressesPerSector)];
+            var sectorInFile = _sectorsUsedByMiniFat[(int)(currentSector / _addressesPerSector)];
             // calculation of position:
             // currentSector % _addressesPerSector = number of address in the sector address
             // address uses 32 bit = 4 bytes

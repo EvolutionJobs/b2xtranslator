@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// Index of author IDs stored in hsttbfRMark for the 
         /// paragraph number change
         /// </summary>
-        public Int16 ibstNumRM;
+        public short ibstNumRM;
 
         /// <summary>
         /// Date of the paragraph number change
@@ -66,7 +66,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Numeric value for each place holder in xst
         /// </summary>
-        public Int32[] PNBR;
+        public int[] PNBR;
 
         /// <summary>
         /// The text string for the paragraph number, 
@@ -94,7 +94,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 this.ibstNumRM = System.BitConverter.ToInt16(bytes, 2);
 
                 //copy date to new array and parse it
-                byte[] dttm = new byte[4];
+                var dttm = new byte[4];
                 Array.Copy(bytes,4, dttm,0, 4);
                 this.dttmNumRM = new DateAndTime(dttm);
 
@@ -117,7 +117,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 }
 
                 //fill the PNBR array
-                this.PNBR = new Int32[9];
+                this.PNBR = new int[9];
                 j = 0;
                 for (int i = 28; i < 64; i+=4)
                 {

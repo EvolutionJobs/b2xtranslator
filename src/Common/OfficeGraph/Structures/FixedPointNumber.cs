@@ -46,10 +46,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
     /// </summary>
     public class FixedPointNumber
     {
-        private UInt16 integral;
-        private UInt16 fractional;
+        private ushort integral;
+        private ushort fractional;
 
-        public FixedPointNumber(UInt16 integral, UInt16 fractional)
+        public FixedPointNumber(ushort integral, ushort fractional)
         {
             this.integral = integral;
             this.fractional = fractional;

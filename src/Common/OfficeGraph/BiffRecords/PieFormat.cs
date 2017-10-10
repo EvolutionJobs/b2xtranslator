@@ -54,9 +54,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// then all the data points in the chart group are scaled down to fit inside the chart 
         /// area such that the data point with the highest pcExplode value is at the edge of the chart area.
         /// </summary>
-        public Int16 pcExplode;
+        public short pcExplode;
 
-        public PieFormat(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public PieFormat(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

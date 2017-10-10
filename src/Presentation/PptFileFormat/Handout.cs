@@ -33,7 +33,7 @@ using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4041)]
+    [OfficeRecord(4041)]
     public class Handout : RegularContainer
     {
         public Handout(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)

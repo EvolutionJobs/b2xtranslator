@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(137)]
+    [OfficeShapeType(137)]
     public class TextStop : ShapeType
     {
         public TextStop()
@@ -12,9 +12,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextPath = true;
             this.Joins = JoinStyle.none;
             this.ExtrusionOk = true;
-            this.Lock = new ProtectionBooleans();
-            this.Lock.fUsefLockText = true;
-            this.Lock.fLockText = true;
+            this.Lock = new ProtectionBooleans
+            {
+                fUsefLockText = true,
+                fLockText = true
+            };
             this.LockShapeType = true;
 
             this.AdjustmentValues = "4800";
@@ -26,9 +28,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("sum 21600 0 @0");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="topLeft,#0";
-            h1.yrange = "3086,10800";
+            var h1 = new Handle
+            {
+                position = "topLeft,#0",
+                yrange = "3086,10800"
+            };
             this.Handles.Add(h1);
         }
     }

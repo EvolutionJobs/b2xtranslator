@@ -81,7 +81,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
             {
                 // build complete path name from all parent parts
                 string path = this.TargetDirectory;
-                OpenXmlPartContainer part = this.Parent;
+                var part = this.Parent;
                 while (part != null)
                 {
                     path = Path.Combine(part.TargetDirectory, path);
@@ -181,14 +181,14 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         public ExternalRelationship AddExternalRelationship(string relationshipType, Uri externalUri)
         {
-            ExternalRelationship rel = new ExternalRelationship(EXT_PREFIX + (_externalRelationships.Count + 1).ToString(), relationshipType, externalUri);
+            var rel = new ExternalRelationship(EXT_PREFIX + (_externalRelationships.Count + 1).ToString(), relationshipType, externalUri);
             _externalRelationships.Add(rel);
             return rel;
         }
 
         public ExternalRelationship AddExternalRelationship(string relationshipType, string externalUri)
         {
-            ExternalRelationship rel = new ExternalRelationship(EXT_PREFIX + (_externalRelationships.Count + 1).ToString(), relationshipType, externalUri);
+            var rel = new ExternalRelationship(EXT_PREFIX + (_externalRelationships.Count + 1).ToString(), relationshipType, externalUri);
             _externalRelationships.Add(rel);
             return rel;
         }
@@ -215,7 +215,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         protected virtual void WriteRelationshipPart(OpenXmlWriter writer)
         {
-            List<OpenXmlPart> allParts = new List<OpenXmlPart>();
+            var allParts = new List<OpenXmlPart>();
             allParts.AddRange(this.Parts);
             allParts.AddRange(this.ReferencedParts);
 
@@ -228,7 +228,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Relationships", OpenXmlNamespaces.RelationsshipsPackage);
 
-                foreach (ExternalRelationship rel in _externalRelationships)
+                foreach (var rel in _externalRelationships)
                 {
                     writer.WriteStartElement("Relationship", OpenXmlNamespaces.RelationsshipsPackage);
                     writer.WriteAttributeString("Id", rel.Id);
@@ -264,7 +264,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
                     writer.WriteEndElement();
                 }
 
-                foreach (OpenXmlPart part in allParts)
+                foreach (var part in allParts)
                 {
                     writer.WriteStartElement("Relationship", OpenXmlNamespaces.RelationsshipsPackage);
                     writer.WriteAttributeString("Id", part.RelIdToString);

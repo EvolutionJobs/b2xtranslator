@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool f1904DateSystem;
 
-        public Date1904(IStreamReader reader, RecordType id, UInt16 length)
+        public Date1904(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

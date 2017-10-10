@@ -95,9 +95,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     break;
                 case 0x1: //pattern
                     uint blipIndex1 = so.OptionsByID[ShapeOptions.PropertyId.fillBlip].op;
-                    DrawingGroup gr1 = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
-                    BlipStoreEntry bse1 = (BlipStoreEntry)gr1.FirstChildWithType<BlipStoreContainer>().Children[(int)blipIndex1 - 1];
-                    BitmapBlip b1 = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse1.foDelay];
+                    var gr1 = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
+                    var bse1 = (BlipStoreEntry)gr1.FirstChildWithType<BlipStoreContainer>().Children[(int)blipIndex1 - 1];
+                    var b1 = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse1.foDelay];
 
                     _writer.WriteStartElement("a", "pattFill", OpenXmlNamespaces.DrawingML);
 
@@ -161,7 +161,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                     //string blipName = Encoding.UTF8.GetString(so.OptionsByID[ShapeOptions.PropertyId.fillBlipName].opComplex);
                     string rId = "";
-                    DrawingGroup gr = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
+                    var gr = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
                     ImagePart imgPart = null;
 
 
@@ -206,7 +206,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                     } else if (blipIndex <= gr.FirstChildWithType<BlipStoreContainer>().Children.Count)
                     {
-                        BlipStoreEntry bse = (BlipStoreEntry)gr.FirstChildWithType<BlipStoreContainer>().Children[(int)blipIndex - 1];
+                        var bse = (BlipStoreEntry)gr.FirstChildWithType<BlipStoreContainer>().Children[(int)blipIndex - 1];
 
                         if (_ctx.Ppt.PicturesContainer._pictures.ContainsKey(bse.foDelay))
                         {
@@ -214,7 +214,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                            
                             if (rec is BitmapBlip)
                             {
-                                BitmapBlip b = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];                                
+                                var b = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];                                
                                 imgPart = _parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
                                 imgPart.TargetDirectory = "..\\media";
                                 System.IO.Stream outStream = imgPart.GetStream();
@@ -222,7 +222,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             }
                             else
                             {
-                                MetafilePictBlip b = (MetafilePictBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                                var b = (MetafilePictBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
                                 imgPart = _parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
                                 imgPart.TargetDirectory = "..\\media";
                                 System.IO.Stream outStream = imgPart.GetStream();
@@ -286,11 +286,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             useFillAndBack = false;
                             ShapeOptions.OptionEntry type = so.OptionsByID[ShapeOptions.PropertyId.fillShadeType];
 
-                            UInt16 nElems = System.BitConverter.ToUInt16(colors, 0);
-                            UInt16 nElemsAlloc = System.BitConverter.ToUInt16(colors, 2);
-                            UInt16 cbElem = System.BitConverter.ToUInt16(colors, 4);
+                            var nElems = System.BitConverter.ToUInt16(colors, 0);
+                            var nElemsAlloc = System.BitConverter.ToUInt16(colors, 2);
+                            var cbElem = System.BitConverter.ToUInt16(colors, 4);
 
-                            List<string> positions = new List<string>();
+                            var positions = new List<string>();
 
                             switch (nElems)
                             {
@@ -325,7 +325,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             }
 
 
-                            string[] alphas = new string[nElems];
+                            var alphas = new string[nElems];
                             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillOpacity))
                             {
                                 decimal end = Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000));
@@ -451,10 +451,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         if (so.OptionsByID[ShapeOptions.PropertyId.fillAngle].op != 0)
                         {
-                            byte[] bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.fillAngle].op);
+                            var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.fillAngle].op);
                             int integral = BitConverter.ToInt16(bytes, 0);
                             uint fractional = BitConverter.ToUInt16(bytes, 2);
-                            Decimal result = integral + ((decimal)fractional / (decimal)65536);
+                            var result = integral + ((decimal)fractional / (decimal)65536);
                             angle = 65536 - fractional; //I have no idea why this works!!                    
                             angle = angle - 90;
                             if (angle < 0)
@@ -465,8 +465,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         }
                     }
 
-                    Dictionary<int, string> shadeColorsDic = new Dictionary<int, string>();
-                    List<string> shadeColors = new List<string>();
+                    var shadeColorsDic = new Dictionary<int, string>();
+                    var shadeColors = new List<string>();
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillShadeColors) && so.OptionsByID[ShapeOptions.PropertyId.fillShadeColors].opComplex != null && so.OptionsByID[ShapeOptions.PropertyId.fillShadeColors].opComplex.Length > 0)
                     {
                         uint length = so.OptionsByID[ShapeOptions.PropertyId.fillShadeColors].op;
@@ -479,11 +479,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         int pos = 0;
                         string colval;
                         FixedPointNumber fixedpoint;
-                        UInt16 nElems = BitConverter.ToUInt16(data, pos);
+                        var nElems = BitConverter.ToUInt16(data, pos);
                         pos += 2;
-                        UInt16 nElemsAlloc = BitConverter.ToUInt16(data, pos);
+                        var nElemsAlloc = BitConverter.ToUInt16(data, pos);
                         pos += 2;
-                        UInt16 cbElem = BitConverter.ToUInt16(data, pos);
+                        var cbElem = BitConverter.ToUInt16(data, pos);
                         pos += 2;
 
                         if (cbElem == 0xFFF0)

@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// been set. If the value is nonzero, it MUST be greater than or equal 
         /// to 10 and less than or equal to 400.
         /// </summary>
-        public UInt16 wScalePLV;
+        public ushort wScalePLV;
 
         /// <summary>
         /// A bit that specifies whether the sheet is in the Page Layout view. 
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public bool fWhitespaceHidden;
 
 
-        public PLV(IStreamReader reader, RecordType id, UInt16 length)
+        public PLV(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -81,7 +81,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.frtHeader = new FrtHeader(reader);
             this.wScalePLV = reader.ReadUInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fPageLayoutView = Utils.BitmaskToBool(flags, 0x0001);
             this.fRulerVisible = Utils.BitmaskToBool(flags, 0x0002);
             this.fWhitespaceHidden = Utils.BitmaskToBool(flags, 0x0004);

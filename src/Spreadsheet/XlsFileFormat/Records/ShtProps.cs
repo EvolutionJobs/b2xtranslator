@@ -81,14 +81,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public EmptyCellPlotMode mdBlank;
 
-        public ShtProps(IStreamReader reader, RecordType id, UInt16 length)
+        public ShtProps(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
 
             this.fManSerAlloc = Utils.BitmaskToBool(flags, 0x1);
             this.fPlotVisOnly = Utils.BitmaskToBool(flags, 0x2);

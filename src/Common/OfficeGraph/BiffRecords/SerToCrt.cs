@@ -46,9 +46,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// record in the collection of ChartFormat records in the current chart sheet substream. <br/>
         /// The referenced ChartFormat record specifies the chart group that contains the current series.
         /// </summary>
-        public UInt16 id;
+        public ushort id;
 
-        public SerToCrt(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public SerToCrt(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

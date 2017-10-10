@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 throw new Exception("Invalid chart type");
             }
 
-            Scatter scatter = crtSequence.ChartType as Scatter;
+            var scatter = crtSequence.ChartType as Scatter;
 
             // c:scatterChart 
             _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElScatterChart, Dml.Chart.Ns);
@@ -64,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 // c:varyColors
                 //writeValueElement(Dml.Chart.ElVaryColors, crtSequence.ChartFormat.fVaried ? "1" : "0");
 
-                foreach (SeriesFormatSequence seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
+                foreach (var seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
                 {
                     if (seriesFormatSequence.SerToCrt != null && seriesFormatSequence.SerToCrt.id == crtSequence.ChartFormat.idx)
                     {

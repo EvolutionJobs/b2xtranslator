@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4023)]
+    [OfficeRecord(4023)]
     public class FontEntityAtom : Record
     {
         public string TypeFace = "";
@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
                         
-            byte[] facename = this.Reader.ReadBytes(64);
+            var facename = this.Reader.ReadBytes(64);
             TypeFace = Encoding.Unicode.GetString(facename);
             TypeFace = TypeFace.Substring(0, TypeFace.IndexOf("\0"));
 

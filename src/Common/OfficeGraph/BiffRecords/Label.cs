@@ -41,26 +41,26 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// <summary>
         /// An unsigned integer that specifies a zero-based index of a row in the datasheet that contains this structure. MUST be less than or equal to 0x0F9F.
         /// </summary>
-        public UInt16 rw;
+        public ushort rw;
 
         /// <summary>
         /// An unsigned integer that specifies a zero-based index of a column in the datasheet that contains this structure.
         /// </summary>
-        public UInt16 col;
+        public ushort col;
 
         /// <summary>
         /// An unsigned integer that specifies the identifier of a number format. 
         /// The identifier specified by this field MUST be a valid built-in number format identifier 
         /// or the identifier of a custom number format as specified using a Format record.
         /// </summary>
-        public UInt16 ifmt;
+        public ushort ifmt;
 
         /// <summary>
         /// A string that contains the string constant.
         /// </summary>
         public string stLabel;
         
-        public Label(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Label(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

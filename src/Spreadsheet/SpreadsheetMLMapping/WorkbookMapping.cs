@@ -82,7 +82,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             _writer.WriteStartElement("sheets");
 
             // create the sheets
-            foreach (SheetData sheet in workbookData.boundSheetDataList)
+            foreach (var sheet in workbookData.boundSheetDataList)
             {
                 OpenXmlPart sheetPart;
                 switch (sheet.boundsheetRecord.dt)
@@ -131,7 +131,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         <externalReference r:id="rId5" /> 
                     </externalReferences>
                  */
-                foreach (SupBookData var in workbookData.supBookDataList)
+                foreach (var var in workbookData.supBookDataList)
                 {
                     if (!var.SelfRef)
                     {
@@ -160,7 +160,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 //</definedNames>
                 _writer.WriteStartElement("definedNames");
 
-                foreach (Lbl item in workbookData.definedNameList)
+                foreach (var item in workbookData.definedNameList)
                 {
                     if (item.rgce.Count > 0)
                     {

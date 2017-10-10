@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(96)]
+    [OfficeShapeType(96)]
     public class SmileyFaceType :ShapeType
     {
         public SmileyFaceType()
@@ -28,9 +28,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "3163,3163,18437,18437";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="center,#0";
-            HandleOne.yrange = "15510,17520";
+            var HandleOne = new Handle
+            {
+                position = "center,#0",
+                yrange = "15510,17520"
+            };
             this.Handles.Add(HandleOne);
         }
     }

@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// <summary>
         /// Count of characters in the string (Note: this is the number of characters, NOT the number of bytes)
         /// </summary>
-        private UInt16 cch;
+        private ushort cch;
 
         /// <summary>
         /// Option flags

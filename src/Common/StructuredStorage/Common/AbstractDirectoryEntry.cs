@@ -67,8 +67,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
             }
         }
 
-        UInt16 _lengthOfName;
-        public UInt16 LengthOfName
+        ushort _lengthOfName;
+        public ushort LengthOfName
         {
             get
             {
@@ -79,7 +79,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
                 }
 
                 // length of name in bytes including unicode 0;
-                _lengthOfName = (UInt16)((_name.Length + 1)*2);              
+                _lengthOfName = (ushort)((_name.Length + 1)*2);              
                 return _lengthOfName;
             }
         }

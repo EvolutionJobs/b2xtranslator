@@ -49,48 +49,48 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Horizontal position of the window in units of 1/20th of a point.
         /// </summary>
-        public UInt16 xWn;
+        public ushort xWn;
 	
         /// <summary>
         /// Vertical position of the window in units of 1/20th of a point.
         /// </summary>
-        public UInt16 yWn;
+        public ushort yWn;
 
         /// <summary>
         /// Width of the window in units of 1/20th of a point.
         /// </summary>
-        public UInt16 dxWn;
+        public ushort dxWn;
 	
         /// <summary>
         /// Height of the window in units of 1/20th of a point.
         /// </summary>
-        public UInt16 dyWn;
+        public ushort dyWn;
 	
         /// <summary>
         /// Option flags
         /// </summary>
-        public UInt16 grbit;
+        public ushort grbit;
 	
     	/// <summary>
     	/// Index of the selected workbook tab (0-based).
     	/// </summary>
-        public UInt16 itabCur;
+        public ushort itabCur;
 	
         /// <summary>
         /// Index of the first displayed workbook tab (0-based).
         /// </summary>
-        public UInt16 itabFirst;
+        public ushort itabFirst;
 	
         /// <summary>
         /// Number of workbook tabs that are selected.
         /// </summary>
-        public UInt16 ctabSel;
+        public ushort ctabSel;
 
         /// <summary>
         /// Ratio of the width of the workbook tabs to the width of the horizontal scroll bar; 
         /// to obtain the ratio, convert to decimal and then divide by 1000.
         /// </summary>
-        public UInt16 wTabRatio;	
+        public ushort wTabRatio;	
 
         // The grbit field contains the following option flags:
         // Field                        Offset	Bits    Mask	Name	Contents
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public bool reserved1;      //     	    7	    80h
         public byte reserved2;      //  1       7–0	    FFh	
 
-        public Window1(IStreamReader reader, RecordType id, UInt16 length)
+        public Window1(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

@@ -21,12 +21,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             _writer.WriteStartElement("w", "comments", OpenXmlNamespaces.WordprocessingML);
 
-            Int32 cp = doc.FIB.ccpText + doc.FIB.ccpFtn + doc.FIB.ccpHdr;
+            int cp = doc.FIB.ccpText + doc.FIB.ccpFtn + doc.FIB.ccpHdr;
             for (int i = 0; i < doc.AnnotationsReferencePlex.Elements.Count; i++)
 			{   
                 _writer.WriteStartElement("w", "comment", OpenXmlNamespaces.WordprocessingML);
 
-                AnnotationReferenceDescriptor atrdPre10 = (AnnotationReferenceDescriptor)doc.AnnotationsReferencePlex.Elements[index];
+                var atrdPre10 = (AnnotationReferenceDescriptor)doc.AnnotationsReferencePlex.Elements[index];
                 _writer.WriteAttributeString("w", "id", OpenXmlNamespaces.WordprocessingML, index.ToString());
                 _writer.WriteAttributeString("w", "author", OpenXmlNamespaces.WordprocessingML, doc.AnnotationOwners[atrdPre10.AuthorIndex]);
                 _writer.WriteAttributeString("w", "initials", OpenXmlNamespaces.WordprocessingML, atrdPre10.UserInitials);

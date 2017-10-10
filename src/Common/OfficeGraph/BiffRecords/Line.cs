@@ -60,14 +60,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public bool fHasShadow;
 
-        public Line(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Line(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fStacked = Utils.BitmaskToBool(flags, 0x1);
             this.f100 = Utils.BitmaskToBool(flags, 0x2);
             this.fHasShadow = Utils.BitmaskToBool(flags, 0x4);

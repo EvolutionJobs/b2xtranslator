@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(8)]
+    [OfficeShapeType(8)]
     public class TrapezoidType : ShapeType
     {
         public TrapezoidType()
@@ -37,9 +37,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "1800,1800,19800,19800;4500,4500,17100,17100;7200,7200,14400,14400";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,bottomRight";
-            HandleOne.xrange = "0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#0,bottomRight",
+                xrange = "0,10800"
+            };
             this.Handles.Add(HandleOne);
 
         }

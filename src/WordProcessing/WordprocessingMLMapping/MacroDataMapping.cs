@@ -17,7 +17,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         public override void Apply(WordDocument doc)
         {
-            VirtualStreamReader reader = new VirtualStreamReader(doc.Storage.GetStream("\\Macros\\PROJECTwm"));
+            var reader = new VirtualStreamReader(doc.Storage.GetStream("\\Macros\\PROJECTwm"));
             _writer.WriteStartElement("wne", "vbaSuppData", OpenXmlNamespaces.MicrosoftWordML);
 
             _writer.WriteStartElement("wne", "mcds", OpenXmlNamespaces.MicrosoftWordML);

@@ -41,15 +41,15 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// <summary>
         /// Row 
         /// </summary>
-        public UInt16 rw;
+        public ushort rw;
         /// <summary>
         /// Column
         /// </summary>
-        public UInt16 col;
+        public ushort col;
         /// <summary>
         /// Index to the XF Record 
         /// </summary>
-        public UInt16 ixfe;
+        public ushort ixfe;
 
         /// <summary>
         /// The floating point number
@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// <param name="reader">Streamreader</param>
         /// <param name="id">Record ID - Recordtype</param>
         /// <param name="length">The recordlegth</param>
-        public Number(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Number(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

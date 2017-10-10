@@ -8,7 +8,7 @@ using System.IO.Compression;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(new UInt16[] { 0xF01A, 0xF01B, 0xF01C })]
+    [OfficeRecord(new ushort[] { 0xF01A, 0xF01B, 0xF01C })]
     public class MetafilePictBlip : Record
     {
         public enum BlipCompression
@@ -33,7 +33,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <summary>
         /// Cache of the metafile size
         /// </summary>
-        public Int32 m_cb;
+        public int m_cb;
 
         public Rectangle m_rcBounds;
 
@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <summary>
         /// Cache of saved size (size of m_pvBits)
         /// </summary>
-        public Int32 m_cbSave;
+        public int m_cbSave;
 
         /// <summary>
         /// Compression
@@ -93,12 +93,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
             if (this.m_fCompression == MetafilePictBlip.BlipCompression.Deflate)
             {
                 //skip the first two bytes because the can not be interpreted by the DeflateStream
-                DeflateStream inStream = new DeflateStream(
+                var inStream = new DeflateStream(
                     new MemoryStream(this.m_pvBits, 2, this.m_pvBits.Length - 2),
                     CompressionMode.Decompress,
                     false);
 
-                byte[] buffer = new byte[this.m_cb];
+                var buffer = new byte[this.m_cb];
                 inStream.Read(buffer, 0, this.m_cb);
 
                 return buffer;

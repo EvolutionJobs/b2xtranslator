@@ -40,12 +40,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// <summary>
         /// Reserved. MUST be 0x11.
         /// </summary>
-        public UInt16 ft;
+        public ushort ft;
 
         /// <summary>
         /// Reserved. MUST be 0x0004.
         /// </summary>
-        public UInt16 cb;
+        public ushort cb;
 
         public FtRboData(IStreamReader reader)
         {

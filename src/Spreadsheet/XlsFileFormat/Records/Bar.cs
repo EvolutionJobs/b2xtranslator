@@ -56,7 +56,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         ///     0             No overlap
         ///     1 to 100      Size of the overlap between data points
         /// </summary>
-        public Int16 pcOverlap;
+        public short pcOverlap;
         
         /// <summary>
         /// An unsigned integer that specifies the width of the gap between the categories 
@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be less than or equal to 500.
         /// </summary>
-        public UInt16 pcGap;
+        public ushort pcGap;
 
         /// <summary>
         /// A bit that specifies whether the data points and value axis are horizontal 
@@ -101,7 +101,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fHasShadow;
 
-        public Bar(IStreamReader reader, RecordType id, UInt16 length)
+        public Bar(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -111,7 +111,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.pcOverlap = reader.ReadInt16();
             this.pcGap = reader.ReadUInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fTranspose = Utils.BitmaskToBool(flags, 0x1);
             this.fStacked = Utils.BitmaskToBool(flags, 0x2);
             this.f100 = Utils.BitmaskToBool(flags, 0x4);

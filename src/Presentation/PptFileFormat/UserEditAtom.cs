@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4085)]
+    [OfficeRecord(4085)]
     public class UserEditAtom : Record
     {
         /// <summary>
@@ -48,7 +48,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// An unsigned integer that specifies a build version of the executable that wrote the 
         /// file. It SHOULD be 0x0000 and MUST be ignored. 
         /// </summary>
-        public UInt16 BuildVersion;
+        public ushort BuildVersion;
 
         /// <summary>
         /// An unsigned integer that specifies the minor version of the storage format. 
@@ -95,7 +95,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// <summary>
         /// A ViewTypeEnum enumeration that specifies the last view used to display the file. 
         /// </summary>
-        public UInt16 LastView;
+        public ushort LastView;
 
         // unused (2 bytes): Undefined and MUST be ignored. 
 

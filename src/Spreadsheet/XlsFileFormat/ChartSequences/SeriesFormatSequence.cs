@@ -33,7 +33,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// 
         /// NOTE: This value is set at parse time. It is not stored in the binary file.
         /// </summary>
-        public UInt16 order;
+        public ushort order;
 
 
         public SeriesFormatSequence(IStreamReader reader)

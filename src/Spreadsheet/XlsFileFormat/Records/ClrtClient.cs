@@ -47,7 +47,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be 0x0003.
         /// </summary>
-        public Int16 ccv;
+        public short ccv;
 
         /// <summary>
         /// An array of LongRGB. The array specifies the colors of the color palette. 
@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         RGBColor[] rgColor;
 
-        public ClrtClient(IStreamReader reader, RecordType id, UInt16 length)
+        public ClrtClient(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

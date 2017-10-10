@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// An unsigned integer that specifies the number of items in rgFontInfo.
         /// </summary>
-        public UInt16 cFont;
+        public ushort cFont;
 
         /// <summary>
         /// An array of FontInfo structures that specify the font information. 
@@ -79,7 +79,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public FontInfo[] rgFontInfo;
         
-        public FrtFontList(IStreamReader reader, RecordType id, UInt16 length)
+        public FrtFontList(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

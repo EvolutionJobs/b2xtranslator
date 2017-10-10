@@ -38,29 +38,29 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// x-coordinate of the upper left-hand corner of the grid
         /// </summary>
-        public Int16 xaGrid;
+        public short xaGrid;
 
         /// <summary>
         /// y-coordinate of the upper left-hand corner of the grid
         /// </summary>
-        public Int16 yaGrid;
+        public short yaGrid;
 
         /// <summary>
         /// Width of each grid square
         /// </summary>
-        public Int16 dxaGrid;
+        public short dxaGrid;
 
         /// <summary>
         /// Height of each grid square
         /// </summary>
-        public Int16 dyaGrid;
+        public short dyaGrid;
 
         /// <summary>
         /// The number of grid squares (in the y direction) between each 
         /// gridline drawn on the screen. 0 means don‘t display any 
         /// gridlines in the y direction.
         /// </summary>
-        public Int16 dyGridDisplay;
+        public short dyGridDisplay;
 
         /// <summary>
         /// Suppress display of gridlines
@@ -72,7 +72,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// gridline drawn on the screen. 0 means don‘t display any 
         /// gridlines in the y direction.
         /// </summary>
-        public Int16 dxGridDisplay;
+        public short dxGridDisplay;
 
         /// <summary>
         /// If true, the grid will start at the left and top margins and 
@@ -94,10 +94,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 this.dyaGrid = System.BitConverter.ToInt16(bytes, 6);
 
                 //split byte 8 and 9 into bits
-                BitArray bits = new BitArray(new byte[] { bytes[8], bytes[9] });
-                this.dyGridDisplay = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 7));
+                var bits = new BitArray(new byte[] { bytes[8], bytes[9] });
+                this.dyGridDisplay = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 7));
                 this.fTurnItOff = bits[7];
-                this.dxGridDisplay = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 8, 7));
+                this.dxGridDisplay = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 8, 7));
                 this.fFollowMargins = bits[15];
             }
             else

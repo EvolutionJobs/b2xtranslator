@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(1)]
+    [OfficeShapeType(1)]
     public class RectangleType : ShapeType
     {
         public RectangleType()

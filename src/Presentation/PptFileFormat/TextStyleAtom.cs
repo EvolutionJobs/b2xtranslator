@@ -17,18 +17,18 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public override string ToString(uint depth)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append(base.ToString(depth));
 
             depth++;
             string indent = IndentationForDepth(depth);
 
             sb.AppendFormat("\n{0}Paragraph Runs:", indent);
-            foreach (ParagraphRun pr in this.PRuns)
+            foreach (var pr in this.PRuns)
                 sb.AppendFormat("\n{0}", pr.ToString(depth + 1));
 
             sb.AppendFormat("\n{0}Character Runs:", indent);
-            foreach (CharacterRun cr in this.CRuns)
+            foreach (var cr in this.CRuns)
                 sb.AppendFormat("\n{0}", cr.ToString(depth + 1));
 
             return sb.ToString();

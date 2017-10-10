@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(93)]
+    [OfficeShapeType(93)]
     class StripedRightArrowType : ShapeType
     {
         public StripedRightArrowType()
@@ -30,10 +30,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "3375,@1,@6,@2";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,#1";
-            HandleOne.xrange="3375,21600";
-            HandleOne.yrange="0,10800"; 
+            var HandleOne = new Handle
+            {
+                position = "#0,#1",
+                xrange = "3375,21600",
+                yrange = "0,10800"
+            };
 
             this.Handles.Add(HandleOne);
 

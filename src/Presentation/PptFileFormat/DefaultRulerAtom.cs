@@ -7,7 +7,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4011)]
+    [OfficeRecord(4011)]
     public class DefaultRulerAtom : Record
     {
         public uint flags;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(78)]
+    [OfficeShapeType(78)]
     class RightArrowCalloutType : ShapeType
     {
         public RightArrowCalloutType()
@@ -29,20 +29,26 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "0,0,@0,21600";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,topLeft";
-            HandleOne.xrange="0,@2";
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "0,@2"
+            };
             this.Handles.Add(HandleOne);
 
-            Handle HandleTwo = new Handle();
-            HandleTwo.position="bottomRight,#1";
-            HandleTwo.yrange="0,@3";
+            var HandleTwo = new Handle
+            {
+                position = "bottomRight,#1",
+                yrange = "0,@3"
+            };
             this.Handles.Add(HandleTwo);
 
-            Handle HandleThree = new Handle();
-            HandleThree.position="#2,#3";
-            HandleThree.xrange="@0,21600";
-            HandleThree.yrange = "@1,10800";
+            var HandleThree = new Handle
+            {
+                position = "#2,#3",
+                xrange = "@0,21600",
+                yrange = "@1,10800"
+            };
             this.Handles.Add(HandleThree);
 
 

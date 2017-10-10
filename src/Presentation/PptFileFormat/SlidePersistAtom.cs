@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1011)]
+    [OfficeRecord(1011)]
     public class SlidePersistAtom : Record
     {
         /// <summary>
@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// number of placeholder texts stored with the persist object.
         /// Allows to display outline view without loading the slide persist objects
         /// </summary>
-        public Int32 NumberText;
+        public int NumberText;
 
         /// <summary>
         /// Unique slide identifier, used for OLE link monikers for example

@@ -45,27 +45,27 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// A signed integer that specifies the location in twips of the left edge 
         /// of the window relative to the left edge of the primary monitor.
         /// </summary>
-        public Int16 wLeft;
+        public short wLeft;
 
         /// <summary>
         /// A signed integer that specifies the location in twips of the top edge 
         /// of the window relative to the top edge of the primary monitor.
         /// </summary>
-        public Int16 wTop;
+        public short wTop;
 
         /// <summary>
         /// A signed integer that specifies the width of the window in twips.<br/>
         /// MUST be greater than or equal to 0.
         /// </summary>
-        public Int16 wWidth;
+        public short wWidth;
 
         /// <summary>
         /// A signed integer that specifies the height of the window in twips.<br/>
         /// MUST be greater than or equal to 0.
         /// </summary>
-        public Int16 wHeight;
+        public short wHeight;
 
-        public MainWindow(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public MainWindow(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

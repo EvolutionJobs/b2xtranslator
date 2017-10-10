@@ -34,7 +34,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
     {
         public const PtgNumber ID = PtgNumber.PtgFuncVar;
         public byte cparams; 
-        public UInt16 tab; 
+        public ushort tab; 
         public bool fCelFunc; 
 
 
@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
             {
                 this.fCelFunc = true; 
             }
-            this.tab = (UInt16)(this.tab & 0x7FFF); 
+            this.tab = (ushort)(this.tab & 0x7FFF); 
             
             this.popSize = (uint)(this.cparams);  
         }

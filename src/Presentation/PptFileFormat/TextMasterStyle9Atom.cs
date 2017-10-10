@@ -7,7 +7,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4013)]
+    [OfficeRecord(4013)]
     public class TextMasterStyle9Atom : Record
     {
         public List<ParagraphRun9> pruns = new List<ParagraphRun9>();
@@ -18,8 +18,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             uint level = this.Reader.ReadUInt16();
             for (int i = 0; i < level; i++)
             {
-                ParagraphMask pmask = (ParagraphMask)Reader.ReadUInt32();
-                ParagraphRun9 pr = new ParagraphRun9();
+                var pmask = (ParagraphMask)Reader.ReadUInt32();
+                var pr = new ParagraphRun9();
                 pr.mask = pmask;
                 if ((pmask & ParagraphMask.BulletBlip) != 0)
                 {
@@ -37,10 +37,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                 }
                 this.pruns.Add(pr);
 
-                CharacterMask cmask = (CharacterMask)Reader.ReadUInt32();
+                var cmask = (CharacterMask)Reader.ReadUInt32();
                 if ((cmask & CharacterMask.pp11ext) != 0)
                 {
-                    byte[] rest = Reader.ReadBytes(4);
+                    var rest = Reader.ReadBytes(4);
                 }
 
             }
@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public int bulletblipref;
         public int fBulletHasAutoNumber;
         public int bulletAutoNumberScheme = -1;
-        public Int16 startAt = -1;
+        public short startAt = -1;
 
         public bool BulletBlipReferencePresent
         {

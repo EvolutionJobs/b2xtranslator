@@ -34,8 +34,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
     public class GRatioAtom
     {
-        public Int32 Numer;
-        public Int32 Denom;
+        public int Numer;
+        public int Denom;
 
         public GRatioAtom(BinaryReader reader)
         {

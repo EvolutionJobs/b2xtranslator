@@ -22,7 +22,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             _writer.WriteStartElement("w", "footnotes", OpenXmlNamespaces.WordprocessingML);
 
-            Int32 cp = doc.FIB.ccpText;
+            int cp = doc.FIB.ccpText;
             while (cp < (doc.FIB.ccpText + doc.FIB.ccpFtn - 2))
             {
                 _writer.WriteStartElement("w", "footnote", OpenXmlNamespaces.WordprocessingML);

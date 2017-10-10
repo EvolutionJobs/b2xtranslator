@@ -44,21 +44,21 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML
 
         public SlideMasterPart AddSlideMasterPart()
         {
-            SlideMasterPart part = new SlideMasterPart(this, ++_slideMasterCounter);
+            var part = new SlideMasterPart(this, ++_slideMasterCounter);
             this.SlideMasterParts.Add(part);
             return this.AddPart(part);
         }
 
         public SlideMasterPart AddNotesMasterPart()
         {
-            NotesMasterPart part = new NotesMasterPart(this, ++_notesMasterCounter);
+            var part = new NotesMasterPart(this, ++_notesMasterCounter);
             this.NotesMasterParts.Add(part);
             return this.AddPart(part);
         }
 
         public SlideMasterPart AddHandoutMasterPart()
         {
-            HandoutMasterPart part = new HandoutMasterPart(this, ++_handoutMasterCounter);
+            var part = new HandoutMasterPart(this, ++_handoutMasterCounter);
             this.HandoutMasterParts.Add(part);
             return this.AddPart(part);
         }

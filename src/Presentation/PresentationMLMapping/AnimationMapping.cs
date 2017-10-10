@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             _parentMapping = parentMapping;
             _stm = stm;
-            Dictionary<AnimationInfoAtom, int> animAtoms = new Dictionary<AnimationInfoAtom, int>();
+            var animAtoms = new Dictionary<AnimationInfoAtom, int>();
             foreach (AnimationInfoContainer container in animations.Keys)
             {
                 AnimationInfoAtom anim = container.FirstChildWithType<AnimationInfoAtom>();
@@ -125,7 +125,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                             int counter = 0;
                             AnimationInfoAtom a;
-                            System.Collections.Generic.List<AnimationInfoAtom> atoms = new List<AnimationInfoAtom>();
+                            var atoms = new List<AnimationInfoAtom>();
                             foreach (AnimationInfoAtom key in blindAtoms.Keys) atoms.Add(key);
 
                             _writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
@@ -319,7 +319,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             foreach (ExtTimeNodeContainer c2 in container.AllChildrenWithType<ExtTimeNodeContainer>())
             {
-                Dictionary<TimePropertyID4TimeNode, TimeVariantValue> Attributes = new Dictionary<TimePropertyID4TimeNode, TimeVariantValue>();
+                var Attributes = new Dictionary<TimePropertyID4TimeNode, TimeVariantValue>();
                 foreach (TimeVariantValue tv in c2.FirstChildWithType<TimePropertyList4TimeNodeContainer>().AllChildrenWithType<TimeVariantValue>())
                 {
                     Attributes.Add((TimePropertyID4TimeNode)tv.Instance, tv);
@@ -520,7 +520,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
        }
 
-        private String getShapeId(uint c4Id)
+        private string getShapeId(uint c4Id)
         {
             if (_stm.spidToId.ContainsKey((int)c4Id))
             {
@@ -783,7 +783,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             {
                 filter = c.FirstChildWithType<TimePropertyList4TimeNodeContainer>().FirstChildWithType<TimeVariantValue>().stringValue;
             }
-            List<Record> lst = new List<Record>();
+            var lst = new List<Record>();
             string fieldName = "";
             if (bc.FirstChildWithType<TimeAnimationValueListContainer>() != null)
             {
@@ -1003,7 +1003,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             TimeBehaviorAtom tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
             TimeMotionBehaviorAtom tmba = bc.FirstChildWithType<TimeMotionBehaviorAtom>();
 
-            List<String> attrNames = new List<String>();
+            var attrNames = new List<string>();
             foreach (TimeVariantValue attrName in tbc.FirstChildWithType<TimeStringListContainer>().AllChildrenWithType<TimeVariantValue>())
             {
                 attrNames.Add(attrName.stringValue);   
@@ -1224,7 +1224,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             TimeBehaviorAtom tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
             TimeColorBehaviorAtom tcba = bc.FirstChildWithType<TimeColorBehaviorAtom>();
 
-            List<String> attrNames = new List<String>();
+            var attrNames = new List<string>();
             foreach (TimeVariantValue attrName in tbc.FirstChildWithType<TimeStringListContainer>().AllChildrenWithType<TimeVariantValue>())
             {
                 attrNames.Add(attrName.stringValue);
@@ -1388,7 +1388,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             TimeNodeAtom tna = c.FirstChildWithType<TimeNodeAtom>();
             TimeEffectBehaviorContainer tebc = c.FirstChildWithType<TimeEffectBehaviorContainer>();
             TimeEffectBehaviorAtom teba = tebc.FirstChildWithType<TimeEffectBehaviorAtom>();
-            Dictionary<TimePropertyID4TimeNode, TimeVariantValue> Attributes = new Dictionary<TimePropertyID4TimeNode, TimeVariantValue>();
+            var Attributes = new Dictionary<TimePropertyID4TimeNode, TimeVariantValue>();
             
             foreach (TimeVariantValue tv in ((RegularContainer)c.ParentRecord).FirstChildWithType<TimePropertyList4TimeNodeContainer>().AllChildrenWithType<TimeVariantValue>())
             {
@@ -1469,7 +1469,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             if (vsa.type == TimeVisualElementEnum.TextRange)
             {
                 int i = 0;
-                foreach (Point p in TextAreasForAnimation)
+                foreach (var p in TextAreasForAnimation)
                 {
                     if (p.X <= vsa.data1 && p.Y >= vsa.data2)
                     {

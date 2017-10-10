@@ -35,12 +35,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
     {
         public const PtgNumber ID = PtgNumber.PtgArea3d;
 
-        public UInt16 ixti;
+        public ushort ixti;
 
-        public UInt16 rwFirst;
-        public UInt16 rwLast;
-        public UInt16 colFirst;
-        public UInt16 colLast;
+        public ushort rwFirst;
+        public ushort rwLast;
+        public ushort colFirst;
+        public ushort colLast;
 
         public bool rwFirstRelative;
         public bool rwLastRelative;
@@ -64,8 +64,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
             this.colLastRelative = Utils.BitmaskToBool(colLast, 0x4000);
             this.rwLastRelative = Utils.BitmaskToBool(colLast, 0x8000);
 
-            colFirst = (UInt16)(colFirst & 0x3FFF);
-            colLast = (UInt16)(colLast & 0x3FFF);
+            colFirst = (ushort)(colFirst & 0x3FFF);
+            colLast = (ushort)(colLast & 0x3FFF);
 
             this.type = PtgType.Operand;
             this.popSize = 1;

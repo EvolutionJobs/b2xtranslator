@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(57)]
+    [OfficeShapeType(57)]
     class NoSmokingType : ShapeType
     {
         public NoSmokingType()
@@ -39,9 +39,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "3163,3163,18437,18437";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,center";
-            HandleOne.xrange = "0,7200";
+            var HandleOne = new Handle
+            {
+                position = "#0,center",
+                xrange = "0,7200"
+            };
             this.Handles.Add(HandleOne);
 
         }

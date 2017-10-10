@@ -67,14 +67,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// or horizontal values on bubble and scatter chart groups, in the series. <br/>
         /// The value MUST be less than or equal to 3999.
         /// </summary>
-        public UInt16 cValx;
+        public ushort cValx;
 
         /// <summary>
         /// An unsigned integer that specifies the count of values, or vertical 
         /// values on bubble and scatter chart groups, in the series. <br/>
         /// The value MUST be less than or equal to 3999.
         /// </summary>
-        public UInt16 cValy;
+        public ushort cValy;
 
         /// <summary>
         /// specifies that the bubble size values in the series contain numeric information. 
@@ -86,9 +86,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// An unsigned integer that specifies the count of bubble size values in the series. <br/>
         /// The value MUST be less than or equal to 3999.
         /// </summary>
-        public UInt16 cValBSize;
+        public ushort cValBSize;
 
-        public Series(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Series(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

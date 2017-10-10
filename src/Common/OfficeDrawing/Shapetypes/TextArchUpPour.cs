@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(148)]
+    [OfficeShapeType(148)]
     public class TextArchUpPour : ShapeType
     {
         public TextArchUpPour()
@@ -12,9 +12,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextPath = true;
             this.Joins = JoinStyle.none;
             this.ExtrusionOk = true;
-            this.Lock = new ProtectionBooleans();
-            this.Lock.fUsefLockText = true;
-            this.Lock.fLockText = true;
+            this.Lock = new ProtectionBooleans
+            {
+                fUsefLockText = true,
+                fLockText = true
+            };
             this.LockShapeType = true;
 
             this.AdjustmentValues = "11796480,5400";
@@ -52,10 +54,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("if @9 0 21600");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="#1,#0";
-            h1.polar="10800,10800";
-            h1.radiusrange = "0,10800";
+            var h1 = new Handle
+            {
+                position = "#1,#0",
+                polar = "10800,10800",
+                radiusrange = "0,10800"
+            };
             this.Handles.Add(h1);
         }
     }

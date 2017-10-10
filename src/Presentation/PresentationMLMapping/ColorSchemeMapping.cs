@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteAttributeString("name", "dummyTheme");
 
             _writer.WriteStartElement("a", "themeElements", OpenXmlNamespaces.DrawingML);
-            ColorSchemeAtom s = schemes[schemes.Count-1];
+            var s = schemes[schemes.Count-1];
             writeScheme(s);
 
             //write fontScheme
@@ -85,8 +85,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         private void writeFmtScheme()
         {
             //TODO: real implementation instead of default 
-            XmlDocument xmlDoc = Utils.GetDefaultDocument("theme");
-            XmlNodeList l = xmlDoc.GetElementsByTagName("fmtScheme", OpenXmlNamespaces.DrawingML);
+            var xmlDoc = Utils.GetDefaultDocument("theme");
+            var l = xmlDoc.GetElementsByTagName("fmtScheme", OpenXmlNamespaces.DrawingML);
 
             l.Item(0).WriteTo(_writer);
 

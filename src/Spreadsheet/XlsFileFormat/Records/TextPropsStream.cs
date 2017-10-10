@@ -22,7 +22,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public string rgb;
 
-        public TextPropsStream(IStreamReader reader, RecordType id, UInt16 length)
+        public TextPropsStream(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -34,8 +34,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.dwChecksum = reader.ReadUInt32();
             this.cb = reader.ReadUInt32();
 
-            byte[] rgbBytes = reader.ReadBytes((int)this.cb);
-            Encoding codepage = Encoding.GetEncoding(1252);
+            var rgbBytes = reader.ReadBytes((int)this.cb);
+            var codepage = Encoding.GetEncoding(1252);
             this.rgb = codepage.GetString(rgbBytes);
 
             // assert that the correct number of bytes has been read from the stream

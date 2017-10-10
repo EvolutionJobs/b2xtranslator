@@ -6,7 +6,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4082)]
+    [OfficeRecord(4082)]
     public class MouseClickInteractiveInfoContainer : RegularContainer
     {
         public MouseClickTextInteractiveInfoAtom Range;
@@ -17,11 +17,11 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4063)]
+    [OfficeRecord(4063)]
     public class MouseClickTextInteractiveInfoAtom : Record
     {
-        public Int32 begin;
-        public Int32 end;
+        public int begin;
+        public int end;
 
         public MouseClickTextInteractiveInfoAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
@@ -31,7 +31,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4083)]
+    [OfficeRecord(4083)]
     public class InteractiveInfoAtom : Record
     {
         public UInt32 SoundIdRef;

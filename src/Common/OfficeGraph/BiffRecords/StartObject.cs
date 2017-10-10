@@ -47,13 +47,13 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 0x0011<br/>
         /// 0x0012
         /// </summary>
-        public UInt16 iObjectKind;
+        public ushort iObjectKind;
 
         /// <summary>
         /// An unsigned integer that specifies the object context.<br/>
         /// MUST be 0x0000.
         /// </summary>
-        public UInt16 iObjectContext;
+        public ushort iObjectContext;
 
         /// <summary>
         /// An unsigned integer that specifies additional information about the context of the object, 
@@ -66,16 +66,16 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 0x000B = Specifies the application version. &lt;63&gt;<br/>
         /// 0x000C = Specifies the application version. &lt;64&gt;<br/>
         /// </summary>
-        public UInt16 iObjectInstance1;
+        public ushort iObjectInstance1;
 
         /// <summary>
         /// An unsigned integer that specifies more information about the object context, 
         /// along with iObjectContext, iObjectInstance1 and iObjectKind. <br/>
         /// This field MUST equal 0x0000.
         /// </summary>
-        public UInt16 iObjectInstance2;
+        public ushort iObjectInstance2;
 
-        public StartObject(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public StartObject(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

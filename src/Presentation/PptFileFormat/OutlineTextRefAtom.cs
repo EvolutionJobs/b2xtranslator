@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     /// SlideListWithTextContainer record whose persistIdRef field refers to the SlideContainer record that 
     /// contains this OutlineTextRefAtom record. 
     /// </summary>
-    [OfficeRecordAttribute(3998)]
+    [OfficeRecord(3998)]
     public class OutlineTextRefAtom : Record
     {
         /// <summary>
@@ -51,7 +51,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// It MUST be greater than or equal to 0x00000000 and less than the number
         /// of TextHeaderAtom records that follow the corresponding slide persist. 
         /// </summary>
-        public Int32 Index;
+        public int Index;
 
         public OutlineTextRefAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

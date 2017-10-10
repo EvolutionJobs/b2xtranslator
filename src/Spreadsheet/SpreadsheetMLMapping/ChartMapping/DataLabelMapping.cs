@@ -51,7 +51,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         {
             if (chartFormatSequence.AttachedLabelSequences.Count != 0)
             {
-                AttachedLabelSequence attachedLabelSequence = chartFormatSequence.AttachedLabelSequences[0];
+                var attachedLabelSequence = chartFormatSequence.AttachedLabelSequences[0];
 
                 _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElDLbls, Dml.Chart.Ns);
                 {

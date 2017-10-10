@@ -252,7 +252,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// number of UPXs (and UPEs) 
         /// </summary>
-        public UInt16 cupx;
+        public ushort cupx;
 
         /// <summary>
         /// next style
@@ -262,7 +262,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// offset to end of upx's, start of upe's 
         /// </summary>
-        public UInt16 bchUpe;
+        public ushort bchUpe;
 
         /// <summary>
         /// auto redefine style when appropriate 
@@ -374,14 +374,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <param name="dataStream">The "Data" stream (optional, can be null)</param>
         public StyleSheetDescription(byte[] bytes, int cbStdBase, VirtualStream dataStream)
         {
-            BitArray bits = new BitArray(bytes);
+            var bits = new BitArray(bytes);
 
             //parsing the base (fix part)
 
             if (cbStdBase >= 2)
             {
                 //sti
-                BitArray stiBits = Utils.BitArrayCopy(bits, 0, 12);
+                var stiBits = Utils.BitArrayCopy(bits, 0, 12);
                 this.sti = (StyleIdentifier)Utils.BitArrayToUInt32(stiBits);
                 //flags
                 this.fScratch = bits[12];
@@ -392,26 +392,26 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             if (cbStdBase >= 4)
             {
                 //stk
-                BitArray stkBits = Utils.BitArrayCopy(bits, 16, 4);
+                var stkBits = Utils.BitArrayCopy(bits, 16, 4);
                 this.stk = (StyleKind)Utils.BitArrayToUInt32(stkBits);
                 //istdBase
-                BitArray istdBits = Utils.BitArrayCopy(bits, 20, 12);
+                var istdBits = Utils.BitArrayCopy(bits, 20, 12);
                 this.istdBase = (UInt32)Utils.BitArrayToUInt32(istdBits);
             }
             if (cbStdBase >= 6)
             {
                 //cupx
-                BitArray cupxBits = Utils.BitArrayCopy(bits, 32, 4);
-                this.cupx = (UInt16)Utils.BitArrayToUInt32(cupxBits);
+                var cupxBits = Utils.BitArrayCopy(bits, 32, 4);
+                this.cupx = (ushort)Utils.BitArrayToUInt32(cupxBits);
                 //istdNext
-                BitArray istdNextBits = Utils.BitArrayCopy(bits, 36, 12);
+                var istdNextBits = Utils.BitArrayCopy(bits, 36, 12);
                 this.istdNext = (UInt32)Utils.BitArrayToUInt32(istdNextBits);
             }
             if (cbStdBase >= 8)
             {
                 //bchUpe
-                BitArray bchBits = Utils.BitArrayCopy(bits, 48, 16);
-                this.bchUpe = (UInt16)Utils.BitArrayToUInt32(bchBits);
+                var bchBits = Utils.BitArrayCopy(bits, 48, 16);
+                this.bchUpe = (ushort)Utils.BitArrayToUInt32(bchBits);
             }
             if (cbStdBase >= 10)
             {
@@ -431,7 +431,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             if (cbStdBase >= 12)
             {
                 //istdLink
-                BitArray istdLinkBits = Utils.BitArrayCopy(bits, 80, 12);
+                var istdLinkBits = Utils.BitArrayCopy(bits, 80, 12);
                 this.istdLink = (UInt32)Utils.BitArrayToUInt32(istdLinkBits);
                 //fHasOriginalStyle
                 this.fHasOriginalStyle = bits[92];
@@ -439,7 +439,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             if (cbStdBase >= 16)
             {
                 //rsid
-                BitArray rsidBits = Utils.BitArrayCopy(bits, 96, 32);
+                var rsidBits = Utils.BitArrayCopy(bits, 96, 32);
                 this.rsid = Utils.BitArrayToUInt32(rsidBits);
             }
 
@@ -448,7 +448,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             //xstz
             byte characterCount = bytes[cbStdBase];
             //characters are zero-terminated, so 1 char has 2 bytes:
-            byte[] name = new byte[characterCount * 2];
+            var name = new byte[characterCount * 2];
             Array.Copy(bytes, cbStdBase+2, name, 0, name.Length);
             //remove zero-termination
             this.xstzName = Encoding.Unicode.GetString(name);
@@ -464,12 +464,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 }
 
                 //get the count of bytes for UPX
-                UInt16 cbUPX = System.BitConverter.ToUInt16(bytes, upxOffset);
+                var cbUPX = System.BitConverter.ToUInt16(bytes, upxOffset);
 
                 if (cbUPX > 0)
                 {
                     //copy the bytes
-                    byte[] upxBytes = new byte[cbUPX];
+                    var upxBytes = new byte[cbUPX];
                     Array.Copy(bytes, upxOffset + 2, upxBytes, 0, upxBytes.Length);
 
                     if (this.stk == StyleKind.table)

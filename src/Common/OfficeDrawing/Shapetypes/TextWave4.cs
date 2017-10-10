@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(159)]
+    [OfficeShapeType(159)]
     public class TextWave4 : ShapeType
     {
         public TextWave4()
@@ -12,9 +12,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextPath = true;
             this.Joins = JoinStyle.none;
             this.ExtrusionOk = true;
-            this.Lock = new ProtectionBooleans();
-            this.Lock.fUsefLockText = true;
-            this.Lock.fLockText = true;
+            this.Lock = new ProtectionBooleans
+            {
+                fUsefLockText = true,
+                fLockText = true
+            };
             this.LockShapeType = true;
 
             this.AdjustmentValues = "1404,10800";
@@ -78,13 +80,17 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="topLeft,#0";
-            h1.yrange = "0,2229";
+            var h1 = new Handle
+            {
+                position = "topLeft,#0",
+                yrange = "0,2229"
+            };
             this.Handles.Add(h1);
-            Handle h2 = new Handle();
-            h2.position="#1,bottomRight";
-            h2.xrange = "8640,12960";
+            var h2 = new Handle
+            {
+                position = "#1,bottomRight",
+                xrange = "8640,12960"
+            };
             this.Handles.Add(h2);
         }
     }

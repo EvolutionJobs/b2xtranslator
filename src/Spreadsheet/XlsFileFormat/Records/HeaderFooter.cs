@@ -53,28 +53,28 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// MUST be less than or equal to 255. <br/>
         /// MUST be zero if fHFDiffOddEven is zero.
         /// </summary>
-        public UInt16 cchHeaderEven;
+        public ushort cchHeaderEven;
 
         /// <summary>
         /// An unsigned integer that specifies the number of characters in strFooterEven.<br/> 
         /// MUST be less than or equal to 255. <br/>
         /// MUST be zero if fHFDiffOddEven is zero.
         /// </summary>
-        public UInt16 cchFooterEven;
+        public ushort cchFooterEven;
 
         /// <summary>
         /// An unsigned integer that specifies the number of characters in strHeaderFirst.<br/> 
         /// MUST be less than or equal to 255. <br/>
         /// MUST be zero if fHFDiffFirst is zero.
         /// </summary>
-        public UInt16 cchHeaderFirst;
+        public ushort cchHeaderFirst;
 
         /// <summary>
         /// An unsigned integer that specifies the number of characters in strFooterFirst.<br/>
         /// MUST be less than or equal to 255. <br/>
         /// MUST be zero if fHFDiffFirst is zero.
         /// </summary>
-        public UInt16 cchFooterFirst;
+        public ushort cchFooterFirst;
 
         /// <summary>
         /// An XLUnicodeString that specifies the header text on the even pages. <br/>
@@ -112,7 +112,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public string strFooterFirst;
 
-        public HeaderFooter(IStreamReader reader, RecordType id, UInt16 length)
+        public HeaderFooter(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -121,16 +121,16 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // initialize class members from stream
             this.frtHeader = new FrtHeader(reader);
             this.guidSView = new Guid(reader.ReadBytes(16));
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.cchHeaderEven = reader.ReadUInt16();
             this.cchFooterEven = reader.ReadUInt16();
             this.cchHeaderFirst = reader.ReadUInt16();
             this.cchFooterFirst = reader.ReadUInt16();
 
-            byte[] strHeaderEvenBytes = reader.ReadBytes(cchHeaderEven);
-            byte[] strFooterEvenBytes = reader.ReadBytes(cchFooterEven);
-            byte[] strHeaderFirstBytes = reader.ReadBytes(cchHeaderFirst);
-            byte[] strFooterFirstBytes = reader.ReadBytes(cchFooterFirst);
+            var strHeaderEvenBytes = reader.ReadBytes(cchHeaderEven);
+            var strFooterEvenBytes = reader.ReadBytes(cchFooterEven);
+            var strHeaderFirstBytes = reader.ReadBytes(cchHeaderFirst);
+            var strFooterFirstBytes = reader.ReadBytes(cchFooterFirst);
 
             //this.strHeaderEven = new XLUnicodeString(reader).Value;
             //this.strFooterEven = new XLUnicodeString(reader).Value;

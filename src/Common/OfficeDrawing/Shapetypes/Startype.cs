@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(12)]
+    [OfficeShapeType(12)]
     public class Startype : ShapeType
     {
         public Startype()

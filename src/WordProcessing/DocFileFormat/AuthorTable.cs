@@ -14,8 +14,8 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public AuthorTable(FileInformationBlock fib, VirtualStream tableStream)
         {
             int pos = 8;
-            byte[] uniChar = new byte[2];
-            StringBuilder name = new StringBuilder();
+            var uniChar = new byte[2];
+            var name = new StringBuilder();
             while (pos < fib.lcbSttbfRMark)
             {
                 tableStream.Read(uniChar, 0, 2, (int)(fib.fcSttbfRMark + pos));

@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
     {
         AbstractFat _fat;
         Stream _stream;
-        UInt16 _sectorSize;
+        ushort _sectorSize;
         OutputHandler _outputHander;
 
         // Start sector of the virtual stream.
@@ -75,7 +75,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="fat">The fat which is used by this stream.</param>
         /// <param name="sectorSize">The sector size.</param>
         /// <param name="outputHander"></param>
-        internal VirtualStream(Stream stream, AbstractFat fat, UInt16 sectorSize, OutputHandler outputHander)
+        internal VirtualStream(Stream stream, AbstractFat fat, ushort sectorSize, OutputHandler outputHander)
         {
             _stream = stream;
             _fat = fat;
@@ -91,10 +91,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         internal void write()
         {
             _startSector = _fat.writeChain(SectorCount);
-            BinaryReader reader = new BinaryReader(_stream);
+            var reader = new BinaryReader(_stream);
             reader.BaseStream.Seek(0, SeekOrigin.Begin);
             while (true) {
-                byte[] bytes = reader.ReadBytes((int)_sectorSize);
+                var bytes = reader.ReadBytes((int)_sectorSize);
                 _outputHander.writeSectors(bytes, _sectorSize, (byte)0x0);
                 if (bytes.Length != _sectorSize)
                 {

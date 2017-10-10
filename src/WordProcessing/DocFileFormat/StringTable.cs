@@ -40,7 +40,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
         public int cData;
 
-        public UInt16 cbExtra;
+        public ushort cbExtra;
 
         public List<string> Strings;
 
@@ -90,7 +90,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
             //read cData
             long cDataStart = reader.BaseStream.Position;
-            UInt16 c = reader.ReadUInt16();
+            var c = reader.ReadUInt16();
             if (c != 0xFFFF)
             {
                 //cData is a 2byte unsigned Integer and the read bytes are already cData
@@ -132,8 +132,8 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 else
                 {
                     //It's a modified string table that contains custom data
-                    ConstructorInfo constructor = dataType.GetConstructor(new Type[] { typeof(VirtualStreamReader), typeof(int) });
-                    ByteStructure data = (ByteStructure)constructor.Invoke(new object[] { reader, cbData });
+                    var constructor = dataType.GetConstructor(new Type[] { typeof(VirtualStreamReader), typeof(int) });
+                    var data = (ByteStructure)constructor.Invoke(new object[] { reader, cbData });
                     this.Data.Add(data);
                 }
 

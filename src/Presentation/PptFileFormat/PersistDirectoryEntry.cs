@@ -77,7 +77,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public PersistDirectoryEntry(BinaryReader reader)
         {
-            UInt32 StartPersistIdAndPersistCount = reader.ReadUInt32();
+            var StartPersistIdAndPersistCount = reader.ReadUInt32();
             this.StartPersistId = (StartPersistIdAndPersistCount & 0x000FFFFFU); // First 20 bit
             this.PersistCount   = (StartPersistIdAndPersistCount & 0xFFF00000U) >> 20; // Last 12 bit
 
@@ -89,13 +89,13 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public string ToString(uint depth)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.AppendFormat("{0}PersistDirectoryEntry: ", Record.IndentationForDepth(depth));
 
             bool isFirst = true;
 
-            foreach (UInt32 entry in this.PersistOffsetEntries)
+            foreach (var entry in this.PersistOffsetEntries)
             {
                 if (!isFirst)
                     sb.Append(", ");

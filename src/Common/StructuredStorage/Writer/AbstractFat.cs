@@ -66,7 +66,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
                 return SectorId.FREESECT;
             }
 
-            UInt32 startSector = _currentEntry;
+            var startSector = _currentEntry;
 
             for (int i = 0; i < entryCount - 1; i++)
             {

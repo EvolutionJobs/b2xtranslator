@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(179)]
+    [OfficeShapeType(179)]
     public class AccentCallout90Type : ShapeType
     {
         public AccentCallout90Type()
@@ -24,12 +24,16 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.ConnectorLocations = "@0,@1;10800,0;10800,21600;0,10800;21600,10800";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,#1";
+            var HandleOne = new Handle
+            {
+                position = "#0,#1"
+            };
             this.Handles.Add(HandleOne);
 
-            Handle HandleTwo = new Handle();
-            HandleTwo.position="#2,#3";
+            var HandleTwo = new Handle
+            {
+                position = "#2,#3"
+            };
             this.Handles.Add(HandleTwo);
         }
     }

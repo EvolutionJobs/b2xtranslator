@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(153)]
+    [OfficeShapeType(153)]
     public class TextCurveDown : ShapeType
     {
         public TextCurveDown()
@@ -12,9 +12,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextPath = true;
             this.Joins = JoinStyle.none;
             this.ExtrusionOk = true;
-            this.Lock = new ProtectionBooleans();
-            this.Lock.fUsefLockText = true;
-            this.Lock.fLockText = true;
+            this.Lock = new ProtectionBooleans
+            {
+                fUsefLockText = true,
+                fLockText = true
+            };
             this.LockShapeType = true;
 
             this.AdjustmentValues = "9391";
@@ -41,9 +43,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("sum @11 14400 @14");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="bottomRight,#0";
-            h1.yrange = "0,11368";
+            var h1 = new Handle
+            {
+                position = "bottomRight,#0",
+                yrange = "0,11368"
+            };
             this.Handles.Add(h1);
         }
     }

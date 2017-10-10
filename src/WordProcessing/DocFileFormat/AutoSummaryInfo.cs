@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 2 = Insert into doc<br/>
         /// 3 = Show in new document
         /// </summary>
-        public Int16 iViewBy;
+        public short iViewBy;
 
         /// <summary>
         /// True if File Properties summary information 
@@ -63,17 +63,17 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Dialog summary level
         /// </summary>
-        public Int16 wDlgLevel;
+        public short wDlgLevel;
 
         /// <summary>
         /// Upper bound for lLevel for sentences in this document
         /// </summary>
-        public Int32 lHighestLevel;
+        public int lHighestLevel;
 
         /// <summary>
         /// Show document sentences at or below this level
         /// </summary>
-        public Int32 lCurrentLevel;
+        public int lCurrentLevel;
 
         /// <summary>
         /// Parses the bytes to retrieve a AutoSummaryInfo
@@ -84,10 +84,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             if (bytes.Length == 12)
             {
                 //split byte 0 and 1 into bits
-                BitArray bits = new BitArray(new byte[] { bytes[0], bytes[1] });
+                var bits = new BitArray(new byte[] { bytes[0], bytes[1] });
                 this.fValid = bits[0];
                 this.fView = bits[1];
-                this.iViewBy = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 2));
+                this.iViewBy = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 2));
                 this.fUpdateProps = bits[4];
 
                 this.wDlgLevel = System.BitConverter.ToInt16(bytes, 2);

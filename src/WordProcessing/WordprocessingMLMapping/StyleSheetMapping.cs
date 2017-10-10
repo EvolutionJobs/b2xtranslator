@@ -141,7 +141,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //write character properties
                     if (style.chpx != null)
                     {
-                        RevisionData rev = new RevisionData();
+                        var rev = new RevisionData();
                         rev.Type = RevisionData.RevisionType.NoRevision;
                         style.chpx.Convert(new CharacterPropertiesMapping(_writer, _parentDoc, rev, style.papx, true));
                     }
@@ -149,7 +149,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //write table properties
                     if (style.tapx != null)
                     {
-                        style.tapx.Convert(new TablePropertiesMapping(_writer, sheet, new List<Int16>()));
+                        style.tapx.Convert(new TablePropertiesMapping(_writer, sheet, new List<short>()));
                     }
 
                     _writer.WriteEndElement();
@@ -170,16 +170,16 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //write default fonts
             _writer.WriteStartElement("w", "rFonts", OpenXmlNamespaces.WordprocessingML);
 
-            FontFamilyName ffnAscii = (FontFamilyName)_ctx.Doc.FontTable.Data[sheet.stshi.rgftcStandardChpStsh[0]];
+            var ffnAscii = (FontFamilyName)_ctx.Doc.FontTable.Data[sheet.stshi.rgftcStandardChpStsh[0]];
             _writer.WriteAttributeString("w", "ascii", OpenXmlNamespaces.WordprocessingML, ffnAscii.xszFtn);
 
-            FontFamilyName ffnAsia = (FontFamilyName)_ctx.Doc.FontTable.Data[sheet.stshi.rgftcStandardChpStsh[1]];
+            var ffnAsia = (FontFamilyName)_ctx.Doc.FontTable.Data[sheet.stshi.rgftcStandardChpStsh[1]];
             _writer.WriteAttributeString("w", "eastAsia", OpenXmlNamespaces.WordprocessingML, ffnAsia.xszFtn);
 
-            FontFamilyName ffnAnsi = (FontFamilyName)_ctx.Doc.FontTable.Data[sheet.stshi.rgftcStandardChpStsh[2]];
+            var ffnAnsi = (FontFamilyName)_ctx.Doc.FontTable.Data[sheet.stshi.rgftcStandardChpStsh[2]];
             _writer.WriteAttributeString("w", "hAnsi", OpenXmlNamespaces.WordprocessingML, ffnAsia.xszFtn);
 
-            FontFamilyName ffnComplex = (FontFamilyName)_ctx.Doc.FontTable.Data[sheet.stshi.rgftcStandardChpStsh[3]];
+            var ffnComplex = (FontFamilyName)_ctx.Doc.FontTable.Data[sheet.stshi.rgftcStandardChpStsh[3]];
             _writer.WriteAttributeString("w", "cs", OpenXmlNamespaces.WordprocessingML, ffnComplex.xszFtn);
             
             _writer.WriteEndElement();

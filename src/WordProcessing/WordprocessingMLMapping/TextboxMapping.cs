@@ -12,9 +12,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
     public class TextboxMapping : DocumentMapping
     {
         public static int TextboxCount = 0;
-        private Int32 _textboxIndex;
+        private int _textboxIndex;
 
-        public TextboxMapping(ConversionContext ctx, Int32 textboxIndex, ContentPart targetpart, XmlWriter writer)
+        public TextboxMapping(ConversionContext ctx, int textboxIndex, ContentPart targetpart, XmlWriter writer)
             : base(ctx, targetpart, writer)
         {
             TextboxCount++;
@@ -35,10 +35,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             _writer.WriteStartElement("v", "textbox", OpenXmlNamespaces.VectorML);
             _writer.WriteStartElement("w", "txbxContent", OpenXmlNamespaces.WordprocessingML);
 
-            Int32 cp = 0;
-            Int32 cpEnd = 0;
+            var cp = 0;
+            var cpEnd = 0;
             BreakDescriptor bkd = null;
-            Int32 txtbxSubdocStart = doc.FIB.ccpText + doc.FIB.ccpFtn + doc.FIB.ccpHdr + doc.FIB.ccpAtn + doc.FIB.ccpEdn;
+            int txtbxSubdocStart = doc.FIB.ccpText + doc.FIB.ccpFtn + doc.FIB.ccpHdr + doc.FIB.ccpAtn + doc.FIB.ccpEdn;
 
             if(_targetPart.GetType() == typeof(MainDocumentPart))
             {
@@ -59,9 +59,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             while (cp < cpEnd)
             {
-                Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-                ParagraphPropertyExceptions papx = findValidPapx(fc);
-                TableInfo tai = new TableInfo(papx);
+                int fc = _doc.PieceTable.FileCharacterPositions[cp];
+                var papx = findValidPapx(fc);
+                var tai = new TableInfo(papx);
 
                 if (tai.fInTable)
                 {

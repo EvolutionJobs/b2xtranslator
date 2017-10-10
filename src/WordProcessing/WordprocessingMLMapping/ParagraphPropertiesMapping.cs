@@ -101,7 +101,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 //append properties
                 _paraEndChpx.Convert(new CharacterPropertiesMapping(rPr, _ctx.Doc, new RevisionData(_paraEndChpx), papx, false));
 
-                RevisionData rev = new RevisionData(_paraEndChpx);
+                var rev = new RevisionData(_paraEndChpx);
                 //append delete infos
                 if (rev.Type == RevisionData.RevisionType.Deleted)
                 {
@@ -194,7 +194,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaLeft1:
                     case SinglePropertyModifier.OperationCode.sprmPDxaLeft180:
-                        Int16 flValue = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var flValue = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         string flName;
                         if (flValue >= 0)
                         {
@@ -240,7 +240,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         spacing.Attributes.Append(beforeAutospacing);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDyaLine:
-                        LineSpacingDescriptor lspd = new LineSpacingDescriptor(sprm.Arguments);
+                        var lspd = new LineSpacingDescriptor(sprm.Arguments);
                         XmlAttribute line = _nodeFactory.CreateAttribute("w", "line", OpenXmlNamespaces.WordprocessingML);
                         line.Value = Math.Abs(lspd.dyaLine).ToString();
                         spacing.Attributes.Append(line);
@@ -315,7 +315,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //shading
                     case SinglePropertyModifier.OperationCode.sprmPShd80:
                     case SinglePropertyModifier.OperationCode.sprmPShd:
-                        ShadingDescriptor desc = new ShadingDescriptor(sprm.Arguments);
+                        var desc = new ShadingDescriptor(sprm.Arguments);
                         appendShading(_pPr, desc);
                         break;
                     
@@ -324,7 +324,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         appendValueElement(numPr, "ilvl", sprm.Arguments[0].ToString(), true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPIlfo:
-                        UInt16 val  = System.BitConverter.ToUInt16(sprm.Arguments, 0);
+                        var val  = System.BitConverter.ToUInt16(sprm.Arguments, 0);
                         appendValueElement(numPr, "numId", val.ToString(), true);
 
                         ////check if there is a ilvl reference, if not, check the count of LVLs.
@@ -373,7 +373,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         pos++;
                         for (int i = 0; i < itbdAddMax; i++)
                         {
-                            TabDescriptor tbd = new TabDescriptor(sprm.Arguments[pos + (itbdAddMax * 2) + i]);
+                            var tbd = new TabDescriptor(sprm.Arguments[pos + (itbdAddMax * 2) + i]);
                             XmlElement tab = _nodeFactory.CreateElement("w", "tab", OpenXmlNamespaces.WordprocessingML);
                             //justification
                             XmlAttribute tabsVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
@@ -397,37 +397,37 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmPPc:
                         //position code
                         byte flag = sprm.Arguments[0];
-                        Global.VerticalPositionCode pcVert = (Global.VerticalPositionCode)((flag & 0x30) >> 4);
-                        Global.HorizontalPositionCode pcHorz = (Global.HorizontalPositionCode)((flag & 0xC0) >> 6);
+                        var pcVert = (Global.VerticalPositionCode)((flag & 0x30) >> 4);
+                        var pcHorz = (Global.HorizontalPositionCode)((flag & 0xC0) >> 6);
                         appendValueAttribute(_framePr, "hAnchor", pcHorz.ToString());
                         appendValueAttribute(_framePr, "vAnchor", pcVert.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPWr:
-                        Global.TextFrameWrapping wrapping = (Global.TextFrameWrapping)sprm.Arguments[0];
+                        var wrapping = (Global.TextFrameWrapping)sprm.Arguments[0];
                         appendValueAttribute(_framePr, "wrap", wrapping.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaAbs:
-                        Int16 frameX = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var frameX = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(_framePr, "x", frameX.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDyaAbs:
-                        Int16 frameY = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var frameY = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(_framePr, "y", frameY.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPWHeightAbs:
-                        Int16 frameHeight = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var frameHeight = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(_framePr, "h", frameHeight.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaWidth:
-                        Int16 frameWidth = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var frameWidth = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(_framePr, "w", frameWidth.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaFromText:
-                        Int16 frameSpaceH = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var frameSpaceH = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(_framePr, "hSpace", frameSpaceH.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDyaFromText:
-                        Int16 frameSpaceV = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var frameSpaceV = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(_framePr, "vSpace", frameSpaceV.ToString());
                         break;
 
@@ -466,7 +466,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //append justification
             if (jc != null)
             {
-                XmlAttribute jcVal = jc.Attributes["val", OpenXmlNamespaces.WordprocessingML];
+                var jcVal = jc.Attributes["val", OpenXmlNamespaces.WordprocessingML];
                 if ((isRightToLeft || isStyleRightToLeft(papx.istd)) && jcVal.Value == "right")
                 {
                     //ignore jc="right" for RTL documents

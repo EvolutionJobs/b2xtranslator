@@ -52,14 +52,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public bool fHasShadow;
 
-        public Radar(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Radar(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fRdrAxLab = Utils.BitmaskToBool(flags, 0x1);
             this.fHasShadow = Utils.BitmaskToBool(flags, 0x2);
             reader.ReadBytes(2); //unused

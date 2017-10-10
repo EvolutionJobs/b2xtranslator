@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(136)]
+    [OfficeShapeType(136)]
     public class TextPlainText : ShapeType
     {
         public TextPlainText()
@@ -37,9 +37,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.ConnectorAngles = "270,180,90,0";
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position = "#0,bottomRight";
-            h1.xrange = "6629,14971";
+            var h1 = new Handle
+            {
+                position = "#0,bottomRight",
+                xrange = "6629,14971"
+            };
             this.Handles.Add(h1);
         }
     }

@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF00F)]
+    [OfficeRecord(0xF00F)]
     public class ChildAnchor : Record
     {
         /// <summary>

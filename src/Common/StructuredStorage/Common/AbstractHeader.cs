@@ -43,46 +43,46 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         protected AbstractIOHandler _ioHandler;
 
         // Sector shift and sector size
-        private UInt16 _sectorShift;
-        public UInt16 SectorShift
+        private ushort _sectorShift;
+        public ushort SectorShift
         {
             get { return _sectorShift; }
             set
             {
                 _sectorShift = value;
                 // Calculate sector size
-                _sectorSize = (UInt16)Math.Pow((double)2, (double)_sectorShift);
+                _sectorSize = (ushort)Math.Pow((double)2, (double)_sectorShift);
                 if (_sectorShift != 9 && _sectorShift != 12)
                 {
                     throw new UnsupportedSizeException("SectorShift: " + _sectorShift);
                 }
             }
         }
-        private UInt16 _sectorSize;
-        public UInt16 SectorSize
+        private ushort _sectorSize;
+        public ushort SectorSize
         {
             get { return _sectorSize; }
         }
 
 
         // Minisector shift and Minisector size
-        private UInt16 _miniSectorShift;
-        public UInt16 MiniSectorShift
+        private ushort _miniSectorShift;
+        public ushort MiniSectorShift
         {
             get { return _miniSectorShift; }
             set
             {
                 _miniSectorShift = value;
                 // Calculate mini sector size
-                _miniSectorSize = (UInt16)Math.Pow((double)2, (double)_miniSectorShift);
+                _miniSectorSize = (ushort)Math.Pow((double)2, (double)_miniSectorShift);
                 if (_miniSectorShift != 6)
                 {
                     throw new UnsupportedSizeException("MiniSectorShift: " + _miniSectorShift);
                 }
             }
         }
-        private UInt16 _miniSectorSize;
-        public UInt16 MiniSectorSize
+        private ushort _miniSectorSize;
+        public ushort MiniSectorSize
         {
             get { return _miniSectorSize; }
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(65)]
+    [OfficeShapeType(65)]
     public class FoldedCornerType : ShapeType
     {
         public FoldedCornerType()
@@ -38,9 +38,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "0,0,21600,@13";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,bottomRight";
-            HandleOne.xrange = "10800,21600";
+            var HandleOne = new Handle
+            {
+                position = "#0,bottomRight",
+                xrange = "10800,21600"
+            };
             this.Handles.Add(HandleOne);
             
         }

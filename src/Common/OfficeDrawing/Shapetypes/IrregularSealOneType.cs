@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(71)]
+    [OfficeShapeType(71)]
     public class IrregularSealOneType : ShapeType
     {
         public IrregularSealOneType()

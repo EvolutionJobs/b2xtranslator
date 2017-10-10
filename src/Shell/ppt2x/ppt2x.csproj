@@ -3,8 +3,12 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
+    <ApplicationIcon>ppt2x.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj" />
+    <ProjectReference Include="..\..\Common\Shell\Shell.csproj" />
     <ProjectReference Include="..\..\Presentation\PptFileFormat\PptFileFormat.csproj" />
+    <ProjectReference Include="..\..\Presentation\PresentationMLMapping\PresentationMLMapping.csproj" />
   </ItemGroup>
 </Project>

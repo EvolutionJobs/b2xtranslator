@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 throw new Exception("Invalid chart type");
             }
 
-            Radar radar = crtSequence.ChartType as Radar;
+            var radar = crtSequence.ChartType as Radar;
             
             // c:radarChart
             _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElRadarChart, Dml.Chart.Ns);
@@ -65,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 //writeValueElement(Dml.Chart.ElVaryColors, crtSequence.ChartFormat.fVaried ? "1" : "0");
 
                 // Radar Chart Series (CT_RadarSer)
-                foreach (SeriesFormatSequence seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
+                foreach (var seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
                 {
                     if (seriesFormatSequence.SerToCrt != null && seriesFormatSequence.SerToCrt.id == crtSequence.ChartFormat.idx)
                     {
@@ -81,7 +81,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         for (int i = 1; i < seriesFormatSequence.SsSequence.Count; i++)
                         {
                             // write a dPt for each SsSequence
-                            SsSequence sss = seriesFormatSequence.SsSequence[i];
+                            var sss = seriesFormatSequence.SsSequence[i];
                             sss.Convert(new DataPointMapping(this.WorkbookContext, this.ChartContext, i - 1));
                         }
 

@@ -118,7 +118,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <returns></returns>
         int IComparable.CompareTo(object obj)
         {
-            AbstractCellData cell = (AbstractCellData)obj;
+            var cell = (AbstractCellData)obj;
             if (this.col > cell.col)
                 return (1);
             if (this.col < cell.col)

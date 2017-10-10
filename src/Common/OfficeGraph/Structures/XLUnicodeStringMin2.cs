@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// MUST be equal to the number of characters in st.
         /// </summary>
-        public UInt16 cch;
+        public ushort cch;
 
         /// <summary>
         /// An optional XLUnicodeStringNoCch that specifies the string. 

@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         override public void Apply(RegularContainer pmaster)
         {
-            Slide master = (Slide)pmaster;
+            var master = (Slide)pmaster;
 
             TraceLogger.DebugInternal("MasterMapping.Apply");
             UInt32 masterId = master.PersistAtom.SlideId;
@@ -69,10 +69,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             foreach (RoundTripContentMasterInfo12 slideLayout in rtSlideLayouts)
             {
-                SlideLayoutPart layoutPart = this.LayoutManager.AddLayoutPartWithInstanceId(slideLayout.Instance);
+                var layoutPart = this.LayoutManager.AddLayoutPartWithInstanceId(slideLayout.Instance);
                 XmlNode e = slideLayout.XmlDocumentElement;
 
-                XmlNamespaceManager nsm = new XmlNamespaceManager(new NameTable());
+                var nsm = new XmlNamespaceManager(new NameTable());
                 nsm.AddNamespace("a", OpenXmlNamespaces.DrawingML);
 
                 //for the moment remove blips that reference pictures
@@ -144,7 +144,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
             _writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
-            ShapeTreeMapping stm = new ShapeTreeMapping(_ctx, _writer);
+            var stm = new ShapeTreeMapping(_ctx, _writer);
             stm.parentSlideMapping = this;
             stm.Apply(this.Master.FirstChildWithType<PPDrawing>());
 
@@ -173,12 +173,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             // Write slide layout part id list
             _writer.WriteStartElement("p", "sldLayoutIdLst", OpenXmlNamespaces.PresentationML);
 
-            List<SlideLayoutPart> layoutParts = this.LayoutManager.GetAllLayoutParts();
+            var layoutParts = this.LayoutManager.GetAllLayoutParts();
 
             // Master must have at least one SlideLayout or RepairDialog will appear
             if (layoutParts.Count == 0)
             {
-                SlideLayoutPart layoutPart = this.LayoutManager.GetOrCreateLayoutPartByLayoutType(0, null);
+                var layoutPart = this.LayoutManager.GetOrCreateLayoutPartByLayoutType(0, null);
                 layoutParts.Add(layoutPart);
             }
 

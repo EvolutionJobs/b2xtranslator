@@ -6,7 +6,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(0x03FF)]
+    [OfficeRecord(0x03FF)]
     public class VBAInfoContainer : Record
     {
         public UInt32 objStgDataRef;

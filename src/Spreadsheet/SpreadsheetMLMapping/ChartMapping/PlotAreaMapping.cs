@@ -92,9 +92,9 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 }
 
                 // chart groups
-                foreach (AxisParentSequence axisParentSequence in chartFormatsSequence.AxisParentSequences)
+                foreach (var axisParentSequence in chartFormatsSequence.AxisParentSequences)
                 {
-                    foreach (CrtSequence crtSequence in axisParentSequence.CrtSequences)
+                    foreach (var crtSequence in axisParentSequence.CrtSequences)
                     {
                         // The Chart3d record specifies that the plot area, axis group, and chart group are rendered 
                         // in a 3-D scene, rather than a 2-D scene, and specifies properties of the 3-D scene. If this 
@@ -154,10 +154,10 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 }
 
                 // axis groups
-                foreach (AxisParentSequence axisParentSequence in chartFormatsSequence.AxisParentSequences)
+                foreach (var axisParentSequence in chartFormatsSequence.AxisParentSequences)
                 {
                     // NOTE: AxisParent.iax must be 0 for the primary axis group
-                    AxesSequence axesSequence = axisParentSequence.AxesSequence;
+                    var axesSequence = axisParentSequence.AxesSequence;
                     if (axesSequence != null)
                     {
                         axesSequence.Convert(new AxisMapping(this.WorkbookContext, this.ChartContext));

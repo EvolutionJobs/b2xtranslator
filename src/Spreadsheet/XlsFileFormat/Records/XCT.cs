@@ -35,11 +35,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.XCT;
 
-        public UInt16 ccrn;
+        public ushort ccrn;
 
-        public UInt16 itab; 
+        public ushort itab; 
 
-        public XCT(IStreamReader reader, RecordType id, UInt16 length)
+        public XCT(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

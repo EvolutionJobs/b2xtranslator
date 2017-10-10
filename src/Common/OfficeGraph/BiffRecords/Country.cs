@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
     {
         public const GraphRecordNumber ID = GraphRecordNumber.Country;
 
-        public Country(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Country(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

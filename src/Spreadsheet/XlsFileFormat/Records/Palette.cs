@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public List<RGBColor> rgbColorList; 
 
-        public Palette(IStreamReader reader, RecordType id, UInt16 length)
+        public Palette(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             for (int i = 0; i < this.ccv; i++)
             {
-                RGBColor color = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
+                var color = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
                 this.rgbColorList.Add(color); 
             }
 

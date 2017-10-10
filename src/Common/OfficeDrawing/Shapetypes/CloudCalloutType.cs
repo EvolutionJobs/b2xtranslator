@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(106)]
+    [OfficeShapeType(106)]
     public class CloudCalloutType : ShapeType
     {
         public CloudCalloutType()
@@ -68,8 +68,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "2977,3262,17087,17337";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,#1";
+            var HandleOne = new Handle
+            {
+                position = "#0,#1"
+            };
             this.Handles.Add(HandleOne);
 
 

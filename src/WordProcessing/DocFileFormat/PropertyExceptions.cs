@@ -61,11 +61,11 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     if (sprmStart + 2 < bytes.Length)
                     {
                         //make spra
-                        SinglePropertyModifier.OperationCode opCode = (SinglePropertyModifier.OperationCode)System.BitConverter.ToUInt16(bytes, sprmStart);
-                        byte spra = (byte)((Int32)opCode >> 13);
+                        var opCode = (SinglePropertyModifier.OperationCode)System.BitConverter.ToUInt16(bytes, sprmStart);
+                        byte spra = (byte)((int)opCode >> 13);
 
                         // get size of operand
-                        Int16 opSize = (Int16)SinglePropertyModifier.GetOperandSize(spra);
+                        var opSize = (short)SinglePropertyModifier.GetOperandSize(spra);
                         byte lenByte = 0;
 
                         //operand has variable size
@@ -92,7 +92,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                                     {
                                         byte itbdDelMax = bytes[sprmStart + 3];
                                         byte itbdAddMax = bytes[sprmStart + 3 + 2 * itbdDelMax];
-                                        opSize = (Int16)((itbdDelMax * 4 + itbdAddMax * 3) - 1);
+                                        opSize = (short)((itbdDelMax * 4 + itbdAddMax * 3) - 1);
                                     }
                                     break;
                                 default:
@@ -105,14 +105,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
                         //copy sprm to array
                         //length is 2byte for the opCode, lenByte for the length, opSize for the length of the operand
-                        byte[] sprmBytes = new byte[2 + lenByte + opSize];
+                        var sprmBytes = new byte[2 + lenByte + opSize];
 
                         if (bytes.Length >= sprmStart + sprmBytes.Length)
                         {
                             Array.Copy(bytes, sprmStart, sprmBytes, 0, sprmBytes.Length);
 
                             //parse
-                            SinglePropertyModifier sprm = new SinglePropertyModifier(sprmBytes);
+                            var sprm = new SinglePropertyModifier(sprmBytes);
                             grpprl.Add(sprm);
 
                             sprmStart += sprmBytes.Length;

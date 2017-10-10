@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(90)]
+    [OfficeShapeType(90)]
     class BentUpArrowType : ShapeType
     {
         public BentUpArrowType()
@@ -43,17 +43,21 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
            
             this.Handles = new List<Handle>();
 
-             
 
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,topLeft";
-            HandleOne.xrange="@2,@9"; 
+
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "@2,@9"
+            };
             this.Handles.Add(HandleOne);
-            
-            Handle HandleTwo = new Handle();
-            HandleTwo.position="#1,#2";
-            HandleTwo.xrange="@4,21600";
-            HandleTwo.yrange="0,@0"; 
+
+            var HandleTwo = new Handle
+            {
+                position = "#1,#2",
+                xrange = "@4,21600",
+                yrange = "0,@0"
+            };
             this.Handles.Add(HandleTwo);
         }
     }

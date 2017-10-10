@@ -45,10 +45,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         private XmlElement _tcPr;
         private XmlElement _tcMar;
         private XmlElement _tcBorders;
-        private List<Int16> _grid;
-        private Int16[] _tGrid;
+        private List<short> _grid;
+        private short[] _tGrid;
 
-        private Int16 _width;
+        private short _width;
         private Global.CellWidthType _ftsWidth;
         private TC80 _tcDef;
 
@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             bottom
         }
 
-        public TableCellPropertiesMapping(XmlWriter writer, List<Int16> tableGrid, int gridIndex, int cellIndex)
+        public TableCellPropertiesMapping(XmlWriter writer, List<short> tableGrid, int gridIndex, int cellIndex)
             : base(writer)
         {
             _tcPr = _nodeFactory.CreateElement("w", "tcPr", OpenXmlNamespaces.WordprocessingML);
@@ -93,7 +93,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 	            {
                     //Table definition SPRM
                     case  SinglePropertyModifier.OperationCode.sprmTDefTable:
-                        SprmTDefTable tdef = new SprmTDefTable(sprm.Arguments);
+                        var tdef = new SprmTDefTable(sprm.Arguments);
                         _tGrid = tdef.rgdxaCenter;
                         _tcDef = tdef.rgTc80[_cellIndex];
 
@@ -115,7 +115,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                             appendValueElement(_tcPr, "noWrap", "", true);
 
                         //_width = _tcDef.wWidth;
-                        _width = (Int16)(tdef.rgdxaCenter[_cellIndex + 1] - tdef.rgdxaCenter[_cellIndex]);
+                        _width = (short)(tdef.rgdxaCenter[_cellIndex + 1] - tdef.rgdxaCenter[_cellIndex]);
                         _ftsWidth = _tcDef.ftsWidth;
 
                         //borders
@@ -135,11 +135,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         byte first = sprm.Arguments[0];
                         byte lim = sprm.Arguments[1];
                         byte ftsMargin = sprm.Arguments[3];
-                        Int16 wMargin = System.BitConverter.ToInt16(sprm.Arguments, 4);
+                        var wMargin = System.BitConverter.ToInt16(sprm.Arguments, 4);
 
                         if (_cellIndex >= first && _cellIndex < lim)
                         {
-                            BitArray borderBits = new BitArray(new byte[] { sprm.Arguments[2] });
+                            var borderBits = new BitArray(new byte[] { sprm.Arguments[2] });
                             if (borderBits[0] == true)
                                 appendDxaElement(_tcMar, "top", wMargin.ToString(), true);
                             if (borderBits[1] == true)
@@ -200,9 +200,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                         if (_cellIndex >= min && _cellIndex < max)
                         {
-                            byte[] brcBytes = new byte[8];
+                            var brcBytes = new byte[8];
                             Array.Copy(sprm.Arguments, 3, brcBytes, 0, 8);
-                            BorderCode border = new BorderCode(brcBytes);
+                            var border = new BorderCode(brcBytes);
                             if(Utils.BitmaskToBool(bordersToApply, 0x01))
                             {
                                 _brcTop = border;
@@ -301,7 +301,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             if (sprmArg.Length % 10 == 0)
                 shdLength = 10;
 
-            byte[] shdBytes = new byte[shdLength];
+            var shdBytes = new byte[shdLength];
 
             //multiple cell can be formatted with the same SHD.
             //in this case there is only 1 SHD for all cells in the row.
@@ -313,7 +313,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             Array.Copy(sprmArg, cellIndex * shdBytes.Length, shdBytes, 0, shdBytes.Length);
             
-            ShadingDescriptor shd = new ShadingDescriptor(shdBytes);
+            var shd = new ShadingDescriptor(shdBytes);
             appendShading(_tcPr, shd);
         }
 

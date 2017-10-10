@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(16)]
+    [OfficeShapeType(16)]
     public class CubeType :ShapeType
     {
         public CubeType()
@@ -34,10 +34,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "0,@0,@1,21600";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="topLeft,#0";
-            HandleOne.switchHandle = "true";
-            HandleOne.yrange = "0,21600";
+            var HandleOne = new Handle
+            {
+                position = "topLeft,#0",
+                switchHandle = "true",
+                yrange = "0,21600"
+            };
             this.Handles.Add(HandleOne);
 
             this.Limo = "10800,10800";

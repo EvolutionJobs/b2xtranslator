@@ -36,18 +36,18 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.ExternName;
 
-        public UInt16 ixals;
+        public ushort ixals;
         public bool fOle;
         public bool fOleLink;
-        public UInt16 grbit; 
-        public String extName;
+        public ushort grbit; 
+        public string extName;
         public byte cch;
 
-        public UInt16 cce;
+        public ushort cce;
 
-        public String nameDefinition; 
+        public string nameDefinition; 
 
-        public ExternName(IStreamReader reader, RecordType id, UInt16 length)
+        public ExternName(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

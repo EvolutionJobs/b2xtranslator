@@ -43,9 +43,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// =1 if Excel should save a backup version of the file
         /// </summary>
-        public UInt16 fBackupFile;
+        public ushort fBackupFile;
 
-        public Backup(IStreamReader reader, RecordType id, UInt16 length)
+        public Backup(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

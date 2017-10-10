@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
     struct BiffHeader
     {
         public RecordType id;
-        public UInt16 length;
+        public ushort length;
     }
 
     /// <summary>

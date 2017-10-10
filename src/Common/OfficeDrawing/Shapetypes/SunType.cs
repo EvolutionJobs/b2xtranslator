@@ -5,7 +5,7 @@ using System.Text;
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
 
-    [OfficeShapeTypeAttribute(183)]
+    [OfficeShapeType(183)]
     class SunType : ShapeType
     {
         public SunType()
@@ -39,9 +39,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.AdjustmentValues = "5400";
             this.TextboxRectangle = "@9,@9,@8,@8";
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,center";
-            HandleOne.xrange = "2700,10125";
+            var HandleOne = new Handle
+            {
+                position = "#0,center",
+                xrange = "2700,10125"
+            };
             this.Handles.Add(HandleOne);
 
         }

@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 1 = compress punctation<br/>
         /// 2 = compress punctation and kana
         /// </summary>
-        public Int16 iJustification;
+        public short iJustification;
 
         /// <summary>
         /// Level of kinsoku:<br/>
@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 1 = Level 2<br/>
         /// 2 = Custom
         /// </summary>
-        public Int16 iLevelOfKinsoku;
+        public short iLevelOfKinsoku;
 
         /// <summary>
         /// "2 page on 1" feature is turned on
@@ -69,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Custom Kinsoku
         /// </summary>
-        public Int16 iCustomKsu;
+        public short iCustomKsu;
 
         /// <summary>
         /// When set to true, use strict (level 2) Kinsoku rules
@@ -79,12 +79,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Length of rgxchFPunct
         /// </summary>
-        public Int16 cchFollowingPunct;
+        public short cchFollowingPunct;
 
         /// <summary>
         /// Length of rgxchLPunct
         /// </summary>
-        public Int16 cchLeadingPunct;
+        public short cchLeadingPunct;
 
         /// <summary>
         /// Array of characters that should never appear at the start of a line
@@ -109,21 +109,21 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 //split byte 0 and 1 into bits
                 bits = new BitArray(new byte[] { bytes[0], bytes[1] });
                 this.fKerningPunct = bits[0];
-                this.iJustification = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 1, 2));
-                this.iLevelOfKinsoku = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 3, 2));
+                this.iJustification = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 1, 2));
+                this.iLevelOfKinsoku = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 3, 2));
                 this.f2on1 = bits[5];
                 this.fOldDefineLineBaseOnGrid = bits[6];
-                this.iCustomKsu = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 7, 3));
+                this.iCustomKsu = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 7, 3));
                 this.fJapaneseUseLevel2 = bits[10];
 
                 this.cchFollowingPunct = System.BitConverter.ToInt16(bytes, 2);
                 this.cchLeadingPunct = System.BitConverter.ToInt16(bytes, 4);
 
-                byte[] fpunctBytes = new byte[202];
+                var fpunctBytes = new byte[202];
                 Array.Copy(bytes, 6, fpunctBytes, 0, fpunctBytes.Length);
                 this.rgxchFPunct = System.Text.Encoding.Unicode.GetString(fpunctBytes).ToCharArray();
 
-                byte[] lpunctBytes = new byte[102];
+                var lpunctBytes = new byte[102];
                 Array.Copy(bytes, 208, lpunctBytes, 0, lpunctBytes.Length);
                 this.rgxchLPunct = System.Text.Encoding.Unicode.GetString(lpunctBytes).ToCharArray();
             }

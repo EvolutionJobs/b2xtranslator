@@ -49,7 +49,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// Note: ixfe uses only the low-order 12 bits of the field (bits 11–0). 
         /// Bits 12, 13, and 14 are unused, and bit 15 ( fBuiltIn ) is 1 for built-in styles.
         /// </summary>
-        public UInt16 ixfe;
+        public ushort ixfe;
                                 
         /// <summary>
         /// Built-in style numbers:
@@ -91,7 +91,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fBuiltin;
  
-        public Style(IStreamReader reader, RecordType id, UInt16 length)
+        public Style(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -103,7 +103,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             // only bit 11-0 are used
             // TODO: check if the filtering mask need to be applied or not
-            ixfe = (UInt16)(ixfe & 0x0FFF);
+            ixfe = (ushort)(ixfe & 0x0FFF);
 
             if (fBuiltin)
             {

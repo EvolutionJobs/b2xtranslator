@@ -128,7 +128,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <param name="reader">IStreamReader </param>
         /// <param name="id">Type of the record </param>
         /// <param name="length">Length of the record</param>
-        public BoundSheet8(IStreamReader reader, RecordType id, UInt16 length)
+        public BoundSheet8(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -153,9 +153,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// Simple ToString Method 
         /// </summary>
         /// <returns>String from the object</returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String returnvalue = "BOUNDSHEET - RECORD: \n";
+            var returnvalue = "BOUNDSHEET - RECORD: \n";
             returnvalue += "-- Name: " + this.stName.Value + "\n";
             returnvalue += "-- Offset: " + this.lbPlyPos + "\n";
             returnvalue += "-- HiddenState: " + this.hsState + "\n";

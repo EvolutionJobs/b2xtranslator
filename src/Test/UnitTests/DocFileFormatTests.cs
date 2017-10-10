@@ -41,8 +41,8 @@ namespace UnitTests
         public void SetUp()
         {
             //read the config
-            FileStream fs = new FileStream("Config.xml", FileMode.Open);
-            XmlDocument config = new XmlDocument();
+            var fs = new FileStream("Config.xml", FileMode.Open);
+            var config = new XmlDocument();
             config.Load(fs);
             fs.Close();
 
@@ -74,12 +74,12 @@ namespace UnitTests
         [Test]
         public void TestParseability()
         {
-            foreach (FileInfo inputFile in this.files)
+            foreach (var inputFile in this.files)
             {
                 try
                 {
-                    StructuredStorageReader reader = new StructuredStorageReader(inputFile.FullName);
-                    WordDocument doc = new WordDocument(reader);
+                    var reader = new StructuredStorageReader(inputFile.FullName);
+                    var doc = new WordDocument(reader);
                     Console.WriteLine("PASSED TestParseability " + inputFile.FullName);
                 }
                 catch (Exception e)
@@ -93,19 +93,19 @@ namespace UnitTests
         [Test]
         public void TestProperties()
         {
-            foreach (FileInfo inputFile in this.files)
+            foreach (var inputFile in this.files)
             {
-                Document omDoc = loadDocument(inputFile.FullName);
-                WordDocument dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
+                var omDoc = loadDocument(inputFile.FullName);
+                var dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
 
                 string dffRevisionNumber = dffDoc.DocumentProperties.nRevision.ToString();
                 string omRevisionNumber = (string)getDocumentProperty(omDoc, "Revision number");
 
                 object omCreationDate = (DateTime)getDocumentProperty(omDoc, "Creation date");
-                DateTime dffCreationDate = dffDoc.DocumentProperties.dttmCreated.ToDateTime();
+                var dffCreationDate = dffDoc.DocumentProperties.dttmCreated.ToDateTime();
                 
                 object omLastPrintedDate = getDocumentProperty(omDoc, "Last print date");
-                DateTime dffLastPrintedDate = dffDoc.DocumentProperties.dttmLastPrint.ToDateTime();
+                var dffLastPrintedDate = dffDoc.DocumentProperties.dttmLastPrint.ToDateTime();
 
                 omDoc.Close(ref saveChanges, ref originalFormat, ref routeDocument);
 
@@ -138,14 +138,14 @@ namespace UnitTests
         /// </summary>
         public void TestCharacters()
         { 
-            foreach (FileInfo inputFile in this.files)
+            foreach (var inputFile in this.files)
             {
-                Document omDoc = loadDocument(inputFile.FullName);
-                WordDocument dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
+                var omDoc = loadDocument(inputFile.FullName);
+                var dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
                 omDoc.Fields.ToggleShowCodes();
 
-                StringBuilder omText = new StringBuilder();
-                char[] omMainText = omDoc.StoryRanges[WdStoryType.wdMainTextStory].Text.ToCharArray();
+                var omText = new StringBuilder();
+                var omMainText = omDoc.StoryRanges[WdStoryType.wdMainTextStory].Text.ToCharArray();
                 foreach(char c in omMainText)
                 {
                     if ((int)c > 0x20)
@@ -154,8 +154,8 @@ namespace UnitTests
                     }
                 }
 
-                StringBuilder dffText = new StringBuilder();
-                List<char> dffMainText = dffDoc.Text.GetRange(0, dffDoc.FIB.ccpText);
+                var dffText = new StringBuilder();
+                var dffMainText = dffDoc.Text.GetRange(0, dffDoc.FIB.ccpText);
                 foreach (char c in dffMainText)
                 {
                     if ((int)c > 0x20)
@@ -185,10 +185,10 @@ namespace UnitTests
         [Test]
         public void TestBookmarks()
         {
-            foreach (FileInfo inputFile in this.files)
+            foreach (var inputFile in this.files)
             {
-                Document omDoc = loadDocument(inputFile.FullName);
-                WordDocument dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
+                var omDoc = loadDocument(inputFile.FullName);
+                var dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
                 omDoc.Bookmarks.ShowHidden = true;
 
                 int omBookmarkCount = omDoc.Bookmarks.Count;
@@ -201,11 +201,11 @@ namespace UnitTests
                 if (omBookmarkCount > 0 && dffBookmarkCount > 0)
                 {
                     //generate a randomly selected bookmark
-                    Random rand = new Random();
+                    var rand = new Random();
                     object omIndex = rand.Next(0, dffBookmarkCount);
 
                     //get the index's bookmark
-                    Bookmark omBookmark = omDoc.Bookmarks.get_Item(ref omIndex);
+                    var omBookmark = omDoc.Bookmarks.get_Item(ref omIndex);
                     omBookmarkStart = omBookmark.Start;
                     omBookmarkEnd = omBookmark.End;
 
@@ -253,10 +253,10 @@ namespace UnitTests
         [Test]
         public void TestComments()
         {
-            foreach (FileInfo inputFile in this.files)
+            foreach (var inputFile in this.files)
             {
-                Document omDoc = loadDocument(inputFile.FullName);
-                WordDocument dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
+                var omDoc = loadDocument(inputFile.FullName);
+                var dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
 
                 int dffCommentCount = dffDoc.AnnotationsReferencePlex.Elements.Count;
                 int omCommentCount = omDoc.Comments.Count;
@@ -267,8 +267,8 @@ namespace UnitTests
 
                 if (dffCommentCount > 0 && omCommentCount > 0)
                 {
-                    Comment omFirstComment = omDoc.Comments[1];
-                    AnnotationReferenceDescriptor dffFirstComment = (AnnotationReferenceDescriptor)dffDoc.AnnotationsReferencePlex.Elements[0];
+                    var omFirstComment = omDoc.Comments[1];
+                    var dffFirstComment = (AnnotationReferenceDescriptor)dffDoc.AnnotationsReferencePlex.Elements[0];
 
                     omFirstCommentInitial = omFirstComment.Initial;
                     omFirstCommentAuthor = omFirstComment.Author;
@@ -326,10 +326,10 @@ namespace UnitTests
             try
             {
                 object builtInProperties = document.BuiltInDocumentProperties;
-                Type builtInPropertiesType = builtInProperties.GetType();
+                var builtInPropertiesType = builtInProperties.GetType();
 
                 object property = builtInPropertiesType.InvokeMember("Item", BindingFlags.GetProperty, null, builtInProperties, new object[] { propertyName });
-                Type propertyType = property.GetType();
+                var propertyType = property.GetType();
 
                 propertyValue = propertyType.InvokeMember("Value", BindingFlags.GetProperty, null, property, new object[] { });
             }

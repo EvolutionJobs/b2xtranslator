@@ -45,8 +45,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
             get { return this.crnDataList; }
         }
 
-        private UInt16 itab;
-        public UInt16 ITab
+        private ushort itab;
+        public ushort ITab
         {
             get { return this.itab;  }
         }
@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 
         public void addCRN(CRN crn)
         {
-            CRNData crndata = new CRNData(crn);
+            var crndata = new CRNData(crn);
             this.crnDataList.AddLast(crndata); 
         }
     }

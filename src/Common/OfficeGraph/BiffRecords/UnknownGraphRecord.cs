@@ -39,7 +39,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
     {
         public byte[] Content;
 
-        public UnknownGraphRecord(IStreamReader reader, UInt16 id, UInt16 length) 
+        public UnknownGraphRecord(IStreamReader reader, ushort id, ushort length) 
             : base(reader, (GraphRecordNumber)id, length)
         {
             this.Content = reader.ReadBytes((int)length);

@@ -126,7 +126,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
 
             if (BiffRecord.GetNextRecordType(reader) == RecordType.CrtMlFrt)
             {
-                CrtMlfrtSequence crtmlfrtseq = new CrtMlfrtSequence(reader); 
+                var crtmlfrtseq = new CrtMlfrtSequence(reader); 
             }
 
 

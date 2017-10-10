@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 throw new Exception("Invalid chart type");
             }
 
-            Line line = crtSequence.ChartType as Line;
+            var line = crtSequence.ChartType as Line;
 
             // c:lineChart or c:stockChart 
             _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElLineChart, Dml.Chart.Ns);
@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 writeValueElement(Dml.Chart.ElVaryColors, crtSequence.ChartFormat.fVaried ? "1" : "0");
 
                 // Line Chart Series
-                foreach (SeriesFormatSequence seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
+                foreach (var seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
                 {
                     if (seriesFormatSequence.SerToCrt != null && seriesFormatSequence.SerToCrt.id == crtSequence.ChartFormat.idx)
                     {
@@ -83,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         for (int i = 1; i < seriesFormatSequence.SsSequence.Count; i++)
                         {
                             // write a dPt for each SsSequence
-                            SsSequence ssSequence = seriesFormatSequence.SsSequence[i];
+                            var ssSequence = seriesFormatSequence.SsSequence[i];
                             ssSequence.Convert(new DataPointMapping(this.WorkbookContext, this.ChartContext, i - 1));
                         }
 

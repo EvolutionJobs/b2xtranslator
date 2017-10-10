@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// <param name="stack"></param>
         /// <param name="xlsContext"></param>
         /// <returns></returns>
-        public static String mapFormula(Stack<AbstractPtg> stack, ExcelContext xlsContext)
+        public static string mapFormula(Stack<AbstractPtg> stack, ExcelContext xlsContext)
         {
             return FormulaInfixMapping.mapFormula(stack, xlsContext, 0, 0);
         }
@@ -57,12 +57,12 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// <param name="rw">Row from the shared formula</param>
         /// <param name="col">Column from  the shared formula</param>
         /// <returns></returns>
-        public static String mapFormula(Stack<AbstractPtg> stack, ExcelContext xlsContext, int rw, int col)
+        public static string mapFormula(Stack<AbstractPtg> stack, ExcelContext xlsContext, int rw, int col)
         {
-            Stack<String> resultStack = new Stack<string>();
+            var resultStack = new Stack<string>();
             try
             {
-                Stack<AbstractPtg> opStack = new Stack<AbstractPtg>(stack);
+                var opStack = new Stack<AbstractPtg>(stack);
                 if (opStack.Count == 0)
                 {
                     throw new Exception();
@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
                 while (opStack.Count != 0)
                 {
-                    AbstractPtg ptg = opStack.Pop();
+                    var ptg = opStack.Pop();
 
                     if (ptg is PtgInt || ptg is PtgNum || ptg is PtgBool || ptg is PtgMissArg || ptg is PtgErr)
                     {
@@ -78,7 +78,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgRef)
                     {
-                        PtgRef ptgref = (PtgRef)ptg;
+                        var ptgref = (PtgRef)ptg;
 
                         int realCol = ptgref.col;
                         int realRw = ptgref.rw + 1;
@@ -97,7 +97,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgRefN)
                     {
-                        PtgRefN ptgrefn = (PtgRefN)ptg;
+                        var ptgrefn = (PtgRefN)ptg;
                         int realCol = (int)ptgrefn.col;
                         int realRw;
 
@@ -112,7 +112,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
                         if (ptgrefn.rwRelative)
                         {
-                            realRw = (Int16)ptgrefn.rw + 1;
+                            realRw = (short)ptgrefn.rw + 1;
                             realRw += rw;
                         }
                         else
@@ -124,7 +124,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgUplus || ptg is PtgUminus)
                     {
-                        String buffer = "";
+                        var buffer = "";
                         if (ptg.PopSize() > resultStack.Count)
                         {
                             throw new ExtractorException(ExtractorException.PARSEDFORMULAEXCEPTION);
@@ -135,7 +135,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgParen)
                     {
-                        String buffer = "";
+                        var buffer = "";
                         if (ptg.PopSize() > resultStack.Count)
                         {
                             throw new ExtractorException(ExtractorException.PARSEDFORMULAEXCEPTION);
@@ -146,7 +146,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgPercent)
                     {
-                        String buffer = "";
+                        var buffer = "";
                         if (ptg.PopSize() > resultStack.Count)
                         {
                             throw new ExtractorException(ExtractorException.PARSEDFORMULAEXCEPTION);
@@ -162,7 +162,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                                 ptg is PtgUnion || ptg is PtgIsect
                         )
                     {
-                        String buffer = "";
+                        var buffer = "";
                         if (ptg.PopSize() > resultStack.Count)
                         {
                             throw new ExtractorException(ExtractorException.PARSEDFORMULAEXCEPTION);
@@ -177,8 +177,8 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgArea)
                     {
-                        String buffer = "";
-                        PtgArea ptgarea = (PtgArea)ptg;
+                        var buffer = "";
+                        var ptgarea = (PtgArea)ptg;
                         buffer = ExcelHelperClass.intToABCString((int)ptgarea.colFirst, (ptgarea.rwFirst + 1).ToString(), ptgarea.colFirstRelative, ptgarea.rwFirstRelative);
                         buffer = buffer + ":" + ExcelHelperClass.intToABCString((int)ptgarea.colLast, (ptgarea.rwLast + 1).ToString(), ptgarea.colLastRelative, ptgarea.rwLastRelative);
 
@@ -187,8 +187,8 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgAreaN)
                     {
-                        String buffer = "";
-                        PtgAreaN ptgarean = (PtgAreaN)ptg;
+                        var buffer = "";
+                        var ptgarean = (PtgAreaN)ptg;
                         int realRwFirst;
                         int realRwLast;
                         int realColFirst = (int)ptgarean.colFirst;
@@ -215,7 +215,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
                         if (ptgarean.rwFirstRelative)
                         {
-                            realRwFirst = (Int16)ptgarean.rwFirst + 1;
+                            realRwFirst = (short)ptgarean.rwFirst + 1;
                             realRwFirst += rw;
                         }
                         else
@@ -224,7 +224,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         }
                         if (ptgarean.rwLastRelative)
                         {
-                            realRwLast = (Int16)ptgarean.rwLast + 1;
+                            realRwLast = (short)ptgarean.rwLast + 1;
                             realRwLast += rw;
                         }
                         else
@@ -240,8 +240,8 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgAttrSum)
                     {
-                        String buffer = "";
-                        PtgAttrSum ptgref = (PtgAttrSum)ptg;
+                        var buffer = "";
+                        var ptgref = (PtgAttrSum)ptg;
                         buffer = ptg.getData() + "(" + resultStack.Pop() + ")";
                         resultStack.Push(buffer);
                     }
@@ -252,8 +252,8 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgExp)
                     {
-                        PtgExp ptgexp = (PtgExp)ptg;
-                        Stack<AbstractPtg> newptgstack = ((WorkSheetData)xlsContext.CurrentSheet).getArrayData(ptgexp.rw, ptgexp.col);
+                        var ptgexp = (PtgExp)ptg;
+                        var newptgstack = ((WorkSheetData)xlsContext.CurrentSheet).getArrayData(ptgexp.rw, ptgexp.col);
                         resultStack.Push(FormulaInfixMapping.mapFormula(newptgstack, xlsContext));
                         ((WorkSheetData)xlsContext.CurrentSheet).setFormulaUsesArray(ptgexp.rw, ptgexp.col);
 
@@ -262,9 +262,9 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     {
                         try
                         {
-                            PtgRef3d ptgr3d = (PtgRef3d)ptg;
-                            String refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgr3d.ixti));
-                            String cellref = ExcelHelperClass.intToABCString((int)ptgr3d.col, (ptgr3d.rw + 1).ToString(), ptgr3d.colRelative, ptgr3d.rwRelative);
+                            var ptgr3d = (PtgRef3d)ptg;
+                            var refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgr3d.ixti));
+                            var cellref = ExcelHelperClass.intToABCString((int)ptgr3d.col, (ptgr3d.rw + 1).ToString(), ptgr3d.colRelative, ptgr3d.rwRelative);
 
                             resultStack.Push("'" + refstring + "'" + "!" + cellref);
                         }
@@ -277,9 +277,9 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     {
                         try
                         {
-                            PtgArea3d ptga3d = (PtgArea3d)ptg;
-                            String refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptga3d.ixti));
-                            String buffer = "";
+                            var ptga3d = (PtgArea3d)ptg;
+                            var refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptga3d.ixti));
+                            var buffer = "";
                             buffer = ExcelHelperClass.intToABCString((int)ptga3d.colFirst, (ptga3d.rwFirst + 1).ToString(), ptga3d.colFirstRelative, ptga3d.rwFirstRelative);
                             buffer = buffer + ":" + ExcelHelperClass.intToABCString((int)ptga3d.colLast, (ptga3d.rwLast + 1).ToString(), ptga3d.colLastRelative, ptga3d.rwLastRelative);
 
@@ -293,28 +293,28 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgNameX)
                     {
-                        PtgNameX ptgnx = (PtgNameX)ptg;
-                        String opstring = xlsContext.XlsDoc.WorkBookData.getExternNameByRef(ptgnx.ixti, ptgnx.nameindex);
+                        var ptgnx = (PtgNameX)ptg;
+                        var opstring = xlsContext.XlsDoc.WorkBookData.getExternNameByRef(ptgnx.ixti, ptgnx.nameindex);
                         resultStack.Push(opstring);
                     }
                     else if (ptg is PtgName)
                     {
-                        PtgName ptgn = (PtgName)ptg;
-                        String opstring = xlsContext.XlsDoc.WorkBookData.getDefinedNameByRef(ptgn.nameindex);
+                        var ptgn = (PtgName)ptg;
+                        var opstring = xlsContext.XlsDoc.WorkBookData.getDefinedNameByRef(ptgn.nameindex);
                         resultStack.Push(opstring);
                     }
                     else if (ptg is PtgRefErr)
                     {
-                        PtgRefErr ptgreferr = (PtgRefErr)ptg;
+                        var ptgreferr = (PtgRefErr)ptg;
                         resultStack.Push(ptgreferr.getData());
                     }
                     else if (ptg is PtgRefErr3d)
                     {
                         try
                         {
-                            PtgRefErr3d ptgreferr3d = (PtgRefErr3d)ptg;
+                            var ptgreferr3d = (PtgRefErr3d)ptg;
 
-                            String refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgreferr3d.ixti));
+                            var refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgreferr3d.ixti));
                             resultStack.Push("'" + refstring + "'" + "!" + ptgreferr3d.getData());
                         }
                         catch (Exception)
@@ -326,8 +326,8 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     {
                         try
                         {
-                            PtgAreaErr3d ptgareaerr3d = (PtgAreaErr3d)ptg;
-                            String refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgareaerr3d.ixti));
+                            var ptgareaerr3d = (PtgAreaErr3d)ptg;
+                            var refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgareaerr3d.ixti));
                             resultStack.Push("'" + refstring + "'" + "!" + ptgareaerr3d.getData());
                         }
                         catch (Exception)
@@ -337,9 +337,9 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgFunc)
                     {
-                        PtgFunc ptgf = (PtgFunc)ptg;
-                        FtabValues value = (FtabValues)ptgf.tab;
-                        String buffer = value.ToString();
+                        var ptgf = (PtgFunc)ptg;
+                        var value = (FtabValues)ptgf.tab;
+                        var buffer = value.ToString();
                         buffer.Replace("_", ".");
 
                         // no param 
@@ -417,7 +417,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                             )
                         {
                             buffer += "(";
-                            String buffer2 = resultStack.Pop();
+                            var buffer2 = resultStack.Pop();
                             buffer2 = resultStack.Pop() + "," + buffer2;
 
                             buffer += buffer2 + ")";
@@ -443,7 +443,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                             )
                         {
                             buffer += "(";
-                            String buffer2 = resultStack.Pop();
+                            var buffer2 = resultStack.Pop();
                             buffer2 = resultStack.Pop() + "," + buffer2;
                             buffer2 = resultStack.Pop() + "," + buffer2;
                             buffer += buffer2 + ")";
@@ -458,7 +458,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                             )
                         {
                             buffer += "(";
-                            String buffer2 = resultStack.Pop();
+                            var buffer2 = resultStack.Pop();
                             buffer2 = resultStack.Pop() + "," + buffer2;
                             buffer2 = resultStack.Pop() + "," + buffer2;
                             buffer2 = resultStack.Pop() + "," + buffer2;
@@ -473,12 +473,12 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgFuncVar)
                     {
-                        PtgFuncVar ptgfv = (PtgFuncVar)ptg;
+                        var ptgfv = (PtgFuncVar)ptg;
                         // is Ftab or Cetab 
                         if (!ptgfv.fCelFunc)
                         {
-                            FtabValues value = (FtabValues)ptgfv.tab;
-                            String buffer = value.ToString();
+                            var value = (FtabValues)ptgfv.tab;
+                            var buffer = value.ToString();
                             buffer.Replace("_", ".");
                             // 1 to x parameter
                             if (value == FtabValues.COUNT || value == FtabValues.IF ||
@@ -530,7 +530,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                                 )
                             {
                                 buffer += "(";
-                                String buffer2 = resultStack.Pop();
+                                var buffer2 = resultStack.Pop();
                                 for (int i = 1; i < ptgfv.cparams; i++)
                                 {
                                     buffer2 = resultStack.Pop() + "," + buffer2;
@@ -541,7 +541,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                             else if ((int)value == 0xFF)
                             {
                                 buffer = "(";
-                                String buffer2 = resultStack.Pop();
+                                var buffer2 = resultStack.Pop();
                                 for (int i = 1; i < ptgfv.cparams - 1; i++)
                                 {
                                     buffer2 = resultStack.Pop() + "," + buffer2;

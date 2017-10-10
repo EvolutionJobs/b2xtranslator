@@ -32,7 +32,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF008)]
+    [OfficeRecord(0xF008)]
     public class DrawingRecord : Record
     {
         /// <summary>
@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <summary>
         /// The last MSOSPID given to an SP in this DG
         /// </summary>
-        public Int32 spidCur;
+        public int spidCur;
 
         public DrawingRecord(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) 

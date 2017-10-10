@@ -7,17 +7,17 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 {
-    public class StwStructure : Dictionary<String, String>
+    public class StwStructure : Dictionary<string, string>
     {
         public StwStructure(VirtualStream tableStream, UInt32 fc, UInt32 lcb) : base()
         {
             tableStream.Seek((long)fc, System.IO.SeekOrigin.Begin);
 
             // parse the names
-            StringTable names = new StringTable(typeof(String), new VirtualStreamReader(tableStream));
+            var names = new StringTable(typeof(string), new VirtualStreamReader(tableStream));
 
             // parse the values
-            List<string> values = new List<string>();
+            var values = new List<string>();
             while (tableStream.Position < fc+lcb)
             {
                 values.Add(Utils.ReadXst(tableStream));

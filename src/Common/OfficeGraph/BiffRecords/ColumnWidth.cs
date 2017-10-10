@@ -44,22 +44,22 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// <summary>
         /// A Graph_Col that specifies the first column of the range of columns having their width specified by colWidth.
         /// </summary>
-        public UInt16 colFirst;
+        public ushort colFirst;
 
         /// <summary>
         /// A Graph_Col that specifies the last column of the range of columns having their width specified by colWidth. 
         /// 
         /// MUST be more than, or equal to colFirst.
         /// </summary>
-        public UInt16 colLast;
+        public ushort colLast;
 
         /// <summary>
         /// An unsigned integer that specifies the column width for all the columns between colFirst and colLast, inclusively. 
         /// The width is calculated in 1/256 of the width of an average character of the current datasheet font.
         /// </summary>
-        public UInt16 colWidth;
+        public ushort colWidth;
 
-        public ColumnWidth(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public ColumnWidth(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

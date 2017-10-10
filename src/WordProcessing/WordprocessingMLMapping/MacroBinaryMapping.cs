@@ -45,8 +45,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public override void Apply(WordDocument doc)
         {
             //get the Class IDs of the directories
-            Guid macroClsid = new Guid();
-            Guid vbaClsid = new Guid();
+            var macroClsid = new Guid();
+            var vbaClsid = new Guid();
             foreach (DirectoryEntry entry in doc.Storage.AllEntries)
             {
                 if (entry.Path == "\\Macros")
@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
 
             //create a new storage
-            StructuredStorageWriter storage = new StructuredStorageWriter();
+            var storage = new StructuredStorageWriter();
             storage.RootDirectoryEntry.setClsId(macroClsid);
 
             //copy the VBA directory

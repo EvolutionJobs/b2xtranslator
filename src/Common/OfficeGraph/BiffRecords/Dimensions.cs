@@ -55,9 +55,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// MUST be less than or equal to 0x00FF.
         /// </summary>
-        public UInt16 colMac;
+        public ushort colMac;
 
-        public Dimensions(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Dimensions(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

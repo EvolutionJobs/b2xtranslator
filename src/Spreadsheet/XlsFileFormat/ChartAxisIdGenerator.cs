@@ -88,7 +88,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         {
             get
             {
-                int[] retVal = new int[_idList.Count];
+                var retVal = new int[_idList.Count];
                 _idList.CopyTo(retVal);
                 return retVal;
             }

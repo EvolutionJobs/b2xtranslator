@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 throw new Exception("Invalid chart type");
             }
 
-            Surf surf = crtSequence.ChartType as Surf;
+            var surf = crtSequence.ChartType as Surf;
 
             // c:surfaceChart 
             _writer.WriteStartElement(Dml.Chart.Prefix, this._is3DChart ? Dml.Chart.ElSurface3DChart : Dml.Chart.ElSurfaceChart, Dml.Chart.Ns);
@@ -63,7 +63,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 // c:wireframe
 
                 // Surface Chart Series (CT_SurfaceSer)
-                foreach (SeriesFormatSequence seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
+                foreach (var seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
                 {
                     if (seriesFormatSequence.SerToCrt != null && seriesFormatSequence.SerToCrt.id == crtSequence.ChartFormat.idx)
                     {

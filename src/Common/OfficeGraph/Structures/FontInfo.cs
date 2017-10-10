@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public bool fScaled;
 
-        public UInt16 ifnt;
+        public ushort ifnt;
         // TODO: implement FontIndex???
 
         public FontInfo(IStreamReader reader)

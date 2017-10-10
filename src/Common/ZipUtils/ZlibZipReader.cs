@@ -88,7 +88,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
                 throw new ZipEntryNotFoundException("Entry not found:" + relativePath);
             }
 
-            ZipEntryInfo entryInfo = new ZipEntryInfo();
+            var entryInfo = new ZipEntryInfo();
             int result = ZipLib.unzGetCurrentFileInfo(this.handle, out entryInfo, null, UIntPtr.Zero, null, UIntPtr.Zero, null, UIntPtr.Zero);
             if (result != 0)
             {
@@ -101,7 +101,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
                 throw new ZipException("Error while opening entry: " + relativePath + " - Errorcode: " + result);
             }
 
-            byte[] buffer = new byte[entryInfo.UncompressedSize.ToUInt64 ()];
+            var buffer = new byte[entryInfo.UncompressedSize.ToUInt64 ()];
             int bytesRead = 0;
             if ((bytesRead = ZipLib.unzReadCurrentFile(this.handle, buffer, (uint)entryInfo.UncompressedSize)) < 0)
             {

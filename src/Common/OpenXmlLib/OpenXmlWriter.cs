@@ -42,12 +42,14 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         
         public OpenXmlWriter()
         {
-            XmlWriterSettings _delegateWriterSettings = new XmlWriterSettings();
-            _delegateWriterSettings.OmitXmlDeclaration = false;
-            _delegateWriterSettings.CloseOutput = false;
-            _delegateWriterSettings.Encoding = Encoding.UTF8;
-            _delegateWriterSettings.Indent = true;
-            _delegateWriterSettings.ConformanceLevel = ConformanceLevel.Document;
+            var _delegateWriterSettings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = false,
+                CloseOutput = false,
+                Encoding = Encoding.UTF8,
+                Indent = true,
+                ConformanceLevel = ConformanceLevel.Document
+            };
         }
 
         protected override void Dispose(bool disposing)
@@ -119,7 +121,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         public void Write(Stream stream)
         {
             const int blockSize = 4096;
-            byte[] buffer = new byte[blockSize];
+            var buffer = new byte[blockSize];
             int bytesRead;
             while ((bytesRead = stream.Read(buffer, 0, blockSize)) > 0)
             {
@@ -177,7 +179,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
             this.XmlWriter.WriteProcessingInstruction(name, text);
         }
 
-        public override void WriteEntityRef(String name)
+        public override void WriteEntityRef(string name)
         {
             this.XmlWriter.WriteEntityRef(name);
         }
@@ -230,7 +232,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
             this.XmlWriter.Flush();
         }
 
-        public override string LookupPrefix(String ns)
+        public override string LookupPrefix(string ns)
         {
             return this.XmlWriter.LookupPrefix(ns);
         }

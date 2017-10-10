@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         ///     -  63 to 66
         ///     - 164 to 382
         /// </summary>
-        public UInt16 ifmt;
+        public ushort ifmt;
 
         /// <summary>
         /// An XLUnicodeString that specifies the format string for this number format. 
@@ -66,7 +66,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public XLUnicodeString stFormat;
 
-        public Format(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Format(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

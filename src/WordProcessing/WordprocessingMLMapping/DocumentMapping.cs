@@ -99,19 +99,19 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="cp">The cp at where the table begins</param>
         /// <returns>The character pointer to the first character after this table</returns>
-        protected Int32 writeTable(Int32 initialCp, UInt32 nestingLevel)
+        protected int writeTable(int initialCp, UInt32 nestingLevel)
         {
-            Int32 cp = initialCp;
-            Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-            ParagraphPropertyExceptions papx = findValidPapx(fc);
-            TableInfo tai = new TableInfo(papx);
+            var cp = initialCp;
+            int fc = _doc.PieceTable.FileCharacterPositions[cp];
+            var papx = findValidPapx(fc);
+            var tai = new TableInfo(papx);
 
             //build the table grid
-            List<Int16> grid = buildTableGrid(cp, nestingLevel);
+            var grid = buildTableGrid(cp, nestingLevel);
 
             //find first row end
-            Int32 fcRowEnd = findRowEndFc(cp, nestingLevel);
-            TablePropertyExceptions row1Tapx = new TablePropertyExceptions(findValidPapx(fcRowEnd), _doc.DataStream);
+            var fcRowEnd = findRowEndFc(cp, nestingLevel);
+            var row1Tapx = new TablePropertyExceptions(findValidPapx(fcRowEnd), _doc.DataStream);
 
             //start table
             _writer.WriteStartElement("w", "tbl", OpenXmlNamespaces.WordprocessingML);
@@ -156,20 +156,20 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="initialCp">The cp at where the row begins</param>
         /// <returns>The character pointer to the first character after this row</returns>
-        protected Int32 writeTableRow(Int32 initialCp, List<Int16> grid, UInt32 nestingLevel)
+        protected int writeTableRow(int initialCp, List<short> grid, UInt32 nestingLevel)
         {
-            Int32 cp = initialCp;
-            Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-            ParagraphPropertyExceptions papx = findValidPapx(fc);
-            TableInfo tai = new TableInfo(papx);
+            var cp = initialCp;
+            int fc = _doc.PieceTable.FileCharacterPositions[cp];
+            var papx = findValidPapx(fc);
+            var tai = new TableInfo(papx);
 
             //start w:tr
             _writer.WriteStartElement("w", "tr", OpenXmlNamespaces.WordprocessingML);
 
             //convert the properties
-            Int32 fcRowEnd = findRowEndFc(cp, nestingLevel);
-            ParagraphPropertyExceptions rowEndPapx = findValidPapx(fcRowEnd);
-            TablePropertyExceptions tapx = new TablePropertyExceptions(rowEndPapx, _doc.DataStream);
+            var fcRowEnd = findRowEndFc(cp, nestingLevel);
+            var rowEndPapx = findValidPapx(fcRowEnd);
+            var tapx = new TablePropertyExceptions(rowEndPapx, _doc.DataStream);
             List<CharacterPropertyExceptions> chpxs = _doc.GetCharacterPropertyExceptions(fcRowEnd, fcRowEnd + 1);
 
             if (tapx != null)
@@ -229,18 +229,18 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="gridIndex">The index of this cell in the grid</param>
         /// <param name="gridIndex">The grid</param>
         /// <returns>The character pointer to the first character after this cell</returns>
-        protected Int32 writeTableCell(Int32 initialCp, TablePropertyExceptions tapx, List<Int16> grid, ref int gridIndex, int cellIndex, UInt32 nestingLevel)
+        protected int writeTableCell(int initialCp, TablePropertyExceptions tapx, List<short> grid, ref int gridIndex, int cellIndex, UInt32 nestingLevel)
         {
-            Int32 cp = initialCp;
+            var cp = initialCp;
 
             //start w:tc
             _writer.WriteStartElement("w", "tc", OpenXmlNamespaces.WordprocessingML);
 
             //find cell end
-            Int32 cpCellEnd = findCellEndCp(initialCp, nestingLevel);
+            var cpCellEnd = findCellEndCp(initialCp, nestingLevel);
             
             //convert the properties
-            TableCellPropertiesMapping mapping = new TableCellPropertiesMapping(_writer, grid, gridIndex, cellIndex);
+            var mapping = new TableCellPropertiesMapping(_writer, grid, gridIndex, cellIndex);
             if (tapx != null)
             {
                 tapx.Convert(mapping);
@@ -252,9 +252,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             while (cp < cpCellEnd)
             {
                 //cp = writeParagraph(cp);
-                Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-                ParagraphPropertyExceptions papx = findValidPapx(fc);
-                TableInfo tai = new TableInfo(papx);
+                int fc = _doc.PieceTable.FileCharacterPositions[cp];
+                var papx = findValidPapx(fc);
+                var tai = new TableInfo(papx);
 
                 //cp = writeParagraph(cp);
 
@@ -290,18 +290,18 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="initialCp"></param>
         /// <returns></returns>
-        protected List<Int16> buildTableGrid(int initialCp, UInt32 nestingLevel)
+        protected List<short> buildTableGrid(int initialCp, UInt32 nestingLevel)
         {
-            ParagraphPropertyExceptions backup = _lastValidPapx;
+            var backup = _lastValidPapx;
 
-            List<Int16> boundaries = new List<Int16>();
-            List<Int16> grid = new List<Int16>();
-            Int32 cp = initialCp;
-            Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-            ParagraphPropertyExceptions papx = findValidPapx(fc);
-            TableInfo tai = new TableInfo(papx);
+            var boundaries = new List<short>();
+            var grid = new List<short>();
+            var cp = initialCp;
+            int fc = _doc.PieceTable.FileCharacterPositions[cp];
+            var papx = findValidPapx(fc);
+            var tai = new TableInfo(papx);
 
-            Int32 fcRowEnd = findRowEndFc(cp, out cp, nestingLevel);
+            var fcRowEnd = findRowEndFc(cp, out cp, nestingLevel);
 
             while (tai.fInTable)
             {
@@ -314,11 +314,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         byte itcMac = sprm.Arguments[0];
                         for (int i = 0; i < itcMac; i++)
                         {
-                            Int16 boundary1 = System.BitConverter.ToInt16(sprm.Arguments, 1 + (i * 2));
+                            var boundary1 = System.BitConverter.ToInt16(sprm.Arguments, 1 + (i * 2));
                             if (!boundaries.Contains(boundary1))
                                 boundaries.Add(boundary1);
 
-                            Int16 boundary2 = System.BitConverter.ToInt16(sprm.Arguments, 1 + ((i + 1) * 2));
+                            var boundary2 = System.BitConverter.ToInt16(sprm.Arguments, 1 + ((i + 1) * 2));
                             if (!boundaries.Contains(boundary2))
                                 boundaries.Add(boundary2);
                         }
@@ -335,7 +335,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             boundaries.Sort();
             for (int i = 0; i < boundaries.Count - 1; i++)
             {
-                grid.Add((Int16)(boundaries[i + 1] - boundaries[i]));
+                grid.Add((short)(boundaries[i + 1] - boundaries[i]));
             }
 
             _lastValidPapx = backup;
@@ -348,12 +348,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="initialCp">Some CP before the row end</param>
         /// <param name="rowEndCp">The CP of the next row end mark</param>
         /// <returns>The FC of the next row end mark</returns>
-        protected Int32 findRowEndFc(int initialCp, out int rowEndCp, UInt32 nestingLevel)
+        protected int findRowEndFc(int initialCp, out int rowEndCp, UInt32 nestingLevel)
         {
             int cp = initialCp;
-            Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-            ParagraphPropertyExceptions papx = findValidPapx(fc);
-            TableInfo tai = new TableInfo(papx);
+            int fc = _doc.PieceTable.FileCharacterPositions[cp];
+            var papx = findValidPapx(fc);
+            var tai = new TableInfo(papx);
 
             if (nestingLevel > 1)
             {
@@ -397,12 +397,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="cp"></param>
         /// <returns></returns>
-        protected Int32 findRowEndFc(int initialCp, UInt32 nestingLevel)
+        protected int findRowEndFc(int initialCp, UInt32 nestingLevel)
         {
             int cp = initialCp;
-            Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-            ParagraphPropertyExceptions papx = findValidPapx(fc);
-            TableInfo tai = new TableInfo(papx);
+            int fc = _doc.PieceTable.FileCharacterPositions[cp];
+            var papx = findValidPapx(fc);
+            var tai = new TableInfo(papx);
 
             if (nestingLevel > 1)
             {
@@ -441,15 +441,15 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         }
 
 
-        protected Int32 findCellEndCp(int initialCp, UInt32 nestingLevel)
+        protected int findCellEndCp(int initialCp, UInt32 nestingLevel)
         {
             int cpCellEnd = initialCp;
 
             if (nestingLevel > 1)
             {
-                Int32 fc = _doc.PieceTable.FileCharacterPositions[initialCp];
-                ParagraphPropertyExceptions papx = findValidPapx(fc);
-                TableInfo tai = new TableInfo(papx);
+                int fc = _doc.PieceTable.FileCharacterPositions[initialCp];
+                var papx = findValidPapx(fc);
+                var tai = new TableInfo(papx);
 
                 while (!tai.fInnerTableCell)
                 {
@@ -483,10 +483,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// ends at the next paragraph end mark or section end mark
         /// </summary>
         /// <param name="cp"></param>
-        protected Int32 writeParagraph(Int32 cp) 
+        protected int writeParagraph(int cp) 
         {
             //search the paragraph end
-            Int32 cpParaEnd = cp;
+            var cpParaEnd = cp;
             while (_doc.Text[cpParaEnd] != TextMark.ParagraphEnd &&
                 _doc.Text[cpParaEnd] != TextMark.CellOrRowMark &&
                 !(_doc.Text[cpParaEnd] == TextMark.PageBreakOrSectionMark && isSectionEnd(cpParaEnd)))
@@ -517,20 +517,20 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="cpEnd"></param>
         /// <param name="sectionEnd">Set if this paragraph is the last paragraph of a section</param>
         /// <returns></returns>
-        protected Int32 writeParagraph(Int32 initialCp, Int32 cpEnd, bool sectionEnd)
+        protected int writeParagraph(int initialCp, int cpEnd, bool sectionEnd)
         {
-            Int32 cp = initialCp;
-            Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-            Int32 fcEnd = _doc.PieceTable.FileCharacterPositions[cpEnd];
-            ParagraphPropertyExceptions papx = findValidPapx(fc);
+            var cp = initialCp;
+            int fc = _doc.PieceTable.FileCharacterPositions[cp];
+            int fcEnd = _doc.PieceTable.FileCharacterPositions[cpEnd];
+            var papx = findValidPapx(fc);
 
             //get all CHPX between these boundaries to determine the count of runs
             List<CharacterPropertyExceptions> chpxs = _doc.GetCharacterPropertyExceptions(fc, fcEnd);
-            List<Int32> chpxFcs = _doc.GetFileCharacterPositions(fc, fcEnd);
+            List<int> chpxFcs = _doc.GetFileCharacterPositions(fc, fcEnd);
             chpxFcs.Add(fcEnd);
 
             //the last of these CHPX formats the paragraph end mark
-            CharacterPropertyExceptions paraEndChpx = chpxs[chpxs.Count-1];
+            var paraEndChpx = chpxs[chpxs.Count-1];
 
             //start paragraph
             _writer.WriteStartElement("w", "p", OpenXmlNamespaces.WordprocessingML);
@@ -580,12 +580,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 List<char> chpxChars = _doc.PieceTable.GetChars(fcChpxStart, fcChpxEnd, _doc.WordDocumentStream);
 
                 //search for bookmarks in the chars
-                List<int> bookmarks = searchBookmarks(chpxChars, cp);
+                var bookmarks = searchBookmarks(chpxChars, cp);
 
                 //if there are bookmarks in this run, split the run into several runs
                 if (bookmarks.Count > 0)
                 {
-                    List<List<char>> runs = splitCharList(chpxChars, bookmarks);
+                    var runs = splitCharList(chpxChars, bookmarks);
                     for (int s = 0; s < runs.Count; s++)
                     {
                         if (_doc.BookmarkStartPlex.CharacterPositions.Contains(cp) &&
@@ -645,13 +645,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <summary>
         /// Writes a run with the given characters and CHPX
         /// </summary>
-        protected Int32 writeRun(List<char> chars, CharacterPropertyExceptions chpx, Int32 initialCp)
+        protected int writeRun(List<char> chars, CharacterPropertyExceptions chpx, int initialCp)
         {
-            Int32 cp = initialCp;
+            var cp = initialCp;
 
             if (_skipRuns <= 0 && chars.Count > 0)
             {
-                RevisionData rev = new RevisionData(chpx);
+                var rev = new RevisionData(chpx);
 
                 if (rev.Type == RevisionData.RevisionType.Deleted)
                 {
@@ -720,9 +720,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// Writes the given text to the document
         /// </summary>
         /// <param name="chars"></param>
-        protected void writeText(List<char> chars, Int32 initialCp, CharacterPropertyExceptions chpx, bool writeDeletedText)
+        protected void writeText(List<char> chars, int initialCp, CharacterPropertyExceptions chpx, bool writeDeletedText)
         {
-            Int32 cp = initialCp;
+            var cp = initialCp;
             bool fSpec = isSpecial(chpx);
 
             //detect text type
@@ -791,7 +791,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     int cpFieldStart = initialCp + i;
                     int cpFieldEnd = searchNextTextMark(_doc.Text, cpFieldStart, TextMark.FieldEndMark);
-                    Field f = new Field(_doc.Text.GetRange(cpFieldStart, cpFieldEnd - cpFieldStart + 1));
+                    var f = new Field(_doc.Text.GetRange(cpFieldStart, cpFieldEnd - cpFieldStart + 1));
 
                     if(f.FieldCode.StartsWith(" FORM"))
                     {
@@ -803,8 +803,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         {
                             int fcPic = _doc.PieceTable.FileCharacterPositions[cpPic];
                             CharacterPropertyExceptions chpxPic = _doc.GetCharacterPropertyExceptions(fcPic, fcPic + 1)[0];
-                            NilPicfAndBinData npbd = new NilPicfAndBinData(chpxPic, _doc.DataStream);
-                            FormFieldData ffdata = new FormFieldData(npbd.binData);
+                            var npbd = new NilPicfAndBinData(chpxPic, _doc.DataStream);
+                            var ffdata = new FormFieldData(npbd.binData);
                             ffdata.Convert(new FormFieldDataMapping(_writer));
                         }
 
@@ -821,7 +821,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         {
                             int fcPic = _doc.PieceTable.FileCharacterPositions[cpPic];
                             CharacterPropertyExceptions chpxPic = _doc.GetCharacterPropertyExceptions(fcPic, fcPic + 1)[0];
-                            PictureDescriptor pic = new PictureDescriptor(chpxPic, _doc.DataStream);
+                            var pic = new PictureDescriptor(chpxPic, _doc.DataStream);
 
                             //append the origin attributes
                             _writer.WriteAttributeString("w", "dxaOrig", OpenXmlNamespaces.WordprocessingML, (pic.dxaGoal + pic.dxaOrigin).ToString());
@@ -833,7 +833,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                             {
                                 int fcFieldSep = _doc.PieceTable.FileCharacterPositions[cpFieldSep];
                                 CharacterPropertyExceptions chpxSep = _doc.GetCharacterPropertyExceptions(fcFieldSep, fcFieldSep + 1)[0];
-                                OleObject ole = new OleObject(chpxSep, _doc.Storage);
+                                var ole = new OleObject(chpxSep, _doc.Storage);
                                 ole.Convert(new OleObjectMapping(_writer, _doc, _targetPart, pic));
                             }
                         }
@@ -882,7 +882,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //close previous w:t ...
                     _writer.WriteEndElement();
 
-                    Symbol s = getSymbol(chpx);
+                    var s = getSymbol(chpx);
                     _writer.WriteStartElement("w", "sym", OpenXmlNamespaces.WordprocessingML);
                     _writer.WriteAttributeString("w", "font", OpenXmlNamespaces.WordprocessingML, s.FontName);
                     _writer.WriteAttributeString("w", "char", OpenXmlNamespaces.WordprocessingML, s.HexValue);
@@ -920,7 +920,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 }
                 else if (c == TextMark.Picture && fSpec)
                 {
-                    PictureDescriptor pict = new PictureDescriptor(chpx, _doc.DataStream);
+                    var pict = new PictureDescriptor(chpx, _doc.DataStream);
                     if (pict.mfp.mm > 98 && pict.ShapeContainer != null)
                     {
                         //close previous w:t ...
@@ -1023,7 +1023,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// Writes a bookmark start element at the given position
         /// </summary>
         /// <param name="cp"></param>
-        protected void writeBookmarkStarts(Int32 cp)
+        protected void writeBookmarkStarts(int cp)
         {
             if (_doc.BookmarkStartPlex.CharacterPositions.Count > 1)
             {
@@ -1053,7 +1053,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// Writes a bookmark end element at the given position
         /// </summary>
         /// <param name="cp"></param>
-        protected void writeBookmarkEnds(Int32 cp)
+        protected void writeBookmarkEnds(int cp)
         {
             if (_doc.BookmarkEndPlex.CharacterPositions.Count > 1)
             {
@@ -1101,7 +1101,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <returns></returns>
         protected List<List<char>> splitCharList(List<char> chars, List<int> splitIndices)
         {
-            List<List<char>> ret = new List<List<char>>();
+            var ret = new List<List<char>>();
 
             int startIndex = 0;
 
@@ -1127,10 +1127,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="chars"></param>
         /// <returns>A List with all bookmarks indices in the given character list</returns>
-        protected List<Int32> searchBookmarks(List<char> chars, Int32 initialCp)
+        protected List<int> searchBookmarks(List<char> chars, int initialCp)
         {
-            List<Int32> ret = new List<int>();
-            Int32 cp = initialCp;
+            var ret = new List<int>();
+            var cp = initialCp;
             for (int i = 0; i < chars.Count; i++)
             {
                 if (_doc.BookmarkStartPlex.CharacterPositions.Contains(cp) ||
@@ -1150,10 +1150,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="initialCp">The position where the search should start</param>
         /// <param name="mark">The TextMark</param>
         /// <returns>The position of the next FieldEnd mark</returns>
-        protected Int32 searchNextTextMark(List<char> chars, Int32 initialCp, char mark)
+        protected int searchNextTextMark(List<char> chars, int initialCp, char mark)
         {
-            Int32 ret = initialCp;
-            for (Int32 i = initialCp; i < chars.Count; i++)
+            var ret = initialCp;
+            for (var i = initialCp; i < chars.Count; i++)
             {
                 if (chars[i] == mark)
                 {
@@ -1231,10 +1231,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 {
                     //special symbol
                     ret = new Symbol();
-                    Int16 fontIndex = System.BitConverter.ToInt16(sprm.Arguments, 0);
-                    Int16 code = System.BitConverter.ToInt16(sprm.Arguments, 2);
+                    var fontIndex = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                    var code = System.BitConverter.ToInt16(sprm.Arguments, 2);
 
-                    FontFamilyName ffn = (FontFamilyName)_doc.FontTable.Data[fontIndex];
+                    var ffn = (FontFamilyName)_doc.FontTable.Data[fontIndex];
                     ret.FontName = ffn.xszFtn;
                     ret.HexValue = String.Format("{0:x4}", code);
                     break;
@@ -1248,7 +1248,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="cp"></param>
         /// <returns></returns>
-        protected bool isSectionEnd(Int32 cp)
+        protected bool isSectionEnd(int cp)
         {
             bool result = false;
 
@@ -1272,7 +1272,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="fc"></param>
         /// <returns></returns>
-        protected ParagraphPropertyExceptions findValidPapx(Int32 fc)
+        protected ParagraphPropertyExceptions findValidPapx(int fc)
         {
             ParagraphPropertyExceptions ret = null;
 
@@ -1294,7 +1294,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="cp"></param>
         /// <returns></returns>
-        protected SectionPropertyExceptions findValidSepx(Int32 cp)
+        protected SectionPropertyExceptions findValidSepx(int cp)
         {
             SectionPropertyExceptions ret = null;
 
@@ -1308,8 +1308,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 //there is no SEPX at this position, 
                 //so the previous SEPX is valid for this cp
 
-                Int32 lastKey = _doc.SectionPlex.CharacterPositions[1];
-                foreach (Int32 key in _doc.AllSepx.Keys)
+                int lastKey = _doc.SectionPlex.CharacterPositions[1];
+                foreach (int key in _doc.AllSepx.Keys)
                 {
                     if (cp > lastKey && cp < key)
                     {

@@ -48,7 +48,7 @@ namespace DIaLOGIKa.b2xtranslator.Tools
 
         public RGBColor(int cv, ByteOrder order)
         {
-            byte[] bytes = System.BitConverter.GetBytes(cv);
+            var bytes = System.BitConverter.GetBytes(cv);
 
             if(order == ByteOrder.RedFirst)
             {

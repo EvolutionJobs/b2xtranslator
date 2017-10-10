@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF010)]
+    [OfficeRecord(0xF010)]
     public class ClientAnchor : Record
     {
         public byte[] Bytes;

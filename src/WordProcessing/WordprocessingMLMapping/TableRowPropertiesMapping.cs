@@ -31,7 +31,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public void Apply(TablePropertyExceptions tapx)
         {
             //delete infos
-            RevisionData rev = new RevisionData(_rowEndChpx);
+            var rev = new RevisionData(_rowEndChpx);
             if (_rowEndChpx != null && rev.Type == RevisionData.RevisionType.Deleted)
             {
                 XmlElement del = _nodeFactory.CreateElement("w", "del", OpenXmlNamespaces.WordprocessingML);
@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //width before
                     case SinglePropertyModifier.OperationCode.sprmTWidthBefore:
-                        Int16 before = System.BitConverter.ToInt16(sprm.Arguments, 1);
+                        var before = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         if (before != 0)
                         {
                             XmlElement wBefore = _nodeFactory.CreateElement("w", "wBefore", OpenXmlNamespaces.WordprocessingML);
@@ -89,7 +89,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         XmlElement rowHeight = _nodeFactory.CreateElement("w", "trHeight", OpenXmlNamespaces.WordprocessingML);
                         XmlAttribute rowHeightVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                         XmlAttribute rowHeightRule = _nodeFactory.CreateAttribute("w", "hRule", OpenXmlNamespaces.WordprocessingML);
-                        Int16 rH = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var rH = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         if (rH > 0)
                         {
                             rowHeightRule.Value = "atLeast";

@@ -35,13 +35,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.SupBook;
 
-        public UInt16 ctab;
+        public ushort ctab;
 
-        public UInt16 cch; 
+        public ushort cch; 
 
-        public String virtpathstring;
+        public string virtpathstring;
 
-        public String[] rgst;
+        public string[] rgst;
 
         public bool isvirtpath;
         public bool isexternalworkbookreferencing;
@@ -49,7 +49,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public bool isaddinreferencing;
         public bool isunusedsupportinglink; 
 
-        public SupBook(IStreamReader reader, RecordType id, UInt16 length)
+        public SupBook(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -119,11 +119,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             if ((this.isexternalworkbookreferencing) || (this.isunusedsupportinglink))
             {
-                this.rgst = new String[this.ctab];
+                this.rgst = new string[this.ctab];
                 for (int i = 0; i < this.ctab; i++)
                 {
                    
-                        UInt16 cch2 = this.Reader.ReadUInt16(); 
+                        var cch2 = this.Reader.ReadUInt16(); 
                         byte firstbyte = this.Reader.ReadByte();
                         int firstbit = firstbyte & 0x1;
                         for (int j = 0; j < cch2; j++)

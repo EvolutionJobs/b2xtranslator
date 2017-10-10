@@ -55,9 +55,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// If you rearrange the sheets in a workbook, the rgiTab array will 
         /// change to reflect the new sheet arrangement.
         /// </summary>
-        public UInt16[] rgiTab;
+        public ushort[] rgiTab;
 
-        public RRTabId(IStreamReader reader, RecordType id, UInt16 length)
+        public RRTabId(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -68,7 +68,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             {
                 throw new RecordParseException(this);
             }
-            rgiTab = new UInt16[length / 2];
+            rgiTab = new ushort[length / 2];
             for (int i = 0; i < length / 2; i++)
             {
                 rgiTab[i] = reader.ReadUInt16();

@@ -47,7 +47,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// MUST be 0x0003.
         /// </summary>
-        public Int16 ccv;
+        public short ccv;
 
         /// <summary>
         /// An array of LongRGB. The array specifies the colors of the color palette. 
@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         RGBColor[] rgColor;
 
-        public ClrtClient(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public ClrtClient(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

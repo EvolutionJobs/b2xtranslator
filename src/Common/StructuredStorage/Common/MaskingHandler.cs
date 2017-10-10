@@ -49,9 +49,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         internal static string Mask(string text)
         {
             string result = text;
-            foreach (UInt32 character in CharsToMask)
+            foreach (var character in CharsToMask)
 	        {
-                result = result.Replace(new String((char)character,1), String.Format(CultureInfo.InvariantCulture, "%{0:X4}", character));
+                result = result.Replace(new string((char)character,1), String.Format(CultureInfo.InvariantCulture, "%{0:X4}", character));
 	        }
             return result;
         }
@@ -63,9 +63,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         internal static string UnMask(string text)
         {
             string result = text;
-            foreach (UInt32 character in CharsToMask)
+            foreach (var character in CharsToMask)
             {
-                result = result.Replace(String.Format("%{0:X4}", character), new String((char)character, 1));
+                result = result.Replace(String.Format("%{0:X4}", character), new string((char)character, 1));
             }
             return result;
         }

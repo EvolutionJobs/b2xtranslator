@@ -43,9 +43,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// =1 if the workbook is a double stream file
         /// </summary>
-        public UInt16 fDSF;
+        public ushort fDSF;
 
-        public DSF(IStreamReader reader, RecordType id, UInt16 length)
+        public DSF(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

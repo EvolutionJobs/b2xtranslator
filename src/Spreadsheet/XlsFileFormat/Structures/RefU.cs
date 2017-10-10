@@ -11,12 +11,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// <summary>
         /// A RwU that specifies the first row in the range. The value MUST be less than or equal to rwLast.
         /// </summary>
-        public UInt16 rwFirst;
+        public ushort rwFirst;
 
         /// <summary>
         /// A RwU that specifies the last row in the range.
         /// </summary>
-        public UInt16 rwLast;
+        public ushort rwLast;
 
         /// <summary>
         /// A ColByteU that specifies the first column in the range. The value MUST be less than or equal to colLast.

@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// scatter chart group. MUST be 0x0000 for other chart group types. <br/>
         /// MUST equal to colSeriesX and MUST be ignored if fSeriesInRows is 0x00.
         /// </summary>
-        public UInt16 rowSeriesX;
+        public ushort rowSeriesX;
 
         /// <summary>
         /// An unsigned integer that specifies a zero-based column index into the data sheet.<br/>
@@ -65,9 +65,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// axis in a scatter chart group. MUST be 0x0000 for other chart group types.<br/> 
         /// MUST equal to rowSeriesX and MUST be ignored if fSeriesInRows is 0x01.
         /// </summary>
-        public UInt16 colSeriesX;
+        public ushort colSeriesX;
 
-        public Orient(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Orient(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

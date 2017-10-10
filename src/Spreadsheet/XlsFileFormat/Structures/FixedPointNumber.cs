@@ -44,10 +44,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
     /// </summary>
     public class FixedPointNumber
     {
-        private Int16 integral;
-        private UInt16 fractional;
+        private short integral;
+        private ushort fractional;
 
-        public FixedPointNumber(Int16 integral, UInt16 fractional)
+        public FixedPointNumber(short integral, ushort fractional)
         {
             this.integral = integral;
             this.fractional = fractional;

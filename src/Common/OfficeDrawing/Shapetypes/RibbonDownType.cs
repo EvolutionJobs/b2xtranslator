@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(53)]
+    [OfficeShapeType(53)]
     public class RibbonDownType : ShapeType
     {
         public RibbonDownType()
@@ -48,8 +48,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "@0,@10,@9,21600";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            Handle HandleTwo = new Handle();
+            var HandleOne = new Handle();
+            var HandleTwo = new Handle();
             HandleOne.position="#0,bottomRight"; 
             HandleOne.xrange="2700,8100";
             HandleTwo.position="center,#1";

@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
 
             _writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
-            ShapeTreeMapping stm = new ShapeTreeMapping(_ctx, _writer);
+            var stm = new ShapeTreeMapping(_ctx, _writer);
             stm.parentSlideMapping = this;
             stm.Apply(slide.FirstChildWithType<PPDrawing>());
             _writer.WriteEndElement();

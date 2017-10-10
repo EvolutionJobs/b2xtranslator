@@ -43,9 +43,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// =1 if the Sharing with Track Changes option is on (Protect Shared Workbook dialog box)
         /// </summary>
-        public UInt16 fRevLock;
+        public ushort fRevLock;
 
-        public Prot4Rev(IStreamReader reader, RecordType id, UInt16 length)
+        public Prot4Rev(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

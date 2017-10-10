@@ -112,16 +112,16 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
 
         private static void buildFirstCHP()
         {
-            CharacterPropertyExceptions chpx = doc.AllChpxFkps[0].grpchpx[0];
-            ParagraphPropertyExceptions papx = doc.AllPapxFkps[0].grppapx[0];
-            CharacterProperties chp = new CharacterProperties(chpx, papx, doc);
+            var chpx = doc.AllChpxFkps[0].grpchpx[0];
+            var papx = doc.AllPapxFkps[0].grppapx[0];
+            var chp = new CharacterProperties(chpx, papx, doc);
         }
 
         private static void testPieceTable()
         {
             Console.WriteLine("There are " + doc.PieceTable.Pieces.Count + " pieces in the table");
 
-            foreach (PieceDescriptor pcd in doc.PieceTable.Pieces)
+            foreach (var pcd in doc.PieceTable.Pieces)
             {
                 //Console.WriteLine("\t"+pcd.cpStart + " - " + pcd.cpEnd + " : " + pcd.encoding.ToString() + " , starts at 0x" + String.Format("{0:x04}", pcd.fc));
                 Console.WriteLine("Piece starts at "+ String.Format("{0:X04}", pcd.fc) + " and hast encoding "+pcd.encoding.ToString());
@@ -130,9 +130,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
 
         private static void testDOP()
         {
-            byte[] dopBytes = new byte[(int)doc.FIB.lcbDop];
+            var dopBytes = new byte[(int)doc.FIB.lcbDop];
             doc.TableStream.Read(dopBytes, dopBytes.Length, (int)doc.FIB.fcDop);
-            DocumentProperties dop = new DocumentProperties(doc.FIB, doc.TableStream);
+            var dop = new DocumentProperties(doc.FIB, doc.TableStream);
 
             Console.WriteLine("Initial Footnote number: " + dop.nFtn);
         }
@@ -146,7 +146,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
             try
             {
                 file = args[0];
-                FileInfo fi = new FileInfo(file);
+                var fi = new FileInfo(file);
                 method = args[1];
             }
             catch (Exception)
@@ -175,13 +175,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
         /// </summary>
         private static void testSTSH()
         {
-            StyleSheet stsh = new StyleSheet(doc.FIB, doc.TableStream, doc.DataStream);
+            var stsh = new StyleSheet(doc.FIB, doc.TableStream, doc.DataStream);
             Console.WriteLine("Stylesheet contains " + stsh.Styles.Count + " Styles");
 
             for (int i=0; i<stsh.Styles.Count; i++)
             {
                 Console.WriteLine("Style " + i);
-                StyleSheetDescription std = stsh.Styles[i];
+                var std = stsh.Styles[i];
                 if (std != null)
                 {
                     Console.WriteLine("\tIdentifier: " + std.sti);
@@ -192,7 +192,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
                     if (std.papx != null)
                     {
                         Console.WriteLine("\t\tPAPX modifier:");
-                        foreach (SinglePropertyModifier sprm in std.papx.grpprl)
+                        foreach (var sprm in std.papx.grpprl)
                         {
                             Console.WriteLine(String.Format("\t\tSPRM: modifies " + sprm.Type + " property 0x{0:x4} (" + sprm.Arguments.Length + " bytes)", sprm.OpCode));
                         }
@@ -201,7 +201,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
                     if (std.chpx != null)
                     {
                         Console.WriteLine("\t\tCHPX modifier:");
-                        foreach (SinglePropertyModifier sprm in std.chpx.grpprl)
+                        foreach (var sprm in std.chpx.grpprl)
                         {
                             Console.WriteLine(String.Format("\t\tSPRM: modifies " + sprm.Type + " property 0x{0:x4} (" + sprm.Arguments.Length + " bytes)", sprm.OpCode));
                         }
@@ -221,9 +221,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
         private static void testFKPPAPX()
         {
             //Get all PAPX FKPs
-            List<FormattedDiskPagePAPX> papxFkps = FormattedDiskPagePAPX.GetAllPAPXFKPs(doc.FIB, doc.WordDocumentStream, doc.TableStream, doc.DataStream);
+            var papxFkps = FormattedDiskPagePAPX.GetAllPAPXFKPs(doc.FIB, doc.WordDocumentStream, doc.TableStream, doc.DataStream);
             Console.WriteLine("There are " + papxFkps.Count + " FKPs with PAPX in this file: \n");
-            foreach (FormattedDiskPagePAPX fkp in papxFkps)
+            foreach (var fkp in papxFkps)
             {
                 Console.Write("FKP matches on " + fkp.crun + " paragraphs: ");
                 foreach (int mark in fkp.rgfc)
@@ -233,8 +233,8 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
                 Console.WriteLine("");
                 for (int i = 0; i < fkp.crun; i++)
                 {
-                    FormattedDiskPagePAPX.BX bx = fkp.rgbx[i];
-                    ParagraphPropertyExceptions papx = fkp.grppapx[i];
+                    var bx = fkp.rgbx[i];
+                    var papx = fkp.grppapx[i];
                     Console.WriteLine("PAPX: has style " + papx.istd);
                     //foreach (SinglePropertyModifier sprm in papx.grpprl)
                     //{
@@ -250,9 +250,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
         /// </summary>
         private static void testFKPCHPX()
         {
-            List<FormattedDiskPageCHPX> chpxFkps = FormattedDiskPageCHPX.GetAllCHPXFKPs(doc.FIB, doc.WordDocumentStream, doc.TableStream);
+            var chpxFkps = FormattedDiskPageCHPX.GetAllCHPXFKPs(doc.FIB, doc.WordDocumentStream, doc.TableStream);
             Console.WriteLine("There are " + chpxFkps.Count + " FKPs with CHPX in this file: \n");
-            foreach (FormattedDiskPageCHPX fkp in chpxFkps)
+            foreach (var fkp in chpxFkps)
             {
                 Console.Write("FKP matches on " + fkp.crun + " characters: ");
                 foreach (int mark in fkp.rgfc)
@@ -263,7 +263,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
                 for (int i = 0; i < fkp.crun; i++)
                 {
                     Console.WriteLine("CHPX:");
-                    CharacterPropertyExceptions chpx = fkp.grpchpx[i];
+                    var chpx = fkp.grpchpx[i];
                     //foreach (SinglePropertyModifier sprm in chpx.grpprl)
                     //{
                     //    Console.WriteLine(String.Format("\tSPRM: modifies " + sprm.Type + " property 0x{0:x4} (" + sprm.Arguments.Length + " bytes)", sprm.OpCode));

@@ -23,11 +23,11 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public void Apply(SeriesFormatSequence seriesFormatSequence)
         {
             // find BRAI record for categories
-            foreach (AiSequence aiSequence in seriesFormatSequence.AiSequences)
+            foreach (var aiSequence in seriesFormatSequence.AiSequences)
             {
                 if (aiSequence.BRAI.braiId == BRAI.BraiId.SeriesCategory)
                 {
-                    BRAI brai = aiSequence.BRAI;
+                    var brai = aiSequence.BRAI;
 
                     // don't create a c:cat node for automatically generated category axis data!
                     if (brai.rt != BRAI.DataSource.Automatic)
@@ -75,12 +75,12 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         private void convertStringPoints(SeriesFormatSequence seriesFormatSequence)
         {
             // find series data
-            SeriesDataSequence seriesDataSequence = this.ChartContext.ChartSheetContentSequence.SeriesDataSequence;
-            foreach (SeriesGroup seriesGroup in seriesDataSequence.SeriesGroups)
+            var seriesDataSequence = this.ChartContext.ChartSheetContentSequence.SeriesDataSequence;
+            foreach (var seriesGroup in seriesDataSequence.SeriesGroups)
             {
                 if (seriesGroup.SIIndex.numIndex == SIIndex.SeriesDataType.CategoryLabels)
                 {
-                    AbstractCellContent[,] dataMatrix = seriesDataSequence.DataMatrix[(UInt16)seriesGroup.SIIndex.numIndex - 1];
+                    var dataMatrix = seriesDataSequence.DataMatrix[(ushort)seriesGroup.SIIndex.numIndex - 1];
                     // TODO: c:formatCode
 
                     UInt32 ptCount = 0;
@@ -98,12 +98,12 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     UInt32 idx = 0;
                     for (UInt32 i = 0; i < dataMatrix.GetLength(1); i++)
                     {
-                        AbstractCellContent cellContent = dataMatrix[seriesFormatSequence.order, i];
+                        var cellContent = dataMatrix[seriesFormatSequence.order, i];
                         if (cellContent != null)
                         {
                             if (cellContent is Label)
                             {
-                                Label lblInCell = (Label)cellContent;
+                                var lblInCell = (Label)cellContent;
 
                                 // c:pt
                                 _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElPt, Dml.Chart.Ns);

@@ -33,7 +33,7 @@ using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF00D)]
+    [OfficeRecord(0xF00D)]
     public class ClientTextbox : Record
     {
         public byte[] Bytes;

@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
 
         public string stText;
 
-        public SeriesText(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public SeriesText(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

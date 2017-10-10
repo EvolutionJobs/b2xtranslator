@@ -33,7 +33,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
     public class PtgFunc : AbstractPtg
     {
         public const PtgNumber ID = PtgNumber.PtgFunc;
-        public UInt16 tab;
+        public ushort tab;
 
 
         public PtgFunc(IStreamReader reader, PtgNumber ptgid)

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(121)]
+    [OfficeShapeType(121)]
     class FlowChartPunchedCardType : ShapeType
     {
         public FlowChartPunchedCardType()

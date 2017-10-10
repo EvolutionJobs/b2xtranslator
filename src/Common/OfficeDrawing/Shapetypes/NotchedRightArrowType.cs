@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(94)]
+    [OfficeShapeType(94)]
     class NotchedRightArrowType : ShapeType
     {
         public NotchedRightArrowType()
@@ -30,10 +30,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "@5,@1,@6,@2";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,#1";
-            HandleOne.xrange="0,21600";
-            HandleOne.yrange="0,10800"; 
+            var HandleOne = new Handle
+            {
+                position = "#0,#1",
+                xrange = "0,21600",
+                yrange = "0,10800"
+            };
 
             this.Handles.Add(HandleOne);
 

@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be msofillPattern as specified in [MS-ODRAW] section 2.4.11. The default value of this field is 0x0001.
         /// </summary>
-        public UInt16 fls;
+        public ushort fls;
 
         /// <summary>
         /// A bit that specifies whether the fill colors are automatically set. 
@@ -88,10 +88,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fInvertNeg = false;
 
-        public UInt16 icvFore;
-        public UInt16 icvBack;
+        public ushort icvFore;
+        public ushort icvBack;
 
-        public AreaFormat(IStreamReader reader, RecordType id, UInt16 length)
+        public AreaFormat(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // TODO: Read optional GelFrame
             fls = reader.ReadUInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             fAuto = Utils.BitmaskToBool(flags, 0x1);
             fInvertNeg = Utils.BitmaskToBool(flags, 0x2);
 

@@ -32,13 +32,13 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF005)]
+    [OfficeRecord(0xF005)]
     public class SolverContainer : RegularContainer
     {
         public SolverContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                foreach (Record item in Children)
+                foreach (var item in Children)
                 {
                     switch (item.TypeCode)
                     {
@@ -50,7 +50,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         }
     }
 
-    [OfficeRecordAttribute(0xF012)]
+    [OfficeRecord(0xF012)]
     public class FConnectorRule : Record
     {
         public UInt32 ruid;
@@ -72,7 +72,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         }
     }
 
-    [OfficeRecordAttribute(0xF014)]
+    [OfficeRecord(0xF014)]
     public class FArcRule : Record
     {
         public UInt32 ruid;
@@ -86,7 +86,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         }
     }
 
-    [OfficeRecordAttribute(0xF017)]
+    [OfficeRecord(0xF017)]
     public class FCalloutRule : Record
     {
         public UInt32 ruid;

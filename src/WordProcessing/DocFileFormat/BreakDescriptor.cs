@@ -39,22 +39,22 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Except in textbox BKD, index to PGD in plfpgd that describes the page this break is on
         /// </summary>
-        public Int16 ipgd;
+        public short ipgd;
 
         /// <summary>
         /// In textbox BKD
         /// </summary>
-        public Int16 itxbxs;
+        public short itxbxs;
 
         /// <summary>
         /// Number of cp's considered for this break; note that the CP's described by cpDepend in this break reside in the next BKD
         /// </summary>
-        public Int16 dcpDepend;
+        public short dcpDepend;
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt16 icol;
+        public ushort icol;
 
         /// <summary>
         /// When true, this indicates that this is a table break.
@@ -88,7 +88,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.itxbxs = this.ipgd;
             this.dcpDepend = reader.ReadInt16();
             int flag = (int)reader.ReadInt16();
-            this.icol = (UInt16)Utils.BitmaskToInt(flag, 0x00FF);
+            this.icol = (ushort)Utils.BitmaskToInt(flag, 0x00FF);
             this.fTableBreak = Utils.BitmaskToBool(flag, 0x0100);
             this.fColumnBreak = Utils.BitmaskToBool(flag, 0x0200);
             this.fMarked = Utils.BitmaskToBool(flag, 0x0400);

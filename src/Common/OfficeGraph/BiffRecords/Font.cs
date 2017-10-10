@@ -69,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// SHOULD <49> be greater than or equal to 20 and less than or equal to 8191. 
         /// MUST be greater than or equal to 20 and less than 8181, or 0.
         /// </summary>
-        public UInt16 dyHeight;
+        public ushort dyHeight;
 
         /// <summary>
         /// A bit that specifies whether the font is italic.
@@ -107,7 +107,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// The value SHOULD <50> be an IcvFont value. 
         /// This value MUST be an IcvFont value, or 0.
         /// </summary>
-        public UInt16 icv;
+        public ushort icv;
         // TODO: implement IcvFont structure and color mapping
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public ShortXLUnicodeString fontName;
 
-        public Font(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Font(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -158,7 +158,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             // initialize class members from stream
             this.dyHeight = reader.ReadUInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
 
             // 0x0001 is unused
             this.fItalic = Utils.BitmaskToBool(flags, 0x0002);

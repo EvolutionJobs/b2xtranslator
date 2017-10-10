@@ -41,35 +41,35 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Rownumber 
         /// </summary>
-        public UInt16 rwFirst;
+        public ushort rwFirst;
 
         /// <summary>
         /// Rownumber 
         /// </summary>
-        public UInt16 rwLast;
+        public ushort rwLast;
 
         /// <summary>
         /// Colnumber 
         /// </summary>
-        public UInt16 colFirst;
+        public ushort colFirst;
 
         /// <summary>
         /// Colnumber 
         /// </summary>
-        public UInt16 colLast;
+        public ushort colLast;
 
 
         /// <summary>
         /// length of the formular data !!
         /// </summary>
-        public UInt16 cce;
+        public ushort cce;
 
         /// <summary>
         /// LinkedList with the Ptg records !!
         /// </summary>
         public Stack<AbstractPtg> ptgStack; 
 
-        public ShrFmla(IStreamReader reader, RecordType id, UInt16 length)
+        public ShrFmla(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -77,8 +77,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             this.rwFirst = reader.ReadUInt16();
             this.rwLast = reader.ReadUInt16();
-            this.colFirst = (UInt16)reader.ReadByte();
-            this.colLast = (UInt16)reader.ReadByte();
+            this.colFirst = (ushort)reader.ReadByte();
+            this.colLast = (ushort)reader.ReadByte();
 
             // read two unnessesary bytes 
             reader.ReadUInt16();

@@ -25,8 +25,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             for (int i = 0; i < _doc.AutoTextPlex.CharacterPositions.Count - 2; i++)
             {
-                Int32 cpStart = _doc.AutoTextPlex.CharacterPositions[i];
-                Int32 cpEnd = _doc.AutoTextPlex.CharacterPositions[i+1];
+                int cpStart = _doc.AutoTextPlex.CharacterPositions[i];
+                int cpEnd = _doc.AutoTextPlex.CharacterPositions[i+1];
 
                 writeAutoTextDocPart(cpStart, cpEnd, i);
             }
@@ -39,7 +39,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             _writer.Flush();
         }
 
-        private void writeAutoTextDocPart(Int32 startCp, Int32 endCp, int index)
+        private void writeAutoTextDocPart(int startCp, int endCp, int index)
         {
             _writer.WriteStartElement("w", "docPart", OpenXmlNamespaces.WordprocessingML);
             _writer.WriteStartElement("w", "docPartPr", OpenXmlNamespaces.WordprocessingML);

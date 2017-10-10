@@ -15,14 +15,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// and the value of this field specifies the toolbar identifier of the toolbar affected by 
         /// the TBDelta structures contained in the array.
         /// </summary>
-        public Int32 tbidForTBD;
+        public int tbidForTBD;
 
         /// <summary>
         /// Signed integer that specifies, if tbidForTBD is not equal to 0x00000000, the number of TBDelta 
         /// structures contained in the customizationData array. <br/>
         /// MUST be 0x0000 if tbidForTBD equals 0x00000000.
         /// </summary>
-        public Int16 ctbds;
+        public short ctbds;
 
         /// <summary>
         /// 

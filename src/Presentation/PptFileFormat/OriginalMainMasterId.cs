@@ -7,7 +7,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1052)]
+    [OfficeRecord(1052)]
     public class OriginalMainMasterId : Record
     {
         public UInt32 MainMasterId;

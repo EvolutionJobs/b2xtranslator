@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
     /// </summary>
     class ChartFormatIdGenerator
     {
-        private UInt16 _id = 0;
+        private ushort _id = 0;
 
         /// <summary>
         /// This class is a singleton
@@ -65,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             _id = 0;
         }
 
-        public UInt16 GenerateId()
+        public ushort GenerateId()
         {
             return _id++;
         }

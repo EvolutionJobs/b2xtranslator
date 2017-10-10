@@ -6,21 +6,21 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1044)]
+    [OfficeRecord(1044)]
     public class NormalViewSetInfoContainer : RegularContainer
     {
         public NormalViewSetInfoContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) { }
     }
 
-    [OfficeRecordAttribute(1018)]
+    [OfficeRecord(1018)]
     public class SlideViewInfoContainer : RegularContainer
     {
         public SlideViewInfoContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) { }
     }
 
-    [OfficeRecordAttribute(1045)]
+    [OfficeRecord(1045)]
     public class NormalViewSetInfoAtom : Record
     {
         public RatioStruct leftPortion;
@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(1021)]
+    [OfficeRecord(1021)]
     public class ZoomViewInfoAtom : Record
     {
 
@@ -68,8 +68,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
     public class PointStruct
     {
-        public Int32 x;
-        public Int32 y;
+        public int x;
+        public int y;
 
         public PointStruct(BinaryReader _reader)
         {
@@ -80,8 +80,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
     public class RatioStruct
     {
-        public Int32 numer;
-        public Int32 denom;
+        public int numer;
+        public int denom;
 
         public RatioStruct(BinaryReader _reader)
         {

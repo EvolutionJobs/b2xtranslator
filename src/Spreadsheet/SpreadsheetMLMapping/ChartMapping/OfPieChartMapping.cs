@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 throw new Exception("Invalid chart type");
             }
 
-            BopPop bopPop = crtSequence.ChartType as BopPop;
+            var bopPop = crtSequence.ChartType as BopPop;
 
             // c:ofPieChart
             _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElOfPieChart, Dml.Chart.Ns);

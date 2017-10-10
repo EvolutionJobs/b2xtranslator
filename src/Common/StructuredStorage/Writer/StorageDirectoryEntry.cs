@@ -82,7 +82,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             {
                 return;
             }
-            StreamDirectoryEntry newDirEntry = new StreamDirectoryEntry(name, stream, Context);
+            var newDirEntry = new StreamDirectoryEntry(name, stream, Context);
             _streamDirectoryEntries.Add(newDirEntry);
             _allDirectoryEntries.Add(newDirEntry);
         }
@@ -125,7 +125,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <returns>A list of directory entries.</returns>
         internal List<BaseDirectoryEntry> RecursiveGetAllDirectoryEntries()
         {
-            List<BaseDirectoryEntry> result = new List<BaseDirectoryEntry>();
+            var result = new List<BaseDirectoryEntry>();
             return RecursiveGetAllDirectoryEntries(result);
         }
 
@@ -135,11 +135,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         private List<BaseDirectoryEntry> RecursiveGetAllDirectoryEntries(List<BaseDirectoryEntry> result)
         {
-            foreach (StorageDirectoryEntry entry in _storageDirectoryEntries)
+            foreach (var entry in _storageDirectoryEntries)
             {
                 result.AddRange(entry.RecursiveGetAllDirectoryEntries());
             }
-            foreach (StreamDirectoryEntry entry in _streamDirectoryEntries)
+            foreach (var entry in _streamDirectoryEntries)
             {
                 result.Add(entry);
             }
@@ -159,7 +159,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         {
             this.ChildSiblingSid = CreateRedBlackTree();
 
-            foreach (StorageDirectoryEntry entry in _storageDirectoryEntries)
+            foreach (var entry in _storageDirectoryEntries)
             {
                 entry.RecursiveCreateRedBlackTrees();
             }
@@ -182,7 +182,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         {          
             _allDirectoryEntries.Sort(DirectoryEntryComparison);
 
-            foreach (BaseDirectoryEntry entry in _allDirectoryEntries)
+            foreach (var entry in _allDirectoryEntries)
             {
                 entry.Sid = Context.getNewSid();
             }
@@ -215,8 +215,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             }
 
             int middleIndex = getMiddleIndex(entryList);
-            List<BaseDirectoryEntry> leftSubTree = entryList.GetRange(0, middleIndex);
-            List<BaseDirectoryEntry> rightSubTree = entryList.GetRange(middleIndex + 1, entryList.Count - middleIndex - 1);
+            var leftSubTree = entryList.GetRange(0, middleIndex);
+            var rightSubTree = entryList.GetRange(middleIndex + 1, entryList.Count - middleIndex - 1);
             int leftmiddleIndex = getMiddleIndex(leftSubTree);
             int rightmiddleIndex = getMiddleIndex(rightSubTree);
             if (leftSubTree.Count > 0)
@@ -258,8 +258,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
                 return a.Name.Length.CompareTo(b.Name.Length);
             }
 
-            String aU = a.Name.ToUpper();
-            String bU = b.Name.ToUpper();
+            var aU = a.Name.ToUpper();
+            var bU = b.Name.ToUpper();
 
             for (int i = 0; i < aU.Length; i++)
             {

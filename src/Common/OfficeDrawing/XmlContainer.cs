@@ -57,12 +57,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
             try
             {
-                using (FileStream fs = new FileStream(tempPath, FileMode.Create))
+                using (var fs = new FileStream(tempPath, FileMode.Create))
                 {
-                    using (BinaryWriter tempStream = new BinaryWriter(fs))
+                    using (var tempStream = new BinaryWriter(fs))
                     {
                         int count = (int)this.Reader.BaseStream.Length;
-                        byte[] bytes = this.Reader.ReadBytes(count);
+                        var bytes = this.Reader.ReadBytes(count);
 
                         tempStream.Write(bytes);
 
@@ -74,7 +74,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                     }
                 }
 
-                using (ZipReader zipReader = ZipFactory.OpenArchive(tempPath))
+                using (var zipReader = ZipFactory.OpenArchive(tempPath))
                 {
                     this.XmlDocumentElement = ExtractDocumentElement(zipReader, GetRelations(zipReader, ""));
                 }
@@ -95,15 +95,15 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <param name="zipReader">ZipReader for reading from the OOXML package</param>
         /// <param name="forPartPath">Part for which to get relations</param>
         /// <returns>List of Relationship nodes belonging to forFile</returns>
-        protected static XmlNodeList GetRelations(ZipReader zipReader, String forPartPath)
+        protected static XmlNodeList GetRelations(ZipReader zipReader, string forPartPath)
         {
             string relPath = GetRelationPath(forPartPath);
-            Stream relStream = zipReader.GetEntry(relPath);
+            var relStream = zipReader.GetEntry(relPath);
 
-            XmlDocument relDocument = new XmlDocument();
+            var relDocument = new XmlDocument();
             relDocument.Load(relStream);
 
-            XmlNodeList rels = relDocument["Relationships"].GetElementsByTagName("Relationship");
+            var rels = relDocument["Relationships"].GetElementsByTagName("Relationship");
             return rels;
         }
 
@@ -112,10 +112,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// </summary>
         /// <param name="forPartPath">Part for which to get relations</param>
         /// <returns>Relation path</returns>
-        protected static string GetRelationPath(String forPartPath)
+        protected static string GetRelationPath(string forPartPath)
         {
-            String directoryPath = "";
-            String filePath = "";
+            var directoryPath = "";
+            var filePath = "";
 
             if (forPartPath.Length > 0)
             {
@@ -145,9 +145,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                 throw new Exception("Expected actly one Relationship in XmlContainer OOXML doc");
 
             string partPath = rels[0].Attributes["Target"].Value;
-            Stream partStream = zipReader.GetEntry(partPath);
+            var partStream = zipReader.GetEntry(partPath);
 
-            XmlDocument partDoc = new XmlDocument();
+            var partDoc = new XmlDocument();
             partDoc.Load(partStream);
 
             return partDoc.DocumentElement;

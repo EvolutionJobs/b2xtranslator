@@ -54,14 +54,14 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public void Apply(SeriesFormatSequence seriesFormatSequence)
         {
             // find BRAI record for values
-            foreach (AiSequence aiSequence in seriesFormatSequence.AiSequences)
+            foreach (var aiSequence in seriesFormatSequence.AiSequences)
             {
                 if (aiSequence.BRAI.braiId == BRAI.BraiId.SeriesValues)
                 {
                     // c:val
                     _writer.WriteStartElement(Dml.Chart.Prefix, this._parentElement, Dml.Chart.Ns);
                     {
-                        BRAI brai = aiSequence.BRAI;
+                        var brai = aiSequence.BRAI;
                         switch (brai.rt)
                         {
                             case BRAI.DataSource.Literal:
@@ -101,12 +101,12 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         private void convertNumData(SeriesFormatSequence seriesFormatSequence)
         {
             // find series data
-            SeriesDataSequence seriesDataSequence = this.ChartContext.ChartSheetContentSequence.SeriesDataSequence;
-            foreach (SeriesGroup seriesGroup in seriesDataSequence.SeriesGroups)
+            var seriesDataSequence = this.ChartContext.ChartSheetContentSequence.SeriesDataSequence;
+            foreach (var seriesGroup in seriesDataSequence.SeriesGroups)
             {
                 if (seriesGroup.SIIndex.numIndex == SIIndex.SeriesDataType.SeriesValues)
                 {
-                    AbstractCellContent[,] dataMatrix = seriesDataSequence.DataMatrix[(UInt16)seriesGroup.SIIndex.numIndex - 1];
+                    var dataMatrix = seriesDataSequence.DataMatrix[(ushort)seriesGroup.SIIndex.numIndex - 1];
                     // TODO: c:formatCode
 
                     UInt32 ptCount = 0;
@@ -123,7 +123,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     UInt32 idx = 0;
                     for (UInt32 i = 0; i < dataMatrix.GetLength(1); i++)
                     {
-                        Number cellContent = dataMatrix[seriesFormatSequence.order, i] as Number;
+                        var cellContent = dataMatrix[seriesFormatSequence.order, i] as Number;
                         if (cellContent != null && cellContent.num != null)
                         {
                             // c:pt

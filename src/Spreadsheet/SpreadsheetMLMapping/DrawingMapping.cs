@@ -69,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             {
                 _writer.WriteStartElement(Dml.SpreadsheetDrawing.ElAbsoluteAnchor, Dml.SpreadsheetDrawing.Ns);
                 {
-                    Chart chart = chartSheetContentSequence.ChartFormatsSequence.Chart;
+                    var chart = chartSheetContentSequence.ChartFormatsSequence.Chart;
 
                     // NOTE: Excel seems to somehow round the pos and ext values. The exact calculation is not documented.
                     //   Besides, Excel might write negative values which are corrected to 0 by Excel on load time.
@@ -116,25 +116,25 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             _writer.WriteAttributeString("xmlns", Dml.SpreadsheetDrawing.Prefix, "", Dml.SpreadsheetDrawing.Ns);
             _writer.WriteAttributeString("xmlns", Dml.Prefix, "", Dml.Ns);
 
-            foreach (DrawingsGroup drawingsGroup in objectsSequence.DrawingsGroup)
+            foreach (var drawingsGroup in objectsSequence.DrawingsGroup)
             {
                 // TODO: currently only embedded charts are mapped. Shapes and images are not yet implemented.
                 //    The check on the type of object would have to be removed here once shapes and images are supported.
                 //
-                ObjectGroup objGroup = drawingsGroup.Objects.Find(p => p.ChartSheetSequence != null);
+                var objGroup = drawingsGroup.Objects.Find(p => p.ChartSheetSequence != null);
                 if (objGroup != null)
                 {
-                    MsoDrawing msoDrawing = drawingsGroup.MsoDrawing;
+                    var msoDrawing = drawingsGroup.MsoDrawing;
 
                     // find OfficeArtClientAnchorSheet with drawing
-                    RegularContainer container = msoDrawing.rgChildRec as RegularContainer;
+                    var container = msoDrawing.rgChildRec as RegularContainer;
 
                     if (container != null)
                     {
-                        ClientAnchor clientAnchor = container.FirstDescendantWithType<ClientAnchor>();
+                        var clientAnchor = container.FirstDescendantWithType<ClientAnchor>();
                         if (clientAnchor != null)
                         {
-                            OfficeArtClientAnchorSheet oartClientAnchor = new OfficeArtClientAnchorSheet(clientAnchor.RawData);
+                            var oartClientAnchor = new OfficeArtClientAnchorSheet(clientAnchor.RawData);
 
                             // xdr:twoCellAnchor
                             _writer.WriteStartElement(Dml.SpreadsheetDrawing.Prefix, Dml.SpreadsheetDrawing.ElTwoCellAnchor, Dml.SpreadsheetDrawing.Ns);
@@ -167,10 +167,10 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                                 _writer.WriteElementString(Dml.SpreadsheetDrawing.Prefix, Dml.SpreadsheetDrawing.ElRowOff, Dml.SpreadsheetDrawing.Ns, oartClientAnchor.dyB.ToString());
                                 _writer.WriteEndElement(); // xdr:to
 
-                                ObjectGroup objectGroup = drawingsGroup.Objects.Find(p => p.ChartSheetSequence != null);
+                                var objectGroup = drawingsGroup.Objects.Find(p => p.ChartSheetSequence != null);
                                 if (objectGroup != null)
                                 {
-                                    ChartSheetContentSequence chartSheetContentSequence = objectGroup.ChartSheetSequence.ChartSheetContentSequence;
+                                    var chartSheetContentSequence = objectGroup.ChartSheetSequence.ChartSheetContentSequence;
                                     insertObjectChoices(chartSheetContentSequence);
                                 }
                             }
@@ -231,7 +231,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
                     // create and convert chart part
                     ChartPart chartPart = this._drawingsPart.AddChartPart();
-                    ChartContext chartContext = new ChartContext(chartPart, chartSheetContentSequence, this._isChartsheet ? ChartContext.ChartLocation.Chartsheet : ChartContext.ChartLocation.Embedded);
+                    var chartContext = new ChartContext(chartPart, chartSheetContentSequence, this._isChartsheet ? ChartContext.ChartLocation.Chartsheet : ChartContext.ChartLocation.Embedded);
                     chartSheetContentSequence.Convert(new ChartMapping(this._xlsContext, chartContext));
 
                     _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElChart, Dml.Chart.Ns);

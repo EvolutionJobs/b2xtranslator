@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(70)]
+    [OfficeShapeType(70)]
     public class UpDownArrowType :ShapeType
     {
         public UpDownArrowType()
@@ -32,10 +32,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle="@1,@5,@3,@6";
             
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,#1";
-            HandleOne.xrange="0,10800";
-            HandleOne.yrange="0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#0,#1",
+                xrange = "0,10800",
+                yrange = "0,10800"
+            };
             this.Handles.Add(HandleOne);
 
         }

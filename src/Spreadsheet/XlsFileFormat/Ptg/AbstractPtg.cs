@@ -35,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
         IStreamReader _reader;
         PtgNumber _id;
         long _offset;
-        String data;
+        string data;
         uint length;
         
         protected uint popSize;
@@ -100,7 +100,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
             set { this._reader = value; }
         }
 
-        protected String Data
+        protected string Data
         {
             get { return this.data; }
             set { this.data = value; }
@@ -117,7 +117,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
             return this.length; 
         }
 
-        public String getData()
+        public string getData()
         {            
             return Convert.ToString(this.data,CultureInfo.GetCultureInfo("en-US"));
         }

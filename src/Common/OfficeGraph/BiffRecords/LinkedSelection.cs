@@ -46,26 +46,26 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// MUST be 0x0000 if the first row of the selection from the OLE stream contains any non-numeric values.<br/> 
         /// MUST be 0x0001 if the first row of the selection from the OLE stream contains only numeric values.
         /// </summary>
-        public UInt16 rwFirst;
+        public ushort rwFirst;
 
         /// <summary>
         /// MUST be the same as rwFirst.
         /// </summary>
-        public UInt16 rwLast;
+        public ushort rwLast;
 
         /// <summary>
         /// Specifies the first column in the data sheet window in which to paste the selection from the OLE stream. <br/>
         /// MUST be 0x0000 if the first column of the selection from the OLE stream contains any non-numeric values. <br/>
         /// MUST be 0x0001 if the first column of the selection from the OLE stream contains only numeric values.
         /// </summary>
-        public UInt16 colFirst;
+        public ushort colFirst;
 
         /// <summary>
         /// MUST be the same as colFirst.
         /// </summary>
-        public UInt16 colLast;
+        public ushort colLast;
 
-        public LinkedSelection(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public LinkedSelection(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

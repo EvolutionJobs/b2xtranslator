@@ -15,19 +15,19 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// An index into the string table of comment author names.
         /// </summary>
-        public UInt16 AuthorIndex;
+        public ushort AuthorIndex;
 
         /// <summary>
         /// Identifies a bookmark.
         /// </summary>
-        public Int32 BookmarkId;
+        public int BookmarkId;
 
         public AnnotationReferenceDescriptor(VirtualStreamReader reader, int length)
             : base(reader, length)
         {
             //read the user initials (LPXCharBuffer9)
-            Int16 cch = _reader.ReadInt16( );
-            byte[] chars = _reader.ReadBytes(18);
+            var cch = _reader.ReadInt16( );
+            var chars = _reader.ReadBytes(18);
             this.UserInitials = Encoding.Unicode.GetString(chars, 0, cch * 2);
 
             this.AuthorIndex = _reader.ReadUInt16();

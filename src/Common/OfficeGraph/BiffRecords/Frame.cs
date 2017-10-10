@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public bool fAutoPosition;
 
-        public Frame(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Frame(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -89,7 +89,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             // initialize class members from stream
             this.frt = (FrameStyle)reader.ReadUInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
 
             this.fAutoSize = Utils.BitmaskToBool(flags, 0x0001);
             this.fAutoPosition = Utils.BitmaskToBool(flags, 0x0002);

@@ -56,7 +56,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// A value of 25 specifies the selection is undefined. 
         /// Otherwise, iRes is a zero-based index into FFData.hsttbDropList.
         /// </summary>
-        public UInt16 iRes;
+        public ushort iRes;
 
         /// <summary>
         /// A bool that specifies whether the form field has custom help text in xstzHelpText. <br/>
@@ -109,7 +109,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// A value of 0 means there is no maximum length of the value of the textbox.<br/> 
         /// MUST be 0 if iType is not iTypeText (0).<br/>
         /// </summary>
-        public UInt16 cch;
+        public ushort cch;
 
         /// <summary>
         /// An unsigned integer.<br/><br/>
@@ -118,7 +118,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// of the checkbox and MUST be between 2 and 3168, inclusive.<br/> 
         /// If bitiType is not iTypeChck (1), then hps is undefined and MUST be ignored.
         /// </summary>
-        public UInt16 hps;
+        public ushort hps;
 
         /// <summary>
         /// An string that specifies the name of this form field.<br/><br/>
@@ -147,7 +147,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// If iType is iTypeDrop (2), then wDef MUST be less than the number of 
         /// items in the dropdown list box and specify the default item selected (zero-based index).
         /// </summary>
-        public UInt16 wDef;
+        public ushort wDef;
 
         /// <summary>
         /// An string that specifies the string format of the textbox. <br/><br/>
@@ -211,7 +211,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
                 int bits = (int)System.BitConverter.ToUInt16(bytes, pos);
                 this.iType = (FormFieldType)Utils.BitmaskToInt(bits, 0x3);
-                this.iRes = (UInt16)Utils.BitmaskToInt(bits, 0x7C);
+                this.iRes = (ushort)Utils.BitmaskToInt(bits, 0x7C);
                 this.fOwnHelp = Utils.BitmaskToBool(bits, 0x80);
                 this.fOwnStat = Utils.BitmaskToBool(bits, 0x100);
                 this.fProt = Utils.BitmaskToBool(bits, 0x200);

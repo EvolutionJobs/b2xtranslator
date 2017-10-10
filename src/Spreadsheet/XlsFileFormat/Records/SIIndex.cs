@@ -19,7 +19,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public SeriesDataType numIndex;
 
-        public SIIndex(IStreamReader reader, RecordType id, UInt16 length)
+        public SIIndex(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             this.numIndex = (SeriesDataType)reader.ReadUInt16();

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(152)]
+    [OfficeShapeType(152)]
     public class TextCurveUp : ShapeType
     {
         public TextCurveUp()
@@ -35,9 +35,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("sum @11 14400 @14");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="topLeft,#0";
-            h1.yrange = "0,12169";
+            var h1 = new Handle
+            {
+                position = "topLeft,#0",
+                yrange = "0,12169"
+            };
             this.Handles.Add(h1);
         }
     }

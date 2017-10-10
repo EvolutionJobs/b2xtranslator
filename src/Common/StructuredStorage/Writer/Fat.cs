@@ -89,7 +89,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
                 return SectorId.ENDOFCHAIN;
             }
 
-            UInt32 startSector = _currentEntry;
+            var startSector = _currentEntry;
 
             for (int i = 0; i < sectorCount; i++)
             {
@@ -133,14 +133,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
 
             // handle remaining difat entries 
 
-            List<UInt32> greaterDiFatEntries = new List<UInt32>();
+            var greaterDiFatEntries = new List<UInt32>();
             
             for (int i = 0; i < _diFatEntries.Count - 109; i++)
             {
                 greaterDiFatEntries.Add(_diFatEntries[i + 109]);
             }          
 
-            UInt32 diFatLink = _diFatStartSector + 1;
+            var diFatLink = _diFatStartSector + 1;
             int addressesInSector = _context.Header.SectorSize / 4;
             int sectorSplit = addressesInSector;
 
@@ -160,7 +160,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             greaterDiFatEntries.RemoveAt(greaterDiFatEntries.Count - 1);
             greaterDiFatEntries.Add(SectorId.ENDOFCHAIN);
 
-            List<byte> output = _context.InternalBitConverter.getBytes(greaterDiFatEntries);
+            var output = _context.InternalBitConverter.getBytes(greaterDiFatEntries);
 
             // consistency check
             if (output.Count % _context.Header.SectorSize != 0)
@@ -184,7 +184,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             _numDiFatSectors = 0;            
             while (true)
             {
-                UInt32 numDiFatSectorsOld = _numDiFatSectors;
+                var numDiFatSectorsOld = _numDiFatSectors;
                 _numFatSectors = (UInt32)Math.Ceiling((double)(_entries.Count * 4) / (double)_context.Header.SectorSize) + _numDiFatSectors;
                 _numDiFatSectors = (_numFatSectors <= 109) ? 0 : (UInt32)Math.Ceiling((double)((_numFatSectors - 109) * 4) / (double)(_context.Header.SectorSize - 1));
                 if (numDiFatSectorsOld == _numDiFatSectors)

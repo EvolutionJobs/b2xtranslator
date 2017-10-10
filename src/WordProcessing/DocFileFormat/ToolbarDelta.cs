@@ -26,21 +26,21 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Signed integer. Refer to the following table for the value that this field MUST have:
         /// </summary>
-        public Int32 cidNext;
+        public int cidNext;
 
         /// <summary>
         /// Structure of type Cid that specifies the Word‘s command identifier for the 
         /// toolbar control associated to this TBDelta. <br/>
         /// Toolbar controls MUST only have Cid structures that have Cmt values equal to 0x0001 or 0x0003.
         /// </summary>
-        public Int32 cid;
+        public int cid;
 
         /// <summary>
         /// Unsigned integer that specifies the file offset in the Table Stream where the 
         /// toolbar control associated to this TBDelta is stored. <br/>
         /// Value MUST be 0x00000000 if fOnDisk is not equal to 1.
         /// </summary>
-        public Int32 fc;
+        public int fc;
 
         /// <summary>
         /// A bit that specifies if a toolbar control associated to this TBDelta has been written to the file. <br/>
@@ -77,7 +77,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// This field MUST only be used when fOnDisk equals 1.<br/>
         /// If fOnDisk equals 0, value MUST be 0x0000.
         /// </summary>
-        public UInt16 cbTBC;
+        public ushort cbTBC;
 
         public ToolbarDelta(VirtualStreamReader reader)
             : base(reader, TBDelta_LENGTH)
@@ -91,7 +91,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.cid = reader.ReadInt32();
             this.fc = reader.ReadInt32();
 
-            UInt16 flags2 = reader.ReadUInt16();
+            var flags2 = reader.ReadUInt16();
             this.fOnDisk = Utils.BitmaskToBool((int)flags2, 0x0001);
             this.iTB = Utils.BitmaskToInt((int)flags2, 0x3FFE);
             this.fDead = Utils.BitmaskToBool((int)flags2, 0x8000);

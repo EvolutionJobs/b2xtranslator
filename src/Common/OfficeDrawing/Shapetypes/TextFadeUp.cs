@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(170)]
+    [OfficeShapeType(170)]
     public class TextFadeUp : ShapeType
     {
         public TextFadeUp()
@@ -24,9 +24,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("sum @1 21600 @0");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="#0,topLeft";
-            h1.xrange = "0,10792";
+            var h1 = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "0,10792"
+            };
             this.Handles.Add(h1);
 
         }

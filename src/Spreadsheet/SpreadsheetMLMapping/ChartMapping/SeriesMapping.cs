@@ -57,11 +57,11 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
             // c:tx
             // find BRAI record for series name
-            foreach (AiSequence aiSequence in seriesFormatSequence.AiSequences)
+            foreach (var aiSequence in seriesFormatSequence.AiSequences)
             {
                 if (aiSequence.BRAI.braiId == BRAI.BraiId.SeriesNameOrLegendText)
                 {
-                    BRAI brai = aiSequence.BRAI;
+                    var brai = aiSequence.BRAI;
                     
                     if (aiSequence.SeriesText != null)
                     {

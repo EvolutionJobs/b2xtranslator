@@ -33,12 +33,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             //convert the document
             _lastValidPapx = _doc.AllPapxFkps[0].grppapx[0];
-            Int32 cp = 0;
+            var cp = 0;
             while (cp < doc.FIB.ccpText)
             {
-                Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-                ParagraphPropertyExceptions papx = findValidPapx(fc);
-                TableInfo tai = new TableInfo(papx);
+                int fc = _doc.PieceTable.FileCharacterPositions[cp];
+                var papx = findValidPapx(fc);
+                var tai = new TableInfo(papx);
 
                 if (tai.fInTable)
                 {

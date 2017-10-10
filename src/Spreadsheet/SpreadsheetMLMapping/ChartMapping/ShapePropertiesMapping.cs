@@ -297,8 +297,8 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
         private void insertDrawingFillProperties(AreaFormat areaFormat, ShapeOptions so)
         {
-            RGBColor rgbFore = areaFormat.rgbFore;
-            RGBColor rgbBack = areaFormat.rgbBack;
+            var rgbFore = areaFormat.rgbFore;
+            var rgbBack = areaFormat.rgbBack;
 
             uint fillType = 0;
             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillType))
@@ -489,7 +489,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                                 {
                                     if (so.OptionsByID[ShapeOptions.PropertyId.fillAngle].op != 0)
                                     {
-                                        byte[] bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.fillAngle].op);
+                                        var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.fillAngle].op);
                                         int integral = BitConverter.ToInt16(bytes, 0);
                                         uint fractional = BitConverter.ToUInt16(bytes, 2);
                                         decimal result = integral + ((decimal)fractional / (decimal)65536);

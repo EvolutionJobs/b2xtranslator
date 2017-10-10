@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(182)]
+    [OfficeShapeType(182)]
     class LeftRightUpArrow : ShapeType
     {
         public LeftRightUpArrow()
@@ -41,15 +41,19 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "@13,@6,@14,@9;@1,@17,@4,@9";
            
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,topLeft";
-            HandleOne.xrange = "@2,@1";
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "@2,@1"
+            };
             this.Handles.Add(HandleOne);
 
-            Handle HandleTwo = new Handle();
-            HandleTwo.position = "#1,#2";
-            HandleTwo.xrange = "@0,10800";
-            HandleTwo.yrange = "0,@5"; 
+            var HandleTwo = new Handle
+            {
+                position = "#1,#2",
+                xrange = "@0,10800",
+                yrange = "0,@5"
+            };
             this.Handles.Add(HandleTwo);
 
         }

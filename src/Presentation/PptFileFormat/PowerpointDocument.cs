@@ -139,7 +139,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             try
             {
                 this.CurrentUserStream = file.GetStream("Current User");
-                Record rec = Record.ReadRecord(this.CurrentUserStream);
+                var rec = Record.ReadRecord(this.CurrentUserStream);
                 if (rec is CurrentUserAtom)
                 {
                     this.CurrentUserAtom = (CurrentUserAtom)rec;
@@ -147,7 +147,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                 else
                 {
                     this.CurrentUserStream.Position = 0;
-                    byte[] bytes = new byte[this.CurrentUserStream.Length];
+                    var bytes = new byte[this.CurrentUserStream.Length];
                     this.CurrentUserStream.Read(bytes);
                     string s = Encoding.UTF8.GetString(bytes).Replace("\0","");
                 }
@@ -202,20 +202,20 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         private void ScanDocumentSummaryInformation()
         {
-            BinaryReader s = new BinaryReader(this.DocumentSummaryInformationStream);
+            var s = new BinaryReader(this.DocumentSummaryInformationStream);
             int ByteOrder = s.ReadInt16();
             uint Version = s.ReadUInt16();
             int SystemIdentifier = s.ReadInt32();
-            byte[] CLSID = new byte[16];
+            var CLSID = new byte[16];
             CLSID = s.ReadBytes(16);
             uint NumPropertySets = s.ReadUInt32();
-            byte[] FMTID0 = new byte[16];
+            var FMTID0 = new byte[16];
             FMTID0 = s.ReadBytes(16);
             uint Offset0 = s.ReadUInt32();
             uint Offset1 = 0;
             if (NumPropertySets > 1)
             {
-                byte[] FMTID1 = new byte[16];
+                var FMTID1 = new byte[16];
                 FMTID1 = s.ReadBytes(16);
                 Offset1 = s.ReadUInt32();
             }
@@ -225,7 +225,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             uint NumProperties = s.ReadUInt32();
             uint id;
             uint offset;
-            Dictionary<uint, uint> Offsets = new Dictionary<uint, uint>();
+            var Offsets = new Dictionary<uint, uint>();
             for (int i = 0; i < NumProperties; i++)
             {
                 id = s.ReadUInt32();
@@ -239,7 +239,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                 s.BaseStream.Seek(Offset1, 0);
                 Size = s.ReadUInt32();
                 NumProperties = s.ReadUInt32();
-                Dictionary<uint, uint> Offsets2 = new Dictionary<uint, uint>();
+                var Offsets2 = new Dictionary<uint, uint>();
                 for (int i = 0; i < NumProperties; i++)
                 {
                     id = s.ReadUInt32();
@@ -270,16 +270,16 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                         }
                         break;
                     case 0x4: //4 byte float
-                        Single v3 = s.ReadSingle();
+                        var v3 = s.ReadSingle();
                         break;
                     case 0x5: //8 byte float
-                        Double v4 = s.ReadDouble();
+                        var v4 = s.ReadDouble();
                         break;
                     case 0x6: //CURRENCY
-                        Int64 v5 = s.ReadInt64();
+                        var v5 = s.ReadInt64();
                         break;
                     case 0x7: //DATE
-                        Double v6 = s.ReadDouble();
+                        var v6 = s.ReadDouble();
                         break;
                     case 0x8: //CodePageString
                     case 0x1e:
@@ -297,8 +297,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                         int wReserved = s.ReadInt16();
                         byte scale = s.ReadByte();
                         byte sign = s.ReadByte();
-                        Int32 Hi32 = s.ReadInt32();
-                        Int64 Lo64 = s.ReadInt64();
+                        var Hi32 = s.ReadInt32();
+                        var Lo64 = s.ReadInt64();
                         break;
                     case 0x10: //1 byte signed int
                         int v10 = (int)s.ReadByte();
@@ -314,10 +314,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                         uint v13 = s.ReadUInt32();
                         break;
                     case 0x14: //8 byte int
-                        Int64 v14 = s.ReadInt64();
+                        var v14 = s.ReadInt64();
                         break;
                     case 0x15: //8 byte unsigned int
-                        UInt64 v15 = s.ReadUInt64();
+                        var v15 = s.ReadUInt64();
                         break;
                     case 0x16: //4 byte int
                         int v16 = s.ReadInt32();
@@ -364,7 +364,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             if (!this.PersistObjectDirectory.ContainsKey(persistId))
                 return null;
 
-            UInt32 offset = this.PersistObjectDirectory[persistId];
+            var offset = this.PersistObjectDirectory[persistId];
             this.PowerpointDocumentStream.Seek(offset, SeekOrigin.Begin);
             return (T)Record.ReadRecord(this.PowerpointDocumentStream);
         }
@@ -395,9 +395,9 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// </summary>
         private void IdentifyMasterPersistObjects()
         {
-            foreach (SlidePersistAtom masterPersistAtom in this.DocumentRecord.MasterPersistList)
+            foreach (var masterPersistAtom in this.DocumentRecord.MasterPersistList)
             {
-                Slide master = this.GetPersistObject<Slide>(masterPersistAtom.PersistIdRef);
+                var master = this.GetPersistObject<Slide>(masterPersistAtom.PersistIdRef);
                 master.PersistAtom = masterPersistAtom;
 
                 if (master is MainMaster)
@@ -408,10 +408,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                 this.MasterRecordsById.Add(master.PersistAtom.SlideId, master);
             }
 
-            Note noteMaster = this.GetPersistObject<Note>(this.DocumentRecord.FirstChildWithType<DocumentAtom>().NotesMasterPersist);
+            var noteMaster = this.GetPersistObject<Note>(this.DocumentRecord.FirstChildWithType<DocumentAtom>().NotesMasterPersist);
             if (noteMaster != null) this.NotesMasterRecords.Add(noteMaster);
 
-            Handout handoutMaster = this.GetPersistObject<Handout>(this.DocumentRecord.FirstChildWithType<DocumentAtom>().HandoutMasterPersist);
+            var handoutMaster = this.GetPersistObject<Handout>(this.DocumentRecord.FirstChildWithType<DocumentAtom>().HandoutMasterPersist);
             if (handoutMaster != null) this.HandoutMasterRecords.Add(handoutMaster);
         }
 
@@ -423,15 +423,15 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// </summary>
         private void IdentifySlidePersistObjects()
         {
-            foreach (SlidePersistAtom slidePersistAtom in this.DocumentRecord.SlidePersistList)
+            foreach (var slidePersistAtom in this.DocumentRecord.SlidePersistList)
             {
-                Slide slide = this.GetPersistObject<Slide>(slidePersistAtom.PersistIdRef);
+                var slide = this.GetPersistObject<Slide>(slidePersistAtom.PersistIdRef);
                 slide.PersistAtom = slidePersistAtom;
                 this.SlideRecords.Add(slide);
             }
-            foreach (SlidePersistAtom slidePersistAtom in this.DocumentRecord.NotesPersistList)
+            foreach (var slidePersistAtom in this.DocumentRecord.NotesPersistList)
             {
-                Note note = this.GetPersistObject<Note>(slidePersistAtom.PersistIdRef);
+                var note = this.GetPersistObject<Note>(slidePersistAtom.PersistIdRef);
                 note.PersistAtom = slidePersistAtom;
                 this.NoteRecords.Add(note);
             }
@@ -441,7 +441,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         {
             try
             {
-                VBAInfoContainer vbaInfo = this.DocumentRecord.DocInfoListContainer.FirstChildWithType<VBAInfoContainer>();
+                var vbaInfo = this.DocumentRecord.DocInfoListContainer.FirstChildWithType<VBAInfoContainer>();
                 this.VbaProject = GetPersistObject<ExOleObjStgAtom>(vbaInfo.objStgDataRef);
             }
             catch (Exception e)
@@ -452,14 +452,14 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         private void IdentifyOlePersistObjects()
         {
-            foreach (ExObjListContainer listcontainer in this.DocumentRecord.AllChildrenWithType<ExObjListContainer>())
+            foreach (var listcontainer in this.DocumentRecord.AllChildrenWithType<ExObjListContainer>())
             {
-                foreach (ExOleEmbedContainer container in listcontainer.AllChildrenWithType<ExOleEmbedContainer>())
+                foreach (var container in listcontainer.AllChildrenWithType<ExOleEmbedContainer>())
                 {
-                    ExOleObjAtom atom = container.FirstChildWithType<ExOleObjAtom>();
+                    var atom = container.FirstChildWithType<ExOleObjAtom>();
                     if (atom != null)
                     {
-                        ExOleObjStgAtom stgAtom = this.GetPersistObject<ExOleObjStgAtom>(atom.persistIdRef);
+                        var stgAtom = this.GetPersistObject<ExOleObjStgAtom>(atom.persistIdRef);
                         container.stgAtom = stgAtom;
                         this.OleObjects.Add(atom.exObjId, container);                   
                     }
@@ -477,15 +477,15 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// </summary>
         private void ConstructPersistObjectDirectory()
         {
-            List<PersistDirectoryAtom> pdAtoms = FindLivePersistDirectoryAtoms();
+            var pdAtoms = FindLivePersistDirectoryAtoms();
 
-            foreach (PersistDirectoryAtom pdAtom in pdAtoms)
+            foreach (var pdAtom in pdAtoms)
             {
-                foreach (PersistDirectoryEntry pdEntry in pdAtom.PersistDirEntries)
+                foreach (var pdEntry in pdAtom.PersistDirEntries)
                 {
                     uint pid = pdEntry.StartPersistId;
 
-                    foreach (UInt32 poff in pdEntry.PersistOffsetEntries)
+                    foreach (var poff in pdEntry.PersistOffsetEntries)
                     {
                         this.PersistObjectDirectory[pid] = poff;
                         pid++;
@@ -500,14 +500,14 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// <returns>List of PersistDirectoryAtoms. The oldest PersitDirectoryAtom will be the first element of the list.</returns>
         private List<PersistDirectoryAtom> FindLivePersistDirectoryAtoms()
         {
-            List<PersistDirectoryAtom> result = new List<PersistDirectoryAtom>();
+            var result = new List<PersistDirectoryAtom>();
 
-            UserEditAtom userEditAtom = this.LastUserEdit;
+            var userEditAtom = this.LastUserEdit;
 
             while (userEditAtom != null)
             {
                 this.PowerpointDocumentStream.Seek(userEditAtom.OffsetPersistDirectory, SeekOrigin.Begin);
-                PersistDirectoryAtom pdAtom = (PersistDirectoryAtom)Record.ReadRecord(this.PowerpointDocumentStream);
+                var pdAtom = (PersistDirectoryAtom)Record.ReadRecord(this.PowerpointDocumentStream);
                 result.Insert(0, pdAtom);
 
                 this.PowerpointDocumentStream.Seek(userEditAtom.OffsetLastEdit, SeekOrigin.Begin);
@@ -523,7 +523,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         override public string ToString()
         {
-            StringBuilder result = new StringBuilder(base.ToString());
+            var result = new StringBuilder(base.ToString());
 
             result.Append("CurrentUserAtom: ");
             result.AppendLine(this.CurrentUserAtom.ToString());
@@ -532,21 +532,21 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             result.Append("DocumentRecord: ");
             result.AppendLine(this.DocumentRecord.ToString());
 
-            foreach (Record r in this.MainMasterRecords)
+            foreach (var r in this.MainMasterRecords)
             {
                 result.AppendLine();
                 result.Append("MainMasterRecord: ");
                 result.AppendLine(r.ToString());
             }
 
-            foreach (Record r in this.TitleMasterRecords)
+            foreach (var r in this.TitleMasterRecords)
             {
                 result.AppendLine();
                 result.Append("TitleMasterRecord: ");
                 result.AppendLine(r.ToString());
             }
 
-            foreach (Record r in this.SlideRecords)
+            foreach (var r in this.SlideRecords)
             {
                 result.AppendLine();
                 result.Append("SlideRecord: ");
@@ -569,7 +569,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public IEnumerator<Record> GetEnumerator()
         {
-            foreach (UInt32 persistId in this.PersistObjectDirectory.Keys)
+            foreach (var persistId in this.PersistObjectDirectory.Keys)
             {
                 yield return this.GetPersistObject<Record>(persistId);
             }
@@ -581,7 +581,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            IEnumerator<Record> e = this.GetEnumerator();
+            var e = this.GetEnumerator();
             return (System.Collections.IEnumerator)e;
         }
 

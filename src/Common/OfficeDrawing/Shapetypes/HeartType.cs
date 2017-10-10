@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(74)]
+    [OfficeShapeType(74)]
     class HeartType: ShapeType
     {
         public HeartType()

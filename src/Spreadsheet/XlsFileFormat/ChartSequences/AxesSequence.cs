@@ -33,9 +33,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             {
                 long position = reader.BaseStream.Position;
 
-                Axis axis = (Axis)BiffRecord.ReadRecord(reader);
+                var axis = (Axis)BiffRecord.ReadRecord(reader);
 
-                Begin begin = (Begin)BiffRecord.ReadRecord(reader);
+                var begin = (Begin)BiffRecord.ReadRecord(reader);
 
                 if (BiffRecord.GetNextRecordType(reader) == RecordType.CatSerRange
                     || BiffRecord.GetNextRecordType(reader) == RecordType.AxcExt)

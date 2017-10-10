@@ -11,13 +11,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public bool fDefaultPic;
         public bool fTemporary;
         public bool fFormatting;
-        public Int32 iBullet;
+        public int iBullet;
 
         public PictureBulletInformation(byte[] bytes)
         {
             if (bytes.Length == 6)
             {
-                Int16 flag = System.BitConverter.ToInt16(bytes, 0);
+                var flag = System.BitConverter.ToInt16(bytes, 0);
                 this.fPicBullet = Tools.Utils.BitmaskToBool(flag, 0x0001);
                 this.fNoAutoSize = Tools.Utils.BitmaskToBool(flag, 0x0002);
                 this.fDefaultPic = Tools.Utils.BitmaskToBool(flag, 0x0004);

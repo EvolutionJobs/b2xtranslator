@@ -47,9 +47,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// The referenced Series record specifies the series associated with the current trendline or error bar. <br/>
         /// The value MUST be greater than or equal to 0x0001 and less than or equal to 0x0FE.
         /// </summary>
-        public UInt16 series;
+        public ushort series;
 
-        public SerParent(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public SerParent(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

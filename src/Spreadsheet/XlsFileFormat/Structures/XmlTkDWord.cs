@@ -36,7 +36,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
     {
         public XmlTkHeader xtHeader;
 
-        public Int32 dValue;
+        public int dValue;
 
         public XmlTkDWord(IStreamReader reader)
         {

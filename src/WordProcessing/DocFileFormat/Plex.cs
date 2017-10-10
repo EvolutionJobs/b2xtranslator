@@ -37,13 +37,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
     {
         protected const int CP_LENGTH = 4;
 
-        public List<Int32> CharacterPositions;
+        public List<int> CharacterPositions;
         public List<T> Elements;
 
         public Plex(int structureLength, VirtualStream tableStream, UInt32 fc, UInt32 lcb)
         {
             tableStream.Seek((long)fc, System.IO.SeekOrigin.Begin);
-            VirtualStreamReader reader = new VirtualStreamReader(tableStream);
+            var reader = new VirtualStreamReader(tableStream);
 
             int n = 0;
             if(structureLength > 0)
@@ -58,7 +58,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             }
 
             //read the n + 1 CPs
-            this.CharacterPositions = new List<Int32>();
+            this.CharacterPositions = new List<int>();
             for (int i = 0; i < n + 1; i++)
             {
                 this.CharacterPositions.Add(reader.ReadInt32());
@@ -66,14 +66,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
             //read the n structs
             this.Elements = new List<T>();
-            Type genericType = typeof(T);
-            if (genericType == typeof(Int16))
+            var genericType = typeof(T);
+            if (genericType == typeof(short))
             {
                 this.Elements = new List<T>();
                 for (int i = 0; i < n; i++)
                 {
-                    Int16 value = reader.ReadInt16();
-                    T genericValue = (T)Convert.ChangeType(value, typeof(T));
+                    var value = reader.ReadInt16();
+                    var genericValue = (T)Convert.ChangeType(value, typeof(T));
                     this.Elements.Add(genericValue);
                 }
             }
@@ -81,9 +81,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             {
                 for (int i = 0; i < n; i++)
                 {
-                    ConstructorInfo constructor = genericType.GetConstructor(new Type[] { typeof(VirtualStreamReader), typeof(int) });
-                    Object value = constructor.Invoke(new object[] { reader, structureLength });
-                    T genericValue = (T)Convert.ChangeType(value, typeof(T));
+                    var constructor = genericType.GetConstructor(new Type[] { typeof(VirtualStreamReader), typeof(int) });
+                    var value = constructor.Invoke(new object[] { reader, structureLength });
+                    var genericValue = (T)Convert.ChangeType(value, typeof(T));
                     this.Elements.Add(genericValue);
                 }
             }
@@ -95,7 +95,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// </summary>
         /// <param name="cp">The character position</param>
         /// <returns>The matching struct</returns>
-        public T GetStruct(Int32 cp)
+        public T GetStruct(int cp)
         {
             int index = -1;
             for (int i = 0; i < this.CharacterPositions.Count; i++)

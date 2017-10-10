@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public BiffRecord wrappedRecord;
 
-        public FrtWrapper(IStreamReader reader, RecordType id, UInt16 length)
+        public FrtWrapper(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             this.frtHeaderOld = new FrtHeaderOld(reader);

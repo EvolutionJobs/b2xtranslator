@@ -7,14 +7,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 {
     public class SectionDescriptor : ByteStructure
     {
-        public Int16 fn;
-        public Int16 fnMpr;
-        public Int32 fcMpr;
+        public short fn;
+        public short fnMpr;
+        public int fcMpr;
 
         /// <summary>
         /// A signed integer that specifies the position in the WordDocument Stream where a Sepx structure is located.
         /// </summary>
-        public Int32 fcSepx;
+        public int fcSepx;
 
         private const int SED_LENGTH = 12;
 

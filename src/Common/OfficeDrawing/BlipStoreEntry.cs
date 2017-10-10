@@ -5,7 +5,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF007)]
+    [OfficeRecord(0xF007)]
     public class BlipStoreEntry : Record
     {
         public enum BlipUsage
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <summary>
         /// currently unused
         /// </summary>
-        public Int16 tag;
+        public short tag;
 
         /// <summary>
         /// Blip size in stream
@@ -125,7 +125,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <summary>
         /// Cache of the metafile size 
         /// </summary>
-        public Int16 m_cb;
+        public short m_cb;
 
         //RECT m_rcBounds; // Boundary of metafile drawing commands 
         //POINT m_ptSize; // Size of metafile in EMUs 
@@ -133,7 +133,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <summary>
         /// Cache of saved size (size of m_pvBits) 
         /// </summary>
-        public Int16 m_cbSave;
+        public short m_cbSave;
 
         /// <summary>
         /// Compression

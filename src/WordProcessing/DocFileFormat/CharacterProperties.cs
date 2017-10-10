@@ -39,20 +39,20 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public bool fFitText;
         public bool fCalc;
         public bool fFmtLineProp;
-        public UInt16 hps;
+        public ushort hps;
         //ftc;
         //ftcAsci;
         //ftcFE;
         //ftcOther;
         //ftcBi;
-        public Int32 dxaSpace;
+        public int dxaSpace;
         public RGBColor cv;
         public Global.ColorIdentifier ico;
-        public UInt16 pctCharWidth;
-        public Int16 lid;
-        public Int16 lidDefault;
-        public Int16 lidFE;
-        public Int16 lidBi;
+        public ushort pctCharWidth;
+        public short lid;
+        public short lidDefault;
+        public short lidFE;
+        public short lidBi;
         public byte kcd;
         public bool fUndetermine;
         public byte iss;
@@ -62,16 +62,16 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public Global.UnderlineCode kul;
         public byte hres;
         public byte chHres;
-        public UInt16 hpsKern;
-        public UInt16 hpsPos;
+        public ushort hpsKern;
+        public ushort hpsPos;
         public RGBColor cvUl;
         public ShadingDescriptor shd;
         public BorderCode brc;
-        public Int16 ibstRMark;
+        public short ibstRMark;
         public Global.TextAnimation sfxtText;
         public bool fDblBdr;
         public bool fBorderWS;
-        public UInt16 ufel;
+        public ushort ufel;
         public Global.FarEastLayout itypFELayout;
         public bool fTNY;
         public bool fWarichu;
@@ -83,9 +83,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public bool fTNYCompress;
         public bool fTNYFetchTxm;
         public bool fCellFitText;
-        public UInt16 hpsAsci;
-        public UInt16 hpsFE;
-        public UInt16 hpsBi;
+        public ushort hpsAsci;
+        public ushort hpsFE;
+        public ushort hpsBi;
         //ftcSym;
         public char xchSym;
         public bool fNumRunBi;
@@ -93,23 +93,23 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public bool fDiacRunBi;
         public bool fBoldPresent;
         public bool fItalicPresent;
-        public Int32 fcPic;
-        public Int32 fcObj;
+        public int fcPic;
+        public int fcObj;
         public UInt32 lTagObj;
-        public Int32 fcData;
+        public int fcData;
         public bool fDirty;
         public Global.HyphenationRule hresOld;
         public UInt32 chHresOld;
-        public Int32 dxpKashida;
-        public Int32 dxpSpace;
-        public Int16 ibstRMarkDel;
+        public int dxpKashida;
+        public int dxpSpace;
+        public short ibstRMarkDel;
         public DateAndTime dttmRMark;
         public DateAndTime dttmRMarkDel;
-        public UInt16 istd;
-        public UInt16 idslRMReason;
-        public UInt16 idslRMReasonDel;
-        public UInt16 cpg;
-        public UInt16 iatrUndetType;
+        public ushort istd;
+        public ushort idslRMReason;
+        public ushort idslRMReasonDel;
+        public ushort cpg;
+        public ushort iatrUndetType;
         public bool fUlGap;
         public Global.ColorIdentifier icoHighlight;
         public bool fHighlight;
@@ -124,29 +124,29 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public bool fSpareLangApplied;
         public bool fForcedCvAuto;
         public bool fPropRMark;
-        public Int16 ibstPropRMark;
+        public short ibstPropRMark;
         public DateAndTime dttmPropRMark;
         public bool fAnmPropRMark;
         public bool fConflictOrig;
         public bool fConflictOtherDel;
-        public UInt16 wConflict;
-        public Int16 ibstConflict;
+        public ushort wConflict;
+        public short ibstConflict;
         public DateAndTime dttmConflict;
         public bool fDispFldRMark;
-        public Int16 ibstDispFldRMark;
+        public short ibstDispFldRMark;
         public DateAndTime dttmDispFldRMark;
         public string xstDispFldRMark;
         public bool fcObjp;
-        public Int32 dxaFitText;
-        public Int32 lFitTextID;
+        public int dxaFitText;
+        public int lFitTextID;
         public byte lbrCRJ;
-        public Int32 rsidProp;
-        public Int32 rsidText;
-        public Int32 rsidRMDel;
+        public int rsidProp;
+        public int rsidText;
+        public int rsidRMDel;
         public bool fSpecVanish;
         public bool fHasOldProps;
         public PictureBulletInformation pbi;
-        public Int32 hplcnf;
+        public int hplcnf;
         public byte ffm;
         public bool fSdtVanish;
         public FontFamilyName FontAscii;
@@ -170,11 +170,11 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             setDefaultValues();
 
             //get all CHPX in the hierarchy
-            List<CharacterPropertyExceptions> chpxHierarchy = new List<CharacterPropertyExceptions>();
+            var chpxHierarchy = new List<CharacterPropertyExceptions>();
             chpxHierarchy.Add(chpx);
 
             //add parent character styles
-            buildHierarchy(chpxHierarchy, parentDocument.Styles, (UInt16)getIsdt(chpx));
+            buildHierarchy(chpxHierarchy, parentDocument.Styles, (ushort)getIsdt(chpx));
 
             //add parent paragraph styles
             buildHierarchy(chpxHierarchy, parentDocument.Styles, parentPapx.istd);
@@ -182,7 +182,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             chpxHierarchy.Reverse();
 
             //apply the CHPX hierarchy to this CHP
-            foreach(CharacterPropertyExceptions c in chpxHierarchy)
+            foreach(var c in chpxHierarchy)
             {
                 applyChpx(c, parentDocument);
             }
@@ -190,7 +190,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
         private void applyChpx(PropertyExceptions chpx, WordDocument parentDocument)
         {
-            foreach (SinglePropertyModifier sprm in chpx.grpprl)
+            foreach (var sprm in chpx.grpprl)
             {
                 switch (sprm.OpCode)
                 {
@@ -238,7 +238,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             }
         }
 
-        private void buildHierarchy(List<CharacterPropertyExceptions> hierarchy, StyleSheet styleSheet, UInt16 istdStart)
+        private void buildHierarchy(List<CharacterPropertyExceptions> hierarchy, StyleSheet styleSheet, ushort istdStart)
         {
             int istd = (int)istdStart;
             bool goOn = true;
@@ -246,7 +246,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             {
                 try
                 {
-                    CharacterPropertyExceptions baseChpx = styleSheet.Styles[istd].chpx;
+                    var baseChpx = styleSheet.Styles[istd].chpx;
                     if (baseChpx != null)
                     {
                         hierarchy.Add(baseChpx);
@@ -293,7 +293,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         private int getIsdt(CharacterPropertyExceptions chpx)
         {
             int ret = 10; //default value for istd
-            foreach (SinglePropertyModifier sprm in chpx.grpprl)
+            foreach (var sprm in chpx.grpprl)
             {
                 if (sprm.OpCode == SinglePropertyModifier.OperationCode.sprmCIstd)
                 {

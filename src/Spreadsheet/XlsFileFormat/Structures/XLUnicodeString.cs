@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// 
         /// MUST be equal to the number of characters in st.
         /// </summary>
-        public UInt16 cch;
+        public ushort cch;
 
         /// <summary>
         /// A bit that specifies whether the characters in rgb are double-byte characters. 

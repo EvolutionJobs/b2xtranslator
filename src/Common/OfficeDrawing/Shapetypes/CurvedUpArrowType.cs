@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(104)]
+    [OfficeShapeType(104)]
     class CurvedUpArrowType : ShapeType
     {
         public CurvedUpArrowType()
@@ -68,20 +68,24 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "@41,@43,@42,@44";
            
             this.Handles = new List<Handle>();
-     
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,topLeft";
-            HandleOne.xrange="@37,@27";
+
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "@37,@27"
+            };
             this.Handles.Add(HandleOne);
 
-            Handle HandleTwo = new Handle();
+            var HandleTwo = new Handle();
             HandleOne.position="#1,topLeft";
             HandleOne.xrange="@25,@20";
             this.Handles.Add(HandleTwo);
 
-            Handle HandleThree = new Handle();
-            HandleThree.position="bottomRight,#2";
-            HandleThree.yrange="0,@40";
+            var HandleThree = new Handle
+            {
+                position = "bottomRight,#2",
+                yrange = "0,@40"
+            };
             this.Handles.Add(HandleThree);
         }
     }

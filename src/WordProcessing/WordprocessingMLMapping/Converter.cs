@@ -84,11 +84,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         public static void Convert(WordDocument doc, WordprocessingDocument docx)
         {
-            ConversionContext context = new ConversionContext(doc);
+            var context = new ConversionContext(doc);
             using (docx)
             {
                 //Setup the writer
-                XmlWriterSettings xws = new XmlWriterSettings();
+                var xws = new XmlWriterSettings();
                 xws.OmitXmlDeclaration = false;
                 xws.CloseOutput = true;
                 xws.Encoding = Encoding.UTF8;

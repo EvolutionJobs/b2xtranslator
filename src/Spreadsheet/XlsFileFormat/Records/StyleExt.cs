@@ -51,12 +51,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Record type; this matches the BIFF rt in the first two bytes of the record; =0892h
         /// </summary>
-        public UInt16 rt;	
+        public ushort rt;	
 
         /// <summary>
         /// FRT cell reference flag; =0 currently
         /// </summary>
-        public UInt16 grbitFrt;
+        public ushort grbitFrt;
 
         /// <summary>
         /// Currently not used, and set to 0
@@ -92,7 +92,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Length of style name (in 2 byte characters)
         /// </summary>
-        public UInt16 cchName;
+        public ushort cchName;
 
         /// <summary>
         /// Name of style to extend (2 byte characters). If style does not exist then this record is ignored.
@@ -106,7 +106,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         //public xfProps	
         // TODO: define class XFPROPS
         
-        public StyleExt(IStreamReader reader, RecordType id, UInt16 length)
+        public StyleExt(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

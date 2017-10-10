@@ -18,14 +18,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
         public const int CID_LENGTH = 4;
 
-        public Int16 ibstMacro;
+        public short ibstMacro;
 
         public CommandIdentifier(VirtualStreamReader reader)
             : base(reader, CID_LENGTH)
         {
-            byte[] bytes = reader.ReadBytes(4);
+            var bytes = reader.ReadBytes(4);
 
-            CidType type = (CidType)Utils.BitmaskToInt((int)bytes[0], 0x07);
+            var type = (CidType)Utils.BitmaskToInt((int)bytes[0], 0x07);
 
             switch (type)
             {   

@@ -48,27 +48,27 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// An unsigned integer that specifies the X location of the upper-left 
         /// corner of the data sheet window within the OLE server window, in twips.
         /// </summary>
-        public UInt16 xWn;
+        public ushort xWn;
 
         /// <summary>
         /// An unsigned integer that specifies the Y location of the upper-left 
         /// corner of the data sheet window within the OLE server window, in twips.
         /// </summary>
-        public UInt16 yWn;
+        public ushort yWn;
 
         /// <summary>
         /// An unsigned integer that specifies the width of the data sheet window 
         /// within the OLE server window, in twips. MUST be greater than or equal to 0x0001.
         /// </summary>
-        public UInt16 dxWn;
+        public ushort dxWn;
 
         /// <summary>
         /// An unsigned integer that specifies the height of the data sheet window 
         /// within the OLE server window, in twips. MUST be greater than or equal to 0x0001.
         /// </summary>
-        public UInt16 dyWn;
+        public ushort dyWn;
 
-        public Window1_10(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Window1_10(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

@@ -67,14 +67,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fArShadow;
 
-        public SerFmt(IStreamReader reader, RecordType id, UInt16 length)
+        public SerFmt(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fSmoothedLine = Utils.BitmaskToBool(flags, 0x1);
             this.f3DBubbles = Utils.BitmaskToBool(flags, 0x2);
             this.fArShadow = Utils.BitmaskToBool(flags, 0x4);

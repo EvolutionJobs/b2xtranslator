@@ -26,8 +26,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             //convert the footer text
             _lastValidPapx = _doc.AllPapxFkps[0].grppapx[0];
-            Int32 cp = _ftr.CharacterPosition;
-            Int32 cpMax = _ftr.CharacterPosition + _ftr.CharacterCount;
+            int cp = _ftr.CharacterPosition;
+            int cpMax = _ftr.CharacterPosition + _ftr.CharacterCount;
 
             //the CharacterCount of the footers also counts the guard paragraph mark.
             //this additional paragraph mark shall not be converted.
@@ -35,9 +35,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             while (cp < cpMax)
             {
-                Int32 fc = _doc.PieceTable.FileCharacterPositions[cp];
-                ParagraphPropertyExceptions papx = findValidPapx(fc);
-                TableInfo tai = new TableInfo(papx);
+                int fc = _doc.PieceTable.FileCharacterPositions[cp];
+                var papx = findValidPapx(fc);
+                var tai = new TableInfo(papx);
 
                 if (tai.fInTable)
                 {

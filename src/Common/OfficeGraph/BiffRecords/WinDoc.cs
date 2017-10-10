@@ -56,7 +56,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public WindowKind fChartSelected;
 
-        public WinDoc(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public WinDoc(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

@@ -46,9 +46,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// </summary>
         public Encoding encoding;
 
-        public Int32 cpStart;
+        public int cpStart;
 
-        public Int32 cpEnd;
+        public int cpEnd;
 
         /// <summary>
         /// Parses the bytes to retrieve a PieceDescriptor
@@ -59,10 +59,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             if (bytes.Length == 8)
             {
                 //get the fc value
-                UInt32 fcValue = System.BitConverter.ToUInt32(bytes, 2);
+                var fcValue = System.BitConverter.ToUInt32(bytes, 2);
 
                 //get the flag
-                bool flag = Utils.BitmaskToBool((Int32)fcValue, 0x40000000);
+                bool flag = Utils.BitmaskToBool((int)fcValue, 0x40000000);
 
                 //delete the flag
                 fcValue = fcValue & 0xBFFFFFFF;

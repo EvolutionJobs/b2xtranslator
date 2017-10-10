@@ -48,7 +48,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// clockwise from the top of the circle. <br/>
         /// MUST be less than or equal to 360.
         /// </summary>
-        public UInt16 anStart;
+        public ushort anStart;
 
         /// <summary>
         /// An unsigned integer that specifies the size of the center hole in a doughnut chart group as a 
@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 0 = Pie chart group<br/>
         /// 10 to 90 =  Doughnut chart group
         /// </summary>
-        public UInt16 pcDonut;
+        public ushort pcDonut;
 
         /// <summary>
         /// A bit that specifies whether one or more data points in the chart group has shadows.
@@ -69,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fShowLdrLines;
 
-        public Pie(IStreamReader reader, RecordType id, UInt16 length)
+        public Pie(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -78,7 +78,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // initialize class members from stream
             this.anStart = reader.ReadUInt16();
             this.pcDonut = reader.ReadUInt16();
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fHasShadow = Utils.BitmaskToBool(flags, 0x1);
             this.fShowLdrLines = Utils.BitmaskToBool(flags, 0x2);
 

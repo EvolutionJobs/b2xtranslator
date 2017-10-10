@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(87)]
+    [OfficeShapeType(87)]
     public class LeftBraceType : ShapeType
     {
         public LeftBraceType()
@@ -33,8 +33,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "13963,@4,21600,@5";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            Handle HandleTwo= new Handle();
+            var HandleOne = new Handle();
+            var HandleTwo= new Handle();
             HandleOne.position="center,#0";
             HandleOne.yrange = "0,@8";
             HandleTwo.position="topLeft,#1";

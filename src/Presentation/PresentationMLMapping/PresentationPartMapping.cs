@@ -68,7 +68,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             WriteMainMasters(ppt);
             WriteSlides(ppt, documentRecord);
 
-            viewPropsMapping viewProps = new viewPropsMapping(_ctx.Pptx.PresentationPart.AddViewPropertiesPart(), _ctx.WriterSettings, _ctx);
+            var viewProps = new viewPropsMapping(_ctx.Pptx.PresentationPart.AddViewPropertiesPart(), _ctx.WriterSettings, _ctx);
             viewProps.Apply(null);
 
             // sldSz and notesSz
@@ -96,7 +96,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             TextMasterStyleAtom defaultStyle = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>();
 
-            TextMasterStyleMapping map = new TextMasterStyleMapping(_ctx, _writer, null);
+            var map = new TextMasterStyleMapping(_ctx, _writer, null);
             
             for (int i = 0; i < defaultStyle.IndentLevelCount; i++)
             {
@@ -164,7 +164,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         {
                             if (slide.PersistAtom == at)
                             {
-                                SlideMapping sMapping = new SlideMapping(_ctx);
+                                var sMapping = new SlideMapping(_ctx);
                                 sMapping.Apply(slide);
                                 this.SlideMappings.Add(sMapping);
                             }
@@ -184,11 +184,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             if (note.PersistAtom.SlideId == at.SlideId)
                             {
                                 NotesAtom a = note.FirstChildWithType<NotesAtom>();
-                                foreach (SlideMapping slideMapping in this.SlideMappings)
+                                foreach (var slideMapping in this.SlideMappings)
                                 {
                                     if (slideMapping.Slide.PersistAtom.SlideId == a.SlideIdRef)
                                     {
-                                        NoteMapping nMapping = new NoteMapping(_ctx, slideMapping);
+                                        var nMapping = new NoteMapping(_ctx, slideMapping);
                                         nMapping.Apply(note);
                                         this.NoteMappings.Add(nMapping);
                                         found = true;
@@ -212,7 +212,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             _writer.WriteStartElement("p", "sldIdLst", OpenXmlNamespaces.PresentationML);
 
-            foreach (SlideMapping sMapping in this.SlideMappings)
+            foreach (var sMapping in this.SlideMappings)
             {
                 WriteSlide(sMapping);
             }
@@ -222,7 +222,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void WriteSlide(SlideMapping sMapping)
         {
-            Slide slide = sMapping.Slide;
+            var slide = sMapping.Slide;
 
             _writer.WriteStartElement("p", "sldId", OpenXmlNamespaces.PresentationML);
 
@@ -291,7 +291,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             _writer.WriteStartElement("p", "sldMasterId", OpenXmlNamespaces.PresentationML);
 
-            MasterMapping mapping = _ctx.GetOrCreateMasterMappingByMasterId(m.PersistAtom.SlideId);
+            var mapping = _ctx.GetOrCreateMasterMappingByMasterId(m.PersistAtom.SlideId);
             mapping.Write();
 
             string relString = mapping.targetPart.RelIdToString;
@@ -325,7 +325,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             _writer.WriteStartElement("p", "notesMasterId", OpenXmlNamespaces.PresentationML);
 
-            NotesMasterMapping mapping = _ctx.GetOrCreateNotesMasterMappingByMasterId(0);
+            var mapping = _ctx.GetOrCreateNotesMasterMappingByMasterId(0);
             mapping.Write();
 
             string relString = mapping.targetPart.RelIdToString;
@@ -360,7 +360,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             _writer.WriteStartElement("p", "handoutMasterId", OpenXmlNamespaces.PresentationML);
 
-            HandoutMasterMapping mapping = _ctx.GetOrCreateHandoutMasterMappingByMasterId(0);
+            var mapping = _ctx.GetOrCreateHandoutMasterMappingByMasterId(0);
             mapping.Write();
 
             string relString = mapping.targetPart.RelIdToString;

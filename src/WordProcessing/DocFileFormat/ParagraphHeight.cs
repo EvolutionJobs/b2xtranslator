@@ -53,34 +53,34 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// When fDiffLines is 0, is number of lines in paragraph
         /// </summary>
-        public Int16 clMac;
+        public short clMac;
 
         /// <summary>
         /// Width of lines in paragraph
         /// </summary>
-        public Int32 dxaCol;
+        public int dxaCol;
 
         /// <summary>
         /// When fDiffLines is true, is height of every line in paragraph in pixels
         /// </summary>
-        public Int32 dymLine;
+        public int dymLine;
 
         /// <summary>
         /// When fDiffLines is true, is the total height in pixels of the paragraph
         /// </summary>
-        public Int32 dymHeight;
+        public int dymHeight;
 
         /// <summary>
         /// If not == 0, used as a hint when finding the next row.<br/>
         /// (this value is only set if the PHE is stored in a PAP whose fTtp field is set)
         /// </summary>
-        public Int16 dcpTtpNext;
+        public short dcpTtpNext;
 
         /// <summary>
         /// Height of table row.<br/>
         /// (this value is only set if the PHE is stored in a PAP whose fTtp field is set)
         /// </summary>
-        public Int32 dymTableHeight;
+        public int dymTableHeight;
 
         /// <summary>
         /// Reserved

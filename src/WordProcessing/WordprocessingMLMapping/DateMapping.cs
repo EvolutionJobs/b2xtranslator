@@ -35,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         public void Apply(DateAndTime dttm)
         {
-            StringBuilder date = new StringBuilder();
+            var date = new StringBuilder();
             date.Append(String.Format("{0:0000}", dttm.yr));
             date.Append("-");
             date.Append(String.Format("{0:00}", dttm.mon));

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(154)]
+    [OfficeShapeType(154)]
     public class TextCascadeUp : ShapeType
     {
         public TextCascadeUp()
@@ -28,9 +28,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("prod @7 1 2");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position = "bottomRight,#0";
-            h1.yrange = "6171,21600";
+            var h1 = new Handle
+            {
+                position = "bottomRight,#0",
+                yrange = "6171,21600"
+            };
             this.Handles.Add(h1);
 
         }

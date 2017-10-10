@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Start at value for this list level
         /// </summary>
-        public Int32 iStartAt;
+        public int iStartAt;
 
         /// <summary>
         /// Number format code (see anld.nfc for a list of options)
@@ -103,13 +103,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// Word 6.0 compatibility option: equivalent to anld.dxaSpace (see ANLD). <br/>
         /// For newer versions indent to remove if we remove this numbering.
         /// </summary>
-        public Int32 dxaSpace;
+        public int dxaSpace;
 
         /// <summary>
         /// Word 6.0 compatibility option: equivalent to anld.dxaIndent (see ANLD).<br/>
         /// Unused in newer versions.
         /// </summary>
-        public Int32 dxaIndent;
+        public int dxaIndent;
 
         /// <summary>
         /// Length, in bytes, of the LVL‘s grpprlChpx.
@@ -185,15 +185,17 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
             //read the group of papx sprms
             //this papx has no istd, so use PX to parse it
-            PropertyExceptions px = new PropertyExceptions(_reader.ReadBytes(this.cbGrpprlPapx));
-            this.grpprlPapx = new ParagraphPropertyExceptions();
-            this.grpprlPapx.grpprl = px.grpprl;
+            var px = new PropertyExceptions(_reader.ReadBytes(this.cbGrpprlPapx));
+            this.grpprlPapx = new ParagraphPropertyExceptions
+            {
+                grpprl = px.grpprl
+            };
 
             //read the group of chpx sprms
             this.grpprlChpx = new CharacterPropertyExceptions(_reader.ReadBytes(this.cbGrpprlChpx));
 
             //read the number text
-            Int16 strLen = _reader.ReadInt16();
+            var strLen = _reader.ReadInt16();
             this.xst = Encoding.Unicode.GetString(_reader.ReadBytes(strLen * 2));
 
             long endPos = _reader.BaseStream.Position;

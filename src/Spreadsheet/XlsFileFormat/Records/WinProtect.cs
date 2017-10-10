@@ -43,9 +43,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         ///  =1 if the workbook windows are protected
         /// </summary>
-        public UInt16 fLockWn;
+        public ushort fLockWn;
         
-        public WinProtect(IStreamReader reader, RecordType id, UInt16 length)
+        public WinProtect(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

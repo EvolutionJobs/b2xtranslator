@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 throw new Exception("Invalid chart type");
             }
 
-            Scatter scatter = crtSequence.ChartType as Scatter;
+            var scatter = crtSequence.ChartType as Scatter;
 
             // c:bubbleChart 
             _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElBubbleChart, Dml.Chart.Ns);
@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 //writeValueElement(Dml.Chart.ElVaryColors, crtSequence.ChartFormat.fVaried ? "1" : "0");
 
                 // Bubble Chart Series
-                foreach (SeriesFormatSequence seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
+                foreach (var seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
                 {
                     if (seriesFormatSequence.SerToCrt != null && seriesFormatSequence.SerToCrt.id == crtSequence.ChartFormat.idx)
                     {

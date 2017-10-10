@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4002)]
+    [OfficeRecord(4002)]
     public class MasterTextPropAtom : Record
     {
         public List<MasterTextPropRun> MasterTextPropRuns = new List<MasterTextPropRun>();
@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     public struct MasterTextPropRun
     {
         public UInt32 count;
-        public UInt16 indentLevel;
+        public ushort indentLevel;
     }
 
 }

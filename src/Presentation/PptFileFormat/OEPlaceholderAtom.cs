@@ -63,7 +63,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         MediaClip = 24
     };
 
-    [OfficeRecordAttribute(3011)]
+    [OfficeRecord(3011)]
     public class OEPlaceHolderAtom : Record
     {
         /// <summary>
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// It SHOULD be unique among all PlaceholderAtom records contained in the corresponding slide.
         /// The value 0xFFFFFFFF specifies that the corresponding shape is not a placeholder shape.
         /// </summary>
-        public Int32 Position;
+        public int Position;
 
         /// <summary>
         /// A PlaceholderEnum enumeration that specifies the type of the placeholder shape.

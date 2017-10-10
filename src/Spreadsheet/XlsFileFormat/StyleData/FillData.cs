@@ -83,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
             }
 
             // If parameter cannot be cast to FillDataList return false.
-            FillData fd = obj as FillData;
+            var fd = obj as FillData;
             if ((System.Object)fd == null)
             {
                 return false;

@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                             break;
                         case RecordType.BOF:
                             {
-                                BOF bof = new BOF(this.StreamReader, bh.id, bh.length);
+                                var bof = new BOF(this.StreamReader, bh.id, bh.length);
 
                                 switch (bof.docType)
                                 {
@@ -76,124 +76,124 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                             break;
                         case RecordType.LabelSst:
                             {
-                                LabelSst labelsst = new LabelSst(this.StreamReader, bh.id, bh.length);
+                                var labelsst = new LabelSst(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addLabelSST(labelsst);
                             }
                             break;
                         case RecordType.MulRk:
                             {
-                                MulRk mulrk = new MulRk(this.StreamReader, bh.id, bh.length);
+                                var mulrk = new MulRk(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addMULRK(mulrk);
                             }
                             break;
                         case RecordType.Number:
                             {
-                                Number number = new Number(this.StreamReader, bh.id, bh.length);
+                                var number = new Number(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addNUMBER(number);
                             }
                             break;
                         case RecordType.RK:
                             {
-                                RK rk = new RK(this.StreamReader, bh.id, bh.length);
+                                var rk = new RK(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addRK(rk);
                             }
                             break;
                         case RecordType.MergeCells:
                             {
-                                MergeCells mergecells = new MergeCells(this.StreamReader, bh.id, bh.length);
+                                var mergecells = new MergeCells(this.StreamReader, bh.id, bh.length);
                                 this.bsd.MERGECELLSData = mergecells;
                             }
                             break;
                         case RecordType.Blank:
                             {
-                                Blank blankcell = new Blank(this.StreamReader, bh.id, bh.length);
+                                var blankcell = new Blank(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addBLANK(blankcell);
                             } break;
                         case RecordType.MulBlank:
                             {
-                                MulBlank mulblank = new MulBlank(this.StreamReader, bh.id, bh.length);
+                                var mulblank = new MulBlank(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addMULBLANK(mulblank);
                             }
                             break;
                         case RecordType.Formula:
                             {
-                                Formula formula = new Formula(this.StreamReader, bh.id, bh.length);
+                                var formula = new Formula(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addFORMULA(formula);
                                 TraceLogger.DebugInternal(formula.ToString());
                             }
                             break;
                         case RecordType.Array:
                             {
-                                ARRAY array = new ARRAY(this.StreamReader, bh.id, bh.length);
+                                var array = new ARRAY(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addARRAY(array);
                             }
                             break;
                         case RecordType.ShrFmla:
                             {
-                                ShrFmla shrfmla = new ShrFmla(this.StreamReader, bh.id, bh.length);
+                                var shrfmla = new ShrFmla(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addSharedFormula(shrfmla);
 
                             }
                             break;
                         case RecordType.String:
                             {
-                                STRING formulaString = new STRING(this.StreamReader, bh.id, bh.length);
+                                var formulaString = new STRING(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addFormulaString(formulaString.value);
 
                             }
                             break;
                         case RecordType.Row:
                             {
-                                Row row = new Row(this.StreamReader, bh.id, bh.length);
+                                var row = new Row(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addRowData(row);
 
                             }
                             break;
                         case RecordType.ColInfo:
                             {
-                                ColInfo colinfo = new ColInfo(this.StreamReader, bh.id, bh.length);
+                                var colinfo = new ColInfo(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addColData(colinfo);
                             }
                             break;
                         case RecordType.DefColWidth:
                             {
-                                DefColWidth defcolwidth = new DefColWidth(this.StreamReader, bh.id, bh.length);
+                                var defcolwidth = new DefColWidth(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addDefaultColWidth(defcolwidth.cchdefColWidth);
                             }
                             break;
                         case RecordType.DefaultRowHeight:
                             {
-                                DefaultRowHeight defrowheigth = new DefaultRowHeight(this.StreamReader, bh.id, bh.length);
+                                var defrowheigth = new DefaultRowHeight(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addDefaultRowData(defrowheigth);
                             }
                             break;
                         case RecordType.LeftMargin:
                             {
-                                LeftMargin leftm = new LeftMargin(this.StreamReader, bh.id, bh.length);
+                                var leftm = new LeftMargin(this.StreamReader, bh.id, bh.length);
                                 this.bsd.leftMargin = leftm.value;
                             }
                             break;
                         case RecordType.RightMargin:
                             {
-                                RightMargin rightm = new RightMargin(this.StreamReader, bh.id, bh.length);
+                                var rightm = new RightMargin(this.StreamReader, bh.id, bh.length);
                                 this.bsd.rightMargin = rightm.value;
                             }
                             break;
                         case RecordType.TopMargin:
                             {
-                                TopMargin topm = new TopMargin(this.StreamReader, bh.id, bh.length);
+                                var topm = new TopMargin(this.StreamReader, bh.id, bh.length);
                                 this.bsd.topMargin = topm.value;
                             }
                             break;
                         case RecordType.BottomMargin:
                             {
-                                BottomMargin bottomm = new BottomMargin(this.StreamReader, bh.id, bh.length);
+                                var bottomm = new BottomMargin(this.StreamReader, bh.id, bh.length);
                                 this.bsd.bottomMargin = bottomm.value;
                             }
                             break;
                         case RecordType.Setup:
                             {
-                                Setup setup = new Setup(this.StreamReader, bh.id, bh.length);
+                                var setup = new Setup(this.StreamReader, bh.id, bh.length);
                                 this.bsd.addSetupData(setup);
                             }
                             break;
@@ -202,7 +202,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                                 long oldStreamPos = this.StreamReader.BaseStream.Position;
                                 try
                                 {
-                                    HLink hlink = new HLink(this.StreamReader, bh.id, bh.length);
+                                    var hlink = new HLink(this.StreamReader, bh.id, bh.length);
                                     bsd.addHyperLinkData(hlink);
                                 }
                                 catch (Exception ex)
@@ -217,14 +217,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                         case RecordType.MsoDrawing:
                             {
                                 // Record header has already been read. Reset position to record beginning.
-                                this.StreamReader.BaseStream.Position -= 2 * sizeof(UInt16);
+                                this.StreamReader.BaseStream.Position -= 2 * sizeof(ushort);
                                 this.bsd.ObjectsSequence = new ObjectsSequence(this.StreamReader);
                             }
                             break;
                         default:
                             {
                                 // this else statement is used to read BiffRecords which aren't implemented 
-                                byte[] buffer = new byte[bh.length];
+                                var buffer = new byte[bh.length];
                                 buffer = this.StreamReader.ReadBytes(bh.length);
                             }
                             break;

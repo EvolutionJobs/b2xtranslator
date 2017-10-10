@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             _writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
 
-            ShapeTreeMapping stm = new ShapeTreeMapping(_ctx, _writer);
+            var stm = new ShapeTreeMapping(_ctx, _writer);
             stm.parentSlideMapping = this;
             stm.Apply(note.FirstChildWithType<PPDrawing>());
 
@@ -172,12 +172,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         {
                             foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                             {
-                                System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
+                                var ms = new System.IO.MemoryStream(data.bytes);
                                 OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
 
                                 if (rec.TypeCode == 3011)
                                 {
-                                    OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
+                                    var placeholder = (OEPlaceHolderAtom)rec;
 
                                     if (placeholder != null)
                                     {
@@ -273,12 +273,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                         {
-                            System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
+                            var ms = new System.IO.MemoryStream(data.bytes);
                             OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
 
                             if (rec.TypeCode == 3011)
                             {
-                                OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
+                                var placeholder = (OEPlaceHolderAtom)rec;
 
                                 if (placeholder != null)
                                 {
@@ -290,7 +290,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                             foreach (ShapeOptions so in shapecontainer.AllChildrenWithType<ShapeOptions>())
                                                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                                                 {
-                                                    FillStyleBooleanProperties props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                                                    var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                                                     if (props.fFilled && props.fUsefFilled) doit = true;
                                                 }
                                         }
@@ -315,12 +315,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         {
                             foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                             {
-                                System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
+                                var ms = new System.IO.MemoryStream(data.bytes);
                                 OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
 
                                 if (rec.TypeCode == 3011)
                                 {
-                                    OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
+                                    var placeholder = (OEPlaceHolderAtom)rec;
 
                                     if (placeholder != null)
                                     {
@@ -334,7 +334,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                                 foreach(ShapeOptions so in shapecontainer.AllChildrenWithType<ShapeOptions>())
                                                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                                                     {
-                                                        FillStyleBooleanProperties props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                                                        var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                                                         if (props.fFilled && props.fUsefFilled) doit = true;
                                                     }
                                             }

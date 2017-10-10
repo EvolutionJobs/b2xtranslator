@@ -55,21 +55,21 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// An unsigned integer that specifies the context of the object. 
         /// This value further specifies the object specified in iObjectKind.
         /// </summary>
-        public UInt16 iObjectContext;
+        public ushort iObjectContext;
 
         /// <summary>
         /// An unsigned integer that specifies additional information about the context 
         /// of the object, along with iObjectContext, iObjectInstance2 and iObjectKind.
         /// </summary>
-        public UInt16 iObjectInstance1;
+        public ushort iObjectInstance1;
 
         /// <summary>
         /// An unsigned integer that specifies more information about the object context, 
         /// along with iObjectContext, iObjectInstance1 and iObjectKind.
         /// </summary>
-        public UInt16 iObjectInstance2;
+        public ushort iObjectInstance2;
 
-        public StartBlock(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public StartBlock(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

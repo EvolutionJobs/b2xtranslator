@@ -39,7 +39,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// Start-at value if fFormatting==false and fStartAt==true. 
         /// If fFormatting == true, the start is stored in the LVL
         /// </summary>
-        public Int32 iStartAt;
+        public int iStartAt;
 
         /// <summary>
         /// The level to be overridden

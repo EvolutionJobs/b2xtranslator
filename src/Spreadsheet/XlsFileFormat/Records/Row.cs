@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public bool fExDes;
         public bool fPhonetic; 
 
-        public Row(IStreamReader reader, RecordType id, UInt16 length)
+        public Row(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -65,10 +65,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             // read four unused bytes 
             reader.ReadUInt32();
-            TwipsValue tv = new TwipsValue(this.miyRw); 
+            var tv = new TwipsValue(this.miyRw); 
 
             // read 2 byte for some bit operations 
-            UInt16 buffer = reader.ReadUInt16();
+            var buffer = reader.ReadUInt16();
 
 
             ///

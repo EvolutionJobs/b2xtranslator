@@ -58,23 +58,23 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// A signed integer that specifies the horizontal offset of the plot area‘s upper-left corner, 
         /// relative to the upper-left corner of the chart area, in SPRC.
         /// </summary>
-        public Int16 xTL;
+        public short xTL;
 
         /// <summary>
         /// A signed integer that specifies the vertical offset of the plot area‘s upper-left corner, 
         /// relative to the upper-left corner of the chart area, in SPRC.
         /// </summary>
-        public Int16 yTL;
+        public short yTL;
 
         /// <summary>
         /// A signed integer that specifies the width of the plot area, in SPRC.
         /// </summary>
-        public Int16 xBR;
+        public short xBR;
 
         /// <summary>
         /// A signed integer that specifies the height of the plot area, in SPRC.
         /// </summary>
-        public Int16 yBR;
+        public short yBR;
 
         /// <summary>
         /// A CrtLayout12Mode that specifies the meaning of x.
@@ -116,12 +116,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public double dy;
 
-        public CrtLayout12(IStreamReader reader, RecordType id, UInt16 length)
+        public CrtLayout12(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             this.frtHeader = new FrtHeader(reader);
             this.dwCheckSum = reader.ReadUInt32();
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fLayoutTargetInner = Utils.BitmaskToBool(flags, 0x1);
             this.autolayouttype = (AutoLayoutType)Utils.BitmaskToInt(flags, 0xE);
             if (id == RecordType.CrtLayout12A)

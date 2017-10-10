@@ -65,9 +65,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// This value MUST be unique for each instance of this record and MUST be less than or equal to 0x0009.
         /// </summary>
-        public UInt16 icrt;
+        public ushort icrt;
 
-        public ChartFormat(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public ChartFormat(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

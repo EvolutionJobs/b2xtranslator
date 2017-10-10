@@ -37,15 +37,15 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Row 
         /// </summary>
-        public UInt16 rw;
+        public ushort rw;
         /// <summary>
         /// Column
         /// </summary>
-        public UInt16 col;
+        public ushort col;
         /// <summary>
         /// Index to the XF Record 
         /// </summary>
-        public UInt16 ixfe;
+        public ushort ixfe;
 
         /// <summary>
         /// Ctor 
@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <param name="reader">Streamreader</param>
         /// <param name="id">Record ID - Recordtype</param>
         /// <param name="length">The recordlegth</param>
-        public AbstractCellContent(IStreamReader reader, RecordType id, UInt16 length)
+        public AbstractCellContent(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             this.rw = reader.ReadUInt16();

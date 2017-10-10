@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
     {
         public byte recordVersion;
 
-        public UInt16 xmltkParent;
+        public ushort xmltkParent;
 
         public ArrayList chainRecords = new ArrayList();       
 
@@ -252,10 +252,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
             //reader.ReadBytes(8);
         }
 
-        public UInt16 getNextXmlTkTag(IStreamReader reader)
+        public ushort getNextXmlTkTag(IStreamReader reader)
         {
             long pos = reader.BaseStream.Position;
-            XmlTkHeader header = new XmlTkHeader(reader);
+            var header = new XmlTkHeader(reader);
             reader.BaseStream.Position = pos;
 
             return header.xmlTkTag;

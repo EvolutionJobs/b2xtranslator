@@ -39,8 +39,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// Some public attributes to store and share the data 
         /// </summary>
         public int StringNumber;
-        public UInt16 CharNumber;
-        public UInt16 FontRecord;
+        public ushort CharNumber;
+        public ushort FontRecord;
 
         /// <summary>
         /// Ctor with no parameters 
@@ -58,7 +58,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <param name="StringNumber"></param>
         /// <param name="CharNumber"></param>
         /// <param name="FontRecord"></param>
-        public StringFormatAssignment(int StringNumber, UInt16 CharNumber, UInt16 FontRecord)
+        public StringFormatAssignment(int StringNumber, ushort CharNumber, ushort FontRecord)
         {
             this.StringNumber = StringNumber;
             this.CharNumber = CharNumber;

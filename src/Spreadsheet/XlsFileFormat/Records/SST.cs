@@ -51,7 +51,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public UInt32 cstTotal;
         public UInt32 cstUnique;
 
-        public List<String> StringList;
+        public List<string> StringList;
         public List<StringFormatAssignment> FormatList;
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <param name="reader">Reader to parse the document </param>
         /// <param name="id">BiffRecord ID</param>
         /// <param name="length">The lengt of the biffrecord </param>
-        public SST(IStreamReader binreader, RecordType id, UInt16 length, LinkedList<VirtualStreamReader> contstreamlist)
+        public SST(IStreamReader binreader, RecordType id, ushort length, LinkedList<VirtualStreamReader> contstreamlist)
             : base(binreader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -68,7 +68,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.contStreamlist = contstreamlist; 
             this.StringList = new List<string>();
             this.FormatList = new List<StringFormatAssignment>();
-            byte[] buffer = new byte[length];
+            var buffer = new byte[length];
             int counti = 0;
             this.cstTotal = (UInt32)this.Reader.ReadUInt32();
             this.cstUnique = this.Reader.ReadUInt32();
@@ -85,9 +85,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                         this.switchStream(); 
                     }
                     // first get the char count of this string 
-                    UInt16 cch = this.Reader.ReadUInt16();
+                    var cch = this.Reader.ReadUInt16();
                     // get the grbit mask 
-                    Byte grbit = this.Reader.ReadByte();
+                    var grbit = this.Reader.ReadByte();
                     bool isCompressedString = false;
                     bool isExtString = false;
                     bool isRichString = false;
@@ -125,7 +125,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                         charcount = 1;
                     else
                         charcount = 2;
-                    String stringbuffer = "";
+                    var stringbuffer = "";
                     // read chars !!! 
                     while (this.Reader.BaseStream.Length < this.Reader.BaseStream.Position + cch * charcount)
                     {
@@ -176,7 +176,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                             // get formating data 
                             for (int j = 0; j < currentLength / 4; j++)
                             {
-                                StringFormatAssignment format = new StringFormatAssignment();
+                                var format = new StringFormatAssignment();
                                 format.StringNumber = counti;
                                 format.CharNumber = this.Reader.ReadUInt16();
 
@@ -196,7 +196,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                         // get formating data 
                         for (int j = 0; j < countFormatingRuns; j++)
                         {
-                            StringFormatAssignment format = new StringFormatAssignment();
+                            var format = new StringFormatAssignment();
                             format.StringNumber = counti;
                             format.CharNumber = this.Reader.ReadUInt16();
                             format.FontRecord = this.Reader.ReadUInt16();
@@ -247,13 +247,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// The ToString Method
         /// </summary>
         /// <returns></returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String back = "";
+            var back = "";
             back += "Number Strings Total: " + this.cstTotal + "\n";
             back += "Number Unique Strings: " + this.cstUnique + "\n";
             back += "Strings: \n";
-            foreach (String var in this.StringList)
+            foreach (var var in this.StringList)
             {
                 back += var + "\n";
             }

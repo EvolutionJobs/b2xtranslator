@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(130)]
+    [OfficeShapeType(130)]
     class FlowChartOnlineStorageType : ShapeType
     {
         public FlowChartOnlineStorageType()

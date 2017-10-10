@@ -47,12 +47,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// <summary>
         /// Reserved. MUST be 0x07.
         /// </summary>
-        public UInt16 ft;
+        public ushort ft;
 
         /// <summary>
         /// Reserved. MUST be 0x02.
         /// </summary>
-        public UInt16 cb;
+        public ushort cb;
 
         /// <summary>
         /// An unsigned integer that specifies the Windows clipboard format of the data associated with the picture.

@@ -55,9 +55,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         ///     Width of the gap in SPRCs = 1 + pcGap
         /// </summary>
-        public Int16 pcGap;
+        public short pcGap;
 
-        public DropBar(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public DropBar(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

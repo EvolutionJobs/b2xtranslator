@@ -49,7 +49,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// 
         /// The value of grbitFrt.fFrtRef MUST be zero.
         /// </summary>
-        public UInt16 grbitFrt;
+        public ushort grbitFrt;
 
         public FrtHeaderOld(IStreamReader reader)
         {

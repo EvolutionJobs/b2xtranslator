@@ -6,7 +6,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF00B, 0xF121, 0xF122)]
+    [OfficeRecord(0xF00B, 0xF121, 0xF122)]
     public class ShapeOptions : Record
     {
         #region properties enum
@@ -576,8 +576,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
             //parse the flags and the simple values
             for (int i = 0; i < instance; i++)
             {
-                OptionEntry entry = new OptionEntry();
-                UInt16 flag = this.Reader.ReadUInt16();
+                var entry = new OptionEntry();
+                var flag = this.Reader.ReadUInt16();
                 entry.pid = (PropertyId)Utils.BitmaskToInt(flag, 0x3FFF);
                 entry.fBid = Utils.BitmaskToBool(flag, 0x4000);
                 entry.fComplex = Utils.BitmaskToBool(flag, 0x8000);
@@ -602,9 +602,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
                     if (this.Options[i].pid == PropertyId.pVertices)
                     {
-                        UInt16 nElemsVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 0);
-                        UInt16 nElemsAllocVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 2);
-                        UInt16 cbElemVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 4);
+                        var nElemsVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 0);
+                        var nElemsAllocVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 2);
+                        var cbElemVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 4);
                         if (cbElemVert == 0xfff0) cbElemVert = 4;
                         if (nElemsVert * cbElemVert == this.Options[i].op)
                         {

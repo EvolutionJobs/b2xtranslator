@@ -46,17 +46,17 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Rownumber 
         /// </summary>
-        public UInt16 rw;      
+        public ushort rw;      
 
         /// <summary>
         /// Colnumber 
         /// </summary>
-        public UInt16 col;     
+        public ushort col;     
         
         /// <summary>
         /// index to the XF record 
         /// </summary>
-        public UInt16 ixfe;    
+        public ushort ixfe;    
 
         /// <summary>
         /// index into the SST record  
@@ -69,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <param name="reader"></param>
         /// <param name="id"></param>
         /// <param name="length"></param>
-        public LabelSst(IStreamReader reader, RecordType id, UInt16 length)
+        public LabelSst(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

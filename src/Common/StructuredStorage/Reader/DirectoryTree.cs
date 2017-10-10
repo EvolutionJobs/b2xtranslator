@@ -86,10 +86,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="sid">start sid</param>
         private void GetAllDirectoryEntriesRecursive(UInt32 sid, string path)
         {
-            DirectoryEntry entry = ReadDirectoryEntry(sid, path);            
-            UInt32 left = entry.LeftSiblingSid;
-            UInt32 right = entry.RightSiblingSid;
-            UInt32 child = entry.ChildSiblingSid;
+            var entry = ReadDirectoryEntry(sid, path);            
+            var left = entry.LeftSiblingSid;
+            var right = entry.RightSiblingSid;
+            var child = entry.ChildSiblingSid;
             //Console.WriteLine("{0:X02}: Left: {2:X02}, Right: {3:X02}, Child: {4:X02}, Name: {1}, Color: {5}", entry.Sid, entry.Name, (left > 0xFF)? 0xFF : left, (right > 0xFF)? 0xFF : right, (child > 0xFF)? 0xFF : child, entry.Color.ToString() );
 
             // Check for cycle
@@ -125,7 +125,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         private DirectoryEntry ReadDirectoryEntry(UInt32 sid, string path)
         {
             SeekToDirectoryEntry(sid);
-            DirectoryEntry result = new DirectoryEntry(_header, _fileHandler, sid, path);            
+            var result = new DirectoryEntry(_header, _fileHandler, sid, path);            
             return result;
         }
 
@@ -177,7 +177,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         internal UInt32 GetMiniStreamStart()
         {
-            DirectoryEntry root = GetDirectoryEntry(0);
+            var root = GetDirectoryEntry(0);
             if (root == null)
             {
                 throw new StreamNotFoundException("Root Entry");
@@ -192,7 +192,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         internal UInt64 GetSizeOfMiniStream()
         {
-            DirectoryEntry root = GetDirectoryEntry(0);
+            var root = GetDirectoryEntry(0);
             if (root == null)
             {
                 throw new StreamNotFoundException("Root Entry");
@@ -206,9 +206,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>        
         internal ReadOnlyCollection<string> GetNamesOfAllEntries()
         {
-            List<string> result = new List<string>();
+            var result = new List<string>();
 
-            foreach (DirectoryEntry entry in _directoryEntries)
+            foreach (var entry in _directoryEntries)
             {
                 result.Add(entry.Name);                
             }
@@ -221,9 +221,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>        
         internal ReadOnlyCollection<string> GetPathsOfAllEntries()
         {
-            List<string> result = new List<string>();
+            var result = new List<string>();
 
-            foreach (DirectoryEntry entry in _directoryEntries)
+            foreach (var entry in _directoryEntries)
             {
                 result.Add(entry.Path);
             }
@@ -236,9 +236,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>        
         internal ReadOnlyCollection<string> GetNamesOfAllStreamEntries()
         {
-            List<string> result = new List<string>();
+            var result = new List<string>();
 
-            foreach (DirectoryEntry entry in _directoryEntries)
+            foreach (var entry in _directoryEntries)
             {
                 if (entry.Type == DirectoryEntryType.STGTY_STREAM)
                 {
@@ -254,9 +254,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>        
         internal ReadOnlyCollection<string> GetPathsOfAllStreamEntries()
         {
-            List<string> result = new List<string>();
+            var result = new List<string>();
 
-            foreach (DirectoryEntry entry in _directoryEntries)
+            foreach (var entry in _directoryEntries)
             {
                 if (entry.Type == DirectoryEntryType.STGTY_STREAM)
                 {

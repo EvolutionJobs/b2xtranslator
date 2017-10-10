@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(7)]
+    [OfficeShapeType(7)]
     public class ParallelogramType : ShapeType
     {
         public ParallelogramType()
@@ -37,9 +37,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "1800,1800,19800,19800;8100,8100,13500,13500;10800,10800,10800,10800";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,topLeft";
-            HandleOne.xrange = "0,21600";
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "0,21600"
+            };
             this.Handles.Add(HandleOne);
                
 

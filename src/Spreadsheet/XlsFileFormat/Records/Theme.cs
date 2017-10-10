@@ -35,11 +35,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.Theme;
 
-        public UInt16 rt;
-        public UInt16 grbitFrt;
+        public ushort rt;
+        public ushort grbitFrt;
         public UInt32 dwThemeVersion; 
 
-        public Theme(IStreamReader reader, RecordType id, UInt16 length)
+        public Theme(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(185)]
+    [OfficeShapeType(185)]
     public class BracketPairType : ShapeType
     {
         public BracketPairType()
@@ -34,10 +34,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "@3,@3,@4,@5";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,topLeft";
-            HandleOne.switchHandle="true";
-            HandleOne.xrange = "0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                switchHandle = "true",
+                xrange = "0,10800"
+            };
             this.Handles.Add(HandleOne);
 
             this.Limo = "10800,10800";

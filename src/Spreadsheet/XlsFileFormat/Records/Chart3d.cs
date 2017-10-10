@@ -66,7 +66,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// If chart group type is bar and the value of field fTranspose in the 
         /// record Bar is 1, then MUST be less than or equal to 44.
         /// </summary>
-        public Int16 anRot;
+        public short anRot;
 
         /// <summary>
         /// A signed integer that specifies the rotation, in degrees, of the 3-D plot 
@@ -78,14 +78,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// If the chart group type is bar and the value of field fTranspose in the 
         /// record Bar is 1, then the value MUST be less than or equal to 44.
         /// </summary>
-        public Int16 anElev;
+        public short anElev;
 
         /// <summary>
         /// A signed integer that specifies the field of view angle for the 3-D plot area. 
         /// 
         /// MUST be greater than or equal to 0 and less than or equal to 100.
         /// </summary>
-        public Int16 pcDist;
+        public short pcDist;
 
         /// <summary>
         /// If fNotPieChart is 0, then this is an unsigned integer that specifies 
@@ -96,7 +96,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be greater than or equal to 5 and less than or equal to 500.
         /// </summary>
-        public UInt16 pcHeight;
+        public ushort pcHeight;
 
         /// <summary>
         /// A signed integer that specifies the depth of the 3-D plot area as a 
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be greater than or equal to 20 and less than or equal to 2000.
         /// </summary>
-        public Int16 pcDepth;
+        public short pcDepth;
 
         /// <summary>
         /// An unsigned integer that specifies the width of the gap between the series 
@@ -115,7 +115,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be less than or equal to 500.
         /// </summary>
-        public UInt16 pcGap;
+        public ushort pcGap;
 
         /// <summary>
         /// A bit that specifies whether the 3-D plot area is rendered with a vanishing point. 
@@ -168,7 +168,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public bool fWalls2D;
 
 
-        public Chart3d(IStreamReader reader, RecordType id, UInt16 length)
+        public Chart3d(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -182,7 +182,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.pcDepth = reader.ReadInt16();
             this.pcGap = reader.ReadUInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fPerspective = Utils.BitmaskToBool(flags, 0x0001);
             this.fCluster = Utils.BitmaskToBool(flags, 0x0002);
             this.f3DScaling = (ScalingType)Utils.BitmaskToUInt16(flags, 0x0004);

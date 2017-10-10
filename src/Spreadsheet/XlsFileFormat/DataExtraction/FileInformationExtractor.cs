@@ -47,7 +47,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         struct BiffHeader
         {
             public RecordType id;
-            public UInt16 length;
+            public ushort length;
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                     bh.id = (RecordType)this.SummaryStream.ReadUInt16();
                     bh.length = this.SummaryStream.ReadUInt16();
 
-                    byte[] buf = new byte[bh.length];
+                    var buf = new byte[bh.length];
                     if (bh.length != this.SummaryStream.ReadByte())
                         sw.WriteLine("EOF");
 

@@ -69,8 +69,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             List<TextMasterStyleAtom> atoms = Master.AllChildrenWithType<TextMasterStyleAtom>();            
 
-            List<TextMasterStyle9Atom> body9atoms = new List<TextMasterStyle9Atom>();
-            List<TextMasterStyle9Atom> title9atoms = new List<TextMasterStyle9Atom>();
+            var body9atoms = new List<TextMasterStyle9Atom>();
+            var title9atoms = new List<TextMasterStyle9Atom>();
             foreach (ProgTags progtags in Master.AllChildrenWithType<ProgTags>())
 	        {
         		foreach (ProgBinaryTag progbinarytag in progtags.AllChildrenWithType<ProgBinaryTag>())

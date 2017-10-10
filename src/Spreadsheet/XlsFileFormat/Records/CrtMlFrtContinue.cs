@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         //with this record. If the length of this record is greater than 8224 bytes, additional CrtMlFrtContinue records follow.
         public XmlTkChain XmlTkChain;
 
-        public CrtMlFrtContinue(IStreamReader reader, RecordType id, UInt16 length)
+        public CrtMlFrtContinue(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

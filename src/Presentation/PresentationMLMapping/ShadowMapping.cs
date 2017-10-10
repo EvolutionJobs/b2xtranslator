@@ -87,7 +87,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                  writeDistDir();
                          if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOriginX))
                          {
-                             byte[] bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowOriginX].op);
+                             var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowOriginX].op);
                              int integral = BitConverter.ToInt16(bytes, 0);
                              uint fractional = BitConverter.ToUInt16(bytes, 2);
                              if (fractional == 0xffff) integral *= -1;
@@ -131,11 +131,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleXToX))
                         {
-                            byte[] bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowScaleXToX].op);
+                            var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowScaleXToX].op);
                             int integral = -1 * BitConverter.ToInt16(bytes, 0);
                             uint fractional = BitConverter.ToUInt16(bytes, 2);
                             if (fractional == 0xffff) integral *= -1;
-                            Decimal result = integral + ((decimal)fractional / (decimal)65536);
+                            var result = integral + ((decimal)fractional / (decimal)65536);
                             result = 1 - (result / 65536);
                             _writer.WriteAttributeString("sx", Math.Floor(result * 100000).ToString());
                         }
@@ -145,7 +145,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         }
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleYToX))
                         {
-                            Decimal scaleYX = (Decimal)(int)so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToX].op;
+                            var scaleYX = (Decimal)(int)so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToX].op;
                             //_writer.WriteAttributeString("kx", System.Math.Floor(scaleYX / 138790 * 100 * 60000).ToString()); //The 138790 comes from reverse engineering. I can't find a hint in the spec about how to convert this
                             if (scaleYX < 0)
                             {
@@ -158,7 +158,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         }
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleYToY))
                         {
-                            byte[] bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToY].op);
+                            var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToY].op);
                             int integral = -1 * BitConverter.ToInt16(bytes, 0);
                             uint fractional = BitConverter.ToUInt16(bytes, 2);
                             if (fractional == 0xffff) integral *= -1;

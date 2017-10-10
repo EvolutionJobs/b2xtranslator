@@ -33,7 +33,7 @@ using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF004)]
+    [OfficeRecord(0xF004)]
     public class ShapeContainer : RegularContainer, IVisitable
     {
         public int Index;
@@ -50,14 +50,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <returns>A List containing all OptionEntry of the ShapeContainer</returns>
         public List<ShapeOptions.OptionEntry> ExtractOptions()
         {
-            List<ShapeOptions.OptionEntry> ret = new List<ShapeOptions.OptionEntry>();
+            var ret = new List<ShapeOptions.OptionEntry>();
 
             //build the list of all option entries of this shape
-            foreach (Record rec in this.Children)
+            foreach (var rec in this.Children)
             {
                 if (rec.GetType() == typeof(ShapeOptions))
                 {
-                    ShapeOptions opt = (ShapeOptions)rec;
+                    var opt = (ShapeOptions)rec;
                     ret.AddRange(opt.Options);
                 }
             }

@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4026)]
+    [OfficeRecord(4026)]
     public class CStringAtom : Record
     {
         public static Encoding ENCODING = Encoding.Unicode;
@@ -43,10 +43,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public CStringAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            byte[] bytes = new byte[size];
+            var bytes = new byte[size];
             this.Reader.Read(bytes, 0, (int)size);
 
-            this.Text = new String(ENCODING.GetChars(bytes));
+            this.Text = new string(ENCODING.GetChars(bytes));
         }
 
         public override string ToString(uint depth)

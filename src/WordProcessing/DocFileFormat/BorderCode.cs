@@ -68,7 +68,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// 24-bit border color
         /// </summary>
-        public Int32 cv;
+        public int cv;
 
         /// <summary>
         /// Width of a single line in 1/8pt, max of 32pt
@@ -114,7 +114,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Width of space to maintain between border and text within border
         /// </summary>
-        public Int32 dptSpace;
+        public int dptSpace;
 
         /// <summary>
         /// When true, border is drawn with shadow. Must be false when BRC is substructure of the TC
@@ -157,7 +157,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 this.dptLineWidth = bytes[4];
                 this.brcType = bytes[5];
  
-                Int16 val = System.BitConverter.ToInt16(bytes, 6);
+                var val = System.BitConverter.ToInt16(bytes, 6);
                 this.dptSpace = val & 0x001F;
 
                 //not sure if this is correct, the values from the spec are definitly wrong:
@@ -167,7 +167,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             else if (bytes.Length == 4)
             {
                 //it's a border code of Word 97
-                UInt16 val = System.BitConverter.ToUInt16(bytes, 0);
+                var val = System.BitConverter.ToUInt16(bytes, 0);
                 this.dptLineWidth = (byte)(val & 0x00FF);
                 this.brcType = (byte)((val & 0xFF00) >> 8);
                 val = System.BitConverter.ToUInt16(bytes, 2);

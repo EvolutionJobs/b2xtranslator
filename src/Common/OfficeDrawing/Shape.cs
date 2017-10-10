@@ -8,10 +8,10 @@ using DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF00A)]
+    [OfficeRecord(0xF00A)]
     public class Shape : Record
     {
-        public Int32 spid;
+        public int spid;
 
         /// <summary>
         /// This shape is a group shape 
@@ -84,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         {
             this.spid = this.Reader.ReadInt32();
 
-            UInt32 flag = this.Reader.ReadUInt32();
+            var flag = this.Reader.ReadUInt32();
             this.fGroup = Utils.BitmaskToBool(flag, 0x1);
             this.fChild = Utils.BitmaskToBool(flag, 0x2);
             this.fPatriarch = Utils.BitmaskToBool(flag, 0x4);

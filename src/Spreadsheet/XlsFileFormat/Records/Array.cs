@@ -39,12 +39,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Rownumber 
         /// </summary>
-        public UInt16 rwFirst;
+        public ushort rwFirst;
 
         /// <summary>
         /// Rownumber 
         /// </summary>
-        public UInt16 rwLast;
+        public ushort rwLast;
 
         /// <summary>
         /// Colnumber 
@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// option flags 
         /// </summary>
-        public UInt16 grbit;
+        public ushort grbit;
 
         /// <summary>
         /// used for performance reasons only 
@@ -70,14 +70,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// length of the formular data !!
         /// </summary>
-        public UInt16 cce;
+        public ushort cce;
 
         /// <summary>
         /// LinkedList with the Ptg records !!
         /// </summary>
         public Stack<AbstractPtg> ptgStack;
 
-        public ARRAY(IStreamReader reader, RecordType id, UInt16 length)
+        public ARRAY(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

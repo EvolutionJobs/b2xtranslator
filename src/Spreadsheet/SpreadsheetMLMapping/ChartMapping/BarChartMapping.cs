@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 throw new Exception("Invalid chart type");
             }
 
-            Bar bar = crtSequence.ChartType as Bar;
+            var bar = crtSequence.ChartType as Bar;
 
 
             // c:barChart / c:bar3DChart
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 //writeValueElement(Dml.Chart.ElVaryColors, crtSequence.ChartFormat.fVaried ? "1" : "0");
 
                 // Bar Chart Series
-                foreach (SeriesFormatSequence seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
+                foreach (var seriesFormatSequence in this.ChartFormatsSequence.SeriesFormatSequences)
                 {
                     if (seriesFormatSequence.SerToCrt != null && seriesFormatSequence.SerToCrt.id == crtSequence.ChartFormat.idx)
                     {
@@ -89,7 +89,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         for (int i = 1; i < seriesFormatSequence.SsSequence.Count; i++)
                         {
                             // write a dPt for each SsSequence
-                            SsSequence ssSequence = seriesFormatSequence.SsSequence[i];
+                            var ssSequence = seriesFormatSequence.SsSequence[i];
                             ssSequence.Convert(new DataPointMapping(this.WorkbookContext, this.ChartContext, i - 1));
                         }
 
@@ -107,7 +107,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         seriesFormatSequence.Convert(new ValMapping(this.WorkbookContext, this.ChartContext, Dml.Chart.ElVal));
 
                         // c:shape (we only condider the first Chart3DBarShape found)
-                        SsSequence ssSeq = seriesFormatSequence.SsSequence.Find(s => s.Chart3DBarShape != null);
+                        var ssSeq = seriesFormatSequence.SsSequence.Find(s => s.Chart3DBarShape != null);
                         if (ssSeq != null)
                         {
                             insertShape(ssSeq.Chart3DBarShape);

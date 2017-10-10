@@ -43,14 +43,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// 
         /// When FormatRun is used in an array, this value MUST be in strictly increasing order.
         /// </summary>
-        public UInt16 ich;
+        public ushort ich;
 
         /// <summary>
         /// A FontIndex record that specifies the font. 
         /// 
         /// If ich is equal to the length of the text, this field is undefined and MUST be ignored.
         /// </summary>
-        public UInt16 ifnt;
+        public ushort ifnt;
 
         public FormatRun(IStreamReader reader)
         {

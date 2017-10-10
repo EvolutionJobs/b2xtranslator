@@ -42,7 +42,6 @@ namespace DIaLOGIKa.b2xtranslator.Shell
         // parsed arguments
         public static string InputFile;
         public static string ChoosenOutputFile;
-        public static bool CreateContextMenuEntry;
 
         public static void InitializeLogger()
         {
@@ -83,7 +82,6 @@ namespace DIaLOGIKa.b2xtranslator.Shell
             usage.AppendLine("               warning (2) print all errors and warnings");
             usage.AppendLine("               info (3)    print all errors, warnings and infos (default)");
             usage.AppendLine("               debug (4)   print all errors, warnings, infos and debug messages");
-            usage.AppendLine("-c             create an entry in context menu");
             usage.AppendLine("-?             print this help");
             Console.WriteLine(usage.ToString());
         }
@@ -147,10 +145,6 @@ namespace DIaLOGIKa.b2xtranslator.Shell
                 {
                     PrintUsage(toolName);
                     Environment.Exit(0);
-                }
-                else if (args[0].ToLower() == "-c")
-                {
-                    CreateContextMenuEntry = true;
                 }
                 else
                 {

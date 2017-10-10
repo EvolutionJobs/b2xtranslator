@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(99)]
+    [OfficeShapeType(99)]
     class CircularArrowType : ShapeType
     {
         public CircularArrowType()
@@ -72,15 +72,19 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "3163,3163,18437,18437";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="@3,#0";
-            HandleOne.polar="10800,10800";
+            var HandleOne = new Handle
+            {
+                position = "@3,#0",
+                polar = "10800,10800"
+            };
             this.Handles.Add(HandleOne);
 
-            Handle HandleTwo = new Handle();
-            HandleTwo.position="#2,#1";
-            HandleTwo.polar="10800,10800";
-            HandleTwo.radiusrange = "0,10800";
+            var HandleTwo = new Handle
+            {
+                position = "#2,#1",
+                polar = "10800,10800",
+                radiusrange = "0,10800"
+            };
             this.Handles.Add(HandleTwo);
 
         }

@@ -68,7 +68,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         {
             _context.RootDirectoryEntry.RecursiveCreateRedBlackTrees();
 
-            List<BaseDirectoryEntry> allEntries = _context.RootDirectoryEntry.RecursiveGetAllDirectoryEntries();
+            var allEntries = _context.RootDirectoryEntry.RecursiveGetAllDirectoryEntries();
             allEntries.Sort(
                     delegate(BaseDirectoryEntry a, BaseDirectoryEntry b)
                     { return a.Sid.CompareTo(b.Sid); }
@@ -98,7 +98,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
 
 
             // write Streams
-            foreach (BaseDirectoryEntry entry in allEntries)
+            foreach (var entry in allEntries)
             {
                 if (entry.Sid == 0x0)
                 {
@@ -113,23 +113,23 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             _context.RootDirectoryEntry.writeReferencedStream();
 
             // write Directory Entries to directory stream
-            foreach (BaseDirectoryEntry entry in allEntries)
+            foreach (var entry in allEntries)
             {
                 entry.write();
             }
 
             // Directory Entry: 128 bytes            
-            UInt32 dirEntriesPerSector = _context.Header.SectorSize / 128u;
-            UInt32 numToPad = dirEntriesPerSector - ((UInt32)allEntries.Count % dirEntriesPerSector);
+            var dirEntriesPerSector = _context.Header.SectorSize / 128u;
+            var numToPad = dirEntriesPerSector - ((UInt32)allEntries.Count % dirEntriesPerSector);
 
-            EmptyDirectoryEntry emptyEntry = new EmptyDirectoryEntry(_context);
+            var emptyEntry = new EmptyDirectoryEntry(_context);
             for (int i = 0; i < numToPad; i++)
             {
                 emptyEntry.write();
             }
 
             // write directory stream
-            VirtualStream virtualDirectoryStream = new VirtualStream(_context.DirectoryStream.BaseStream, _context.Fat, _context.Header.SectorSize, _context.TempOutputStream);
+            var virtualDirectoryStream = new VirtualStream(_context.DirectoryStream.BaseStream, _context.Fat, _context.Header.SectorSize, _context.TempOutputStream);
             virtualDirectoryStream.write();
             _context.Header.DirectoryStartSector = virtualDirectoryStream.StartSector;
             if (_context.Header.SectorSize == 0x1000)

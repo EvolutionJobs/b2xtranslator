@@ -75,8 +75,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             // Associate slide with slide layout
             SlideAtom slideAtom = slide.FirstChildWithType<SlideAtom>();
-            UInt32 mainMasterId = GetMainMasterId(slideAtom);
-            MasterLayoutManager layoutManager = _ctx.GetOrCreateLayoutManagerByMasterId(mainMasterId);
+            var mainMasterId = GetMainMasterId(slideAtom);
+            var layoutManager = _ctx.GetOrCreateLayoutManagerByMasterId(mainMasterId);
 
             SlideLayoutPart layoutPart = null;
             RoundTripContentMasterId12 masterInfo = slide.FirstChildWithType<RoundTripContentMasterId12>();
@@ -94,7 +94,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             // Pre-PPT2007 SSlideLayoutAtom primitive SlideLayoutType layout
             else
             {
-                MainMaster m = (MainMaster)_ctx.Ppt.FindMasterRecordById(slideAtom.MasterId);
+                var m = (MainMaster)_ctx.Ppt.FindMasterRecordById(slideAtom.MasterId);
                 if (m.Layouts.Count == 1 && slideAtom.Layout.Geom == SlideLayoutType.Blank)
                 {
                     foreach (string layout in m.Layouts.Values)
@@ -143,7 +143,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         ShapeOptions so2 = sc.AllChildrenWithType<ShapeOptions>()[1];
                         if (so2.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                         {
-                            FillStyleBooleanProperties p2 = new FillStyleBooleanProperties(so2.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                            var p2 = new FillStyleBooleanProperties(so2.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                             if (!p2.fUsefFilled || !p2.fFilled) ignore = true;
                         }
                     }
@@ -155,7 +155,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         _writer.WriteStartElement("p", "bg", OpenXmlNamespaces.PresentationML);
                         _writer.WriteStartElement("p", "bgPr", OpenXmlNamespaces.PresentationML);
-                        FillStyleBooleanProperties p = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                        var p = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                         if (p.fUsefFilled & p.fFilled) //  so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillType))
                         {
                             new FillMapping(_ctx, _writer, this).Apply(so);
@@ -213,12 +213,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                         {
-                            System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
+                            var ms = new System.IO.MemoryStream(data.bytes);
                             OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
 
                             if (rec.TypeCode == 3011)
                             {
-                                OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
+                                var placeholder = (OEPlaceHolderAtom)rec;
 
                                 if (placeholder != null)
                                 {
@@ -237,10 +237,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public string readFooterFromClientTextBox(ClientTextbox textbox)
         {
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(textbox.Bytes);
+            var ms = new System.IO.MemoryStream(textbox.Bytes);
             TextHeaderAtom thAtom = null;
             TextStyleAtom style = null;
-            List<int> lst = new List<int>();
+            var lst = new List<int>();
             while (ms.Position < ms.Length)
             {
                 Record rec = Record.ReadRecord(ms);
@@ -248,7 +248,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 switch (rec.TypeCode)
                 {
                     case 0xf9e: //OutlineTextRefAtom
-                        OutlineTextRefAtom otrAtom = (OutlineTextRefAtom)rec;
+                        var otrAtom = (OutlineTextRefAtom)rec;
                         SlideListWithText slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
 
                         List<TextHeaderAtom> thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
@@ -367,12 +367,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         {
                             foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                             {
-                                System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
+                                var ms = new System.IO.MemoryStream(data.bytes);
                                 OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
 
                                 if (rec.TypeCode == 3011)
                                 {
-                                    OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
+                                    var placeholder = (OEPlaceHolderAtom)rec;
 
                                     if (placeholder != null)
                                     {
@@ -402,12 +402,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             {
                                 foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                                 {
-                                    System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
+                                    var ms = new System.IO.MemoryStream(data.bytes);
                                     OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
 
                                     if (rec.TypeCode == 3011)
                                     {
-                                        OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
+                                        var placeholder = (OEPlaceHolderAtom)rec;
 
                                         if (placeholder != null)
                                         {
@@ -435,12 +435,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                         {
-                            System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
+                            var ms = new System.IO.MemoryStream(data.bytes);
                             OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
 
                             if (rec.TypeCode == 3011)
                             {
-                                OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
+                                var placeholder = (OEPlaceHolderAtom)rec;
 
                                 if (placeholder != null)
                                 {
@@ -452,7 +452,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                             foreach (ShapeOptions so in shapecontainer.AllChildrenWithType<ShapeOptions>())
                                                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                                                 {
-                                                    FillStyleBooleanProperties props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                                                    var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                                                     if (props.fFilled && props.fUsefFilled) doit = true;
                                                 }
                                         }
@@ -477,12 +477,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         {
                             foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                             {
-                                System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
+                                var ms = new System.IO.MemoryStream(data.bytes);
                                 OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
 
                                 if (rec.TypeCode == 3011)
                                 {
-                                    OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
+                                    var placeholder = (OEPlaceHolderAtom)rec;
 
                                     if (placeholder != null)
                                     {
@@ -496,7 +496,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                                 foreach(ShapeOptions so in shapecontainer.AllChildrenWithType<ShapeOptions>())
                                                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                                                     {
-                                                        FillStyleBooleanProperties props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                                                        var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                                                         if (props.fFilled && props.fUsefFilled) doit = true;
                                                     }
                                             }

@@ -108,9 +108,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// The value MUST be an IcvChart value, 0x0040, or 0x0041. <br/>
         /// The color MUST match the color specified by rgb.<br/>
         /// </summary>
-        public UInt16 icv;
+        public ushort icv;
 
-        public LineFormat(IStreamReader reader, RecordType id, UInt16 length)
+        public LineFormat(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -120,7 +120,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.rgb = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
             this.lns = (LineStyle)reader.ReadInt16();
             this.we = (LineWeight)reader.ReadInt16();
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fAuto = Utils.BitmaskToBool(flags, 0x1);
             // 0x2 is reserved
             this.fAxisOn = Utils.BitmaskToBool(flags, 0x4);

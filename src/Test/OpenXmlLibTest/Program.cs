@@ -41,9 +41,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
     {
         static void Main(string[] args)
         {
-            WordprocessingDocument doc = WordprocessingDocument.Create(@"C:\tmp\testOpenXmlLib.docx", OpenXmlPackage.DocumentType.Document);
+            var doc = WordprocessingDocument.Create(@"C:\tmp\testOpenXmlLib.docx", OpenXmlPackage.DocumentType.Document);
 
-            MainDocumentPart part = doc.MainDocumentPart;
+            var part = doc.MainDocumentPart;
 
             const string docXml =
 @"<?xml version=""1.0"" encoding=""UTF-8"" standalone=""yes""?> 
@@ -52,17 +52,17 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
 </w:document>";
 
             Stream stream = part.GetStream();
-            byte[] buf = (new UTF8Encoding()).GetBytes(docXml);
+            var buf = (new UTF8Encoding()).GetBytes(docXml);
             stream.Write(buf, 0, buf.Length);
         
 
             doc.Close();
 
 
-            PresentationDocument presentation = PresentationDocument.Create(@"C:\tmp\testOpenXmlLib.pptx", OpenXmlPackage.DocumentType.Document);
-            PresentationPart presentationPart = presentation.PresentationPart;
+            var presentation = PresentationDocument.Create(@"C:\tmp\testOpenXmlLib.pptx", OpenXmlPackage.DocumentType.Document);
+            var presentationPart = presentation.PresentationPart;
 
-            SlidePart slide = presentationPart.AddSlidePart();
+            var slide = presentationPart.AddSlidePart();
 
             string presentationXml =
 @"<?xml version=""1.0"" encoding=""UTF-8"" standalone=""yes""?>

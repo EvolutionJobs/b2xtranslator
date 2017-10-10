@@ -46,14 +46,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be less than or equal to 0x0F9F.
         /// </summary>
-        public UInt16 rw;
+        public ushort rw;
 
         /// <summary>
         /// An unsigned integer that specifies a zero-based index of a column in the datasheet that contains this structure. 
         /// 
         /// MUST be less than or equal to 0x0F9F.
         /// </summary>
-        public UInt16 col;
+        public ushort col;
 
         /// <summary>
         /// An unsigned integer that specifies the identifier of a number format. 
@@ -66,9 +66,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// The built-in number formats are listed in [ECMA-376] Part 4: Markup Language Reference, section 3.8.30.
         /// </summary>
-        public UInt16 ifmt;
+        public ushort ifmt;
 
-        public BlankGraph(IStreamReader reader, RecordType id, UInt16 length)
+        public BlankGraph(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

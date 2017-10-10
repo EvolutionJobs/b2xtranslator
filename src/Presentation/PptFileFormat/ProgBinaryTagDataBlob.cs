@@ -6,13 +6,13 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(5003)]
+    [OfficeRecord(5003)]
     public class ProgBinaryTagDataBlob : RegularContainer
     {
         public ProgBinaryTagDataBlob(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                foreach (Record rec in Children)
+                foreach (var rec in Children)
                 {
                     switch (rec.TypeCode)
                     {

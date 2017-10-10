@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(22)]
+    [OfficeShapeType(22)]
     public class CanType :ShapeType
     {
         public CanType()
@@ -29,9 +29,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "0,@0,21600,@2";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="center,#0";
-            HandleOne.yrange = "0,10800";
+            var HandleOne = new Handle
+            {
+                position = "center,#0",
+                yrange = "0,10800"
+            };
             this.Handles.Add(HandleOne);
         }
     }

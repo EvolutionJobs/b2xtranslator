@@ -33,9 +33,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
     /// </summary>
     public class ExternSheetData
     {
-        public UInt16 iSUPBOOK; 
-        public UInt16 itabFirst;
-        public UInt16 itabLast;
+        public ushort iSUPBOOK; 
+        public ushort itabFirst;
+        public ushort itabLast;
 
         /// <summary>
         /// ctor 
@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <param name="sup">The iSUPBOOK ref from the EXTERNSHEET</param>
         /// <param name="first">The itabFirst ref from the EXTERNSHEET</param>
         /// <param name="last">The itabLast ref from the EXTERNSHEET</param>
-        public ExternSheetData(UInt16 sup, UInt16 first, UInt16 last)
+        public ExternSheetData(ushort sup, ushort first, ushort last)
         {
             this.iSUPBOOK = sup;
             this.itabFirst = first;

@@ -47,9 +47,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// MUST be equal to the number of items in the rgColor field of the Palette record immediately following this record. 
         /// MUST be equal to 0x0038.
         /// </summary>
-        public Int16 icvMac;
+        public short icvMac;
 
-        public ChartColors(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public ChartColors(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

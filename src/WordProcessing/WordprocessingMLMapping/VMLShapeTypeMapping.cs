@@ -157,7 +157,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 {
                     _writer.WriteStartElement("v", "textpath", OpenXmlNamespaces.VectorML);
                     _writer.WriteAttributeString("on", "t");
-                    StringBuilder textPathStyle = new StringBuilder();
+                    var textPathStyle = new StringBuilder();
                     if (shapeType.TextKerning)
                     {
                         textPathStyle.Append("v-text-kern:t;");
@@ -217,7 +217,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         public static string GenerateTypeId(ShapeType shapeType)
         {
-            StringBuilder type = new StringBuilder();
+            var type = new StringBuilder();
             type.Append("_x0000_t");
             type.Append(shapeType.TypeCode);
             return type.ToString();

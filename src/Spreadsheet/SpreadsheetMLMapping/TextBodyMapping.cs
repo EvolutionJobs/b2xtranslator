@@ -69,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                             // FontX.iFont is a 1-based index
                             fontIndex = attachedLabelSequence.FontX.iFont - 1;
                         }
-                        FontData fontData = this.WorkbookContext.XlsDoc.WorkBookData.styleData.FontDataList[fontIndex];
+                        var fontData = this.WorkbookContext.XlsDoc.WorkBookData.styleData.FontDataList[fontIndex];
 
                         // a:defRPr
                         _writer.WriteStartElement(Dml.Prefix, Dml.TextParagraph.ElDefRPr, Dml.Ns);

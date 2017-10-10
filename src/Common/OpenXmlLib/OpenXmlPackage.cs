@@ -79,7 +79,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         public virtual void Close()
         {
             // serialize the package on closing
-            OpenXmlWriter writer = new OpenXmlWriter();
+            var writer = new OpenXmlWriter();
             writer.Open(this.FileName);
 
             this.WritePackage(writer);
@@ -149,7 +149,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         protected void WritePackage(OpenXmlWriter writer)
         {
-            foreach (OpenXmlPart part in this.Parts)
+            foreach (var part in this.Parts)
             {
                 part.WritePart(writer);
             }

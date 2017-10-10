@@ -49,10 +49,10 @@ namespace CompoundFileExtractTest
         static void Main(string[] args)
         {            
             const int bytesToReadAtOnce = 1024;
-            char[] invalidChars = Path.GetInvalidFileNameChars();
+            var invalidChars = Path.GetInvalidFileNameChars();
 
             TraceLogger.LogLevel = TraceLogger.LoggingLevel.Error;
-            ConsoleTraceListener consoleTracer = new ConsoleTraceListener();
+            var consoleTracer = new ConsoleTraceListener();
             Trace.Listeners.Add(consoleTracer);
             Trace.AutoFlush = true;
 
@@ -66,8 +66,8 @@ namespace CompoundFileExtractTest
             {
 
                 StructuredStorageReader storageReader = null;
-                DateTime begin = DateTime.Now;
-                TimeSpan extractionTime = new TimeSpan();
+                var begin = DateTime.Now;
+                var extractionTime = new TimeSpan();
 
                 try
                 {                   
@@ -75,11 +75,11 @@ namespace CompoundFileExtractTest
                     storageReader = new StructuredStorageReader(file);
 
                     // read stream _entries
-                    ICollection<DirectoryEntry> streamEntries = storageReader.AllStreamEntries;
+                    var streamEntries = storageReader.AllStreamEntries;
 
                     // create valid path names
-                    Dictionary<string, string> PathNames = new Dictionary<string, string>();
-                    foreach (DirectoryEntry entry in streamEntries)
+                    var PathNames = new Dictionary<string, string>();
+                    foreach (var entry in streamEntries)
                     {
                         string name = entry.Path;
                         for (int i = 0; i < invalidChars.Length; i++)
@@ -101,9 +101,9 @@ namespace CompoundFileExtractTest
                         IStreamReader streamReader = new VirtualStreamReader(storageReader.GetStream(key));
 
                         // read bytes from stream, write them back to disk
-                        FileStream fs = new FileStream(outputDir + "\\" + PathNames[key] + ".stream", FileMode.Create);
-                        BinaryWriter writer = new BinaryWriter(fs);
-                        byte[] array = new byte[bytesToReadAtOnce];
+                        var fs = new FileStream(outputDir + "\\" + PathNames[key] + ".stream", FileMode.Create);
+                        var writer = new BinaryWriter(fs);
+                        var array = new byte[bytesToReadAtOnce];
                         int bytesRead;
                         do
                         {

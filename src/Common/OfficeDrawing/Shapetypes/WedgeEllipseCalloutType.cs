@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(63)]
+    [OfficeShapeType(63)]
     public class WedgeEllipseCalloutType : ShapeType
     {
         public WedgeEllipseCalloutType()
@@ -47,8 +47,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "3163,3163,18437,18437";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,#1";
+            var HandleOne = new Handle
+            {
+                position = "#0,#1"
+            };
             Handles.Add(HandleOne);
 
         }

@@ -50,7 +50,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             this.Fonts = new List<FontFbiGroup>();
             while (BiffRecord.GetNextRecordType(reader) == RecordType.Font)
             {
-                Font font = (Font)BiffRecord.ReadRecord(reader);
+                var font = (Font)BiffRecord.ReadRecord(reader);
                 Fbi fbi = null;
                 if (BiffRecord.GetNextRecordType(reader) == RecordType.Fbi)
                 {

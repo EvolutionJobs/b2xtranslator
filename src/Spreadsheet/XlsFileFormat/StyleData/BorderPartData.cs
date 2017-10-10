@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
             }
 
             // If parameter cannot be cast to FillDataList return false.
-            BorderPartData bpd = obj as BorderPartData;
+            var bpd = obj as BorderPartData;
             if ((System.Object)bpd == null)
             {
                 return false;

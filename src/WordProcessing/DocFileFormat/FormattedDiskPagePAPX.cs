@@ -53,20 +53,20 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             public ParagraphHeight phe;
         }
 
-        public FormattedDiskPagePAPX(VirtualStream wordStream, Int32 offset, VirtualStream dataStream)
+        public FormattedDiskPagePAPX(VirtualStream wordStream, int offset, VirtualStream dataStream)
         {
             this.Type = FKPType.Paragraph;
             this.WordStream = wordStream;
 
             //read the 512 bytes (FKP)
-            byte[] bytes = new byte[512];
+            var bytes = new byte[512];
             wordStream.Read(bytes, 0, 512, offset);
 
             //get the count
             this.crun = bytes[511];
 
             //create and fill the array with the adresses
-            this.rgfc = new Int32[this.crun + 1];
+            this.rgfc = new int[this.crun + 1];
             int j = 0;
             for (int i = 0; i < rgfc.Length; i++)
             {
@@ -82,13 +82,15 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             for (int i = 0; i < rgbx.Length; i++)
             {
                 //read the 12 for PHE
-                byte[] phe = new byte[12];
+                var phe = new byte[12];
                 Array.Copy(bytes, j+1, phe, 0, phe.Length);
 
                 //fill the rgbx array
-                BX bx = new BX();
-                bx.wordOffset = bytes[j];
-                bx.phe = new ParagraphHeight(phe, false);
+                var bx = new BX
+                {
+                    wordOffset = bytes[j],
+                    phe = new ParagraphHeight(phe, false)
+                };
                 rgbx[i] = bx;
                 j += 13;
 
@@ -109,7 +111,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     if (cw != 0)
                     {
                         //read the bytes for papx
-                        byte[] papx = new byte[cw * 2];
+                        var papx = new byte[cw * 2];
                         Array.Copy(bytes, (bx.wordOffset * 2) + padbyte + 1, papx, 0, papx.Length);
 
                         //parse PAPX and fill grppapx
@@ -133,10 +135,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <returns></returns>
         public static List<FormattedDiskPagePAPX> GetAllPAPXFKPs(FileInformationBlock fib, VirtualStream wordStream, VirtualStream tableStream, VirtualStream dataStream)
         {
-            List<FormattedDiskPagePAPX> list = new List<FormattedDiskPagePAPX>();
+            var list = new List<FormattedDiskPagePAPX>();
 
             //get bintable for PAPX
-            byte[] binTablePapx = new byte[fib.lcbPlcfBtePapx];
+            var binTablePapx = new byte[fib.lcbPlcfBtePapx];
             tableStream.Read(binTablePapx, 0, binTablePapx.Length, (int)fib.fcPlcfBtePapx);
 
             //there are n offsets and n-1 fkp's in the bin table
@@ -167,16 +169,16 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <param name="wordStream">The VirtualStream "WordStream"</param>
         /// <param name="tableStream">The VirtualStream "0Table" or "1Table"</param>
         /// <returns>The FCs</returns>
-        public static List<Int32> GetFileCharacterPositions(
-            Int32 fcMin,
-            Int32 fcMax,
+        public static List<int> GetFileCharacterPositions(
+            int fcMin,
+            int fcMax,
             FileInformationBlock fib, 
             VirtualStream wordStream, 
             VirtualStream tableStream,
             VirtualStream dataStream)
         {
-            List<Int32> list = new List<Int32>();
-            List<FormattedDiskPagePAPX> fkps = FormattedDiskPagePAPX.GetAllPAPXFKPs(fib, wordStream, tableStream, dataStream);
+            var list = new List<int>();
+            var fkps = FormattedDiskPagePAPX.GetAllPAPXFKPs(fib, wordStream, tableStream, dataStream);
 
             for (int i = 0; i < fkps.Count; i++ )
             {
@@ -209,19 +211,19 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <param name="tableStream">The VirtualStream "0Table" or "1Table"</param>
         /// <returns>The FCs</returns>
         public static List<ParagraphPropertyExceptions> GetParagraphPropertyExceptions(
-            Int32 fcMin,
-            Int32 fcMax,
+            int fcMin,
+            int fcMax,
             FileInformationBlock fib, 
             VirtualStream wordStream, 
             VirtualStream tableStream,
             VirtualStream dataStream)
         {
-            List<ParagraphPropertyExceptions> list = new List<ParagraphPropertyExceptions>();
-            List<FormattedDiskPagePAPX> fkps = FormattedDiskPagePAPX.GetAllPAPXFKPs(fib, wordStream, tableStream, dataStream);
+            var list = new List<ParagraphPropertyExceptions>();
+            var fkps = FormattedDiskPagePAPX.GetAllPAPXFKPs(fib, wordStream, tableStream, dataStream);
 
             for (int i = 0; i < fkps.Count; i++)
             {
-                FormattedDiskPagePAPX fkp = fkps[i];
+                var fkp = fkps[i];
 
                 for (int j = 0; j < fkp.grppapx.Length; j++)
                 {

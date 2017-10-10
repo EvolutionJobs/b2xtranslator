@@ -65,14 +65,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public bool fShowSeriesKey;
 
-        public Dat(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Dat(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
 
             this.fHasBordHorz = Utils.BitmaskToBool(flags, 0x0001);
             this.fHasBordVert = Utils.BitmaskToBool(flags, 0x0002);

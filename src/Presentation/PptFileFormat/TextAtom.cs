@@ -41,10 +41,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TextAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance, Encoding encoding)
             : base(_reader, size, typeCode, version, instance)
         {
-            byte[] bytes = new byte[size];
+            var bytes = new byte[size];
             this.Reader.Read(bytes, 0, (int)size);
 
-            this.Text = new String(encoding.GetChars(bytes));
+            this.Text = new string(encoding.GetChars(bytes));
         }
 
         public override string ToString(uint depth)

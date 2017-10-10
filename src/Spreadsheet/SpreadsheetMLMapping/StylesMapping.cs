@@ -64,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             // Format mapping 
             _writer.WriteStartElement("numFmts");
             _writer.WriteAttributeString("count", sd.FormatDataList.Count.ToString());
-            foreach (FormatData format in sd.FormatDataList)
+            foreach (var format in sd.FormatDataList)
             {
                 _writer.WriteStartElement("numFmt");
                 _writer.WriteAttributeString("numFmtId", format.ifmt.ToString());
@@ -85,7 +85,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             //</fonts>
             _writer.WriteStartElement("fonts");
             _writer.WriteAttributeString("count", sd.FontDataList.Count.ToString());
-            foreach (FontData font in sd.FontDataList)
+            foreach (var font in sd.FontDataList)
             {
                 ///
                 StyleMappingHelper.addFontElement(_writer, font, FontElementType.NormalStyle); 
@@ -102,7 +102,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             //</fill>           
             _writer.WriteStartElement("fills");
             _writer.WriteAttributeString("count", sd.FillDataList.Count.ToString());
-            foreach (FillData fd in sd.FillDataList)
+            foreach (var fd in sd.FillDataList)
             {
                 _writer.WriteStartElement("fill");
                 _writer.WriteStartElement("patternFill");
@@ -133,7 +133,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             //</borders>
             _writer.WriteStartElement("borders");
             _writer.WriteAttributeString("count", sd.BorderDataList.Count.ToString());
-            foreach (BorderData borderData in sd.BorderDataList)
+            foreach (var borderData in sd.BorderDataList)
             {
                 _writer.WriteStartElement("border");
 
@@ -219,7 +219,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             // xfcellstyle mapping 
             _writer.WriteStartElement("cellStyleXfs");
             _writer.WriteAttributeString("count", sd.XFCellStyleDataList.Count.ToString());
-            foreach (XFData xfcellstyle in sd.XFCellStyleDataList)
+            foreach (var xfcellstyle in sd.XFCellStyleDataList)
             {
                 _writer.WriteStartElement("xf");
                 _writer.WriteAttributeString("numFmtId", xfcellstyle.ifmt.ToString());
@@ -245,7 +245,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             // xfcell mapping 
             _writer.WriteStartElement("cellXfs");
             _writer.WriteAttributeString("count", sd.XFCellDataList.Count.ToString());
-            foreach (XFData xfcell in sd.XFCellDataList)
+            foreach (var xfcell in sd.XFCellDataList)
             {
                 _writer.WriteStartElement("xf");
                 _writer.WriteAttributeString("numFmtId", xfcell.ifmt.ToString());
@@ -297,7 +297,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             /// 
             _writer.WriteStartElement("cellStyles");
             //_writer.WriteAttributeString("count", sd.StyleList.Count.ToString());
-            foreach (Style style in sd.StyleList)
+            foreach (var style in sd.StyleList)
             {
                 _writer.WriteStartElement("cellStyle");
 
@@ -334,7 +334,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 _writer.WriteStartElement("indexedColors");
 
                 // <rgbColor rgb="00000000"/>
-                foreach (RGBColor item in sd.ColorDataList)
+                foreach (var item in sd.ColorDataList)
                 {
                     _writer.WriteStartElement("rgbColor");
                     _writer.WriteAttributeString("rgb", String.Format("{0:x2}", item.Alpha).ToString() + item.SixDigitHexCode); 

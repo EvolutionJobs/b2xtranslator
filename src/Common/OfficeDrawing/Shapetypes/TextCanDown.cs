@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(175)]
+    [OfficeShapeType(175)]
     public class TextCanDown : ShapeType
     {
         public TextCanDown()
@@ -23,9 +23,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.ConnectorAngles = "270,180,90,0";
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="center,#0";
-            h1.yrange = "0,7200";
+            var h1 = new Handle
+            {
+                position = "center,#0",
+                yrange = "0,7200"
+            };
             this.Handles.Add(h1);
 
             

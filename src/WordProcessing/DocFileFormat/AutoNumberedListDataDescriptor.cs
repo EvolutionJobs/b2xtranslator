@@ -78,7 +78,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             if (bytes.Length == 88)
             {
                 //copies the first 20 bytes into a new array
-                byte[] anlvArray = new byte[20];
+                var anlvArray = new byte[20];
                 Array.Copy(bytes, anlvArray, anlvArray.Length);
                 //parse these bytes 
                 this.anlv = new AutoNumberLevelDescriptor(anlvArray);

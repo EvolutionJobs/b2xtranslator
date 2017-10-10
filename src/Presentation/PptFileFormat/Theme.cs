@@ -35,7 +35,7 @@ using DIaLOGIKa.b2xtranslator.ZipUtils;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1038)]
+    [OfficeRecord(1038)]
     public class Theme : XmlContainer
     {
         public Theme(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -59,8 +59,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             if (rootRels.Count != 1)
                 throw new Exception("Expected actly one Relationship in Theme OOXML doc");
 
-            String managerPath = rootRels[0].Attributes["Target"].Value;
-            String managerDirectory = Path.GetDirectoryName(managerPath).Replace("\\", "/");
+            var managerPath = rootRels[0].Attributes["Target"].Value;
+            var managerDirectory = Path.GetDirectoryName(managerPath).Replace("\\", "/");
             XmlNodeList managerRels;
 
             try
@@ -78,10 +78,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             if (managerRels.Count != 1)
                 throw new Exception("Expected actly one Relationship for Theme manager");
 
-            String partPath = String.Format("{0}/{1}", managerDirectory, managerRels[0].Attributes["Target"].Value);
-            Stream partStream = zipReader.GetEntry(partPath);
+            var partPath = String.Format("{0}/{1}", managerDirectory, managerRels[0].Attributes["Target"].Value);
+            var partStream = zipReader.GetEntry(partPath);
 
-            XmlDocument partDoc = new XmlDocument();
+            var partDoc = new XmlDocument();
             partDoc.Load(partStream);
 
             XmlNode e = partDoc.DocumentElement;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(144)]
+    [OfficeShapeType(144)]
     public class TextArchUpCurve : ShapeType
     {
         public TextArchUpCurve()
@@ -17,9 +17,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.PreferRelative = false;
             this.TextKerning = true;
             this.ExtrusionOk = true;
-            this.Lock = new ProtectionBooleans();
-            this.Lock.fUsefLockText = true;
-            this.Lock.fLockText = true;
+            this.Lock = new ProtectionBooleans
+            {
+                fUsefLockText = true,
+                fLockText = true
+            };
             this.LockShapeType = true;
 
             this.Formulas = new List<string>();
@@ -49,9 +51,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("sum 10800 0 @18");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.polar = "10800,10800";
-            h1.position = "@16,#0";
+            var h1 = new Handle
+            {
+                polar = "10800,10800",
+                position = "@16,#0"
+            };
             this.Handles.Add(h1);
         }
     }

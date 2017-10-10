@@ -48,7 +48,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public FixedPointNumber dyPlotGrowth;
 
-        public PlotGrowth(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public PlotGrowth(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

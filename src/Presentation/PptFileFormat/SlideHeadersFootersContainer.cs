@@ -6,13 +6,13 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4057)]
+    [OfficeRecord(4057)]
     public class SlideHeadersFootersContainer : RegularContainer
     {
         public SlideHeadersFootersContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                foreach (Record rec in Children)
+                foreach (var rec in Children)
                 {
                     
                 }
@@ -20,10 +20,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4058)]
+    [OfficeRecord(4058)]
     public class HeadersFootersAtom : Record
     {
-        public Int16 formatId;
+        public short formatId;
         public bool fHasDate;
         public bool fHasTodayDate;
         public bool fHasUserDate;
@@ -35,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         {
             formatId = this.Reader.ReadInt16();
 
-            Int16 mask = this.Reader.ReadInt16();
+            var mask = this.Reader.ReadInt16();
             fHasDate = ((mask & (1)) != 0);
             fHasTodayDate = ((mask & (1 << 1)) != 0);
             fHasUserDate = ((mask & (1 << 2)) != 0);

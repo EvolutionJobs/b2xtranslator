@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         ///     8000h (32768 dec.) = Apple Macintosh
         ///     04E4h (1252 dec.) = ANSI (Microsoft Windows)
         /// </summary>
-        public UInt16 cv;
+        public ushort cv;
 
         /// <summary>
         /// This record marks the beginning of the user interface section of the Book (Workbook) stream.  
@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <param name="reader"></param>
         /// <param name="id"></param>
         /// <param name="length"></param>
-        public InterfaceHdr(IStreamReader reader, RecordType id, UInt16 length)
+        public InterfaceHdr(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             Debug.Assert(this.Id == ID);

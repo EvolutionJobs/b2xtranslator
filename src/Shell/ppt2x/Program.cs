@@ -65,88 +65,70 @@ namespace DIaLOGIKa.b2xtranslator.ppt2x
 
             PrintWelcome(ToolName, RevisionResource);
 
-            if (CreateContextMenuEntry)
+            try
             {
-                // create context menu entry
-                try
+                if (InputFile.Contains("*.ppt"))
                 {
-                    TraceLogger.Info("Creating context menu entry for ppt2x ...");
-                    RegisterForContextMenu(GetContextMenuKey(ContextMenuInputExtension, ContextMenuText));
-                    TraceLogger.Info("Succeeded.");
-                }
-                catch (Exception)
-                {
-                    TraceLogger.Info("Failed. Sorry :(");
-                }
-            }
-            else
-            {
 
-                try
-                {
-                    if (InputFile.Contains("*.ppt"))
+                    var files = Directory.GetFiles(InputFile.Replace("*.ppt", ""), "*.ppt");
+
+                    foreach (var file in files)
                     {
-
-                        string[] files = Directory.GetFiles(InputFile.Replace("*.ppt", ""), "*.ppt");
-
-                        foreach (String file in files)
+                        if (new FileInfo(file).Extension.ToLower().EndsWith("ppt"))
                         {
-                            if (new FileInfo(file).Extension.ToLower().EndsWith("ppt"))
-                            {
-                                ChoosenOutputFile = null;
-                                processFile(file);
-                            }
-                        } 
-                       
-                    }
-                    else
-                    {
-                        processFile(InputFile);
+                            ChoosenOutputFile = null;
+                            processFile(file);
+                        }
                     }
 
-                    
                 }
-                catch (ZipCreationException ex)
+                else
                 {
-                    TraceLogger.Error("Could not create output file {0}.", ChoosenOutputFile);
-                    //TraceLogger.Error("Perhaps the specified outputfile was a directory or contained invalid characters.");
-                    TraceLogger.Debug(ex.ToString());
+                    processFile(InputFile);
                 }
-                catch (FileNotFoundException ex)
-                {
-                    TraceLogger.Error("Could not read input file {0}.", InputFile);
-                    TraceLogger.Debug(ex.ToString());
-                }
-                catch (MagicNumberException)
-                {
-                    TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
-                }
-                catch (InvalidStreamException e)
-                {
-                    TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
-                }
-                catch (InvalidRecordException)
-                {
-                    TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
-                }
-                catch (StreamNotFoundException e)
-                {
-                    TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
-                }
-                catch (Exception ex)
-                {
-                    TraceLogger.Error("Conversion of file {0} failed.", InputFile);
-                    TraceLogger.Debug(ex.ToString());
-                }
+
+
+            }
+            catch (ZipCreationException ex)
+            {
+                TraceLogger.Error("Could not create output file {0}.", ChoosenOutputFile);
+                //TraceLogger.Error("Perhaps the specified outputfile was a directory or contained invalid characters.");
+                TraceLogger.Debug(ex.ToString());
+            }
+            catch (FileNotFoundException ex)
+            {
+                TraceLogger.Error("Could not read input file {0}.", InputFile);
+                TraceLogger.Debug(ex.ToString());
+            }
+            catch (MagicNumberException)
+            {
+                TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
+            }
+            catch (InvalidStreamException e)
+            {
+                TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
+            }
+            catch (InvalidRecordException)
+            {
+                TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
+            }
+            catch (StreamNotFoundException e)
+            {
+                TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
+            }
+            catch (Exception ex)
+            {
+                TraceLogger.Error("Conversion of file {0} failed.", InputFile);
+                TraceLogger.Debug(ex.ToString());
             }
 
             TraceLogger.Info("End of program");
         }
 
-        private static void processFile(String InputFile)
+        private static void processFile(string InputFile)
         {
             // copy processing file
-            ProcessingFile procFile = new ProcessingFile(InputFile);
+            var procFile = new ProcessingFile(InputFile);
 
             //make output file name
             if (ChoosenOutputFile == null)
@@ -162,10 +144,10 @@ namespace DIaLOGIKa.b2xtranslator.ppt2x
             }
 
             //open the reader
-            using (StructuredStorageReader reader = new StructuredStorageReader(procFile.File.FullName))
+            using (var reader = new StructuredStorageReader(procFile.File.FullName))
             {
                 // parse the ppt document
-                PowerpointDocument ppt = new PowerpointDocument(reader);
+                var ppt = new PowerpointDocument(reader);
 
                 // detect document type and name
                 OpenXmlPackage.DocumentType outType = Converter.DetectOutputType(ppt);
@@ -175,15 +157,15 @@ namespace DIaLOGIKa.b2xtranslator.ppt2x
                 PresentationDocument pptx = PresentationDocument.Create(conformOutputFile, outType);
 
                 //start time
-                DateTime start = DateTime.Now;
+                var start = DateTime.Now;
                 TraceLogger.Info("Converting file {0} into {1}", InputFile, conformOutputFile);
 
                 // convert
                 Converter.Convert(ppt, pptx);
 
                 // stop time
-                DateTime end = DateTime.Now;
-                TimeSpan diff = end.Subtract(start);
+                var end = DateTime.Now;
+                var diff = end.Subtract(start);
                 TraceLogger.Info("Conversion of file {0} finished in {1} seconds", InputFile, diff.TotalSeconds.ToString(CultureInfo.InvariantCulture));
             }
         }

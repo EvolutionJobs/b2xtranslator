@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// <param name="bsd">WorkSheetData</param>
         public void Apply(SupBookData sbd)
         {
-            Uri uri = new Uri(sbd.VirtPath, UriKind.RelativeOrAbsolute);
+            var uri = new Uri(sbd.VirtPath, UriKind.RelativeOrAbsolute);
             ExternalRelationship er = this.xlsContext.SpreadDoc.WorkbookPart.GetExternalLinkPart().AddExternalRelationship(OpenXmlRelationshipTypes.ExternalLinkPath, uri);
 
             
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, er.Id.ToString());
 
             _writer.WriteStartElement("sheetNames");
-            foreach (String var in sbd.RGST)
+            foreach (var var in sbd.RGST)
             {
                 _writer.WriteStartElement("sheetName");
                 _writer.WriteAttributeString("val", var);
@@ -83,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             if (sbd.ExternNames.Count > 0)
             {
                 _writer.WriteStartElement("definedNames");
-                foreach (String var in sbd.ExternNames)
+                foreach (var var in sbd.ExternNames)
                 {
                     _writer.WriteStartElement("definedName");
                     _writer.WriteAttributeString("name", var);
@@ -96,12 +96,12 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             {
                 _writer.WriteStartElement("sheetDataSet");
                 int counter = 0;
-                foreach (XCTData var in sbd.XCTDataList)
+                foreach (var var in sbd.XCTDataList)
                 {
                     _writer.WriteStartElement("sheetData");
                     _writer.WriteAttributeString("sheetId", counter.ToString());
                     counter++;
-                    foreach (CRNData crn in var.CRNDataList)
+                    foreach (var crn in var.CRNDataList)
                     {
                         _writer.WriteStartElement("row");
                         _writer.WriteAttributeString("r", (crn.rw + 1).ToString());
@@ -126,7 +126,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                                 // _writer.WriteAttributeString("t", "b");
                                 _writer.WriteElementString("v", Convert.ToString(crn.oper[i - crn.colFirst], CultureInfo.GetCultureInfo("en-US")));
                             }
-                            if (crn.oper[i - crn.colFirst] is String)
+                            if (crn.oper[i - crn.colFirst] is string)
                             {
                                 _writer.WriteAttributeString("t", "str");
                                 _writer.WriteElementString("v", crn.oper[i - crn.colFirst].ToString());

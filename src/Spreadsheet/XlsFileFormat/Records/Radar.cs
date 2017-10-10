@@ -50,11 +50,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fHasShadow;
 
-        public Radar(IStreamReader reader, RecordType id, UInt16 length)
+        public Radar(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // initialize class members from stream
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fRdrAxLab = Utils.BitmaskToBool(flags, 0x1);
             this.fHasShadow = Utils.BitmaskToBool(flags, 0x2);
             reader.ReadBytes(2); //unused

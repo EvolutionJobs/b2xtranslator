@@ -48,7 +48,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public XLUnicodeString headerText; 
 
-        public Header(IStreamReader reader, RecordType id, UInt16 length)
+        public Header(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

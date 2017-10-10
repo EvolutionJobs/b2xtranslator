@@ -112,7 +112,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// <summary>
         /// Specifies the color of the text in the color palette.
         /// </summary>
-        public UInt16 icv;
+        public ushort icv;
 
         /// <summary>
         /// MUST be a value from the following table:<br/>
@@ -120,9 +120,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 91 to 180 = Text rotated 1 to 90 degrees clockwise (angle is trot – 90)<br/>
         /// 255 = Text top-to-bottom with letters upright
         /// </summary>
-        public UInt16 trot;
+        public ushort trot;
 
-        public Tick(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Tick(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -135,7 +135,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             this.wBkgMode = (BackgroundMode)reader.ReadByte();
             this.rgb = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
             reader.ReadBytes(16); // rerserved
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fAutoCo = Utils.BitmaskToBool(flags, 0x1);
             this.fAutoMode = Utils.BitmaskToBool(flags, 0x2);
             this.rot = (TextRotation)Utils.BitmaskToInt(flags, 0x1C);

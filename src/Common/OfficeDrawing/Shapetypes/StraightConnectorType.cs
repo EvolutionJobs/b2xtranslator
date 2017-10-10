@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(32)]
+    [OfficeShapeType(32)]
     public class StraightConnectorType : ShapeType
     {
         public StraightConnectorType()

@@ -5,7 +5,7 @@ using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 
 namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 {
-    public class OfficeDrawingTable : Dictionary<Int32, FileShapeAddress>
+    public class OfficeDrawingTable : Dictionary<int, FileShapeAddress>
     {
         public enum OfficeDrawingTableType
         {
@@ -17,7 +17,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
         public OfficeDrawingTable(WordDocument doc, OfficeDrawingTableType type)
         {
-            VirtualStreamReader reader = new VirtualStreamReader(doc.TableStream);
+            var reader = new VirtualStreamReader(doc.TableStream);
 
             //FSPA has size 26 + 4 byte for the FC = 30 byte
             int n = 0;
@@ -35,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             
             //there are n+1 FCs ...
             doc.TableStream.Seek(startFc, System.IO.SeekOrigin.Begin);
-            Int32[] fcs = new Int32[n+1];
+            var fcs = new int[n+1];
             for (int i = 0; i < (n+1); i++)
             {
                 fcs[i] = reader.ReadInt32();

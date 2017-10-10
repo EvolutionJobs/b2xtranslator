@@ -33,7 +33,7 @@ using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1058)]
+    [OfficeRecord(1058)]
     public class RoundTripContentMasterId12 : Record
     {
         /// <summary>

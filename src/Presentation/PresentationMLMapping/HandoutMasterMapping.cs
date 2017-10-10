@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         override public void Apply(RegularContainer pmaster)
         {
-            Handout master = (Handout)pmaster;
+            var master = (Handout)pmaster;
 
             TraceLogger.DebugInternal("HandoutMasterMapping.Apply");
             UInt32 masterId = 0; // master.PersistAtom.SlideId;
@@ -120,7 +120,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
             _writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
-            ShapeTreeMapping stm = new ShapeTreeMapping(_ctx, _writer);
+            var stm = new ShapeTreeMapping(_ctx, _writer);
             stm.parentSlideMapping = this;
             stm.Apply(this.Master.FirstChildWithType<PPDrawing>());
 

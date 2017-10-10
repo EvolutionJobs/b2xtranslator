@@ -34,8 +34,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
     public class GPointAtom
     {
-        public Int32 X;
-        public Int32 Y;
+        public int X;
+        public int Y;
 
         public GPointAtom(BinaryReader reader)
         {

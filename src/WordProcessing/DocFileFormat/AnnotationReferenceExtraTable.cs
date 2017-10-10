@@ -14,7 +14,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             if(fib.nFib >= FileInformationBlock.FibVersion.Fib2002)
             {
                 tableStream.Seek((long)fib.fcAtrdExtra, System.IO.SeekOrigin.Begin);
-                VirtualStreamReader reader = new VirtualStreamReader(tableStream);
+                var reader = new VirtualStreamReader(tableStream);
 
                 int n = (int)fib.lcbAtrdExtra / ARTDPost10_LENGTH;
 

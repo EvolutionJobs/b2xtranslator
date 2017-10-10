@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
 
         /// <summary>Constructs an exception with a descriptive message.</summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
-        public ZipEntryNotFoundException(String message)
+        public ZipEntryNotFoundException(string message)
             : base(message)
         {
         }
@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
         /// <summary>Constructs an exception with a descriptive message and a reference to the instance of the <c>Exception</c> that is the root cause of the this exception.</summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">An instance of <c>Exception</c> that is the cause of the current Exception. If <paramref name="innerException"/> is non-null, then the current Exception is raised in a catch block handling <paramref>innerException</paramref>.</param>
-        public ZipEntryNotFoundException(String message, Exception innerException)
+        public ZipEntryNotFoundException(string message, Exception innerException)
             : base(message, innerException)
         {
         }

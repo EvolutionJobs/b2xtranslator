@@ -121,10 +121,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             koreanDigital
         }
 
-        private Int32 _colNumber;
-        private Int16[] _colSpace;
-        private Int16[] _colWidth;
-        private Int16 _pgWidth, _marLeft, _marRight;
+        private int _colNumber;
+        private short[] _colSpace;
+        private short[] _colWidth;
+        private short _pgWidth, _marLeft, _marRight;
 
         /// <summary>
         /// Creates a new SectionPropertiesMapping which writes the 
@@ -317,7 +317,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //footnote porperties
                     case SinglePropertyModifier.OperationCode.sprmSRncFtn:
                         //restart code
-                        FootnoteRestartCode fncFtn = FootnoteRestartCode.continuous;
+                        var fncFtn = FootnoteRestartCode.continuous;
 
                         //open office uses 1 byte values instead of 2 bytes values:
                         if (sprm.Arguments.Length == 2)
@@ -333,21 +333,21 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSFpc:
                         //position code
-                        Int16 fpc = 0;
+                        short fpc = 0;
                         if(sprm.Arguments.Length == 2)
                             fpc = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         else
-                            fpc = (Int16)sprm.Arguments[0];
+                            fpc = (short)sprm.Arguments[0];
                         if(fpc == 2)
                             appendValueElement(footnotePr, "pos", "beneathText", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSNfcFtnRef:
                         //number format
-                        Int16 nfc = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var nfc = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueElement(footnotePr, "numFmt", NumberingMapping.GetNumberFormat(nfc), true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSNFtn:
-                        Int16 nFtn = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        var nFtn = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueElement(footnotePr, "numStart", nFtn.ToString(), true);
                         break;
 
@@ -365,7 +365,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //columns
                     case SinglePropertyModifier.OperationCode.sprmSCcolumns:
                         _colNumber = (int)(System.BitConverter.ToInt16(sprm.Arguments, 0) + 1);
-                        _colSpace = new Int16[_colNumber];
+                        _colSpace = new short[_colNumber];
                         appendValueAttribute(cols, "num", _colNumber.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSDxaColumns:
@@ -375,16 +375,16 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmSDxaColWidth:
                         //there is at least one width set, so create the array
                         if(_colWidth==null)
-                            _colWidth = new Int16[_colNumber];
+                            _colWidth = new short[_colNumber];
 
                         byte index = sprm.Arguments[0];
-                        Int16 w = System.BitConverter.ToInt16(sprm.Arguments, 1);
+                        var w = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         _colWidth[index] = w;
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSDxaColSpacing:
                         //there is at least one space set, so create the array
                         if (_colSpace == null)
-                            _colSpace = new Int16[_colNumber];
+                            _colSpace = new short[_colNumber];
 
                         _colSpace[sprm.Arguments[0]] = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         break;
@@ -416,7 +416,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //pgNumType
                     case SinglePropertyModifier.OperationCode.sprmSNfcPgn:
-                        PageNumberFormatCode pgnFc = (PageNumberFormatCode)sprm.Arguments[0];
+                        var pgnFc = (PageNumberFormatCode)sprm.Arguments[0];
                         appendValueAttribute(pgNumType, "fmt", pgnFc.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSPgnStart:
@@ -438,7 +438,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 //the last column width is not written to the document because it can be calculated.
                 if (_colWidth[_colWidth.Length - 1] == 0)
                 {
-                    Int16 lastColWidth = (Int16)(_pgWidth - _marLeft - _marRight);
+                    var lastColWidth = (short)(_pgWidth - _marLeft - _marRight);
                     for (int i = 0; i < _colWidth.Length - 1; i++)
                     {
                         lastColWidth -= _colSpace[i];

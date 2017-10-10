@@ -7,10 +7,10 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4003)]
+    [OfficeRecord(4003)]
     public class TextMasterStyleAtom : TextStyleAtom
     {
-        public UInt16 IndentLevelCount;
+        public ushort IndentLevelCount;
 
         public byte[] Bytes;
 
@@ -28,7 +28,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
                 if ((this.Instance >= 5)) // & (this.Instance < this.IndentLevelCount))
                 {
-                    UInt16 level = Reader.ReadUInt16(); 
+                    var level = Reader.ReadUInt16(); 
                 }                
              
                 this.PRuns.Add(new ParagraphRun(this.Reader, true));

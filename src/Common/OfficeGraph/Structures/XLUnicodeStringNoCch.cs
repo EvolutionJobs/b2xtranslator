@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         public byte[] rgb;
 
         
-        public XLUnicodeStringNoCch(IStreamReader reader, UInt16 cch)
+        public XLUnicodeStringNoCch(IStreamReader reader, ushort cch)
         {
             this.fHighByte = Utils.BitmaskToBool(reader.ReadByte(), 0x0001);
 

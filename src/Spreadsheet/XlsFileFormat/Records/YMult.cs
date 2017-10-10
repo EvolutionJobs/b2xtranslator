@@ -90,7 +90,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fBeingEdited;
 
-        public YMult(IStreamReader reader, RecordType id, UInt16 length)
+        public YMult(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -101,7 +101,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.axmid = (AxisMultiplier)reader.ReadInt16();
             this.numLabelMultiplier = reader.ReadDouble();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fAutoShowMultiplier = Utils.BitmaskToBool(flags, 0x0002);
             this.fBeingEdited = Utils.BitmaskToBool(flags, 0x0004);
 

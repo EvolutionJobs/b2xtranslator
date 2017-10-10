@@ -36,7 +36,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
     {
         public byte drType;
 
-        public UInt16 xmlTkTag;
+        public ushort xmlTkTag;
 
         public XmlTkHeader(IStreamReader reader)
         {

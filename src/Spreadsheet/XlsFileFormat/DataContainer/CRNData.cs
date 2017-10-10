@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         public byte colLast;
         public byte colFirst;
 
-        public UInt16 rw;
+        public ushort rw;
 
         public List<Object> oper;
 

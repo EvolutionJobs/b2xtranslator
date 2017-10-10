@@ -50,22 +50,22 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public Record OPT2;
 
-        public GelFrame(IStreamReader reader, RecordType id, UInt16 length)
+        public GelFrame(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
             // copy data to a memory stream to cope with Continue records
-            using (MemoryStream ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
-                byte[] buffer = reader.ReadBytes(length);
+                var buffer = reader.ReadBytes(length);
                 ms.Write(buffer, 0, length);
 
                 if (BiffRecord.GetNextRecordType(reader) == RecordType.GelFrame)
                 {
-                    RecordType nextId = (RecordType)reader.ReadUInt16();
-                    UInt16 nextLength = reader.ReadUInt16();
+                    var nextId = (RecordType)reader.ReadUInt16();
+                    var nextLength = reader.ReadUInt16();
 
                     buffer = reader.ReadBytes(nextLength);
                     ms.Write(buffer, 0, nextLength);
@@ -73,8 +73,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
                 while (BiffRecord.GetNextRecordType(reader) == RecordType.Continue)
                 {
-                    RecordType nextId = (RecordType)reader.ReadUInt16();
-                    UInt16 nextLength = reader.ReadUInt16();
+                    var nextId = (RecordType)reader.ReadUInt16();
+                    var nextLength = reader.ReadUInt16();
 
                     buffer = reader.ReadBytes(nextLength);
                     ms.Write(buffer, 0, nextLength);

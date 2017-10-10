@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
             this.type = PtgType.Operand;
             this.popSize = 1;
 
-            ShortXLUnicodeString st = new ShortXLUnicodeString(this.Reader);
+            var st = new ShortXLUnicodeString(this.Reader);
             // quotes need to be escaped
             this.Data = ExcelHelperClass.EscapeFormulaString(st.Value);
             

@@ -87,7 +87,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// points in the series, the entire series will be in the secondary bar/pie, except for the first 
         /// data point. If split is not set to 0x0000 or if fAutoSplit is set to 1, this value MUST be ignored.
         /// </summary>
-        public Int16 iSplitPos;
+        public short iSplitPos;
 
         /// <summary>
         /// A signed integer that specifies the percentage below which each data point is contained 
@@ -99,14 +99,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// If split is not set to 0x0002 or if fAutoSplit is set to 1, this value MUST be ignored.
         /// </summary>
-        public Int16 pcSplitPercent;
+        public short pcSplitPercent;
 
         /// <summary>
         /// A signed integer that specifies the size of the secondary bar/pie as a percentage of the size of the primary pie. 
         /// 
         /// MUST be a value greater than or equal to 5 and less than or equal to 200.
         /// </summary>
-        public Int16 pcPie2Size;
+        public short pcPie2Size;
 
         /// <summary>
         /// A signed integer that specifies the distance between the primary pie and the secondary bar/pie. 
@@ -117,7 +117,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// width of the primary pie and the secondary bar/pie, and 200 is 100% of 
         /// the average width of the primary pie and the secondary bar/pie.
         /// </summary>
-        public Int16 pcGap;
+        public short pcGap;
 
         /// <summary>
         /// An Xnum that specifies the split when the split field is set to 0x0001. 
@@ -134,7 +134,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fHasShadow;
 
-        public BopPop(IStreamReader reader, RecordType id, UInt16 length)
+        public BopPop(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

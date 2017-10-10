@@ -49,7 +49,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// MUST be greater or equal to 0 and less than or equal to 300. <br/>
         /// MUST be ignored if the fBubbles field is 0.
         /// </summary>
-        public UInt16 pcBubbleSizeRatio;
+        public ushort pcBubbleSizeRatio;
 
         /// <summary>
         /// An unsigned integer that specifies how the default size of the data points represents the value. <br/>
@@ -58,7 +58,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 1 = The area of the data point represents the value.<br/>
         /// 2 = The width of the data point represents the value.
         /// </summary>
-        public UInt16 wBubbleSize;
+        public ushort wBubbleSize;
 
         /// <summary>
         /// A bit that specifies whether this chart group is a scatter chart group or bubble chart group. <br/>
@@ -81,7 +81,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fHasShadow;
 
-        public Scatter(IStreamReader reader, RecordType id, UInt16 length)
+        public Scatter(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -90,7 +90,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // initialize class members from stream
             this.pcBubbleSizeRatio = reader.ReadUInt16();
             this.wBubbleSize = reader.ReadUInt16();
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fBubbles = Utils.BitmaskToBool(flags, 0x1);
             this.fShowNegBubbles = Utils.BitmaskToBool(flags, 0x2);
             this.fHasShadow = Utils.BitmaskToBool(flags, 0x4);

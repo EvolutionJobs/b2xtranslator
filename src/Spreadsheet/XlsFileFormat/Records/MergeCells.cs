@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Count REF structures 
         /// </summary>
-        public UInt16 cmcs;
+        public ushort cmcs;
 
         /// <summary>
         /// Ctor 
@@ -68,7 +68,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <param name="reader"></param>
         /// <param name="id"></param>
         /// <param name="length"></param>
-        public MergeCells(IStreamReader reader, RecordType id, UInt16 length)
+        public MergeCells(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             this.mergeCellDataList = new List<MergeCellData>(); 
@@ -79,7 +79,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             for (int i = 0; i < cmcs; i++)
             {
-                MergeCellData mcd = new MergeCellData();
+                var mcd = new MergeCellData();
                 mcd.rwFirst = this.Reader.ReadUInt16();
                 mcd.rwLast = this.Reader.ReadUInt16();
                 mcd.colFirst = this.Reader.ReadUInt16();

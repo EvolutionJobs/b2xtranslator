@@ -44,12 +44,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Record type; this matches the BIFF rt in the first two bytes of the record; =088Fh
         /// </summary>
-        public UInt16 rt;
+        public ushort rt;
 
         /// <summary>
         /// FRT cell reference flag; =0 currently
         /// </summary>
-        public UInt16 grbitFrt;
+        public ushort grbitFrt;
 
         /// <summary>
         /// Currently not used, and set to 0
@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// A packed bit field
         /// </summary>
-        private UInt16 grbitTS;
+        private ushort grbitTS;
 
         /// <summary>
         /// Count of TABLESTYLEELEMENT records to follow.
@@ -69,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Length of Table style name in 2 byte characters.
         /// </summary>
-        public UInt16 cchName;
+        public ushort cchName;
 
         /// <summary>
         /// Table style name in 2 byte characters
@@ -94,10 +94,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Reserved; must be 0 (zero)
         /// </summary>
-        public UInt16 fReserved0;
+        public ushort fReserved0;
 
 
-        public TableStyle(IStreamReader reader, RecordType id, UInt16 length)
+        public TableStyle(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

@@ -115,7 +115,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //style
                     //The style id is used for a reverse reference. 
                     //It can happen that the reference points to the wrong style.
-                    Int16 styleIndex = lstf.rgistd[j];
+                    short styleIndex = lstf.rgistd[j];
                     if(styleIndex != ListData.ISTD_NIL)
                     {
                         _writer.WriteStartElement("w", "pStyle", OpenXmlNamespaces.WordprocessingML);
@@ -168,7 +168,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             _writer.Flush();
         }
 
-        public static int FindIndexbyId(List<ListData> list, Int32 id)
+        public static int FindIndexbyId(List<ListData> list, int id)
         {
             int ret = -1;
             for (int i = 0; i < list.Count; i++)

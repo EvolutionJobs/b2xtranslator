@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(19)]
+    [OfficeShapeType(19)]
     class ArcType : ShapeType
     {
         public ArcType()
@@ -22,12 +22,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.ConnectorLocations = "0,0;21600,21600;0,21600";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "@2,#0";
-            HandleOne.polar = "@0,@1"; 
+            var HandleOne = new Handle
+            {
+                position = "@2,#0",
+                polar = "@0,@1"
+            };
             this.Handles.Add(HandleOne);
 
-            Handle HandleTwo = new Handle();
+            var HandleTwo = new Handle();
             HandleOne.position = "@2,#1";
             HandleOne.polar = "@0,@1"; 
             this.Handles.Add(HandleTwo);

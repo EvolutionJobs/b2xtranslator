@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(150)]
+    [OfficeShapeType(150)]
     public class TextCirclePour : ShapeType
     {
         public TextCirclePour()
@@ -15,9 +15,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Path = "al10800,10800,10800,10800@2@5al10800,10800@0@0@2@5e";
             this.ConnectorLocations = "@17,10800;@12,@13;@16,10800;@12,@14";
             this.ExtrusionOk = true;
-            this.Lock = new ProtectionBooleans();
-            this.Lock.fUsefLockText = true;
-            this.Lock.fLockText = true;
+            this.Lock = new ProtectionBooleans
+            {
+                fUsefLockText = true,
+                fLockText = true
+            };
             this.LockShapeType = true;
 
             this.Formulas = new List<string>();
@@ -41,10 +43,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("if #0 0 21600");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="#1,#0";
-            h1.polar="10800,10800";
-            h1.radiusrange = "0,10800";
+            var h1 = new Handle
+            {
+                position = "#1,#0",
+                polar = "10800,10800",
+                radiusrange = "0,10800"
+            };
             this.Handles.Add(h1);
 
         }

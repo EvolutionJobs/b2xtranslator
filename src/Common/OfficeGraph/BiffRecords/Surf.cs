@@ -54,14 +54,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// </summary>
         public bool f3DPhongShade;
 
-        public Surf(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Surf(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fFillSurface = Utils.BitmaskToBool(flags, 0x1);
             this.f3DPhongShade = Utils.BitmaskToBool(flags, 0x2);
 

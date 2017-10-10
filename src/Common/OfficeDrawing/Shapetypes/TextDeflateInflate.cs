@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(166)]
+    [OfficeShapeType(166)]
     public class TextDeflateInflate : ShapeType
     {
         public TextDeflateInflate()
@@ -16,9 +16,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.ConnectorType = "rect";
 
             this.ExtrusionOk = true;
-            this.Lock = new ProtectionBooleans();
-            this.Lock.fUsefLockText = true;
-            this.Lock.fLockText = true;
+            this.Lock = new ProtectionBooleans
+            {
+                fUsefLockText = true,
+                fLockText = true
+            };
             this.LockShapeType = true;
 
             this.Formulas = new List<string>();
@@ -27,9 +29,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("sum @0 0 2925");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="center,#0";
-            h1.yrange="1308,20292";
+            var h1 = new Handle
+            {
+                position = "center,#0",
+                yrange = "1308,20292"
+            };
             this.Handles.Add(h1);
 
         }

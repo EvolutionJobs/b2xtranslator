@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fScenProtect;
 
-        public ScenarioProtect(IStreamReader reader, RecordType id, UInt16 length)
+        public ScenarioProtect(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

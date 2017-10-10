@@ -103,7 +103,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public void DumpToStream(Stream output)
         {
-            using (BinaryWriter writer = new BinaryWriter(output))
+            using (var writer = new BinaryWriter(output))
             {
                 writer.Write(this.RawData, 0, this.RawData.Length);
             }
@@ -111,9 +111,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public string GetIdentifier()
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
-            Record r = this;
+            var r = this;
             bool isFirst = true;
 
             while (r != null)
@@ -173,7 +173,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <returns>First ancestor with appropriate type or null if none was found</returns>
         public T FirstAncestorWithType<T>() where T: Record
         {
-            Record curAncestor = this.ParentRecord;
+            var curAncestor = this.ParentRecord;
 
             while (curAncestor != null)
             {
@@ -208,7 +208,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            foreach (Record record in this)
+            foreach (var record in this)
                 yield return record;
         }
 
@@ -218,7 +218,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public static string IndentationForDepth(uint depth)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
             for (uint i = 0; i < depth; i++)
                 result.Append("  ");
@@ -226,7 +226,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
             return result.ToString();
         }
 
-        private static Dictionary<UInt16, Type> TypeToRecordClassMapping = new Dictionary<UInt16, Type>();
+        private static Dictionary<ushort, Type> TypeToRecordClassMapping = new Dictionary<ushort, Type>();
 
         static Record()
         {
@@ -241,13 +241,13 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// 
         /// <param name="assembly">Assembly to scan</param>
         /// <param name="ns">Namespace to scan or null for all namespaces</param>
-        public static void UpdateTypeToRecordClassMapping(Assembly assembly, String ns)
+        public static void UpdateTypeToRecordClassMapping(Assembly assembly, string ns)
         {
-            foreach (Type t in assembly.GetTypes())
+            foreach (var t in assembly.GetTypes())
             {
                 if (ns == null || t.Namespace == ns)
                 {
-                    object[] attrs = t.GetCustomAttributes(typeof(OfficeRecordAttribute), false);
+                    var attrs = t.GetCustomAttributes(typeof(OfficeRecordAttribute), false);
 
                     OfficeRecordAttribute attr = null;
 
@@ -257,7 +257,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                     if (attr != null)
                     {
                         // Add the type codes of the array
-                        foreach (UInt16 typeCode in attr.TypeCodes)
+                        foreach (var typeCode in attr.TypeCodes)
                         {
                             if (TypeToRecordClassMapping.ContainsKey(typeCode))
                             {
@@ -281,12 +281,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         {
             try
             {
-                UInt16 verAndInstance = reader.ReadUInt16();
+                var verAndInstance = reader.ReadUInt16();
                 uint version = verAndInstance & 0x000FU;         // first 4 bit of field verAndInstance
                 uint instance = (verAndInstance & 0xFFF0U) >> 4; // last 12 bit of field verAndInstance
 
-                UInt16 typeCode = reader.ReadUInt16();
-                UInt32 size = reader.ReadUInt32();
+                var typeCode = reader.ReadUInt16();
+                var size = reader.ReadUInt32();
 
                 bool isContainer = (version == 0xF);
 
@@ -295,7 +295,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
                 if (TypeToRecordClassMapping.TryGetValue(typeCode, out cls))
                 {
-                    ConstructorInfo constructor = cls.GetConstructor(new Type[] {
+                    var constructor = cls.GetConstructor(new Type[] {
                     typeof(BinaryReader), typeof(uint), typeof(uint), typeof(uint), typeof(uint) });
 
                     if (constructor == null)

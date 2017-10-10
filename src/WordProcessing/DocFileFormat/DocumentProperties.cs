@@ -58,7 +58,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 1 no line supression<br/>
         /// (no longer used)
         /// </summary>
-        public Int16 grfSuppression;
+        public short grfSuppression;
 
         /// <summary>
         /// Footnote position code:<br/>
@@ -66,12 +66,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 1 print as bottom of page<br/>
         /// 2 print immediately beneath text
         /// </summary>
-        public Int16 Fpc;
+        public short Fpc;
 
         /// <summary>
         /// No longer used
         /// </summary>
-        public Int16 grpfIhdt;
+        public short grpfIhdt;
 
         /// <summary>
         /// Restart index for footnotes:<br/>
@@ -79,12 +79,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 1 restart for each section<br/>
         /// 2 restart for each page
         /// </summary>
-        public Int16 rncFtn;
+        public short rncFtn;
 
         /// <summary>
         /// Initial footnote number for document
         /// </summary>
-        public Int16 nFtn;
+        public short nFtn;
 
         /// <summary>
         /// When true, indicates that information in the hplcpad should 
@@ -282,27 +282,27 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Default tab width
         /// </summary>
-        public UInt16 dxaTab;
+        public ushort dxaTab;
 
         /// <summary>
         /// Reserved
         /// </summary>
-        public UInt16 wSpare;
+        public ushort wSpare;
 
         /// <summary>
         /// Width of hyphenation hot zone measured in twips
         /// </summary>
-        public UInt16 dxaHotZ;
+        public ushort dxaHotZ;
 
         /// <summary>
         /// Number of lines allowed to have consecutive hyphens
         /// </summary>
-        public UInt16 cConsecHypLim;
+        public ushort cConsecHypLim;
 
         /// <summary>
         /// Reserved
         /// </summary>
-        public UInt16 wSpare2;
+        public ushort wSpare2;
 
         /// <summary>
         /// Date and time document was created
@@ -322,32 +322,32 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Number of times document has ben revised since its creation
         /// </summary>
-        public Int16 nRevision;
+        public short nRevision;
 
         /// <summary>
         /// Time document was last edited
         /// </summary>
-        public Int32 tmEdited;
+        public int tmEdited;
 
         /// <summary>
         /// Count of words tallied by last Word Count execution
         /// </summary>
-        public Int32 cWords;
+        public int cWords;
 
         /// <summary>
         /// Count of characters tallied by the last Word Count execution
         /// </summary>
-        public Int32 cCh;
+        public int cCh;
 
         /// <summary>
         /// Count of pages tallied by the last Word Count execution
         /// </summary>
-        public Int16 cPg;
+        public short cPg;
 
         /// <summary>
         /// Count of paragraphs tallied by the last Word Count execution
         /// </summary>
-        public Int32 cParas;
+        public int cParas;
 
         /// <summary>
         /// Restart endnote number code:<br/>
@@ -355,33 +355,33 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 1 restart for each section<br/>
         /// 2 restart for each page
         /// </summary>
-        public Int16 rncEdn;
+        public short rncEdn;
 
         /// <summary>
         /// Beginning endnote number
         /// </summary>
-        public Int16 nEdn;
+        public short nEdn;
 
         /// <summary>
         /// Endnote position code:<br/>
         /// 0 display endnotes at end of section<br/>
         /// 3 display endnotes at the end of document
         /// </summary>
-        public Int16 Epc;
+        public short Epc;
 
         /// <summary>
         /// Number format code for auto footnotes.<br/>
         /// Use the Number Format Table.<br/>
         /// Note: Only the first 16 values in the table can be used.
         /// </summary>
-        public Int16 nfcFtnRef;
+        public short nfcFtnRef;
 
         /// <summary>
         /// Number format code for auto endnotes.<br/>
         /// Use the Number Format Table.<br/>
         /// Note: Only the first 16 values in the table can be used.
         /// </summary>
-        public Int16 nfcEdnRef;
+        public short nfcEdnRef;
 
         /// <summary>
         /// Only print data inside of form fields
@@ -406,43 +406,43 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Count of lines tallied by last Word Count operation
         /// </summary>
-        public Int32 cLines;
+        public int cLines;
 
         /// <summary>
         /// Count of words in footnotes and endnotes tallied by last 
         /// word count operation
         /// </summary>
-        public Int32 cWordsFtnEdn;
+        public int cWordsFtnEdn;
 
         /// <summary>
         /// Count of characters in footnotes and endnotes tallied by last 
         /// word count operation
         /// </summary>
-        public Int32 cChFtnEdn;
+        public int cChFtnEdn;
 
         /// <summary>
         /// Count of pages in footnotes and endnotes tallied by last 
         /// word count operation
         /// </summary>
-        public Int32 cPgFtnEdn;
+        public int cPgFtnEdn;
 
         /// <summary>
         /// Count of paragraphs in footnotes and endnotes tallied by last 
         /// word count operation
         /// </summary>
-        public Int32 cParasFtnEdn;
+        public int cParasFtnEdn;
 
         /// <summary>
         /// Count of lines in footnotes and endnotes tallied by last 
         /// word count operation
         /// </summary>
-        public Int32 cLinesFtnEdn;
+        public int cLinesFtnEdn;
 
         /// <summary>
         /// Document protection password key only valid if 
         /// fProtEnabled, fLockAtn or fLockRev is true
         /// </summary>
-        public Int32 lKeyProtDoc;
+        public int lKeyProtDoc;
 
         /// <summary>
         /// Document view kind<br/>
@@ -450,12 +450,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 1 Outline view<br/>
         /// 2 Page view
         /// </summary>
-        public Int16 wvkSaved;
+        public short wvkSaved;
 
         /// <summary>
         /// Zoom percentage
         /// </summary>
-        public Int16 wScaleSaved;
+        public short wScaleSaved;
 
         /// <summary>
         /// Zoom type:<br/>
@@ -463,7 +463,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 1 Full page<br/>
         /// 2 Page width
         /// </summary>
-        public Int16 zkSaved;
+        public short zkSaved;
 
         /// <summary>
         /// This is a vertical document<br/>
@@ -509,7 +509,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 1 for letter<br/>
         /// 2 for email
         /// </summary>
-        public UInt16 adt;
+        public ushort adt;
 
         /// <summary>
         /// 
@@ -527,7 +527,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 4 headings 1 through 5<br/>
         /// 9 all levels showing
         /// </summary>
-        public Int16 lvl;
+        public short lvl;
 
         /// <summary>
         /// Document has been completely grammar checked
@@ -598,17 +598,17 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Count of characters with spaces
         /// </summary>
-        public Int32 cChWS;
+        public int cChWS;
 
         /// <summary>
         /// Count of characters with spaces in footnotes and endnotes
         /// </summary>
-        public Int32 cChWSFtnEdn;
+        public int cChWSFtnEdn;
 
         /// <summary>
         /// 
         /// </summary>
-        public Int32 grfDocEvents;
+        public int grfDocEvents;
 
         /// <summary>
         /// Have we prompted for virus protection on this document?
@@ -623,27 +623,27 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Random session key to sign above bits for a Word session
         /// </summary>
-        public Int32 KeyVirusSession30;
+        public int KeyVirusSession30;
 
         /// <summary>
         /// Count of double byte characters
         /// </summary>
-        public Int32 cDBC;
+        public int cDBC;
 
         /// <summary>
         /// Count of double byte characters in footnotes and endnotes
         /// </summary>
-        public Int32 cDBCFtnEdn;
+        public int cDBCFtnEdn;
 
         /// <summary>
         /// Minimum font size if fMinFontSizePag is true
         /// </summary>
-        public Int16 hpsZoonFontPag;
+        public short hpsZoonFontPag;
 
         /// <summary>
         /// Height of the window in online view during last repagination
         /// </summary>
-        public Int16 dywDispPag;
+        public short dywDispPag;
 
         /// <summary>
         /// Used internally by Word
@@ -658,7 +658,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Default paragraph style for click and type
         /// </summary>
-        public Int16 istdClickTypePara;
+        public short istdClickTypePara;
 
         /// <summary>
         /// When set to true, language of all text in doc has been auto-detected
@@ -698,7 +698,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Target monitor screen size
         /// </summary>
-        public Int16 screenSize_WebOpt;
+        public short screenSize_WebOpt;
 
         /// <summary>
         /// When set to 1, organize supporting files in a folder
@@ -713,7 +713,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Target monitor resolution in pixels per inch
         /// </summary>
-        public Int16 iPixelsPerInch_WebOpt;
+        public short iPixelsPerInch_WebOpt;
 
         /// <summary>
         /// When set to 1, the web options have been filled in
@@ -912,7 +912,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// HTML I/O compatibility level
         /// </summary>
-        public UInt16 verCompatPreW10;
+        public ushort verCompatPreW10;
 
         /// <summary>
         /// Page view option
@@ -997,7 +997,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// 
         /// </summary>
-        public Int32 cpMaxListCacheMainDoc;
+        public int cpMaxListCacheMainDoc;
 
         /// <summary>
         /// Do not embed system fonts in this document
@@ -1042,7 +1042,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// 
         /// </summary>
-        public Int16 iTextLineEnding;
+        public short iTextLineEnding;
 
         /// <summary>
         /// Do not keep track of formatting
@@ -1072,67 +1072,67 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Default table style for the document
         /// </summary>
-        public UInt16 istdTableDflt;
+        public ushort istdTableDflt;
 
         /// <summary>
         /// Internal: Version compatibility for save
         /// </summary>
-        public UInt16 verCompat;
+        public ushort verCompat;
 
         /// <summary>
         /// Internal: filter state for the Styles and Formatting Pane.
         /// </summary>
-        public UInt16 grfFmtFilter;
+        public ushort grfFmtFilter;
 
         /// <summary>
         /// Book fold printing: sheets per booklet
         /// </summary>
-        public Int16 iFolioPages;
+        public short iFolioPages;
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt16 cpgText;
+        public ushort cpgText;
 
         /// <summary>
         /// Revision mark CP info
         /// </summary>
-        public Int32 cpMinRMText;
+        public int cpMinRMText;
 
         /// <summary>
         /// Revision mark CP info
         /// </summary>
-        public Int32 cpMinRMFtn;
+        public int cpMinRMFtn;
 
         /// <summary>
         /// Revision mark CP info
         /// </summary>
-        public Int32 cpMinRMHdd;
+        public int cpMinRMHdd;
 
         /// <summary>
         /// Revision mark CP info
         /// </summary>
-        public Int32 cpMinRMAtn;
+        public int cpMinRMAtn;
 
         /// <summary>
         /// Revision mark CP info
         /// </summary>
-        public Int32 cpMinRMEdn;
+        public int cpMinRMEdn;
 
         /// <summary>
         /// Revision mark CP info
         /// </summary>
-        public Int32 cpMinRMTxbx;
+        public int cpMinRMTxbx;
 
         /// <summary>
         /// Revision mark CP info
         /// </summary>
-        public Int32 cpMinRMHdrTxbx;
+        public int cpMinRMHdrTxbx;
 
         /// <summary>
         /// 
         /// </summary>
-        public Int32 rsidRoot;
+        public int rsidRoot;
 
         /// <summary>
         /// Document Protection: Treat lock for annotations as Read Only
@@ -1212,7 +1212,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 2 Form protection<br/>
         /// 3 Read Only
         /// </summary>
-        public UInt16 iDocProtCur;
+        public ushort iDocProtCur;
 
         /// <summary>
         /// 
@@ -1222,17 +1222,17 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Reading Layout page size lockdown
         /// </summary>
-        public Int16 dxaPageLock;
+        public short dxaPageLock;
 
         /// <summary>
         /// Reading Layout page size lockdown
         /// </summary>
-        public Int16 dyaPageLock;
+        public short dyaPageLock;
 
         /// <summary>
         /// Reading Layout font lockdown
         /// </summary>
-        public Int32 pctFontLock;
+        public int pctFontLock;
 
         /// <summary>
         /// 
@@ -1242,7 +1242,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Number of LFOs when CleanupLists last attempted cleaning
         /// </summary>
-        public UInt16 ilfoMacAtCleanup;
+        public ushort ilfoMacAtCleanup;
 
         /// <summary>
         /// Parses the bytes to retrieve a DocumentProperties
@@ -1252,7 +1252,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         {
             setDefaultCompatibilityOptions(fib.nFib);
 
-            byte[] bytes = new byte[fib.lcbDop];
+            var bytes = new byte[fib.lcbDop];
             tableStream.Read(bytes, 0, (int)fib.lcbDop, fib.fcDop);
 
             try
@@ -1266,13 +1266,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     this.fFacingPages = bits[0];
                     this.fWindowControl = bits[1];
                     this.fPMHMainDoc = bits[2];
-                    this.grfSuppression = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 3, 2));
-                    this.Fpc = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 5, 2));
+                    this.grfSuppression = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 3, 2));
+                    this.Fpc = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 5, 2));
 
                     //split byte 2 and 3 into bits
                     bits = new BitArray(new byte[] { bytes[2], bytes[3] });
-                    this.rncFtn = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 2));
-                    this.nFtn = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 14));
+                    this.rncFtn = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 2));
+                    this.nFtn = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 14));
 
                     //split byte 4 and 5 into bits
                     bits = new BitArray(new byte[] { bytes[4], bytes[5] });
@@ -1323,15 +1323,15 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     this.dxaHotZ = System.BitConverter.ToUInt16(bytes, 14);
                     this.cConsecHypLim = System.BitConverter.ToUInt16(bytes, 16);
 
-                    byte[] createdbytes = new byte[4];
+                    var createdbytes = new byte[4];
                     Array.Copy(bytes, 20, createdbytes, 0, createdbytes.Length);
                     this.dttmCreated = new DateAndTime(createdbytes);
 
-                    byte[] revisedbytes = new byte[4];
+                    var revisedbytes = new byte[4];
                     Array.Copy(bytes, 24, revisedbytes, 0, revisedbytes.Length);
                     this.dttmRevised = new DateAndTime(revisedbytes);
 
-                    byte[] printbytes = new byte[4];
+                    var printbytes = new byte[4];
                     Array.Copy(bytes, 28, printbytes, 0, printbytes.Length);
                     this.dttmLastPrint = new DateAndTime(printbytes);
 
@@ -1344,14 +1344,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
                     //split byte 52 and 53 into bits
                     bits = new BitArray(new byte[] { bytes[52], bytes[53] });
-                    this.rncEdn = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 2));
-                    this.nEdn = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 14));
+                    this.rncEdn = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 2));
+                    this.nEdn = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 14));
 
                     //split byte 54 and 55 into bits
                     bits = new BitArray(new byte[] { bytes[54], bytes[55] });
-                    this.Epc = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 2));
-                    this.nfcFtnRef = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 4));
-                    this.nfcEdnRef = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 6, 4));
+                    this.Epc = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 2));
+                    this.nfcFtnRef = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 4));
+                    this.nfcEdnRef = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 6, 4));
                     this.fPrintFormData = bits[10];
                     this.fSaveFormData = bits[11];
                     this.fShadeFormData = bits[12];
@@ -1368,9 +1368,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
                     //split byte 82 and 83 into bits
                     bits = new BitArray(new byte[] { bytes[82], bytes[83] });
-                    this.wvkSaved = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 3));
-                    this.wScaleSaved = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 3, 9));
-                    this.zkSaved = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 12, 2));
+                    this.wvkSaved = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 3));
+                    this.wScaleSaved = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 3, 9));
+                    this.zkSaved = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 12, 2));
                     this.fRotateFontW6 = bits[14];
                     this.iGutterPos = bits[15];
 
@@ -1402,20 +1402,20 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
                         if (bytes.Length > 88)
                         {
-                            this.adt = (UInt16)System.BitConverter.ToInt16(bytes, 88);
+                            this.adt = (ushort)System.BitConverter.ToInt16(bytes, 88);
 
-                            byte[] doptypoBytes = new byte[310];
+                            var doptypoBytes = new byte[310];
                             Array.Copy(bytes, 90, doptypoBytes, 0, doptypoBytes.Length);
                             this.doptypography = new DocumentTypographyInfo(doptypoBytes);
 
-                            byte[] dogridBytes = new byte[10];
+                            var dogridBytes = new byte[10];
                             Array.Copy(bytes, 400, dogridBytes, 0, dogridBytes.Length);
                             this.dogrid = new DrawingObjectGrid(dogridBytes);
 
                             //split byte 410 and 411 into bits
                             bits = new BitArray(new byte[] { bytes[410], bytes[411] });
                             //bit 0 is reserved
-                            this.lvl = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 1, 4));
+                            this.lvl = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 1, 4));
                             this.fGramAllDone = bits[5];
                             this.fGramAllClean = bits[6];
                             this.fSubsetFonts = bits[7];
@@ -1434,7 +1434,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                             this.fAutoVersion = bits[1];
                             //other bits are reserved
 
-                            byte[] asumybits = new byte[12];
+                            var asumybits = new byte[12];
                             Array.Copy(bytes, 414, asumybits, 0, asumybits.Length);
                             this.asumyi = new AutoSummaryInfo(asumybits);
 
@@ -1446,7 +1446,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                             bits = new BitArray(new byte[] { bytes[438], bytes[439], bytes[440], bytes[441] });
                             this.fVirusPromted = bits[0];
                             this.fVirusLoadSafe = bits[1];
-                            this.KeyVirusSession30 = (Int32)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 30));
+                            this.KeyVirusSession30 = (int)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 30));
 
                             this.cDBC = System.BitConverter.ToInt32(bytes, 480);
                             this.cDBCFtnEdn = System.BitConverter.ToInt32(bytes, 484);
@@ -1471,13 +1471,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                                 this.fRelyOnCss_WebOpt = bits[9];
                                 this.fRelyOnVML_WebOpt = bits[10];
                                 this.fAllowPNG_WebOpt = bits[11];
-                                this.screenSize_WebOpt = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 12, 4));
+                                this.screenSize_WebOpt = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 12, 4));
 
                                 //split byte 506 and 507 into bits
                                 bits = new BitArray(new byte[] { bytes[506], bytes[507] });
                                 this.fOrganizeInFolder_WebOpt = bits[0];
                                 this.fUseLongFileNames_WebOpt = bits[1];
-                                this.iPixelsPerInch_WebOpt = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 10));
+                                this.iPixelsPerInch_WebOpt = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 2, 10));
                                 this.fWebOptionsInit = bits[12];
                                 this.fMaybeFEL = bits[13];
                                 this.fCharLineUnits = bits[14];
@@ -1544,7 +1544,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
                                 //split bytes 540,541,542,543 into bits
                                 bits = new BitArray(new byte[] { bytes[540], bytes[541], bytes[542], bytes[543] });
-                                this.verCompatPreW10 = (UInt16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 16));
+                                this.verCompatPreW10 = (ushort)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 16));
                                 this.fNoMargPgvwSaved = bits[16];
                                 this.fNoMargPgvWPag = bits[17];
                                 this.fWebViewPag = bits[18];
@@ -1574,7 +1574,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                                 this.fFactoidAllDone = bits[5];
                                 this.fFolioPrint = bits[6];
                                 this.fReverseFolio = bits[7];
-                                this.iTextLineEnding = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 8, 3));
+                                this.iTextLineEnding = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 8, 3));
                                 this.fHideFcc = bits[11];
                                 this.fAcetateShowMarkup = bits[12];
                                 this.fAcetateShowAtn = bits[13];
@@ -1616,7 +1616,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                                     this.fAcetateShowInkAtn = bits[1];
                                     this.fFilterDttm = bits[2];
                                     this.fEnforceDocProt = bits[3];
-                                    this.iDocProtCur = (UInt16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 4, 3));
+                                    this.iDocProtCur = (ushort)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 4, 3));
                                     this.fDispBkSpSaved = bits[7];
 
                                     this.dxaPageLock = System.BitConverter.ToInt16(bytes, 598);

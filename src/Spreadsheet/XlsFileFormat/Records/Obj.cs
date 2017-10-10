@@ -66,7 +66,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
 
 
-        public Obj(IStreamReader reader, RecordType id, UInt16 length)
+        public Obj(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

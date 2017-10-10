@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public SheetExtOptional sheetExtOptional;
 
-        public SheetExt(IStreamReader reader, RecordType id, UInt16 length)
+        public SheetExt(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

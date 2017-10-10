@@ -82,7 +82,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     // c:minorGridlines
 
                     // c:title
-                    foreach (AttachedLabelSequence attachedLabelSequence in axesSequence.AttachedLabelSequences)
+                    foreach (var attachedLabelSequence in axesSequence.AttachedLabelSequences)
                     {
                         if (attachedLabelSequence.ObjectLink != null && attachedLabelSequence.ObjectLink.wLinkObj == ObjectLink.ObjectType.DVAxis)
                         {
@@ -149,7 +149,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         // c:minorGridlines
 
                         // c:title
-                        foreach (AttachedLabelSequence attachedLabelSequence in axesSequence.AttachedLabelSequences)
+                        foreach (var attachedLabelSequence in axesSequence.AttachedLabelSequences)
                         {
                             if (attachedLabelSequence.ObjectLink != null && attachedLabelSequence.ObjectLink.wLinkObj == ObjectLink.ObjectType.DVAxis)
                             {
@@ -239,7 +239,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             // c:minorGridlines
 
             // c:title
-            foreach (AttachedLabelSequence attachedLabelSequence in axesSequence.AttachedLabelSequences)
+            foreach (var attachedLabelSequence in axesSequence.AttachedLabelSequences)
             {
                 if (attachedLabelSequence.ObjectLink != null && attachedLabelSequence.ObjectLink.wLinkObj == ObjectLink.ObjectType.IVAxis)
                 {

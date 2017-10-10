@@ -6,7 +6,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4014)]
+    [OfficeRecord(4014)]
     public class OutlineTextProps9Container : RegularContainer
     {
         public List<OutlineTextProps9Entry> OutlineTextProps9Entries = new List<OutlineTextProps9Entry>();
@@ -17,17 +17,17 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                 Reader.BaseStream.Position = 0;
                 while (Reader.BaseStream.Position < Reader.BaseStream.Length)
                 {
-                    OutlineTextProps9Entry entry = new OutlineTextProps9Entry(Reader);
+                    var entry = new OutlineTextProps9Entry(Reader);
                     OutlineTextProps9Entries.Add(entry);
                 }
         }
     }
 
-    [OfficeRecordAttribute(4015)]
+    [OfficeRecord(4015)]
     public class OutlineTextPropsHeader9Atom : Record
     {
-        public Int32 slideIdRef;
-        public Int32 txType;
+        public int slideIdRef;
+        public int txType;
 
         public OutlineTextPropsHeader9Atom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

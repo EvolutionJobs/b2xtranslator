@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(4009)]
+    [OfficeRecord(4009)]
     public class TextSIExceptionAtom : Record
     {
         public TextSIException si;
@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4010)]
+    [OfficeRecord(4010)]
     public class TextSpecialInfoAtom : Record
     {
         public List<TextSIRun> Runs = new List<TextSIRun>();
@@ -56,7 +56,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
             while (Reader.BaseStream.Position < Reader.BaseStream.Length)
             {
-                TextSIRun run = new TextSIRun(Reader);
+                var run = new TextSIRun(Reader);
                 Runs.Add(run);
             }
 
@@ -84,10 +84,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public bool fPp10ext;
         public bool fBidi;
         public bool smartTag;
-        public UInt16 spellInfo;
-        public UInt16 lid;
-        public UInt16 bidi;
-        public UInt16 altLid;
+        public ushort spellInfo;
+        public ushort lid;
+        public ushort bidi;
+        public ushort altLid;
         
         public TextSIException(BinaryReader reader)
         {

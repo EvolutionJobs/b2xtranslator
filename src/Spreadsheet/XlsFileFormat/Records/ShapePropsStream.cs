@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// An unsigned integer that specifies the chart element that the shape 
         /// formatting properties in this record apply to.
         /// </summary>
-        public UInt16 wObjContext;
+        public ushort wObjContext;
 
         /// <summary>
         /// An unsigned integer that specifies the checksum of the shape formatting properties related to this record.
@@ -61,7 +61,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public byte[] rgb;
 
-        public ShapePropsStream(IStreamReader reader, RecordType id, UInt16 length)
+        public ShapePropsStream(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

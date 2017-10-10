@@ -79,9 +79,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="container"></param>
         private void convertGroup(GroupContainer container)
         {
-            ShapeContainer groupShape = (ShapeContainer)container.Children[0];
+            var groupShape = (ShapeContainer)container.Children[0];
             _groupShapeRecord = (GroupShapeRecord)groupShape.Children[0];
-            Shape shape = (Shape)groupShape.Children[1];
+            var shape = (Shape)groupShape.Children[1];
             List<ShapeOptions.OptionEntry> options = groupShape.ExtractOptions();
             ChildAnchor anchor = groupShape.FirstChildWithType<ChildAnchor>();
 
@@ -107,12 +107,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             {
                 if (container.Children[i].GetType() == typeof(ShapeContainer))
                 {
-                    ShapeContainer childShape = (ShapeContainer)container.Children[i];
+                    var childShape = (ShapeContainer)container.Children[i];
                     childShape.Convert(new VMLShapeMapping(_writer, _targetPart, _fspa, null, _ctx));
                 }
                 else if (container.Children[i].GetType() == typeof(GroupContainer))
                 {
-                    GroupContainer childGroup = (GroupContainer)container.Children[i];
+                    var childGroup = (GroupContainer)container.Children[i];
                     _fspa = null;
                     convertGroup(childGroup);
                 }
@@ -140,7 +140,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="container"></param>
         private void convertShape(ShapeContainer container)
         {
-            Shape shape = (Shape)container.Children[0];
+            var shape = (Shape)container.Children[0];
             List<ShapeOptions.OptionEntry> options = container.ExtractOptions();
             ChildAnchor anchor = container.FirstChildWithType<ChildAnchor>();
             ClientAnchor clientAnchor = container.FirstChildWithType<ClientAnchor>();
@@ -171,7 +171,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             EmuValue viewPointZ = null;
             double? viewPointOriginX = null;
             double? viewPointOriginY = null;
-            string[] adjValues = new string[8];
+            var adjValues = new string[8];
             int numberAdjValues = 0;
             uint xCoord = 0;
             uint yCoord = 0;
@@ -186,7 +186,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //BOOLEANS
 
                     case ShapeOptions.PropertyId.geometryBooleans:
-                        GeometryBooleans geometryBooleans = new GeometryBooleans(entry.op);
+                        var geometryBooleans = new GeometryBooleans(entry.op);
 
                         if (geometryBooleans.fUsefLineOK && geometryBooleans.fLineOK==false)
                         {
@@ -200,7 +200,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         break;
 
                     case ShapeOptions.PropertyId.FillStyleBooleanProperties:
-                        FillStyleBooleanProperties fillBooleans = new FillStyleBooleanProperties(entry.op);
+                        var fillBooleans = new FillStyleBooleanProperties(entry.op);
 
                         if (fillBooleans.fUsefFilled && fillBooleans.fFilled == false)
                         {
@@ -209,7 +209,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         break;
 
                     case ShapeOptions.PropertyId.lineStyleBooleans:
-                        LineStyleBooleans lineBooleans = new LineStyleBooleans(entry.op);
+                        var lineBooleans = new LineStyleBooleans(entry.op);
 
                         if (lineBooleans.fUsefLine && lineBooleans.fLine == false)
                         {
@@ -219,12 +219,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         break;
 
                     case ShapeOptions.PropertyId.protectionBooleans:
-                        ProtectionBooleans protBools = new ProtectionBooleans(entry.op);
+                        var protBools = new ProtectionBooleans(entry.op);
 
                         break;
 
                     case ShapeOptions.PropertyId.diagramBooleans:
-                        DiagramBooleans diaBools = new DiagramBooleans(entry.op);
+                        var diaBools = new DiagramBooleans(entry.op);
 
                         break;
 
@@ -285,17 +285,17 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     // OUTLINE
 
                     case ShapeOptions.PropertyId.lineColor:
-                        RGBColor lineColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                        var lineColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                         _writer.WriteAttributeString("strokecolor", "#" + lineColor.SixDigitHexCode);
                         break;
 
                     case ShapeOptions.PropertyId.lineWidth:
-                        EmuValue lineWidth = new EmuValue((int)entry.op);
+                        var lineWidth = new EmuValue((int)entry.op);
                         _writer.WriteAttributeString("strokeweight", lineWidth.ToString());
                         break;
 
                     case ShapeOptions.PropertyId.lineDashing:
-                        Global.DashStyle dash = (Global.DashStyle)entry.op;
+                        var dash = (Global.DashStyle)entry.op;
                         appendValueAttribute(_stroke, null, "dashstyle", dash.ToString(), null);
                         break;
 
@@ -331,17 +331,17 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     // FILL
 
                     case ShapeOptions.PropertyId.fillColor:
-                        RGBColor fillColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                        var fillColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                         _writer.WriteAttributeString("fillcolor", "#" + fillColor.SixDigitHexCode);
                         break;
 
                     case ShapeOptions.PropertyId.fillBackColor:
-                        RGBColor fillBackColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                        var fillBackColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                         appendValueAttribute(_fill, null, "color2", "#" + fillBackColor.SixDigitHexCode, null);
                         break;
 
                     case ShapeOptions.PropertyId.fillAngle:
-                        FixedPointNumber fllAngl = new FixedPointNumber(entry.op);
+                        var fllAngl = new FixedPointNumber(entry.op);
                         appendValueAttribute(_fill, null, "angle", fllAngl.ToAngle().ToString(), null);
                         break;
 
@@ -370,7 +370,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         }
                         else
                         {
-                            BlipStoreEntry fillBlip = (BlipStoreEntry)_blipStore.Children[(int)entry.op - 1];
+                            var fillBlip = (BlipStoreEntry)_blipStore.Children[(int)entry.op - 1];
                             fillBlipPart = copyPicture(fillBlip);
                         }
                         if (fillBlipPart != null)
@@ -391,7 +391,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         break;
 
                     case ShapeOptions.PropertyId.shadowColor:
-                        RGBColor shadowColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
+                        var shadowColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
                         appendValueAttribute(_shadow, null, "color", "#" + shadowColor.SixDigitHexCode, null);
                         break;
 
@@ -428,8 +428,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     
                     case ShapeOptions.PropertyId.Pib:
                         int index = (int)entry.op - 1;
-                        BlipStoreEntry bse = (BlipStoreEntry)_blipStore.Children[index];
-                        ImagePart part = copyPicture(bse);
+                        var bse = (BlipStoreEntry)_blipStore.Children[index];
+                        var part = copyPicture(bse);
                         if (part != null)
                         {
                             appendValueAttribute(_imagedata, "r", "id", part.RelIdToString, OpenXmlNamespaces.Relationships);
@@ -449,11 +449,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case ShapeOptions.PropertyId.ThreeDObjectBooleanProperties:
                         break;
                     case ShapeOptions.PropertyId.c3DExtrudeBackward:
-                        EmuValue backwardValue = new EmuValue((int)entry.op);
+                        var backwardValue = new EmuValue((int)entry.op);
                         appendValueAttribute(_3dstyle, "backdepth", backwardValue.ToPoints().ToString());
                         break; 
                     case ShapeOptions.PropertyId.c3DSkewAngle:
-                        FixedPointNumber skewAngle = new FixedPointNumber(entry.op);
+                        var skewAngle = new FixedPointNumber(entry.op);
                         appendValueAttribute(_3dstyle, "", "skewangle", skewAngle.ToAngle().ToString(), "");
                         break;
                     case ShapeOptions.PropertyId.c3DXViewpoint:
@@ -466,11 +466,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         viewPointZ = new EmuValue(new FixedPointNumber(entry.op).Integral);
                         break;
                     case ShapeOptions.PropertyId.c3DOriginX:
-                        FixedPointNumber dOriginX = new FixedPointNumber(entry.op);
+                        var dOriginX = new FixedPointNumber(entry.op);
                         viewPointOriginX = dOriginX.Integral / 65536.0;
                         break;
                     case ShapeOptions.PropertyId.c3DOriginY:
-                        FixedPointNumber dOriginY = new FixedPointNumber(entry.op);
+                        var dOriginY = new FixedPointNumber(entry.op);
                         break;
 
                     // TEXTBOX
@@ -482,18 +482,18 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     // TEXT PATH (Word Art)
 
                     case ShapeOptions.PropertyId.gtextUNICODE:
-                        String text = Encoding.Unicode.GetString(entry.opComplex);
+                        var text = Encoding.Unicode.GetString(entry.opComplex);
                         text = text.Replace("\n", "");
                         text = text.Replace("\0", "");
                         appendValueAttribute(_textpath, "", "string", text, "");
                         break;
                     case ShapeOptions.PropertyId.gtextFont:
-                        String font = Encoding.Unicode.GetString(entry.opComplex);
+                        var font = Encoding.Unicode.GetString(entry.opComplex);
                         font = font.Replace("\0", "");
                         appendStyleProperty(_textPathStyle, "font-family", "\""+font+"\"");
                         break;
                     case ShapeOptions.PropertyId.GeometryTextBooleanProperties:
-                        GeometryTextBooleanProperties props = new GeometryTextBooleanProperties(entry.op);
+                        var props = new GeometryTextBooleanProperties(entry.op);
                         if (props.fUsegtextFBestFit && props.gtextFBestFit)
                         {
                             appendValueAttribute(_textpath, "", "fitshape", "t", "");
@@ -561,7 +561,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
 
             //build shadow offsets
-            StringBuilder offset = new StringBuilder();
+            var offset = new StringBuilder();
             if (shadowOffsetX != null)
             {
                 offset.Append(shadowOffsetX.ToPoints());
@@ -577,7 +577,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             {
                 appendValueAttribute(_shadow, null, "offset", offset.ToString(), null);
             }
-            StringBuilder offset2 = new StringBuilder();
+            var offset2 = new StringBuilder();
             if (secondShadowOffsetX != null)
             {
                 offset2.Append(secondShadowOffsetX.ToPoints());
@@ -619,7 +619,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 //write the viewpoint
                 if (viewPointX != null || viewPointY != null || viewPointZ != null)
                 {
-                    StringBuilder viewPoint = new StringBuilder();
+                    var viewPoint = new StringBuilder();
                     if (viewPointX != null)
                     {
                         viewPoint.Append(viewPointX.Value);
@@ -641,7 +641,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 // write the viewpointorigin
                 if (viewPointOriginX != null || viewPointOriginY != null)
                 {
-                    StringBuilder viewPointOrigin = new StringBuilder();
+                    var viewPointOrigin = new StringBuilder();
                     if (viewPointOriginX != null)
                     {
                         viewPointOrigin.Append(String.Format(CultureInfo.CreateSpecificCulture("EN"), "{0:0.00}", viewPointOriginX));
@@ -703,8 +703,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 //Word appends a ClientTextbox record to the container. 
                 //This record stores the index of the textbox.
 
-                ClientTextbox box = (ClientTextbox)recTextbox;
-                Int16 textboxIndex = System.BitConverter.ToInt16(box.Bytes, 2);
+                var box = (ClientTextbox)recTextbox;
+                var textboxIndex = System.BitConverter.ToInt16(box.Bytes, 2);
                 textboxIndex--;
                 _ctx.Doc.Convert(new TextboxMapping(_ctx, textboxIndex, _targetPart, _writer));
             }
@@ -726,18 +726,18 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         private string getFillColorString(byte[] p)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
             // parse the IMsoArray
-            UInt16 nElems = System.BitConverter.ToUInt16(p, 0);
-            UInt16 nElemsAlloc = System.BitConverter.ToUInt16(p, 2);
-            UInt16 cbElem = System.BitConverter.ToUInt16(p, 4);
+            var nElems = System.BitConverter.ToUInt16(p, 0);
+            var nElemsAlloc = System.BitConverter.ToUInt16(p, 2);
+            var cbElem = System.BitConverter.ToUInt16(p, 4);
             for (int i = 0; i < nElems; i++)
             {
                 int pos = 6 + i * cbElem;
 
-                RGBColor color = new RGBColor(System.BitConverter.ToInt32(p, pos), RGBColor.ByteOrder.RedFirst);
-                Int32 colorPos = System.BitConverter.ToInt32(p, pos + 4);
+                var color = new RGBColor(System.BitConverter.ToInt32(p, pos), RGBColor.ByteOrder.RedFirst);
+                var colorPos = System.BitConverter.ToInt32(p, pos + 4);
 
                 result.Append(colorPos);
                 result.Append("f #");
@@ -768,7 +768,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             if (pSegmentInfo != null && pVertices != null)
             {
-                PathParser parser = new PathParser(pSegmentInfo, pVertices);
+                var parser = new PathParser(pSegmentInfo, pVertices);
                 path = buildVmlPath(parser);
             }
             return path;
@@ -777,7 +777,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         private string buildVmlPath(PathParser parser)
         {
             // build the VML Path
-            StringBuilder VmlPath = new StringBuilder();
+            var VmlPath = new StringBuilder();
             int valuePointer = 0;
             foreach (PathSegment seg in parser.Segments)
             {
@@ -847,11 +847,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         private string getCoordinateFrom(ChildAnchor anchor)
         {
-            StringBuilder from = new StringBuilder();
+            var from = new StringBuilder();
             if (_fspa != null)
             {
-                TwipsValue left = new TwipsValue(_fspa.xaLeft);
-                TwipsValue top = new TwipsValue(_fspa.yaTop);
+                var left = new TwipsValue(_fspa.xaLeft);
+                var top = new TwipsValue(_fspa.yaTop);
 
                 from.Append(left.ToPoints().ToString(CultureInfo.GetCultureInfo("en-US")));
                 from.Append("pt,");
@@ -870,11 +870,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         private string getCoordinateTo(ChildAnchor anchor)
         {
-            StringBuilder from = new StringBuilder();
+            var from = new StringBuilder();
             if (_fspa != null)
             {
-                TwipsValue right = new TwipsValue(_fspa.xaRight);
-                TwipsValue bottom = new TwipsValue(_fspa.yaBottom);
+                var right = new TwipsValue(_fspa.xaRight);
+                var bottom = new TwipsValue(_fspa.yaBottom);
 
                 from.Append(right.ToPoints().ToString(CultureInfo.GetCultureInfo("en-US")));
                 from.Append("pt,");
@@ -893,7 +893,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         private StringBuilder buildStyle(Shape shape, ChildAnchor anchor, List<ShapeOptions.OptionEntry> options, int zIndex)
         {
-            StringBuilder style = new StringBuilder();
+            var style = new StringBuilder();
 
             // Check if some properties are set that cause the dimensions to be twisted
             bool twistDimensions = false;
@@ -901,7 +901,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             {
                 if (entry.pid == ShapeOptions.PropertyId.GeometryTextBooleanProperties)
                 {
-                    GeometryTextBooleanProperties props = new GeometryTextBooleanProperties(entry.op);
+                    var props = new GeometryTextBooleanProperties(entry.op);
                     if (props.fUsegtextFVertical && props.gtextFVertical)
                     {
                         twistDimensions = true;
@@ -1053,7 +1053,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         private string getFillMethod(uint p)
         {
-            Int16 val = (Int16)((p & 0xFFFF0000) >> 28);
+            var val = (short)((p & 0xFFFF0000) >> 28);
             switch (val)
             {
                 case 0:
@@ -1165,8 +1165,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <returns></returns>
         private string getWrapCoords(ShapeOptions.OptionEntry pWrapPolygonVertices)
         {
-            BinaryReader r = new BinaryReader(new MemoryStream(pWrapPolygonVertices.opComplex));
-            List<Int32> pVertices = new List<Int32>();
+            var r = new BinaryReader(new MemoryStream(pWrapPolygonVertices.opComplex));
+            var pVertices = new List<int>();
 
             //skip first 6 bytes (header???)
             r.ReadBytes(6);
@@ -1178,8 +1178,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
 
             //build the string
-            StringBuilder coords = new StringBuilder();
-            foreach (Int32 coord in pVertices)
+            var coords = new StringBuilder();
+            foreach (var coord in pVertices)
             {
                 coords.Append(coord);
                 coords.Append(" ");
@@ -1232,7 +1232,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 Stream outStream = imgPart.GetStream();
 
                 _ctx.Doc.WordDocumentStream.Seek((long)bse.foDelay, SeekOrigin.Begin);
-                BinaryReader reader = new BinaryReader(_ctx.Doc.WordDocumentStream);
+                var reader = new BinaryReader(_ctx.Doc.WordDocumentStream);
 
                 switch (bse.btWin32)
                 {
@@ -1240,7 +1240,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case BlipStoreEntry.BlipType.msoblipWMF:
 
                         //it's a meta image
-                        MetafilePictBlip metaBlip = (MetafilePictBlip)Record.ReadRecord(reader);
+                        var metaBlip = (MetafilePictBlip)Record.ReadRecord(reader);
 
                         //meta images can be compressed
                         byte[] decompressed = metaBlip.Decrompress();
@@ -1253,7 +1253,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case BlipStoreEntry.BlipType.msoblipTIFF:
 
                         //it's a bitmap image
-                        BitmapBlip bitBlip = (BitmapBlip)Record.ReadRecord(reader);
+                        var bitBlip = (BitmapBlip)Record.ReadRecord(reader);
                         outStream.Write(bitBlip.m_pvBits, 0, bitBlip.m_pvBits.Length);
                         break;
                 }
@@ -1270,8 +1270,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             double xScaling = pict.mx / 1000.0;
             double yScaling = pict.my / 1000.0;
-            TwipsValue width = new TwipsValue(pict.dxaGoal * xScaling);
-            TwipsValue height = new TwipsValue(pict.dyaGoal * yScaling);
+            var width = new TwipsValue(pict.dxaGoal * xScaling);
+            var height = new TwipsValue(pict.dyaGoal * yScaling);
 
             if (twistDimensions)
             {
@@ -1290,10 +1290,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             //append size and position ...
             appendStyleProperty(style, "position", "absolute");
-            TwipsValue left = new TwipsValue(fspa.xaLeft);
-            TwipsValue top = new TwipsValue(fspa.yaTop);
-            TwipsValue width = new TwipsValue(fspa.xaRight - fspa.xaLeft);
-            TwipsValue height = new TwipsValue(fspa.yaBottom - fspa.yaTop);
+            var left = new TwipsValue(fspa.xaLeft);
+            var top = new TwipsValue(fspa.yaTop);
+            var width = new TwipsValue(fspa.xaRight - fspa.xaLeft);
+            var height = new TwipsValue(fspa.yaBottom - fspa.yaTop);
 
             if (twistDimensions)
             {
@@ -1362,7 +1362,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //BOOLEANS
 
                     case ShapeOptions.PropertyId.groupShapeBooleans:
-                        GroupShapeBooleans groupShapeBoolean = new GroupShapeBooleans(entry.op);
+                        var groupShapeBoolean = new GroupShapeBooleans(entry.op);
 
                         if (groupShapeBoolean.fUsefBehindDocument && groupShapeBoolean.fBehindDocument)
                         {
@@ -1537,7 +1537,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <returns></returns>
         private static string getShapeId(Shape shape)
         {
-            StringBuilder id = new StringBuilder();
+            var id = new StringBuilder();
             id.Append("_x0000_s");
             id.Append(shape.spid);
             return id.ToString();

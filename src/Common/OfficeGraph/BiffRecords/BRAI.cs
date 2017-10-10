@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// The built-in number formats are listed in [ECMA-376] Part 4: Markup Language Reference, section 3.8.30.
         /// </summary>
-        public UInt16 ifmt;
+        public ushort ifmt;
 
         /// <summary>
         /// An unsigned integer that specifies the row or column information of the reference. 
@@ -115,9 +115,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// index of the row in the datasheet and column number is a zero-based index of the 
         /// column of the data sheet. MUST be less than or equal to 0x0F9F.
         /// </summary>
-        public UInt16 rowcol;
+        public ushort rowcol;
         
-        public BRAI(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public BRAI(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

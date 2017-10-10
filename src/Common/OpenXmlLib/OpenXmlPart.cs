@@ -46,12 +46,14 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
             _partIndex = partIndex;
             _stream = new MemoryStream();
 
-            XmlWriterSettings xws = new XmlWriterSettings();
-            xws.OmitXmlDeclaration = false;
-            xws.CloseOutput = false;
-            xws.Encoding = Encoding.UTF8;
-            xws.Indent = true;
-            xws.ConformanceLevel = ConformanceLevel.Document;
+            var xws = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = false,
+                CloseOutput = false,
+                Encoding = Encoding.UTF8,
+                Indent = true,
+                ConformanceLevel = ConformanceLevel.Document
+            };
 
             _xmlWriter = XmlWriter.Create(_stream, xws);
         }
@@ -96,7 +98,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         {
             get
             {
-                OpenXmlPartContainer partContainer = this.Parent;
+                var partContainer = this.Parent;
                 while (partContainer.Parent != null)
                 {
                     partContainer = partContainer.Parent;
@@ -107,7 +109,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         internal virtual void WritePart(OpenXmlWriter writer)
         {
-            foreach (OpenXmlPart part in this.Parts)
+            foreach (var part in this.Parts)
             {
                 part.WritePart(writer);
             }

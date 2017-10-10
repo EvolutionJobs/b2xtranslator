@@ -39,22 +39,22 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Row 
         /// </summary>
-        public UInt16 rw;
+        public ushort rw;
 
         /// <summary>
         /// First column number 
         /// </summary>
-        public UInt16 colFirst;        
+        public ushort colFirst;        
 
         /// <summary>
         /// The last affected column 
         /// </summary>
-        public UInt16 colLast;         
+        public ushort colLast;         
 
         /// <summary>
         /// List with format indexes 
         /// </summary>
-        public List<UInt16> ixfe;      // List records 
+        public List<ushort> ixfe;      // List records 
 
         /// <summary>
         /// List with the numbers 
@@ -68,12 +68,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <param name="reader">Streamreader</param>
         /// <param name="id">Record ID - Recordtype</param>
         /// <param name="length">The recordlegth</param>
-        public MulRk(IStreamReader reader, RecordType id, UInt16 length)
+        public MulRk(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
-            this.ixfe = new List<UInt16>();
+            this.ixfe = new List<ushort>();
             this.rknumber = new List<double>(); 
 
             // count records - 6 standard non variable values !!! 
@@ -83,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             for (int i = 0; i < count; i++)
             {
                 this.ixfe.Add(reader.ReadUInt16());
-                Byte[] buffer = reader.ReadBytes(4);
+                var buffer = reader.ReadBytes(4);
 
                 rknumber.Add(ExcelHelperClass.NumFromRK(buffer)); 
             }

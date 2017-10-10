@@ -73,7 +73,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                         {
                             string filename = String.Format(@"{0}\{1}.record", "dumps", child.GetIdentifier());
 
-                            using (FileStream fs = new FileStream(filename, FileMode.Create))
+                            using (var fs = new FileStream(filename, FileMode.Create))
                             {
                                 child.DumpToStream(fs);
                             }
@@ -87,7 +87,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public override string ToString(uint depth)
         {
-            StringBuilder result = new StringBuilder(base.ToString(depth));
+            var result = new StringBuilder(base.ToString(depth));
 
             depth++;
 
@@ -98,7 +98,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                 result.Append("Children:");
             }
 
-            foreach (Record record in this.Children)
+            foreach (var record in this.Children)
             {
                 result.AppendLine();
                 result.Append(record.ToString(depth + 1));
@@ -135,7 +135,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public T FirstDescendantWithType<T>() where T : Record
         {
-            foreach (Record child in this.Children)
+            foreach (var child in this.Children)
             {
                 if (child is T)
                 {
@@ -143,8 +143,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                 }
                 else if (child is RegularContainer)
                 {
-                    RegularContainer container = child as RegularContainer;
-                    T hit = container.FirstDescendantWithType<T>();
+                    var container = child as RegularContainer;
+                    var hit = container.FirstDescendantWithType<T>();
                     if (hit != null)
                     {
                         return hit;
@@ -160,8 +160,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         {
             yield return this;
 
-            foreach (Record recordChild in this.Children)
-                foreach (Record record in recordChild)
+            foreach (var recordChild in this.Children)
+                foreach (var record in recordChild)
                     yield return record;
         }
 

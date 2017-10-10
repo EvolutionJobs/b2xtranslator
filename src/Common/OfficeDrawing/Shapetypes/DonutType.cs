@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(23)]
+    [OfficeShapeType(23)]
     class DonutType: ShapeType
     {
         public DonutType()
@@ -24,9 +24,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.ConnectorLocations = "10800,0;3163,3163;0,10800;3163,18437;10800,21600;18437,18437;21600,10800;18437,3163";
             this.TextboxRectangle = "3163,3163,18437,18437";
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "#0,center";
-            HandleOne.xrange = "0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#0,center",
+                xrange = "0,10800"
+            };
             this.Handles.Add(HandleOne);
         }
     }

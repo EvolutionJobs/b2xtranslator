@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(132)]
+    [OfficeShapeType(132)]
     class FlowChartMagneticDiskType : ShapeType
     {
         public FlowChartMagneticDiskType()

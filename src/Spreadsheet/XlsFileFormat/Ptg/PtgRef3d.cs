@@ -35,9 +35,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
     {
         public const PtgNumber ID = PtgNumber.PtgRef3d;
 
-        public UInt16 ixti;
-        public UInt16 rw;
-        public UInt16 col;
+        public ushort ixti;
+        public ushort rw;
+        public ushort col;
 
         public bool colRelative;
         public bool rwRelative; 
@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
             this.colRelative = Utils.BitmaskToBool(col, 0x4000);
             this.rwRelative = Utils.BitmaskToBool(col, 0x8000);
 
-            this.col = (UInt16)(this.col & 0x3FFF);
+            this.col = (ushort)(this.col & 0x3FFF);
 
 
 

@@ -47,9 +47,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// The value MUST be one of the code page values specified in [CODEPG] 
         /// or the special value 1200, which means that the text of the graph object is Unicode.
         /// </summary>
-        public UInt16 cv;
+        public ushort cv;
 
-        public CodePage(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public CodePage(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

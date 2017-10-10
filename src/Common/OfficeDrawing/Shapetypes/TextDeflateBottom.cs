@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(163)]
+    [OfficeShapeType(163)]
     public class TextDeflateBottom : ShapeType
     {
         public TextDeflateBottom()
@@ -24,9 +24,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("sum @3 7200 0");
 
             this.Handles = new List<Handle>();
-            Handle h1 = new Handle();
-            h1.position="center,#0";
-            h1.yrange = "1350,21600";
+            var h1 = new Handle
+            {
+                position = "center,#0",
+                yrange = "1350,21600"
+            };
             this.Handles.Add(h1);
 
         }

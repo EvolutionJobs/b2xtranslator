@@ -8,7 +8,7 @@ using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1033)]
+    [OfficeRecord(1033)]
     public class ExObjListContainer : RegularContainer
     {
         public ExObjListContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -16,7 +16,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     }
 
 
-    [OfficeRecordAttribute(1034)]
+    [OfficeRecord(1034)]
     public class ExObjListAtom : Record
     {
         public ExObjListAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -26,10 +26,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(3009)]
+    [OfficeRecord(3009)]
     public class ExObjRefAtom : Record
     {
-        public Int32 exObjIdRef;
+        public int exObjIdRef;
 
         public ExObjRefAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
@@ -38,25 +38,25 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4035)]
+    [OfficeRecord(4035)]
     public class ExOleObjAtom : Record
     {
         public UInt32 persistIdRef;
-        public Int32 exObjId;
+        public int exObjId;
 
         public ExOleObjAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            Int32 drawAspect = this.Reader.ReadInt32();
-            Int32 type = this.Reader.ReadInt32();
+            var drawAspect = this.Reader.ReadInt32();
+            var type = this.Reader.ReadInt32();
             exObjId = this.Reader.ReadInt32();
-            Int32 subType = this.Reader.ReadInt32();
+            var subType = this.Reader.ReadInt32();
             persistIdRef = this.Reader.ReadUInt32();
-            Int32 unused = this.Reader.ReadInt32();            
+            var unused = this.Reader.ReadInt32();            
         }
     }
 
-    [OfficeRecordAttribute(4044)]
+    [OfficeRecord(4044)]
     public class ExOleEmbedContainer : RegularContainer
     {
         public ExOleObjStgAtom stgAtom;
@@ -65,13 +65,13 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance) { }
     }
 
-    [OfficeRecordAttribute(4045)]
+    [OfficeRecord(4045)]
     public class ExOleEmbedAtom : Record
     {
         public ExOleEmbedAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            Int32 exColorFollow = this.Reader.ReadInt32();
+            var exColorFollow = this.Reader.ReadInt32();
             byte fCantLockServer = this.Reader.ReadByte();
             byte fNoSizeToServer = this.Reader.ReadByte();
             byte fIsTable = this.Reader.ReadByte();
@@ -79,7 +79,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         }
     }
 
-    [OfficeRecordAttribute(4113)]
+    [OfficeRecord(4113)]
     public class ExOleObjStgAtom : Record, IVisitable
     {
         public uint len = 0;
@@ -106,15 +106,15 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public byte[] DecompressData()
         {
             // create memory stream to the data
-            MemoryStream msCompressed = new MemoryStream(data);
+            var msCompressed = new MemoryStream(data);
             
             // skip the first 2 bytes
             msCompressed.ReadByte();
             msCompressed.ReadByte();
 
             // decompress the bytes
-            byte[] decompressedBytes = new byte[decompressedSize];
-            DeflateStream deflateStream = new DeflateStream(msCompressed, CompressionMode.Decompress, true);
+            var decompressedBytes = new byte[decompressedSize];
+            var deflateStream = new DeflateStream(msCompressed, CompressionMode.Decompress, true);
             deflateStream.Read(decompressedBytes, 0, decompressedBytes.Length);
 
             return decompressedBytes;

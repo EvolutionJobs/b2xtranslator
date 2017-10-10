@@ -6,26 +6,26 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1010)]
+    [OfficeRecord(1010)]
     public class Environment : RegularContainer
     {
         public Environment(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                foreach (Record rec in Children)
+                foreach (var rec in Children)
                 {
                     switch (rec.TypeCode)
                     {
                         case 0x7d5: //FontCollectionContainer
                             break;
                         case 0xfa3: //TextMasterStyleAtom
-                            TextMasterStyleAtom a = (TextMasterStyleAtom)rec;
+                            var a = (TextMasterStyleAtom)rec;
                             break;
                         case 0xfa4: //TextCFExceptionAtom
-                            TextCFExceptionAtom ce = (TextCFExceptionAtom)rec;
+                            var ce = (TextCFExceptionAtom)rec;
                             break;
                         case 0xfa5: //TextPFExceptionAtom
-                            TextPFExceptionAtom e = (TextPFExceptionAtom)rec;
+                            var e = (TextPFExceptionAtom)rec;
                             break;
                         case 0xfa9: //TextSIEExceptionAtom
                             break;

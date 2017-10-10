@@ -268,7 +268,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
         public static sbyte[] StringToAnsi(string str)
         {
             int length = str.Length;
-            sbyte[] chars = new sbyte[length + 1];
+            var chars = new sbyte[length + 1];
             for (int i = 0; i < length; i++)
             {
                 chars[i] = (sbyte)str[i];
@@ -283,7 +283,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
         public static string AnsiToString(sbyte[] chars)
         {
             int length = chars.Length;
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
             for (int i = 0; i < length; i++)
             {
                 builder.Append((char)chars[i]);
@@ -305,9 +305,9 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
                 return path;
             }
 
-            String resolvedPath = path;
+            var resolvedPath = path;
             IList elements = new ArrayList();
-            string[] split = path.Split(new Char[] { '/', '\\' });
+            var split = path.Split(new Char[] { '/', '\\' });
             int count = 0;
             foreach (string s in split)
             {

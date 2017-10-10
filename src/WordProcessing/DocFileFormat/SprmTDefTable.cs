@@ -13,7 +13,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// An array of 16-bit signed integer that specifies horizontal distance in twips. <br/>
         /// MUST be greater than or equal to -31680 and less than or equal to 31680.
         /// </summary>
-        public Int16[] rgdxaCenter;
+        public short[] rgdxaCenter;
 
         /// <summary>
         /// An array of TC80 that specifies the default formatting for a cell in the table. <br/>
@@ -29,7 +29,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             int pointer = 1;
 
             //read rgdxaCenter
-            rgdxaCenter = new Int16[this.numberOfColumns + 1];
+            rgdxaCenter = new short[this.numberOfColumns + 1];
             for (int i = 0; i < this.numberOfColumns + 1 ; i++)
             {
                 rgdxaCenter[i] = System.BitConverter.ToInt16(bytes, pointer);
@@ -40,12 +40,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             rgTc80 = new TC80[this.numberOfColumns];
             for (int i = 0; i < this.numberOfColumns; i++)
             {
-                TC80 tc = new TC80();
+                var tc = new TC80();
 
                 if (pointer < bytes.Length)
                 {
                     //the flags
-                    UInt16 flags = System.BitConverter.ToUInt16(bytes, pointer);
+                    var flags = System.BitConverter.ToUInt16(bytes, pointer);
                     tc.horzMerge = (byte)Utils.BitmaskToInt((int)flags, 0x3);
                     tc.textFlow = (Global.TextFlow)Utils.BitmaskToInt((int)flags, 0x1C);
                     tc.vertMerge = (Global.VerticalMergeFlag)Utils.BitmaskToInt((int)flags, 0x60);
@@ -61,25 +61,25 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     pointer += 2;
 
                     //border top
-                    byte[] brcTopBytes = new byte[4];
+                    var brcTopBytes = new byte[4];
                     Array.Copy(bytes, pointer, brcTopBytes, 0, 4);
                     tc.brcTop = new BorderCode(brcTopBytes);
                     pointer += 4;
 
                     //border left
-                    byte[] brcLeftBytes = new byte[4];
+                    var brcLeftBytes = new byte[4];
                     Array.Copy(bytes, pointer, brcLeftBytes, 0, 4);
                     tc.brcLeft = new BorderCode(brcLeftBytes);
                     pointer += 4;
 
                     //border bottom
-                    byte[] brcBottomBytes = new byte[4];
+                    var brcBottomBytes = new byte[4];
                     Array.Copy(bytes, pointer, brcBottomBytes, 0, 4);
                     tc.brcBottom = new BorderCode(brcBottomBytes);
                     pointer += 4;
 
                     //border top
-                    byte[] brcRightBytes = new byte[4];
+                    var brcRightBytes = new byte[4];
                     Array.Copy(bytes, pointer, brcRightBytes, 0, 4);
                     tc.brcRight = new BorderCode(brcRightBytes);
                     pointer += 4;
@@ -144,7 +144,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// The unit of measurement depends on ftsWidth.
         /// If ftsWidth is set to ftsPercent, the value is a fraction of the width of the entire table.
         /// </summary>
-        public Int16 wWidth;
+        public short wWidth;
 
         public BorderCode brcTop;
 

@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         Custom
     }
 
-    [OfficeRecordAttribute(1001)]
+    [OfficeRecord(1001)]
     public class DocumentAtom : Record
     {
         public GPointAtom SlideSize;
@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public UInt32 NotesMasterPersist;
         public UInt32 HandoutMasterPersist;
-        public UInt16 FirstSlideNum;
+        public ushort FirstSlideNum;
         public SlideSizeType SlideSizeType;
 
         public bool SaveWithFonts;

@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //zoom
             _writer.WriteStartElement("w", "zoom", OpenXmlNamespaces.WordprocessingML);
             _writer.WriteAttributeString("w", "percent", OpenXmlNamespaces.WordprocessingML, dop.wScaleSaved.ToString());
-            ZoomType zoom = (ZoomType)dop.zkSaved;
+            var zoom = (ZoomType)dop.zkSaved;
             if (zoom != ZoomType.none)
             {
                 _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, zoom.ToString());

@@ -68,7 +68,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         }
 
 
-        internal UInt16 ToUInt16(byte[] value)
+        internal ushort ToUInt16(byte[] value)
         {
             if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
             {
@@ -85,7 +85,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
                 Array.Reverse(value);
             }
 
-            UnicodeEncoding enc = new UnicodeEncoding();            
+            var enc = new UnicodeEncoding();            
             string result = enc.GetString(value);
             if (result.Contains("\0"))
             {
@@ -95,9 +95,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         }
 
 
-        internal byte[] getBytes(UInt16 value)
+        internal byte[] getBytes(ushort value)
         {
-            byte[] result = BitConverter.GetBytes(value);
+            var result = BitConverter.GetBytes(value);
 
             if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
             {
@@ -109,7 +109,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
         internal byte[] getBytes(UInt32 value)
         {
-            byte[] result = BitConverter.GetBytes(value);
+            var result = BitConverter.GetBytes(value);
 
             if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
             {
@@ -121,7 +121,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
         internal byte[] getBytes(UInt64 value)
         {
-            byte[] result = BitConverter.GetBytes(value);
+            var result = BitConverter.GetBytes(value);
 
             if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
             {
@@ -132,9 +132,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
         internal List<byte> getBytes(List <UInt32> input)
         {
-            List<byte> output = new List<byte>();
+            var output = new List<byte>();
 
-            foreach (UInt32 entry in input)
+            foreach (var entry in input)
 	        {
                 output.AddRange(getBytes(entry));
             }

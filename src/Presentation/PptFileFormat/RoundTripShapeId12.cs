@@ -34,7 +34,7 @@ using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
-    [OfficeRecordAttribute(1055)]
+    [OfficeRecord(1055)]
     public class RoundTripShapeId12 : Record
     {
         public UInt32 ShapeId;

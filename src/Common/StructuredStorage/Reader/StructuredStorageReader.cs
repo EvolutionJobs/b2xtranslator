@@ -165,7 +165,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>An object which enables access to the virtual stream.</returns>
         public VirtualStream GetStream(string path)
         {
-            DirectoryEntry entry = _directory.GetDirectoryEntry(path);
+            var entry = _directory.GetDirectoryEntry(path);
             if (entry == null)
             {
                 throw new StreamNotFoundException(path);
@@ -202,7 +202,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>An object which enables access to the directory entry.</returns>
         public DirectoryEntry GetEntry(string path)
         {
-            DirectoryEntry entry = _directory.GetDirectoryEntry(path);
+            var entry = _directory.GetDirectoryEntry(path);
             if (entry == null)
             {
                 throw new DirectoryEntryNotFoundException(path);

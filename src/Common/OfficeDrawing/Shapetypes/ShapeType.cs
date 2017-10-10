@@ -112,12 +112,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
         /// Specifies the (x,y) coordinates of the limo stretch point.<br/>
         /// Some shapes that have portions that should be constrained to a fixed aspect ratio, are designed with limo-stretch to keep those portions at the fixed aspect ratio.<br/>
         /// </summary>
-        public String Limo;
+        public string Limo;
      
         /// <summary>
         /// Associated with each connection site, there is a direction which specifies at what angle elbow and curved connectors should attach to it<br/>
         /// </summary>
-        public String ConnectorAngles;
+        public string ConnectorAngles;
 
         /// <summary>
         /// Specifies if a shape of this type is filled by default
@@ -147,7 +147,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             { 
                 UInt32 ret = 0;
 
-                object[] attrs = this.GetType().GetCustomAttributes(typeof(OfficeShapeTypeAttribute), false);
+                var attrs = this.GetType().GetCustomAttributes(typeof(OfficeShapeTypeAttribute), false);
                 OfficeShapeTypeAttribute attr = null;
 
                 if (attrs.Length > 0)
@@ -182,7 +182,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 
             if (TypeToShapeClassMapping.TryGetValue(typeCode, out cls))
             {
-                ConstructorInfo constructor = cls.GetConstructor(new Type[] {});
+                var constructor = cls.GetConstructor(new Type[] {});
 
                 if (constructor == null)
                 {
@@ -218,13 +218,13 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
         /// 
         /// <param name="assembly">Assembly to scan</param>
         /// <param name="ns">Namespace to scan or null for all namespaces</param>
-        public static void UpdateTypeToShapeClassMapping(Assembly assembly, String ns)
+        public static void UpdateTypeToShapeClassMapping(Assembly assembly, string ns)
         {
-            foreach (Type t in assembly.GetTypes())
+            foreach (var t in assembly.GetTypes())
             {
                 if (ns == null || t.Namespace == ns)
                 {
-                    object[] attrs = t.GetCustomAttributes(typeof(OfficeShapeTypeAttribute), false);
+                    var attrs = t.GetCustomAttributes(typeof(OfficeShapeTypeAttribute), false);
                     OfficeShapeTypeAttribute attr = null;
 
                     if (attrs.Length > 0)

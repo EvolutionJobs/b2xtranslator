@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// List ID of corresponding ListData
         /// </summary>
-        public Int32 lsid;
+        public int lsid;
 
         /// <summary>
         /// Count of levels whose format is overridden

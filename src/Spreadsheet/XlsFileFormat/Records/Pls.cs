@@ -38,21 +38,21 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public byte[] rgb;
 
-        public Pls(IStreamReader reader, RecordType id, UInt16 length)
+        public Pls(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
-            using (MemoryStream ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
-                byte[] buffer = reader.ReadBytes(length);
+                var buffer = reader.ReadBytes(length);
                 ms.Write(buffer, 0, length);
 
                 while (BiffRecord.GetNextRecordType(reader) == RecordType.Pls)
                 {
-                    RecordType nextId = (RecordType)reader.ReadUInt16();
-                    UInt16 nextLength = reader.ReadUInt16();
+                    var nextId = (RecordType)reader.ReadUInt16();
+                    var nextLength = reader.ReadUInt16();
 
                     buffer = reader.ReadBytes(nextLength);
                     ms.Write(buffer, 0, nextLength);
@@ -60,8 +60,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
                 while (BiffRecord.GetNextRecordType(reader) == RecordType.Continue)
                 {
-                    RecordType nextId = (RecordType)reader.ReadUInt16();
-                    UInt16 nextLength = reader.ReadUInt16();
+                    var nextId = (RecordType)reader.ReadUInt16();
+                    var nextLength = reader.ReadUInt16();
 
                     buffer = reader.ReadBytes(nextLength);
                     ms.Write(buffer, 0, nextLength);

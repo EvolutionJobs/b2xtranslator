@@ -160,20 +160,20 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// A RwU that specifies a zero-based row index of the first visible row of the sheet. 
         /// This field is undefined and MUST be ignored if this record is contained in a chart sheet substream.
         /// </summary>
-        public UInt16 rwTop;
+        public ushort rwTop;
 
         /// <summary>
         /// A ColU that specifies a zero-based column index of the logical left-most visible column. 
         /// This field is undefined and MUST be ignored if this record is contained in a chart sheet substream.
         /// </summary>
-        public UInt16 colLeft;
+        public ushort colLeft;
 
         /// <summary>
         /// An Icv that specifies the color of the gridlines. MUST be less than or equal to 64. 
         /// MUST be 64 if and only if the value of fDefaultHdr is 1. This field is undefined and 
         /// MUST be ignored if this record is contained in a chart sheet substream.
         /// </summary>
-        public UInt16 icvHdr;
+        public ushort icvHdr;
 
         /// <summary>
         /// An unsigned integer that specifies the zoom level in the Page Break Preview view. 
@@ -183,16 +183,16 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// A value of 0 specifies the default zoom level. This field MUST NOT exist if this 
         /// record is contained in a chart sheet substream.
         /// </summary>
-        public UInt16 wScaleSLV;
+        public ushort wScaleSLV;
 
         /// <summary> An unsigned integer that specifies the zoom level in the Normal view. If the value of fSLV is 0
         /// and fPageLayoutView field of the PLV as specified in the ABNF in Common Productions is 0 and this record 
         /// has an associated Scl, then the value of wScaleNormal is undefined and MUST be ignored. MUST <131> be 
         /// either 0 or greater than or equal to 10 and less than or equal to 400. A value of 0 specifies the default 
         /// zoom level. This field MUST NOT exist if this record is contained in a chart sheet substream. </summary>
-        public UInt16 wScaleNormal;
+        public ushort wScaleNormal;
 
-        public Window2(IStreamReader reader, RecordType id, UInt16 length)
+        public Window2(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -201,7 +201,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             bool inChartSubstream = (length == 10);
 
             // initialize class members from stream
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fDspFmlaRt = Utils.BitmaskToBool(flags, 0x0001);
             this.fDspGridRt = Utils.BitmaskToBool(flags, 0x0002);
             this.fDspRwColRt = Utils.BitmaskToBool(flags, 0x0004);

@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// </summary>
         public bool fScaled;
 
-        public UInt16 ifnt;
+        public ushort ifnt;
         // TODO: implement FontIndex???
 
         public FontInfo(IStreamReader reader)

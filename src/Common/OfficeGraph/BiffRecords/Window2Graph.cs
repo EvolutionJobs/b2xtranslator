@@ -47,16 +47,16 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// MUST be greater than or equal to 1.
         /// </summary>
-        public UInt16 rowFirst;
+        public ushort rowFirst;
 
         /// <summary>
         /// A Graph_Col that specifies the first (top-left) visible column of the datasheet. 
         /// 
         /// MUST be greater than or equal to 1.
         /// </summary>
-        public UInt16 colFirst;
+        public ushort colFirst;
 
-        public Window2Graph(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Window2Graph(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

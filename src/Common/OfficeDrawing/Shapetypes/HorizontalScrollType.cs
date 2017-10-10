@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(98)]
+    [OfficeShapeType(98)]
     public class HorizontalScrollType : ShapeType
     {
         public HorizontalScrollType()
@@ -42,9 +42,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Formulas.Add("prod height 1 2");
 
             this.Handles = new List<Handle>();
-            Handle handleOne = new Handle();
-            handleOne.position = "#0,topLeft";
-            handleOne.xrange="0,5400";
+            var handleOne = new Handle
+            {
+                position = "#0,topLeft",
+                xrange = "0,5400"
+            };
 
             this.Handles.Add(handleOne);
             this.Limo = "10800,10800"; 

@@ -40,12 +40,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// <summary>
         /// Reserved. MUST be 0x09.
         /// </summary>
-        public UInt16 ft;
+        public ushort ft;
 
         /// <summary>
         /// An unsigned integer that specifies the length, in bytes of this FtPicFmla, not including ft and cb fields.
         /// </summary>
-        public UInt16 cb;
+        public ushort cb;
 
         public FtPictFmla(IStreamReader reader)
         {

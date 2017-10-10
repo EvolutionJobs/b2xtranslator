@@ -31,10 +31,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 {
     public class HyperlinkData
     {
-        public UInt16 rwFirst;
-        public UInt16 rwLast;
-        public UInt16 colFirst;
-        public UInt16 colLast;
+        public ushort rwFirst;
+        public ushort rwLast;
+        public ushort colFirst;
+        public ushort colLast;
 
         public string url;
 

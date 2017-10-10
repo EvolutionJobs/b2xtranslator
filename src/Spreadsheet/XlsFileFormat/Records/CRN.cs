@@ -39,12 +39,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public byte colLast;
         public byte colFirst;
 
-        public UInt16 rw;
+        public ushort rw;
 
         public List<Object> oper; 
 
 
-        public CRN(IStreamReader reader, RecordType id, UInt16 length)
+        public CRN(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -67,8 +67,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 }
                 else if (grbit == 0x02)
                 {
-                    String Data = "";
-                    UInt16 cch = this.Reader.ReadUInt16();
+                    var Data = "";
+                    var cch = this.Reader.ReadUInt16();
                     byte firstbyte = this.Reader.ReadByte();
                     int firstbit = firstbyte & 0x1;
                     for (int i = 0; i < cch; i++)
@@ -95,7 +95,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 else if (grbit == 0x04)
                 {
                     // bool 
-                    UInt16 boolvalue = this.Reader.ReadUInt16();
+                    var boolvalue = this.Reader.ReadUInt16();
                     bool value = false;
                     if (boolvalue == 1)
                         value = true;

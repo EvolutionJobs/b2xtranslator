@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML
 
         public static PresentationDocument Create(string fileName, OpenXmlPackage.DocumentType type)
         {
-            PresentationDocument presentation = new PresentationDocument(fileName, type);
+            var presentation = new PresentationDocument(fileName, type);
 
             return presentation;
         }

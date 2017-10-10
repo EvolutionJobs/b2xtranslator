@@ -35,15 +35,15 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     {
         public const RecordType ID = RecordType.ExternSheet;
 
-        public UInt16 cXTI;
+        public ushort cXTI;
 
-        public UInt16[] iSUPBOOK; 
+        public ushort[] iSUPBOOK; 
 
-        public UInt16[] itabFirst;
+        public ushort[] itabFirst;
 
-        public UInt16[] itabLast;
+        public ushort[] itabLast;
 
-        public ExternSheet(IStreamReader reader, RecordType id, UInt16 length)
+        public ExternSheet(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -51,9 +51,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             this.cXTI = this.Reader.ReadUInt16();
 
-            this.iSUPBOOK = new UInt16[this.cXTI];
-            this.itabFirst = new UInt16[this.cXTI]; 
-            this.itabLast = new UInt16[this.cXTI]; 
+            this.iSUPBOOK = new ushort[this.cXTI];
+            this.itabFirst = new ushort[this.cXTI]; 
+            this.itabLast = new ushort[this.cXTI]; 
 
             for (int i = 0; i < this.cXTI; i++)
             {                

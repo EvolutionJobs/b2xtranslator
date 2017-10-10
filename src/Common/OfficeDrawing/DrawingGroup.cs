@@ -32,7 +32,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF000)]
+    [OfficeRecord(0xF000)]
     public class DrawingGroup : RegularContainer
     {
         public DrawingGroup(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)

@@ -40,12 +40,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// <summary>
         /// An unsigned integer that specifies the zero-based index of the first character of the text that contains the text run. When this record is used in an array, this value MUST be in strictly increasing order.
         /// </summary>
-        public UInt16 ich;
+        public ushort ich;
 
         /// <summary>
         /// A FontIndex record that specifies the font. If ich is equal to the length of the text, this record is undefined and MUST be ignored.
         /// </summary>
-        public UInt16 ifnt;
+        public ushort ifnt;
 
         public Run(IStreamReader reader)
         {

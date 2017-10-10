@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// MUST be greater than or equal to 0, and less than or equal to 32767.<br/>
         /// SHOULD <65> be less than or equal to 4000.
         /// </summary>
-        public Int32 x;
+        public int x;
 
         /// <summary>
         /// A signed integer that specifies the vertical position of the text, relative 
@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// MUST be greater than or equal to 0, and less than or equal to 32767. <br/>
         /// SHOULD <66> be less than or equal to 4000.
         /// </summary>
-        public Int32 y;
+        public int y;
 
         /// <summary>
         /// A signed integer that specifies the horizontal size of the text, 
@@ -89,7 +89,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// MUST be greater than or equal to 0, and less than or equal to 32767.<br/>
         /// SHOULD <67> be less than or equal to 4000.
         /// </summary>
-        public Int32 dx;
+        public int dx;
 
         /// <summary>
         /// A signed integer that specifies the vertical size of the text, relative to the chart area, in SPRC.<br/> 
@@ -97,7 +97,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// MUST be greater than or equal to 0, and less than or equal to 32767.<br/>
         /// SHOULD <68> be less than or equal to 4000.
         /// </summary>
-        public Int32 dy;
+        public int dy;
 
         /// <summary>
         /// A bit that specifies whether the foreground text color is determined automatically.
@@ -162,7 +162,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// <summary>
         /// Specifies the color of the text.
         /// </summary>
-        public UInt16 icvText;
+        public ushort icvText;
 
         /// <summary>
         /// Specifies the data label positioning of the text, relative to the graph object item the text is attached to. 
@@ -183,9 +183,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 91 to 180 = Text rotated 1 to 90 degrees clockwise (angle is trot – 90)<br/>
         /// 255 = Text top-to-bottom with letters upright
         /// </summary>
-        public UInt16 trot;
+        public ushort trot;
 
-        public Text(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public Text(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -200,7 +200,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             this.y = reader.ReadInt32();
             this.dx = reader.ReadInt32();
             this.dy = reader.ReadInt32();
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fAutoColor = Utils.BitmaskToBool(flags, 0x1);
             this.fShowKey = Utils.BitmaskToBool(flags, 0x2);
             this.fShowValue = Utils.BitmaskToBool(flags, 0x4);
@@ -216,7 +216,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             this.fShowLabel = Utils.BitmaskToBool(flags, 0x4000); 
             //0x8000 is reserved
             this.icvText = reader.ReadUInt16();
-            UInt16 values = reader.ReadUInt16();
+            var values = reader.ReadUInt16();
             this.dlp = Utils.BitmaskToInt(values, 0xF);
             this.iReadingOrder = (ReadingOrder)Utils.BitmaskToInt(values, 0xC000);
             this.trot = reader.ReadUInt16();

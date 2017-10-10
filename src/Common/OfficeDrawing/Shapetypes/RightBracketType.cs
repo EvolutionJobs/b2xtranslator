@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(86)]
+    [OfficeShapeType(86)]
     public class RightBracketType :ShapeType
     {
 
@@ -28,9 +28,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position = "bottomRight,#0";
-            HandleOne.yrange = "0,10800";
+            var HandleOne = new Handle
+            {
+                position = "bottomRight,#0",
+                yrange = "0,10800"
+            };
             this.Handles.Add(HandleOne);
         }
     }

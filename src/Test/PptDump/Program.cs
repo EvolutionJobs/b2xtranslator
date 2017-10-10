@@ -24,19 +24,19 @@ namespace DIaLOGIKa.b2xtranslator.PptDump
             Directory.CreateDirectory(outputDir);
 
             string inputFile = args[0];
-            ProcessingFile procFile = new ProcessingFile(inputFile);
+            var procFile = new ProcessingFile(inputFile);
 
-            StructuredStorageReader file = new StructuredStorageReader(procFile.File.FullName);
-            PowerpointDocument pptDoc = new PowerpointDocument(file);
+            var file = new StructuredStorageReader(procFile.File.FullName);
+            var pptDoc = new PowerpointDocument(file);
 
             // Dump unknown records
-            foreach (Record record in pptDoc)
+            foreach (var record in pptDoc)
             {
                 if (record is UnknownRecord)
                 {
                     string filename = String.Format(@"{0}\{1}.record", outputDir, record.GetIdentifier());
 
-                    using (FileStream fs = new FileStream(filename, FileMode.Create))
+                    using (var fs = new FileStream(filename, FileMode.Create))
                     {
                         record.DumpToStream(fs);
                     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(109)]
+    [OfficeShapeType(109)]
     public class FlowChartProcessType : ShapeType
     {
         public FlowChartProcessType()

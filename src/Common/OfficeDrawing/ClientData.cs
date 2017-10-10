@@ -32,7 +32,7 @@ using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 {
-    [OfficeRecordAttribute(0xF011)]
+    [OfficeRecord(0xF011)]
     public class ClientData : Record
     {
         /// <summary>

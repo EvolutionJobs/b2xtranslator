@@ -21,7 +21,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             /// <summary>
             /// Specifies the mapping mode in which the picture is drawn.
             /// </summary>
-            public Int16 mm;
+            public short mm;
 
             /// <summary>
             /// Specifies the size of the metafile picture for all modes except the MM_ISOTROPIC and MM_ANISOTROPIC modes.<br/>
@@ -29,7 +29,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             /// The x-extent specifies the width of the rectangle within which the picture is drawn.<br/>
             /// The coordinates are in units that correspond to the mapping mode.<br/>
             /// </summary>
-            public Int16 xExt;
+            public short xExt;
 
             /// <summary>
             /// Specifies the size of the metafile picture for all modes except the MM_ISOTROPIC and MM_ANISOTROPIC modes.<br/> 
@@ -44,12 +44,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             /// whose ratio is the appropriate aspect ratio.<br/>
             /// The magnitude of the negative xExt and yExt values is ignored; only the ratio is used.
             /// </summary>
-            public Int16 yExt;
+            public short yExt;
 
             /// <summary>
             /// Handle to a memory metafile.
             /// </summary>
-            public Int16 hMf;
+            public short hMf;
         }
 
         /// <summary>
@@ -60,22 +60,22 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Horizontal measurement in twips of the rectangle the picture should be imaged within.
         /// </summary>
-        public Int16 dxaGoal;
+        public short dxaGoal;
 
         /// <summary>
         /// Vertical measurement in twips of the rectangle the picture should be imaged within.
         /// </summary>
-        public Int16 dyaGoal;
+        public short dyaGoal;
 
         /// <summary>
         /// Horizontal scaling factor supplied by user expressed in .001% units
         /// </summary>
-        public UInt16 mx;
+        public ushort mx;
 
         /// <summary>
         /// Vertical scaling factor supplied by user expressed in .001% units
         /// </summary>
-        public UInt16 my;
+        public ushort my;
 
         /// <summary>
         /// The type of the picture
@@ -95,22 +95,22 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// The amount the picture has been cropped on the left in twips
         /// </summary>
-        public Int16 dxaCropLeft;
+        public short dxaCropLeft;
 
         /// <summary>
         /// The amount the picture has been cropped on the top in twips
         /// </summary>
-        public Int16 dyaCropTop;
+        public short dyaCropTop;
 
         /// <summary>
         /// The amount the picture has been cropped on the right in twips
         /// </summary>
-        public Int16 dxaCropRight;
+        public short dxaCropRight;
 
         /// <summary>
         /// The amount the picture has been cropped on the bottom in twips
         /// </summary>
-        public Int16 dyaCropBottom;
+        public short dyaCropBottom;
 
         /// <summary>
         /// Border above picture
@@ -135,17 +135,17 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Horizontal offset of hand annotation origin
         /// </summary>
-        public Int16 dxaOrigin;
+        public short dxaOrigin;
 
         /// <summary>
         /// vertical offset of hand annotation origin
         /// </summary>
-        public Int16 dyaOrigin;
+        public short dyaOrigin;
 
         /// <summary>
         /// unused
         /// </summary>
-        public Int16 cProps;
+        public short cProps;
 
         public ShapeContainer ShapeContainer;
 
@@ -158,29 +158,31 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public PictureDescriptor(CharacterPropertyExceptions chpx, VirtualStream stream)
         {
             //Get start and length of the PICT
-            Int32 fc = GetFcPic(chpx);
+            var fc = GetFcPic(chpx);
             if (fc >= 0)
             {
                 parse(stream, fc);
             }
         }
 
-        private void parse(VirtualStream stream, Int32 fc)
+        private void parse(VirtualStream stream, int fc)
         {
             stream.Seek(fc, System.IO.SeekOrigin.Begin);
-            VirtualStreamReader reader = new VirtualStreamReader(stream);
+            var reader = new VirtualStreamReader(stream);
 
-            Int32 lcb = reader.ReadInt32();
+            var lcb = reader.ReadInt32();
 
             if (lcb > 0)
             {
-                UInt16 cbHeader = reader.ReadUInt16();
+                var cbHeader = reader.ReadUInt16();
 
-                this.mfp = new MetafilePicture();
-                this.mfp.mm = reader.ReadInt16();
-                this.mfp.xExt = reader.ReadInt16();
-                this.mfp.yExt = reader.ReadInt16();
-                this.mfp.hMf = reader.ReadInt16();
+                this.mfp = new MetafilePicture
+                {
+                    mm = reader.ReadInt16(),
+                    xExt = reader.ReadInt16(),
+                    yExt = reader.ReadInt16(),
+                    hMf = reader.ReadInt16()
+                };
 
                 if (this.mfp.mm > 98)
                 {
@@ -198,7 +200,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     this.dxaCropRight = reader.ReadInt16();
                     this.dyaCropBottom = reader.ReadInt16();
 
-                    Int16 brcl = reader.ReadInt16();
+                    var brcl = reader.ReadInt16();
 
                     //borders
                     this.brcTop = new BorderCode(reader.ReadBytes(4));
@@ -211,14 +213,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     this.cProps = reader.ReadInt16();
 
                     //Parse the OfficeDrawing Stuff
-                    Record r = Record.ReadRecord(reader);
+                    var r = Record.ReadRecord(reader);
                     if (r is ShapeContainer)
                     {
                         this.ShapeContainer = (ShapeContainer)r;
                         long pos = reader.BaseStream.Position;
                         if (pos < (fc + lcb))
                         {
-                            Record rec = Record.ReadRecord(reader);
+                            var rec = Record.ReadRecord(reader);
                             if (rec.GetType() == typeof(BlipStoreEntry))
                             {
                                 this.BlipStoreEntry = (BlipStoreEntry)rec;
@@ -237,10 +239,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// </summary>
         /// <param name="chpx">The CHPX</param>
         /// <returns></returns>
-        public static Int32 GetFcPic(CharacterPropertyExceptions chpx)
+        public static int GetFcPic(CharacterPropertyExceptions chpx)
         {
-            Int32 ret = -1;
-            foreach (SinglePropertyModifier sprm in chpx.grpprl)
+            var ret = -1;
+            foreach (var sprm in chpx.grpprl)
             {
                 switch (sprm.OpCode)
 	            {

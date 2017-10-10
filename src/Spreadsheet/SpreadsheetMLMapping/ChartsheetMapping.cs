@@ -65,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             _writer.WriteAttributeString("xmlns", Sml.Ns);
             _writer.WriteAttributeString("xmlns", "r", "", OpenXmlNamespaces.Relationships);
             
-            ChartSheetContentSequence chartSheetContentSequence = chartSheetSequence.ChartSheetContentSequence;
+            var chartSheetContentSequence = chartSheetSequence.ChartSheetContentSequence;
 
             // sheetPr
             _writer.WriteStartElement(Sml.Sheet.ElSheetPr, Sml.Ns);

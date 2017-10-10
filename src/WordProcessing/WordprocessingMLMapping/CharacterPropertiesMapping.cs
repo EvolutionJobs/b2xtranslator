@@ -40,7 +40,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
     {
         private WordDocument _doc;
         private XmlElement _rPr;
-        private UInt16 _currentIstd;
+        private ushort _currentIstd;
         private RevisionData _revisionData;
         private bool _styleChpx;
         private ParagraphPropertyExceptions _currentPapx;
@@ -181,7 +181,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         appendFlagElement(parent, sprm, "webHidden", true);
                         break;
                     case 0x2A48:
-                        SuperscriptIndex iss = (SuperscriptIndex)sprm.Arguments[0];
+                        var iss = (SuperscriptIndex)sprm.Arguments[0];
                         appendValueElement(parent, "vertAlign", iss.ToString(), true);
                         break;
 
@@ -189,7 +189,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case 0x486D:
                     case 0x4873:
                         //latin
-                        LanguageId langid = new LanguageId(System.BitConverter.ToInt16(sprm.Arguments, 0));
+                        var langid = new LanguageId(System.BitConverter.ToInt16(sprm.Arguments, 0));
                         langid.Convert(new LanguageIdMapping(lang, LanguageIdMapping.LanguageType.Default));
                         break;
                     case 0x486E:
@@ -215,7 +215,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //shading
                     case 0x4866:
                     case 0xCA71:
-                        ShadingDescriptor desc = new ShadingDescriptor(sprm.Arguments);
+                        var desc = new ShadingDescriptor(sprm.Arguments);
                         appendShading(parent, desc);
                         break;
 
@@ -257,19 +257,19 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //font family
                     case 0x4A4F:
                         XmlAttribute ascii = _nodeFactory.CreateAttribute("w", "ascii", OpenXmlNamespaces.WordprocessingML);
-                        FontFamilyName ffn = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
+                        var ffn = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
                         ascii.Value = ffn.xszFtn;
                         rFonts.Attributes.Append(ascii);
                         break;
                    case 0x4A50:
                        XmlAttribute eastAsia = _nodeFactory.CreateAttribute("w", "eastAsia", OpenXmlNamespaces.WordprocessingML);
-                       FontFamilyName ffnAsia = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
+                       var ffnAsia = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
                        eastAsia.Value = ffnAsia.xszFtn;
                        rFonts.Attributes.Append(eastAsia);
                        break;
                     case 0x4A51:
                         XmlAttribute ansi = _nodeFactory.CreateAttribute("w", "hAnsi", OpenXmlNamespaces.WordprocessingML);
-                        FontFamilyName ffnAnsi = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
+                        var ffnAnsi = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
                         ansi.Value = ffnAnsi.xszFtn;
                         rFonts.Attributes.Append(ansi);
                         break;
@@ -282,7 +282,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case (int)SinglePropertyModifier.OperationCode.sprmCFtcBi:
                         // complex script font
                         XmlAttribute cs = _nodeFactory.CreateAttribute("w", "cs", OpenXmlNamespaces.WordprocessingML);
-                        FontFamilyName ffnCs = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
+                        var ffnCs = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
                         cs.Value = ffnCs.xszFtn;
                         rFonts.Attributes.Append(cs);
                         break;
@@ -369,7 +369,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //Invert the value of the style
 
                     //determine the style id of the current style
-                    UInt16 styleId = 0;
+                    ushort styleId = 0;
                     if (_currentIstd != UInt16.MaxValue)
                     {
                         styleId = _currentIstd;
@@ -384,7 +384,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     if (_styleChpx)
                     {
                         StyleSheetDescription thisStyle = _doc.Styles.Styles[styleId];
-                        styleId = (UInt16)thisStyle.istdBase;
+                        styleId = (ushort)thisStyle.istdBase;
                     }
 
                     //build the style hierarchy
@@ -407,9 +407,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
         }
 
-        private List<CharacterPropertyExceptions> buildHierarchy(StyleSheet styleSheet, UInt16 istdStart)
+        private List<CharacterPropertyExceptions> buildHierarchy(StyleSheet styleSheet, ushort istdStart)
         {
-            List<CharacterPropertyExceptions> hierarchy = new List<CharacterPropertyExceptions>();
+            var hierarchy = new List<CharacterPropertyExceptions>();
             int istd = (int)istdStart;
             bool goOn = true;
             while (goOn)

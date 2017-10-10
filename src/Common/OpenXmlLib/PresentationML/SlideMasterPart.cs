@@ -28,7 +28,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML
 
         public SlideLayoutPart AddSlideLayoutPart()
         {
-            SlideLayoutPart part = new SlideLayoutPart(this, ++_slideLayoutCounter);
+            var part = new SlideLayoutPart(this, ++_slideLayoutCounter);
             part.ReferencePart(this);
             return this.AddPart(part);
         }

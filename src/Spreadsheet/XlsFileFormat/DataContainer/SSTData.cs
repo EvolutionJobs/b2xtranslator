@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <summary>
         /// Two lists to store the shared String Data 
         /// </summary>
-        public List<String> StringList;
+        public List<string> StringList;
         public List<StringFormatAssignment> FormatList;
 
         /// <summary>
@@ -69,8 +69,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 
         public List<StringFormatAssignment> getFormatingRuns(int stringNumber)
         {
-            List<StringFormatAssignment> returnList = new List<StringFormatAssignment>();
-            foreach (StringFormatAssignment item in this.FormatList)
+            var returnList = new List<StringFormatAssignment>();
+            foreach (var item in this.FormatList)
             {
                 if (item.StringNumber == stringNumber)
                 {

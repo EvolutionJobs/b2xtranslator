@@ -232,14 +232,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// Advances the stream pointer accordingly.
         /// </summary>
         /// <returns>The UInt16 value read from the stream.</returns>
-        internal UInt16 ReadUInt16()
+        internal ushort ReadUInt16()
         {
             if (_bitConverter == null)
             {
                 throw new FileHandlerNotCorrectlyInitializedException();
             }
 
-            byte[] array = new byte[2];
+            var array = new byte[2];
             Read(array);
             return _bitConverter.ToUInt16(array);
         }
@@ -258,7 +258,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
                 throw new FileHandlerNotCorrectlyInitializedException();
             }
 
-            byte[] array = new byte[4];
+            var array = new byte[4];
             Read(array);
             return _bitConverter.ToUInt32(array);
         }
@@ -277,7 +277,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
                 throw new FileHandlerNotCorrectlyInitializedException();
             }
 
-            byte[] array = new byte[8];
+            var array = new byte[8];
             Read(array);
             return _bitConverter.ToUInt64(array);
         }
@@ -289,7 +289,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// Advances the stream pointer accordingly.
         /// </summary>
         /// <returns>The UInt16 value read at the given position.</returns>
-        internal UInt16 ReadUInt16(long position)
+        internal ushort ReadUInt16(long position)
         {
             if (_bitConverter == null)
             {
@@ -300,7 +300,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             {
                 throw new ArgumentOutOfRangeException("position");
             }
-            byte[] array = new byte[2];
+            var array = new byte[2];
             ReadPosition(array, position);
             return _bitConverter.ToUInt16(array);
         }
@@ -323,7 +323,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             {
                 throw new ArgumentOutOfRangeException("position");
             }
-            byte[] array = new byte[4];
+            var array = new byte[4];
             ReadPosition(array, position);
             return _bitConverter.ToUInt32(array);
         }
@@ -346,7 +346,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             {
                 throw new ArgumentOutOfRangeException("position");
             }
-            byte[] array = new byte[8];
+            var array = new byte[8];
             ReadPosition(array, position);
             return _bitConverter.ToUInt64(array);
         }
@@ -370,7 +370,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             {
                 throw new ArgumentOutOfRangeException("size");
             }
-            byte[] array = new byte[size];
+            var array = new byte[size];
             Read(array);
             return _bitConverter.ToString(array);
         }  

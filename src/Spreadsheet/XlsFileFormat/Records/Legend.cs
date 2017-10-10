@@ -99,7 +99,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fWasDataTable;
 
-        public Legend(IStreamReader reader, RecordType id, UInt16 length)
+        public Legend(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -113,7 +113,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             reader.ReadByte(); // undefined
             this.wSpace = reader.ReadByte();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fAutoPosition = Utils.BitmaskToBool(flags, 0x1);
             //0x2 is reserved
             this.fAutoPosX = Utils.BitmaskToBool(flags, 0x4);

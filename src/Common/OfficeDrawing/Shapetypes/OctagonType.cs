@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(10)]
+    [OfficeShapeType(10)]
     public class OctagonType : ShapeType
     {
         public OctagonType()
@@ -34,10 +34,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.TextboxRectangle = "0,0,21600,21600;2700,2700,18900,18900;5400,5400,16200,16200";
 
             this.Handles = new List<Handle>();
-            Handle HandleOne = new Handle();
-            HandleOne.position="#0,topLeft";
-            HandleOne.switchHandle = "true";
-            HandleOne.xrange="0,10800";
+            var HandleOne = new Handle
+            {
+                position = "#0,topLeft",
+                switchHandle = "true",
+                xrange = "0,10800"
+            };
             this.Handles.Add(HandleOne);
 
             this.Limo = "10800,10800";

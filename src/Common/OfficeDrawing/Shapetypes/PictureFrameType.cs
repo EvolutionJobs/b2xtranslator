@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 {
-    [OfficeShapeTypeAttribute(75)]
+    [OfficeShapeType(75)]
     public class PictureFrameType : ShapeType
     {
         public PictureFrameType()
@@ -30,9 +30,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Stroked = false;
 
             //pictures have a lock on the aspect ratio by default
-            this.Lock = new ProtectionBooleans(0);
-            this.Lock.fUsefLockAspectRatio = true;
-            this.Lock.fLockAspectRatio = true;
+            this.Lock = new ProtectionBooleans(0)
+            {
+                fUsefLockAspectRatio = true,
+                fLockAspectRatio = true
+            };
 
             this.ShapeConcentricFill = true;
             this.ConnectorType = "rect";

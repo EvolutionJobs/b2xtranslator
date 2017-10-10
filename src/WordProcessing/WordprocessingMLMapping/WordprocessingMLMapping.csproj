@@ -3,4 +3,9 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj" />
+    <ProjectReference Include="..\..\Common\OpenXmlLib\OpenXmlLib.csproj" />
+    <ProjectReference Include="..\DocFileFormat\DocFileFormat.csproj" />
+  </ItemGroup>
 </Project>

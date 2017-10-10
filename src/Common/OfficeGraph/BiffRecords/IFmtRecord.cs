@@ -50,9 +50,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// than or equal to 0x017E. The built-in number formats are listed in 
         /// [ECMA-376] Part 4: Markup Language Reference, section 3.8.30.
         /// </summary>
-        public UInt16 ifmt;
+        public ushort ifmt;
 
-        public IFmtRecord(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public IFmtRecord(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

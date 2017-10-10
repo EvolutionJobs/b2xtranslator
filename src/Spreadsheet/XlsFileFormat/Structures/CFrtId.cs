@@ -9,12 +9,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// An unsigned integer that specifies the first Future Record Type in the range.<br/> 
         /// MUST be less than or equal to rtLast.
         /// </summary>
-        public UInt16 rtFirst;
+        public ushort rtFirst;
 
         /// <summary>
         /// An unsigned integer that specifies the last Future Record Type in the range.
         /// </summary>
-        public UInt16 rtLast;
+        public ushort rtLast;
 
         public CFrtId(IStreamReader reader)
         {

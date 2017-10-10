@@ -51,9 +51,9 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public void Apply(XlsDocument xls)
         {
             //get the Class IDs of the directories
-            Guid macroClsid = new Guid();
-            Guid vbaClsid = new Guid();
-            foreach (DirectoryEntry entry in xls.Storage.AllEntries)
+            var macroClsid = new Guid();
+            var vbaClsid = new Guid();
+            foreach (var entry in xls.Storage.AllEntries)
             {
                 if (entry.Path == projectFolder)
                 {
@@ -66,13 +66,13 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             }
 
             //create a new storage
-            StructuredStorageWriter storage = new StructuredStorageWriter();
+            var storage = new StructuredStorageWriter();
             storage.RootDirectoryEntry.setClsId(macroClsid);
 
             //copy the VBA directory
-            StorageDirectoryEntry vba = storage.RootDirectoryEntry.AddStorageDirectoryEntry("VBA");
+            var vba = storage.RootDirectoryEntry.AddStorageDirectoryEntry("VBA");
             vba.setClsId(vbaClsid);
-            foreach (DirectoryEntry entry in xls.Storage.AllStreamEntries)
+            foreach (var entry in xls.Storage.AllStreamEntries)
             {
                 if (entry.Path.StartsWith(vbaFolder))
                 {

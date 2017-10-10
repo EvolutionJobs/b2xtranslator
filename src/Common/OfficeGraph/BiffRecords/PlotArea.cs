@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
     {
         public const GraphRecordNumber ID = GraphRecordNumber.PlotArea;
 
-        public PlotArea(IStreamReader reader, GraphRecordNumber id, UInt16 length)
+        public PlotArea(IStreamReader reader, GraphRecordNumber id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated

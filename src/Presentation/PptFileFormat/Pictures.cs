@@ -47,7 +47,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             while (this.Reader.BaseStream.Position < this.Reader.BaseStream.Length)
             {
                 pos = this.Reader.BaseStream.Position;
-                Record r = Record.ReadRecord(this.Reader);
+                var r = Record.ReadRecord(this.Reader);
                 switch (r.TypeCode)
                 {
                     case 0:
@@ -56,7 +56,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                     case 0xF01A:
                     case 0xF01B:
                     case 0xF01C:
-                        MetafilePictBlip mb = (MetafilePictBlip)r;
+                        var mb = (MetafilePictBlip)r;
                         _pictures.Add(pos, mb);
                         break;
                     case 0xF01D:
@@ -64,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                     case 0xF01F:
                     case 0xF020:
                     case 0xF021:
-                        BitmapBlip b = (BitmapBlip)r;
+                        var b = (BitmapBlip)r;
                         _pictures.Add(pos, b);
                         break;
                     default:

@@ -59,14 +59,14 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         ///                               Where catCrossDate is the catCrossDate field of the AxcExt record 
         ///                               and catMin is the catMin field of the AxcExt record.
         /// </summary>
-        public Int16 catCross;
+        public short catCross;
 
         /// <summary>
         /// A signed integer that specifies the interval between axis labels on this axis. 
         /// 
         /// MUST be greater than or equal to 1 and less than or equal to 31999. MUST be ignored for a date axis.
         /// </summary>
-        public Int16 catLabel;
+        public short catLabel;
 
         /// <summary>
         /// A signed integer that specifies the interval at which major tick marks and minor tick 
@@ -75,7 +75,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be greater than or equal to 1, and less than or equal to 31999. MUST be ignored for a date axis.
         /// </summary>
-        public Int16 catMark;
+        public short catMark;
 
         /// <summary>
         /// A bit that specifies whether the value axis crosses this axis between major tick marks.
@@ -92,7 +92,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public bool fReverse;
 
-        public CatSerRange(IStreamReader reader, RecordType id, UInt16 length)
+        public CatSerRange(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)
         {
             // assert that the correct record type is instantiated
@@ -103,7 +103,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.catLabel = reader.ReadInt16();
             this.catMark = reader.ReadInt16();
 
-            UInt16 flags = reader.ReadUInt16();
+            var flags = reader.ReadUInt16();
             this.fBetween = Utils.BitmaskToBool(flags, 0x0001);
             this.fMaxCross = Utils.BitmaskToBool(flags, 0x0002);
             this.fReverse = Utils.BitmaskToBool(flags, 0x0004);

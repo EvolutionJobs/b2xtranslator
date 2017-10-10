@@ -39,27 +39,27 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// minutes (0-59)
         /// </summary>
-        public Int16 mint;
+        public short mint;
 
         /// <summary>
         /// hours (0-23)
         /// </summary>
-        public Int16 hr;
+        public short hr;
 
         /// <summary>
         /// day of month (1-31)
         /// </summary>
-        public Int16 dom;
+        public short dom;
 
         /// <summary>
         /// month (1-12)
         /// </summary>
-        public Int16 mon;
+        public short mon;
 
         /// <summary>
         /// year (1900-2411)-1900
         /// </summary>
-        public Int16 yr;
+        public short yr;
 
         /// <summary>
         /// weekday<br/>
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// 5 Friday
         /// 6 Saturday
         /// </summary>
-        public Int16 wdy;
+        public short wdy;
 
         /// <summary>
         /// Creates a new DateAndTime with default values
@@ -89,14 +89,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         {
             if (bytes.Length == 4)
             {
-                BitArray bits = new BitArray(bytes);
+                var bits = new BitArray(bytes);
 
-                this.mint = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 6));
-                this.hr = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 6, 5));
-                this.dom = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 11, 5));
-                this.mon = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 16, 4));
-                this.yr = (Int16)(1900 + Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 20, 9)));
-                this.wdy = (Int16)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 29, 3));
+                this.mint = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 0, 6));
+                this.hr = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 6, 5));
+                this.dom = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 11, 5));
+                this.mon = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 16, 4));
+                this.yr = (short)(1900 + Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 20, 9)));
+                this.wdy = (short)Utils.BitArrayToUInt32(Utils.BitArrayCopy(bits, 29, 3));
             }
             else
             {

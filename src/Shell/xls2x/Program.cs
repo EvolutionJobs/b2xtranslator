@@ -54,86 +54,69 @@ namespace DIaLOGIKa.b2xtranslator.xls2x
 
             PrintWelcome(ToolName, RevisionResource);
 
-            if (CreateContextMenuEntry)
+            try
             {
-                // create context menu entry
-                try
+                //copy processing file
+                var procFile = new ProcessingFile(InputFile);
+
+                //make output file name
+                if (ChoosenOutputFile == null)
                 {
-                    TraceLogger.Info("Creating context menu entry for xls2x ...");
-                    RegisterForContextMenu(GetContextMenuKey(ContextMenuInputExtension, ContextMenuText));
-                    TraceLogger.Info("Succeeded.");
+                    if (InputFile.Contains("."))
+                    {
+                        ChoosenOutputFile = InputFile.Remove(InputFile.LastIndexOf(".")) + ".xlsx";
+                    }
+                    else
+                    {
+                        ChoosenOutputFile = InputFile + ".xlsx";
+                    }
                 }
-                catch (Exception)
+
+                //parse the document
+                using (var reader = new StructuredStorageReader(procFile.File.FullName))
                 {
-                    TraceLogger.Info("Failed. Sorry :(");
+                    var xlsDoc = new XlsDocument(reader);
+
+                    OpenXmlPackage.DocumentType outType = Converter.DetectOutputType(xlsDoc);
+                    string conformOutputFile = Converter.GetConformFilename(ChoosenOutputFile, outType);
+                    using (SpreadsheetDocument spreadx = SpreadsheetDocument.Create(conformOutputFile, outType))
+                    {
+                        //start time
+                        var start = DateTime.Now;
+                        TraceLogger.Info("Converting file {0} into {1}", InputFile, conformOutputFile);
+
+                        Converter.Convert(xlsDoc, spreadx);
+
+                        var end = DateTime.Now;
+                        var diff = end.Subtract(start);
+                        TraceLogger.Info("Conversion of file {0} finished in {1} seconds", InputFile, diff.TotalSeconds.ToString(CultureInfo.InvariantCulture));
+                    }
                 }
             }
-            else
+            catch (ParseException ex)
             {
-                try
-                {
-                    //copy processing file
-                    ProcessingFile procFile = new ProcessingFile(InputFile);
-
-                    //make output file name
-                    if (ChoosenOutputFile == null)
-                    {
-                        if (InputFile.Contains("."))
-                        {
-                            ChoosenOutputFile = InputFile.Remove(InputFile.LastIndexOf(".")) + ".xlsx";
-                        }
-                        else
-                        {
-                            ChoosenOutputFile = InputFile + ".xlsx";
-                        }
-                    }
-
-                    //parse the document
-                    using (StructuredStorageReader reader = new StructuredStorageReader(procFile.File.FullName))
-                    {
-                        XlsDocument xlsDoc = new XlsDocument(reader);
-
-                        OpenXmlPackage.DocumentType outType = Converter.DetectOutputType(xlsDoc);
-                        string conformOutputFile = Converter.GetConformFilename(ChoosenOutputFile, outType);
-                        using (SpreadsheetDocument spreadx = SpreadsheetDocument.Create(conformOutputFile, outType))
-                        {
-                            //start time
-                            DateTime start = DateTime.Now;
-                            TraceLogger.Info("Converting file {0} into {1}", InputFile, conformOutputFile);
-
-                            Converter.Convert(xlsDoc, spreadx);
-
-                            DateTime end = DateTime.Now;
-                            TimeSpan diff = end.Subtract(start);
-                            TraceLogger.Info("Conversion of file {0} finished in {1} seconds", InputFile, diff.TotalSeconds.ToString(CultureInfo.InvariantCulture));
-                        }
-                    }
-                }
-                catch (ParseException ex)
-                {
-                    TraceLogger.Error("Could not convert {0} because it was created by an unsupported application (Excel 95 or older).", InputFile);
-                    TraceLogger.Debug(ex.ToString());
-                }
-                catch (DirectoryNotFoundException ex)
-                {
-                    TraceLogger.Error(ex.Message);
-                    TraceLogger.Debug(ex.ToString());
-                }
-                catch (FileNotFoundException ex)
-                {
-                    TraceLogger.Error(ex.Message);
-                    TraceLogger.Debug(ex.ToString());
-                }
-                catch (ZipCreationException ex)
-                {
-                    TraceLogger.Error("Could not create output file {0}.", ChoosenOutputFile);
-                    TraceLogger.Debug(ex.ToString());
-                }
-                catch (Exception ex)
-                {
-                    TraceLogger.Error("Conversion of file {0} failed.", InputFile);
-                    TraceLogger.Debug(ex.ToString());
-                }
+                TraceLogger.Error("Could not convert {0} because it was created by an unsupported application (Excel 95 or older).", InputFile);
+                TraceLogger.Debug(ex.ToString());
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                TraceLogger.Error(ex.Message);
+                TraceLogger.Debug(ex.ToString());
+            }
+            catch (FileNotFoundException ex)
+            {
+                TraceLogger.Error(ex.Message);
+                TraceLogger.Debug(ex.ToString());
+            }
+            catch (ZipCreationException ex)
+            {
+                TraceLogger.Error("Could not create output file {0}.", ChoosenOutputFile);
+                TraceLogger.Debug(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                TraceLogger.Error("Conversion of file {0} failed.", InputFile);
+                TraceLogger.Debug(ex.ToString());
             }
         }
     }

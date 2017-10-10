@@ -56,7 +56,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         // TODO
         public List<ARRAY> ARRAYList;
         public List<HyperlinkData> HyperLinkList; 
-        public SortedList<Int32, RowData> rowDataTable;
+        public SortedList<int, RowData> rowDataTable;
         public List<ColumnInfoData> colInfoDataTable;
         public List<SharedFormulaData> sharedFormulaDataTable;
         public FormulaCell latestFormula;
@@ -120,8 +120,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public void addLabelSST(LabelSst labelsst)
         {
             this.LABELSSTList.Add(labelsst);
-            RowData rowData = this.getSpecificRow(labelsst.rw);
-            StringCell cell = new StringCell();
+            var rowData = this.getSpecificRow(labelsst.rw);
+            var cell = new StringCell();
             cell.setValue(labelsst.isst);
             cell.Col = labelsst.col;
             cell.Row = labelsst.rw;
@@ -137,12 +137,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public void addMULRK(MulRk mulrk)
         {
             this.MULRKList.Add(mulrk);
-            RowData rowData = this.getSpecificRow(mulrk.rw);
+            var rowData = this.getSpecificRow(mulrk.rw);
             if (mulrk.ixfe.Count == mulrk.rknumber.Count)
             {
                 for (int i = 0; i < mulrk.rknumber.Count; i++)
                 {
-                    NumberCell cell = new NumberCell();
+                    var cell = new NumberCell();
                     cell.Col = mulrk.colFirst + i;
                     cell.Row = mulrk.rw;
                     cell.setValue(mulrk.rknumber[i]);
@@ -160,8 +160,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public void addNUMBER(Number number)
         {
             this.NUMBERList.Add(number);
-            RowData rowData = this.getSpecificRow(number.rw);
-            NumberCell cell = new NumberCell();
+            var rowData = this.getSpecificRow(number.rw);
+            var cell = new NumberCell();
             cell.setValue(number.num);
             cell.Col = number.col;
             cell.Row = number.rw;
@@ -177,8 +177,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public void addRK(RK singlerk)
         {
             this.SINGLERKList.Add(singlerk);
-            RowData rowData = this.getSpecificRow(singlerk.rw);
-            NumberCell cell = new NumberCell();
+            var rowData = this.getSpecificRow(singlerk.rw);
+            var cell = new NumberCell();
             cell.setValue(singlerk.num);
             cell.Col = singlerk.col;
             cell.Row = singlerk.rw;
@@ -195,8 +195,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public void addBLANK(Blank blank)
         {
             this.BLANKList.Add(blank);
-            RowData rowData = this.getSpecificRow(blank.rw);
-            BlankCell cell = new BlankCell();
+            var rowData = this.getSpecificRow(blank.rw);
+            var cell = new BlankCell();
 
             cell.Col = blank.col;
             cell.Row = blank.rw;
@@ -213,11 +213,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public void addMULBLANK(MulBlank mulblank)
         {
             this.MULBLANKList.Add(mulblank);
-            RowData rowData = this.getSpecificRow(mulblank.rw);
+            var rowData = this.getSpecificRow(mulblank.rw);
 
             for (int i = 0; i < mulblank.ixfe.Count; i++)
             {
-                BlankCell cell = new BlankCell();
+                var cell = new BlankCell();
                 cell.Col = mulblank.colFirst + i;
                 cell.Row = mulblank.rw;
                 cell.TemplateID = mulblank.ixfe[i];
@@ -234,8 +234,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public void addFORMULA(Formula formula)
         {
             this.FORMULAList.Add(formula);
-            RowData rowData = this.getSpecificRow(formula.rw);
-            FormulaCell cell = new FormulaCell();
+            var rowData = this.getSpecificRow(formula.rw);
+            var cell = new FormulaCell();
 
 
             cell.setValue(formula.ptgStack);
@@ -307,10 +307,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// <param name="rw"></param>
         /// <param name="col"></param>
         /// <returns></returns>
-        public Stack<AbstractPtg> getArrayData(UInt16 rw, UInt16 col)
+        public Stack<AbstractPtg> getArrayData(ushort rw, ushort col)
         {
-            Stack<AbstractPtg> stack = new Stack<AbstractPtg>();
-            foreach (ARRAY array in this.ARRAYList)
+            var stack = new Stack<AbstractPtg>();
+            foreach (var array in this.ARRAYList)
             {
                 if (array.colFirst == col && array.rwFirst == rw)
                 {
@@ -326,11 +326,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// <param name="rw"></param>
         /// <param name="col"></param>
         /// <returns></returns>
-        public AbstractCellData getCellAtPosition(UInt16 rw, UInt16 col)
+        public AbstractCellData getCellAtPosition(ushort rw, ushort col)
         {
-            RowData rd = this.getSpecificRow((int)rw);
+            var rd = this.getSpecificRow((int)rw);
             AbstractCellData scell = null;
-            foreach (AbstractCellData cell in rd.Cells)
+            foreach (var cell in rd.Cells)
             {
                 if (cell.Row == rw && cell.Col == col)
                     scell = cell;
@@ -343,9 +343,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// </summary>
         /// <param name="rw"></param>
         /// <param name="col"></param>
-        public void setFormulaUsesArray(UInt16 rw, UInt16 col)
+        public void setFormulaUsesArray(ushort rw, ushort col)
         {
-            AbstractCellData cell = this.getCellAtPosition(rw, col);
+            var cell = this.getCellAtPosition(rw, col);
             if (cell is FormulaCell)
             {
                 ((FormulaCell)cell).usesArrayRecord = true;
@@ -358,7 +358,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// <param name="shrfmla"></param>
         public void addSharedFormula(ShrFmla shrfmla)
         {
-            SharedFormulaData sfd = new SharedFormulaData();
+            var sfd = new SharedFormulaData();
             sfd.colFirst = shrfmla.colFirst;
             sfd.colLast = shrfmla.colLast;
             sfd.rwFirst = shrfmla.rwFirst;
@@ -379,7 +379,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         ///          The SharedFormulaData Objekt if the cell is in the range</returns>
         public SharedFormulaData checkFormulaIsInShared(int rw, int col)
         {
-            foreach (SharedFormulaData var in this.sharedFormulaDataTable)
+            foreach (var var in this.sharedFormulaDataTable)
             {
                 if (var.checkFormulaIsInShared(rw, col))
                     return var;
@@ -393,7 +393,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// <param name="row">ROW Biff Record</param>
         public void addRowData(Row row)
         {
-            RowData rowData = this.getSpecificRow(row.rw);
+            var rowData = this.getSpecificRow(row.rw);
 
             rowData.height = new TwipsValue(row.miyRw);
             rowData.hidden = row.fDyZero;
@@ -417,7 +417,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// <param name="colinfo">ColInfo BIFF Record</param>
         public void addColData(ColInfo colinfo)
         {
-            ColumnInfoData colinfoData = new ColumnInfoData();
+            var colinfoData = new ColumnInfoData();
             colinfoData.min = colinfo.colFirst;
             colinfoData.max = colinfo.colLast;
 
@@ -472,7 +472,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
 
         public void addHyperLinkData(HLink hlink)
         {
-            HyperlinkData hld = new HyperlinkData();
+            var hld = new HyperlinkData();
             hld.colFirst = hlink.colFirst;
             hld.colLast = hlink.colLast;
             hld.rwFirst = hlink.rwFirst;
