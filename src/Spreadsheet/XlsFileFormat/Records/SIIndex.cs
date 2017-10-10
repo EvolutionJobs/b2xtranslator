@@ -2,7 +2,7 @@
 
 namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
-    [BiffRecordAttribute(RecordType.SIIndex)]
+    [BiffRecord(RecordType.SIIndex)]
     public class SIIndex : BiffRecord
     {
         public enum SeriesDataType : ushort

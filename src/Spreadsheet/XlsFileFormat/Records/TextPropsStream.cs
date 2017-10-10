@@ -5,7 +5,7 @@ using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 
 namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
-    [BiffRecordAttribute(RecordType.TextPropsStream)]
+    [BiffRecord(RecordType.TextPropsStream)]
     public class TextPropsStream : BiffRecord
     {
         public const RecordType ID = RecordType.TextPropsStream;

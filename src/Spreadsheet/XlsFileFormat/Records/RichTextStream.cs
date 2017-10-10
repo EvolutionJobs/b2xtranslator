@@ -4,7 +4,7 @@ using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 
 namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
-    [BiffRecordAttribute(RecordType.RichTextStream)]
+    [BiffRecord(RecordType.RichTextStream)]
     public class RichTextStream : BiffRecord
     {
         public FrtHeader frtHeader;

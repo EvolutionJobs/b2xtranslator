@@ -3,7 +3,7 @@ using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 
 namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
-    [BiffRecordAttribute(RecordType.CrtMlFrt)]
+    [BiffRecord(RecordType.CrtMlFrt)]
     public class CrtMlFrt : BiffRecord
     {
         public FrtHeader frtHeader;

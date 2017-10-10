@@ -2,7 +2,7 @@
 
 namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
-    [BiffRecordAttribute(RecordType.SBaseRef)]
+    [BiffRecord(RecordType.SBaseRef)]
     public class SBaseRef : BiffRecord
     {
         /// <summary>

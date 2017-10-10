@@ -9,7 +9,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
     /// <summary>
     /// This record specifies layout information for a plot area.
     /// </summary>
-    [BiffRecordAttribute(RecordType.CrtLayout12A, RecordType.CrtLayout12)]
+    [BiffRecord(RecordType.CrtLayout12A, RecordType.CrtLayout12)]
     public class CrtLayout12 : BiffRecord, IVisitable
     {
         public enum CrtLayout12Mode : ushort
