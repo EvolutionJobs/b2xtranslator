@@ -63,8 +63,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
 
         public FormatRun(IStreamReader reader)
         {
-            ich = reader.ReadUInt16();
-            ifnt = reader.ReadUInt16();
+            this.ich = reader.ReadUInt16();
+            this.ifnt = reader.ReadUInt16();
         }
     }
 }

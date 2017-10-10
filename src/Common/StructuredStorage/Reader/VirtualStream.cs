@@ -55,10 +55,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="name">Name of the stream</param>
         internal VirtualStream(AbstractFat fat, uint startSector, long sizeOfStream, string name)
         {
-            _fat = fat;
-            _length = sizeOfStream;
-            _name = name;
-            if (startSector == SectorId.ENDOFCHAIN || Length == 0)
+            this._fat = fat;
+            this._length = sizeOfStream;
+            this._name = name;
+            if (startSector == SectorId.ENDOFCHAIN || this.Length == 0)
             {
                 return;
             }
@@ -71,8 +71,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         public override long Position
         {
-            get { return _position; }
-            set { _position = value; }
+            get { return this._position; }
+            set { this._position = value; }
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         public override long Length
         {
-            get { return _length; }
+            get { return this._length; }
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         [Obsolete("Warning. Signature used to be Read(byte[] array, int count, int position).\nChange calls to Read(array, count, position, 0)!")]
         public override int Read(byte[] array, int offset, int count)
         {
-            return Read(array, offset, count, _position);
+            return Read(array, offset, count, this._position);
         }
 
         /// <summary>
@@ -153,27 +153,27 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
 
             if (position + count > this.Length)
             {
-                count = Convert.ToInt32(Length - position);
+                count = Convert.ToInt32(this.Length - position);
                 if (count < 1)
                 {
                     return 0;
                 }
             }
 
-            _position = position;
+            this._position = position;
 
-            int sectorInChain = (int)(position / _fat.SectorSize);
+            int sectorInChain = (int)(position / this._fat.SectorSize);
             int bytesRead = 0;
             int totalBytesRead = 0;
             int positionInArray = offset;
           
             // Read part in first relevant sector
-            int positionInSector = Convert.ToInt32(position % _fat.SectorSize);
-            _fat.SeekToPositionInSector(_sectors[sectorInChain], positionInSector);
-            int bytesToReadInFirstSector = (count > _fat.SectorSize - positionInSector) ? (_fat.SectorSize - positionInSector) : count;
-            bytesRead = _fat.UncheckedRead(array, positionInArray, bytesToReadInFirstSector);
+            int positionInSector = Convert.ToInt32(position % this._fat.SectorSize);
+            this._fat.SeekToPositionInSector(this._sectors[sectorInChain], positionInSector);
+            int bytesToReadInFirstSector = (count > this._fat.SectorSize - positionInSector) ? (this._fat.SectorSize - positionInSector) : count;
+            bytesRead = this._fat.UncheckedRead(array, positionInArray, bytesToReadInFirstSector);
             // Update variables
-            _position += bytesRead;
+            this._position += bytesRead;
             positionInArray += bytesRead;
             totalBytesRead += bytesRead;
             sectorInChain++;
@@ -183,17 +183,17 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             }
 
             // Read full sectors
-            while (totalBytesRead + _fat.SectorSize < count)
+            while (totalBytesRead + this._fat.SectorSize < count)
             {
-                _fat.SeekToPositionInSector(_sectors[sectorInChain], 0);
-                bytesRead = _fat.UncheckedRead(array, positionInArray, _fat.SectorSize);
+                this._fat.SeekToPositionInSector(this._sectors[sectorInChain], 0);
+                bytesRead = this._fat.UncheckedRead(array, positionInArray, this._fat.SectorSize);
 
                 // Update variables
-                _position += bytesRead;
+                this._position += bytesRead;
                 positionInArray += bytesRead;
                 totalBytesRead += bytesRead;
                 sectorInChain++;
-                if (bytesRead != _fat.SectorSize)
+                if (bytesRead != this._fat.SectorSize)
                 {
                     return totalBytesRead;
                 }
@@ -206,12 +206,12 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             }
 
             // Read remaining part in last relevant sector
-            _fat.SeekToPositionInSector(_sectors[sectorInChain], 0);
+            this._fat.SeekToPositionInSector(this._sectors[sectorInChain], 0);
             
-            bytesRead = _fat.UncheckedRead(array, positionInArray, count - totalBytesRead);
+            bytesRead = this._fat.UncheckedRead(array, positionInArray, count - totalBytesRead);
 
             // Update variables
-            _position += bytesRead;
+            this._position += bytesRead;
             positionInArray += bytesRead;
             totalBytesRead += bytesRead;
 
@@ -326,7 +326,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         private void Init(uint startSector)
         {
-            _sectors = _fat.GetSectorChain(startSector, (UInt64)Math.Ceiling((double)_length / _fat.SectorSize), _name);
+            this._sectors = this._fat.GetSectorChain(startSector, (ulong)Math.Ceiling((double)this._length / this._fat.SectorSize), this._name);
             CheckConsistency();
         }
 
@@ -336,9 +336,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         private void CheckConsistency()
         {
-            if (((UInt64)_sectors.Count) != Math.Ceiling((double)_length / _fat.SectorSize))
+            if (((ulong)this._sectors.Count) != Math.Ceiling((double)this._length / this._fat.SectorSize))
             {
-                throw new ChainSizeMismatchException(_name);
+                throw new ChainSizeMismatchException(this._name);
             }
         }
 
@@ -367,25 +367,25 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             switch (origin)
             {
                 case System.IO.SeekOrigin.Begin:
-                    _position = offset;
+                    this._position = offset;
                     break;
                 case System.IO.SeekOrigin.Current:
-                    _position += offset;
+                    this._position += offset;
                     break;
                 case System.IO.SeekOrigin.End:
-                    _position = _length - offset;
+                    this._position = this._length - offset;
                     break;
             }
-            if (_position < 0)
+            if (this._position < 0)
             {
-                _position = 0;
+                this._position = 0;
             }
-            else if (_position > _length)
+            else if (this._position > this._length)
             {
-                _position = _length;
+                this._position = this._length;
             }
 
-            return _position;
+            return this._position;
         }
 
         public override void SetLength(long value)
@@ -400,15 +400,15 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
 
         public void WriteByte(int position, byte value)
         {
-            if (position < 0 || position > _length)
+            if (position < 0 || position > this._length)
             {
                 throw new ArgumentOutOfRangeException("position");
             }
 
-            int sectorInChain = (int)(position / _fat.SectorSize);
-            int positionInSector = Convert.ToInt32(position % _fat.SectorSize);
-            _fat.SeekToPositionInSector(_sectors[sectorInChain], positionInSector);
-           _fat._InternalFileStream.WriteByte(value);
+            int sectorInChain = (int)(position / this._fat.SectorSize);
+            int positionInSector = Convert.ToInt32(position % this._fat.SectorSize);
+            this._fat.SeekToPositionInSector(this._sectors[sectorInChain], positionInSector);
+            this._fat._InternalFileStream.WriteByte(value);
         }
     }
 }

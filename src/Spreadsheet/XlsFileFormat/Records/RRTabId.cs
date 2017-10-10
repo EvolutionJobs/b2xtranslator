@@ -67,10 +67,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             {
                 throw new RecordParseException(this);
             }
-            rgiTab = new ushort[length / 2];
+            this.rgiTab = new ushort[length / 2];
             for (int i = 0; i < length / 2; i++)
             {
-                rgiTab[i] = reader.ReadUInt16();
+                this.rgiTab[i] = reader.ReadUInt16();
             }
             
             // assert that the correct number of bytes has been read from the stream

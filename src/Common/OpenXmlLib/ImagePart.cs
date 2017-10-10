@@ -47,14 +47,14 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         internal ImagePart(ImageType type, OpenXmlPartContainer parent, int partIndex)
             : base(parent, partIndex)
         {
-            _type = type;
+            this._type = type;
         }
 
         public override string ContentType
         {
             get 
             {
-                switch (_type)
+                switch (this._type)
                 {
                     case ImageType.Bmp:
                         return "image/bmp";
@@ -93,12 +93,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         {
             get
             {
-                return targetdirectory;
+                return this.targetdirectory;
             }
 
             set
             {
-                targetdirectory = value;
+                this.targetdirectory = value;
             }
 
         }
@@ -107,7 +107,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         {
             get
             {
-                switch (_type)
+                switch (this._type)
                 {
                     case ImageType.Bmp:
                         return ".bmp";

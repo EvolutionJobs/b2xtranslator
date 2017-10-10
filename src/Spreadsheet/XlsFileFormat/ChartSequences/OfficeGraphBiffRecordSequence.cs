@@ -7,13 +7,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         IStreamReader _reader;
         public IStreamReader Reader
         {
-            get { return _reader; }
+            get { return this._reader; }
             set { this._reader = value; }
         }
 
         public BiffRecordSequence(IStreamReader reader)
         {
-            _reader = reader;
+            this._reader = reader;
         }
     }
 }

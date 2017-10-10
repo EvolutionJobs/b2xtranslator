@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
                 throw new FileNotFoundException("File does not exist:" + path);
             }
             this.handle = ZipLib.unzOpen(resolvedPath);
-            if (handle == IntPtr.Zero)
+            if (this.handle == IntPtr.Zero)
             {
                 throw new ZipException("Unable to open ZIP file:" + path);
             }
@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
         }
 
         public void Dispose(bool disposing) {
-            if (!disposed) {
+            if (!this.disposed) {
                 if (disposing) {
                     // Dispose managed resources : none here
                 }
@@ -70,9 +70,9 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
 
         public override void Close()
         {
-            if (handle != IntPtr.Zero) {
+            if (this.handle != IntPtr.Zero) {
                 int result = ZipLib.unzClose(this.handle);
-                handle = IntPtr.Zero;
+                this.handle = IntPtr.Zero;
                 // Question: should we raise this exception ?
                 if (result != 0) {
                     throw new ZipException("Error closing file - Errorcode: " + result);
@@ -108,7 +108,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
                 throw new ZipException("Error while reading entry: " + relativePath + " - Errorcode: " + result);
             }
 
-            result = ZipLib.unzCloseCurrentFile(handle);
+            result = ZipLib.unzCloseCurrentFile(this.handle);
             if (result != 0)
             {
                 throw new ZipException("Error while closing entry: " + relativePath + " - Errorcode: " + result);

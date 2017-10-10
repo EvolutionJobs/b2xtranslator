@@ -11,10 +11,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public ShadowStyleBooleanProperties(uint entryOperand)
         {
-            fShadowObscured = Utils.BitmaskToBool(entryOperand, 0x1);
-            fShadow = Utils.BitmaskToBool(entryOperand, 0x2);
-            fUsefshadowObscured = Utils.BitmaskToBool(entryOperand, 0x10000);
-            fUsefShadow = Utils.BitmaskToBool(entryOperand, 0x20000);
+            this.fShadowObscured = Utils.BitmaskToBool(entryOperand, 0x1);
+            this.fShadow = Utils.BitmaskToBool(entryOperand, 0x2);
+            this.fUsefshadowObscured = Utils.BitmaskToBool(entryOperand, 0x10000);
+            this.fUsefShadow = Utils.BitmaskToBool(entryOperand, 0x20000);
         }
     }
 }

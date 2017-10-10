@@ -38,7 +38,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public FooterMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            Position = Reader.ReadInt32();
+            this.Position = this.Reader.ReadInt32();
         }
     }
 
@@ -50,8 +50,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public DateTimeMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            Position = Reader.ReadInt32();
-            index = Reader.ReadByte();
+            this.Position = this.Reader.ReadInt32();
+            this.index = this.Reader.ReadByte();
         }
     }
 
@@ -63,7 +63,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public HeaderMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            Position = Reader.ReadInt32();
+            this.Position = this.Reader.ReadInt32();
         }
     }
 
@@ -74,7 +74,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public SlideNumberMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            Position = Reader.ReadInt32();
+            this.Position = this.Reader.ReadInt32();
         }
     }
 
@@ -85,7 +85,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public GenericDateMCAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            Position = Reader.ReadInt32();
+            this.Position = this.Reader.ReadInt32();
         }
     }
 

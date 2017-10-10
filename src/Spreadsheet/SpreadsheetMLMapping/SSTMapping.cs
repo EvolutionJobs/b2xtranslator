@@ -57,11 +57,11 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// <param name="SSTData">SharedStringData Object</param>
         public void Apply(SSTData sstData)
         {
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("sst", OpenXmlNamespaces.SpreadsheetML);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("sst", OpenXmlNamespaces.SpreadsheetML);
             // count="x" uniqueCount="y" 
-            _writer.WriteAttributeString("count", sstData.cstTotal.ToString());
-            _writer.WriteAttributeString("uniqueCount", sstData.cstUnique.ToString());
+            this._writer.WriteAttributeString("count", sstData.cstTotal.ToString());
+            this._writer.WriteAttributeString("uniqueCount", sstData.cstUnique.ToString());
 
 
 
@@ -72,12 +72,12 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 count++;
                 var list = sstData.getFormatingRuns(count);
 
-                _writer.WriteStartElement("si");
+                this._writer.WriteStartElement("si");
 
                 if (list.Count == 0)
                 {
                     // if there is no formatting, there is no run, write only the text
-                    writeTextNode(_writer, var);
+                    writeTextNode(this._writer, var);
                 }
                 else
                 {
@@ -87,41 +87,41 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     if (list[0].CharNumber != 0)
                     {
                         // no formating for the first letters 
-                        _writer.WriteStartElement("r");
-                        writeTextNode(_writer, var.Substring(0, list[0].CharNumber));
-                        _writer.WriteEndElement();
+                        this._writer.WriteStartElement("r");
+                        writeTextNode(this._writer, var.Substring(0, list[0].CharNumber));
+                        this._writer.WriteEndElement();
                     }
 
                     FontData fd;
                     for (int i = 0; i <= list.Count - 2; i++)
                     {
-                        _writer.WriteStartElement("r");
+                        this._writer.WriteStartElement("r");
 
                         fd = this.xlsContext.XlsDoc.WorkBookData.styleData.FontDataList[list[i].FontRecord];
-                        StyleMappingHelper.addFontElement(_writer, fd, FontElementType.String);
+                        StyleMappingHelper.addFontElement(this._writer, fd, FontElementType.String);
 
-                        writeTextNode(_writer, var.Substring(list[i].CharNumber, list[i + 1].CharNumber - list[i].CharNumber));
-                        _writer.WriteEndElement();
+                        writeTextNode(this._writer, var.Substring(list[i].CharNumber, list[i + 1].CharNumber - list[i].CharNumber));
+                        this._writer.WriteEndElement();
                     }
-                    _writer.WriteStartElement("r");
+                    this._writer.WriteStartElement("r");
 
                     fd = this.xlsContext.XlsDoc.WorkBookData.styleData.FontDataList[list[list.Count - 1].FontRecord];
-                    StyleMappingHelper.addFontElement(_writer, fd, FontElementType.String);
+                    StyleMappingHelper.addFontElement(this._writer, fd, FontElementType.String);
 
-                    writeTextNode(_writer, var.Substring(list[list.Count - 1].CharNumber));
-                    _writer.WriteEndElement();
+                    writeTextNode(this._writer, var.Substring(list[list.Count - 1].CharNumber));
+                    this._writer.WriteEndElement();
                 }
 
-                _writer.WriteEndElement(); // end si
+                this._writer.WriteEndElement(); // end si
 
             }
 
             // close tags 
-            _writer.WriteEndElement();
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndDocument();
 
             // close writer 
-            _writer.Flush();
+            this._writer.Flush();
         }
 
 

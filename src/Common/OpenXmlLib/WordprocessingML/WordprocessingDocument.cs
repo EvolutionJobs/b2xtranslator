@@ -41,21 +41,21 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
             switch (type)
             {
                 case OpenXmlPackage.DocumentType.Document:
-                    _mainDocumentPart = new MainDocumentPart(this, WordprocessingMLContentTypes.MainDocument);
+                    this._mainDocumentPart = new MainDocumentPart(this, WordprocessingMLContentTypes.MainDocument);
                     break;
                 case OpenXmlPackage.DocumentType.MacroEnabledDocument:
-                    _mainDocumentPart = new MainDocumentPart(this, WordprocessingMLContentTypes.MainDocumentMacro);
+                    this._mainDocumentPart = new MainDocumentPart(this, WordprocessingMLContentTypes.MainDocumentMacro);
                     break;
                 case OpenXmlPackage.DocumentType.Template:
-                    _mainDocumentPart = new MainDocumentPart(this, WordprocessingMLContentTypes.MainDocumentTemplate);
+                    this._mainDocumentPart = new MainDocumentPart(this, WordprocessingMLContentTypes.MainDocumentTemplate);
                     break;
                 case OpenXmlPackage.DocumentType.MacroEnabledTemplate:
-                    _mainDocumentPart = new MainDocumentPart(this, WordprocessingMLContentTypes.MainDocumentMacroTemplate);
+                    this._mainDocumentPart = new MainDocumentPart(this, WordprocessingMLContentTypes.MainDocumentMacroTemplate);
                     break;
             }
-            
-            _documentType = type;
-            this.AddPart(_mainDocumentPart);
+
+            this._documentType = type;
+            this.AddPart(this._mainDocumentPart);
         }
 
         public static WordprocessingDocument Create(string fileName, OpenXmlPackage.DocumentType type)
@@ -67,19 +67,19 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
 
         public OpenXmlPackage.DocumentType DocumentType
         {
-            get { return _documentType; }
-            set { _documentType = value; }
+            get { return this._documentType; }
+            set { this._documentType = value; }
         }
 
         public CustomXmlPropertiesPart CustomFilePropertiesPart
         {
-            get { return _customFilePropertiesPart; }
+            get { return this._customFilePropertiesPart; }
         }
 
         
         public MainDocumentPart MainDocumentPart
         {
-            get { return _mainDocumentPart; }
+            get { return this._mainDocumentPart; }
         }
     }
 }

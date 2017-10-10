@@ -68,17 +68,17 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            grbit = reader.ReadUInt16();
+            this.grbit = reader.ReadUInt16();
 
-            fNoSaveSupp = Utils.BitmaskToBool(grbit, 0x0001);  	  
-            reserved0 = Utils.BitmaskToBool(grbit, 0x0002);	      
-            fHasEnvelope = Utils.BitmaskToBool(grbit, 0x0004); 	  
-            fEnvelopeVisible = Utils.BitmaskToBool(grbit, 0x0008); 
-            fEnvelopeInitDone = Utils.BitmaskToBool(grbit, 0x0010);
-            grbitUpdateLinks = (uint)Utils.BitmaskToInt(grbit, 0x0060); 
-            reserved1 = Utils.BitmaskToBool(grbit, 0x0080);	      
-            fHideBorderUnsels = Utils.BitmaskToBool(grbit, 0x0100);
-            reserved2 = (uint)Utils.BitmaskToInt(grbit, 0xFE00);	  
+            this.fNoSaveSupp = Utils.BitmaskToBool(this.grbit, 0x0001);
+            this.reserved0 = Utils.BitmaskToBool(this.grbit, 0x0002);
+            this.fHasEnvelope = Utils.BitmaskToBool(this.grbit, 0x0004);
+            this.fEnvelopeVisible = Utils.BitmaskToBool(this.grbit, 0x0008);
+            this.fEnvelopeInitDone = Utils.BitmaskToBool(this.grbit, 0x0010);
+            this.grbitUpdateLinks = (uint)Utils.BitmaskToInt(this.grbit, 0x0060);
+            this.reserved1 = Utils.BitmaskToBool(this.grbit, 0x0080);
+            this.fHideBorderUnsels = Utils.BitmaskToBool(this.grbit, 0x0100);
+            this.reserved2 = (uint)Utils.BitmaskToInt(this.grbit, 0xFE00);	  
 
             // assert that the correct number of bytes has been read from the stream
             Debug.Assert(this.Offset + this.Length == this.Reader.BaseStream.Position); 

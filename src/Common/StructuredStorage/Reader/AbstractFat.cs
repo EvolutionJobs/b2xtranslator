@@ -52,16 +52,16 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="fileHandler">Handle to the file handler of the compound file</param>
         internal AbstractFat(Header header, InputHandler fileHandler)
         {
-            _header = header;
-            _fileHandler = fileHandler;
-            _addressesPerSector = (int)_header.SectorSize / 4;
+            this._header = header;
+            this._fileHandler = fileHandler;
+            this._addressesPerSector = (int)this._header.SectorSize / 4;
         }
 
         internal Stream _InternalFileStream
         {
             get
             {
-                return _fileHandler._InternalFileStream;
+                return this._fileHandler._InternalFileStream;
             }
         }
 
@@ -72,7 +72,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="startSector">The start sector of the chain</param>
         /// <param name="maxCount">The maximum count of sectors in a chain</param>
         /// <param name="name">The name of a chain</param>
-        internal List<uint> GetSectorChain(uint startSector, UInt64 maxCount, string name)
+        internal List<uint> GetSectorChain(uint startSector, ulong maxCount, string name)
         {
             return GetSectorChain(startSector, maxCount, name, false);
         }
@@ -84,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="maxCount">The maximum count of sectors in a chain</param>
         /// <param name="name">The name of a chain</param>
         /// <param name="immediateCycleCheck">Flag whether to check for cycles in every loop</param>
-        internal List<uint> GetSectorChain(uint startSector, UInt64 maxCount, string name, bool immediateCycleCheck)
+        internal List<uint> GetSectorChain(uint startSector, ulong maxCount, string name, bool immediateCycleCheck)
         {
             var result = new List<uint>();
 
@@ -114,7 +114,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
                 result.Add(nextSectorInStream);
                 
                 // Chain too long
-                if ((UInt64)(result.Count) > maxCount)
+                if ((ulong)(result.Count) > maxCount)
                 {
                     throw new ChainSizeMismatchException(name);
                 }
@@ -133,7 +133,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>The number of bytes read</returns>
         internal int UncheckedRead(byte[] array, int offset, int count)
         {
-            return _fileHandler.UncheckedRead(array, offset, count);
+            return this._fileHandler.UncheckedRead(array, offset, count);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         internal int UncheckedReadByte()
         {
-            return _fileHandler.UncheckedReadByte();
+            return this._fileHandler.UncheckedReadByte();
         }
 
 

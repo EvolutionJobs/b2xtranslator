@@ -17,7 +17,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             this.Bytes = this.Reader.ReadBytes((int)this.BodySize);
             this.Reader.BaseStream.Position = 0;
 
-            this.IndentLevelCount = Reader.ReadUInt16();
+            this.IndentLevelCount = this.Reader.ReadUInt16();
 
             for (int i = 0; i < this.IndentLevelCount; i++)
             {
@@ -25,7 +25,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
                 if ((this.Instance >= 5)) // & (this.Instance < this.IndentLevelCount))
                 {
-                    var level = Reader.ReadUInt16(); 
+                    var level = this.Reader.ReadUInt16(); 
                 }                
              
                 this.PRuns.Add(new ParagraphRun(this.Reader, true));

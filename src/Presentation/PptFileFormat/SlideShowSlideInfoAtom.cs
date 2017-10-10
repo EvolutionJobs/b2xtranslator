@@ -52,22 +52,22 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public SlideShowSlideInfoAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            slideTime = this.Reader.ReadInt32();
-            soundIdRef = this.Reader.ReadUInt32();
-            effectDirection = this.Reader.ReadByte();
-            effectType = this.Reader.ReadByte();
+            this.slideTime = this.Reader.ReadInt32();
+            this.soundIdRef = this.Reader.ReadUInt32();
+            this.effectDirection = this.Reader.ReadByte();
+            this.effectType = this.Reader.ReadByte();
 
             int flags = this.Reader.ReadInt16();
 
-            fManualAdvance = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fHidden = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
-            fSound = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
-            fLoopSound = Tools.Utils.BitmaskToBool(flags, 0x1 << 6);
-            fStopSound = Tools.Utils.BitmaskToBool(flags, 0x1 << 8);
-            fAutoAdvance = Tools.Utils.BitmaskToBool(flags, 0x1 << 10);
-            fCursorVisible = Tools.Utils.BitmaskToBool(flags, 0x1 << 12);
+            this.fManualAdvance = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fHidden = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fSound = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
+            this.fLoopSound = Tools.Utils.BitmaskToBool(flags, 0x1 << 6);
+            this.fStopSound = Tools.Utils.BitmaskToBool(flags, 0x1 << 8);
+            this.fAutoAdvance = Tools.Utils.BitmaskToBool(flags, 0x1 << 10);
+            this.fCursorVisible = Tools.Utils.BitmaskToBool(flags, 0x1 << 12);
 
-            speed = this.Reader.ReadByte();
+            this.speed = this.Reader.ReadByte();
 
             this.Reader.BaseStream.Position = this.Reader.BaseStream.Length;
         }
@@ -91,7 +91,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public SlideTime10Atom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            fileTime = this.Reader.ReadBytes(8);
+            this.fileTime = this.Reader.ReadBytes(8);
         }
     }
 
@@ -120,24 +120,24 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
             this.Reader.ReadBytes(4); //reserved
-            restart = this.Reader.ReadUInt32();
-            type = (TimeNodeTypeEnum)this.Reader.ReadInt32();
-            fill = this.Reader.ReadUInt32();
+            this.restart = this.Reader.ReadUInt32();
+            this.type = (TimeNodeTypeEnum)this.Reader.ReadInt32();
+            this.fill = this.Reader.ReadUInt32();
 
             //according to the spec there would be 5 unused bytes
             //but in reality it is 8
             this.Reader.ReadBytes(8); //reserved
 
-            duration = this.Reader.ReadInt32();
+            this.duration = this.Reader.ReadInt32();
                       
             int flags = this.Reader.ReadInt32();
-            fFillProperty = Tools.Utils.BitmaskToBool(flags, 0x1 << 0);
-            fRestartProperty = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fFillProperty = Tools.Utils.BitmaskToBool(flags, 0x1 << 0);
+            this.fRestartProperty = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
 
-            bool dummy = Tools.Utils.BitmaskToBool(flags, 0x1 << 2); 
+            bool dummy = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
 
-            fGroupingTypeProperty = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
-            fDurationProperty = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
+            this.fGroupingTypeProperty = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
+            this.fDurationProperty = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
 
             this.Reader.BaseStream.Position = this.Reader.BaseStream.Length;
         }
@@ -173,11 +173,11 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public VisualShapeAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            type = (TimeVisualElementEnum)this.Reader.ReadInt32();
-            refType = (ElementTypeEnum)this.Reader.ReadInt32();
-            shapeIdRef = this.Reader.ReadUInt32();
-            data1 = this.Reader.ReadInt32();
-            data2 = this.Reader.ReadInt32();
+            this.type = (TimeVisualElementEnum)this.Reader.ReadInt32();
+            this.refType = (ElementTypeEnum)this.Reader.ReadInt32();
+            this.shapeIdRef = this.Reader.ReadUInt32();
+            this.data1 = this.Reader.ReadInt32();
+            this.data2 = this.Reader.ReadInt32();
         }
     }
 
@@ -194,7 +194,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public HashCode10Atom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            hash = this.Reader.ReadUInt32();
+            this.hash = this.Reader.ReadUInt32();
         }
     }
 
@@ -205,7 +205,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public VisualPageAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            type = (TimeVisualElementEnum)this.Reader.ReadInt32();
+            this.type = (TimeVisualElementEnum)this.Reader.ReadInt32();
         }
     }
 
@@ -252,21 +252,21 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TimeVariantValue(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            type = (TimeVariantTypeEnum)this.Reader.ReadByte();
-            switch (type)
+            this.type = (TimeVariantTypeEnum)this.Reader.ReadByte();
+            switch (this.type)
             {
                 case TimeVariantTypeEnum.Bool:
-                    boolValue = this.Reader.ReadBoolean();
+                    this.boolValue = this.Reader.ReadBoolean();
                     break;
                 case TimeVariantTypeEnum.Float:
-                    floatValue = this.Reader.ReadSingle();
+                    this.floatValue = this.Reader.ReadSingle();
                     break;
                 case TimeVariantTypeEnum.Int:
-                    intValue = this.Reader.ReadInt32();
+                    this.intValue = this.Reader.ReadInt32();
                     break;
                 case TimeVariantTypeEnum.String:
-                    stringValue = Encoding.Unicode.GetString(this.Reader.ReadBytes((int)size - 1));
-                    stringValue = stringValue.Replace("\0", "");
+                    this.stringValue = Encoding.Unicode.GetString(this.Reader.ReadBytes((int)size - 1));
+                    this.stringValue = this.stringValue.Replace("\0", "");
                     break;
             }
         }
@@ -316,8 +316,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TimeModifierAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            type = this.Reader.ReadUInt32();
-            value = this.Reader.ReadUInt32();
+            this.type = this.Reader.ReadUInt32();
+            this.value = this.Reader.ReadUInt32();
         }
     }
 
@@ -351,10 +351,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TimeConditionAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            triggerObject = (TriggerObjectEnum)this.Reader.ReadInt32();
-            triggerEvent = this.Reader.ReadUInt32();
-            id = this.Reader.ReadUInt32();
-            delay = this.Reader.ReadInt32();
+            this.triggerObject = (TriggerObjectEnum)this.Reader.ReadInt32();
+            this.triggerEvent = this.Reader.ReadUInt32();
+            this.id = this.Reader.ReadUInt32();
+            this.delay = this.Reader.ReadInt32();
         }
 
         public enum TriggerObjectEnum
@@ -385,16 +385,16 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TimeAnimateBehaviorAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            calcMode = this.Reader.ReadUInt32();
+            this.calcMode = this.Reader.ReadUInt32();
             int flags = this.Reader.ReadInt32();
 
-            fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
-            fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
-            fCalcModePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
-            fAnimationValuesPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
-            fValueTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 5);
-            valueType = (TimeAnimateBehaviorValueTypeEnum)this.Reader.ReadInt32();
+            this.fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fCalcModePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
+            this.fAnimationValuesPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
+            this.fValueTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 5);
+            this.valueType = (TimeAnimateBehaviorValueTypeEnum)this.Reader.ReadInt32();
         }        
     }
 
@@ -439,12 +439,12 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         {
             int flags = this.Reader.ReadInt32();
 
-            fAdditivePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fAttributeNamesPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fAdditivePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fAttributeNamesPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
 
-            behaviorAdditive = this.Reader.ReadUInt32();
-            behaviorAccumulate = this.Reader.ReadUInt32();
-            behaviorTransform = this.Reader.ReadUInt32();
+            this.behaviorAdditive = this.Reader.ReadUInt32();
+            this.behaviorAccumulate = this.Reader.ReadUInt32();
+            this.behaviorTransform = this.Reader.ReadUInt32();
         }
     }
 
@@ -475,7 +475,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TimeAnimationValueAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            time = this.Reader.ReadInt32();
+            this.time = this.Reader.ReadInt32();
         }
     }
 
@@ -491,10 +491,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         {
             int flags = this.Reader.ReadInt32();
 
-            fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fValueTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fValueTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
 
-            valueType = (TimeAnimateBehaviorValueTypeEnum)this.Reader.ReadInt32();
+            this.valueType = (TimeAnimateBehaviorValueTypeEnum)this.Reader.ReadInt32();
         }
     }
 
@@ -511,15 +511,15 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TimeSequenceDataAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            concurrency = this.Reader.ReadUInt32();
-            nextAction = this.Reader.ReadUInt32();
-            previousAction = this.Reader.ReadUInt32();
+            this.concurrency = this.Reader.ReadUInt32();
+            this.nextAction = this.Reader.ReadUInt32();
+            this.previousAction = this.Reader.ReadUInt32();
             this.Reader.ReadInt32(); //reserved
 
             int flags = this.Reader.ReadInt32();
-            fConcurrencyPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fNextActionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
-            fPreviousActionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fConcurrencyPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fNextActionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fPreviousActionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
 
         }
     }
@@ -556,21 +556,21 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
             int flags = this.Reader.ReadInt32();
-            fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
-            fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
-            fOriginPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
-            fPathPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
+            this.fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fOriginPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
+            this.fPathPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
             // 1 bit reserved
-            fEditRotationPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 6);           
-            fPointsTypesPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 7);
-            fXBy = this.Reader.ReadSingle();
-            fYBy = this.Reader.ReadSingle();
-            fXFrom = this.Reader.ReadSingle();
-            fYFrom = this.Reader.ReadSingle();
-            fXTo = this.Reader.ReadSingle();
-            fYTo = this.Reader.ReadSingle();
-            behaviorOrigin = this.Reader.ReadUInt32();
+            this.fEditRotationPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 6);
+            this.fPointsTypesPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 7);
+            this.fXBy = this.Reader.ReadSingle();
+            this.fYBy = this.Reader.ReadSingle();
+            this.fXFrom = this.Reader.ReadSingle();
+            this.fYFrom = this.Reader.ReadSingle();
+            this.fXTo = this.Reader.ReadSingle();
+            this.fYTo = this.Reader.ReadSingle();
+            this.behaviorOrigin = this.Reader.ReadUInt32();
         }
     }
 
@@ -608,11 +608,11 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
             int flags = this.Reader.ReadInt32();
-            fTransitionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
-            fProgressPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
-            fRuntimeContextObsolete = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
-            effectTransition = this.Reader.ReadUInt32();
+            this.fTransitionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fProgressPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fRuntimeContextObsolete = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
+            this.effectTransition = this.Reader.ReadUInt32();
         }
     }
 
@@ -634,16 +634,16 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
             int flags = this.Reader.ReadInt32();
-            fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
-            fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
-            fDirectionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
+            this.fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fDirectionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
 
-            fBy = this.Reader.ReadSingle();
-            fFrom = this.Reader.ReadSingle();
-            fTo = this.Reader.ReadSingle();            
+            this.fBy = this.Reader.ReadSingle();
+            this.fFrom = this.Reader.ReadSingle();
+            this.fTo = this.Reader.ReadSingle();
 
-            rotationDirection = this.Reader.ReadUInt32();
+            this.rotationDirection = this.Reader.ReadUInt32();
         }
     }
 
@@ -667,19 +667,19 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
             int flags = this.Reader.ReadInt32();
-            fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
-            fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
-            fZoomPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
+            this.fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fZoomPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
 
-            fXBy = this.Reader.ReadSingle();
-            fYBy = this.Reader.ReadSingle();
-            fXFrom = this.Reader.ReadSingle();
-            fYFrom = this.Reader.ReadSingle();
-            fXTo = this.Reader.ReadSingle();
-            fYTo = this.Reader.ReadSingle();
+            this.fXBy = this.Reader.ReadSingle();
+            this.fYBy = this.Reader.ReadSingle();
+            this.fXFrom = this.Reader.ReadSingle();
+            this.fYFrom = this.Reader.ReadSingle();
+            this.fXTo = this.Reader.ReadSingle();
+            this.fYTo = this.Reader.ReadSingle();
 
-            fZoomContents = this.Reader.ReadByte();
+            this.fZoomContents = this.Reader.ReadByte();
         }
     }
 
@@ -733,15 +733,15 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
             int flags = this.Reader.ReadInt32();
-            fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
-            fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
-            fColorSpacePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
-            fDirectionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
+            this.fByPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fFromPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fToPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fColorSpacePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
+            this.fDirectionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
 
-            colorBy = new ColorStruct(this.Reader.ReadBytes(16));
-            colorFrom = new ColorStruct(this.Reader.ReadBytes(16));
-            colorTo = new ColorStruct(this.Reader.ReadBytes(16));
+            this.colorBy = new ColorStruct(this.Reader.ReadBytes(16));
+            this.colorFrom = new ColorStruct(this.Reader.ReadBytes(16));
+            this.colorTo = new ColorStruct(this.Reader.ReadBytes(16));
         }
     }
 
@@ -757,10 +757,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
             int flags = this.Reader.ReadInt32();
-            fTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fCommandPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fCommandPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
 
-            commandBehaviorType = this.Reader.ReadUInt32();
+            this.commandBehaviorType = this.Reader.ReadUInt32();
         }
     }
 
@@ -781,19 +781,19 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TimeIterateDataAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            
-            //this value "should" be an unsigned integer according to the spec, but it seems to be a single in reality
-            iterateInterval = this.Reader.ReadSingle();
 
-            iterateType = this.Reader.ReadUInt32();
-            iterateDirection = this.Reader.ReadUInt32();
-            iterateIntervalType = this.Reader.ReadUInt32();
+            //this value "should" be an unsigned integer according to the spec, but it seems to be a single in reality
+            this.iterateInterval = this.Reader.ReadSingle();
+
+            this.iterateType = this.Reader.ReadUInt32();
+            this.iterateDirection = this.Reader.ReadUInt32();
+            this.iterateIntervalType = this.Reader.ReadUInt32();
 
             int flags = this.Reader.ReadInt32();
-            fIterateDirectionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
-            fIterateTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
-            fIterateIntervalPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
-            fIterateIntervalTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
+            this.fIterateDirectionPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1);
+            this.fIterateTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 1);
+            this.fIterateIntervalPropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
+            this.fIterateIntervalTypePropertyUsed = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
         }
     }
 
@@ -806,10 +806,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public ColorStruct(byte[] data)
         {
-            model = BitConverter.ToUInt32(data, 0);
-            val1 = BitConverter.ToInt32(data, 4);
-            val2 = BitConverter.ToInt32(data, 8);
-            val3 = BitConverter.ToInt32(data, 12);
+            this.model = BitConverter.ToUInt32(data, 0);
+            this.val1 = BitConverter.ToInt32(data, 4);
+            this.val2 = BitConverter.ToInt32(data, 8);
+            this.val3 = BitConverter.ToInt32(data, 12);
         }
     }
 

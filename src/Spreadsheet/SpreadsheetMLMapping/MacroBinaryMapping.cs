@@ -54,11 +54,11 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             var vbaClsid = new Guid();
             foreach (var entry in xls.Storage.AllEntries)
             {
-                if (entry.Path == projectFolder)
+                if (entry.Path == this.projectFolder)
                 {
                     macroClsid = entry.ClsId;
                 }
-                else if (entry.Path == vbaFolder)
+                else if (entry.Path == this.vbaFolder)
                 {
                     vbaClsid = entry.ClsId;
                 }
@@ -73,18 +73,18 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             vba.setClsId(vbaClsid);
             foreach (var entry in xls.Storage.AllStreamEntries)
             {
-                if (entry.Path.StartsWith(vbaFolder))
+                if (entry.Path.StartsWith(this.vbaFolder))
                 {
                     vba.AddStreamDirectoryEntry(entry.Name, xls.Storage.GetStream(entry.Path));
                 }
             }
 
             //copy the project streams
-            storage.RootDirectoryEntry.AddStreamDirectoryEntry("PROJECT", xls.Storage.GetStream(projectFile));
-            storage.RootDirectoryEntry.AddStreamDirectoryEntry("PROJECTwm", xls.Storage.GetStream(projectWmFile));
+            storage.RootDirectoryEntry.AddStreamDirectoryEntry("PROJECT", xls.Storage.GetStream(this.projectFile));
+            storage.RootDirectoryEntry.AddStreamDirectoryEntry("PROJECTwm", xls.Storage.GetStream(this.projectWmFile));
 
            //write the storage to the xml part
-            storage.write(ctx.SpreadDoc.WorkbookPart.VbaProjectPart.GetStream());
+            storage.write(this.ctx.SpreadDoc.WorkbookPart.VbaProjectPart.GetStream());
         }
     }
 }

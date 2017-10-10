@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         // The root directory entry of this structured storage.
         public StorageDirectoryEntry RootDirectoryEntry
         {
-            get { return _context.RootDirectoryEntry; }
+            get { return this._context.RootDirectoryEntry; }
         }
         
 
@@ -51,7 +51,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         public StructuredStorageWriter()
         {
-            _context = new StructuredStorageContext();
+            this._context = new StructuredStorageContext();
         }
 
 
@@ -61,9 +61,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="outputStream">The output stream.</param>
         public void write(Stream outputStream)
         {
-            _context.RootDirectoryEntry.RecursiveCreateRedBlackTrees();
+            this._context.RootDirectoryEntry.RecursiveCreateRedBlackTrees();
 
-            var allEntries = _context.RootDirectoryEntry.RecursiveGetAllDirectoryEntries();
+            var allEntries = this._context.RootDirectoryEntry.RecursiveGetAllDirectoryEntries();
             allEntries.Sort(
                     delegate(BaseDirectoryEntry a, BaseDirectoryEntry b)
                     { return a.Sid.CompareTo(b.Sid); }
@@ -105,7 +105,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             }
 
             // root entry has to be written after all other streams as it contains the ministream to which other _entries write to
-            _context.RootDirectoryEntry.writeReferencedStream();
+            this._context.RootDirectoryEntry.writeReferencedStream();
 
             // write Directory Entries to directory stream
             foreach (var entry in allEntries)
@@ -114,43 +114,43 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             }
 
             // Directory Entry: 128 bytes            
-            var dirEntriesPerSector = _context.Header.SectorSize / 128u;
+            var dirEntriesPerSector = this._context.Header.SectorSize / 128u;
             var numToPad = dirEntriesPerSector - ((uint)allEntries.Count % dirEntriesPerSector);
 
-            var emptyEntry = new EmptyDirectoryEntry(_context);
+            var emptyEntry = new EmptyDirectoryEntry(this._context);
             for (int i = 0; i < numToPad; i++)
             {
                 emptyEntry.write();
             }
 
             // write directory stream
-            var virtualDirectoryStream = new VirtualStream(_context.DirectoryStream.BaseStream, _context.Fat, _context.Header.SectorSize, _context.TempOutputStream);
+            var virtualDirectoryStream = new VirtualStream(this._context.DirectoryStream.BaseStream, this._context.Fat, this._context.Header.SectorSize, this._context.TempOutputStream);
             virtualDirectoryStream.write();
-            _context.Header.DirectoryStartSector = virtualDirectoryStream.StartSector;
-            if (_context.Header.SectorSize == 0x1000)
+            this._context.Header.DirectoryStartSector = virtualDirectoryStream.StartSector;
+            if (this._context.Header.SectorSize == 0x1000)
             {
-                _context.Header.NoSectorsInDirectoryChain4KB = (uint)virtualDirectoryStream.SectorCount;
+                this._context.Header.NoSectorsInDirectoryChain4KB = (uint)virtualDirectoryStream.SectorCount;
             }
-            
+
             // write MiniFat
-            _context.MiniFat.write();
-            _context.Header.MiniFatStartSector = _context.MiniFat.MiniFatStart;
-            _context.Header.NoSectorsInMiniFatChain = _context.MiniFat.NumMiniFatSectors;
+            this._context.MiniFat.write();
+            this._context.Header.MiniFatStartSector = this._context.MiniFat.MiniFatStart;
+            this._context.Header.NoSectorsInMiniFatChain = this._context.MiniFat.NumMiniFatSectors;
 
             // write fat
-            _context.Fat.write();
+            this._context.Fat.write();
 
             // set header values
-            _context.Header.NoSectorsInDiFatChain = _context.Fat.NumDiFatSectors;
-            _context.Header.NoSectorsInFatChain = _context.Fat.NumFatSectors;
-            _context.Header.DiFatStartSector = _context.Fat.DiFatStartSector;
-            
+            this._context.Header.NoSectorsInDiFatChain = this._context.Fat.NumDiFatSectors;
+            this._context.Header.NoSectorsInFatChain = this._context.Fat.NumFatSectors;
+            this._context.Header.DiFatStartSector = this._context.Fat.DiFatStartSector;
+
             // write header
-            _context.Header.write();
+            this._context.Header.write();
 
             // write temporary streams to the output streams.
-            _context.Header.writeToStream(outputStream);
-            _context.TempOutputStream.writeToStream(outputStream);
+            this._context.Header.writeToStream(outputStream);
+            this._context.TempOutputStream.writeToStream(outputStream);
         }
     }
 }

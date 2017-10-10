@@ -50,9 +50,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
         /// <param name="length">The recordlength</param>
         public AbstractPtg(IStreamReader reader, PtgNumber ptgid)
         {
-            _reader = reader;
-            _offset = _reader.BaseStream.Position;
-            _id = ptgid;
+            this._reader = reader;
+            this._offset = this._reader.BaseStream.Position;
+            this._id = ptgid;
             this.data = ""; 
         }
 
@@ -64,9 +64,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
         /// <param name="length">The recordlength</param>
         public AbstractPtg(IStreamReader reader, Ptg0x18Sub ptgid)
         {
-            _reader = reader;
-            _offset = _reader.BaseStream.Position;
-            _id = (PtgNumber)ptgid;
+            this._reader = reader;
+            this._offset = this._reader.BaseStream.Position;
+            this._id = (PtgNumber)ptgid;
             this.data = "";
         }
 
@@ -78,25 +78,25 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
         /// <param name="length">The recordlength</param>
         public AbstractPtg(IStreamReader reader, Ptg0x19Sub ptgid)
         {
-            _reader = reader;
-            _offset = _reader.BaseStream.Position;
-            _id = (PtgNumber)ptgid;
+            this._reader = reader;
+            this._offset = this._reader.BaseStream.Position;
+            this._id = (PtgNumber)ptgid;
             this.data = "";
         }
 
         public PtgNumber Id
         {
-            get { return _id; }
+            get { return this._id; }
         }
 
         public long Offset
         {
-            get { return _offset; }
+            get { return this._offset; }
         }
 
         public IStreamReader Reader
         {
-            get { return _reader; }
+            get { return this._reader; }
             set { this._reader = value; }
         }
 

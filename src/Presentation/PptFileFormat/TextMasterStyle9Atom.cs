@@ -15,29 +15,29 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             uint level = this.Reader.ReadUInt16();
             for (int i = 0; i < level; i++)
             {
-                var pmask = (ParagraphMask)Reader.ReadUInt32();
+                var pmask = (ParagraphMask)this.Reader.ReadUInt32();
                 var pr = new ParagraphRun9();
                 pr.mask = pmask;
                 if ((pmask & ParagraphMask.BulletBlip) != 0)
                 {
-                    int bulletblipref = Reader.ReadInt16();
+                    int bulletblipref = this.Reader.ReadInt16();
                     pr.bulletblipref = bulletblipref;
                 }
                 if ((pmask & ParagraphMask.BulletHasScheme) != 0)
                 {
-                    pr.fBulletHasAutoNumber = Reader.ReadInt16();
+                    pr.fBulletHasAutoNumber = this.Reader.ReadInt16();
                 }
                 if ((pmask & ParagraphMask.BulletScheme) != 0)
                 {
-                    pr.bulletAutoNumberScheme = Reader.ReadUInt16();
-                    pr.startAt = Reader.ReadInt16(); //start value
+                    pr.bulletAutoNumberScheme = this.Reader.ReadUInt16();
+                    pr.startAt = this.Reader.ReadInt16(); //start value
                 }
                 this.pruns.Add(pr);
 
-                var cmask = (CharacterMask)Reader.ReadUInt32();
+                var cmask = (CharacterMask)this.Reader.ReadUInt32();
                 if ((cmask & CharacterMask.pp11ext) != 0)
                 {
-                    var rest = Reader.ReadBytes(4);
+                    var rest = this.Reader.ReadBytes(4);
                 }
 
             }

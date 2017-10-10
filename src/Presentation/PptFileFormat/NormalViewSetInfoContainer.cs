@@ -31,14 +31,14 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public NormalViewSetInfoAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            leftPortion = new RatioStruct(Reader);
-            topPortion = new RatioStruct(Reader);
-            vertBarState = Reader.ReadByte();
-            horizBarState = Reader.ReadByte();
+            this.leftPortion = new RatioStruct(this.Reader);
+            this.topPortion = new RatioStruct(this.Reader);
+            this.vertBarState = this.Reader.ReadByte();
+            this.horizBarState = this.Reader.ReadByte();
 
-            byte temp = Reader.ReadByte();
-            fHideThumbnails = Tools.Utils.BitmaskToBool(temp, 0x1);
-            fBarSnapped = Tools.Utils.BitmaskToBool(temp, 0x1 << 1);
+            byte temp = this.Reader.ReadByte();
+            this.fHideThumbnails = Tools.Utils.BitmaskToBool(temp, 0x1);
+            this.fBarSnapped = Tools.Utils.BitmaskToBool(temp, 0x1 << 1);
 
         }
     }
@@ -55,11 +55,11 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public ZoomViewInfoAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            curScale = new ScalingStruct(Reader);
-            Reader.ReadBytes(24); //unused
-            origin = new PointStruct(Reader);
-            fUserVarScale = Reader.ReadByte();
-            fDraftMode = Reader.ReadByte();
+            this.curScale = new ScalingStruct(this.Reader);
+            this.Reader.ReadBytes(24); //unused
+            this.origin = new PointStruct(this.Reader);
+            this.fUserVarScale = this.Reader.ReadByte();
+            this.fDraftMode = this.Reader.ReadByte();
         }
     }
 
@@ -70,8 +70,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public PointStruct(BinaryReader _reader)
         {
-            x = _reader.ReadInt32();
-            y = _reader.ReadInt32();
+            this.x = _reader.ReadInt32();
+            this.y = _reader.ReadInt32();
         }
     }
 
@@ -82,8 +82,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public RatioStruct(BinaryReader _reader)
         {
-            numer = _reader.ReadInt32();
-            denom = _reader.ReadInt32();
+            this.numer = _reader.ReadInt32();
+            this.denom = _reader.ReadInt32();
         }
     }
 
@@ -94,8 +94,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public ScalingStruct(BinaryReader _reader)
         {
-            x = new RatioStruct(_reader);
-            y = new RatioStruct(_reader);
+            this.x = new RatioStruct(_reader);
+            this.y = new RatioStruct(_reader);
         }
     }
 

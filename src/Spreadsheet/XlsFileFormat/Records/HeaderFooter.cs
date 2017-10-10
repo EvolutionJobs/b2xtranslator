@@ -127,10 +127,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.cchHeaderFirst = reader.ReadUInt16();
             this.cchFooterFirst = reader.ReadUInt16();
 
-            var strHeaderEvenBytes = reader.ReadBytes(cchHeaderEven);
-            var strFooterEvenBytes = reader.ReadBytes(cchFooterEven);
-            var strHeaderFirstBytes = reader.ReadBytes(cchHeaderFirst);
-            var strFooterFirstBytes = reader.ReadBytes(cchFooterFirst);
+            var strHeaderEvenBytes = reader.ReadBytes(this.cchHeaderEven);
+            var strFooterEvenBytes = reader.ReadBytes(this.cchFooterEven);
+            var strHeaderFirstBytes = reader.ReadBytes(this.cchHeaderFirst);
+            var strFooterFirstBytes = reader.ReadBytes(this.cchFooterFirst);
 
             //this.strHeaderEven = new XLUnicodeString(reader).Value;
             //this.strFooterEven = new XLUnicodeString(reader).Value;

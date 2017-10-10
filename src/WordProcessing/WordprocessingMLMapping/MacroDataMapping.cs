@@ -9,23 +9,23 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public MacroDataMapping(ConversionContext ctx)
             : base(ctx, ctx.Docx.MainDocumentPart.VbaProjectPart.VbaDataPart)
         {
-            _ctx = ctx;
+            this._ctx = ctx;
         }
 
         public override void Apply(WordDocument doc)
         {
             var reader = new VirtualStreamReader(doc.Storage.GetStream("\\Macros\\PROJECTwm"));
-            _writer.WriteStartElement("wne", "vbaSuppData", OpenXmlNamespaces.MicrosoftWordML);
+            this._writer.WriteStartElement("wne", "vbaSuppData", OpenXmlNamespaces.MicrosoftWordML);
 
-            _writer.WriteStartElement("wne", "mcds", OpenXmlNamespaces.MicrosoftWordML);
+            this._writer.WriteStartElement("wne", "mcds", OpenXmlNamespaces.MicrosoftWordML);
             for (int i = 0; i < doc.CommandTable.MacroDatas.Count; i++)
             {
-                _writer.WriteStartElement("wne", "mcd", OpenXmlNamespaces.MicrosoftWordML);
+                this._writer.WriteStartElement("wne", "mcd", OpenXmlNamespaces.MicrosoftWordML);
                 var mcd = doc.CommandTable.MacroDatas[i];
 
                 if (doc.CommandTable.MacroNames != null)
                 {
-                    _writer.WriteAttributeString(
+                    this._writer.WriteAttributeString(
                         "wne", "macroName",
                         OpenXmlNamespaces.MicrosoftWordML,
                         doc.CommandTable.MacroNames[mcd.ibst]);
@@ -33,20 +33,20 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                 if (doc.CommandTable.CommandStringTable != null)
                 {
-                    _writer.WriteAttributeString(
+                    this._writer.WriteAttributeString(
                         "wne", "name",
                         OpenXmlNamespaces.MicrosoftWordML,
                         doc.CommandTable.CommandStringTable.Strings[mcd.ibstName]);
                 }
 
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
             reader.Close();
 
-            _writer.Flush();
+            this._writer.Flush();
         }
     }
 }

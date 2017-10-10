@@ -63,7 +63,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.cf = (ImageFormat)reader.ReadInt16();
             reader.ReadBytes(2); // skip 2 bytes
             this.lcb = reader.ReadInt32();
-            this.imageBlob = reader.ReadBytes(lcb);
+            this.imageBlob = reader.ReadBytes(this.lcb);
         }
     }
 }

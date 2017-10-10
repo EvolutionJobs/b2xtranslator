@@ -120,7 +120,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 {
                     var lsd = new LatentStyleData
                     {
-                        grflsd = System.BitConverter.ToUInt32(bytes, 22 + (i * cbLSD))
+                        grflsd = System.BitConverter.ToUInt32(bytes, 22 + (i * this.cbLSD))
                     };
                     lsd.fLocked = Utils.BitmaskToBool((int)lsd.grflsd, 0x1);
                     this.mpstilsd[i] = lsd;

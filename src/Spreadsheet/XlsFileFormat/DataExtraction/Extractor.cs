@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public Extractor(VirtualStreamReader reader)
         {
             this.StreamReader = reader;
-            if (StreamReader == null)
+            if (this.StreamReader == null)
             {
                 throw new ExtractorException(ExtractorException.NULLPOINTEREXCEPTION);
             }

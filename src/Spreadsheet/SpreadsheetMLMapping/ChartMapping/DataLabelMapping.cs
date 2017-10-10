@@ -50,7 +50,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             {
                 var attachedLabelSequence = chartFormatSequence.AttachedLabelSequences[0];
 
-                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElDLbls, Dml.Chart.Ns);
+                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElDLbls, Dml.Chart.Ns);
                 {
                     //<xsd:element name="dLbl" type="CT_DLbl" minOccurs="0" maxOccurs="unbounded"/>
                     // TODO
@@ -81,7 +81,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         if (attachedLabelSequence.DataLabExtContents != null)
                         {
                             //<xsd:element name="separator" type="xsd:string" minOccurs="0" maxOccurs="1">
-                            _writer.WriteElementString(Dml.Chart.Prefix, "separator", Dml.Chart.Ns, attachedLabelSequence.DataLabExtContents.rgchSep.Value);
+                            this._writer.WriteElementString(Dml.Chart.Prefix, "separator", Dml.Chart.Ns, attachedLabelSequence.DataLabExtContents.rgchSep.Value);
 
                             //<xsd:element name="showBubbleSize" type="CT_Boolean" minOccurs="0" maxOccurs="1">
                             if (attachedLabelSequence.DataLabExtContents.fBubSizes)
@@ -128,7 +128,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     // TODO
 
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
         }

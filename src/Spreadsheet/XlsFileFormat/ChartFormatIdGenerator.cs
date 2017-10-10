@@ -61,12 +61,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
 
         public void StartNewChartsheetSubstream()
         {
-            _id = 0;
+            this._id = 0;
         }
 
         public ushort GenerateId()
         {
-            return _id++;
+            return this._id++;
         }
     }
 }

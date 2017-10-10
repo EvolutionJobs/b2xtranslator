@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         uint _miniFatStart = SectorId.FREESECT;
         internal uint MiniFatStart
         {
-            get { return _miniFatStart; }            
+            get { return this._miniFatStart; }            
         }
 
 
@@ -50,7 +50,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         uint _numMiniFatSectors = 0x0;
         internal uint NumMiniFatSectors
         {
-            get { return _numMiniFatSectors; }            
+            get { return this._numMiniFatSectors; }            
         }
 
         /// <summary>
@@ -68,10 +68,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         override internal void write()
         {
-            _numMiniFatSectors = (uint)Math.Ceiling((double)(_entries.Count * 4) / (double)_context.Header.SectorSize);
-            _miniFatStart = _context.Fat.writeChain(_numMiniFatSectors);
-         
-            _context.TempOutputStream.writeSectors(_context.InternalBitConverter.getBytes(_entries).ToArray(), _context.Header.SectorSize, SectorId.FREESECT);
+            this._numMiniFatSectors = (uint)Math.Ceiling((double)(this._entries.Count * 4) / (double)this._context.Header.SectorSize);
+            this._miniFatStart = this._context.Fat.writeChain(this._numMiniFatSectors);
+
+            this._context.TempOutputStream.writeSectors(this._context.InternalBitConverter.getBytes(this._entries).ToArray(), this._context.Header.SectorSize, SectorId.FREESECT);
         }
 
     }

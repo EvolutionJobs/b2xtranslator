@@ -20,19 +20,19 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public GeometryBooleans(uint entryOperand)
         {
-            fFillOK = Utils.BitmaskToBool(entryOperand, 0x1);
-            fFillShadeShapeOK = Utils.BitmaskToBool(entryOperand, 0x2);
-            fGtextOK = Utils.BitmaskToBool(entryOperand, 0x4);
-            fLineOK = Utils.BitmaskToBool(entryOperand, 0x8);
-            f3DOK = Utils.BitmaskToBool(entryOperand, 0x10);
-            fShadowOK = Utils.BitmaskToBool(entryOperand, 0x20);
+            this.fFillOK = Utils.BitmaskToBool(entryOperand, 0x1);
+            this.fFillShadeShapeOK = Utils.BitmaskToBool(entryOperand, 0x2);
+            this.fGtextOK = Utils.BitmaskToBool(entryOperand, 0x4);
+            this.fLineOK = Utils.BitmaskToBool(entryOperand, 0x8);
+            this.f3DOK = Utils.BitmaskToBool(entryOperand, 0x10);
+            this.fShadowOK = Utils.BitmaskToBool(entryOperand, 0x20);
 
-            fUsefFillOK = Utils.BitmaskToBool(entryOperand, 0x10000);
-            fUsefFillShadeShapeOK = Utils.BitmaskToBool(entryOperand, 0x20000);
-            fUsefGtextOK = Utils.BitmaskToBool(entryOperand, 0x40000);
-            fUsefLineOK = Utils.BitmaskToBool(entryOperand, 0x80000);
-            fUsef3DOK = Utils.BitmaskToBool(entryOperand, 0x100000);
-            fUsefShadowOK = Utils.BitmaskToBool(entryOperand, 0x200000);
+            this.fUsefFillOK = Utils.BitmaskToBool(entryOperand, 0x10000);
+            this.fUsefFillShadeShapeOK = Utils.BitmaskToBool(entryOperand, 0x20000);
+            this.fUsefGtextOK = Utils.BitmaskToBool(entryOperand, 0x40000);
+            this.fUsefLineOK = Utils.BitmaskToBool(entryOperand, 0x80000);
+            this.fUsef3DOK = Utils.BitmaskToBool(entryOperand, 0x100000);
+            this.fUsefShadowOK = Utils.BitmaskToBool(entryOperand, 0x200000);
         }
     }
 }

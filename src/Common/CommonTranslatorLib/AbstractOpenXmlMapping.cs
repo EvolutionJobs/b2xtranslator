@@ -35,8 +35,8 @@ namespace DIaLOGIKa.b2xtranslator.CommonTranslatorLib
 
         public AbstractOpenXmlMapping(XmlWriter writer)
         {
-            _writer = writer;
-            _nodeFactory = new XmlDocument();
+            this._writer = writer;
+            this._nodeFactory = new XmlDocument();
         }
     }
 }

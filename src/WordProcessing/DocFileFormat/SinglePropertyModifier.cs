@@ -525,7 +525,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             byte opSize = GetOperandSize(spra);
             if (opSize == 255)
             {
-                switch (OpCode)
+                switch (this.OpCode)
                 {
                     case OperationCode.sprmTDefTable:
                     case OperationCode.sprmTDefTable10:
@@ -534,25 +534,25 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                         //and the arguments start at the byte after that (byte3)
                         this.Arguments = new byte[opSizeTable-1];
                         //Arguments start at byte 4
-                        Array.Copy(bytes, 4, this.Arguments, 0, Arguments.Length);
+                        Array.Copy(bytes, 4, this.Arguments, 0, this.Arguments.Length);
                         break;
                     case OperationCode.sprmPChgTabs:
                         this.Arguments = new byte[bytes[2]];
-                        Array.Copy(bytes, 3, this.Arguments, 0, Arguments.Length);
+                        Array.Copy(bytes, 3, this.Arguments, 0, this.Arguments.Length);
                         break;
                     default:
                         //the variable length stand in the byte after the opcode (byte2)
                         opSize = bytes[2];
                         //and the arguments start at the byte after that (byte3)
                         this.Arguments = new byte[opSize];
-                        Array.Copy(bytes, 3, this.Arguments, 0, Arguments.Length);
+                        Array.Copy(bytes, 3, this.Arguments, 0, this.Arguments.Length);
                         break;
                 }
             }
             else
             {
                 this.Arguments = new byte[opSize];
-                Array.Copy(bytes, 2, this.Arguments, 0, Arguments.Length);
+                Array.Copy(bytes, 2, this.Arguments, 0, this.Arguments.Length);
             }
         }
 

@@ -74,7 +74,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
             for (int i = 0; i < this.IdClustersCount; i++)
             {
-                Clusters.Add(new FileIdCluster(this.Reader));
+                this.Clusters.Add(new FileIdCluster(this.Reader));
             }
         }
 

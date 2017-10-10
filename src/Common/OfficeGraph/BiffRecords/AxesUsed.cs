@@ -65,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            cAxes = (AxisGroupsPresent)reader.ReadUInt16();
+            this.cAxes = (AxisGroupsPresent)reader.ReadUInt16();
 
             // assert that the correct number of bytes has been read from the stream
             Debug.Assert(this.Offset + this.Length == this.Reader.BaseStream.Position);

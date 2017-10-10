@@ -27,15 +27,15 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             int pointer = 1;
 
             //read rgdxaCenter
-            rgdxaCenter = new short[this.numberOfColumns + 1];
+            this.rgdxaCenter = new short[this.numberOfColumns + 1];
             for (int i = 0; i < this.numberOfColumns + 1 ; i++)
             {
-                rgdxaCenter[i] = System.BitConverter.ToInt16(bytes, pointer);
+                this.rgdxaCenter[i] = System.BitConverter.ToInt16(bytes, pointer);
                 pointer += 2;
             }
 
             //read rgTc80
-            rgTc80 = new TC80[this.numberOfColumns];
+            this.rgTc80 = new TC80[this.numberOfColumns];
             for (int i = 0; i < this.numberOfColumns; i++)
             {
                 var tc = new TC80();
@@ -83,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     pointer += 4;
                 }
 
-                rgTc80[i] = tc;
+                this.rgTc80[i] = tc;
             }
         }
     }

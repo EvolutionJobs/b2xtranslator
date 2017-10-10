@@ -47,7 +47,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public void Apply(CrtLayout12 crtLayout12)
         {
             // c:layout
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElLayout, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElLayout, Dml.Chart.Ns);
             {
                 if (crtLayout12.wHeightMode != CrtLayout12.CrtLayout12Mode.L12MAUTO ||
                     crtLayout12.wWidthMode != CrtLayout12.CrtLayout12Mode.L12MAUTO ||
@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     crtLayout12.wXMode != CrtLayout12.CrtLayout12Mode.L12MAUTO)
                 {
                     // c:manualLayout
-                    _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElManualLayout, Dml.Chart.Ns);
+                    this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElManualLayout, Dml.Chart.Ns);
                     {
                         // c:layoutTarget
                         writeValueElement(Dml.Chart.ElLayoutTarget, crtLayout12.fLayoutTargetInner ? "inner" : "outer");
@@ -93,10 +93,10 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         // c:h
                         writeValueElement(Dml.Chart.ElH, crtLayout12.dy.ToString(CultureInfo.InvariantCulture));
                     }
-                    _writer.WriteEndElement(); // c:manualLayout
+                    this._writer.WriteEndElement(); // c:manualLayout
                 }
             }
-            _writer.WriteEndElement(); // c:layout
+            this._writer.WriteEndElement(); // c:layout
         }
         #endregion
     }

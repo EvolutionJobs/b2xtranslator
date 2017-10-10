@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             var scatter = crtSequence.ChartType as Scatter;
 
             // c:scatterChart 
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElScatterChart, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElScatterChart, Dml.Chart.Ns);
             {
                 // c:scatterStyle
                 writeValueElement(Dml.Chart.Prefix, Dml.Chart.ElScatterStyle, Dml.Chart.Ns, mapScatterStyle(crtSequence.SsSequence));
@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     {
                         // c:ser (CT_ScatterSer)
                         // c:ser
-                        _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSer, Dml.Chart.Ns);
+                        this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSer, Dml.Chart.Ns);
 
                         // EG_SerShared
                         seriesFormatSequence.Convert(new SeriesMapping(this.WorkbookContext, this.ChartContext));
@@ -92,7 +92,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         // c:smooth
                         writeValueElement(Dml.Chart.Prefix, Dml.Chart.ElSmooth, Dml.Chart.Ns, isSmoothed(crtSequence.SsSequence) ? "1" : "0");
 
-                        _writer.WriteEndElement(); // c:ser
+                        this._writer.WriteEndElement(); // c:ser
                     }
                 }
 
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     writeValueElement(Dml.Chart.ElAxId, axisId.ToString());
                 }
             }
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
         #endregion
 

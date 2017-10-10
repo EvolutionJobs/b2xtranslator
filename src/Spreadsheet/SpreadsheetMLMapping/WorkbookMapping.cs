@@ -58,27 +58,27 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// <param name="bsd">WorkSheetData</param>
         public void Apply(WorkBookData workbookData)
         {
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("workbook", OpenXmlNamespaces.SpreadsheetML);
-            _writer.WriteAttributeString("xmlns", Sml.Ns);
-            _writer.WriteAttributeString("xmlns", "r", "", OpenXmlNamespaces.Relationships);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("workbook", OpenXmlNamespaces.SpreadsheetML);
+            this._writer.WriteAttributeString("xmlns", Sml.Ns);
+            this._writer.WriteAttributeString("xmlns", "r", "", OpenXmlNamespaces.Relationships);
 
             // fileVersion
-            _writer.WriteStartElement(Sml.Workbook.ElFileVersion, Sml.Ns);
-            _writer.WriteAttributeString(Sml.Workbook.AttrAppName, "xl");
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement(Sml.Workbook.ElFileVersion, Sml.Ns);
+            this._writer.WriteAttributeString(Sml.Workbook.AttrAppName, "xl");
+            this._writer.WriteEndElement();
 
             // workbookPr
-            _writer.WriteStartElement(Sml.Workbook.ElWorkbookPr, Sml.Ns);
+            this._writer.WriteStartElement(Sml.Workbook.ElWorkbookPr, Sml.Ns);
             if (workbookData.CodeName != null)
             {
-                _writer.WriteAttributeString(Sml.Workbook.AttrCodeName, workbookData.CodeName.codeName.Value);
+                this._writer.WriteAttributeString(Sml.Workbook.AttrCodeName, workbookData.CodeName.codeName.Value);
             }
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
 
 
-            _writer.WriteStartElement("sheets");
+            this._writer.WriteStartElement("sheets");
 
             // create the sheets
             foreach (var sheet in workbookData.boundSheetDataList)
@@ -112,13 +112,13 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         break;
                 }
 
-                _writer.WriteStartElement("sheet");
-                _writer.WriteAttributeString("name", sheet.boundsheetRecord.stName.Value);
-                _writer.WriteAttributeString("sheetId", sheetPart.RelId.ToString());
-                _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, sheetPart.RelIdToString);
-                _writer.WriteEndElement();
+                this._writer.WriteStartElement("sheet");
+                this._writer.WriteAttributeString("name", sheet.boundsheetRecord.stName.Value);
+                this._writer.WriteAttributeString("sheetId", sheetPart.RelId.ToString());
+                this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, sheetPart.RelIdToString);
+                this._writer.WriteEndElement();
             }
-            _writer.WriteEndElement();      // close sheetData 
+            this._writer.WriteEndElement();      // close sheetData 
 
             bool ParentTagWritten = false;
             if (workbookData.supBookDataList.Count != 0)
@@ -136,17 +136,17 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     {
                         if (!ParentTagWritten)
                         {
-                            _writer.WriteStartElement("externalReferences");
+                            this._writer.WriteStartElement("externalReferences");
                             ParentTagWritten = true;
                         }
-                        _writer.WriteStartElement("externalReference");
-                        _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, var.ExternalLinkRef);
-                        _writer.WriteEndElement();
+                        this._writer.WriteStartElement("externalReference");
+                        this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, var.ExternalLinkRef);
+                        this._writer.WriteEndElement();
                     }
                 }
                 if (ParentTagWritten)
                 {
-                    _writer.WriteEndElement();
+                    this._writer.WriteEndElement();
                 }
             }
 
@@ -157,40 +157,40 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 //<definedNames>
                 //<definedName name="abc" comment="test" localSheetId="1">Sheet1!$B$3</definedName>
                 //</definedNames>
-                _writer.WriteStartElement("definedNames");
+                this._writer.WriteStartElement("definedNames");
 
                 foreach (var item in workbookData.definedNameList)
                 {
                     if (item.rgce.Count > 0)
                     {
-                        _writer.WriteStartElement("definedName");
+                        this._writer.WriteStartElement("definedName");
                         if (item.Name.Value.Length > 1)
                         {
-                            _writer.WriteAttributeString("name", item.Name.Value);
+                            this._writer.WriteAttributeString("name", item.Name.Value);
                         }
                         else
                         {
                             string internName = "_xlnm." + ExcelHelperClass.getNameStringfromBuiltInFunctionID(item.Name.Value);
-                            _writer.WriteAttributeString("name", internName);
+                            this._writer.WriteAttributeString("name", internName);
                         }
                         if (item.itab > 0)
                         {
-                            _writer.WriteAttributeString("localSheetId", (item.itab - 1).ToString());
+                            this._writer.WriteAttributeString("localSheetId", (item.itab - 1).ToString());
                         }
-                        _writer.WriteValue(FormulaInfixMapping.mapFormula(item.rgce, _xlsContext));
+                        this._writer.WriteValue(FormulaInfixMapping.mapFormula(item.rgce, this._xlsContext));
 
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
                     }
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
             // close tags 
-            _writer.WriteEndElement();      // close worksheet
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();      // close worksheet
+            this._writer.WriteEndDocument();
 
             // flush writer 
-            _writer.Flush();
+            this._writer.Flush();
         }
 
     }

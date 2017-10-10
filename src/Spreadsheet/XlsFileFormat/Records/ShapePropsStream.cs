@@ -72,7 +72,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             reader.ReadBytes(2); //unused
             this.dwChecksum = reader.ReadUInt32();
             this.cb = reader.ReadUInt32();
-            this.rgb = reader.ReadBytes((int)cb);
+            this.rgb = reader.ReadBytes((int)this.cb);
 
             // assert that the correct number of bytes has been read from the stream
             Debug.Assert(this.Offset + this.Length == this.Reader.BaseStream.Position);

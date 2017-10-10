@@ -37,7 +37,7 @@ namespace UnitTests
         private object routeDocument = false;
 
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             //read the config
@@ -58,13 +58,13 @@ namespace UnitTests
         }
 
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             this.word2007.Quit(
-                ref saveChanges,
-                ref originalFormat,
-                ref routeDocument);
+                ref this.saveChanges,
+                ref this.originalFormat,
+                ref this.routeDocument);
         }
 
 
@@ -107,7 +107,7 @@ namespace UnitTests
                 object omLastPrintedDate = getDocumentProperty(omDoc, "Last print date");
                 var dffLastPrintedDate = dffDoc.DocumentProperties.dttmLastPrint.ToDateTime();
 
-                omDoc.Close(ref saveChanges, ref originalFormat, ref routeDocument);
+                omDoc.Close(ref this.saveChanges, ref this.originalFormat, ref this.routeDocument);
 
                 try
                 {
@@ -223,7 +223,7 @@ namespace UnitTests
                     dffBookmarkEnd = dffDoc.BookmarkEndPlex.CharacterPositions[dffIndex];
                 }
 
-                omDoc.Close(ref saveChanges, ref originalFormat, ref routeDocument);
+                omDoc.Close(ref this.saveChanges, ref this.originalFormat, ref this.routeDocument);
 
                 try
                 {
@@ -277,7 +277,7 @@ namespace UnitTests
                     dffFirstCommentAuthor = dffDoc.AnnotationOwners[dffFirstComment.AuthorIndex];
                 }
                 
-                omDoc.Close(ref saveChanges, ref originalFormat, ref routeDocument);
+                omDoc.Close(ref this.saveChanges, ref this.originalFormat, ref this.routeDocument);
 
                 try
                 {
@@ -303,21 +303,21 @@ namespace UnitTests
         {
             return this.word2007.Documents.Open(
                 ref filename,
-                ref confirmConversions,
-                ref readOnly,
-                ref addToRecentFiles,
-                ref passwordDocument,
-                ref passwordTemplate,
-                ref revert,
-                ref writePasswordDocument,
-                ref writePasswordTemplate,
-                ref format,
-                ref encoding,
-                ref visible,
-                ref openConflictDocument,
-                ref openAndRepair,
-                ref documentDirection,
-                ref noEncodingDialog);
+                ref this.confirmConversions,
+                ref this.readOnly,
+                ref this.addToRecentFiles,
+                ref this.passwordDocument,
+                ref this.passwordTemplate,
+                ref this.revert,
+                ref this.writePasswordDocument,
+                ref this.writePasswordTemplate,
+                ref this.format,
+                ref this.encoding,
+                ref this.visible,
+                ref this.openConflictDocument,
+                ref this.openAndRepair,
+                ref this.documentDirection,
+                ref this.noEncodingDialog);
         }
 
         private object getDocumentProperty(Document document, string propertyName)

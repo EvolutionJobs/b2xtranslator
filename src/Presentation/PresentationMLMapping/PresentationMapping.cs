@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public PresentationMapping(ConversionContext ctx, ContentPart targetPart)
             : base(XmlWriter.Create(targetPart.GetStream(), ctx.WriterSettings))
         {
-            _ctx = ctx;
+            this._ctx = ctx;
             this.targetPart = targetPart;
         }
 

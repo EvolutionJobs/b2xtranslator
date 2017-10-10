@@ -46,11 +46,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             var documentRecord = ppt.DocumentRecord;
 
             // Start the document
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("p", "presentation", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("p", "presentation", OpenXmlNamespaces.PresentationML);
 
             // Force declaration of these namespaces at document start
-            _writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
+            this._writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
 
             CreateMainMasters(ppt);
             CreateNotesMasters(ppt);
@@ -61,7 +61,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             WriteMainMasters(ppt);
             WriteSlides(ppt, documentRecord);
 
-            var viewProps = new viewPropsMapping(_ctx.Pptx.PresentationPart.AddViewPropertiesPart(), _ctx.WriterSettings, _ctx);
+            var viewProps = new viewPropsMapping(this._ctx.Pptx.PresentationPart.AddViewPropertiesPart(), this._ctx.WriterSettings, this._ctx);
             viewProps.Apply(null);
 
             // sldSz and notesSz
@@ -70,26 +70,26 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             WriteDefaultTextStyle(ppt, documentRecord);
 
             // End the document
-            _writer.WriteEndElement();
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.Flush();
         }
 
         private void WriteDefaultTextStyle(PowerpointDocument ppt, DocumentContainer documentRecord)
         {
-            _writer.WriteStartElement("p", "defaultTextStyle", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "defaultTextStyle", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("a", "defPPr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "defRPr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("lang", "en-US");
-            _writer.WriteEndElement(); //defRPr
-            _writer.WriteEndElement(); //defPPr
+            this._writer.WriteStartElement("a", "defPPr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "defRPr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("lang", "en-US");
+            this._writer.WriteEndElement(); //defRPr
+            this._writer.WriteEndElement(); //defPPr
 
 
-            var defaultStyle = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>();
+            var defaultStyle = this._ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>();
 
-            var map = new TextMasterStyleMapping(_ctx, _writer, null);
+            var map = new TextMasterStyleMapping(this._ctx, this._writer, null);
             
             for (int i = 0; i < defaultStyle.IndentLevelCount; i++)
             {
@@ -101,7 +101,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
 
-            _writer.WriteEndElement(); //defaultTextStyle
+            this._writer.WriteEndElement(); //defaultTextStyle
         }
 
         private void WriteSizeInfo(PowerpointDocument ppt, DocumentContainer documentRecord)
@@ -120,12 +120,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             int notesWidth = Utils.MasterCoordToEMU(doc.NotesSize.X);
             int notesHeight = Utils.MasterCoordToEMU(doc.NotesSize.Y);
 
-            _writer.WriteStartElement("p", "notesSz", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "notesSz", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("cx", notesWidth.ToString());
-            _writer.WriteAttributeString("cy", notesHeight.ToString());
+            this._writer.WriteAttributeString("cx", notesWidth.ToString());
+            this._writer.WriteAttributeString("cy", notesHeight.ToString());
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
 
         private void WriteSlideSizeInfo(DocumentAtom doc)
@@ -134,13 +134,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             int slideHeight = Utils.MasterCoordToEMU(doc.SlideSize.Y);
             string slideType = Utils.SlideSizeTypeToXMLValue(doc.SlideSizeType);
 
-            _writer.WriteStartElement("p", "sldSz", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "sldSz", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("cx", slideWidth.ToString());
-            _writer.WriteAttributeString("cy", slideHeight.ToString());
-            _writer.WriteAttributeString("type", slideType);
+            this._writer.WriteAttributeString("cx", slideWidth.ToString());
+            this._writer.WriteAttributeString("cy", slideHeight.ToString());
+            this._writer.WriteAttributeString("type", slideType);
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
         }
 
@@ -157,7 +157,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         {
                             if (slide.PersistAtom == at)
                             {
-                                var sMapping = new SlideMapping(_ctx);
+                                var sMapping = new SlideMapping(this._ctx);
                                 sMapping.Apply(slide);
                                 this.SlideMappings.Add(sMapping);
                             }
@@ -181,7 +181,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 {
                                     if (slideMapping.Slide.PersistAtom.SlideId == a.SlideIdRef)
                                     {
-                                        var nMapping = new NoteMapping(_ctx, slideMapping);
+                                        var nMapping = new NoteMapping(this._ctx, slideMapping);
                                         nMapping.Apply(note);
                                         this.NoteMappings.Add(nMapping);
                                         //found = true;
@@ -203,35 +203,35 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void WriteSlides(PowerpointDocument ppt, DocumentContainer documentRecord)
         {
-            _writer.WriteStartElement("p", "sldIdLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "sldIdLst", OpenXmlNamespaces.PresentationML);
 
             foreach (var sMapping in this.SlideMappings)
             {
                 WriteSlide(sMapping);
             }
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
 
         private void WriteSlide(SlideMapping sMapping)
         {
             var slide = sMapping.Slide;
 
-            _writer.WriteStartElement("p", "sldId", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "sldId", OpenXmlNamespaces.PresentationML);
 
             var slideAtom = slide.FirstChildWithType<SlideAtom>();
 
-            _writer.WriteAttributeString("id", slide.PersistAtom.SlideId.ToString());
-            _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, sMapping.targetPart.RelIdToString);
+            this._writer.WriteAttributeString("id", slide.PersistAtom.SlideId.ToString());
+            this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, sMapping.targetPart.RelIdToString);
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
 
         private void CreateVbaProject(PowerpointDocument ppt)
         {
             if (ppt.VbaProject != null)
             {
-                ppt.VbaProject.Convert(new VbaProjectMapping(_ctx.Pptx.PresentationPart.VbaProjectPart));
+                ppt.VbaProject.Convert(new VbaProjectMapping(this._ctx.Pptx.PresentationPart.VbaProjectPart));
             }
         }
 
@@ -239,7 +239,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             foreach (var m in ppt.MainMasterRecords)
             {
-                 _ctx.GetOrCreateMasterMappingByMasterId(m.PersistAtom.SlideId).Apply(m);
+                this._ctx.GetOrCreateMasterMappingByMasterId(m.PersistAtom.SlideId).Apply(m);
             }
         }
 
@@ -247,7 +247,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             foreach (var m in ppt.NotesMasterRecords)
             {
-                _ctx.GetOrCreateNotesMasterMappingByMasterId(0).Apply(m);
+                this._ctx.GetOrCreateNotesMasterMappingByMasterId(0).Apply(m);
             }
         }
 
@@ -255,20 +255,20 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             foreach (var m in ppt.HandoutMasterRecords)
             {
-                _ctx.GetOrCreateHandoutMasterMappingByMasterId(0).Apply(m);
+                this._ctx.GetOrCreateHandoutMasterMappingByMasterId(0).Apply(m);
             }
         }
 
         private void WriteMainMasters(PowerpointDocument ppt)
         {
-            _writer.WriteStartElement("p", "sldMasterIdLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "sldMasterIdLst", OpenXmlNamespaces.PresentationML);
 
             foreach (var m in ppt.MainMasterRecords)
             {
                 this.WriteMainMaster(ppt, m);
             }
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
             WriteNoteMaster(ppt);
             WriteHandoutMaster(ppt);
@@ -282,30 +282,30 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// <param name="m">Main master record</param>
         private void WriteMainMaster(PowerpointDocument ppt, MainMaster m)
         {
-            _writer.WriteStartElement("p", "sldMasterId", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "sldMasterId", OpenXmlNamespaces.PresentationML);
 
-            var mapping = _ctx.GetOrCreateMasterMappingByMasterId(m.PersistAtom.SlideId);
+            var mapping = this._ctx.GetOrCreateMasterMappingByMasterId(m.PersistAtom.SlideId);
             mapping.Write();
 
             string relString = mapping.targetPart.RelIdToString;
 
-            _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, relString);
+            this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, relString);
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
 
         private void WriteNoteMaster(PowerpointDocument ppt)
         {
             if (ppt.NotesMasterRecords.Count > 0)
             {
-                _writer.WriteStartElement("p", "notesMasterIdLst", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "notesMasterIdLst", OpenXmlNamespaces.PresentationML);
 
                 foreach (var m in ppt.NotesMasterRecords)
                 {
                     this.WriteNoteMaster2(ppt, m);
                 }
 
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
         }
 
@@ -316,16 +316,16 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// <param name="m">Notes master record</param>
         private void WriteNoteMaster2(PowerpointDocument ppt, Note m)
         {
-            _writer.WriteStartElement("p", "notesMasterId", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "notesMasterId", OpenXmlNamespaces.PresentationML);
 
-            var mapping = _ctx.GetOrCreateNotesMasterMappingByMasterId(0);
+            var mapping = this._ctx.GetOrCreateNotesMasterMappingByMasterId(0);
             mapping.Write();
 
             string relString = mapping.targetPart.RelIdToString;
 
-            _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, relString);
+            this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, relString);
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
 
         private void WriteHandoutMaster(PowerpointDocument ppt)
@@ -333,14 +333,14 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             if (ppt.HandoutMasterRecords.Count > 0)
             {
 
-                _writer.WriteStartElement("p", "handoutMasterIdLst", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "handoutMasterIdLst", OpenXmlNamespaces.PresentationML);
 
                 foreach (var m in ppt.HandoutMasterRecords)
                 {
                     this.WriteHandoutMaster2(ppt, m);
                 }
 
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
         }
 
@@ -351,16 +351,16 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// <param name="m">Handout master record</param>
         private void WriteHandoutMaster2(PowerpointDocument ppt, Handout m)
         {
-            _writer.WriteStartElement("p", "handoutMasterId", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "handoutMasterId", OpenXmlNamespaces.PresentationML);
 
-            var mapping = _ctx.GetOrCreateHandoutMasterMappingByMasterId(0);
+            var mapping = this._ctx.GetOrCreateHandoutMasterMappingByMasterId(0);
             mapping.Write();
 
             string relString = mapping.targetPart.RelIdToString;
 
-            _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, relString);
+            this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, relString);
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
     }
 }

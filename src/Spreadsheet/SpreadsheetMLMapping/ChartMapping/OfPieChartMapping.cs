@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             var bopPop = crtSequence.ChartType as BopPop;
 
             // c:ofPieChart
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElOfPieChart, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElOfPieChart, Dml.Chart.Ns);
             {
 
                 // Axis Ids
@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     writeValueElement(Dml.Chart.ElAxId, axisId.ToString());
                 }
             }
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
         #endregion
     }

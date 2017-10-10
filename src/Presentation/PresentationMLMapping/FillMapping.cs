@@ -46,8 +46,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public FillMapping(ConversionContext ctx, XmlWriter writer, PresentationMapping<RegularContainer> parentSlideMapping)
             : base(writer)
         {
-            _ctx = ctx;
-            _parentSlideMapping = parentSlideMapping;
+            this._ctx = ctx;
+            this._parentSlideMapping = parentSlideMapping;
         }
 
         public void Apply(ShapeOptions so)
@@ -71,46 +71,46 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     } else {
                         colorval = "FFFFFF"; //TODO: find out which color to use in this case
                     }
-                    _writer.WriteStartElement("a", "solidFill", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "solidFill", OpenXmlNamespaces.DrawingML);
 
                     if (SchemeType.Length == 0)
                     {
-                        _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("val", colorval);
+                        this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("val", colorval);
                     }
                     else
                     {
-                        _writer.WriteStartElement("a", "schemeClr", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("val", SchemeType);
+                        this._writer.WriteStartElement("a", "schemeClr", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("val", SchemeType);
                     }
 
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillOpacity) && so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op != 65536)
                     {
-                        _writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
-                        _writer.WriteEndElement();
+                        this._writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
+                        this._writer.WriteEndElement();
                     }
-                    _writer.WriteEndElement();
-                    _writer.WriteEndElement();
+                    this._writer.WriteEndElement();
+                    this._writer.WriteEndElement();
                     break;
                 case 0x1: //pattern
                     uint blipIndex1 = so.OptionsByID[ShapeOptions.PropertyId.fillBlip].op;
                     var gr1 = (DrawingGroup)this._ctx.Ppt.DocumentRecord.FirstChildWithType<PPDrawingGroup>().Children[0];
                     var bse1 = (BlipStoreEntry)gr1.FirstChildWithType<BlipStoreContainer>().Children[(int)blipIndex1 - 1];
-                    var b1 = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse1.foDelay];
+                    var b1 = (BitmapBlip)this._ctx.Ppt.PicturesContainer._pictures[bse1.foDelay];
 
-                    _writer.WriteStartElement("a", "pattFill", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "pattFill", OpenXmlNamespaces.DrawingML);
 
-                    _writer.WriteAttributeString("prst", Utils.getPrstForPatternCode(b1.m_bTag)); //Utils.getPrstForPattern(blipNamePattern));
+                    this._writer.WriteAttributeString("prst", Utils.getPrstForPatternCode(b1.m_bTag)); //Utils.getPrstForPattern(blipNamePattern));
 
-                    _writer.WriteStartElement("a", "fgClr", OpenXmlNamespaces.DrawingML);
-                    _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-                    _writer.WriteAttributeString("val", Utils.getRGBColorFromOfficeArtCOLORREF(so.OptionsByID[ShapeOptions.PropertyId.fillColor].op, slide,so));
-                    _writer.WriteEndElement();
-                    _writer.WriteEndElement();
+                    this._writer.WriteStartElement("a", "fgClr", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteAttributeString("val", Utils.getRGBColorFromOfficeArtCOLORREF(so.OptionsByID[ShapeOptions.PropertyId.fillColor].op, slide,so));
+                    this._writer.WriteEndElement();
+                    this._writer.WriteEndElement();
 
-                    _writer.WriteStartElement("a", "bgClr", OpenXmlNamespaces.DrawingML);
-                    _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "bgClr", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillBackColor))
                     {
                         colorval = Utils.getRGBColorFromOfficeArtCOLORREF(so.OptionsByID[ShapeOptions.PropertyId.fillBackColor].op, slide, so);
@@ -119,11 +119,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         colorval = "ffffff"; //TODO: find out which color to use in this case
                     }
-                    _writer.WriteAttributeString("val", colorval);
-                    _writer.WriteEndElement();
-                    _writer.WriteEndElement();
+                    this._writer.WriteAttributeString("val", colorval);
+                    this._writer.WriteEndElement();
+                    this._writer.WriteEndElement();
 
-                    _writer.WriteEndElement();
+                    this._writer.WriteEndElement();
 
                     break;
                 case 0x2: //texture
@@ -167,63 +167,63 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                     if (strUrl.Length > 0)
                     {
-                        var er = _parentSlideMapping.targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.Image, strUrl);
+                        var er = this._parentSlideMapping.targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.Image, strUrl);
 
                         rId = er.Id;
 
-                        _writer.WriteStartElement("a", "blipFill", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("dpi", "0");
-                        _writer.WriteAttributeString("rotWithShape", "1");
+                        this._writer.WriteStartElement("a", "blipFill", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("dpi", "0");
+                        this._writer.WriteAttributeString("rotWithShape", "1");
 
-                        _writer.WriteStartElement("a", "blip", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("r", "link", OpenXmlNamespaces.Relationships, rId);
+                        this._writer.WriteStartElement("a", "blip", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("r", "link", OpenXmlNamespaces.Relationships, rId);
 
 
 
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
 
-                        _writer.WriteElementString("a", "srcRect", OpenXmlNamespaces.DrawingML, "");
+                        this._writer.WriteElementString("a", "srcRect", OpenXmlNamespaces.DrawingML, "");
 
                         if (fillType == 0x3)
                         {
-                            _writer.WriteStartElement("a", "stretch", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteElementString("a", "fillRect", OpenXmlNamespaces.DrawingML, "");
-                            _writer.WriteEndElement();
+                            this._writer.WriteStartElement("a", "stretch", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteElementString("a", "fillRect", OpenXmlNamespaces.DrawingML, "");
+                            this._writer.WriteEndElement();
                         }
                         else
                         {
-                            _writer.WriteStartElement("a", "tile", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("tx", "0");
-                            _writer.WriteAttributeString("ty", "0");
-                            _writer.WriteAttributeString("sx", "100000");
-                            _writer.WriteAttributeString("sy", "100000");
-                            _writer.WriteAttributeString("flip", "none");
-                            _writer.WriteAttributeString("algn", "tl");
-                            _writer.WriteEndElement();
+                            this._writer.WriteStartElement("a", "tile", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("tx", "0");
+                            this._writer.WriteAttributeString("ty", "0");
+                            this._writer.WriteAttributeString("sx", "100000");
+                            this._writer.WriteAttributeString("sy", "100000");
+                            this._writer.WriteAttributeString("flip", "none");
+                            this._writer.WriteAttributeString("algn", "tl");
+                            this._writer.WriteEndElement();
                         }
 
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
 
                     } else if (blipIndex <= gr.FirstChildWithType<BlipStoreContainer>().Children.Count)
                     {
                         var bse = (BlipStoreEntry)gr.FirstChildWithType<BlipStoreContainer>().Children[(int)blipIndex - 1];
 
-                        if (_ctx.Ppt.PicturesContainer._pictures.ContainsKey(bse.foDelay))
+                        if (this._ctx.Ppt.PicturesContainer._pictures.ContainsKey(bse.foDelay))
                         {
-                            var rec = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                            var rec = this._ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
                            
                             if (rec is BitmapBlip)
                             {
-                                var b = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];                                
-                                imgPart = _parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
+                                var b = (BitmapBlip)this._ctx.Ppt.PicturesContainer._pictures[bse.foDelay];                                
+                                imgPart = this._parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
                                 imgPart.TargetDirectory = "..\\media";
                                 var outStream = imgPart.GetStream();
                                 outStream.Write(b.m_pvBits, 0, b.m_pvBits.Length);
                             }
                             else
                             {
-                                var b = (MetafilePictBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
-                                imgPart = _parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
+                                var b = (MetafilePictBlip)this._ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                                imgPart = this._parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
                                 imgPart.TargetDirectory = "..\\media";
                                 var outStream = imgPart.GetStream();
                                 var decompressed = b.Decrompress();
@@ -232,47 +232,47 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                             rId = imgPart.RelIdToString;
 
-                            _writer.WriteStartElement("a", "blipFill", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("dpi", "0");
-                            _writer.WriteAttributeString("rotWithShape", "1");
+                            this._writer.WriteStartElement("a", "blipFill", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("dpi", "0");
+                            this._writer.WriteAttributeString("rotWithShape", "1");
 
-                            _writer.WriteStartElement("a", "blip", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("r", "embed", OpenXmlNamespaces.Relationships, rId);
+                            this._writer.WriteStartElement("a", "blip", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("r", "embed", OpenXmlNamespaces.Relationships, rId);
 
-                           
 
-                            _writer.WriteEndElement();
 
-                            _writer.WriteElementString("a", "srcRect", OpenXmlNamespaces.DrawingML, "");
+                            this._writer.WriteEndElement();
+
+                            this._writer.WriteElementString("a", "srcRect", OpenXmlNamespaces.DrawingML, "");
 
                             if (fillType == 0x3)
                             {
-                                _writer.WriteStartElement("a", "stretch", OpenXmlNamespaces.DrawingML);
-                                _writer.WriteElementString("a", "fillRect", OpenXmlNamespaces.DrawingML, "");
-                                _writer.WriteEndElement();
+                                this._writer.WriteStartElement("a", "stretch", OpenXmlNamespaces.DrawingML);
+                                this._writer.WriteElementString("a", "fillRect", OpenXmlNamespaces.DrawingML, "");
+                                this._writer.WriteEndElement();
                             }
                             else
                             {
-                                _writer.WriteStartElement("a", "tile", OpenXmlNamespaces.DrawingML);
-                                _writer.WriteAttributeString("tx", "0");
-                                _writer.WriteAttributeString("ty", "0");
-                                _writer.WriteAttributeString("sx", "100000");
-                                _writer.WriteAttributeString("sy", "100000");
-                                _writer.WriteAttributeString("flip", "none");
-                                _writer.WriteAttributeString("algn", "tl");
-                                _writer.WriteEndElement();
+                                this._writer.WriteStartElement("a", "tile", OpenXmlNamespaces.DrawingML);
+                                this._writer.WriteAttributeString("tx", "0");
+                                this._writer.WriteAttributeString("ty", "0");
+                                this._writer.WriteAttributeString("sx", "100000");
+                                this._writer.WriteAttributeString("sy", "100000");
+                                this._writer.WriteAttributeString("flip", "none");
+                                this._writer.WriteAttributeString("algn", "tl");
+                                this._writer.WriteEndElement();
                             }
 
-                            _writer.WriteEndElement();
+                            this._writer.WriteEndElement();
                         }
                     }
                     break;
                 case 0x4: //shade
                 case 0x5: //shadecenter
                 case 0x6: //shadeshape
-                    _writer.WriteStartElement("a", "gradFill", OpenXmlNamespaces.DrawingML);
-                    _writer.WriteAttributeString("rotWithShape", "1");
-                    _writer.WriteStartElement("a", "gsLst", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "gradFill", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteAttributeString("rotWithShape", "1");
+                    this._writer.WriteStartElement("a", "gsLst", OpenXmlNamespaces.DrawingML);
                     bool useFillAndBack = true;
 
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillShadeColors))
@@ -344,20 +344,20 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             for (int i = 0; i < nElems * cbElem; i += cbElem)
                             {
                                 colorval = Utils.getRGBColorFromOfficeArtCOLORREF(System.BitConverter.ToUInt32(colors, 6 + i), slide, so);
-                                _writer.WriteStartElement("a", "gs", OpenXmlNamespaces.DrawingML);
-                                _writer.WriteAttributeString("pos", positions[i / cbElem]);
+                                this._writer.WriteStartElement("a", "gs", OpenXmlNamespaces.DrawingML);
+                                this._writer.WriteAttributeString("pos", positions[i / cbElem]);
 
-                                _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-                                _writer.WriteAttributeString("val", colorval);
+                                this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                                this._writer.WriteAttributeString("val", colorval);
                                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillOpacity) && so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op != 65536)
                                 {
-                                    _writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
-                                    _writer.WriteAttributeString("val", alphas[i / cbElem]); //we need the percentage of the opacity (65536 means 100%)
-                                    _writer.WriteEndElement();
+                                    this._writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
+                                    this._writer.WriteAttributeString("val", alphas[i / cbElem]); //we need the percentage of the opacity (65536 means 100%)
+                                    this._writer.WriteEndElement();
                                 }
-                                _writer.WriteEndElement();
+                                this._writer.WriteEndElement();
 
-                                _writer.WriteEndElement();
+                                this._writer.WriteEndElement();
                             }
                         }
                     }
@@ -367,18 +367,18 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         
                         colorval = Utils.getRGBColorFromOfficeArtCOLORREF(so.OptionsByID[ShapeOptions.PropertyId.fillColor].op, slide, so);
 
-                        _writer.WriteStartElement("a", "gs", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("pos", "0");
-                        _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("val", colorval);
+                        this._writer.WriteStartElement("a", "gs", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("pos", "0");
+                        this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("val", colorval);
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillOpacity) && so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op != 65536)
                         {
-                            _writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
-                            _writer.WriteEndElement();
+                            this._writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
+                            this._writer.WriteEndElement();
                         }
-                        _writer.WriteEndElement();
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
+                        this._writer.WriteEndElement();
 
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillBackColor))
                         {
@@ -396,54 +396,54 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             }
                         }
 
-                        _writer.WriteStartElement("a", "gs", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("pos", "100000");
-                        _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("val", colorval);
+                        this._writer.WriteStartElement("a", "gs", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("pos", "100000");
+                        this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("val", colorval);
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillBackOpacity) && so.OptionsByID[ShapeOptions.PropertyId.fillBackOpacity].op != 65536)
                         {
-                            _writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillBackOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
-                            _writer.WriteEndElement();
+                            this._writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillBackOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
+                            this._writer.WriteEndElement();
                         }
-                        _writer.WriteEndElement();
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
+                        this._writer.WriteEndElement();
                     }
 
-                    _writer.WriteEndElement(); //gsLst
+                    this._writer.WriteEndElement(); //gsLst
 
                     switch (fillType)
                     {
                         case 0x5:
                         case 0x6:
-                            _writer.WriteStartElement("a", "path", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("path", "shape");
-                            _writer.WriteStartElement("a", "fillToRect", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("l", "50000");
-                            _writer.WriteAttributeString("t", "50000");
-                            _writer.WriteAttributeString("r", "50000");
-                            _writer.WriteAttributeString("b", "50000");
-                            _writer.WriteEndElement();
-                            _writer.WriteEndElement(); //path
+                            this._writer.WriteStartElement("a", "path", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("path", "shape");
+                            this._writer.WriteStartElement("a", "fillToRect", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("l", "50000");
+                            this._writer.WriteAttributeString("t", "50000");
+                            this._writer.WriteAttributeString("r", "50000");
+                            this._writer.WriteAttributeString("b", "50000");
+                            this._writer.WriteEndElement();
+                            this._writer.WriteEndElement(); //path
                             break;
                         default:
-                            _writer.WriteStartElement("a", "path", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("path", "rect");
-                            _writer.WriteStartElement("a", "fillToRect", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("r", "100000");
-                            _writer.WriteAttributeString("b", "100000");
-                            _writer.WriteEndElement();
-                            _writer.WriteEndElement(); //path
+                            this._writer.WriteStartElement("a", "path", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("path", "rect");
+                            this._writer.WriteStartElement("a", "fillToRect", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("r", "100000");
+                            this._writer.WriteAttributeString("b", "100000");
+                            this._writer.WriteEndElement();
+                            this._writer.WriteEndElement(); //path
                             break;
                     }
 
-                    _writer.WriteEndElement(); //gradFill
+                    this._writer.WriteEndElement(); //gradFill
 
                     break;
                 case 0x7: //shadescale
-                    _writer.WriteStartElement("a", "gradFill", OpenXmlNamespaces.DrawingML);
-                    _writer.WriteAttributeString("rotWithShape", "1");
-                    _writer.WriteStartElement("a", "gsLst", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "gradFill", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteAttributeString("rotWithShape", "1");
+                    this._writer.WriteStartElement("a", "gsLst", OpenXmlNamespaces.DrawingML);
 
                     decimal angle = 90;
                     bool switchColors = false;
@@ -559,17 +559,17 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             gspos = 100000;
                         } else {
                             gspos = i * 100000 / shadeColors.Count;
-                        }                       
+                        }
 
-                        _writer.WriteStartElement("a", "gs", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("pos", gspos.ToString());
-                        _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("val", col);
+                        this._writer.WriteStartElement("a", "gs", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("pos", gspos.ToString());
+                        this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("val", col);
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillOpacity) && so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op != 65536)
                         {
-                            _writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
-                            _writer.WriteEndElement();
+                            this._writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
+                            this._writer.WriteEndElement();
                         }
 
                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillShadeType))
@@ -581,21 +581,21 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             bool band = Tools.Utils.BitmaskToBool(flags, 0x1 << 3);
                             bool onecolor = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
 
-                            if (gamma) _writer.WriteElementString("a", "gamma", OpenXmlNamespaces.DrawingML, "");
+                            if (gamma) this._writer.WriteElementString("a", "gamma", OpenXmlNamespaces.DrawingML, "");
                             if (band)
                             {
-                                _writer.WriteStartElement("a", "shade", OpenXmlNamespaces.DrawingML);
-                                _writer.WriteAttributeString("val", "37255");
-                                _writer.WriteEndElement();
+                                this._writer.WriteStartElement("a", "shade", OpenXmlNamespaces.DrawingML);
+                                this._writer.WriteAttributeString("val", "37255");
+                                this._writer.WriteEndElement();
                             }
-                            if (gamma) _writer.WriteElementString("a", "invGamma", OpenXmlNamespaces.DrawingML, "");
+                            if (gamma) this._writer.WriteElementString("a", "invGamma", OpenXmlNamespaces.DrawingML, "");
                         }
-                        _writer.WriteEndElement();
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
+                        this._writer.WriteEndElement();
                     }
 
-                    
-                    
+
+
 
                     ////new colorval
                     //_writer.WriteStartElement("a", "gs", OpenXmlNamespaces.DrawingML);
@@ -608,22 +608,22 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     //    _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillBackOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
                     //    _writer.WriteEndElement();
                     //}
-                    
+
                     //_writer.WriteEndElement();
                     //_writer.WriteEndElement();
 
-                    _writer.WriteEndElement(); //gsLst
+                    this._writer.WriteEndElement(); //gsLst
 
-                    _writer.WriteStartElement("a", "lin", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "lin", OpenXmlNamespaces.DrawingML);
 
                     angle *= 60000;
                     //if (angle > 5400000) angle = 5400000;
 
-                    _writer.WriteAttributeString("ang", angle.ToString());
-                    _writer.WriteAttributeString("scaled", "1");
-                    _writer.WriteEndElement();
+                    this._writer.WriteAttributeString("ang", angle.ToString());
+                    this._writer.WriteAttributeString("scaled", "1");
+                    this._writer.WriteEndElement();
 
-                    _writer.WriteEndElement();
+                    this._writer.WriteEndElement();
                     break;
                 case 0x8: //shadetitle
                 case 0x9: //background

@@ -41,8 +41,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         private int row;
         public int Row
         {
-            get { return row; }
-            set { row = value; }
+            get { return this.row; }
+            set { this.row = value; }
         }
         
         /// <summary>
@@ -51,8 +51,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         private List<AbstractCellData> cells;
         public List<AbstractCellData> Cells
         {
-            get { return cells; }
-            set { cells = value; }
+            get { return this.cells; }
+            set { this.cells = value; }
         }
 
         public TwipsValue height;

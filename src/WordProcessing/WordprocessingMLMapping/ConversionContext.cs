@@ -18,8 +18,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         public WordDocument Doc
         {
-            get { return _doc; }
-            set { _doc = value; }
+            get { return this._doc; }
+            set { this._doc = value; }
         }
 
         /// <summary>
@@ -28,8 +28,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         public WordprocessingDocument Docx
         {
-            get { return _docx; }
-            set { _docx = value; }
+            get { return this._docx; }
+            set { this._docx = value; }
         }
 
         /// <summary>
@@ -37,8 +37,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         public XmlWriterSettings WriterSettings
         {
-            get { return _writerSettings; }
-            set { _writerSettings = value; }
+            get { return this._writerSettings; }
+            set { this._writerSettings = value; }
         }
 
         /// <summary>

@@ -12,13 +12,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public VbaProjectMapping(VbaProjectPart targetPart)
             : base(null)
         {
-            _targetPart = targetPart;
+            this._targetPart = targetPart;
         }
 
         public void Apply(ExOleObjStgAtom vbaProject)
         {
             var bytes = vbaProject.DecompressData();
-            _targetPart.GetStream().Write(bytes, 0, bytes.Length);
+            this._targetPart.GetStream().Write(bytes, 0, bytes.Length);
             
         }
     }

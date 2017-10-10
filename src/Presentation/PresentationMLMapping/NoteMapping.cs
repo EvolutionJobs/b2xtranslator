@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public NoteMapping(ConversionContext ctx, SlideMapping slideMapping)
             : base(ctx, ctx.Pptx.PresentationPart.AddNotePart())
         {
-            SlideMapping = slideMapping;
+            this.SlideMapping = slideMapping;
         }
 
 
@@ -54,44 +54,44 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             var notesAtom = note.FirstChildWithType<NotesAtom>();
 
             //Add relationship to slide
-            this.targetPart.ReferencePart(SlideMapping.targetPart);
-            SlideMapping.targetPart.ReferencePart(this.targetPart);
+            this.targetPart.ReferencePart(this.SlideMapping.targetPart);
+            this.SlideMapping.targetPart.ReferencePart(this.targetPart);
 
             //Add relationship to notes master
 
 
             // Start the document
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("p", "notes", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("p", "notes", OpenXmlNamespaces.PresentationML);
 
             // Force declaration of these namespaces at document start
-            _writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
             // Force declaration of these namespaces at document start
-            _writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
+            this._writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
 
             // TODO: Write slide data of master slide
-            _writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
 
             //TODO: write background properties (p:bg)
 
-            _writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
 
-            var stm = new ShapeTreeMapping(_ctx, _writer);
+            var stm = new ShapeTreeMapping(this._ctx, this._writer);
             stm.parentSlideMapping = this;
             stm.Apply(note.FirstChildWithType<PPDrawing>());
 
             checkHeaderFooter(stm);
 
-            _writer.WriteEndElement(); //spTree
-            _writer.WriteEndElement(); //cSld
+            this._writer.WriteEndElement(); //spTree
+            this._writer.WriteEndElement(); //cSld
 
             // TODO: Write clrMapOvr
 
             // End the document
-            _writer.WriteEndElement(); //sld
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement(); //sld
+            this._writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.Flush();
 
         }
 
@@ -155,7 +155,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             }
 
-            var master = _ctx.Ppt.NotesMasterRecords[0];
+            var master = this._ctx.Ppt.NotesMasterRecords[0];
 
             if (slideNumber)
             {
@@ -322,7 +322,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             {
                                 if (placeholder.PlacementId == PlaceholderEnum.MasterFooter)
                                 {
-                                    if (footertext.Length == 0 & shapecontainer.AllChildrenWithType<ClientTextbox>().Count > 0) footertext = new SlideMapping(_ctx).readFooterFromClientTextBox(shapecontainer.FirstChildWithType<ClientTextbox>());
+                                    if (footertext.Length == 0 & shapecontainer.AllChildrenWithType<ClientTextbox>().Count > 0) footertext = new SlideMapping(this._ctx).readFooterFromClientTextBox(shapecontainer.FirstChildWithType<ClientTextbox>());
 
                                     bool doit = footertext.Length > 0;
                                     if (!doit)

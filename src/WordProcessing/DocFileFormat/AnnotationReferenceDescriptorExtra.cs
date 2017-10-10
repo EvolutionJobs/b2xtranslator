@@ -13,13 +13,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public AnnotationReferenceDescriptorExtra(VirtualStreamReader reader, int length)
             : base(reader, length)
         {
-            this.Date = new DateAndTime(_reader.ReadBytes(4));
-            _reader.ReadBytes(2);
-            this.CommentDepth = _reader.ReadInt32();
-            this.ParentOffset = _reader.ReadInt32();
+            this.Date = new DateAndTime(this._reader.ReadBytes(4));
+            this._reader.ReadBytes(2);
+            this.CommentDepth = this._reader.ReadInt32();
+            this.ParentOffset = this._reader.ReadInt32();
             if (length > 16)
             {
-                var flag = _reader.ReadInt32();
+                var flag = this._reader.ReadInt32();
             }
         }
     }

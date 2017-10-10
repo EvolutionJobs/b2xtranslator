@@ -63,58 +63,58 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         public void Open(string fileName)
         {
-            if (_zipOutputStream != null || _delegateWriter != null)
+            if (this._zipOutputStream != null || this._delegateWriter != null)
             {
                 this.Close();
             }
 
-            _zipOutputStream = ZipFactory.CreateArchive(fileName);
+            this._zipOutputStream = ZipFactory.CreateArchive(fileName);
         }
 
         public override void Close()
         {
             // close streams
-            if (_delegateWriter != null)
+            if (this._delegateWriter != null)
             {
-                _delegateWriter.Close();
-                _delegateWriter = null;
+                this._delegateWriter.Close();
+                this._delegateWriter = null;
 
             }
-            if (_zipOutputStream != null)
+            if (this._zipOutputStream != null)
             {
-                _zipOutputStream.Close();
-                _zipOutputStream.Dispose();
-                _zipOutputStream = null;
+                this._zipOutputStream.Close();
+                this._zipOutputStream.Dispose();
+                this._zipOutputStream = null;
             }
         }
 
         public void AddPart(string fullName) 
         {
-            if (_delegateWriter != null)
+            if (this._delegateWriter != null)
             {
-                _delegateWriter.Close();
-                _delegateWriter = null;
+                this._delegateWriter.Close();
+                this._delegateWriter = null;
             }
 
             // the path separator in the package should be a forward slash
-            _zipOutputStream.AddEntry(fullName.Replace('\\', '/'));
+            this._zipOutputStream.AddEntry(fullName.Replace('\\', '/'));
         }
 
         protected XmlWriter XmlWriter
         {
             get
             {
-                if (_delegateWriter == null)
+                if (this._delegateWriter == null)
                 {
-                    _delegateWriter = XmlWriter.Create(_zipOutputStream, _delegateWriterSettings);
+                    this._delegateWriter = XmlWriter.Create(this._zipOutputStream, this._delegateWriterSettings);
                 }
-                return _delegateWriter;
+                return this._delegateWriter;
             }
         }
 
         public void WriteRawBytes(byte[] buffer, int index, int count)
         {
-            _zipOutputStream.Write(buffer, index, count);
+            this._zipOutputStream.Write(buffer, index, count);
         }
 
         public void Write(Stream stream)
@@ -124,7 +124,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
             int bytesRead;
             while ((bytesRead = stream.Read(buffer, 0, blockSize)) > 0)
             {
-                _zipOutputStream.Write(buffer, 0, bytesRead);
+                this._zipOutputStream.Write(buffer, 0, bytesRead);
             }
         }
 

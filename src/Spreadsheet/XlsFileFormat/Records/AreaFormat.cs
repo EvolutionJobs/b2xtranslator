@@ -97,19 +97,19 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            rgbFore = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
-            rgbBack = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
+            this.rgbFore = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
+            this.rgbBack = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
 
             // TODO: Read optional GelFrame
-            fls = reader.ReadUInt16();
+            this.fls = reader.ReadUInt16();
 
             var flags = reader.ReadUInt16();
-            fAuto = Utils.BitmaskToBool(flags, 0x1);
-            fInvertNeg = Utils.BitmaskToBool(flags, 0x2);
+            this.fAuto = Utils.BitmaskToBool(flags, 0x1);
+            this.fInvertNeg = Utils.BitmaskToBool(flags, 0x2);
 
             // TODO: handle default cases and ignoring of fields
-            icvFore = reader.ReadUInt16();
-            icvBack = reader.ReadUInt16();
+            this.icvFore = reader.ReadUInt16();
+            this.icvBack = reader.ReadUInt16();
             
             // assert that the correct number of bytes has been read from the stream
             Debug.Assert(this.Offset + this.Length == this.Reader.BaseStream.Position);

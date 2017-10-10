@@ -12,11 +12,11 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public OutlineTextProps9Container(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                Reader.BaseStream.Position = 0;
-                while (Reader.BaseStream.Position < Reader.BaseStream.Length)
+            this.Reader.BaseStream.Position = 0;
+                while (this.Reader.BaseStream.Position < this.Reader.BaseStream.Length)
                 {
-                    var entry = new OutlineTextProps9Entry(Reader);
-                    OutlineTextProps9Entries.Add(entry);
+                    var entry = new OutlineTextProps9Entry(this.Reader);
+                this.OutlineTextProps9Entries.Add(entry);
                 }
         }
     }
@@ -30,8 +30,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public OutlineTextPropsHeader9Atom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            slideIdRef = Reader.ReadInt32();
-            txType = Reader.ReadInt32();
+            this.slideIdRef = this.Reader.ReadInt32();
+            this.txType = this.Reader.ReadInt32();
         }
     }
 
@@ -43,8 +43,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public OutlineTextProps9Entry(BinaryReader reader)
         {
-            outlineTextHeaderAtom = (OutlineTextPropsHeader9Atom)Record.ReadRecord(reader);
-            styleTextProp9Atom = (StyleTextProp9Atom)Record.ReadRecord(reader);
+            this.outlineTextHeaderAtom = (OutlineTextPropsHeader9Atom)Record.ReadRecord(reader);
+            this.styleTextProp9Atom = (StyleTextProp9Atom)Record.ReadRecord(reader);
         }
     }
 }

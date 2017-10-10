@@ -62,91 +62,91 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             var uri = new Uri(sbd.VirtPath, UriKind.RelativeOrAbsolute);
             var er = this.xlsContext.SpreadDoc.WorkbookPart.GetExternalLinkPart().AddExternalRelationship(OpenXmlRelationshipTypes.ExternalLinkPath, uri);
 
-            
-            
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("externalLink", OpenXmlNamespaces.SpreadsheetML);
 
-            _writer.WriteStartElement("externalBook");
-            _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, er.Id.ToString());
 
-            _writer.WriteStartElement("sheetNames");
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("externalLink", OpenXmlNamespaces.SpreadsheetML);
+
+            this._writer.WriteStartElement("externalBook");
+            this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, er.Id.ToString());
+
+            this._writer.WriteStartElement("sheetNames");
             foreach (var var in sbd.RGST)
             {
-                _writer.WriteStartElement("sheetName");
-                _writer.WriteAttributeString("val", var);
-                _writer.WriteEndElement(); 
+                this._writer.WriteStartElement("sheetName");
+                this._writer.WriteAttributeString("val", var);
+                this._writer.WriteEndElement(); 
             }
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
             // checks if some externNames exist
             if (sbd.ExternNames.Count > 0)
             {
-                _writer.WriteStartElement("definedNames");
+                this._writer.WriteStartElement("definedNames");
                 foreach (var var in sbd.ExternNames)
                 {
-                    _writer.WriteStartElement("definedName");
-                    _writer.WriteAttributeString("name", var);
-                    _writer.WriteEndElement();
+                    this._writer.WriteStartElement("definedName");
+                    this._writer.WriteAttributeString("name", var);
+                    this._writer.WriteEndElement();
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
             if (sbd.XCTDataList.Count > 0)
             {
-                _writer.WriteStartElement("sheetDataSet");
+                this._writer.WriteStartElement("sheetDataSet");
                 int counter = 0;
                 foreach (var var in sbd.XCTDataList)
                 {
-                    _writer.WriteStartElement("sheetData");
-                    _writer.WriteAttributeString("sheetId", counter.ToString());
+                    this._writer.WriteStartElement("sheetData");
+                    this._writer.WriteAttributeString("sheetId", counter.ToString());
                     counter++;
                     foreach (var crn in var.CRNDataList)
                     {
-                        _writer.WriteStartElement("row");
-                        _writer.WriteAttributeString("r", (crn.rw + 1).ToString());
+                        this._writer.WriteStartElement("row");
+                        this._writer.WriteAttributeString("r", (crn.rw + 1).ToString());
                         for (byte i = crn.colFirst; i <= crn.colLast; i++)
                         {
-                            _writer.WriteStartElement("cell");
-                            _writer.WriteAttributeString("r", ExcelHelperClass.intToABCString((int)i, (crn.rw + 1).ToString()));
+                            this._writer.WriteStartElement("cell");
+                            this._writer.WriteAttributeString("r", ExcelHelperClass.intToABCString((int)i, (crn.rw + 1).ToString()));
                             if (crn.oper[i - crn.colFirst] is bool)
                             {
-                                _writer.WriteAttributeString("t", "b");
+                                this._writer.WriteAttributeString("t", "b");
                                 if ((bool)crn.oper[i - crn.colFirst])
                                 {
-                                    _writer.WriteElementString("v", "1");
+                                    this._writer.WriteElementString("v", "1");
                                 }
                                 else
                                 {
-                                    _writer.WriteElementString("v", "0");
+                                    this._writer.WriteElementString("v", "0");
                                 }
                             }
                             if (crn.oper[i - crn.colFirst] is double)
                             {
                                 // _writer.WriteAttributeString("t", "b");
-                                _writer.WriteElementString("v", Convert.ToString(crn.oper[i - crn.colFirst], CultureInfo.GetCultureInfo("en-US")));
+                                this._writer.WriteElementString("v", Convert.ToString(crn.oper[i - crn.colFirst], CultureInfo.GetCultureInfo("en-US")));
                             }
                             if (crn.oper[i - crn.colFirst] is string)
                             {
-                                _writer.WriteAttributeString("t", "str");
-                                _writer.WriteElementString("v", crn.oper[i - crn.colFirst].ToString());
+                                this._writer.WriteAttributeString("t", "str");
+                                this._writer.WriteElementString("v", crn.oper[i - crn.colFirst].ToString());
                             }
 
 
-                            _writer.WriteEndElement();
+                            this._writer.WriteEndElement();
                         }
 
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
                     }
 
-                    _writer.WriteEndElement();
+                    this._writer.WriteEndElement();
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
-            _writer.WriteEndElement(); 
-            _writer.WriteEndElement();      // close worksheet
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndElement();      // close worksheet
+            this._writer.WriteEndDocument();
 
 
             
@@ -155,7 +155,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             sbd.ExternalLinkRef = this.xlsContext.SpreadDoc.WorkbookPart.GetExternalLinkPart().RelIdToString;
 
             // close writer 
-            _writer.Flush();
+            this._writer.Flush();
         }
     }
 }

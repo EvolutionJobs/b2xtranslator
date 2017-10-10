@@ -203,7 +203,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                                 try
                                 {
                                     var hlink = new HLink(this.StreamReader, bh.id, bh.length);
-                                    bsd.addHyperLinkData(hlink);
+                                this.bsd.addHyperLinkData(hlink);
                                 }
                                 catch (Exception ex)
                                 {

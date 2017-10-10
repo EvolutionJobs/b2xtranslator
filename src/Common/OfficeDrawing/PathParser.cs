@@ -17,15 +17,15 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public GD(ushort flags, short p1, short p2, short p3)
         {
-            sgf = flags & 0x1FFF;
-          
-            fCalculatedParam1 = Tools.Utils.BitmaskToBool(flags, 0x1 << 13);
-            fCalculatedParam2 = Tools.Utils.BitmaskToBool(flags, 0x1 << 14);
-            fCalculatedParam3 = Tools.Utils.BitmaskToBool(flags, 0x1 << 15);
+            this.sgf = flags & 0x1FFF;
 
-            param1 = p1;
-            param2 = p2;
-            param3 = p3;
+            this.fCalculatedParam1 = Tools.Utils.BitmaskToBool(flags, 0x1 << 13);
+            this.fCalculatedParam2 = Tools.Utils.BitmaskToBool(flags, 0x1 << 14);
+            this.fCalculatedParam3 = Tools.Utils.BitmaskToBool(flags, 0x1 << 15);
+
+            this.param1 = p1;
+            this.param2 = p2;
+            this.param3 = p3;
         }
     }
 
@@ -78,13 +78,13 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
             this.Values = new List<Point>();
             var nElemsVert = System.BitConverter.ToUInt16(pVertices, 0);
             var nElemsAllocVert = System.BitConverter.ToUInt16(pVertices, 2);
-            cbElemVert = System.BitConverter.ToUInt16(pVertices, 4);
-            if (cbElemVert == 0xfff0) cbElemVert = 4;
+            this.cbElemVert = System.BitConverter.ToUInt16(pVertices, 4);
+            if (this.cbElemVert == 0xfff0) this.cbElemVert = 4;
             int x;
             int y;
-            for (int i = 6; i <= pVertices.Length - cbElemVert; i += cbElemVert)
+            for (int i = 6; i <= pVertices.Length - this.cbElemVert; i += this.cbElemVert)
             {
-                switch(cbElemVert)
+                switch(this.cbElemVert)
                 {
                     case 4:
                         x = System.BitConverter.ToInt16(pVertices, i);
@@ -94,7 +94,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
                         }
 
-                        y = System.BitConverter.ToInt16(pVertices, i + cbElemVert / 2);
+                        y = System.BitConverter.ToInt16(pVertices, i + this.cbElemVert / 2);
                         this.Values.Add(new Point(x,y));
                         break;
                     case 8:
@@ -109,7 +109,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                             }
                         }
 
-                        y = System.BitConverter.ToInt32(pVertices, i + cbElemVert / 2);
+                        y = System.BitConverter.ToInt32(pVertices, i + this.cbElemVert / 2);
                         this.Values.Add(
                              new Point(x,y));
                         break;

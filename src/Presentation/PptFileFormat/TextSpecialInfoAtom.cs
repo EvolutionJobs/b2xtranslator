@@ -39,7 +39,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TextSIExceptionAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            si = new TextSIException(Reader);
+            this.si = new TextSIException(this.Reader);
         }
     }
 
@@ -52,10 +52,10 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
 
-            while (Reader.BaseStream.Position < Reader.BaseStream.Length)
+            while (this.Reader.BaseStream.Position < this.Reader.BaseStream.Length)
             {
-                var run = new TextSIRun(Reader);
-                Runs.Add(run);
+                var run = new TextSIRun(this.Reader);
+                this.Runs.Add(run);
             }
 
         }       
@@ -68,8 +68,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public TextSIRun(BinaryReader reader)
         {
-            count = reader.ReadUInt32();
-            si = new TextSIException(reader);
+            this.count = reader.ReadUInt32();
+            this.si = new TextSIException(reader);
         }
     }
 
@@ -89,23 +89,23 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         
         public TextSIException(BinaryReader reader)
         {
-            flags = reader.ReadUInt32();
+            this.flags = reader.ReadUInt32();
 
-            spell = Utils.BitmaskToBool(flags, 0x1);
-            lang = Utils.BitmaskToBool(flags, 0x1 << 1);
-            altLang = Utils.BitmaskToBool(flags, 0x1 << 2);
-            fPp10ext = Utils.BitmaskToBool(flags, 0x1 << 5);
-            fBidi = Utils.BitmaskToBool(flags, 0x1 << 6);
-            smartTag = Utils.BitmaskToBool(flags, 0x1 << 9);
+            this.spell = Utils.BitmaskToBool(this.flags, 0x1);
+            this.lang = Utils.BitmaskToBool(this.flags, 0x1 << 1);
+            this.altLang = Utils.BitmaskToBool(this.flags, 0x1 << 2);
+            this.fPp10ext = Utils.BitmaskToBool(this.flags, 0x1 << 5);
+            this.fBidi = Utils.BitmaskToBool(this.flags, 0x1 << 6);
+            this.smartTag = Utils.BitmaskToBool(this.flags, 0x1 << 9);
 
-            if (spell) spellInfo = reader.ReadUInt16();
-            if (lang) lid = reader.ReadUInt16();
-            if (altLang) altLid = reader.ReadUInt16();
-            if (fBidi) bidi = reader.ReadUInt16();
+            if (this.spell) this.spellInfo = reader.ReadUInt16();
+            if (this.lang) this.lid = reader.ReadUInt16();
+            if (this.altLang) this.altLid = reader.ReadUInt16();
+            if (this.fBidi) this.bidi = reader.ReadUInt16();
             uint dummy;
-            if (fPp10ext) dummy = reader.ReadUInt32();
+            if (this.fPp10ext) dummy = reader.ReadUInt32();
             byte[] smartTags;
-            if (smartTag) smartTags = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
+            if (this.smartTag) smartTags = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
 
         }
     }

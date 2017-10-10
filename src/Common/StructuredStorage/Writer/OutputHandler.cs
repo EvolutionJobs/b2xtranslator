@@ -40,14 +40,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
     {
         internal Stream BaseStream
         {
-            get { return _stream; }
+            get { return this._stream; }
         }
 
 
         /// <summary>
         /// Returns UInt64.MaxValue because size of stream is not defined yet.
         /// </summary>
-        override internal UInt64 IOStreamSize
+        override internal ulong IOStreamSize
         {
             get { return UInt64.MaxValue; }
         }
@@ -59,8 +59,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="memoryStream">The target memory stream.</param>
         internal OutputHandler(MemoryStream memoryStream)
         {
-            _stream = memoryStream;
-            _bitConverter = new InternalBitConverter(true);
+            this._stream = memoryStream;
+            this._bitConverter = new InternalBitConverter(true);
         }
         
 
@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="value">The byte to write.</param>
         internal void writeByte(byte value)
         {
-            _stream.WriteByte(value);
+            this._stream.WriteByte(value);
         }
 
 
@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="value">The UInt16 to write.</param>
         internal void writeUInt16(ushort value)
         {
-            _stream.Write(_bitConverter.getBytes(value), 0, 2);
+            this._stream.Write(this._bitConverter.getBytes(value), 0, 2);
         }
 
 
@@ -90,7 +90,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="value">The UInt32 to write.</param>
         internal void writeUInt32(uint value)
         {
-            _stream.Write(_bitConverter.getBytes(value), 0, 4);
+            this._stream.Write(this._bitConverter.getBytes(value), 0, 4);
         }
 
 
@@ -98,9 +98,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// Writes a UInt64 to the stream.
         /// </summary>
         /// <param name="value">The UInt64 to write.</param>
-        internal void writeUInt64(UInt64 value)
+        internal void writeUInt64(ulong value)
         {
-            _stream.Write(_bitConverter.getBytes(value), 0, 8);
+            this._stream.Write(this._bitConverter.getBytes(value), 0, 8);
         }
 
 
@@ -110,7 +110,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="value">The byte array to write.</param>
         internal void write(byte[] data)
         {
-            _stream.Write(data, 0, data.Length);
+            this._stream.Write(data, 0, data.Length);
         }
 
 
@@ -123,14 +123,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         internal void writeSectors(byte[] data, ushort sectorSize, byte padding)
         {
             uint remaining = (uint)(data.LongLength % sectorSize);
-            _stream.Write(data, 0, data.Length);
+            this._stream.Write(data, 0, data.Length);
             if (remaining == 0)
             {
                 return;
             }
             for (uint i = 0; i < (sectorSize - remaining) ; i++)
             {
-                _stream.WriteByte(padding);
+                this._stream.WriteByte(padding);
             }
         }
 
@@ -144,7 +144,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         internal void writeSectors(byte[] data, ushort sectorSize, uint padding)
         {
             uint remaining = (uint)(data.LongLength % sectorSize);
-            _stream.Write(data, 0, data.Length);
+            this._stream.Write(data, 0, data.Length);
             if (remaining == 0)
             {
                 return;
@@ -171,7 +171,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         {
             const int bytesToReadAtOnce = 512;
 
-            var reader = new BinaryReader(BaseStream);
+            var reader = new BinaryReader(this.BaseStream);
             reader.BaseStream.Seek(0, SeekOrigin.Begin);
             while (true)
             {

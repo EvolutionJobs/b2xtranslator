@@ -60,10 +60,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
 
             // initialize class members from stream
             this.cser = reader.ReadUInt16();
-            rgiser = new ushort[this.cser];
+            this.rgiser = new ushort[this.cser];
             for (int i = 0; i < this.cser; i++)
             {
-                rgiser[i] = reader.ReadUInt16();
+                this.rgiser[i] = reader.ReadUInt16();
             }
 
             // assert that the correct number of bytes has been read from the stream

@@ -620,9 +620,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
                 if (this.OptionsByID.ContainsKey(this.Options[i].pid))
                 {
-                    OptionsByID[this.Options[i].pid] = this.Options[i];
+                    this.OptionsByID[this.Options[i].pid] = this.Options[i];
                 } else {
-                    OptionsByID.Add(this.Options[i].pid, this.Options[i]);
+                    this.OptionsByID.Add(this.Options[i].pid, this.Options[i]);
                 }
             }
 

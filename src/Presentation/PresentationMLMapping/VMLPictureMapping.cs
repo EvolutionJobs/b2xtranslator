@@ -21,29 +21,29 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public VMLPictureMapping(VmlPart vmlPart, XmlWriterSettings xws)
             : base(XmlWriter.Create(vmlPart.GetStream(), xws))
         {
-            _targetPart = vmlPart;
+            this._targetPart = vmlPart;
         }
         
         //public void Apply(BlipStoreEntry bse, Shape shape, ShapeOptions options, Rectangle bounds, ConversionContext ctx, string spid, ref Point size)
         public void Apply(List<ArrayList> VMLEntriesList, ConversionContext ctx)
         {
-            _ctx = ctx;
+            this._ctx = ctx;
             BlipStoreEntry bse;
 
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("xml");
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("xml");
 
-            _writer.WriteStartElement("o", "shapelayout", OpenXmlNamespaces.Office);
-            _writer.WriteAttributeString("v", "ext", OpenXmlNamespaces.VectorML, "edit");
-            _writer.WriteStartElement("o", "idmap", OpenXmlNamespaces.Office);
-            _writer.WriteAttributeString("v", "ext", OpenXmlNamespaces.VectorML, "edit");
-            _writer.WriteAttributeString("data", "1079");
-            _writer.WriteEndElement(); //idmap
-            _writer.WriteEndElement(); //shapelayout
+            this._writer.WriteStartElement("o", "shapelayout", OpenXmlNamespaces.Office);
+            this._writer.WriteAttributeString("v", "ext", OpenXmlNamespaces.VectorML, "edit");
+            this._writer.WriteStartElement("o", "idmap", OpenXmlNamespaces.Office);
+            this._writer.WriteAttributeString("v", "ext", OpenXmlNamespaces.VectorML, "edit");
+            this._writer.WriteAttributeString("data", "1079");
+            this._writer.WriteEndElement(); //idmap
+            this._writer.WriteEndElement(); //shapelayout
 
             //v:shapetype
             var type = new PictureFrameType();
-            type.Convert(new VMLShapeTypeMapping(_ctx, _writer));
+            type.Convert(new VMLShapeTypeMapping(this._ctx, this._writer));
 
             foreach (var VMLEntry in VMLEntriesList)
             {                
@@ -57,11 +57,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 var imgPart = copyPicture(bse, ref size);
                 if (imgPart != null)
                 {
-                                        
+
                     //v:shape
-                    _writer.WriteStartElement("v", "shape", OpenXmlNamespaces.VectorML);
-                    _writer.WriteAttributeString("id", spid);
-                    _writer.WriteAttributeString("type", "#" + VMLShapeTypeMapping.GenerateTypeId(type));
+                    this._writer.WriteStartElement("v", "shape", OpenXmlNamespaces.VectorML);
+                    this._writer.WriteAttributeString("id", spid);
+                    this._writer.WriteAttributeString("type", "#" + VMLShapeTypeMapping.GenerateTypeId(type));
 
                     var style = new StringBuilder();
 
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     style.Append("top:" + (new EmuValue(Utils.MasterCoordToEMU(bounds.Top)).ToPoints()).ToString() + "pt;");
                     style.Append("width:").Append(new EmuValue(Utils.MasterCoordToEMU(bounds.Width)).ToPoints()).Append("pt;");
                     style.Append("height:").Append(new EmuValue(Utils.MasterCoordToEMU(bounds.Height)).ToPoints()).Append("pt;");
-                    _writer.WriteAttributeString("style", style.ToString());
+                    this._writer.WriteAttributeString("style", style.ToString());
 
                     foreach (var entry in options.OptionsByID.Values)
                     {
@@ -81,37 +81,37 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                             case ShapeOptions.PropertyId.borderBottomColor:
                                 var bottomColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
-                                _writer.WriteAttributeString("o", "borderbottomcolor", OpenXmlNamespaces.Office, "#" + bottomColor.SixDigitHexCode);
+                                this._writer.WriteAttributeString("o", "borderbottomcolor", OpenXmlNamespaces.Office, "#" + bottomColor.SixDigitHexCode);
                                 break;
                             case ShapeOptions.PropertyId.borderLeftColor:
                                 var leftColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
-                                _writer.WriteAttributeString("o", "borderleftcolor", OpenXmlNamespaces.Office, "#" + leftColor.SixDigitHexCode);
+                                this._writer.WriteAttributeString("o", "borderleftcolor", OpenXmlNamespaces.Office, "#" + leftColor.SixDigitHexCode);
                                 break;
                             case ShapeOptions.PropertyId.borderRightColor:
                                 var rightColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
-                                _writer.WriteAttributeString("o", "borderrightcolor", OpenXmlNamespaces.Office, "#" + rightColor.SixDigitHexCode);
+                                this._writer.WriteAttributeString("o", "borderrightcolor", OpenXmlNamespaces.Office, "#" + rightColor.SixDigitHexCode);
                                 break;
                             case ShapeOptions.PropertyId.borderTopColor:
                                 var topColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
-                                _writer.WriteAttributeString("o", "bordertopcolor", OpenXmlNamespaces.Office, "#" + topColor.SixDigitHexCode);
+                                this._writer.WriteAttributeString("o", "bordertopcolor", OpenXmlNamespaces.Office, "#" + topColor.SixDigitHexCode);
                                 break;
                         }
                     }
 
                     //v:imageData
-                    _writer.WriteStartElement("v", "imagedata", OpenXmlNamespaces.VectorML);
-                    _writer.WriteAttributeString("o", "relid", OpenXmlNamespaces.Office, imgPart.RelIdToString);
-                    _writer.WriteAttributeString("o", "title", OpenXmlNamespaces.Office, "");
-                    _writer.WriteEndElement(); //imagedata
+                    this._writer.WriteStartElement("v", "imagedata", OpenXmlNamespaces.VectorML);
+                    this._writer.WriteAttributeString("o", "relid", OpenXmlNamespaces.Office, imgPart.RelIdToString);
+                    this._writer.WriteAttributeString("o", "title", OpenXmlNamespaces.Office, "");
+                    this._writer.WriteEndElement(); //imagedata
 
                     //close v:shape
-                    _writer.WriteEndElement();                   
+                    this._writer.WriteEndElement();                   
                 }
             }
 
-            _writer.WriteEndElement(); //xml
-            _writer.WriteEndDocument();
-            _writer.Flush();
+            this._writer.WriteEndElement(); //xml
+            this._writer.WriteEndDocument();
+            this._writer.Flush();
         }
 
         /// <summary>
@@ -129,20 +129,20 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 switch (bse.btWin32)
                 {
                     case BlipStoreEntry.BlipType.msoblipEMF:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Emf);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Emf);
                         break;
                     case BlipStoreEntry.BlipType.msoblipWMF:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Wmf);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Wmf);
                         break;
                     case BlipStoreEntry.BlipType.msoblipJPEG:
                     case BlipStoreEntry.BlipType.msoblipCMYKJPEG:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Jpeg);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Jpeg);
                         break;
                     case BlipStoreEntry.BlipType.msoblipPNG:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Png);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Png);
                         break;
                     case BlipStoreEntry.BlipType.msoblipTIFF:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Tiff);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Tiff);
                         break;
                     case BlipStoreEntry.BlipType.msoblipDIB:
                     case BlipStoreEntry.BlipType.msoblipPICT:
@@ -157,7 +157,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 imgPart.TargetDirectory = "..\\media";
                 var outStream = imgPart.GetStream();
 
-                var mb = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                var mb = this._ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
 
                 //write the blip
                 if (mb != null)

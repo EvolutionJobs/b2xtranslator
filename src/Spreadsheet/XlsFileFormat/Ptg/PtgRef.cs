@@ -48,10 +48,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
             this.Length = 5;
             this.rw = this.Reader.ReadUInt16(); 
             this.col = this.Reader.ReadUInt16();
-            this.colRelative = Utils.BitmaskToBool(col, 0x4000);
-            this.rwRelative = Utils.BitmaskToBool(col, 0x8000);
+            this.colRelative = Utils.BitmaskToBool(this.col, 0x4000);
+            this.rwRelative = Utils.BitmaskToBool(this.col, 0x8000);
 
-            this.col = (ushort)(col & 0x3FFF);
+            this.col = (ushort)(this.col & 0x3FFF);
             
 
             this.type = PtgType.Operand;

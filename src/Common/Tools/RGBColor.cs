@@ -52,33 +52,33 @@ namespace DIaLOGIKa.b2xtranslator.Tools
             {
                 //R
                 this.Red = bytes[0];
-                SixDigitHexCode = string.Format("{0:x2}", this.Red);
+                this.SixDigitHexCode = string.Format("{0:x2}", this.Red);
                 //G
                 this.Green = bytes[1];
-                SixDigitHexCode += string.Format("{0:x2}", this.Green);
+                this.SixDigitHexCode += string.Format("{0:x2}", this.Green);
                 //B
                 this.Blue = bytes[2];
-                SixDigitHexCode += string.Format("{0:x2}", this.Blue);
-                EightDigitHexCode = SixDigitHexCode;
+                this.SixDigitHexCode += string.Format("{0:x2}", this.Blue);
+                this.EightDigitHexCode = this.SixDigitHexCode;
                 //Alpha
                 this.Alpha = bytes[3];
-                EightDigitHexCode += string.Format("{0:x2}", this.Alpha);
+                this.EightDigitHexCode += string.Format("{0:x2}", this.Alpha);
             }
             else if (order == ByteOrder.RedLast)
             {
                 //R
                 this.Red = bytes[2];
-                SixDigitHexCode = string.Format("{0:x2}", this.Red);
+                this.SixDigitHexCode = string.Format("{0:x2}", this.Red);
                 //G
                 this.Green = bytes[1];
-                SixDigitHexCode += string.Format("{0:x2}", this.Green);
+                this.SixDigitHexCode += string.Format("{0:x2}", this.Green);
                 //B
                 this.Blue = bytes[0];
-                SixDigitHexCode += string.Format("{0:x2}", this.Blue);
-                EightDigitHexCode = SixDigitHexCode;
+                this.SixDigitHexCode += string.Format("{0:x2}", this.Blue);
+                this.EightDigitHexCode = this.SixDigitHexCode;
                 //Alpha
                 this.Alpha = bytes[3];
-                EightDigitHexCode += string.Format("{0:x2}", this.Alpha);
+                this.EightDigitHexCode += string.Format("{0:x2}", this.Alpha);
             }
 
         }

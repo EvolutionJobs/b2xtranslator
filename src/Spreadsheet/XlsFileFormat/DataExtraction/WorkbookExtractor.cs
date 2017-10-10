@@ -103,7 +103,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                                     this.oldOffset = this.StreamReader.BaseStream.Position;
                                     this.StreamReader.BaseStream.Seek(bs.lbPlyPos, SeekOrigin.Begin);
                                     var se = new WorksheetExtractor(this.StreamReader, sheetData as WorkSheetData);
-                                    this.StreamReader.BaseStream.Seek(oldOffset, SeekOrigin.Begin);
+                                    this.StreamReader.BaseStream.Seek(this.oldOffset, SeekOrigin.Begin);
                                     break;
 
                                 case BoundSheet8.SheetType.Chartsheet:
@@ -112,7 +112,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                                     this.oldOffset = this.StreamReader.BaseStream.Position;
                                     this.StreamReader.BaseStream.Seek(bs.lbPlyPos, SeekOrigin.Begin);
                                     chartSheetData.ChartSheetSequence = new ChartSheetSequence(this.StreamReader);
-                                    this.StreamReader.BaseStream.Seek(oldOffset, SeekOrigin.Begin);
+                                    this.StreamReader.BaseStream.Seek(this.oldOffset, SeekOrigin.Begin);
 
                                     sheetData = chartSheetData;
                                     break;
@@ -281,7 +281,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
                     case RecordType.Palette:
                         {
                             var palette = new Palette(this.StreamReader, bh.id, bh.length);
-                            workBookData.styleData.setColorList(palette.rgbColorList);
+                            this.workBookData.styleData.setColorList(palette.rgbColorList);
                         }
                         break;
                     default:

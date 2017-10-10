@@ -79,7 +79,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
 	    
 	    public override void Close()
         {
-            if (handle != IntPtr.Zero) {
+            if (this.handle != IntPtr.Zero) {
                 int result;
                 if (this.entryOpened) {
                     result = ZipLib.zipCloseFileInZip(this.handle);
@@ -89,7 +89,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
                     this.entryOpened = false;
                 }
                 result = ZipLib.zipClose(this.handle, "");
-                handle = IntPtr.Zero;
+                this.handle = IntPtr.Zero;
                 // Should we raise this exception ?
                 if (result != 0) {
                     throw new ZipException("Error while closing ZIP file - Errorcode: " + result);
@@ -109,11 +109,11 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
             {
                 var newBuffer = new byte[count];
                 Array.Copy(buffer, offset, newBuffer, 0, count);
-                result = ZipLib.zipWriteInFileInZip(handle, newBuffer, (uint)count);
+                result = ZipLib.zipWriteInFileInZip(this.handle, newBuffer, (uint)count);
             }
             else
             {
-                result = ZipLib.zipWriteInFileInZip(handle, buffer, (uint)count);
+                result = ZipLib.zipWriteInFileInZip(this.handle, buffer, (uint)count);
             }
 
             if (result < 0)

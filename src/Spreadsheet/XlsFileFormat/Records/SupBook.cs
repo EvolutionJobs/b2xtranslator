@@ -65,16 +65,16 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.isunusedsupportinglink = false; 
 
             // Check cch 
-            if (cch == 0x0401)
+            if (this.cch == 0x0401)
             {
                 this.isselfreferencing = true; 
             }
-            else if (cch == 0x3A01)
+            else if (this.cch == 0x3A01)
             {
                 this.isaddinreferencing = true; 
                 //0x0001 to 0x00ff (inclusive)
             }
-            else if (cch >= 0x0001 && cch <= 0x00ff)
+            else if (this.cch >= 0x0001 && this.cch <= 0x00ff)
             {
                 this.isvirtpath = true; 
             }
@@ -140,7 +140,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                         }        
                 }
             }
-            if (this.virtpathstring != null && virtpathstring.Length > 1)
+            if (this.virtpathstring != null && this.virtpathstring.Length > 1)
                 this.isselfreferencing = false;
 
             // assert that the correct number of bytes has been read from the stream

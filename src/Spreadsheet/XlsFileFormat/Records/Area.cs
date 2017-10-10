@@ -67,9 +67,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             // initialize class members from stream
             var flags = reader.ReadUInt16();
-            fStacked = Utils.BitmaskToBool(flags, 0x1);
-            f100 = Utils.BitmaskToBool(flags, 0x2);
-            fHasShadow = Utils.BitmaskToBool(flags, 0x4);
+            this.fStacked = Utils.BitmaskToBool(flags, 0x1);
+            this.f100 = Utils.BitmaskToBool(flags, 0x2);
+            this.fHasShadow = Utils.BitmaskToBool(flags, 0x4);
 
             // assert that the correct number of bytes has been read from the stream
             Debug.Assert(this.Offset + this.Length == this.Reader.BaseStream.Position);

@@ -44,8 +44,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="fileHandler">The Handle to the file handler of the compound file</param>
         internal Header(InputHandler fileHandler)
         {
-            _ioHandler = fileHandler;
-            _ioHandler.SetHeaderReference(this);
+            this._ioHandler = fileHandler;
+            this._ioHandler.SetHeaderReference(this);
             ReadHeader();
         }
 
@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         private void ReadHeader()
         {
-            var fileHandler = ((InputHandler)_ioHandler);
+            var fileHandler = ((InputHandler)this._ioHandler);
 
             // Determine endian
             var byteArray16 = new byte[2];
@@ -77,18 +77,18 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
                 throw new MagicNumberException(string.Format("Found: {0,10:X}", magicNumber));
             }
 
-            SectorShift = fileHandler.ReadUInt16(0x1E);
-            MiniSectorShift = fileHandler.ReadUInt16();
-            
-            NoSectorsInDirectoryChain4KB = fileHandler.ReadUInt32(0x28);
-            NoSectorsInFatChain = fileHandler.ReadUInt32();
-            DirectoryStartSector = fileHandler.ReadUInt32();                      
-            
-            MiniSectorCutoff = fileHandler.ReadUInt32(0x38);
-            MiniFatStartSector = fileHandler.ReadUInt32();
-            NoSectorsInMiniFatChain = fileHandler.ReadUInt32();
-            DiFatStartSector = fileHandler.ReadUInt32();
-            NoSectorsInDiFatChain = fileHandler.ReadUInt32(); 
+            this.SectorShift = fileHandler.ReadUInt16(0x1E);
+            this.MiniSectorShift = fileHandler.ReadUInt16();
+
+            this.NoSectorsInDirectoryChain4KB = fileHandler.ReadUInt32(0x28);
+            this.NoSectorsInFatChain = fileHandler.ReadUInt32();
+            this.DirectoryStartSector = fileHandler.ReadUInt32();
+
+            this.MiniSectorCutoff = fileHandler.ReadUInt32(0x38);
+            this.MiniFatStartSector = fileHandler.ReadUInt32();
+            this.NoSectorsInMiniFatChain = fileHandler.ReadUInt32();
+            this.DiFatStartSector = fileHandler.ReadUInt32();
+            this.NoSectorsInDiFatChain = fileHandler.ReadUInt32(); 
         }
     }
 }

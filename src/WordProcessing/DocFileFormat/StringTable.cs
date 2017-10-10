@@ -76,14 +76,14 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             {
                 //if the first 2 bytes are 0xFFFF the STTB contains unicode characters
                 this.fExtend = true;
-                _enc = Encoding.Unicode;
+                this._enc = Encoding.Unicode;
             }
             else
             {
                 //else the STTB contains 1byte characters and the fExtend field is non-existend
                 //seek back to the beginning
                 this.fExtend = false;
-                _enc = Encoding.ASCII;
+                this._enc = Encoding.ASCII;
                 reader.BaseStream.Seek((long)fc, System.IO.SeekOrigin.Begin);
             }
 
@@ -107,7 +107,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
             //read the strings and extra datas
             for (int i = 0; i < this.cData; i++)
-			{   
+            {
                 int cchData = 0;
                 int cbData = 0;
                 if (this.fExtend)
@@ -126,7 +126,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 if (dataType == typeof(string))
                 {
                     //It's a real string table
-                    this.Strings.Add(_enc.GetString(reader.ReadBytes(cbData)));
+                    this.Strings.Add(this._enc.GetString(reader.ReadBytes(cbData)));
                 }
                 else
                 {
@@ -137,9 +137,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 }
 
                 reader.BaseStream.Seek(posBeforeType + cbData, System.IO.SeekOrigin.Begin);
-                
+
                 //skip the extra byte
-                reader.ReadBytes(cbExtra);
+                reader.ReadBytes(this.cbExtra);
             }
         }
 

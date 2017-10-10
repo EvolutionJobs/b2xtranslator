@@ -56,9 +56,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             : base(reader, id, length)
         {
             Debug.Assert(this.Id == ID);
-            
+
             // initialize class members from stream
-            cv = this.Reader.ReadUInt16();
+            this.cv = this.Reader.ReadUInt16();
 
             Debug.Assert(this.Offset + this.Length == this.Reader.BaseStream.Position);
         }

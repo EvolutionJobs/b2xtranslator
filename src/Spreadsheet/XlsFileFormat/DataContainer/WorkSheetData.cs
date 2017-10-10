@@ -102,8 +102,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             this.sharedFormulaDataTable = new List<SharedFormulaData>();
             this.colInfoDataTable = new List<ColumnInfoData>();
 
-            this.HyperLinkList = new List<HyperlinkData>(); 
-            boundsheetRecord = null;
+            this.HyperLinkList = new List<HyperlinkData>();
+            this.boundsheetRecord = null;
 
             this.defaultRowHeight = -1;
             this.defaultColWidth = -1; 

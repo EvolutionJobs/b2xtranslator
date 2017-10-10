@@ -49,8 +49,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         public PowerpointDocument Ppt
         {
-            get { return _ppt; }
-            set { _ppt = value; }
+            get { return this._ppt; }
+            set { this._ppt = value; }
         }
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         public PresentationDocument Pptx
         {
-            get { return _pptx; }
-            set { _pptx = value; }
+            get { return this._pptx; }
+            set { this._pptx = value; }
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         public XmlWriterSettings WriterSettings
         {
-            get { return _writerSettings; }
-            set { _writerSettings = value; }
+            get { return this._writerSettings; }
+            set { this._writerSettings = value; }
         }
 
         public ConversionContext(PowerpointDocument ppt)
@@ -246,7 +246,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public SlideLayoutPart AddLayoutPartWithInstanceId(uint instanceId)
         {
-            var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
+            var masterPart = this._ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
             var layoutPart = masterPart.AddSlideLayoutPart();
 
             this.InstanceIdToLayoutPart.Add(instanceId, layoutPart);
@@ -261,7 +261,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public SlideLayoutPart GetOrCreateLayoutPartByLayoutType(SlideLayoutType type,
             PlaceholderEnum[] placeholderTypes)
         {
-            var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
+            var masterPart = this._ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
             string layoutFilename = Utils.SlideLayoutTypeToFilename(type, placeholderTypes);
 
             
@@ -281,7 +281,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public SlideLayoutPart GetOrCreateLayoutPartByCode(string xml)
         {
-            var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
+            var masterPart = this._ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
 
             if (!this.CodeToLayoutPart.ContainsKey(xml))
             {
@@ -292,21 +292,21 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 var layoutPart = masterPart.AddSlideLayoutPart();
                 doc.WriteTo(layoutPart.XmlWriter);
                 layoutPart.XmlWriter.Flush();
-                CodeToLayoutPart.Add(xml, layoutPart);
+                this.CodeToLayoutPart.Add(xml, layoutPart);
             }
 
-            return CodeToLayoutPart[xml];
+            return this.CodeToLayoutPart[xml];
         }
 
         public SlideLayoutPart GetOrCreateLayoutPartForTitleMasterId(uint titleMasterId)
         {
-            var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
+            var masterPart = this._ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
 
             if (!this.TitleMasterIdToLayoutPart.ContainsKey(titleMasterId))
             {
-                var titleMaster = _ctx.Ppt.FindMasterRecordById(titleMasterId);
+                var titleMaster = this._ctx.Ppt.FindMasterRecordById(titleMasterId);
                 var layoutPart = masterPart.AddSlideLayoutPart();
-                new TitleMasterMapping(_ctx, layoutPart).Apply(titleMaster);
+                new TitleMasterMapping(this._ctx, layoutPart).Apply(titleMaster);
                 this.TitleMasterIdToLayoutPart.Add(titleMasterId, layoutPart);
             }
 

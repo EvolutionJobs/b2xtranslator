@@ -113,13 +113,13 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public FileShapeAddress(VirtualStreamReader reader, int length)
             : base(reader, length)
         {
-            this.spid = _reader.ReadInt32();
-            this.xaLeft = _reader.ReadInt32();
-            this.yaTop = _reader.ReadInt32();
-            this.xaRight = _reader.ReadInt32();
-            this.yaBottom = _reader.ReadInt32();
+            this.spid = this._reader.ReadInt32();
+            this.xaLeft = this._reader.ReadInt32();
+            this.yaTop = this._reader.ReadInt32();
+            this.xaRight = this._reader.ReadInt32();
+            this.yaBottom = this._reader.ReadInt32();
 
-            var flag = _reader.ReadUInt16();
+            var flag = this._reader.ReadUInt16();
             this.fHdr = Tools.Utils.BitmaskToBool(flag, 0x0001);
             this.bx = (AnchorType)Tools.Utils.BitmaskToInt(flag, 0x0006);
             this.by = (AnchorType)Tools.Utils.BitmaskToInt(flag, 0x0018);
@@ -129,7 +129,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.fBelowText = Tools.Utils.BitmaskToBool(flag, 0x4000);
             this.fAnchorLock = Tools.Utils.BitmaskToBool(flag, 0x8000);
 
-            this.cTxbx = _reader.ReadInt32();
+            this.cTxbx = this._reader.ReadInt32();
         }
     }
 }

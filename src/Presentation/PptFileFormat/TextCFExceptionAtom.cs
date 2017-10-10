@@ -38,8 +38,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TextPFExceptionAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            Reader.ReadInt16();
-            run = new ParagraphRun(Reader, true);
+            this.Reader.ReadInt16();
+            this.run = new ParagraphRun(this.Reader, true);
         }
 
     }

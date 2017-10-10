@@ -19,20 +19,20 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public TableRowPropertiesMapping(XmlWriter writer, CharacterPropertyExceptions rowEndChpx)
             : base(writer)
         {
-            _trPr = _nodeFactory.CreateElement("w", "trPr", OpenXmlNamespaces.WordprocessingML);
-            _tblPrEx = _nodeFactory.CreateElement("w", "tblPrEx", OpenXmlNamespaces.WordprocessingML);
+            this._trPr = this._nodeFactory.CreateElement("w", "trPr", OpenXmlNamespaces.WordprocessingML);
+            this._tblPrEx = this._nodeFactory.CreateElement("w", "tblPrEx", OpenXmlNamespaces.WordprocessingML);
             //_tblBorders = _nodeFactory.CreateElement("w", "tblBorders", OpenXmlNamespaces.WordprocessingML);
-            _rowEndChpx = rowEndChpx;
+            this._rowEndChpx = rowEndChpx;
         }
 
         public void Apply(TablePropertyExceptions tapx)
         {
             //delete infos
-            var rev = new RevisionData(_rowEndChpx);
-            if (_rowEndChpx != null && rev.Type == RevisionData.RevisionType.Deleted)
+            var rev = new RevisionData(this._rowEndChpx);
+            if (this._rowEndChpx != null && rev.Type == RevisionData.RevisionType.Deleted)
             {
-                var del = _nodeFactory.CreateElement("w", "del", OpenXmlNamespaces.WordprocessingML);
-                _trPr.AppendChild(del);
+                var del = this._nodeFactory.CreateElement("w", "del", OpenXmlNamespaces.WordprocessingML);
+                this._trPr.AppendChild(del);
             }
 
             foreach (var sprm in tapx.grpprl)
@@ -48,21 +48,21 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         bool fHeader = Utils.ByteToBool(sprm.Arguments[0]);
                         if(fHeader)
                         {
-                            var header = _nodeFactory.CreateElement("w", "tblHeader", OpenXmlNamespaces.WordprocessingML);
-                            _trPr.AppendChild(header);
+                            var header = this._nodeFactory.CreateElement("w", "tblHeader", OpenXmlNamespaces.WordprocessingML);
+                            this._trPr.AppendChild(header);
                         }
                         break;
 
                     //width after
                     case SinglePropertyModifier.OperationCode.sprmTWidthAfter:
-                        var wAfter = _nodeFactory.CreateElement("w", "wAfter", OpenXmlNamespaces.WordprocessingML);
-                        var wAfterValue = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                        var wAfter = this._nodeFactory.CreateElement("w", "wAfter", OpenXmlNamespaces.WordprocessingML);
+                        var wAfterValue = this._nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                         wAfterValue.Value = System.BitConverter.ToInt16(sprm.Arguments, 1).ToString();
                         wAfter.Attributes.Append(wAfterValue);
-                        var wAfterType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+                        var wAfterType = this._nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
                         wAfterType.Value = "dxa";
                         wAfter.Attributes.Append(wAfterType);
-                        _trPr.AppendChild(wAfter);
+                        this._trPr.AppendChild(wAfter);
                         break;
 
                     //width before
@@ -70,22 +70,22 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         var before = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         if (before != 0)
                         {
-                            var wBefore = _nodeFactory.CreateElement("w", "wBefore", OpenXmlNamespaces.WordprocessingML);
-                            var wBeforeValue = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                            var wBefore = this._nodeFactory.CreateElement("w", "wBefore", OpenXmlNamespaces.WordprocessingML);
+                            var wBeforeValue = this._nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                             wBeforeValue.Value = before.ToString();
                             wBefore.Attributes.Append(wBeforeValue);
-                            var wBeforeType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+                            var wBeforeType = this._nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
                             wBeforeType.Value = "dxa";
                             wBefore.Attributes.Append(wBeforeType);
-                            _trPr.AppendChild(wBefore);
+                            this._trPr.AppendChild(wBefore);
                         }
                         break;
 
                     //row height
                     case SinglePropertyModifier.OperationCode.sprmTDyaRowHeight:
-                        var rowHeight = _nodeFactory.CreateElement("w", "trHeight", OpenXmlNamespaces.WordprocessingML);
-                        var rowHeightVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
-                        var rowHeightRule = _nodeFactory.CreateAttribute("w", "hRule", OpenXmlNamespaces.WordprocessingML);
+                        var rowHeight = this._nodeFactory.CreateElement("w", "trHeight", OpenXmlNamespaces.WordprocessingML);
+                        var rowHeightVal = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                        var rowHeightRule = this._nodeFactory.CreateAttribute("w", "hRule", OpenXmlNamespaces.WordprocessingML);
                         var rH = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         if (rH > 0)
                         {
@@ -99,18 +99,18 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         rowHeightVal.Value = rH.ToString();
                         rowHeight.Attributes.Append(rowHeightVal);
                         rowHeight.Attributes.Append(rowHeightRule);
-                        _trPr.AppendChild(rowHeight);
+                        this._trPr.AppendChild(rowHeight);
                         break;
 
                     //can't split
                     case SinglePropertyModifier.OperationCode.sprmTFCantSplit:
                     case SinglePropertyModifier.OperationCode.sprmTFCantSplit90:
-                        appendFlagElement(_trPr, sprm, "cantSplit", true);
+                        appendFlagElement(this._trPr, sprm, "cantSplit", true);
                         break;
 
                     //div id
                     case SinglePropertyModifier.OperationCode.sprmTIpgp:
-                        appendValueElement(_trPr, "divId", System.BitConverter.ToInt32(sprm.Arguments, 0).ToString(), true);
+                        appendValueElement(this._trPr, "divId", System.BitConverter.ToInt32(sprm.Arguments, 0).ToString(), true);
                         break;
 
                     ////borders 80 exceptions
@@ -204,15 +204,15 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //}
 
             //set exceptions
-            if (_tblPrEx.ChildNodes.Count > 0)
+            if (this._tblPrEx.ChildNodes.Count > 0)
             {
-                _trPr.AppendChild(_tblPrEx);
+                this._trPr.AppendChild(this._tblPrEx);
             }
 
             //write Properties
-            if (_trPr.ChildNodes.Count > 0 || _trPr.Attributes.Count > 0)
+            if (this._trPr.ChildNodes.Count > 0 || this._trPr.Attributes.Count > 0)
             {
-                _trPr.WriteTo(_writer);
+                this._trPr.WriteTo(this._writer);
             }
         }
     }

@@ -52,16 +52,16 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 if (axesSequence.IvAxisSequence != null)
                 {
                     // c:catAx
-                    _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElCatAx, Dml.Chart.Ns);
+                    this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElCatAx, Dml.Chart.Ns);
                     {
                         mapIvAxis(axesSequence.IvAxisSequence, axesSequence);
                     }
-                    _writer.WriteEndElement(); // c:catAx
+                    this._writer.WriteEndElement(); // c:catAx
                 }
 
 
                 // c:valAx
-                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElValAx, Dml.Chart.Ns);
+                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElValAx, Dml.Chart.Ns);
                 {
                     // c:axId
                     writeValueElement(Dml.Chart.ElAxId, axesSequence.DvAxisSequence.Axis.AxisId.ToString());
@@ -124,11 +124,11 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     // c:dispUnits
 
                 }
-                _writer.WriteEndElement(); // c:valAx
+                this._writer.WriteEndElement(); // c:valAx
 
                 if (axesSequence.DvAxisSequence2 != null)
                 {
-                    _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElValAx, Dml.Chart.Ns);
+                    this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElValAx, Dml.Chart.Ns);
                     {
                         // c:axId
                         writeValueElement(Dml.Chart.ElAxId, axesSequence.DvAxisSequence2.Axis.AxisId.ToString());
@@ -187,17 +187,17 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         // c:dispUnits
 
                     }
-                    _writer.WriteEndElement(); // c:valAx
+                    this._writer.WriteEndElement(); // c:valAx
                 }
 
                 if (axesSequence.SeriesAxisSequence != null)
                 {
                     // c:serAx
-                    _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSerAx, Dml.Chart.Ns);
+                    this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSerAx, Dml.Chart.Ns);
                     {
                         mapIvAxis(axesSequence.SeriesAxisSequence, axesSequence);
                     }
-                    _writer.WriteEndElement(); // c:serAx
+                    this._writer.WriteEndElement(); // c:serAx
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             writeValueElement(Dml.Chart.ElAxId, ivAxisSequence.Axis.AxisId.ToString());
 
             // c:scaling
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElScaling, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElScaling, Dml.Chart.Ns);
             {
                 // c:logBase
 
@@ -224,7 +224,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
 
             }
-            _writer.WriteEndElement(); // c:scaling
+            this._writer.WriteEndElement(); // c:scaling
 
             // c:delete
 
@@ -269,7 +269,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         private void mapScaling(ValueRange valueRange)
         {
             // c:scaling
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElScaling, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElScaling, Dml.Chart.Ns);
             {
                 // c:logBase
                 // TODO: support for custom logarithmic base (The default base of the logarithmic scale is 10, 
@@ -290,7 +290,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     writeValueElement(Dml.Chart.ElMin, valueRange.numMin.ToString(CultureInfo.InvariantCulture));
                 }
             }
-            _writer.WriteEndElement(); // c:scaling
+            this._writer.WriteEndElement(); // c:scaling
 
         }
 

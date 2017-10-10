@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public void Apply(AttachedLabelSequence attachedLabelSequence)
         {
             // c:title
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElTitle, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElTitle, Dml.Chart.Ns);
             {
                 // c:tx
 
@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 // c:txPr
 
             }
-            _writer.WriteEndElement(); // c:title
+            this._writer.WriteEndElement(); // c:title
         }
         #endregion
     }

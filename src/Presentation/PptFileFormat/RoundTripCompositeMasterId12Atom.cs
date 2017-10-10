@@ -38,7 +38,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public RoundTripCompositeMasterId12Atom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            compositeMasterId = Reader.ReadUInt32();
+            this.compositeMasterId = this.Reader.ReadUInt32();
         }
     }
 

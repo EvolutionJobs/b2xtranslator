@@ -42,20 +42,20 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public uint TotalSize
         {
-            get { return HeaderSize + BodySize; }
+            get { return this.HeaderSize + this.BodySize; }
         }
 
         private Record _ParentRecord = null;
 
         public Record ParentRecord
         {
-            get { return _ParentRecord; }
+            get { return this._ParentRecord; }
             set
             {
-                if (_ParentRecord != null)
+                if (this._ParentRecord != null)
                     throw new Exception("Can only set ParentRecord once");
 
-                _ParentRecord = value;
+                this._ParentRecord = value;
                 this.AfterParentSet();
             }
         }

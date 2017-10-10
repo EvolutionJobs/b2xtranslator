@@ -57,19 +57,19 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public TablePropertiesMapping(XmlWriter writer, StyleSheet styles, List<short> grid)
             : base(writer)
         {
-            _styles = styles;
-            _tblPr = _nodeFactory.CreateElement("w", "tblPr", OpenXmlNamespaces.WordprocessingML);
-            _tblBorders = _nodeFactory.CreateElement("w", "tblBorders", OpenXmlNamespaces.WordprocessingML);
-            _grid = grid;
+            this._styles = styles;
+            this._tblPr = this._nodeFactory.CreateElement("w", "tblPr", OpenXmlNamespaces.WordprocessingML);
+            this._tblBorders = this._nodeFactory.CreateElement("w", "tblBorders", OpenXmlNamespaces.WordprocessingML);
+            this._grid = grid;
         }
 
         public void Apply(TablePropertyExceptions tapx)
         {
-            var tblBorders = _nodeFactory.CreateElement("w", "tblBorders", OpenXmlNamespaces.WordprocessingML);
-            var tblCellMar = _nodeFactory.CreateElement("w", "tblCellMar", OpenXmlNamespaces.WordprocessingML);
-            var tblLayout = _nodeFactory.CreateElement("w", "tblLayout", OpenXmlNamespaces.WordprocessingML);
-            var tblpPr = _nodeFactory.CreateElement("w", "tblpPr", OpenXmlNamespaces.WordprocessingML);
-            var layoutType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+            var tblBorders = this._nodeFactory.CreateElement("w", "tblBorders", OpenXmlNamespaces.WordprocessingML);
+            var tblCellMar = this._nodeFactory.CreateElement("w", "tblCellMar", OpenXmlNamespaces.WordprocessingML);
+            var tblLayout = this._nodeFactory.CreateElement("w", "tblLayout", OpenXmlNamespaces.WordprocessingML);
+            var tblpPr = this._nodeFactory.CreateElement("w", "tblpPr", OpenXmlNamespaces.WordprocessingML);
+            var layoutType = this._nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
             layoutType.Value = "fixed";
             short tblIndent = 0;
             short gabHalf = 0;
@@ -101,20 +101,20 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmTTableWidth:
                         var fts = (WidthType)sprm.Arguments[0];
                         var width = System.BitConverter.ToInt16(sprm.Arguments, 1);
-                        var tblW = _nodeFactory.CreateElement("w", "tblW", OpenXmlNamespaces.WordprocessingML);
-                        var w = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                        var tblW = this._nodeFactory.CreateElement("w", "tblW", OpenXmlNamespaces.WordprocessingML);
+                        var w = this._nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                         w.Value = width.ToString();
-                        var type = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+                        var type = this._nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
                         type.Value = fts.ToString();
                         tblW.Attributes.Append(type);
                         tblW.Attributes.Append(w);
-                        _tblPr.AppendChild(tblW);
+                        this._tblPr.AppendChild(tblW);
                         break;
 
                     //justification
                     case SinglePropertyModifier.OperationCode.sprmTJc:
                     case  SinglePropertyModifier.OperationCode.sprmTJcRow:
-                        appendValueElement(_tblPr, "jc", ((Global.JustificationCode)sprm.Arguments[0]).ToString(), true);
+                        appendValueElement(this._tblPr, "jc", ((Global.JustificationCode)sprm.Arguments[0]).ToString(), true);
                         break;
 
                     //indent
@@ -126,12 +126,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmTIstd:
                     case SinglePropertyModifier.OperationCode.sprmTIstdPermute:
                         var styleIndex = System.BitConverter.ToInt16(sprm.Arguments, 0);
-                        if(_styles.Styles.Count> styleIndex)
+                        if(this._styles.Styles.Count> styleIndex)
                         {
-                            string id = StyleSheetMapping.MakeStyleId(_styles.Styles[styleIndex]);
+                            string id = StyleSheetMapping.MakeStyleId(this._styles.Styles[styleIndex]);
                             if(id != "TableNormal")
                             {
-                                appendValueElement(_tblPr, "tblStyle", id, true);
+                                appendValueElement(this._tblPr, "tblStyle", id, true);
                             }
                         }
                         break;
@@ -139,12 +139,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //bidi
                     case SinglePropertyModifier.OperationCode.sprmTFBiDi:
                     case SinglePropertyModifier.OperationCode.sprmTFBiDi90:
-                        appendValueElement(_tblPr, "bidiVisual", System.BitConverter.ToInt16(sprm.Arguments, 0).ToString(), true);
+                        appendValueElement(this._tblPr, "bidiVisual", System.BitConverter.ToInt16(sprm.Arguments, 0).ToString(), true);
                         break;
 
                     //table look
                     case SinglePropertyModifier.OperationCode.sprmTTlp:
-                        appendValueElement(_tblPr, "tblLook", string.Format("{0:x4}", System.BitConverter.ToInt16(sprm.Arguments, 2)), true);
+                        appendValueElement(this._tblPr, "tblLook", string.Format("{0:x4}", System.BitConverter.ToInt16(sprm.Arguments, 2)), true);
                         break;
 
                     //autofit
@@ -171,12 +171,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //row count
                     case SinglePropertyModifier.OperationCode.sprmTCHorzBands:
-                        appendValueElement(_tblPr, "tblStyleRowBandSize", sprm.Arguments[0].ToString(), true);
+                        appendValueElement(this._tblPr, "tblStyleRowBandSize", sprm.Arguments[0].ToString(), true);
                         break;
 
                     //col count
                     case SinglePropertyModifier.OperationCode.sprmTCVertBands:
-                        appendValueElement(_tblPr, "tblStyleColBandSize", sprm.Arguments[0].ToString(), true);
+                        appendValueElement(this._tblPr, "tblStyleColBandSize", sprm.Arguments[0].ToString(), true);
                         break;
 
                     //overlap
@@ -185,13 +185,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         string tblOverlapVal = "overlap";
                         if (noOverlap)
                             tblOverlapVal = "never";
-                        appendValueElement(_tblPr, "tblOverlap", tblOverlapVal, true);
+                        appendValueElement(this._tblPr, "tblOverlap", tblOverlapVal, true);
                         break;
 
                     //shading
                     case SinglePropertyModifier.OperationCode.sprmTSetShdTable:
                         var desc = new ShadingDescriptor(sprm.Arguments);
-                        appendShading(_tblPr, desc);
+                        appendShading(this._tblPr, desc);
                         break;
 
                     //borders 80 exceptions
@@ -199,22 +199,22 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         var brc80 = new byte[4];
                         //top border
                         Array.Copy(sprm.Arguments, 0, brc80, 0, 4);
-                        brcTop = new BorderCode(brc80);
+                        this.brcTop = new BorderCode(brc80);
                         //left
                         Array.Copy(sprm.Arguments, 4, brc80, 0, 4);
-                        brcLeft = new BorderCode(brc80);
+                        this.brcLeft = new BorderCode(brc80);
                         //bottom
                         Array.Copy(sprm.Arguments, 8, brc80, 0, 4);
-                        brcBottom = new BorderCode(brc80);
+                        this.brcBottom = new BorderCode(brc80);
                         //right
                         Array.Copy(sprm.Arguments, 12, brc80, 0, 4);
-                        brcRight = new BorderCode(brc80);
+                        this.brcRight = new BorderCode(brc80);
                         //inside H
                         Array.Copy(sprm.Arguments, 16, brc80, 0, 4);
-                        brcHorz = new BorderCode(brc80);
+                        this.brcHorz = new BorderCode(brc80);
                         //inside V
                         Array.Copy(sprm.Arguments, 20, brc80, 0, 4);
-                        brcVert = new BorderCode(brc80);
+                        this.brcVert = new BorderCode(brc80);
                         break;
 
                     //border exceptions
@@ -222,22 +222,22 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         var brc = new byte[8];
                         //top border
                         Array.Copy(sprm.Arguments, 0, brc, 0, 8);
-                        brcTop = new BorderCode(brc);
+                        this.brcTop = new BorderCode(brc);
                         //left
                         Array.Copy(sprm.Arguments, 8, brc, 0, 8);
-                        brcLeft = new BorderCode(brc);
+                        this.brcLeft = new BorderCode(brc);
                         //bottom
                         Array.Copy(sprm.Arguments, 16, brc, 0, 8);
-                        brcBottom = new BorderCode(brc);
+                        this.brcBottom = new BorderCode(brc);
                         //right
                         Array.Copy(sprm.Arguments, 24, brc, 0, 8);
-                        brcRight = new BorderCode(brc);
+                        this.brcRight = new BorderCode(brc);
                         //inside H
                         Array.Copy(sprm.Arguments, 32, brc, 0, 8);
-                        brcHorz = new BorderCode(brc);
+                        this.brcHorz = new BorderCode(brc);
                         //inside V
                         Array.Copy(sprm.Arguments, 40, brc, 0, 8);
-                        brcVert = new BorderCode(brc);
+                        this.brcVert = new BorderCode(brc);
                         break;
 
                     //floating table properties
@@ -272,67 +272,67 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //indent
             if (tblIndent != 0)
             {
-                var tblInd = _nodeFactory.CreateElement("w", "tblInd", OpenXmlNamespaces.WordprocessingML);
-                var tblIndW = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                var tblInd = this._nodeFactory.CreateElement("w", "tblInd", OpenXmlNamespaces.WordprocessingML);
+                var tblIndW = this._nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                 tblIndW.Value = tblIndent.ToString();
                 tblInd.Attributes.Append(tblIndW);
-                var tblIndType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+                var tblIndType = this._nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
                 tblIndType.Value = "dxa";
                 tblInd.Attributes.Append(tblIndType);
-                _tblPr.AppendChild(tblInd);
+                this._tblPr.AppendChild(tblInd);
             }
 
             //append floating props
             if (tblpPr.Attributes.Count > 0)
             {
-                _tblPr.AppendChild(tblpPr);
+                this._tblPr.AppendChild(tblpPr);
             }
 
             //set borders
-            if (brcTop != null)
+            if (this.brcTop != null)
             {
-                var topBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(brcTop, topBorder);
-                addOrSetBorder(_tblBorders, topBorder);
+                var topBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this.brcTop, topBorder);
+                addOrSetBorder(this._tblBorders, topBorder);
             }
-            if (brcLeft != null)
+            if (this.brcLeft != null)
             {
-                var leftBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(brcLeft, leftBorder);
-                addOrSetBorder(_tblBorders, leftBorder);
+                var leftBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this.brcLeft, leftBorder);
+                addOrSetBorder(this._tblBorders, leftBorder);
             }
-            if (brcBottom != null)
+            if (this.brcBottom != null)
             {
-                var bottomBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(brcBottom, bottomBorder);
-                addOrSetBorder(_tblBorders, bottomBorder);
+                var bottomBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this.brcBottom, bottomBorder);
+                addOrSetBorder(this._tblBorders, bottomBorder);
             }
-            if (brcRight != null)
+            if (this.brcRight != null)
             {
-                var rightBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(brcRight, rightBorder);
-                addOrSetBorder(_tblBorders, rightBorder);
+                var rightBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this.brcRight, rightBorder);
+                addOrSetBorder(this._tblBorders, rightBorder);
             }
-            if (brcHorz != null)
+            if (this.brcHorz != null)
             {
-                var insideHBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "insideH", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(brcHorz, insideHBorder);
-                addOrSetBorder(_tblBorders, insideHBorder);
+                var insideHBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "insideH", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this.brcHorz, insideHBorder);
+                addOrSetBorder(this._tblBorders, insideHBorder);
             }
-            if (brcVert != null)
+            if (this.brcVert != null)
             {
-                var insideVBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "insideV", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(brcVert, insideVBorder);
-                addOrSetBorder(_tblBorders, insideVBorder);
+                var insideVBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "insideV", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this.brcVert, insideVBorder);
+                addOrSetBorder(this._tblBorders, insideVBorder);
             }
-            if (_tblBorders.ChildNodes.Count > 0)
+            if (this._tblBorders.ChildNodes.Count > 0)
             {
-                _tblPr.AppendChild(_tblBorders);
+                this._tblPr.AppendChild(this._tblBorders);
             }
 
             //append layout type
             tblLayout.Attributes.Append(layoutType);
-            _tblPr.AppendChild(tblLayout);
+            this._tblPr.AppendChild(tblLayout);
 
             //append margins
             if (marginLeft == 0 && gabHalf != 0)
@@ -351,25 +351,25 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             {
                 appendDxaElement(tblCellMar, "right", marginRight.ToString(), true);
             }
-            _tblPr.AppendChild(tblCellMar);
+            this._tblPr.AppendChild(tblCellMar);
 
             //write Properties
-            if (_tblPr.ChildNodes.Count > 0 || _tblPr.Attributes.Count > 0)
+            if (this._tblPr.ChildNodes.Count > 0 || this._tblPr.Attributes.Count > 0)
             {
-                _tblPr.WriteTo(_writer);
+                this._tblPr.WriteTo(this._writer);
             }
 
             //append the grid
-            _tblGrid = _nodeFactory.CreateElement("w", "tblGrid", OpenXmlNamespaces.WordprocessingML);
-            foreach (var colW in _grid)
+            this._tblGrid = this._nodeFactory.CreateElement("w", "tblGrid", OpenXmlNamespaces.WordprocessingML);
+            foreach (var colW in this._grid)
             {
-                var gridCol = _nodeFactory.CreateElement("w", "gridCol", OpenXmlNamespaces.WordprocessingML);
-                var gridColW = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                var gridCol = this._nodeFactory.CreateElement("w", "gridCol", OpenXmlNamespaces.WordprocessingML);
+                var gridColW = this._nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                 gridColW.Value = colW.ToString();
                 gridCol.Attributes.Append(gridColW);
-                _tblGrid.AppendChild(gridCol);
+                this._tblGrid.AppendChild(gridCol);
             }
-            _tblGrid.WriteTo(_writer);
+            this._tblGrid.WriteTo(this._writer);
         }
     }
 }

@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public void Apply(DocumentProperties dop)
         {
             //start Properties
-            _writer.WriteStartElement("w", "Properties", OpenXmlNamespaces.WordprocessingML);
+            this._writer.WriteStartElement("w", "Properties", OpenXmlNamespaces.WordprocessingML);
 
             //Application
             //AppVersion
@@ -71,37 +71,37 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //WordCount statistics
 
             //CharactersWithSpaces
-            _writer.WriteStartElement("CharactersWithSpaces");
-            _writer.WriteString(dop.cChWS.ToString());
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement("CharactersWithSpaces");
+            this._writer.WriteString(dop.cChWS.ToString());
+            this._writer.WriteEndElement();
 
             //Characters
-            _writer.WriteStartElement("Characters");
-            _writer.WriteString(dop.cCh.ToString());
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement("Characters");
+            this._writer.WriteString(dop.cCh.ToString());
+            this._writer.WriteEndElement();
 
             //Lines
-            _writer.WriteStartElement("Lines");
-            _writer.WriteString(dop.cLines.ToString());
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement("Lines");
+            this._writer.WriteString(dop.cLines.ToString());
+            this._writer.WriteEndElement();
 
             //Pages
-            _writer.WriteStartElement("Pages");
-            _writer.WriteString(dop.cPg.ToString());
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement("Pages");
+            this._writer.WriteString(dop.cPg.ToString());
+            this._writer.WriteEndElement();
 
             //Paragraphs
-            _writer.WriteStartElement("Paragraphs");
-            _writer.WriteString(dop.cParas.ToString());
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement("Paragraphs");
+            this._writer.WriteString(dop.cParas.ToString());
+            this._writer.WriteEndElement();
 
             //Words
-            _writer.WriteStartElement("Words");
-            _writer.WriteString(dop.cWords.ToString());
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement("Words");
+            this._writer.WriteString(dop.cWords.ToString());
+            this._writer.WriteEndElement();
 
             //end Properties
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
     }
 }

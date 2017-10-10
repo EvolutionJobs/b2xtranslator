@@ -90,11 +90,11 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML
         {
             get
             {
-                if (_vbaProjectPart == null)
+                if (this._vbaProjectPart == null)
                 {
-                    _vbaProjectPart = this.AddPart(new VbaProjectPart(this));
+                    this._vbaProjectPart = this.AddPart(new VbaProjectPart(this));
                 }
-                return _vbaProjectPart;
+                return this._vbaProjectPart;
             }
         }
 

@@ -22,21 +22,21 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public BlipBooleanProperties(uint entryOperand)
         {
-            fPictureActive = Utils.BitmaskToBool(entryOperand, 0x1);
-            fPictureBiLevel = Utils.BitmaskToBool(entryOperand, 0x1 << 1);
-            fPictureGray = Utils.BitmaskToBool(entryOperand, 0x1 << 2);
-            fNoHitTestPicture = Utils.BitmaskToBool(entryOperand, 0x1 << 3);
-            fLooping = Utils.BitmaskToBool(entryOperand, 0x1 << 4);
-            fRewind = Utils.BitmaskToBool(entryOperand, 0x1 << 5);
-            fPicturePreserveGrays = Utils.BitmaskToBool(entryOperand, 0x1 << 6);
+            this.fPictureActive = Utils.BitmaskToBool(entryOperand, 0x1);
+            this.fPictureBiLevel = Utils.BitmaskToBool(entryOperand, 0x1 << 1);
+            this.fPictureGray = Utils.BitmaskToBool(entryOperand, 0x1 << 2);
+            this.fNoHitTestPicture = Utils.BitmaskToBool(entryOperand, 0x1 << 3);
+            this.fLooping = Utils.BitmaskToBool(entryOperand, 0x1 << 4);
+            this.fRewind = Utils.BitmaskToBool(entryOperand, 0x1 << 5);
+            this.fPicturePreserveGrays = Utils.BitmaskToBool(entryOperand, 0x1 << 6);
             //unused 9 bits
-            fusefPictureActive = Utils.BitmaskToBool(entryOperand, 0x1 << 16);
-            fusefPictureBiLevel = Utils.BitmaskToBool(entryOperand, 0x1 << 17);
-            fusefPictureGray = Utils.BitmaskToBool(entryOperand, 0x1 << 18);
-            fusefNoHitTestPicture = Utils.BitmaskToBool(entryOperand, 0x1 << 19);
-            fusefLooping = Utils.BitmaskToBool(entryOperand, 0x1 << 20);
-            fusefRewind = Utils.BitmaskToBool(entryOperand, 0x1 << 21);
-            fusefPicturePreserveGrays = Utils.BitmaskToBool(entryOperand, 0x1 << 22);
+            this.fusefPictureActive = Utils.BitmaskToBool(entryOperand, 0x1 << 16);
+            this.fusefPictureBiLevel = Utils.BitmaskToBool(entryOperand, 0x1 << 17);
+            this.fusefPictureGray = Utils.BitmaskToBool(entryOperand, 0x1 << 18);
+            this.fusefNoHitTestPicture = Utils.BitmaskToBool(entryOperand, 0x1 << 19);
+            this.fusefLooping = Utils.BitmaskToBool(entryOperand, 0x1 << 20);
+            this.fusefRewind = Utils.BitmaskToBool(entryOperand, 0x1 << 21);
+            this.fusefPicturePreserveGrays = Utils.BitmaskToBool(entryOperand, 0x1 << 22);
             //unused 9 bits
         }
     }

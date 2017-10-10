@@ -49,11 +49,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="sid">The sid of the directory entry</param>
         internal DirectoryEntry(Header header, InputHandler fileHandler, uint sid, string path) : base(sid)
         {
-            _header = header;
-            _fileHandler = fileHandler;
+            this._header = header;
+            this._fileHandler = fileHandler;
             //_sid = sid;            
             ReadDirectoryEntry();
-            _path = path;
+            this._path = path;
         }
 
 
@@ -61,50 +61,50 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// Reads the values of the directory entry. The position of the file handler must be at the start of a directory entry.
         /// </summary>
         private void ReadDirectoryEntry()
-        {     
-            Name = _fileHandler.ReadString(64);
+        {
+            this.Name = this._fileHandler.ReadString(64);
 
             // Name length check: lengthOfName = length of the element in bytes including Unicode NULL
-            var lengthOfName = _fileHandler.ReadUInt16();
+            var lengthOfName = this._fileHandler.ReadUInt16();
             // Commented out due to trouble with odd unicode-named streams in PowerPoint -- flgr
             /*if (lengthOfName != (_name.Length + 1) * 2)
             {
                 throw new InvalidValueInDirectoryEntryException("_cb");
             }*/
             // Added warning - math
-            if (lengthOfName != (_name.Length + 1) * 2)
+            if (lengthOfName != (this._name.Length + 1) * 2)
             {
-                TraceLogger.Warning("Length of the name (_cb) of stream '" + Name + "' is not correct.");
+                TraceLogger.Warning("Length of the name (_cb) of stream '" + this.Name + "' is not correct.");
             }
 
 
-            Type = (DirectoryEntryType)_fileHandler.ReadByte();
-            Color = (DirectoryEntryColor)_fileHandler.ReadByte();
-            LeftSiblingSid = _fileHandler.ReadUInt32();
-            RightSiblingSid = _fileHandler.ReadUInt32();
-            ChildSiblingSid = _fileHandler.ReadUInt32();
+            this.Type = (DirectoryEntryType)this._fileHandler.ReadByte();
+            this.Color = (DirectoryEntryColor)this._fileHandler.ReadByte();
+            this.LeftSiblingSid = this._fileHandler.ReadUInt32();
+            this.RightSiblingSid = this._fileHandler.ReadUInt32();
+            this.ChildSiblingSid = this._fileHandler.ReadUInt32();
 
             var array = new byte[16];
-            _fileHandler.Read(array);
-            ClsId = new Guid(array);
+            this._fileHandler.Read(array);
+            this.ClsId = new Guid(array);
 
-            UserFlags = _fileHandler.ReadUInt32();
+            this.UserFlags = this._fileHandler.ReadUInt32();
             // Omit creation time
-            _fileHandler.ReadUInt64();
+            this._fileHandler.ReadUInt64();
             // Omit modification time 
-            _fileHandler.ReadUInt64();
-            StartSector = _fileHandler.ReadUInt32();
+            this._fileHandler.ReadUInt64();
+            this.StartSector = this._fileHandler.ReadUInt32();
 
-            var sizeLow = _fileHandler.ReadUInt32();
-            var sizeHigh = _fileHandler.ReadUInt32();
+            var sizeLow = this._fileHandler.ReadUInt32();
+            var sizeHigh = this._fileHandler.ReadUInt32();
 
-            if (_header.SectorSize == 512 && sizeHigh != 0x0)
+            if (this._header.SectorSize == 512 && sizeHigh != 0x0)
             {
                 // Must be zero according to the specification. However, this requirement can be ommited.
-                TraceLogger.Warning("ul_SizeHigh of stream '" + Name + "' should be zero as sector size is 512.");
+                TraceLogger.Warning("ul_SizeHigh of stream '" + this.Name + "' should be zero as sector size is 512.");
                 sizeHigh = 0x0;
             }
-            SizeOfStream = ((UInt64)sizeHigh << 32) + sizeLow;
+            this.SizeOfStream = ((ulong)sizeHigh << 32) + sizeLow;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML
         public PresentationPart(OpenXmlPartContainer parent, string contentType)
             : base(parent, 0)
         {
-            _type = contentType;
+            this._type = contentType;
         }
 
         public override string ContentType
@@ -84,11 +84,11 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML
         {
             get
             {
-                if (_vbaProjectPart == null)
+                if (this._vbaProjectPart == null)
                 {
-                    _vbaProjectPart = this.AddPart(new VbaProjectPart(this));
+                    this._vbaProjectPart = this.AddPart(new VbaProjectPart(this));
                 }
-                return _vbaProjectPart;
+                return this._vbaProjectPart;
             }
         }
 

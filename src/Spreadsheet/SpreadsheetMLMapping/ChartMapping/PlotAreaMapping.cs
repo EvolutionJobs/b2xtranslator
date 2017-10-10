@@ -82,7 +82,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public void Apply(ChartFormatsSequence chartFormatsSequence)
         {
             // c:plotArea
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElPlotArea, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElPlotArea, Dml.Chart.Ns);
             {
                 // c:layout
                 if (chartFormatsSequence.ShtProps.fManPlotArea && chartFormatsSequence.CrtLayout12A != null)
@@ -170,7 +170,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     chartFormatsSequence.AxisParentSequences[0].AxesSequence.Frame.Convert(new ShapePropertiesMapping(this.WorkbookContext, this.ChartContext));
                 }
             }
-            _writer.WriteEndElement(); // c:plotArea
+            this._writer.WriteEndElement(); // c:plotArea
         }
         #endregion
     }

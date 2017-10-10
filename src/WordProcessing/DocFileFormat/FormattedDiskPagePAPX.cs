@@ -66,9 +66,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             //create and fill the array with the adresses
             this.rgfc = new int[this.crun + 1];
             int j = 0;
-            for (int i = 0; i < rgfc.Length; i++)
+            for (int i = 0; i < this.rgfc.Length; i++)
             {
-                rgfc[i] = System.BitConverter.ToInt32(bytes, j);
+                this.rgfc[i] = System.BitConverter.ToInt32(bytes, j);
                 j += 4;
             }
 
@@ -77,7 +77,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.grppapx = new ParagraphPropertyExceptions[this.crun];
 
             j = 4*(this.crun+1);
-            for (int i = 0; i < rgbx.Length; i++)
+            for (int i = 0; i < this.rgbx.Length; i++)
             {
                 //read the 12 for PHE
                 var phe = new byte[12];
@@ -89,7 +89,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     wordOffset = bytes[j],
                     phe = new ParagraphHeight(phe, false)
                 };
-                rgbx[i] = bx;
+                this.rgbx[i] = bx;
                 j += 13;
 
                 if (bx.wordOffset != 0)

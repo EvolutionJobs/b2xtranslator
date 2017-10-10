@@ -127,15 +127,15 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         internal OpenXmlPartContainer Parent
         {
-            get { return _parent; }
-            set { _parent = value; }
+            get { return this._parent; }
+            set { this._parent = value; }
         }
 
         protected IEnumerable<OpenXmlPart> Parts
         {
             get
             {
-                return _parts;
+                return this._parts;
             }
         }
 
@@ -143,7 +143,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         {
             get
             {
-                return _referencedParts;
+                return this._referencedParts;
             }
         }
 
@@ -151,7 +151,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         {
             get
             {
-                return _externalRelationships;
+                return this._externalRelationships;
             }
         }
 
@@ -159,7 +159,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         {
             // generate a relId for the part 
             part.RelId = _nextRelId++;
-            _parts.Add(part);
+            this._parts.Add(part);
 
             if (part.HasDefaultContentType)
             {
@@ -177,15 +177,15 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         public ExternalRelationship AddExternalRelationship(string relationshipType, Uri externalUri)
         {
-            var rel = new ExternalRelationship(EXT_PREFIX + (_externalRelationships.Count + 1).ToString(), relationshipType, externalUri);
-            _externalRelationships.Add(rel);
+            var rel = new ExternalRelationship(EXT_PREFIX + (this._externalRelationships.Count + 1).ToString(), relationshipType, externalUri);
+            this._externalRelationships.Add(rel);
             return rel;
         }
 
         public ExternalRelationship AddExternalRelationship(string relationshipType, string externalUri)
         {
-            var rel = new ExternalRelationship(EXT_PREFIX + (_externalRelationships.Count + 1).ToString(), relationshipType, externalUri);
-            _externalRelationships.Add(rel);
+            var rel = new ExternalRelationship(EXT_PREFIX + (this._externalRelationships.Count + 1).ToString(), relationshipType, externalUri);
+            this._externalRelationships.Add(rel);
             return rel;
         }
 
@@ -195,7 +195,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         public virtual T ReferencePart<T>(T part) where T : OpenXmlPart
         {
             // We'll use the existing ID here.
-            _referencedParts.Add(part);
+            this._referencedParts.Add(part);
 
             if (part.HasDefaultContentType)
             {
@@ -216,15 +216,15 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
             allParts.AddRange(this.ReferencedParts);
 
             // write part relationships
-            if (allParts.Count > 0 || _externalRelationships.Count > 0)
+            if (allParts.Count > 0 || this._externalRelationships.Count > 0)
             {
-                string relFullName = Path.Combine(Path.Combine(this.TargetDirectoryAbsolute, REL_FOLDER), TargetName + TargetExt + REL_EXTENSION);
+                string relFullName = Path.Combine(Path.Combine(this.TargetDirectoryAbsolute, REL_FOLDER), this.TargetName + this.TargetExt + REL_EXTENSION);
                 writer.AddPart(relFullName);
 
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Relationships", OpenXmlNamespaces.RelationsshipsPackage);
 
-                foreach (var rel in _externalRelationships)
+                foreach (var rel in this._externalRelationships)
                 {
                     writer.WriteStartElement("Relationship", OpenXmlNamespaces.RelationsshipsPackage);
                     writer.WriteAttributeString("Id", rel.Id);

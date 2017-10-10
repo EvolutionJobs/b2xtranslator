@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public ushort[] TypeCodes
         {
-            get { return _typeCodes; }
+            get { return this._typeCodes; }
         }
 
         private ushort[] _typeCodes = new ushort[0];

@@ -77,13 +77,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            ifmt = reader.ReadUInt16();
-            cch = reader.ReadUInt16();
-            grbit = reader.ReadByte();
+            this.ifmt = reader.ReadUInt16();
+            this.cch = reader.ReadUInt16();
+            this.grbit = reader.ReadByte();
             // TODO: place code for interpretation of grbit flag here
             // TODO: possibly define a wrapper class for Unicode strings
 
-            rgb = ExcelHelperClass.getStringFromBiffRecord(reader, cch, grbit); 
+            this.rgb = ExcelHelperClass.getStringFromBiffRecord(reader, this.cch, this.grbit); 
             
             // assert that the correct number of bytes has been read from the stream
             Debug.Assert(this.Offset + this.Length == this.Reader.BaseStream.Position); 

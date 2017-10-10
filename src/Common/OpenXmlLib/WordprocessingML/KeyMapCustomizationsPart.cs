@@ -25,12 +25,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         public ToolbarsPart ToolbarsPart
         {   
             get {
-                if (_toolbars == null)
+                if (this._toolbars == null)
                 {
-                    _toolbars = new ToolbarsPart(this);
-                    this.AddPart(_toolbars);
+                    this._toolbars = new ToolbarsPart(this);
+                    this.AddPart(this._toolbars);
                 }
-                return _toolbars; 
+                return this._toolbars; 
             }
         }
 	

@@ -11,20 +11,20 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public HeaderMapping(ConversionContext ctx, HeaderPart part, CharacterRange hdr)
             : base(ctx, part)
         {
-            _hdr = hdr;
+            this._hdr = hdr;
         }
 
         public override void Apply(WordDocument doc)
         {
-            _doc = doc;
+            this._doc = doc;
 
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("w", "hdr", OpenXmlNamespaces.WordprocessingML);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("w", "hdr", OpenXmlNamespaces.WordprocessingML);
 
             //convert the header text
-            _lastValidPapx = _doc.AllPapxFkps[0].grppapx[0];
-            int cp = _hdr.CharacterPosition;
-            int cpMax = _hdr.CharacterPosition + _hdr.CharacterCount;
+            this._lastValidPapx = this._doc.AllPapxFkps[0].grppapx[0];
+            int cp = this._hdr.CharacterPosition;
+            int cpMax = this._hdr.CharacterPosition + this._hdr.CharacterCount;
 
             //the CharacterCount of the headers also counts the guard paragraph mark.
             //this additional paragraph mark shall not be converted.
@@ -32,7 +32,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             while (cp < cpMax)
             {
-                int fc = _doc.PieceTable.FileCharacterPositions[cp];
+                int fc = this._doc.PieceTable.FileCharacterPositions[cp];
                 var papx = findValidPapx(fc);
                 var tai = new TableInfo(papx);
 
@@ -48,10 +48,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 }
             }
 
-            _writer.WriteEndElement();
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.Flush();
 
         }
     }

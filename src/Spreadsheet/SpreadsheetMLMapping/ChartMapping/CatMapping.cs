@@ -29,38 +29,38 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     if (brai.rt != BRAI.DataSource.Automatic)
                     {
                         // c:cat (or c:xVal for scatter and bubble charts)
-                        _writer.WriteStartElement(Dml.Chart.Prefix, this._parentElement, Dml.Chart.Ns);
+                        this._writer.WriteStartElement(Dml.Chart.Prefix, this._parentElement, Dml.Chart.Ns);
                         {
                             switch (brai.rt)
                             {
                                 case BRAI.DataSource.Literal:
                                     // c:strLit
-                                    _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElStrLit, Dml.Chart.Ns);
+                                    this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElStrLit, Dml.Chart.Ns);
                                     {
                                         convertStringPoints(seriesFormatSequence);
                                     }
-                                    _writer.WriteEndElement();
+                                    this._writer.WriteEndElement();
                                     break;
                                 case BRAI.DataSource.Reference:
                                     // c:strRef
-                                    _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElStrRef, Dml.Chart.Ns);
+                                    this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElStrRef, Dml.Chart.Ns);
                                     {
                                         // c:f
                                         string formula = FormulaInfixMapping.mapFormula(brai.formula.formula, this.WorkbookContext);
-                                        _writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElF, Dml.Chart.Ns, formula);
+                                        this._writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElF, Dml.Chart.Ns, formula);
 
                                         // c:strCache
-                                        _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElStrCache, Dml.Chart.Ns);
+                                        this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElStrCache, Dml.Chart.Ns);
                                         {
                                             convertStringPoints(seriesFormatSequence);
                                         }
-                                        _writer.WriteEndElement();
+                                        this._writer.WriteEndElement();
                                     }
-                                    _writer.WriteEndElement();
+                                    this._writer.WriteEndElement();
                                     break;
                             }
                         }
-                        _writer.WriteEndElement(); // c:cat
+                        this._writer.WriteEndElement(); // c:cat
                     }
                     break;
                 }
@@ -102,13 +102,13 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                                 var lblInCell = (Label)cellContent;
 
                                 // c:pt
-                                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElPt, Dml.Chart.Ns);
-                                _writer.WriteAttributeString(Dml.Chart.AttrIdx, idx.ToString());
+                                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElPt, Dml.Chart.Ns);
+                                this._writer.WriteAttributeString(Dml.Chart.AttrIdx, idx.ToString());
 
                                 // c:v
-                                _writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElV, Dml.Chart.Ns, lblInCell.st.Value);
+                                this._writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElV, Dml.Chart.Ns, lblInCell.st.Value);
 
-                                _writer.WriteEndElement(); // c:pt
+                                this._writer.WriteEndElement(); // c:pt
                             }
                         }
                         idx++;

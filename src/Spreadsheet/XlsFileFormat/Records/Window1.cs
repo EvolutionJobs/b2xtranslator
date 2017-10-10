@@ -110,27 +110,27 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            xWn = reader.ReadUInt16();
-            yWn = reader.ReadUInt16();
-            dxWn = reader.ReadUInt16();
-            dyWn = reader.ReadUInt16();
+            this.xWn = reader.ReadUInt16();
+            this.yWn = reader.ReadUInt16();
+            this.dxWn = reader.ReadUInt16();
+            this.dyWn = reader.ReadUInt16();
 
-            grbit = reader.ReadUInt16();
+            this.grbit = reader.ReadUInt16();
 
-            fHidden = Utils.BitmaskToBool(grbit, 0x01);
-            fIconic = Utils.BitmaskToBool(grbit, 0x02);
-            reserved0 = Utils.BitmaskToBool(grbit, 0x04);
-            fDspHScroll = Utils.BitmaskToBool(grbit, 0x08);
-            fDspVScroll = Utils.BitmaskToBool(grbit, 0x10);
-            fBotAdornment = Utils.BitmaskToBool(grbit, 0x20);
-            fNoAFDateGroup = Utils.BitmaskToBool(grbit, 0x40);
-            reserved1 = Utils.BitmaskToBool(grbit, 0x80);
-            reserved2 = Utils.BitmaskToByte(grbit, 0xFF00);
+            this.fHidden = Utils.BitmaskToBool(this.grbit, 0x01);
+            this.fIconic = Utils.BitmaskToBool(this.grbit, 0x02);
+            this.reserved0 = Utils.BitmaskToBool(this.grbit, 0x04);
+            this.fDspHScroll = Utils.BitmaskToBool(this.grbit, 0x08);
+            this.fDspVScroll = Utils.BitmaskToBool(this.grbit, 0x10);
+            this.fBotAdornment = Utils.BitmaskToBool(this.grbit, 0x20);
+            this.fNoAFDateGroup = Utils.BitmaskToBool(this.grbit, 0x40);
+            this.reserved1 = Utils.BitmaskToBool(this.grbit, 0x80);
+            this.reserved2 = Utils.BitmaskToByte(this.grbit, 0xFF00);
 
-            itabCur = reader.ReadUInt16();
-            itabFirst = reader.ReadUInt16();
-            ctabSel = reader.ReadUInt16();
-            wTabRatio = reader.ReadUInt16();
+            this.itabCur = reader.ReadUInt16();
+            this.itabFirst = reader.ReadUInt16();
+            this.ctabSel = reader.ReadUInt16();
+            this.wTabRatio = reader.ReadUInt16();
             
             // assert that the correct number of bytes has been read from the stream
             Debug.Assert(this.Offset + this.Length == this.Reader.BaseStream.Position); 

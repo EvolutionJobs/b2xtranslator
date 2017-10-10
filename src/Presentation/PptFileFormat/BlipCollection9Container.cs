@@ -29,9 +29,9 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
             if (rec is BitmapBlip)
             {
-                blip = (BitmapBlip)rec;
+                this.blip = (BitmapBlip)rec;
             } else if (rec is MetafilePictBlip) {
-                mblip = (MetafilePictBlip)rec;
+                this.mblip = (MetafilePictBlip)rec;
             }
         }
     }
@@ -45,36 +45,36 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public StyleTextProp9Atom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            while (Reader.BaseStream.Position < Reader.BaseStream.Length)
+            while (this.Reader.BaseStream.Position < this.Reader.BaseStream.Length)
             {
                 try
                 {
                     var pr = new ParagraphRun9();
-                    var pmask = (ParagraphMask)Reader.ReadUInt32();
+                    var pmask = (ParagraphMask)this.Reader.ReadUInt32();
                     pr.mask = pmask;
                     if ((pmask & ParagraphMask.BulletBlip) != 0)
                     {
-                        int bulletblipref = Reader.ReadInt16();
+                        int bulletblipref = this.Reader.ReadInt16();
                         pr.bulletblipref = bulletblipref;
                     }
                     if ((pmask & ParagraphMask.BulletHasScheme) != 0)
                     {
-                        pr.fBulletHasAutoNumber = Reader.ReadInt16();
+                        pr.fBulletHasAutoNumber = this.Reader.ReadInt16();
                     }
                     if ((pmask & ParagraphMask.BulletScheme) != 0)
                     {
-                        pr.bulletAutoNumberScheme = Reader.ReadInt16();
-                        pr.startAt = Reader.ReadInt16(); //start value
+                        pr.bulletAutoNumberScheme = this.Reader.ReadInt16();
+                        pr.startAt = this.Reader.ReadInt16(); //start value
                     }
-                    P9Runs.Add(pr);
+                    this.P9Runs.Add(pr);
 
-                    var cmask = (CharacterMask)Reader.ReadUInt32();
+                    var cmask = (CharacterMask)this.Reader.ReadUInt32();
                     if ((cmask & CharacterMask.pp11ext) != 0)
                     {
-                        var rest = Reader.ReadBytes(4);
+                        var rest = this.Reader.ReadBytes(4);
                     }
 
-                    si = new TextSIException(Reader);
+                    this.si = new TextSIException(this.Reader);
                 }
                 catch (Exception)
                 {

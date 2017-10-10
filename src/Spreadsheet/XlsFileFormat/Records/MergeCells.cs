@@ -76,7 +76,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             this.cmcs = this.Reader.ReadUInt16();
 
-            for (int i = 0; i < cmcs; i++)
+            for (int i = 0; i < this.cmcs; i++)
             {
                 var mcd = new MergeCellData();
                 mcd.rwFirst = this.Reader.ReadUInt16();

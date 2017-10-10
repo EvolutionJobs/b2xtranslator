@@ -35,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public SolverContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                foreach (var item in Children)
+                foreach (var item in this.Children)
                 {
                     switch (item.TypeCode)
                     {
@@ -60,12 +60,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public FConnectorRule(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                ruid = this.Reader.ReadUInt32();
-                spidA = this.Reader.ReadUInt32();
-                spidB = this.Reader.ReadUInt32();
-                spidC = this.Reader.ReadUInt32();
-                cptiA = this.Reader.ReadUInt32();
-                cptiB = this.Reader.ReadUInt32();
+            this.ruid = this.Reader.ReadUInt32();
+            this.spidA = this.Reader.ReadUInt32();
+            this.spidB = this.Reader.ReadUInt32();
+            this.spidC = this.Reader.ReadUInt32();
+            this.cptiA = this.Reader.ReadUInt32();
+            this.cptiB = this.Reader.ReadUInt32();
         }
     }
 
@@ -78,8 +78,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public FArcRule(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                ruid = this.Reader.ReadUInt32();
-                spid = this.Reader.ReadUInt32();
+            this.ruid = this.Reader.ReadUInt32();
+            this.spid = this.Reader.ReadUInt32();
         }
     }
 
@@ -91,9 +91,9 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public FCalloutRule(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
-                
-                ruid = this.Reader.ReadUInt32();
-                spid = this.Reader.ReadUInt32();
+
+            this.ruid = this.Reader.ReadUInt32();
+            this.spid = this.Reader.ReadUInt32();
         }
     }
 

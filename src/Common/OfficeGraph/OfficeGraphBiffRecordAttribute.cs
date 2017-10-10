@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
 
         public GraphRecordNumber[] TypeCodes
         {
-            get { return _typeCodes; }
+            get { return this._typeCodes; }
         }
 
         private GraphRecordNumber[] _typeCodes = new GraphRecordNumber[0];

@@ -45,14 +45,14 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public OleObjectMapping(XmlWriter writer, WordDocument doc, ContentPart targetPart, PictureDescriptor pict)
             : base(writer)
         {
-            _targetPart = targetPart;
-            _doc = doc;
-            _pict = pict;
+            this._targetPart = targetPart;
+            this._doc = doc;
+            this._pict = pict;
         }
 
         public void Apply(OleObject ole)
         {
-            _writer.WriteStartElement("o", "OLEObject", OpenXmlNamespaces.Office);
+            this._writer.WriteStartElement("o", "OLEObject", OpenXmlNamespaces.Office);
 
             EmbeddedObjectPart.ObjectType type;
             if (ole.ClipboardFormat == "Biff8")
@@ -76,34 +76,34 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             if (ole.fLinked)
             {
                 var link = new Uri(ole.Link);
-                var rel = _targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.OleObject, link);
-                _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, rel.Id);
-                _writer.WriteAttributeString("Type", "Link");
-                _writer.WriteAttributeString("UpdateMode", ole.UpdateMode.ToString());
+                var rel = this._targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.OleObject, link);
+                this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, rel.Id);
+                this._writer.WriteAttributeString("Type", "Link");
+                this._writer.WriteAttributeString("UpdateMode", ole.UpdateMode.ToString());
             }
             else
             {
-                var part = _targetPart.AddEmbeddedObjectPart(type);
-                _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, part.RelIdToString);
-                _writer.WriteAttributeString("Type", "Embed");
+                var part = this._targetPart.AddEmbeddedObjectPart(type);
+                this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, part.RelIdToString);
+                this._writer.WriteAttributeString("Type", "Embed");
 
                 //copy the object
                 copyEmbeddedObject(ole, part);
             }
 
             //ProgID
-            _writer.WriteAttributeString("ProgID", ole.Program);
+            this._writer.WriteAttributeString("ProgID", ole.Program);
 
             //ShapeId
-            _writer.WriteAttributeString("ShapeID", _pict.ShapeContainer.GetHashCode().ToString());
+            this._writer.WriteAttributeString("ShapeID", this._pict.ShapeContainer.GetHashCode().ToString());
 
             //DrawAspect
-            _writer.WriteAttributeString("DrawAspect", "Content");
+            this._writer.WriteAttributeString("DrawAspect", "Content");
 
             //ObjectID
-            _writer.WriteAttributeString("ObjectID", ole.ObjectId);
+            this._writer.WriteAttributeString("ObjectID", ole.ObjectId);
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
 
 

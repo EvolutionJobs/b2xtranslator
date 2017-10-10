@@ -48,11 +48,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// <param name="length">The recordlegth</param>
         public OfficeGraphBiffRecord(IStreamReader reader, GraphRecordNumber id, uint length)
         {
-            _reader = reader;
-            _offset = _reader.BaseStream.Position;
+            this._reader = reader;
+            this._offset = this._reader.BaseStream.Position;
 
-            _id = id;
-            _length = length;
+            this._id = id;
+            this._length = length;
         }
 
         private static Dictionary<ushort, Type> TypeToRecordClassMapping = new Dictionary<ushort, Type>();
@@ -148,23 +148,23 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
 
         public GraphRecordNumber Id
         {
-            get { return _id; }
+            get { return this._id; }
         }
 
         public uint Length
         {
-            get { return _length; }
+            get { return this._length; }
         }
 
         public long Offset
         {
-            get { return _offset; }
+            get { return this._offset; }
         }
 
         IStreamReader _reader;
         public IStreamReader Reader
         {
-            get { return _reader; }
+            get { return this._reader; }
             set { this._reader = value; }
         }
     }

@@ -26,11 +26,11 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         {
             get
             {
-                if(_vbaDataPart == null)
+                if(this._vbaDataPart == null)
                 {
-                    _vbaDataPart = this.AddPart(new VbaDataPart(this));
+                    this._vbaDataPart = this.AddPart(new VbaDataPart(this));
                 }
-                return _vbaDataPart;
+                return this._vbaDataPart;
             }
             
         }

@@ -40,14 +40,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         uint _sid;
         public uint Sid
         {
-            get { return _sid; }
-            internal set { _sid = value; }
+            get { return this._sid; }
+            internal set { this._sid = value; }
         }
 
         protected string _path;
         public string Path
         {
-            get { return _path + Name; }
+            get { return this._path + this.Name; }
         }
 
 
@@ -55,10 +55,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         protected string _name;
         public string Name
         {
-            get { return MaskingHandler.Mask(_name); }
+            get { return MaskingHandler.Mask(this._name); }
             protected set {
-                _name = value;
-                if (_name.Length >= 32)
+                this._name = value;
+                if (this._name.Length >= 32)
                 {
                     throw new InvalidValueInDirectoryEntryException("_ab");                    
                 }
@@ -70,15 +70,15 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         {
             get
             {
-                if (_name.Length == 0)
+                if (this._name.Length == 0)
                 {
-                    _lengthOfName = 0;
+                    this._lengthOfName = 0;
                     return 0;
                 }
 
                 // length of name in bytes including unicode 0;
-                _lengthOfName = (ushort)((_name.Length + 1)*2);              
-                return _lengthOfName;
+                this._lengthOfName = (ushort)((this._name.Length + 1)*2);              
+                return this._lengthOfName;
             }
         }
 
@@ -88,14 +88,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         DirectoryEntryType _type;
         public DirectoryEntryType Type
         {
-            get { return _type; }
+            get { return this._type; }
             protected set
             {
                 if ((int)value < 0 || (int)value > 5)
                 {
                     throw new InvalidValueInDirectoryEntryException("_mse");
                 }
-                _type = value;
+                this._type = value;
             }
         }
 
@@ -104,14 +104,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         DirectoryEntryColor _color;
         public DirectoryEntryColor Color
         {
-            get { return _color; }
+            get { return this._color; }
             internal set
             {
                 if ((int)value < 0 || (int)value > 1)
                 {
                     throw new InvalidValueInDirectoryEntryException("_bflags");
                 }
-                _color = value;
+                this._color = value;
             }
         }
 
@@ -120,8 +120,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         uint _leftSiblingSid;
         public uint LeftSiblingSid
         {
-            get { return _leftSiblingSid; }
-            internal set { _leftSiblingSid = value; }
+            get { return this._leftSiblingSid; }
+            internal set { this._leftSiblingSid = value; }
         }
 
 
@@ -129,8 +129,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         uint _rightSiblingSid;
         public uint RightSiblingSid
         {
-            get { return _rightSiblingSid; }
-            internal set { _rightSiblingSid = value; }
+            get { return this._rightSiblingSid; }
+            internal set { this._rightSiblingSid = value; }
         }
 
 
@@ -138,8 +138,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         uint _childSiblingSid;
         public uint ChildSiblingSid
         {
-            get { return _childSiblingSid; }
-            protected set { _childSiblingSid = value; }
+            get { return this._childSiblingSid; }
+            protected set { this._childSiblingSid = value; }
         }
 
 
@@ -147,8 +147,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         Guid _clsId;
         public Guid ClsId
         {
-            get { return _clsId; }
-            protected set { _clsId = value; }
+            get { return this._clsId; }
+            protected set { this._clsId = value; }
         }
 
 
@@ -156,8 +156,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         uint _userFlags;
         public uint UserFlags
         {
-            get { return _userFlags; }
-            protected set { _userFlags = value; }
+            get { return this._userFlags; }
+            protected set { this._userFlags = value; }
         }
 
 
@@ -165,17 +165,17 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         uint _startSector;
         public uint StartSector
         {
-            get { return _startSector; }
-            protected set { _startSector = value; }
+            get { return this._startSector; }
+            protected set { this._startSector = value; }
         }
 
 
         // Size of stream in bytes
-        UInt64 _sizeOfStream;
-        public UInt64 SizeOfStream
+        ulong _sizeOfStream;
+        public ulong SizeOfStream
         {
-            get { return _sizeOfStream; }
-            protected set { _sizeOfStream = value; }
+            get { return this._sizeOfStream; }
+            protected set { this._sizeOfStream = value; }
         }
 
         internal AbstractDirectoryEntry() : this(0x0)
@@ -183,7 +183,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
         internal AbstractDirectoryEntry(uint sid)
         {
-            _sid = sid;
+            this._sid = sid;
         }
     }
 }

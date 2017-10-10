@@ -92,38 +92,38 @@ namespace DIaLOGIKa.b2xtranslator.OlePropertySet
 
             //read data
             if(
-                Type == PropertyType.SignedInt16 ||
-                Type == PropertyType.UnsignedInt16
+                this.Type == PropertyType.SignedInt16 ||
+                this.Type == PropertyType.UnsignedInt16
                 )
             {
                 // 2 bytes data
                 this.Data = stream.ReadBytes(2);
             }
             else if (
-                Type == PropertyType.SignedInt32 ||
-                Type == PropertyType.UnsignedInt32 ||
-                Type == PropertyType.FloatingPoint32 ||
-                Type == PropertyType.NewSignedInt32 ||
-                Type == PropertyType.NewUnsignedInt32 ||
-                Type == PropertyType.HResult ||
-                Type == PropertyType.Boolean)
+                this.Type == PropertyType.SignedInt32 ||
+                this.Type == PropertyType.UnsignedInt32 ||
+                this.Type == PropertyType.FloatingPoint32 ||
+                this.Type == PropertyType.NewSignedInt32 ||
+                this.Type == PropertyType.NewUnsignedInt32 ||
+                this.Type == PropertyType.HResult ||
+                this.Type == PropertyType.Boolean)
             {
                 // 4 bytes data
                 this.Data = stream.ReadBytes(4);
             }
             else if(
-                Type == PropertyType.FloatingPoint64 ||
-                Type == PropertyType.SignedInt64 ||
-                Type == PropertyType.UsignedInt64 ||
-                Type == PropertyType.Currency ||
-                Type == PropertyType.Date
+                this.Type == PropertyType.FloatingPoint64 ||
+                this.Type == PropertyType.SignedInt64 ||
+                this.Type == PropertyType.UsignedInt64 ||
+                this.Type == PropertyType.Currency ||
+                this.Type == PropertyType.Date
                 )
             {
                 // 8 bytes data
                 this.Data = stream.ReadBytes(8);
             }
             else if (
-                Type == PropertyType.Decimal
+                this.Type == PropertyType.Decimal
                 )
             {
                 // 16 bytes data

@@ -95,7 +95,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 int j=0;
                 for (int i = 24; i <= 88; i += 2)
                 {
-                    rgxch[j] = Convert.ToChar(BitConverter.ToInt16(bytes, i));
+                    this.rgxch[j] = Convert.ToChar(BitConverter.ToInt16(bytes, i));
                     j++;
                 }
             }

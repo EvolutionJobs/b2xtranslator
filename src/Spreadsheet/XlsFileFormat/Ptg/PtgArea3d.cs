@@ -58,13 +58,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
             this.colFirst = this.Reader.ReadUInt16();
             this.colLast = this.Reader.ReadUInt16();
 
-            this.colFirstRelative = Utils.BitmaskToBool(colFirst, 0x4000);
-            this.rwFirstRelative = Utils.BitmaskToBool(colFirst, 0x8000);
-            this.colLastRelative = Utils.BitmaskToBool(colLast, 0x4000);
-            this.rwLastRelative = Utils.BitmaskToBool(colLast, 0x8000);
+            this.colFirstRelative = Utils.BitmaskToBool(this.colFirst, 0x4000);
+            this.rwFirstRelative = Utils.BitmaskToBool(this.colFirst, 0x8000);
+            this.colLastRelative = Utils.BitmaskToBool(this.colLast, 0x4000);
+            this.rwLastRelative = Utils.BitmaskToBool(this.colLast, 0x8000);
 
-            colFirst = (ushort)(colFirst & 0x3FFF);
-            colLast = (ushort)(colLast & 0x3FFF);
+            this.colFirst = (ushort)(this.colFirst & 0x3FFF);
+            this.colLast = (ushort)(this.colLast & 0x3FFF);
 
             this.type = PtgType.Operand;
             this.popSize = 1;

@@ -35,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     {
         public Slide(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
-                foreach (var rec in Children)
+                foreach (var rec in this.Children)
                 {
                     switch (rec.TypeCode)
                     {

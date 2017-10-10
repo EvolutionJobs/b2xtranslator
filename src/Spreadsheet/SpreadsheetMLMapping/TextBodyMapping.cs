@@ -48,19 +48,19 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public void Apply(AttachedLabelSequence attachedLabelSequence)
         {
             // c:txPr
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElTxPr, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElTxPr, Dml.Chart.Ns);
             {
                 // a:bodyPr (is empty for legends)
-                _writer.WriteElementString(Dml.Prefix, Dml.Text.ElBodyPr, Dml.Ns, string.Empty);
+                this._writer.WriteElementString(Dml.Prefix, Dml.Text.ElBodyPr, Dml.Ns, string.Empty);
 
                 // a:lstStyle (is empty for legends)
-                _writer.WriteElementString(Dml.Prefix, Dml.Text.ElLstStyle, Dml.Ns, string.Empty);
+                this._writer.WriteElementString(Dml.Prefix, Dml.Text.ElLstStyle, Dml.Ns, string.Empty);
 
                 // a:p
-                _writer.WriteStartElement(Dml.Prefix, Dml.Text.ElP, Dml.Ns);
+                this._writer.WriteStartElement(Dml.Prefix, Dml.Text.ElP, Dml.Ns);
                 {
                     // a:pPr
-                    _writer.WriteStartElement(Dml.Prefix, Dml.Text.ElPPr, Dml.Ns);
+                    this._writer.WriteStartElement(Dml.Prefix, Dml.Text.ElPPr, Dml.Ns);
                     {
                         int fontIndex = 0;
 
@@ -72,23 +72,23 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         var fontData = this.WorkbookContext.XlsDoc.WorkBookData.styleData.FontDataList[fontIndex];
 
                         // a:defRPr
-                        _writer.WriteStartElement(Dml.Prefix, Dml.TextParagraph.ElDefRPr, Dml.Ns);
+                        this._writer.WriteStartElement(Dml.Prefix, Dml.TextParagraph.ElDefRPr, Dml.Ns);
 
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrKumimoji, );
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrLang,  );
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrAltLang,  );
-                        _writer.WriteAttributeString(Dml.TextCharacter.AttrSz, (fontData.size.ToPoints() * 100).ToString(CultureInfo.InvariantCulture));
-                        _writer.WriteAttributeString(Dml.TextCharacter.AttrB, fontData.isBold ? "1" : "0");
-                        _writer.WriteAttributeString(Dml.TextCharacter.AttrI, fontData.isItalic ? "1" : "0");
-                        _writer.WriteAttributeString(Dml.TextCharacter.AttrU, mapUnderlineStyle(fontData.uStyle));
-                        _writer.WriteAttributeString(Dml.TextCharacter.AttrStrike, fontData.isStrike ? "sngStrike" : "noStrike");
+                        this._writer.WriteAttributeString(Dml.TextCharacter.AttrSz, (fontData.size.ToPoints() * 100).ToString(CultureInfo.InvariantCulture));
+                        this._writer.WriteAttributeString(Dml.TextCharacter.AttrB, fontData.isBold ? "1" : "0");
+                        this._writer.WriteAttributeString(Dml.TextCharacter.AttrI, fontData.isItalic ? "1" : "0");
+                        this._writer.WriteAttributeString(Dml.TextCharacter.AttrU, mapUnderlineStyle(fontData.uStyle));
+                        this._writer.WriteAttributeString(Dml.TextCharacter.AttrStrike, fontData.isStrike ? "sngStrike" : "noStrike");
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrKern,  );
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrCap,  );
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrSpc,  );
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrNormalizeH,  );
                         if (fontData.vertAlign != SuperSubScriptStyle.none)
                         {
-                            _writer.WriteAttributeString(Dml.TextCharacter.AttrBaseline, fontData.vertAlign == SuperSubScriptStyle.superscript ? "30000" : "-25000");
+                            this._writer.WriteAttributeString(Dml.TextCharacter.AttrBaseline, fontData.vertAlign == SuperSubScriptStyle.superscript ? "30000" : "-25000");
                         }
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrNoProof,  );
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrDirty,  );
@@ -98,27 +98,27 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         //_writer.WriteAttributeString(Dml.TextCharacter.AttrBmk,  );
                         {
                             // a:latin
-                            _writer.WriteStartElement(Dml.Prefix, Dml.TextCharacter.ElLatin, Dml.Ns);
-                            _writer.WriteAttributeString(Dml.TextCharacter.AttrTypeface, fontData.fontName);
-                            _writer.WriteEndElement(); // a:latin
+                            this._writer.WriteStartElement(Dml.Prefix, Dml.TextCharacter.ElLatin, Dml.Ns);
+                            this._writer.WriteAttributeString(Dml.TextCharacter.AttrTypeface, fontData.fontName);
+                            this._writer.WriteEndElement(); // a:latin
 
                             // a:ea
-                            _writer.WriteStartElement(Dml.Prefix, Dml.TextCharacter.ElEa, Dml.Ns);
-                            _writer.WriteAttributeString(Dml.TextCharacter.AttrTypeface, fontData.fontName);
-                            _writer.WriteEndElement(); // a:ea
+                            this._writer.WriteStartElement(Dml.Prefix, Dml.TextCharacter.ElEa, Dml.Ns);
+                            this._writer.WriteAttributeString(Dml.TextCharacter.AttrTypeface, fontData.fontName);
+                            this._writer.WriteEndElement(); // a:ea
 
                             // a:cs
-                            _writer.WriteStartElement(Dml.Prefix, Dml.TextCharacter.ElCs, Dml.Ns);
-                            _writer.WriteAttributeString(Dml.TextCharacter.AttrTypeface, fontData.fontName);
-                            _writer.WriteEndElement(); // a:cs
+                            this._writer.WriteStartElement(Dml.Prefix, Dml.TextCharacter.ElCs, Dml.Ns);
+                            this._writer.WriteAttributeString(Dml.TextCharacter.AttrTypeface, fontData.fontName);
+                            this._writer.WriteEndElement(); // a:cs
                         }
-                        _writer.WriteEndElement(); // a:defRPr
+                        this._writer.WriteEndElement(); // a:defRPr
                     }
-                    _writer.WriteEndElement(); // a:pPr
+                    this._writer.WriteEndElement(); // a:pPr
                 }
-                _writer.WriteEndElement(); // a:p
+                this._writer.WriteEndElement(); // a:p
             }
-            _writer.WriteEndElement(); // c:txPr
+            this._writer.WriteEndElement(); // c:txPr
         }
         #endregion
 

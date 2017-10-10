@@ -49,9 +49,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="context">The current context.</param>
         internal StreamDirectoryEntry(string name, Stream stream, StructuredStorageContext context)
             : base(name, context)
-        {               
-            _stream = stream;
-            Type = DirectoryEntryType.STGTY_STREAM;
+        {
+            this._stream = stream;
+            this.Type = DirectoryEntryType.STGTY_STREAM;
         }
 
 
@@ -61,13 +61,13 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         internal override void writeReferencedStream()
         {
             VirtualStream vStream = null;
-            if (_stream.Length < Context.Header.MiniSectorCutoff)
+            if (this._stream.Length < this.Context.Header.MiniSectorCutoff)
             {
-                vStream = new VirtualStream(_stream, Context.MiniFat, Context.Header.MiniSectorSize, Context.RootDirectoryEntry.MiniStream);
+                vStream = new VirtualStream(this._stream, this.Context.MiniFat, this.Context.Header.MiniSectorSize, this.Context.RootDirectoryEntry.MiniStream);
             }
             else
             {
-                vStream = new VirtualStream(_stream, Context.Fat, Context.Header.SectorSize, Context.TempOutputStream);
+                vStream = new VirtualStream(this._stream, this.Context.Fat, this.Context.Header.SectorSize, this.Context.TempOutputStream);
             }
             vStream.write();
             this.StartSector = vStream.StartSector;

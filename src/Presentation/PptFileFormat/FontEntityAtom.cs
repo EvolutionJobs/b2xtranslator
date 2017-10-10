@@ -41,8 +41,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         {
                         
             var facename = this.Reader.ReadBytes(64);
-            TypeFace = Encoding.Unicode.GetString(facename);
-            TypeFace = TypeFace.Substring(0, TypeFace.IndexOf("\0"));
+            this.TypeFace = Encoding.Unicode.GetString(facename);
+            this.TypeFace = this.TypeFace.Substring(0, this.TypeFace.IndexOf("\0"));
 
             //TODO: read other flags
 

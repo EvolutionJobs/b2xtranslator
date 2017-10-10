@@ -37,38 +37,38 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
         protected List<FormatData> formatDataList;
         public List<FormatData> FormatDataList
         {
-            get{ return formatDataList; }
+            get{ return this.formatDataList; }
         }
 
         protected List<XFData> xfCellDataList;
         public List<XFData> XFCellDataList
         {
-            get { return xfCellDataList; }
+            get { return this.xfCellDataList; }
         }
 
         protected List<XFData> xfCellStyleDataList;
         public List<XFData> XFCellStyleDataList
         {
-            get { return xfCellStyleDataList; }
+            get { return this.xfCellStyleDataList; }
         }
 
         protected List<Style> styleList;
         public List<Style> StyleList
         {
-            get { return styleList; }
+            get { return this.styleList; }
         }
 
         private List<FillData> fillDataList;
         public List<FillData> FillDataList
         {
-            get { return fillDataList; }
-            set { fillDataList = value; }
+            get { return this.fillDataList; }
+            set { this.fillDataList = value; }
         }
 
         private List<FontData> fontDataList;
         public List<FontData> FontDataList
         {
-            get { return fontDataList; }
+            get { return this.fontDataList; }
         }
 
         private List<BorderData> borderDataList;

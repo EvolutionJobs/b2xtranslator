@@ -23,8 +23,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public MouseClickTextInteractiveInfoAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            begin = this.Reader.ReadInt32();
-            end = this.Reader.ReadInt32();
+            this.begin = this.Reader.ReadInt32();
+            this.end = this.Reader.ReadInt32();
         }
     }
 
@@ -47,18 +47,18 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public InteractiveInfoAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            SoundIdRef = this.Reader.ReadUInt32();
-            exHyperlinkIdRef = this.Reader.ReadUInt32();
+            this.SoundIdRef = this.Reader.ReadUInt32();
+            this.exHyperlinkIdRef = this.Reader.ReadUInt32();
 
-            action = (InteractiveInfoActionEnum)this.Reader.ReadByte();
-            oleVerb = this.Reader.ReadByte();
-            jump = this.Reader.ReadByte();
+            this.action = (InteractiveInfoActionEnum)this.Reader.ReadByte();
+            this.oleVerb = this.Reader.ReadByte();
+            this.jump = this.Reader.ReadByte();
 
             byte mask = this.Reader.ReadByte();
-            fAnimated = ((mask & (1)) != 0);
-            fStopSound = ((mask & (1 << 1)) != 0);
-            fCustomShowReturn = ((mask & (1 << 2)) != 0);
-            fVisited = ((mask & (1 << 3)) != 0);
+            this.fAnimated = ((mask & (1)) != 0);
+            this.fStopSound = ((mask & (1 << 1)) != 0);
+            this.fCustomShowReturn = ((mask & (1 << 2)) != 0);
+            this.fVisited = ((mask & (1 << 3)) != 0);
         }       
     }
 

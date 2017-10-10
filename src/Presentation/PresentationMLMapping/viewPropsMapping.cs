@@ -40,18 +40,18 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public viewPropsMapping(ViewPropertiesPart viewPart, XmlWriterSettings xws, ConversionContext ctx)
             : base(XmlWriter.Create(viewPart.GetStream(), xws))
         {
-            _ctx = ctx;
+            this._ctx = ctx;
         }
 
         public void Apply(IVisitable x)
         {
             // Start the document
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("p", "viewPr", OpenXmlNamespaces.PresentationML);
-                               
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("p", "viewPr", OpenXmlNamespaces.PresentationML);
+
             // Force declaration of these namespaces at document start
-            _writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
+            this._writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
 
 
             //_writer.WriteStartElement("p", "normalViewPr", OpenXmlNamespaces.PresentationML);
@@ -66,37 +66,37 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
 
             //NormalViewSetInfoAtom a = _ctx.Ppt.DocumentRecord.DocInfoListContainer.FirstChildWithType<NormalViewSetInfoContainer>().FirstChildWithType<NormalViewSetInfoAtom>();
-            var z = _ctx.Ppt.DocumentRecord.DocInfoListContainer.FirstChildWithType<SlideViewInfoContainer>().FirstChildWithType<ZoomViewInfoAtom>();
+            var z = this._ctx.Ppt.DocumentRecord.DocInfoListContainer.FirstChildWithType<SlideViewInfoContainer>().FirstChildWithType<ZoomViewInfoAtom>();
 
-            _writer.WriteStartElement("p", "slideViewPr", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("p", "cSldViewPr", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("p", "cViewPr", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("p", "scale", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("a", "sx", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("n", z.curScale.x.numer.ToString());
-            _writer.WriteAttributeString("d", z.curScale.x.denom.ToString());
-            _writer.WriteEndElement(); //sx
-            _writer.WriteStartElement("a", "sy", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("n", z.curScale.y.numer.ToString());
-            _writer.WriteAttributeString("d", z.curScale.y.denom.ToString());
-            _writer.WriteEndElement(); //sy
-            _writer.WriteEndElement(); //scale
-            _writer.WriteStartElement("p", "origin", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("x", z.origin.x.ToString());
-            _writer.WriteAttributeString("y", z.origin.y.ToString());
-            _writer.WriteEndElement(); //origin
-            _writer.WriteEndElement(); //cViewPr
-            _writer.WriteStartElement("p", "guideLst", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("p", "guide", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("orient", "horz");
-            _writer.WriteAttributeString("pos", "2160");
-            _writer.WriteEndElement(); //guide
-            _writer.WriteStartElement("p", "guide", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("pos", "2880");
-            _writer.WriteEndElement(); //guide
-            _writer.WriteEndElement(); //guideLst
-            _writer.WriteEndElement(); //cSldViewPr
-            _writer.WriteEndElement(); //slideViewPr
+            this._writer.WriteStartElement("p", "slideViewPr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cSldViewPr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cViewPr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "scale", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("a", "sx", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("n", z.curScale.x.numer.ToString());
+            this._writer.WriteAttributeString("d", z.curScale.x.denom.ToString());
+            this._writer.WriteEndElement(); //sx
+            this._writer.WriteStartElement("a", "sy", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("n", z.curScale.y.numer.ToString());
+            this._writer.WriteAttributeString("d", z.curScale.y.denom.ToString());
+            this._writer.WriteEndElement(); //sy
+            this._writer.WriteEndElement(); //scale
+            this._writer.WriteStartElement("p", "origin", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("x", z.origin.x.ToString());
+            this._writer.WriteAttributeString("y", z.origin.y.ToString());
+            this._writer.WriteEndElement(); //origin
+            this._writer.WriteEndElement(); //cViewPr
+            this._writer.WriteStartElement("p", "guideLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "guide", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("orient", "horz");
+            this._writer.WriteAttributeString("pos", "2160");
+            this._writer.WriteEndElement(); //guide
+            this._writer.WriteStartElement("p", "guide", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("pos", "2880");
+            this._writer.WriteEndElement(); //guide
+            this._writer.WriteEndElement(); //guideLst
+            this._writer.WriteEndElement(); //cSldViewPr
+            this._writer.WriteEndElement(); //slideViewPr
 
             //_writer.WriteStartElement("p", "notesTextViewPr", OpenXmlNamespaces.PresentationML);
             //_writer.WriteStartElement("p", "cViewPr", OpenXmlNamespaces.PresentationML);
@@ -122,11 +122,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             //_writer.WriteAttributeString("cy", "73736200");
             //_writer.WriteEndElement(); //gridSpacing
 
-         
-            _writer.WriteEndElement(); //viewPr
-            _writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.WriteEndElement(); //viewPr
+            this._writer.WriteEndDocument();
+
+            this._writer.Flush();
         }        
     }
 }

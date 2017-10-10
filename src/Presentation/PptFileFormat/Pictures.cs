@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                     case 0xF01B:
                     case 0xF01C:
                         var mb = (MetafilePictBlip)r;
-                        _pictures.Add(pos, mb);
+                        this._pictures.Add(pos, mb);
                         break;
                     case 0xF01D:
                     case 0xF01E:
@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                     case 0xF020:
                     case 0xF021:
                         var b = (BitmapBlip)r;
-                        _pictures.Add(pos, b);
+                        this._pictures.Add(pos, b);
                         break;
                     default:
                         break;

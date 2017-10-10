@@ -9,7 +9,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public SlideHeadersFootersContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                foreach (var rec in Children)
+                foreach (var rec in this.Children)
                 {
                     
                 }
@@ -30,15 +30,15 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public HeadersFootersAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            formatId = this.Reader.ReadInt16();
+            this.formatId = this.Reader.ReadInt16();
 
             var mask = this.Reader.ReadInt16();
-            fHasDate = ((mask & (1)) != 0);
-            fHasTodayDate = ((mask & (1 << 1)) != 0);
-            fHasUserDate = ((mask & (1 << 2)) != 0);
-            fHasSlideNumber = ((mask & (1 << 3)) != 0);
-            fHasHeader = ((mask & (1 << 4)) != 0);
-            fHasFooter = ((mask & (1 << 5)) != 0);
+            this.fHasDate = ((mask & (1)) != 0);
+            this.fHasTodayDate = ((mask & (1 << 1)) != 0);
+            this.fHasUserDate = ((mask & (1 << 2)) != 0);
+            this.fHasSlideNumber = ((mask & (1 << 3)) != 0);
+            this.fHasHeader = ((mask & (1 << 4)) != 0);
+            this.fHasFooter = ((mask & (1 << 5)) != 0);
         }       
     }
 

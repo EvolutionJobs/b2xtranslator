@@ -50,10 +50,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="context">the current context</param>
         internal Header(StructuredStorageContext context)
         {
-            _ioHandler = new OutputHandler(new MemoryStream());
-            _ioHandler.SetHeaderReference(this);
-            _ioHandler.InitBitConverter(true);
-            _context = context;
+            this._ioHandler = new OutputHandler(new MemoryStream());
+            this._ioHandler.SetHeaderReference(this);
+            this._ioHandler.InitBitConverter(true);
+            this._context = context;
             setHeaderDefaults();
         }
 
@@ -62,10 +62,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         void setHeaderDefaults()
         {
-            MiniSectorShift = 6;
-            SectorShift = 9;
-            NoSectorsInDirectoryChain4KB = 0;
-            MiniSectorCutoff = 4096;
+            this.MiniSectorShift = 6;
+            this.SectorShift = 9;
+            this.NoSectorsInDirectoryChain4KB = 0;
+            this.MiniSectorCutoff = 4096;
         }
 
 
@@ -75,14 +75,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="sector"></param>
         internal void writeNextDiFatSector(uint sector)
         {
-            if (_diFatSectorCount >= 109)
+            if (this._diFatSectorCount >= 109)
             {
                 throw new DiFatInconsistentException();
             }
 
-            _diFatSectors.AddRange(_context.InternalBitConverter.getBytes(sector));
+            this._diFatSectors.AddRange(this._context.InternalBitConverter.getBytes(sector));
 
-            _diFatSectorCount++;
+            this._diFatSectorCount++;
         }
 
 
@@ -91,7 +91,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         internal void write()
         {
-            var outputHandler = ((OutputHandler)_ioHandler);
+            var outputHandler = ((OutputHandler)this._ioHandler);
 
             // Magic number
             outputHandler.write(BitConverter.GetBytes(MAGIC_NUMBER));
@@ -108,33 +108,33 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             // Byte ordering: little Endian
             outputHandler.writeUInt16(0xFFFE);
 
-            outputHandler.writeUInt16(SectorShift);
-            outputHandler.writeUInt16(MiniSectorShift);
+            outputHandler.writeUInt16(this.SectorShift);
+            outputHandler.writeUInt16(this.MiniSectorShift);
 
             // reserved
             outputHandler.writeUInt16(0x0);
             outputHandler.writeUInt32(0x0);
 
             // cSectDir: 0x0 for 512 KB 
-            outputHandler.writeUInt32(NoSectorsInDirectoryChain4KB);
+            outputHandler.writeUInt32(this.NoSectorsInDirectoryChain4KB);
 
-            outputHandler.writeUInt32(NoSectorsInFatChain);
-            outputHandler.writeUInt32(DirectoryStartSector);
+            outputHandler.writeUInt32(this.NoSectorsInFatChain);
+            outputHandler.writeUInt32(this.DirectoryStartSector);
 
             // reserved
             outputHandler.writeUInt32(0x0);
 
-            outputHandler.writeUInt32(MiniSectorCutoff);
-            outputHandler.writeUInt32(MiniFatStartSector);
-            outputHandler.writeUInt32(NoSectorsInMiniFatChain);
-            outputHandler.writeUInt32(DiFatStartSector);
-            outputHandler.writeUInt32(NoSectorsInDiFatChain);
+            outputHandler.writeUInt32(this.MiniSectorCutoff);
+            outputHandler.writeUInt32(this.MiniFatStartSector);
+            outputHandler.writeUInt32(this.NoSectorsInMiniFatChain);
+            outputHandler.writeUInt32(this.DiFatStartSector);
+            outputHandler.writeUInt32(this.NoSectorsInDiFatChain);
 
             // First 109 FAT Sectors
-            outputHandler.write(_diFatSectors.ToArray());
+            outputHandler.write(this._diFatSectors.ToArray());
 
             // Pad the rest
-            if (SectorSize == 4096)
+            if (this.SectorSize == 4096)
             {
                 outputHandler.write(new byte[4096 - 512]);
             }
@@ -147,7 +147,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="stream">The stream to which is written to.</param>
         internal void writeToStream(Stream stream)
         {
-            var outputHandler = ((OutputHandler)_ioHandler);
+            var outputHandler = ((OutputHandler)this._ioHandler);
             outputHandler.writeToStream(stream);
         }
 

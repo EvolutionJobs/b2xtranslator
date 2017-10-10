@@ -44,13 +44,13 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
         internal InternalBitConverter(bool isLittleEndian)
         {
-            _IsLittleEndian = isLittleEndian;
+            this._IsLittleEndian = isLittleEndian;
         }
 
 
-        internal UInt64 ToUInt64(byte[] value)
+        internal ulong ToUInt64(byte[] value)
         {
-            if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
+            if (BitConverter.IsLittleEndian ^ this._IsLittleEndian)
             {
                 Array.Reverse(value);
             }
@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
         internal uint ToUInt32(byte[] value)
         {
-            if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
+            if (BitConverter.IsLittleEndian ^ this._IsLittleEndian)
             {
                 Array.Reverse(value);
             }
@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
         internal ushort ToUInt16(byte[] value)
         {
-            if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
+            if (BitConverter.IsLittleEndian ^ this._IsLittleEndian)
             {
                 Array.Reverse(value);
             }
@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
         internal string ToString(byte[] value)
         {
-            if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
+            if (BitConverter.IsLittleEndian ^ this._IsLittleEndian)
             {
                 Array.Reverse(value);
             }
@@ -99,7 +99,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         {
             var result = BitConverter.GetBytes(value);
 
-            if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
+            if (BitConverter.IsLittleEndian ^ this._IsLittleEndian)
             {
                 Array.Reverse(result);
             }
@@ -111,7 +111,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         {
             var result = BitConverter.GetBytes(value);
 
-            if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
+            if (BitConverter.IsLittleEndian ^ this._IsLittleEndian)
             {
                 Array.Reverse(result);
             }
@@ -119,11 +119,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         }
 
 
-        internal byte[] getBytes(UInt64 value)
+        internal byte[] getBytes(ulong value)
         {
             var result = BitConverter.GetBytes(value);
 
-            if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
+            if (BitConverter.IsLittleEndian ^ this._IsLittleEndian)
             {
                 Array.Reverse(result);
             }

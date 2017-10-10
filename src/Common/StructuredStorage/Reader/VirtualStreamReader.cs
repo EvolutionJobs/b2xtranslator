@@ -61,7 +61,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// of bytes are not currently available, or zero if the end of the stream is reached.</returns>
         public int Read(byte[] buffer)
         {
-            return BaseStream.Read(buffer, 0, buffer.Length);
+            return this.BaseStream.Read(buffer, 0, buffer.Length);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// of bytes are not currently available, or zero if the end of the stream is reached.</returns>
         public int Read(byte[] buffer, int count)
         {
-            return BaseStream.Read(buffer, 0, count);
+            return this.BaseStream.Read(buffer, 0, count);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <exception cref="System.ArgumentOutOfRangeException">count is negative.</exception>
         public byte[] ReadBytes(long position, int count)
         {
-            BaseStream.Seek(position, SeekOrigin.Begin);
+            this.BaseStream.Seek(position, SeekOrigin.Begin);
             return ReadBytes(count);
         }
     }

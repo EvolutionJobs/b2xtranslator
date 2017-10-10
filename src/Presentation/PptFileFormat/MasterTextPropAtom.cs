@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                 MasterTextPropRun m;
                 m.count = this.Reader.ReadUInt32();
                 m.indentLevel = this.Reader.ReadUInt16();
-                MasterTextPropRuns.Add(m);
+                this.MasterTextPropRuns.Add(m);
             }
         }
        

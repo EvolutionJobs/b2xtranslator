@@ -8,29 +8,29 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public FootnotesMapping(ConversionContext ctx)
             : base(ctx, ctx.Docx.MainDocumentPart.FootnotesPart)
         {
-            _ctx = ctx;
+            this._ctx = ctx;
         }
 
         public override void Apply(WordDocument doc)
         {
-            _doc = doc;
+            this._doc = doc;
             int id = 0;
 
-            _writer.WriteStartElement("w", "footnotes", OpenXmlNamespaces.WordprocessingML);
+            this._writer.WriteStartElement("w", "footnotes", OpenXmlNamespaces.WordprocessingML);
 
             int cp = doc.FIB.ccpText;
             while (cp < (doc.FIB.ccpText + doc.FIB.ccpFtn - 2))
             {
-                _writer.WriteStartElement("w", "footnote", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "id", OpenXmlNamespaces.WordprocessingML, id.ToString());
+                this._writer.WriteStartElement("w", "footnote", OpenXmlNamespaces.WordprocessingML);
+                this._writer.WriteAttributeString("w", "id", OpenXmlNamespaces.WordprocessingML, id.ToString());
                 cp = writeParagraph(cp);
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
                 id++;
             }
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
-            _writer.Flush();
+            this._writer.Flush();
         }
     }
 

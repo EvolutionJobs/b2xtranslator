@@ -11,20 +11,20 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public FooterMapping(ConversionContext ctx, FooterPart part, CharacterRange ftr)
             : base(ctx, part)
         {
-            _ftr = ftr;
+            this._ftr = ftr;
         }
         
         public override void Apply(WordDocument doc)
         {
-            _doc = doc;
+            this._doc = doc;
 
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("w", "ftr", OpenXmlNamespaces.WordprocessingML);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("w", "ftr", OpenXmlNamespaces.WordprocessingML);
 
             //convert the footer text
-            _lastValidPapx = _doc.AllPapxFkps[0].grppapx[0];
-            int cp = _ftr.CharacterPosition;
-            int cpMax = _ftr.CharacterPosition + _ftr.CharacterCount;
+            this._lastValidPapx = this._doc.AllPapxFkps[0].grppapx[0];
+            int cp = this._ftr.CharacterPosition;
+            int cpMax = this._ftr.CharacterPosition + this._ftr.CharacterCount;
 
             //the CharacterCount of the footers also counts the guard paragraph mark.
             //this additional paragraph mark shall not be converted.
@@ -32,7 +32,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             while (cp < cpMax)
             {
-                int fc = _doc.PieceTable.FileCharacterPositions[cp];
+                int fc = this._doc.PieceTable.FileCharacterPositions[cp];
                 var papx = findValidPapx(fc);
                 var tai = new TableInfo(papx);
 
@@ -48,10 +48,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 }
             }
 
-            _writer.WriteEndElement();
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.Flush();
         }
     }
 }

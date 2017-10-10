@@ -58,9 +58,9 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             //create and fill the array with the adresses
             this.rgfc = new int[this.crun + 1];
             int j = 0;
-            for (int i = 0; i < rgfc.Length; i++)
+            for (int i = 0; i < this.rgfc.Length; i++)
             {
-                rgfc[i] = System.BitConverter.ToInt32(bytes, j);
+                this.rgfc[i] = System.BitConverter.ToInt32(bytes, j);
                 j += 4;
             }
 
@@ -69,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.grpchpx = new CharacterPropertyExceptions[this.crun];
 
             j = 4*(this.crun+1);
-            for (int i = 0; i < rgb.Length; i++)
+            for (int i = 0; i < this.rgb.Length; i++)
             {
                 //fill the rgb array
                 byte wordOffset = bytes[j];
@@ -87,12 +87,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                     Array.Copy(bytes, (wordOffset * 2) + 1, chpx, 0, chpx.Length);
 
                     //parse CHPX and fill grpchpx
-                    grpchpx[i] = new CharacterPropertyExceptions(chpx);
+                    this.grpchpx[i] = new CharacterPropertyExceptions(chpx);
                 }
                 else
                 {
                     //create a CHPX which doesn't modify anything
-                    grpchpx[i] = new CharacterPropertyExceptions();
+                    this.grpchpx[i] = new CharacterPropertyExceptions();
                 }
             }
 

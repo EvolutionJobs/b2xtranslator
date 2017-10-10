@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.kt = (ActionType)reader.ReadInt16();
 
             //read the params
-            switch (kt)
+            switch (this.kt)
             {
                 case ActionType.ktCid:
                     this.paramCid = new CommandIdentifier(reader);

@@ -69,30 +69,30 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         {
                             case BRAI.DataSource.Literal:
                                 // c:tx
-                                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElTx, Dml.Chart.Ns);
+                                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElTx, Dml.Chart.Ns);
                                 // c:v
-                                _writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElV, Dml.Chart.Ns, aiSequence.SeriesText.stText.Value);
-                                _writer.WriteEndElement(); // c:tx
+                                this._writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElV, Dml.Chart.Ns, aiSequence.SeriesText.stText.Value);
+                                this._writer.WriteEndElement(); // c:tx
                                 break;
 
                             case BRAI.DataSource.Reference:
                                 // c:tx
-                                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElTx, Dml.Chart.Ns);
+                                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElTx, Dml.Chart.Ns);
 
 
                                 // c:strRef
-                                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElStrRef, Dml.Chart.Ns);
+                                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElStrRef, Dml.Chart.Ns);
                                 {
                                     // c:f
                                     string formula = FormulaInfixMapping.mapFormula(brai.formula.formula, this.WorkbookContext);
-                                    _writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElF, Dml.Chart.Ns, formula);
+                                    this._writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElF, Dml.Chart.Ns, formula);
 
                                     // c:strCache
                                     //convertStringCache(seriesFormatSequence);
                                 }
-                                
-                                _writer.WriteEndElement(); // c:strRef
-                                _writer.WriteEndElement(); // c:tx
+
+                                this._writer.WriteEndElement(); // c:strRef
+                                this._writer.WriteEndElement(); // c:tx
                                 break;
                         }
                     }

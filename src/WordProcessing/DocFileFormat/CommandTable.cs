@@ -33,7 +33,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             reader.ReadByte();
 
             //parse the commandtable
-            while (reader.BaseStream.Position < (fib.fcCmds + fib.lcbCmds) && !breakWhile)
+            while (reader.BaseStream.Position < (fib.fcCmds + fib.lcbCmds) && !this.breakWhile)
             {
                 //read the type
                 byte ch = reader.ReadByte();
@@ -91,7 +91,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                         this.CustomToolbars = new CustomToolbarWrapper(reader);
                         break;
                     default:
-                        breakWhile = true;
+                        this.breakWhile = true;
                         break;
                 }
             }

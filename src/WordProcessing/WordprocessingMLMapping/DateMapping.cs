@@ -28,8 +28,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public DateMapping(XmlElement parent)
             : base(null)
         {
-            _parent = parent;
-            _nodeFactory = parent.OwnerDocument;
+            this._parent = parent;
+            this._nodeFactory = parent.OwnerDocument;
         }
 
         public void Apply(DateAndTime dttm)
@@ -46,17 +46,17 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             date.Append(string.Format("{0:00}", dttm.mint));
             date.Append(":00Z");
 
-            var xml = _nodeFactory.CreateAttribute("w", "date", OpenXmlNamespaces.WordprocessingML);
+            var xml = this._nodeFactory.CreateAttribute("w", "date", OpenXmlNamespaces.WordprocessingML);
             xml.Value = date.ToString() ;
 
             //append or write
-            if (_writer != null)
+            if (this._writer != null)
             {
-                xml.WriteTo(_writer);
+                xml.WriteTo(this._writer);
             }
-            else if (_parent != null)
+            else if (this._parent != null)
             {
-                _parent.Attributes.Append(xml);
+                this._parent.Attributes.Append(xml);
             }
         }
     }

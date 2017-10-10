@@ -67,20 +67,20 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
 
         public void StartNewChartsheetSubstream()
         {
-            _id = 0;
-            _idList.Clear();
+            this._id = 0;
+            this._idList.Clear();
         }
 
 
         public void StartNewAxisGroup()
         {
-            _idList.Clear();
+            this._idList.Clear();
         }
 
         public int GenerateId()
         {
-            int newId = _id++;
-            _idList.Add(newId);
+            int newId = this._id++;
+            this._idList.Add(newId);
             return newId;
         }
 
@@ -88,8 +88,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         {
             get
             {
-                var retVal = new int[_idList.Count];
-                _idList.CopyTo(retVal);
+                var retVal = new int[this._idList.Count];
+                this._idList.CopyTo(retVal);
                 return retVal;
             }
         }

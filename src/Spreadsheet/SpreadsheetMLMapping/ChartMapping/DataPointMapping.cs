@@ -12,13 +12,13 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public DataPointMapping(ExcelContext workbookContext, ChartContext chartContext, int index)
             : base(workbookContext, chartContext)
         {
-            _index = index;
+            this._index = index;
         }
 
         public void Apply(SsSequence ssSequence)
         {
             // c:dPt
-            _writer.WriteStartElement(Dml.Chart.Prefix, "dPt", Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, "dPt", Dml.Chart.Ns);
             {
                 // c:bubble3D
                 // TODO
@@ -27,7 +27,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 // TODO
 
                 // c:idx
-                writeValueElement("idx", _index.ToString());
+                writeValueElement("idx", this._index.ToString());
 
                 // c:invertIfNegative
                 // TODO
@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 // c:spPr
                 ssSequence.Convert(new ShapePropertiesMapping(this.WorkbookContext, this.ChartContext));
             }
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
     }
 }

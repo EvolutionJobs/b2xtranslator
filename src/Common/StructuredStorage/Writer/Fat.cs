@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         uint _numFatSectors;
         internal uint NumFatSectors
         {
-            get { return _numFatSectors; }
+            get { return this._numFatSectors; }
         }
 
 
@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         uint _numDiFatSectors;
         internal uint NumDiFatSectors
         {
-            get { return _numDiFatSectors; }
+            get { return this._numDiFatSectors; }
         }
 
 
@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         uint _diFatStartSector;
         internal uint DiFatStartSector
         {
-            get { return _diFatStartSector; }            
+            get { return this._diFatStartSector; }            
         }
 
 
@@ -88,12 +88,12 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
                 return SectorId.ENDOFCHAIN;
             }
 
-            var startSector = _currentEntry;
+            var startSector = this._currentEntry;
 
             for (int i = 0; i < sectorCount; i++)
             {
-                _currentEntry++;
-                _entries.Add(SectorId.DIFSECT);
+                this._currentEntry++;
+                this._entries.Add(SectorId.DIFSECT);
             }
 
             return startSector;
@@ -107,25 +107,25 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         private void writeDiFatSectorsToStream(uint fatStartSector)
         {
             // Add all entries of the difat
-            for (uint i = 0; i < _numFatSectors; i++)
+            for (uint i = 0; i < this._numFatSectors; i++)
             {
-                _diFatEntries.Add(fatStartSector + i);
+                this._diFatEntries.Add(fatStartSector + i);
             }
 
             // Write the first 109 entries into the header
             for (int i = 0; i < 109; i++)
             {
-                if (i < _diFatEntries.Count)
+                if (i < this._diFatEntries.Count)
                 {
-                    _context.Header.writeNextDiFatSector(_diFatEntries[i]);
+                    this._context.Header.writeNextDiFatSector(this._diFatEntries[i]);
                 }
                 else
                 {
-                    _context.Header.writeNextDiFatSector(SectorId.FREESECT);
+                    this._context.Header.writeNextDiFatSector(SectorId.FREESECT);
                 }
             }
 
-            if (_diFatEntries.Count <= 109)
+            if (this._diFatEntries.Count <= 109)
             {
                 return;
             }
@@ -134,13 +134,13 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
 
             var greaterDiFatEntries = new List<uint>();
             
-            for (int i = 0; i < _diFatEntries.Count - 109; i++)
+            for (int i = 0; i < this._diFatEntries.Count - 109; i++)
             {
-                greaterDiFatEntries.Add(_diFatEntries[i + 109]);
+                greaterDiFatEntries.Add(this._diFatEntries[i + 109]);
             }          
 
-            var diFatLink = _diFatStartSector + 1;
-            int addressesInSector = _context.Header.SectorSize / 4;
+            var diFatLink = this._diFatStartSector + 1;
+            int addressesInSector = this._context.Header.SectorSize / 4;
             int sectorSplit = addressesInSector;
 
             // split difat at sector boundary and add link to next difat sector
@@ -152,23 +152,23 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             }
 
             // pad sector
-            for (int i = greaterDiFatEntries.Count; i % (_context.Header.SectorSize / 4) != 0; i++)
+            for (int i = greaterDiFatEntries.Count; i % (this._context.Header.SectorSize / 4) != 0; i++)
             {
                 greaterDiFatEntries.Add(SectorId.FREESECT);
             }
             greaterDiFatEntries.RemoveAt(greaterDiFatEntries.Count - 1);
             greaterDiFatEntries.Add(SectorId.ENDOFCHAIN);
 
-            var output = _context.InternalBitConverter.getBytes(greaterDiFatEntries);
+            var output = this._context.InternalBitConverter.getBytes(greaterDiFatEntries);
 
             // consistency check
-            if (output.Count % _context.Header.SectorSize != 0)
+            if (output.Count % this._context.Header.SectorSize != 0)
             {
                 throw new DiFatInconsistentException();
             }
 
             // write remaining difat sectors to stream
-            _context.TempOutputStream.writeSectors(output.ToArray(), _context.Header.SectorSize, SectorId.FREESECT);
+            this._context.TempOutputStream.writeSectors(output.ToArray(), this._context.Header.SectorSize, SectorId.FREESECT);
 
         }
 
@@ -180,30 +180,30 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         {
 
             // calculation of _numFatSectors and _numDiFatSectors (depending on each other)
-            _numDiFatSectors = 0;            
+            this._numDiFatSectors = 0;            
             while (true)
             {
-                var numDiFatSectorsOld = _numDiFatSectors;
-                _numFatSectors = (uint)Math.Ceiling((double)(_entries.Count * 4) / (double)_context.Header.SectorSize) + _numDiFatSectors;
-                _numDiFatSectors = (_numFatSectors <= 109) ? 0 : (uint)Math.Ceiling((double)((_numFatSectors - 109) * 4) / (double)(_context.Header.SectorSize - 1));
-                if (numDiFatSectorsOld == _numDiFatSectors)
+                var numDiFatSectorsOld = this._numDiFatSectors;
+                this._numFatSectors = (uint)Math.Ceiling((double)(this._entries.Count * 4) / (double)this._context.Header.SectorSize) + this._numDiFatSectors;
+                this._numDiFatSectors = (this._numFatSectors <= 109) ? 0 : (uint)Math.Ceiling((double)((this._numFatSectors - 109) * 4) / (double)(this._context.Header.SectorSize - 1));
+                if (numDiFatSectorsOld == this._numDiFatSectors)
                 {
                     break;
                 }                
             }
 
             // writeDiFat
-            _diFatStartSector = writeDiFatEntriesToFat(_numDiFatSectors);           
-            writeDiFatSectorsToStream(_currentEntry);
+            this._diFatStartSector = writeDiFatEntriesToFat(this._numDiFatSectors);           
+            writeDiFatSectorsToStream(this._currentEntry);
            
             // Denote Fat entries in Fat
-            for (int i = 0; i < _numFatSectors; i++)
+            for (int i = 0; i < this._numFatSectors; i++)
             {
-                _entries.Add(SectorId.FATSECT);
+                this._entries.Add(SectorId.FATSECT);
             }
 
             // write Fat
-            _context.TempOutputStream.writeSectors((_context.InternalBitConverter.getBytes(_entries)).ToArray(), _context.Header.SectorSize, SectorId.FREESECT);
+            this._context.TempOutputStream.writeSectors((this._context.InternalBitConverter.getBytes(this._entries)).ToArray(), this._context.Header.SectorSize, SectorId.FREESECT);
         }
     }
 }

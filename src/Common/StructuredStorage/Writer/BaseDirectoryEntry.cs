@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         private StructuredStorageContext _context;
         internal StructuredStorageContext Context
         {
-            get { return _context; }
+            get { return this._context; }
         }
 
 
@@ -52,8 +52,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="context">the current context</param>
         internal BaseDirectoryEntry(string name, StructuredStorageContext context)            
         {
-            _context = context;
-            Name = name;
+            this._context = context;
+            this.Name = name;
             setInitialValues();
         }
 
@@ -80,8 +80,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         internal void write()
         {
-            var directoryStream = _context.DirectoryStream;
-            var unicodeName = _name.ToCharArray();
+            var directoryStream = this._context.DirectoryStream;
+            var unicodeName = this._name.ToCharArray();
             int paddingCounter = 0;
             foreach (ushort unicodeChar in  unicodeName)
             {

@@ -19,17 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{DCCF2943
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architecture", "Architecture", "{D69EBA3F-37B1-4D8F-A8CF-CD7D35BF5AE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundFileExtractTest", "Test\CompoundFileExtractTest\CompoundFileExtractTest.csproj", "{01308A7D-882B-4822-A78B-EBAD044044FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompoundFileExtractTest", "Test\CompoundFileExtractTest\CompoundFileExtractTest.csproj", "{01308A7D-882B-4822-A78B-EBAD044044FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocFileFormat", "WordProcessing\DocFileFormat\DocFileFormat.csproj", "{70A244FD-C90E-4474-9E70-82BCF5147FF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocFileFormatTest", "Test\DocFileFormatTest\DocFileFormatTest.csproj", "{4D78B8B7-FCEB-4249-BF3D-83B9A8059870}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocFileFormatTest", "Test\DocFileFormatTest\DocFileFormatTest.csproj", "{4D78B8B7-FCEB-4249-BF3D-83B9A8059870}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenXmlLib", "Common\OpenXmlLib\OpenXmlLib.csproj", "{4C10271C-CD9B-49F5-9479-3C6EB7404E75}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZipUtils", "Common\ZipUtils\ZipUtils.csproj", "{05A5C68E-B901-4AD0-87F1-5E43DDC759CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXmlLibTest", "Test\OpenXmlLibTest\OpenXmlLibTest.csproj", "{1855519D-6C8C-44B2-B197-DB40DD648FB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenXmlLibTest", "Test\OpenXmlLibTest\OpenXmlLibTest.csproj", "{1855519D-6C8C-44B2-B197-DB40DD648FB6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Common\Tools\Tools.csproj", "{B44FAEE0-B32E-4682-AA42-618C893F14C6}"
 EndProject
@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XlsFileFormat", "Spreadshee
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PptFileFormat", "Presentation\PptFileFormat\PptFileFormat.csproj", "{6EAD0A6A-8DF0-4CA3-8D5E-3C871E7FCB62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PptDump", "Test\PptDump\PptDump.csproj", "{A6AF6065-0740-42A1-BC9D-02AACDAF1476}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PptDump", "Test\PptDump\PptDump.csproj", "{A6AF6065-0740-42A1-BC9D-02AACDAF1476}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppt2x", "Shell\ppt2x\ppt2x.csproj", "{90C862C6-C6CB-4C72-8E58-FA3F8625E93B}"
 EndProject
@@ -57,9 +57,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xls2x", "Shell\xls2x\xls2x.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpreadsheetMLMapping", "Spreadsheet\SpreadsheetMLMapping\SpreadsheetMLMapping.csproj", "{7085D1EB-E797-4841-A564-68EF63688A24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundFileReadWriteExtractTest", "Test\CompoundFileReadWriteExtractTest\CompoundFileReadWriteExtractTest.csproj", "{0633D500-337B-49BD-9566-C50F0FDAA6D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompoundFileReadWriteExtractTest", "Test\CompoundFileReadWriteExtractTest\CompoundFileReadWriteExtractTest.csproj", "{0633D500-337B-49BD-9566-C50F0FDAA6D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "Test\UnitTests\UnitTests.csproj", "{4CB51274-367D-46AA-A170-4827053A1C7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "Test\UnitTests\UnitTests.csproj", "{4CB51274-367D-46AA-A170-4827053A1C7D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shell", "Common\Shell\Shell.csproj", "{3EF2F275-1148-4703-9B2E-56966E92DF32}"
 EndProject
@@ -154,6 +154,7 @@ Global
 		{0633D500-337B-49BD-9566-C50F0FDAA6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0633D500-337B-49BD-9566-C50F0FDAA6D2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4CB51274-367D-46AA-A170-4827053A1C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CB51274-367D-46AA-A170-4827053A1C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CB51274-367D-46AA-A170-4827053A1C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EF2F275-1148-4703-9B2E-56966E92DF32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3EF2F275-1148-4703-9B2E-56966E92DF32}.Debug|Any CPU.Build.0 = Debug|Any CPU

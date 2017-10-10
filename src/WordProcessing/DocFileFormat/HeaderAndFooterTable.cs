@@ -43,12 +43,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         {
             IStreamReader tableReader = new VirtualStreamReader(doc.TableStream);
 
-            FirstHeaders = new List<CharacterRange>();
-            EvenHeaders = new List<CharacterRange>();
-            OddHeaders = new List<CharacterRange>();
-            FirstFooters = new List<CharacterRange>();
-            EvenFooters = new List<CharacterRange>();
-            OddFooters = new List<CharacterRange>();
+            this.FirstHeaders = new List<CharacterRange>();
+            this.EvenHeaders = new List<CharacterRange>();
+            this.OddHeaders = new List<CharacterRange>();
+            this.FirstFooters = new List<CharacterRange>();
+            this.EvenFooters = new List<CharacterRange>();
+            this.OddFooters = new List<CharacterRange>();
 
             //read the Table
             var table = new int[doc.FIB.lcbPlcfHdd / 4];

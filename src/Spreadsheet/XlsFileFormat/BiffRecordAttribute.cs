@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
 
         public RecordType[] TypeCodes
         {
-            get { return _typeCodes; }
+            get { return this._typeCodes; }
         }
 
         private RecordType[] _typeCodes = new RecordType[0];

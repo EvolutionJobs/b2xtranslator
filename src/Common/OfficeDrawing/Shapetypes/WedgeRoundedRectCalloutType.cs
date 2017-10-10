@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             {
                 position = "#0,#1"
             };
-            Handles.Add(HandleOne);
+            this.Handles.Add(HandleOne);
 
         }
     }

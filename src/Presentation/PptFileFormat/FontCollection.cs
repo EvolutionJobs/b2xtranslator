@@ -39,11 +39,11 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public FontCollection(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
 
-                foreach (var rec in Children)
+                foreach (var rec in this.Children)
                 {
                     if (rec is FontEntityAtom)
                     {
-                        entities.Add((FontEntityAtom)rec);
+                    this.entities.Add((FontEntityAtom)rec);
                     }
                     else
                     {

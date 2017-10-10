@@ -55,14 +55,14 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         protected OpenXmlPackage(string fileName)
         {
-            _fileName = fileName;
+            this._fileName = fileName;
 
-            _defaultTypes.Add("rels", OpenXmlContentTypes.Relationships);
-            _defaultTypes.Add("xml", OpenXmlContentTypes.Xml);
-            _defaultTypes.Add("bin", OpenXmlContentTypes.OleObject);
-            _defaultTypes.Add("vml", OpenXmlContentTypes.Vml);
-            _defaultTypes.Add("emf", OpenXmlContentTypes.Emf);
-            _defaultTypes.Add("wmf", OpenXmlContentTypes.Wmf);
+            this._defaultTypes.Add("rels", OpenXmlContentTypes.Relationships);
+            this._defaultTypes.Add("xml", OpenXmlContentTypes.Xml);
+            this._defaultTypes.Add("bin", OpenXmlContentTypes.OleObject);
+            this._defaultTypes.Add("vml", OpenXmlContentTypes.Vml);
+            this._defaultTypes.Add("emf", OpenXmlContentTypes.Emf);
+            this._defaultTypes.Add("wmf", OpenXmlContentTypes.Wmf);
         }
 
         public void Dispose()
@@ -84,14 +84,14 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         public string FileName
         {
-            get { return _fileName; }
-            set { _fileName = value; }
+            get { return this._fileName; }
+            set { this._fileName = value; }
         }
 
         public CorePropertiesPart CoreFilePropertiesPart
         {
-            get { return _coreFilePropertiesPart; }
-            set { _coreFilePropertiesPart = value; }
+            get { return this._coreFilePropertiesPart; }
+            set { this._coreFilePropertiesPart = value; }
         }
 
         public CorePropertiesPart AddCoreFilePropertiesPart()
@@ -102,8 +102,8 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         public AppPropertiesPart AppPropertiesPart
         {
-            get { return _appPropertiesPart; }
-            set { _appPropertiesPart = value; }
+            get { return this._appPropertiesPart; }
+            set { this._appPropertiesPart = value; }
         }
                
         public AppPropertiesPart AddAppPropertiesPart()
@@ -114,32 +114,32 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         internal void AddContentTypeDefault(string extension, string contentType)
         {
-            if (!_defaultTypes.ContainsKey(extension))
-                _defaultTypes.Add(extension, contentType);
+            if (!this._defaultTypes.ContainsKey(extension))
+                this._defaultTypes.Add(extension, contentType);
         }
 
         internal void AddContentTypeOverride(string partNameAbsolute, string contentType)
         {
-            if (!_partOverrides.ContainsKey(partNameAbsolute))
-                _partOverrides.Add(partNameAbsolute, contentType);
+            if (!this._partOverrides.ContainsKey(partNameAbsolute))
+                this._partOverrides.Add(partNameAbsolute, contentType);
         }
 
         internal int GetNextImageId()
         {
-            _imageCounter++;
-            return _imageCounter;
+            this._imageCounter++;
+            return this._imageCounter;
         }
 
         internal int GetNextVmlId()
         {
-            _vmlCounter++;
-            return _vmlCounter;
+            this._vmlCounter++;
+            return this._vmlCounter;
         }
 
         internal int GetNextOleId()
         {
-            _oleCounter++;
-            return _oleCounter;
+            this._oleCounter++;
+            return this._oleCounter;
         }
 
         protected void WritePackage(OpenXmlWriter writer)
@@ -157,19 +157,19 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
             writer.WriteStartDocument();
             writer.WriteStartElement("Types", OpenXmlNamespaces.ContentTypes);
 
-            foreach (string extension in _defaultTypes.Keys)
+            foreach (string extension in this._defaultTypes.Keys)
             {
                 writer.WriteStartElement("Default", OpenXmlNamespaces.ContentTypes);
                 writer.WriteAttributeString("Extension", extension);
-                writer.WriteAttributeString("ContentType", _defaultTypes[extension]);
+                writer.WriteAttributeString("ContentType", this._defaultTypes[extension]);
                 writer.WriteEndElement();
             }
 
-            foreach (string partName in _partOverrides.Keys)
+            foreach (string partName in this._partOverrides.Keys)
             {
                 writer.WriteStartElement("Override", OpenXmlNamespaces.ContentTypes);
                 writer.WriteAttributeString("PartName", partName);
-                writer.WriteAttributeString("ContentType", _partOverrides[partName]);
+                writer.WriteAttributeString("ContentType", this._partOverrides[partName]);
                 writer.WriteEndElement();
             }
 

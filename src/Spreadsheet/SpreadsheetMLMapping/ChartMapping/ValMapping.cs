@@ -58,39 +58,39 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 if (aiSequence.BRAI.braiId == BRAI.BraiId.SeriesValues)
                 {
                     // c:val
-                    _writer.WriteStartElement(Dml.Chart.Prefix, this._parentElement, Dml.Chart.Ns);
+                    this._writer.WriteStartElement(Dml.Chart.Prefix, this._parentElement, Dml.Chart.Ns);
                     {
                         var brai = aiSequence.BRAI;
                         switch (brai.rt)
                         {
                             case BRAI.DataSource.Literal:
                                 // c:numLit
-                                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElNumLit, Dml.Chart.Ns);
+                                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElNumLit, Dml.Chart.Ns);
 
                                 convertNumData(seriesFormatSequence);
 
-                                _writer.WriteEndElement(); // c:numLit
+                                this._writer.WriteEndElement(); // c:numLit
                                 break;
 
                             case BRAI.DataSource.Reference:
                                 // c:numRef
-                                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElNumRef, Dml.Chart.Ns);
+                                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElNumRef, Dml.Chart.Ns);
 
                                 // c:f
                                 string formula = FormulaInfixMapping.mapFormula(brai.formula.formula, this.WorkbookContext);
-                                _writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElF, Dml.Chart.Ns, formula);
+                                this._writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElF, Dml.Chart.Ns, formula);
 
                                 // TODO: optional data cache
                                 // c:numCache
-                                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElNumCache, Dml.Chart.Ns);
+                                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElNumCache, Dml.Chart.Ns);
                                 convertNumData(seriesFormatSequence);
-                                _writer.WriteEndElement(); // c:numCache
+                                this._writer.WriteEndElement(); // c:numCache
 
-                                _writer.WriteEndElement(); // c:numRef
+                                this._writer.WriteEndElement(); // c:numRef
                                 break;
                         }
                     }
-                    _writer.WriteEndElement(); // c:val
+                    this._writer.WriteEndElement(); // c:val
                     break;
                 }
             }
@@ -126,14 +126,14 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         if (cellContent != null && cellContent.num != null)
                         {
                             // c:pt
-                            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElPt, Dml.Chart.Ns);
-                            _writer.WriteAttributeString(Dml.Chart.AttrIdx, idx.ToString());
+                            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElPt, Dml.Chart.Ns);
+                            this._writer.WriteAttributeString(Dml.Chart.AttrIdx, idx.ToString());
 
                             // c:v
                             double num = cellContent.num ?? 0.0;
-                            _writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElV, Dml.Chart.Ns, num.ToString(CultureInfo.InvariantCulture));
+                            this._writer.WriteElementString(Dml.Chart.Prefix, Dml.Chart.ElV, Dml.Chart.Ns, num.ToString(CultureInfo.InvariantCulture));
 
-                            _writer.WriteEndElement(); // c:pt
+                            this._writer.WriteEndElement(); // c:pt
                         }
                         idx++;
                     }

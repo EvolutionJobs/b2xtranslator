@@ -18,10 +18,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public SectionDescriptor(VirtualStreamReader reader, int length)
             : base(reader, length)
         {
-            this.fn = _reader.ReadInt16();
-            this.fcSepx = _reader.ReadInt32();
-            this.fnMpr = _reader.ReadInt16();
-            this.fcMpr = _reader.ReadInt32();
+            this.fn = this._reader.ReadInt16();
+            this.fcSepx = this._reader.ReadInt32();
+            this.fnMpr = this._reader.ReadInt16();
+            this.fcMpr = this._reader.ReadInt32();
         }
     }
 }

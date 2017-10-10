@@ -76,12 +76,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         
         public BiffString(IStreamReader reader)
         {
-            cch = reader.ReadUInt16();
-            grbit = reader.ReadByte();
+            this.cch = reader.ReadUInt16();
+            this.grbit = reader.ReadByte();
 
-            fHighByte = Utils.BitmaskToBool(grbit, 0x0001);
-            fExtSt = Utils.BitmaskToBool(grbit, 0x0004);
-            fRichSt = Utils.BitmaskToBool(grbit, 0x0008);
+            this.fHighByte = Utils.BitmaskToBool(this.grbit, 0x0001);
+            this.fExtSt = Utils.BitmaskToBool(this.grbit, 0x0004);
+            this.fRichSt = Utils.BitmaskToBool(this.grbit, 0x0008);
         }
     }
 }

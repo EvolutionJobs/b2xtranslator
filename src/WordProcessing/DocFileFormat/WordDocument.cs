@@ -224,7 +224,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.FIB = new FileInformationBlock(new VirtualStreamReader(this.WordDocumentStream));
 
             //check the file version
-            if ((int)FIB.nFib != 0)
+            if ((int)this.FIB.nFib != 0)
             {
                 if (this.FIB.nFib < FileInformationBlock.FibVersion.Fib1997Beta)
                 {

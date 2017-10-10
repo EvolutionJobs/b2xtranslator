@@ -40,89 +40,42 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
     /// Provides methods for accessing a compound file.
     /// Author: math
     /// </summary>
-    public class StructuredStorageReader : IStructuredStorageReader
+    public sealed class StructuredStorageReader : 
+        IStructuredStorageReader
     {
 
         InputHandler _fileHandler;
         Header _header;
         Fat _fat;
         MiniFat _miniFat;
-        private DirectoryTree _directory;
+        DirectoryTree _directory;
 
-        ///// <summary>
-        ///// Collection of all entry names contained in a compound file
-        ///// </summary>        
-        //public ReadOnlyCollection<string> NamesOfAllEntries
-        //{
-        //    get { return _directory.GetNamesOfAllEntries(); }
-        //}
+        /// <summary>Get a collection of all entry names contained in a compound file</summary>        
+        public ICollection<string> FullNameOfAllEntries => this._directory.GetPathsOfAllEntries();
 
+        /// <summary>Get a collection of all stream entry names contained in a compound file</summary>        
+        public ICollection<string> FullNameOfAllStreamEntries => this._directory.GetPathsOfAllStreamEntries();
 
-        ///// <summary>
-        ///// Collection of all stream entry names contained in a compound file
-        ///// </summary>        
-        //public ReadOnlyCollection<string> NamesOfAllStreamEntries
-        //{
-        //    get { return _directory.GetNamesOfAllStreamEntries(); }
-        //}
+        /// <summary>Get a collection of all _entries contained in a compound file</summary> 
+        public ICollection<DirectoryEntry> AllEntries => this._directory.GetAllEntries();
 
+        /// <summary>Get a collection of all stream _entries contained in a compound file</summary> 
+        public ICollection<DirectoryEntry> AllStreamEntries => this._directory.GetAllStreamEntries();
 
-        /// <summary>
-        /// Collection of all entry names contained in a compound file
-        /// </summary>        
-        public ICollection<string> FullNameOfAllEntries
-        {
-            get { return _directory.GetPathsOfAllEntries(); }
-        }
+        /// <summary>Get a handle to the RootDirectoryEntry.</summary>
+        public DirectoryEntry RootDirectoryEntry => this._directory.GetDirectoryEntry(0x0);
 
-
-        /// <summary>
-        /// Collection of all stream entry names contained in a compound file
-        /// </summary>        
-        public ICollection<string> FullNameOfAllStreamEntries
-        {
-            get { return _directory.GetPathsOfAllStreamEntries(); }
-        }
-
-
-        /// <summary>
-        /// Collection of all _entries contained in a compound file
-        /// </summary> 
-        public ICollection<DirectoryEntry> AllEntries
-        {
-            get { return _directory.GetAllEntries(); }
-        }
-
-
-        /// <summary> 
-        /// Collection of all stream _entries contained in a compound file
-        /// </summary> 
-        public ICollection<DirectoryEntry> AllStreamEntries
-        {
-            get { return _directory.GetAllStreamEntries(); }
-        }
-
-        /// <summary>
-        /// Returns a handle to the RootDirectoryEntry.
-        /// </summary>
-        public DirectoryEntry RootDirectoryEntry
-        {
-            get { return _directory.GetDirectoryEntry(0x0); }
-        }
-
-        /// <summary>
-        /// Initalizes a handle to a compound file based on a stream
-        /// </summary>
+        /// <summary>Initalizes a handle to a compound file based on a stream</summary>
         /// <param name="stream">The stream to the storage</param>
         public StructuredStorageReader(Stream stream)
         {
             try
             {
-                _fileHandler = new InputHandler(stream);
-                _header = new Header(_fileHandler);
-                _fat = new Fat(_header, _fileHandler);
-                _directory = new DirectoryTree(_fat, _header, _fileHandler);
-                _miniFat = new MiniFat(_fat, _header, _fileHandler, _directory.GetMiniStreamStart(), _directory.GetSizeOfMiniStream());
+                this._fileHandler = new InputHandler(stream);
+                this._header = new Header(this._fileHandler);
+                this._fat = new Fat(this._header, this._fileHandler);
+                this._directory = new DirectoryTree(this._fat, this._header, this._fileHandler);
+                this._miniFat = new MiniFat(this._fat, this._header, this._fileHandler, this._directory.GetMiniStreamStart(), this._directory.GetSizeOfMiniStream());
             }
             catch
             {
@@ -131,19 +84,17 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
             }
         }
 
-        /// <summary>
-        /// Initalizes a handle to a compound file with the given name
-        /// </summary>
+        /// <summary>Initalizes a handle to a compound file with the given name</summary>
         /// <param name="fileName">The name of the file including its path</param>
         public StructuredStorageReader(string fileName)
         {
             try
             {
-                _fileHandler = new InputHandler(fileName);
-                _header = new Header(_fileHandler);
-                _fat = new Fat(_header, _fileHandler);
-                _directory = new DirectoryTree(_fat, _header, _fileHandler);
-                _miniFat = new MiniFat(_fat, _header, _fileHandler, _directory.GetMiniStreamStart(), _directory.GetSizeOfMiniStream());
+                this._fileHandler = new InputHandler(fileName);
+                this._header = new Header(this._fileHandler);
+                this._fat = new Fat(this._header, this._fileHandler);
+                this._directory = new DirectoryTree(this._fat, this._header, this._fileHandler);
+                this._miniFat = new MiniFat(this._fat, this._header, this._fileHandler, this._directory.GetMiniStreamStart(), this._directory.GetSizeOfMiniStream());
             }
             catch
             {
@@ -163,31 +114,22 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>An object which enables access to the virtual stream.</returns>
         public VirtualStream GetStream(string path)
         {
-            var entry = _directory.GetDirectoryEntry(path);
+            var entry = this._directory.GetDirectoryEntry(path);
             if (entry == null)
-            {
                 throw new StreamNotFoundException(path);
-            }
+
             if (entry.Type != DirectoryEntryType.STGTY_STREAM)
-            {
                 throw new WrongDirectoryEntryTypeException();
-            }
 
             // only streams up to long.MaxValue are supported
             if (entry.SizeOfStream > long.MaxValue)
-            {
                 throw new UnsupportedSizeException(entry.SizeOfStream.ToString());
-            }
 
             // Determine whether this stream is a "normal stream" or a stream in the mini stream
-            if (entry.SizeOfStream < _header.MiniSectorCutoff)
-            {
-                return new VirtualStream(_miniFat, entry.StartSector, (long)entry.SizeOfStream, path);
-            }
-            else
-            {
-                return new VirtualStream(_fat, entry.StartSector, (long)entry.SizeOfStream, path);
-            }
+            if (entry.SizeOfStream < this._header.MiniSectorCutoff)
+                return new VirtualStream(this._miniFat, entry.StartSector, (long)entry.SizeOfStream, path);
+
+            return new VirtualStream(this._fat, entry.StartSector, (long)entry.SizeOfStream, path);
         }
 
         /// <summary>
@@ -200,28 +142,18 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>An object which enables access to the directory entry.</returns>
         public DirectoryEntry GetEntry(string path)
         {
-            var entry = _directory.GetDirectoryEntry(path);
+            var entry = this._directory.GetDirectoryEntry(path);
             if (entry == null)
-            {
                 throw new DirectoryEntryNotFoundException(path);
-            }
 
             return entry;
         }
 
 
-        /// <summary>
-        /// Closes the file handle
-        /// </summary>
-        public void Close()
-        {
-            _fileHandler.CloseStream();
-        }
+        /// <summary>Closes the file handle</summary>
+        public void Close() =>this._fileHandler?.CloseStream();
+       
 
-
-        public void Dispose()
-        {
-            this.Close();
-        }
+        public void Dispose() => this.Close();
     }
 }

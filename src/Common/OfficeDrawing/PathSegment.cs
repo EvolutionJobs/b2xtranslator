@@ -28,7 +28,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         {
             this.Type = (SegmentType)Utils.BitmaskToInt(segment, 0xE000);
 
-            if (Type == SegmentType.msopathEscape)
+            if (this.Type == SegmentType.msopathEscape)
             {
                 this.EscapeCode = Utils.BitmaskToInt(segment, 0x1F00);
                 this.VertexCount = Utils.BitmaskToInt(segment, 0x00FF);

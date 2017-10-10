@@ -38,7 +38,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public TextCFExceptionAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            run = new CharacterRun(Reader);
+            this.run = new CharacterRun(this.Reader);
         }
 
     }

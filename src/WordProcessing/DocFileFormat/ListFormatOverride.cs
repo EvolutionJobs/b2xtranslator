@@ -70,19 +70,19 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <param name="bytes">The bytes</param>
         public ListFormatOverride(VirtualStreamReader reader, int length) : base(reader, length)
         {
-            long startPos = _reader.BaseStream.Position;
+            long startPos = this._reader.BaseStream.Position;
 
-            this.lsid = _reader.ReadInt32();
-            _reader.ReadBytes(8);
-            this.clfolvl = _reader.ReadByte();
-            this.ibstFltAutoNum = _reader.ReadByte();
-            this.grfhic = _reader.ReadByte();
-            _reader.ReadByte();
+            this.lsid = this._reader.ReadInt32();
+            this._reader.ReadBytes(8);
+            this.clfolvl = this._reader.ReadByte();
+            this.ibstFltAutoNum = this._reader.ReadByte();
+            this.grfhic = this._reader.ReadByte();
+            this._reader.ReadByte();
 
             this.rgLfoLvl = new ListFormatOverrideLevel[this.clfolvl];
 
-            _reader.BaseStream.Seek(startPos, System.IO.SeekOrigin.Begin);
-            _rawBytes = _reader.ReadBytes(LFO_LENGTH);
+            this._reader.BaseStream.Seek(startPos, System.IO.SeekOrigin.Begin);
+            this._rawBytes = this._reader.ReadBytes(LFO_LENGTH);
         }
     }
 }

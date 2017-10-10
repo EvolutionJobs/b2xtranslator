@@ -84,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 this.ixfe.Add(reader.ReadUInt16());
                 var buffer = reader.ReadBytes(4);
 
-                rknumber.Add(ExcelHelperClass.NumFromRK(buffer)); 
+                this.rknumber.Add(ExcelHelperClass.NumFromRK(buffer)); 
             }
             this.colLast = reader.ReadUInt16(); 
             // assert that the correct number of bytes has been read from the stream

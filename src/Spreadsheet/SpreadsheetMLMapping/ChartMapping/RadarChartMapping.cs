@@ -51,9 +51,9 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             }
 
             var radar = crtSequence.ChartType as Radar;
-            
+
             // c:radarChart
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElRadarChart, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElRadarChart, Dml.Chart.Ns);
             {
                 // c:radarStyle
                 writeValueElement(Dml.Chart.ElRadarStyle, mapRadarStyle(crtSequence.SsSequence));
@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     if (seriesFormatSequence.SerToCrt != null && seriesFormatSequence.SerToCrt.id == crtSequence.ChartFormat.idx)
                     {
                         // c:ser
-                        _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSer, Dml.Chart.Ns);
+                        this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSer, Dml.Chart.Ns);
 
                         // EG_SerShared
                         seriesFormatSequence.Convert(new SeriesMapping(this.WorkbookContext, this.ChartContext));
@@ -91,7 +91,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         // c:val
                         seriesFormatSequence.Convert(new ValMapping(this.WorkbookContext, this.ChartContext, Dml.Chart.ElVal));
 
-                        _writer.WriteEndElement(); // c:ser
+                        this._writer.WriteEndElement(); // c:ser
                     }
                 }
 
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     writeValueElement(Dml.Chart.ElAxId, axisId.ToString());
                 }
             }
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
         #endregion
 

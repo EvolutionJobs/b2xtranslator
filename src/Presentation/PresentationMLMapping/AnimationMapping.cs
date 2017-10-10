@@ -45,13 +45,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public AnimationMapping(ConversionContext ctx, XmlWriter writer)
             : base(writer)
         {
-            _ctx = ctx;
+            this._ctx = ctx;
         }
 
         public void Apply(ProgBinaryTagDataBlob blob, PresentationMapping<RegularContainer> parentMapping, Dictionary<AnimationInfoContainer, int> animations, ShapeTreeMapping stm)
         {
-            _parentMapping = parentMapping;
-            _stm = stm;
+            this._parentMapping = parentMapping;
+            this._stm = stm;
             var animAtoms = new Dictionary<AnimationInfoAtom, int>();
             foreach (var container in animations.Keys)
             {
@@ -79,32 +79,32 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         private int lastID = 0;
         private void writeTiming(Dictionary<AnimationInfoAtom, int> blindAtoms, ProgBinaryTagDataBlob blob)
         {
-            lastID = 0;
+            this.lastID = 0;
 
-            _writer.WriteStartElement("p", "timing", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "timing", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "tnLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tnLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
-            _writer.WriteAttributeString("dur", "indefinite");
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
+            this._writer.WriteAttributeString("dur", "indefinite");
             //_writer.WriteAttributeString("restart", "never");
-            _writer.WriteAttributeString("nodeType", "tmRoot");
+            this._writer.WriteAttributeString("nodeType", "tmRoot");
 
-            _writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "seq", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("concurrent", "1");
-            _writer.WriteAttributeString("nextAc", "seek");
+            this._writer.WriteStartElement("p", "seq", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("concurrent", "1");
+            this._writer.WriteAttributeString("nextAc", "seek");
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
-            _writer.WriteAttributeString("dur", "indefinite");
-            _writer.WriteAttributeString("nodeType", "mainSeq");
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
+            this._writer.WriteAttributeString("dur", "indefinite");
+            this._writer.WriteAttributeString("nodeType", "mainSeq");
 
-            _writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
 
             if (blob != null)
             {
@@ -125,48 +125,48 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             var atoms = new List<AnimationInfoAtom>();
                             foreach (var key in blindAtoms.Keys) atoms.Add(key);
 
-                            _writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
+                                this._writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
 
-                            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-                            _writer.WriteAttributeString("id", (++lastID).ToString());
-                            _writer.WriteAttributeString("fill", "hold");
+                                this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+                                this._writer.WriteAttributeString("id", (++this.lastID).ToString());
+                                this._writer.WriteAttributeString("fill", "hold");
 
-                            _writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
+                                this._writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
 
 
                             foreach (var c in c3.AllChildrenWithType<TimeConditionContainer>())
                             {
                                 var t = c.FirstChildWithType<TimeConditionAtom>();
 
-                                _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
+                                    this._writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
 
                                 switch (t.triggerEvent)
                                 {
                                     case 0x0: //none
                                         break;
                                     case 0x1: //onBegin
-                                        _writer.WriteAttributeString("evt", "onBegin");
+                                            this._writer.WriteAttributeString("evt", "onBegin");
                                         break;
                                     case 0x3: //Start
-                                        _writer.WriteAttributeString("evt", "begin");
+                                            this._writer.WriteAttributeString("evt", "begin");
                                         break;
                                     case 0x4: //End
-                                        _writer.WriteAttributeString("evt", "end");
+                                            this._writer.WriteAttributeString("evt", "end");
                                         break;
                                     case 0x5: //Mouse click
-                                        _writer.WriteAttributeString("evt", "onClick");
+                                            this._writer.WriteAttributeString("evt", "onClick");
                                         break;
                                     case 0x7: //Mouse over
-                                        _writer.WriteAttributeString("evt", "onMouseOver");
+                                            this._writer.WriteAttributeString("evt", "onMouseOver");
                                         break;
                                     case 0x9: //OnNext
-                                        _writer.WriteAttributeString("evt", "onNext");
+                                            this._writer.WriteAttributeString("evt", "onNext");
                                         break;
                                     case 0xa: //OnPrev
-                                        _writer.WriteAttributeString("evt", "onPrev");
+                                            this._writer.WriteAttributeString("evt", "onPrev");
                                         break;
                                     case 0xb: //Stop audio
-                                        _writer.WriteAttributeString("evt", "onStopAudio");
+                                            this._writer.WriteAttributeString("evt", "onStopAudio");
                                         break;
                                     default:
                                         break;
@@ -174,27 +174,27 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                                 if (t.delay == -1)
                                 {
-                                    _writer.WriteAttributeString("delay", "indefinite");
+                                        this._writer.WriteAttributeString("delay", "indefinite");
                                 }
                                 else
                                 {
-                                    _writer.WriteAttributeString("delay", t.delay.ToString());
+                                        this._writer.WriteAttributeString("delay", t.delay.ToString());
                                 }
 
                                 if (t.triggerObject == TimeConditionAtom.TriggerObjectEnum.TimeNode)
                                 {
-                                    _writer.WriteStartElement("p", "tn", OpenXmlNamespaces.PresentationML);
-                                    _writer.WriteAttributeString("val", t.id.ToString());
-                                    _writer.WriteEndElement();
+                                        this._writer.WriteStartElement("p", "tn", OpenXmlNamespaces.PresentationML);
+                                        this._writer.WriteAttributeString("val", t.id.ToString());
+                                        this._writer.WriteEndElement();
                                 }
 
-                                _writer.WriteEndElement(); //cond
+                                    this._writer.WriteEndElement(); //cond
 
                             }
 
-                            _writer.WriteEndElement(); //stCondLst
+                                this._writer.WriteEndElement(); //stCondLst
 
-                            _writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
+                                this._writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
 
 
                             foreach (var c4 in c3.AllChildrenWithType<ExtTimeNodeContainer>())
@@ -205,114 +205,114 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 counter++;
                             }
 
-                            _writer.WriteEndElement(); //childTnLst
+                                this._writer.WriteEndElement(); //childTnLst
 
-                            _writer.WriteEndElement(); //cTn
+                                this._writer.WriteEndElement(); //cTn
 
-                            _writer.WriteEndElement(); //par
+                                this._writer.WriteEndElement(); //par
                         }
                     }
                 }
             }
 
-            _writer.WriteEndElement(); //childTnLst
+            this._writer.WriteEndElement(); //childTnLst
 
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteStartElement("p", "prevCondLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "prevCondLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("evt", "onPrev");
-            _writer.WriteAttributeString("delay", "0");
+            this._writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("evt", "onPrev");
+            this._writer.WriteAttributeString("delay", "0");
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteElementString("p", "sldTgt", OpenXmlNamespaces.PresentationML, "");
+            this._writer.WriteElementString("p", "sldTgt", OpenXmlNamespaces.PresentationML, "");
 
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteEndElement(); //cond
+            this._writer.WriteEndElement(); //cond
 
-            _writer.WriteEndElement(); //prevCondLst
+            this._writer.WriteEndElement(); //prevCondLst
 
-            _writer.WriteStartElement("p", "nextCondLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "nextCondLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("evt", "onNext");
-            _writer.WriteAttributeString("delay", "0");
+            this._writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("evt", "onNext");
+            this._writer.WriteAttributeString("delay", "0");
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteElementString("p", "sldTgt", OpenXmlNamespaces.PresentationML, "");
+            this._writer.WriteElementString("p", "sldTgt", OpenXmlNamespaces.PresentationML, "");
 
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteEndElement(); //cond
+            this._writer.WriteEndElement(); //cond
 
-            _writer.WriteEndElement(); //nextCondLst
+            this._writer.WriteEndElement(); //nextCondLst
 
-            _writer.WriteEndElement(); //seq
+            this._writer.WriteEndElement(); //seq
 
-            _writer.WriteEndElement(); //childTnLst
+            this._writer.WriteEndElement(); //childTnLst
 
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteEndElement(); //par
+            this._writer.WriteEndElement(); //par
 
-            _writer.WriteEndElement(); //tnLst
+            this._writer.WriteEndElement(); //tnLst
 
             if (blindAtoms.Count > 0)
             {
 
-                _writer.WriteStartElement("p", "bldLst", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "bldLst", OpenXmlNamespaces.PresentationML);
 
                 foreach (var animinfo in blindAtoms.Keys)
                 {
-                    _writer.WriteStartElement("p", "bldP", OpenXmlNamespaces.PresentationML);
-                    _writer.WriteAttributeString("spid", blindAtoms[animinfo].ToString());
-                    _writer.WriteAttributeString("grpId", "0");
+                    this._writer.WriteStartElement("p", "bldP", OpenXmlNamespaces.PresentationML);
+                    this._writer.WriteAttributeString("spid", blindAtoms[animinfo].ToString());
+                    this._writer.WriteAttributeString("grpId", "0");
 
-                    if (animinfo.animBuildType == AnimationInfoAtom.AnimBuildTypeEnum.Level1Build) _writer.WriteAttributeString("build", "p");
-                    if (animinfo.fAnimateBg) _writer.WriteAttributeString("animBg", "1");
+                    if (animinfo.animBuildType == AnimationInfoAtom.AnimBuildTypeEnum.Level1Build) this._writer.WriteAttributeString("build", "p");
+                    if (animinfo.fAnimateBg) this._writer.WriteAttributeString("animBg", "1");
 
-                    _writer.WriteEndElement(); //bldP
+                    this._writer.WriteEndElement(); //bldP
                 }
 
-                _writer.WriteEndElement(); //bldLst
+                this._writer.WriteEndElement(); //bldLst
 
             }
 
-            _writer.WriteEndElement(); //timing
+            this._writer.WriteEndElement(); //timing
         }
 
 
         private void writePar(ExtTimeNodeContainer container, AnimationInfoAtom animinfo)
-        {         
+        {
 
-            _writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
-            _writer.WriteAttributeString("fill", "hold");
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
+            this._writer.WriteAttributeString("fill", "hold");
 
-            _writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
 
             if (container.FirstChildWithType<TimeConditionContainer>() != null)
             {
-                _writer.WriteAttributeString("delay", container.FirstChildWithType<TimeConditionContainer>().FirstChildWithType<TimeConditionAtom>().delay.ToString());
+                this._writer.WriteAttributeString("delay", container.FirstChildWithType<TimeConditionContainer>().FirstChildWithType<TimeConditionAtom>().delay.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("delay", "0");
+                this._writer.WriteAttributeString("delay", "0");
             }
 
-            _writer.WriteEndElement(); //cond
+            this._writer.WriteEndElement(); //cond
 
-            _writer.WriteEndElement(); //stCondLst
+            this._writer.WriteEndElement(); //stCondLst
 
-            _writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
 
             foreach (var c2 in container.AllChildrenWithType<ExtTimeNodeContainer>())
             {
@@ -322,10 +322,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     Attributes.Add((TimePropertyID4TimeNode)tv.Instance, tv);
                 }
 
-                _writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
 
-                _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-                _writer.WriteAttributeString("id", (++lastID).ToString());
+                this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteAttributeString("id", (++this.lastID).ToString());
 
                 string filter = "";
                 foreach (var c3 in c2.AllChildrenWithType<ExtTimeNodeContainer>())
@@ -345,46 +345,46 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 if (Attributes[TimePropertyID4TimeNode.EffectID] != null)
                 {
-                    _writer.WriteAttributeString("presetID", (Attributes[TimePropertyID4TimeNode.EffectID].intValue).ToString()); //3
+                    this._writer.WriteAttributeString("presetID", (Attributes[TimePropertyID4TimeNode.EffectID].intValue).ToString()); //3
                 }
                 else
                 {
-                    _writer.WriteAttributeString("presetID", "12"); //3
+                    this._writer.WriteAttributeString("presetID", "12"); //3
                 }
 
                 switch (Attributes[TimePropertyID4TimeNode.EffectType].intValue)
                 {
                     case 1:
-                        _writer.WriteAttributeString("presetClass", "entr");
+                        this._writer.WriteAttributeString("presetClass", "entr");
                         break;
                     case 2:
-                        _writer.WriteAttributeString("presetClass", "exit");
+                        this._writer.WriteAttributeString("presetClass", "exit");
                         break;
                     case 3:
-                        _writer.WriteAttributeString("presetClass", "emph");
+                        this._writer.WriteAttributeString("presetClass", "emph");
                         break;
                     case 4:
-                        _writer.WriteAttributeString("presetClass", "path");
+                        this._writer.WriteAttributeString("presetClass", "path");
                         break;
                     case 5:
-                        _writer.WriteAttributeString("presetClass", "verb");
+                        this._writer.WriteAttributeString("presetClass", "verb");
                         break;
                     case 6:
-                        _writer.WriteAttributeString("presetClass", "mediacall");
+                        this._writer.WriteAttributeString("presetClass", "mediacall");
                         break;
                 }
 
                 if (Attributes.ContainsKey(TimePropertyID4TimeNode.EffectDir) && Attributes[TimePropertyID4TimeNode.EffectDir] != null)
                 {
-                    _writer.WriteAttributeString("presetSubtype", (Attributes[TimePropertyID4TimeNode.EffectDir].intValue).ToString()); 
+                    this._writer.WriteAttributeString("presetSubtype", (Attributes[TimePropertyID4TimeNode.EffectDir].intValue).ToString()); 
                 }
                 else
                 {
-                    _writer.WriteAttributeString("presetSubtype", "4");
+                    this._writer.WriteAttributeString("presetSubtype", "4");
                 }
-                
-          
-                _writer.WriteAttributeString("fill", "hold");
+
+
+                this._writer.WriteAttributeString("fill", "hold");
                 //_writer.WriteAttributeString("grpId", "0");
 
                 bool nodeTypeWritten = false;
@@ -396,15 +396,15 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         switch (Attributes[TimePropertyID4TimeNode.EffectNodeType].intValue)
                         {
                             case 1:
-                                _writer.WriteAttributeString("nodeType", "clickEffect");
+                                this._writer.WriteAttributeString("nodeType", "clickEffect");
                                 nodeTypeWritten = true;
                                 break;
                             case 2:
                                 nodeTypeWritten = true;
-                                _writer.WriteAttributeString("nodeType", "withEffect");
+                                this._writer.WriteAttributeString("nodeType", "withEffect");
                                 break;
                             case 3:
-                                _writer.WriteAttributeString("nodeType", "afterEffect");
+                                this._writer.WriteAttributeString("nodeType", "afterEffect");
                                 nodeTypeWritten = true;
                                 break;
                             case 4:
@@ -420,50 +420,50 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     }
 
                 }
-                if (!nodeTypeWritten) _writer.WriteAttributeString("nodeType", "clickEffect");
+                if (!nodeTypeWritten) this._writer.WriteAttributeString("nodeType", "clickEffect");
 
-                _writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
 
-                _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
 
-                _writer.WriteAttributeString("delay", "0");
+                this._writer.WriteAttributeString("delay", "0");
 
-                _writer.WriteEndElement(); //cond
+                this._writer.WriteEndElement(); //cond
 
-                _writer.WriteEndElement(); //stCondLst
+                this._writer.WriteEndElement(); //stCondLst
 
 
                 if (c2.FirstChildWithType<TimeIterateDataAtom>() != null)
                 {
                     var tida = c2.FirstChildWithType<TimeIterateDataAtom>();
 
-                    _writer.WriteStartElement("p", "iterate", OpenXmlNamespaces.PresentationML);
+                    this._writer.WriteStartElement("p", "iterate", OpenXmlNamespaces.PresentationML);
 
                     if (tida.fIterateTypePropertyUsed)
                     {
                         switch (tida.iterateType)
                         {
                             case 0:
-                                _writer.WriteAttributeString("type", "el");
+                                this._writer.WriteAttributeString("type", "el");
                                 break;
                             case 1:
-                                _writer.WriteAttributeString("type", "wd");
+                                this._writer.WriteAttributeString("type", "wd");
                                 break;
                             case 2:
-                                _writer.WriteAttributeString("type", "lt");
+                                this._writer.WriteAttributeString("type", "lt");
                                 break;
                         }
                     }
-                    
-                    _writer.WriteStartElement("p", "tmPct", OpenXmlNamespaces.PresentationML);
-                    
-                    _writer.WriteAttributeString("val", (tida.iterateInterval * 1000).ToString());
-                    _writer.WriteEndElement(); //tmPct
-                    _writer.WriteEndElement(); //iterate
+
+                    this._writer.WriteStartElement("p", "tmPct", OpenXmlNamespaces.PresentationML);
+
+                    this._writer.WriteAttributeString("val", (tida.iterateInterval * 1000).ToString());
+                    this._writer.WriteEndElement(); //tmPct
+                    this._writer.WriteEndElement(); //iterate
                 }
 
 
-                _writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
 
                 int targetRun = -1;
 
@@ -478,8 +478,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
                
                 writeAnimations(c2, targetRun);
-               
-                _writer.WriteEndElement(); //childTnLst
+
+                this._writer.WriteEndElement(); //childTnLst
 
                 //slaves
                 if (c2.AllChildrenWithType<SlaveContainer>().Count > 0)
@@ -487,7 +487,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     if (c2.FirstDescendantWithType<TimeColorBehaviorContainer>() != null)
                     {
 
-                        _writer.WriteStartElement("p", "subTnLst", OpenXmlNamespaces.PresentationML);
+                        this._writer.WriteStartElement("p", "subTnLst", OpenXmlNamespaces.PresentationML);
                         foreach (var sc in c2.AllChildrenWithType<SlaveContainer>())
                         {                           
 
@@ -498,38 +498,38 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             }
 
                         }
-                        _writer.WriteEndElement(); //subTnLst
+                        this._writer.WriteEndElement(); //subTnLst
                     }
                 }
 
 
-                _writer.WriteEndElement(); //cTn
+                this._writer.WriteEndElement(); //cTn
 
-                _writer.WriteEndElement(); //par
+                this._writer.WriteEndElement(); //par
 
             }
 
-            _writer.WriteEndElement(); //childTnLst
+            this._writer.WriteEndElement(); //childTnLst
 
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteEndElement(); //par
+            this._writer.WriteEndElement(); //par
 
        }
 
         private string getShapeId(uint c4Id)
         {
-            if (_stm.spidToId.ContainsKey((int)c4Id))
+            if (this._stm.spidToId.ContainsKey((int)c4Id))
             {
-                return _stm.spidToId[(int)c4Id].ToString();
+                return this._stm.spidToId[(int)c4Id].ToString();
             }
             else
             {
-                foreach (int sId in _stm.spidToId.Keys)
+                foreach (int sId in this._stm.spidToId.Keys)
                 {
                     if (sId > 0)
                     {
-                        return _stm.spidToId[sId].ToString();
+                        return this._stm.spidToId[sId].ToString();
                     }
                 }
             }
@@ -551,34 +551,34 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             TimeConditionAtom tca = null;
             if (c.FirstChildWithType<TimeConditionContainer>() != null)
             tca = c.FirstChildWithType<TimeConditionContainer>().FirstChildWithType<TimeConditionAtom>();
-            
-            _writer.WriteStartElement("p", "set", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "set", OpenXmlNamespaces.PresentationML);
+
+            this._writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
 
             if (tba.fAdditivePropertyUsed)
             {
                 switch (tba.behaviorAdditive)
                 {
                     case 0: //override
-                        _writer.WriteAttributeString("additive", "base");
+                        this._writer.WriteAttributeString("additive", "base");
                         break;
                     case 1: //add
-                        _writer.WriteAttributeString("additive", "sum");
+                        this._writer.WriteAttributeString("additive", "sum");
                         break;
                 }
             }
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
 
             if (tna.fDurationProperty)
             {
-                _writer.WriteAttributeString("dur", tna.duration.ToString());
+                this._writer.WriteAttributeString("dur", tna.duration.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("dur", "1");
+                this._writer.WriteAttributeString("dur", "1");
             }
 
 
@@ -588,139 +588,139 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 {
                     case 0:
                     case 3:
-                        _writer.WriteAttributeString("fill", "hold");
+                        this._writer.WriteAttributeString("fill", "hold");
                         break;
                     case 1:
                     case 4:
-                        _writer.WriteAttributeString("fill", "reset");
+                        this._writer.WriteAttributeString("fill", "reset");
                         break;
                     case 2:
-                        _writer.WriteAttributeString("fill", "freeze"); //TODO:verify
+                        this._writer.WriteAttributeString("fill", "freeze"); //TODO:verify
                         break;
                 }
             }
             else
             {
-                _writer.WriteAttributeString("fill", "hold");
+                this._writer.WriteAttributeString("fill", "hold");
             }
 
-            _writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
 
             if (tca == null)
             {
-                _writer.WriteAttributeString("delay", "0"); 
+                this._writer.WriteAttributeString("delay", "0"); 
             }
             else
             {
-                _writer.WriteAttributeString("delay", tca.delay.ToString());
+                this._writer.WriteAttributeString("delay", tca.delay.ToString());
             }
 
-            _writer.WriteEndElement(); //cond
+            this._writer.WriteEndElement(); //cond
 
-            _writer.WriteEndElement(); //stCondLst
+            this._writer.WriteEndElement(); //stCondLst
 
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
+            this._writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
 
             CheckAndWriteStartEndRuns(c, ref targetRun);
 
-            _writer.WriteEndElement(); //spTgt
+            this._writer.WriteEndElement(); //spTgt
 
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, attrName.stringValue);
+            this._writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, attrName.stringValue);
 
-            _writer.WriteEndElement(); //attrNameLst
+            this._writer.WriteEndElement(); //attrNameLst
 
-            _writer.WriteEndElement(); //cBhvr
+            this._writer.WriteEndElement(); //cBhvr
 
-            _writer.WriteStartElement("p", "to", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "to", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "strVal", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "strVal", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("val", val.stringValue);
+            this._writer.WriteAttributeString("val", val.stringValue);
 
-            _writer.WriteEndElement(); //str
+            this._writer.WriteEndElement(); //str
 
-            _writer.WriteEndElement(); //to
+            this._writer.WriteEndElement(); //to
 
-            _writer.WriteEndElement(); //set
+            this._writer.WriteEndElement(); //set
         }
 
         private void writeAnimRot(ExtTimeNodeContainer c, ref int targetRun, TimeRotationBehaviorAtom trba)
         {
             var tna = c.FirstChildWithType<TimeNodeAtom>();
 
-            _writer.WriteStartElement("p", "animRot", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("by", (trba.fBy * 60000).ToString("#")); 
+            this._writer.WriteStartElement("p", "animRot", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("by", (trba.fBy * 60000).ToString("#"));
 
-            _writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
             
             if (tna.fDurationProperty)
             {
-                _writer.WriteAttributeString("dur", tna.duration.ToString());
+                this._writer.WriteAttributeString("dur", tna.duration.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("dur", "500");
+                this._writer.WriteAttributeString("dur", "500");
             }
 
-            _writer.WriteAttributeString("fill", "hold");
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteAttributeString("fill", "hold");
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
+            this._writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
 
             CheckAndWriteStartEndRuns(c, ref targetRun);
 
-            _writer.WriteEndElement(); //spTgt
+            this._writer.WriteEndElement(); //spTgt
 
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, "r");
+            this._writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, "r");
 
-            _writer.WriteEndElement(); //attrNameLst
+            this._writer.WriteEndElement(); //attrNameLst
 
-            _writer.WriteEndElement(); //cBhvr
+            this._writer.WriteEndElement(); //cBhvr
 
-            _writer.WriteEndElement(); //animRot
+            this._writer.WriteEndElement(); //animRot
         }
 
         private void writeAnimCmd(ExtTimeNodeContainer c, ref int targetRun, TimeCommandBehaviorAtom tcba)
         {
             var tna = c.FirstChildWithType<TimeNodeAtom>();
 
-            _writer.WriteStartElement("p", "cmd", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cmd", OpenXmlNamespaces.PresentationML);
 
             if (tcba.fCommandPropertyUsed)
             {
                 switch (tcba.commandBehaviorType)
                 {
                     case 0:
-                        _writer.WriteAttributeString("type", "evt");
+                        this._writer.WriteAttributeString("type", "evt");
                         break;
                     case 1:
-                        _writer.WriteAttributeString("type", "call");
+                        this._writer.WriteAttributeString("type", "call");
                         break;
                     case 2:
-                        _writer.WriteAttributeString("type", "verb");
+                        this._writer.WriteAttributeString("type", "verb");
                         break;
                 }
             }
@@ -728,41 +728,41 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             if (tcba.fCommandPropertyUsed)
             {
-                _writer.WriteAttributeString("cmd", tcba.FirstAncestorWithType<TimeCommandBehaviorContainer>().FirstChildWithType<TimeVariantValue>().stringValue);
+                this._writer.WriteAttributeString("cmd", tcba.FirstAncestorWithType<TimeCommandBehaviorContainer>().FirstChildWithType<TimeVariantValue>().stringValue);
             }
 
-            _writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
 
             if (tna.fDurationProperty)
             {
-                _writer.WriteAttributeString("dur", tna.duration.ToString());
+                this._writer.WriteAttributeString("dur", tna.duration.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("dur", "1");
+                this._writer.WriteAttributeString("dur", "1");
             }
 
-            _writer.WriteAttributeString("fill", "hold");
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteAttributeString("fill", "hold");
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
+            this._writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
 
             CheckAndWriteStartEndRuns(c, ref targetRun);
 
-            _writer.WriteEndElement(); //spTgt
+            this._writer.WriteEndElement(); //spTgt
 
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteEndElement(); //cBhvr
+            this._writer.WriteEndElement(); //cBhvr
 
-            _writer.WriteEndElement(); //animRot
+            this._writer.WriteEndElement(); //animRot
         }
 
         public void writeAnim(ExtTimeNodeContainer c, int targetRun)
@@ -789,13 +789,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             else
             {
                 fieldName = tbc.FirstChildWithType<TimeStringListContainer>().FirstChildWithType<TimeVariantValue>().stringValue;
-            }          
-         
-            _writer.WriteStartElement("p", "anim", OpenXmlNamespaces.PresentationML);
+            }
+
+            this._writer.WriteStartElement("p", "anim", OpenXmlNamespaces.PresentationML);
 
             if (taba.fToPropertyUsed)
             {
-                _writer.WriteAttributeString("to", bc.FirstChildWithType<TimeVariantValue>().stringValue);
+                this._writer.WriteAttributeString("to", bc.FirstChildWithType<TimeVariantValue>().stringValue);
             }
 
             if (taba.fCalcModePropertyUsed)
@@ -803,20 +803,20 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 switch (taba.calcMode)
                 {
                     case 0: //discrete
-                        _writer.WriteAttributeString("calcmode", "discrete");
+                        this._writer.WriteAttributeString("calcmode", "discrete");
                         break;
                     case 1: //linear
-                        _writer.WriteAttributeString("calcmode", "lin");
+                        this._writer.WriteAttributeString("calcmode", "lin");
                         break;
                     case 2: //formula
-                        _writer.WriteAttributeString("calcmode", "fmla");
+                        this._writer.WriteAttributeString("calcmode", "fmla");
                         break;
                 }
             }
             else
             {
                 //default
-                _writer.WriteAttributeString("calcmode", "lin");
+                this._writer.WriteAttributeString("calcmode", "lin");
             }
 
             if (taba.fValueTypePropertyUsed)
@@ -824,51 +824,51 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 switch (taba.valueType)
                 {
                     case TimeAnimateBehaviorValueTypeEnum.Color:
-                        _writer.WriteAttributeString("valueType", "clr");
+                        this._writer.WriteAttributeString("valueType", "clr");
                         break;
                     case TimeAnimateBehaviorValueTypeEnum.Number:
-                        _writer.WriteAttributeString("valueType", "num");
+                        this._writer.WriteAttributeString("valueType", "num");
                         break;
                     case TimeAnimateBehaviorValueTypeEnum.String:
-                        _writer.WriteAttributeString("valueType", "str");
+                        this._writer.WriteAttributeString("valueType", "str");
                         break;
                 }
             }
             else
             {
-                _writer.WriteAttributeString("valueType", "num");
+                this._writer.WriteAttributeString("valueType", "num");
             }
 
-            _writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
 
             if (tba.fAdditivePropertyUsed)
             {
                 switch (tba.behaviorAdditive)
                 {
                     case 0: //override
-                        _writer.WriteAttributeString("additive", "base");
+                        this._writer.WriteAttributeString("additive", "base");
                         break;
                     case 1: //add
-                        _writer.WriteAttributeString("additive", "sum");
+                        this._writer.WriteAttributeString("additive", "sum");
                         break;
                 }
             }
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
 
             if (tna.fDurationProperty)
             {
-                _writer.WriteAttributeString("dur", tna.duration.ToString());
+                this._writer.WriteAttributeString("dur", tna.duration.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("dur", "500");
+                this._writer.WriteAttributeString("dur", "500");
             }
 
             if (filter.Length > 0)
             {
-                _writer.WriteAttributeString("tmFilter", filter);
+                this._writer.WriteAttributeString("tmFilter", filter);
             }
 
             if (tna.fFillProperty)
@@ -877,61 +877,61 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 {
                     case 0:
                     case 3:
-                        _writer.WriteAttributeString("fill", "hold");
+                        this._writer.WriteAttributeString("fill", "hold");
                         break;
                     case 1:
                     case 4:
-                        _writer.WriteAttributeString("fill", "reset");
+                        this._writer.WriteAttributeString("fill", "reset");
                         break;
                     case 2:
-                        _writer.WriteAttributeString("fill", "freeze"); //TODO:verify
+                        this._writer.WriteAttributeString("fill", "freeze"); //TODO:verify
                         break;
                 }
             }
             else
             {
-                _writer.WriteAttributeString("fill", "hold");
+                this._writer.WriteAttributeString("fill", "hold");
             }
 
-            _writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
 
             if (c.FirstChildWithType<TimeConditionContainer>() != null)
             {
-                _writer.WriteAttributeString("delay", c.FirstChildWithType<TimeConditionContainer>().FirstChildWithType<TimeConditionAtom>().delay.ToString());
+                this._writer.WriteAttributeString("delay", c.FirstChildWithType<TimeConditionContainer>().FirstChildWithType<TimeConditionAtom>().delay.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("delay", "0");
+                this._writer.WriteAttributeString("delay", "0");
             }
 
-            _writer.WriteEndElement(); //cond
+            this._writer.WriteEndElement(); //cond
 
-            _writer.WriteEndElement(); //stCondLst
+            this._writer.WriteEndElement(); //stCondLst
 
-            
-            _writer.WriteEndElement(); //cTn
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
-                       
-            _writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
+            this._writer.WriteEndElement(); //cTn
+
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
+
+            this._writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
             CheckAndWriteStartEndRuns(c, ref targetRun);
 
-            _writer.WriteEndElement(); //spTgt
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //spTgt
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
-            _writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, attrName.stringValue);
-            
-            _writer.WriteEndElement(); //attrNameLst
+            this._writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, attrName.stringValue);
 
-            _writer.WriteEndElement(); //cBhvr
+            this._writer.WriteEndElement(); //attrNameLst
+
+            this._writer.WriteEndElement(); //cBhvr
 
             if (lst.Count > 0)
             {
-                _writer.WriteStartElement("p", "tavLst", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "tavLst", OpenXmlNamespaces.PresentationML);
 
                 TimeAnimationValueAtom tava;
                 TimeVariantValue tvv;
@@ -950,45 +950,45 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     lst.RemoveAt(0);
                     lst.RemoveAt(0);
 
-                    _writer.WriteStartElement("p", "tav", OpenXmlNamespaces.PresentationML);
-                    _writer.WriteAttributeString("tm", (tava.time * 100).ToString());
+                    this._writer.WriteStartElement("p", "tav", OpenXmlNamespaces.PresentationML);
+                    this._writer.WriteAttributeString("tm", (tava.time * 100).ToString());
 
                     if (tvv2 != null && tvv2.type == TimeVariantTypeEnum.String && tvv2.stringValue.Length > 0)
                     {
-                        _writer.WriteAttributeString("fmla", tvv2.stringValue);
+                        this._writer.WriteAttributeString("fmla", tvv2.stringValue);
                     }
 
-                    _writer.WriteStartElement("p", "val", OpenXmlNamespaces.PresentationML);
+                    this._writer.WriteStartElement("p", "val", OpenXmlNamespaces.PresentationML);
 
                     switch (tvv.type)
                     {
                         case TimeVariantTypeEnum.Bool:
-                            _writer.WriteStartElement("p", "boolVal", OpenXmlNamespaces.PresentationML);
-                            _writer.WriteAttributeString("val", tvv.boolValue.ToString());
+                            this._writer.WriteStartElement("p", "boolVal", OpenXmlNamespaces.PresentationML);
+                            this._writer.WriteAttributeString("val", tvv.boolValue.ToString());
                             break;
                         case TimeVariantTypeEnum.Float:
-                            _writer.WriteStartElement("p", "fltVal", OpenXmlNamespaces.PresentationML);
-                            _writer.WriteAttributeString("val", tvv.floatValue.ToString());
+                            this._writer.WriteStartElement("p", "fltVal", OpenXmlNamespaces.PresentationML);
+                            this._writer.WriteAttributeString("val", tvv.floatValue.ToString());
                             break;
                         case TimeVariantTypeEnum.Int:
-                            _writer.WriteStartElement("p", "intVal", OpenXmlNamespaces.PresentationML);
-                            _writer.WriteAttributeString("val", tvv.intValue.ToString());
+                            this._writer.WriteStartElement("p", "intVal", OpenXmlNamespaces.PresentationML);
+                            this._writer.WriteAttributeString("val", tvv.intValue.ToString());
                             break;
                         case TimeVariantTypeEnum.String:
-                            _writer.WriteStartElement("p", "strVal", OpenXmlNamespaces.PresentationML);
-                            _writer.WriteAttributeString("val", tvv.stringValue);
+                            this._writer.WriteStartElement("p", "strVal", OpenXmlNamespaces.PresentationML);
+                            this._writer.WriteAttributeString("val", tvv.stringValue);
                             break;
                     }
 
-                    _writer.WriteEndElement(); //strVal
-                    _writer.WriteEndElement(); //val
-                    _writer.WriteEndElement(); //tav
+                    this._writer.WriteEndElement(); //strVal
+                    this._writer.WriteEndElement(); //val
+                    this._writer.WriteEndElement(); //tav
                 }
 
-                _writer.WriteEndElement(); //tavLst
+                this._writer.WriteEndElement(); //tavLst
             }
 
-            _writer.WriteEndElement(); //anim
+            this._writer.WriteEndElement(); //anim
         }
 
         public void writeMotion(ExtTimeNodeContainer c, int targetRun)
@@ -1006,32 +1006,32 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 attrNames.Add(attrName.stringValue);   
             }
 
-            _writer.WriteStartElement("p", "animMotion", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "animMotion", OpenXmlNamespaces.PresentationML);
 
             if (tmba.fOriginPropertyUsed)
             {
                 switch (tmba.behaviorOrigin)
                 {
                     case 0: case 1:
-                        _writer.WriteAttributeString("origin", "parent");
+                        this._writer.WriteAttributeString("origin", "parent");
                         break;
                     case 2:
-                        _writer.WriteAttributeString("origin", "layout");
+                        this._writer.WriteAttributeString("origin", "layout");
                         break;
                 }
             }
             else
             {
                 //default
-                _writer.WriteAttributeString("origin", "layout");
+                this._writer.WriteAttributeString("origin", "layout");
             }
 
             if (tmba.fPathPropertyUsed)
             {
-                _writer.WriteAttributeString("path", bc.FirstChildWithType<TimeVariantValue>().stringValue);
+                this._writer.WriteAttributeString("path", bc.FirstChildWithType<TimeVariantValue>().stringValue);
             }
 
-            _writer.WriteAttributeString("pathEditMode", "relative"); //TODO
+            this._writer.WriteAttributeString("pathEditMode", "relative"); //TODO
 
             if (tmba.fPointsTypesPropertyUsed)
             {
@@ -1041,42 +1041,42 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         if (v.type == TimeVariantTypeEnum.String)
                         {
-                            _writer.WriteAttributeString("ptsTypes", v.stringValue);
+                            this._writer.WriteAttributeString("ptsTypes", v.stringValue);
                         }
                         break;
                     }        
                 }
                 else
                 {
-                    _writer.WriteAttributeString("ptsTypes", "");
+                    this._writer.WriteAttributeString("ptsTypes", "");
                 }
             }
 
-            _writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
 
             if (tba.fAdditivePropertyUsed)
             {
                 switch (tba.behaviorAdditive)
                 {
                     case 0: //override
-                        _writer.WriteAttributeString("additive", "base");
+                        this._writer.WriteAttributeString("additive", "base");
                         break;
                     case 1: //add
-                        _writer.WriteAttributeString("additive", "sum");
+                        this._writer.WriteAttributeString("additive", "sum");
                         break;
                 }
             }
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
 
             if (tna.fDurationProperty)
             {
-                _writer.WriteAttributeString("dur", tna.duration.ToString());
+                this._writer.WriteAttributeString("dur", tna.duration.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("dur", "2000");
+                this._writer.WriteAttributeString("dur", "2000");
             }
 
             if (tna.fFillProperty)
@@ -1085,42 +1085,42 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 {
                     case 0:
                     case 3:
-                        _writer.WriteAttributeString("fill", "hold");
+                        this._writer.WriteAttributeString("fill", "hold");
                         break;
                     case 1:
                     case 4:
-                        _writer.WriteAttributeString("fill", "reset");
+                        this._writer.WriteAttributeString("fill", "reset");
                         break;
                     case 2:
-                        _writer.WriteAttributeString("fill", "freeze"); //TODO:verify
+                        this._writer.WriteAttributeString("fill", "freeze"); //TODO:verify
                         break;
                 }
             }
 
 
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
+            this._writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
             CheckAndWriteStartEndRuns(c, ref targetRun);
 
-            _writer.WriteEndElement(); //spTgt
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //spTgt
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
 
             foreach (string attrName in attrNames)
             {
-                _writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, attrName);
-            }            
+                this._writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, attrName);
+            }
 
-            _writer.WriteEndElement(); //attrNameLst
+            this._writer.WriteEndElement(); //attrNameLst
 
-            _writer.WriteEndElement(); //cBhvr
+            this._writer.WriteEndElement(); //cBhvr
 
-            _writer.WriteEndElement(); //anim
+            this._writer.WriteEndElement(); //anim
         }
 
         public void writeScale(ExtTimeNodeContainer c, int targetRun)
@@ -1132,33 +1132,33 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             var tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
             var tsba = bc.FirstChildWithType<TimeScaleBehaviorAtom>();
 
-             _writer.WriteStartElement("p", "animScale", OpenXmlNamespaces.PresentationML);
-          
-            _writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "animScale", OpenXmlNamespaces.PresentationML);
+
+            this._writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
 
             if (tba.fAdditivePropertyUsed)
             {
                 switch (tba.behaviorAdditive)
                 {
                     case 0: //override
-                        _writer.WriteAttributeString("additive", "base");
+                        this._writer.WriteAttributeString("additive", "base");
                         break;
                     case 1: //add
-                        _writer.WriteAttributeString("additive", "sum");
+                        this._writer.WriteAttributeString("additive", "sum");
                         break;
                 }
             }
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
 
             if (tna.fDurationProperty)
             {
-                _writer.WriteAttributeString("dur", tna.duration.ToString());
+                this._writer.WriteAttributeString("dur", tna.duration.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("dur", "2000");
+                this._writer.WriteAttributeString("dur", "2000");
             }
 
             if (tna.fFillProperty)
@@ -1167,49 +1167,49 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 {
                     case 0:
                     case 3:
-                        _writer.WriteAttributeString("fill", "hold");
+                        this._writer.WriteAttributeString("fill", "hold");
                         break;
                     case 1:
                     case 4:
-                        _writer.WriteAttributeString("fill", "reset");
+                        this._writer.WriteAttributeString("fill", "reset");
                         break;
                     case 2:
-                        _writer.WriteAttributeString("fill", "freeze"); //TODO:verify
+                        this._writer.WriteAttributeString("fill", "freeze"); //TODO:verify
                         break;
                 }
             }
 
-            _writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("delay", "650");
-            _writer.WriteEndElement(); //stCondLst
-            _writer.WriteEndElement(); //stCondLst
+            this._writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("delay", "650");
+            this._writer.WriteEndElement(); //stCondLst
+            this._writer.WriteEndElement(); //stCondLst
 
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
+            this._writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
             CheckAndWriteStartEndRuns(c, ref targetRun);
 
-            _writer.WriteEndElement(); //spTgt
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //spTgt
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteEndElement(); //cBhvr
+            this._writer.WriteEndElement(); //cBhvr
 
             if (tsba.fToPropertyUsed)
             {
-                _writer.WriteStartElement("p", "to", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "to", OpenXmlNamespaces.PresentationML);
 
-                _writer.WriteAttributeString("x", (tsba.fXTo * 1000).ToString());
+                this._writer.WriteAttributeString("x", (tsba.fXTo * 1000).ToString());
 
-                _writer.WriteAttributeString("y", (tsba.fYTo * 1000).ToString());
+                this._writer.WriteAttributeString("y", (tsba.fYTo * 1000).ToString());
 
-                _writer.WriteEndElement(); //to
+                this._writer.WriteEndElement(); //to
             }
 
-            _writer.WriteEndElement(); //animScale
+            this._writer.WriteEndElement(); //animScale
         }
 
         public void writeColor(RegularContainer c, int targetRun)
@@ -1227,23 +1227,23 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 attrNames.Add(attrName.stringValue);
             }
 
-            _writer.WriteStartElement("p", "animClr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "animClr", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("clrSpc", "rgb");
-            _writer.WriteAttributeString("dir", "cw");
+            this._writer.WriteAttributeString("clrSpc", "rgb");
+            this._writer.WriteAttributeString("dir", "cw");
 
-            _writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("override", "childStyle");
+            this._writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("override", "childStyle");
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
 
             if (tna.fDurationProperty)
             {
-                _writer.WriteAttributeString("dur", tna.duration.ToString());
+                this._writer.WriteAttributeString("dur", tna.duration.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("dur", "2000");
+                this._writer.WriteAttributeString("dur", "2000");
             }
 
             if (tna.fFillProperty)
@@ -1252,100 +1252,100 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 {
                     case 0:
                     case 3:
-                        _writer.WriteAttributeString("fill", "hold");
+                        this._writer.WriteAttributeString("fill", "hold");
                         break;
                     case 1:
                     case 4:
-                        _writer.WriteAttributeString("fill", "reset");
+                        this._writer.WriteAttributeString("fill", "reset");
                         break;
                     case 2:
-                        _writer.WriteAttributeString("fill", "freeze"); //TODO:verify
+                        this._writer.WriteAttributeString("fill", "freeze"); //TODO:verify
                         break;
                 }
             }
             else
             {
-                _writer.WriteAttributeString("fill", "hold");
+                this._writer.WriteAttributeString("fill", "hold");
             }
 
-            _writer.WriteAttributeString("display", "0");
-            _writer.WriteAttributeString("masterRel", "nextClick");
-            _writer.WriteAttributeString("afterEffect", "1");
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteAttributeString("display", "0");
+            this._writer.WriteAttributeString("masterRel", "nextClick");
+            this._writer.WriteAttributeString("afterEffect", "1");
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
+            this._writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
 
             CheckAndWriteStartEndRuns(c, ref targetRun);
 
-            _writer.WriteEndElement(); //spTgt
+            this._writer.WriteEndElement(); //spTgt
 
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "attrNameLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, attrNames[0]);
+            this._writer.WriteElementString("p", "attrName", OpenXmlNamespaces.PresentationML, attrNames[0]);
 
-            _writer.WriteEndElement(); //attrNameLst
+            this._writer.WriteEndElement(); //attrNameLst
 
-            _writer.WriteEndElement(); //cBhvr
+            this._writer.WriteEndElement(); //cBhvr
 
-            
-            _writer.WriteStartElement("p", "to", OpenXmlNamespaces.PresentationML);
+
+            this._writer.WriteStartElement("p", "to", OpenXmlNamespaces.PresentationML);
 
             switch (tcba.colorTo.model)
             {
                 case 0: //RGB
-                    _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
                     string val = tcba.colorTo.val1.ToString("X").PadLeft(2, '0') + tcba.colorTo.val2.ToString("X").PadLeft(2, '0') + tcba.colorTo.val3.ToString("X").PadLeft(2, '0');
-                    _writer.WriteAttributeString("val", val);
-                    _writer.WriteEndElement(); //srgbClr
+                    this._writer.WriteAttributeString("val", val);
+                    this._writer.WriteEndElement(); //srgbClr
                     break;
                 case 1: //HSL
                     break;
                 case 2: //scheme
-                    _writer.WriteStartElement("a", "schemeClr", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "schemeClr", OpenXmlNamespaces.DrawingML);
                     switch (tcba.colorTo.val1)
                     {
                         case 0x00:
-                            _writer.WriteAttributeString("val", "bg1"); //background
+                            this._writer.WriteAttributeString("val", "bg1"); //background
                             break;
                         case 0x01:
-                            _writer.WriteAttributeString("val", "tx1"); //text
+                            this._writer.WriteAttributeString("val", "tx1"); //text
                             break;
                         case 0x02:
-                            _writer.WriteAttributeString("val", "dk1"); //shadow
+                            this._writer.WriteAttributeString("val", "dk1"); //shadow
                             break;
                         case 0x03:
-                            _writer.WriteAttributeString("val", "tx1"); //title text
+                            this._writer.WriteAttributeString("val", "tx1"); //title text
                             break;
                         case 0x04:
-                            _writer.WriteAttributeString("val", "bg2"); //fill
+                            this._writer.WriteAttributeString("val", "bg2"); //fill
                             break;
                         case 0x05:
-                            _writer.WriteAttributeString("val", "accent1"); //accent1
+                            this._writer.WriteAttributeString("val", "accent1"); //accent1
                             break;
                         case 0x06:
-                            _writer.WriteAttributeString("val", "accent2"); //accent2
+                            this._writer.WriteAttributeString("val", "accent2"); //accent2
                             break;
                         case 0x07:
-                            _writer.WriteAttributeString("val", "accent3"); //accent3
+                            this._writer.WriteAttributeString("val", "accent3"); //accent3
                             break;
                     }
-                    
-                    _writer.WriteEndElement(); //srgbClr
+
+                    this._writer.WriteEndElement(); //srgbClr
                     break;
 
             }
 
-           
 
-            _writer.WriteEndElement(); //to
 
-            _writer.WriteEndElement(); //animClr
+            this._writer.WriteEndElement(); //to
+
+            this._writer.WriteEndElement(); //animClr
         }
         
 
@@ -1394,70 +1394,70 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             string filter = tebc.FirstChildWithType<TimeVariantValue>().stringValue;
 
-            _writer.WriteStartElement("p", "animEffect", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "animEffect", OpenXmlNamespaces.PresentationML);
 
             if (Attributes[TimePropertyID4TimeNode.EffectType].intValue == 2)
             {
-                _writer.WriteAttributeString("transition", "out");
+                this._writer.WriteAttributeString("transition", "out");
             }
             else
             {
-                _writer.WriteAttributeString("transition", "in");
+                this._writer.WriteAttributeString("transition", "in");
             }
 
-            _writer.WriteAttributeString("filter", filter);
-            _writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("filter", filter);
+            this._writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
 
             //_writer.WriteAttributeString("additive", "repl");
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
 
             if (tna.fDurationProperty)
             {
-                _writer.WriteAttributeString("dur", tna.duration.ToString());
+                this._writer.WriteAttributeString("dur", tna.duration.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("dur", "500");
+                this._writer.WriteAttributeString("dur", "500");
             }
 
-            _writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
 
             if (c.FirstChildWithType<TimeConditionContainer>() != null)
             {
-                _writer.WriteAttributeString("delay", c.FirstChildWithType<TimeConditionContainer>().FirstChildWithType<TimeConditionAtom>().delay.ToString());
+                this._writer.WriteAttributeString("delay", c.FirstChildWithType<TimeConditionContainer>().FirstChildWithType<TimeConditionAtom>().delay.ToString());
             }
             else
             {
-                _writer.WriteAttributeString("delay", "0");
+                this._writer.WriteAttributeString("delay", "0");
             }
 
-            _writer.WriteEndElement(); //cond
+            this._writer.WriteEndElement(); //cond
 
-            _writer.WriteEndElement(); //stCondLst
+            this._writer.WriteEndElement(); //stCondLst
 
-            _writer.WriteEndElement(); //cTn
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
-            _writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
-  
-            _writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
+            this._writer.WriteEndElement(); //cTn
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
+
+            this._writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
             
             CheckAndWriteStartEndRuns((ExtTimeNodeContainer)c.ParentRecord, ref targetRun);
 
-            _writer.WriteEndElement(); //spTgt
-            _writer.WriteEndElement(); //tgtEl
-            _writer.WriteEndElement(); //cBhvr
-            _writer.WriteEndElement(); //animEffect
+            this._writer.WriteEndElement(); //spTgt
+            this._writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //cBhvr
+            this._writer.WriteEndElement(); //animEffect
         }
 
         private void CheckAndWriteStartEndRuns(RegularContainer c, ref int targetRun)
         {
             var vsa = c.FirstDescendantWithType<VisualShapeAtom>(); 
 
-            if (!_stm.spidToId.ContainsKey((int)vsa.shapeIdRef))
+            if (!this._stm.spidToId.ContainsKey((int)vsa.shapeIdRef))
             {
                 return;
             }
@@ -1466,7 +1466,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             if (vsa.type == TimeVisualElementEnum.TextRange)
             {
                 int i = 0;
-                foreach (var p in TextAreasForAnimation)
+                foreach (var p in this.TextAreasForAnimation)
                 {
                     if (p.X <= vsa.data1 && p.Y >= vsa.data2)
                     {
@@ -1477,25 +1477,25 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
                 if (targetRun == -1)
                 {
-                    if (vsa.data1 > 0 && TextAreasForAnimation.Count == 0) TextAreasForAnimation.Add(new Point(0, vsa.data1));
-                    TextAreasForAnimation.Add(new Point(vsa.data1, vsa.data2));
-                    targetRun = TextAreasForAnimation.Count - 1;
+                    if (vsa.data1 > 0 && this.TextAreasForAnimation.Count == 0) this.TextAreasForAnimation.Add(new Point(0, vsa.data1));
+                    this.TextAreasForAnimation.Add(new Point(vsa.data1, vsa.data2));
+                    targetRun = this.TextAreasForAnimation.Count - 1;
                 }
 
-                _writer.WriteStartElement("p", "txEl", OpenXmlNamespaces.PresentationML);
-                _writer.WriteStartElement("p", "pRg", OpenXmlNamespaces.PresentationML);
-                _writer.WriteAttributeString("st", targetRun.ToString());
-                _writer.WriteAttributeString("end", targetRun.ToString());
-                _writer.WriteEndElement(); //pRg
-                _writer.WriteEndElement(); //txEl
+                this._writer.WriteStartElement("p", "txEl", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "pRg", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteAttributeString("st", targetRun.ToString());
+                this._writer.WriteAttributeString("end", targetRun.ToString());
+                this._writer.WriteEndElement(); //pRg
+                this._writer.WriteEndElement(); //txEl
             }
         }
 
         public void writeAnimEffect(AnimationInfoAtom animinfo, ExtTimeNodeContainer c, int targetRun)
         {
-            _writer.WriteStartElement("p", "animEffect", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "animEffect", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("transition", "in");
+            this._writer.WriteAttributeString("transition", "in");
 
             switch (animinfo.animEffect)
             {
@@ -1504,124 +1504,124 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         case 0x00: //not through black
                         case 0x02: //same as 0x00
-                            _writer.WriteAttributeString("filter", "cut(false)");
+                            this._writer.WriteAttributeString("filter", "cut(false)");
                             break;
                         case 0x01: //through black
-                            _writer.WriteAttributeString("filter", "cut(true)");
+                            this._writer.WriteAttributeString("filter", "cut(true)");
                             break;
                     }
                     break;
                 case 0x01: //Random
-                    _writer.WriteAttributeString("filter", "random");
+                    this._writer.WriteAttributeString("filter", "random");
                     break;
                 case 0x02: //Blinds
                     if (animinfo.animEffectDirection == 0x01)
                     {
-                        _writer.WriteAttributeString("filter", "blinds(horizontal)");
+                        this._writer.WriteAttributeString("filter", "blinds(horizontal)");
                     }
                     else
                     {
-                        _writer.WriteAttributeString("filter", "blinds(vertical)");
+                        this._writer.WriteAttributeString("filter", "blinds(vertical)");
                     }
                     break;
                 case 0x03: //Checker
                     if (animinfo.animEffectDirection == 0x00)
                     {
-                        _writer.WriteAttributeString("filter", "checkerboard(across)");
+                        this._writer.WriteAttributeString("filter", "checkerboard(across)");
                     }
                     else
                     {
-                        _writer.WriteAttributeString("filter", "checkerboard(down)");
+                        this._writer.WriteAttributeString("filter", "checkerboard(down)");
                     }
                     break;
                 case 0x04: //Cover
                     switch (animinfo.animEffectDirection)
                     {
                         case 0x00: //r->l
-                            _writer.WriteAttributeString("filter", "cover(l)");
+                            this._writer.WriteAttributeString("filter", "cover(l)");
                             break;
                         case 0x01: //b->t
-                            _writer.WriteAttributeString("filter", "cover(u)");
+                            this._writer.WriteAttributeString("filter", "cover(u)");
                             break;
                         case 0x02: //l->r
-                            _writer.WriteAttributeString("filter", "cover(r)");
+                            this._writer.WriteAttributeString("filter", "cover(r)");
                             break;
                         case 0x03: //t->b
-                            _writer.WriteAttributeString("filter", "cover(d)");
+                            this._writer.WriteAttributeString("filter", "cover(d)");
                             break;
                         case 0x04: //br->tl
-                            _writer.WriteAttributeString("filter", "cover(lu)");
+                            this._writer.WriteAttributeString("filter", "cover(lu)");
                             break;
                         case 0x05: //bl->tr
-                            _writer.WriteAttributeString("filter", "cover(ru)");
+                            this._writer.WriteAttributeString("filter", "cover(ru)");
                             break;
                         case 0x06: //tr->bl
-                            _writer.WriteAttributeString("filter", "cover(ld)");
+                            this._writer.WriteAttributeString("filter", "cover(ld)");
                             break;
                         case 0x07: //tl->br
-                            _writer.WriteAttributeString("filter", "cover(rd)");
+                            this._writer.WriteAttributeString("filter", "cover(rd)");
                             break;
                     }
                     break;
                 case 0x05: //Dissolve
-                    _writer.WriteAttributeString("filter", "dissolve");
+                    this._writer.WriteAttributeString("filter", "dissolve");
                     break;
                 case 0x06: //Fade
-                    _writer.WriteAttributeString("filter", "fade");
+                    this._writer.WriteAttributeString("filter", "fade");
                     break;
                 case 0x07: //Pull
                     switch (animinfo.animEffectDirection)
                     {
                         case 0x00: //r->l
-                            _writer.WriteAttributeString("filter", "pull(l)");
+                            this._writer.WriteAttributeString("filter", "pull(l)");
                             break;
                         case 0x01: //b->t
-                            _writer.WriteAttributeString("filter", "pull(u)");
+                            this._writer.WriteAttributeString("filter", "pull(u)");
                             break;
                         case 0x02: //l->r
-                            _writer.WriteAttributeString("filter", "pull(r)");
+                            this._writer.WriteAttributeString("filter", "pull(r)");
                             break;
                         case 0x03: //t->b
-                            _writer.WriteAttributeString("filter", "pull(d)");
+                            this._writer.WriteAttributeString("filter", "pull(d)");
                             break;
                         case 0x04: //br->tl
-                            _writer.WriteAttributeString("filter", "pull(lu)");
+                            this._writer.WriteAttributeString("filter", "pull(lu)");
                             break;
                         case 0x05: //bl->tr
-                            _writer.WriteAttributeString("filter", "pull(ru)");
+                            this._writer.WriteAttributeString("filter", "pull(ru)");
                             break;
                         case 0x06: //tr->bl
-                            _writer.WriteAttributeString("filter", "pull(ld)");
+                            this._writer.WriteAttributeString("filter", "pull(ld)");
                             break;
                         case 0x07: //tl->br
-                            _writer.WriteAttributeString("filter", "pull(rd)");
+                            this._writer.WriteAttributeString("filter", "pull(rd)");
                             break;
                     }
                     break;
                 case 0x08: //Random bar
                     if (animinfo.animEffectDirection == 0x01)
                     {
-                        _writer.WriteAttributeString("filter", "randomBar(horz)");
+                        this._writer.WriteAttributeString("filter", "randomBar(horz)");
                     }
                     else
                     {
-                        _writer.WriteAttributeString("filter", "randomBar(vert)");
+                        this._writer.WriteAttributeString("filter", "randomBar(vert)");
                     }
                     break;
                 case 0x09: //Strips
                     switch (animinfo.animEffectDirection)
                     {
                         case 0x04: //br->tl
-                            _writer.WriteAttributeString("filter", "strips(lu)");
+                            this._writer.WriteAttributeString("filter", "strips(lu)");
                             break;
                         case 0x05: //bl->tr
-                            _writer.WriteAttributeString("filter", "strips(ru)");
+                            this._writer.WriteAttributeString("filter", "strips(ru)");
                             break;
                         case 0x06: //tr->bl
-                            _writer.WriteAttributeString("filter", "strips(ld)");
+                            this._writer.WriteAttributeString("filter", "strips(ld)");
                             break;
                         case 0x07: //tl->br
-                            _writer.WriteAttributeString("filter", "strips(rd)");
+                            this._writer.WriteAttributeString("filter", "strips(rd)");
                             break;
                     }
                     break;
@@ -1629,43 +1629,43 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     switch (animinfo.animEffectDirection)
                     {
                         case 0x00: //r->l
-                            _writer.WriteAttributeString("filter", "wipe(l)");
+                            this._writer.WriteAttributeString("filter", "wipe(l)");
                             break;
                         case 0x01: //b->t
-                            _writer.WriteAttributeString("filter", "wipe(u)");
+                            this._writer.WriteAttributeString("filter", "wipe(u)");
                             break;
                         case 0x02: //l->r
-                            _writer.WriteAttributeString("filter", "wipe(r)");
+                            this._writer.WriteAttributeString("filter", "wipe(r)");
                             break;
                         case 0x03: //t->b
-                            _writer.WriteAttributeString("filter", "wipe(d)");
+                            this._writer.WriteAttributeString("filter", "wipe(d)");
                             break;
                     }
                     break;
                 case 0x0b: //Zoom (box)
                     if (animinfo.animEffectDirection == 0x00)
                     {
-                        _writer.WriteAttributeString("filter", "box(out)");
+                        this._writer.WriteAttributeString("filter", "box(out)");
                     }
                     else
                     {
-                        _writer.WriteAttributeString("filter", "box(in)");
+                        this._writer.WriteAttributeString("filter", "box(in)");
                     }
                     break;
                 case 0x0c: //Fly
                     switch (animinfo.animEffectDirection)
                     {
                         case 0x00: //from left
-                            _writer.WriteAttributeString("filter", "slide(fromLeft)");
+                            this._writer.WriteAttributeString("filter", "slide(fromLeft)");
                             break;
                         case 0x01: //from top
-                            _writer.WriteAttributeString("filter", "slide(fromTop)");
+                            this._writer.WriteAttributeString("filter", "slide(fromTop)");
                             break;
                         case 0x02: //from right
-                            _writer.WriteAttributeString("filter", "slide(fromRight)");
+                            this._writer.WriteAttributeString("filter", "slide(fromRight)");
                             break;
                         case 0x03: //from bottom  
-                            _writer.WriteAttributeString("filter", "slide(fromBottom)");
+                            this._writer.WriteAttributeString("filter", "slide(fromBottom)");
                             break;
                         case 0x04: //from top left
                         case 0x05: //from top right
@@ -1692,7 +1692,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         case 0x1a: //stretch b -> t
                         case 0x1b: //rotate around vertical axis that passes through its center
                         case 0x1c: //flies in a spiral
-                            _writer.WriteAttributeString("filter", "slide(fromBottom)");
+                            this._writer.WriteAttributeString("filter", "slide(fromBottom)");
                             break;
                     }
                     break;
@@ -1700,16 +1700,16 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     switch (animinfo.animEffectDirection)
                     {
                         case 0x00: //horz m -> tb
-                            _writer.WriteAttributeString("filter", "split(outHorizontal)");
+                            this._writer.WriteAttributeString("filter", "split(outHorizontal)");
                             break;
                         case 0x01: //horz tb -> m
-                            _writer.WriteAttributeString("filter", "split(inHorizontal)");
+                            this._writer.WriteAttributeString("filter", "split(inHorizontal)");
                             break;
                         case 0x02: //vert m -> lr
-                            _writer.WriteAttributeString("filter", "split(outVertical)");
+                            this._writer.WriteAttributeString("filter", "split(outVertical)");
                             break;
                         case 0x03: //vert
-                            _writer.WriteAttributeString("filter", "split(inVertical)");
+                            this._writer.WriteAttributeString("filter", "split(inVertical)");
                             break;
                     }
                     break;
@@ -1724,13 +1724,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     break;
                 case 0x0f:
                 case 0x11: //Diamond
-                    _writer.WriteAttributeString("filter", "diamond(out)");
+                    this._writer.WriteAttributeString("filter", "diamond(out)");
                     break;
                 case 0x12: //Plus
-                    _writer.WriteAttributeString("filter", "plus");
+                    this._writer.WriteAttributeString("filter", "plus");
                     break;
                 case 0x13: //Wedge
-                    _writer.WriteAttributeString("filter", "wedge");
+                    this._writer.WriteAttributeString("filter", "wedge");
                     break;
                 case 0x14:
                 case 0x15:
@@ -1742,52 +1742,52 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     switch (animinfo.animEffectDirection)
                     {
                         case 0x01: //1 spoke
-                            _writer.WriteAttributeString("filter", "wheel(1)");
+                            this._writer.WriteAttributeString("filter", "wheel(1)");
                             break;
                         case 0x02: //2 spokes
-                            _writer.WriteAttributeString("filter", "wheel(2)");
+                            this._writer.WriteAttributeString("filter", "wheel(2)");
                             break;
                         case 0x03: //3 spokes
-                            _writer.WriteAttributeString("filter", "wheel(3)");
+                            this._writer.WriteAttributeString("filter", "wheel(3)");
                             break;
                         case 0x04: //4 spokes
-                            _writer.WriteAttributeString("filter", "wheel(4)");
+                            this._writer.WriteAttributeString("filter", "wheel(4)");
                             break;
                         case 0x08: //8 spokes
-                            _writer.WriteAttributeString("filter", "wheel(8)");
+                            this._writer.WriteAttributeString("filter", "wheel(8)");
                             break;
                     }
                     break;
                 case 0x1b: //Circle
-                    _writer.WriteAttributeString("filter", "circle");
+                    this._writer.WriteAttributeString("filter", "circle");
                     break;
                 default:
-                    _writer.WriteAttributeString("filter", "blinds(horizontal)");
+                    this._writer.WriteAttributeString("filter", "blinds(horizontal)");
                     break;
             }
 
-            _writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cBhvr", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
-            _writer.WriteAttributeString("id", (++lastID).ToString());
-            _writer.WriteAttributeString("dur", "500");
-            _writer.WriteEndElement(); //cTn
+            this._writer.WriteStartElement("p", "cTn", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteAttributeString("id", (++this.lastID).ToString());
+            this._writer.WriteAttributeString("dur", "500");
+            this._writer.WriteEndElement(); //cTn
 
-            _writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "tgtEl", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "spTgt", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
+            this._writer.WriteAttributeString("spid", getShapeId(c.FirstDescendantWithType<VisualShapeAtom>().shapeIdRef));
 
             CheckAndWriteStartEndRuns(c, ref targetRun);
 
-            _writer.WriteEndElement(); //spTgt
+            this._writer.WriteEndElement(); //spTgt
 
-            _writer.WriteEndElement(); //tgtEl
+            this._writer.WriteEndElement(); //tgtEl
 
-            _writer.WriteEndElement(); //cBhvr
+            this._writer.WriteEndElement(); //cBhvr
 
-            _writer.WriteEndElement(); //animEffect
+            this._writer.WriteEndElement(); //animEffect
         }
     }
 }

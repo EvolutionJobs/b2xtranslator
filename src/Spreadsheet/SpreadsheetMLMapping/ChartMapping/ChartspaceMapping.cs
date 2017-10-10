@@ -53,12 +53,12 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             var chartFormatsSequence = chartSheetContentSequence.ChartFormatsSequence;
 
             // c:chartspace
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElChartSpace, Dml.Chart.Ns);
-            _writer.WriteAttributeString("xmlns", Dml.Chart.Prefix, "", Dml.Chart.Ns);
-            _writer.WriteAttributeString("xmlns", Dml.Prefix, "", Dml.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElChartSpace, Dml.Chart.Ns);
+            this._writer.WriteAttributeString("xmlns", Dml.Chart.Prefix, "", Dml.Chart.Ns);
+            this._writer.WriteAttributeString("xmlns", Dml.Prefix, "", Dml.Ns);
             {
                 // c:chart
-                _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElChart, Dml.Chart.Ns);
+                this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElChart, Dml.Chart.Ns);
                 {
                     // c:title
                     foreach (var attachedLabelSequence in chartFormatsSequence.AttachedLabelSequences)
@@ -107,7 +107,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     // c:showDLblsOverMax
 
                 }
-                _writer.WriteEndElement(); // c:chart
+                this._writer.WriteEndElement(); // c:chart
 
                 // c:spPr
                 if (chartFormatsSequence.FrameSequence != null)
@@ -115,10 +115,10 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     chartFormatsSequence.FrameSequence.Convert(new ShapePropertiesMapping(this.WorkbookContext, this.ChartContext));
                 }
             }
-            _writer.WriteEndElement();
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.Flush();
         }
 
         #endregion

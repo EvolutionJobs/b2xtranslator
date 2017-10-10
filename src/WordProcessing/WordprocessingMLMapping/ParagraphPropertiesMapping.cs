@@ -52,11 +52,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             CharacterPropertyExceptions paraEndChpx)
             : base(writer)
         {
-            _parentDoc = parentDoc;
-            _pPr = _nodeFactory.CreateElement("w", "pPr", OpenXmlNamespaces.WordprocessingML);
-            _framePr = _nodeFactory.CreateElement("w", "framePr", OpenXmlNamespaces.WordprocessingML);
-            _paraEndChpx = paraEndChpx;
-            _ctx = ctx;
+            this._parentDoc = parentDoc;
+            this._pPr = this._nodeFactory.CreateElement("w", "pPr", OpenXmlNamespaces.WordprocessingML);
+            this._framePr = this._nodeFactory.CreateElement("w", "framePr", OpenXmlNamespaces.WordprocessingML);
+            this._paraEndChpx = paraEndChpx;
+            this._ctx = ctx;
         }
 
         public ParagraphPropertiesMapping(
@@ -68,49 +68,49 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             int sectionNr)
             : base(writer)
         {
-            _parentDoc = parentDoc;
-            _pPr = _nodeFactory.CreateElement("w", "pPr", OpenXmlNamespaces.WordprocessingML);
-            _framePr = _nodeFactory.CreateElement("w", "framePr", OpenXmlNamespaces.WordprocessingML);
-            _paraEndChpx = paraEndChpx;
-            _sepx = sepx;
-            _ctx = ctx;
-            _sectionNr = sectionNr;
+            this._parentDoc = parentDoc;
+            this._pPr = this._nodeFactory.CreateElement("w", "pPr", OpenXmlNamespaces.WordprocessingML);
+            this._framePr = this._nodeFactory.CreateElement("w", "framePr", OpenXmlNamespaces.WordprocessingML);
+            this._paraEndChpx = paraEndChpx;
+            this._sepx = sepx;
+            this._ctx = ctx;
+            this._sectionNr = sectionNr;
         }
 
         public void Apply(ParagraphPropertyExceptions papx)
         {
-            var ind = _nodeFactory.CreateElement("w", "ind", OpenXmlNamespaces.WordprocessingML);
-            var numPr = _nodeFactory.CreateElement("w", "numPr", OpenXmlNamespaces.WordprocessingML);
-            var pBdr = _nodeFactory.CreateElement("w", "pBdr", OpenXmlNamespaces.WordprocessingML);
-            var spacing = _nodeFactory.CreateElement("w", "spacing", OpenXmlNamespaces.WordprocessingML);
+            var ind = this._nodeFactory.CreateElement("w", "ind", OpenXmlNamespaces.WordprocessingML);
+            var numPr = this._nodeFactory.CreateElement("w", "numPr", OpenXmlNamespaces.WordprocessingML);
+            var pBdr = this._nodeFactory.CreateElement("w", "pBdr", OpenXmlNamespaces.WordprocessingML);
+            var spacing = this._nodeFactory.CreateElement("w", "spacing", OpenXmlNamespaces.WordprocessingML);
             XmlElement jc = null;
 
             //append style id , do not append "Normal" style (istd 0)
-            var pStyle = _nodeFactory.CreateElement("w", "pStyle", OpenXmlNamespaces.WordprocessingML);
-            var styleId = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
-            styleId.Value = StyleSheetMapping.MakeStyleId(_parentDoc.Styles.Styles[papx.istd]);
+            var pStyle = this._nodeFactory.CreateElement("w", "pStyle", OpenXmlNamespaces.WordprocessingML);
+            var styleId = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+            styleId.Value = StyleSheetMapping.MakeStyleId(this._parentDoc.Styles.Styles[papx.istd]);
             pStyle.Attributes.Append(styleId);
-            _pPr.AppendChild(pStyle);
+            this._pPr.AppendChild(pStyle);
 
             //append formatting of paragraph end mark
-            if (_paraEndChpx != null)
+            if (this._paraEndChpx != null)
             {
-                var rPr = _nodeFactory.CreateElement("w", "rPr", OpenXmlNamespaces.WordprocessingML);
-                
-                //append properties
-                _paraEndChpx.Convert(new CharacterPropertiesMapping(rPr, _ctx.Doc, new RevisionData(_paraEndChpx), papx, false));
+                var rPr = this._nodeFactory.CreateElement("w", "rPr", OpenXmlNamespaces.WordprocessingML);
 
-                var rev = new RevisionData(_paraEndChpx);
+                //append properties
+                this._paraEndChpx.Convert(new CharacterPropertiesMapping(rPr, this._ctx.Doc, new RevisionData(this._paraEndChpx), papx, false));
+
+                var rev = new RevisionData(this._paraEndChpx);
                 //append delete infos
                 if (rev.Type == RevisionData.RevisionType.Deleted)
                 {
-                    var del = _nodeFactory.CreateElement("w", "del", OpenXmlNamespaces.WordprocessingML);
+                    var del = this._nodeFactory.CreateElement("w", "del", OpenXmlNamespaces.WordprocessingML);
                     rPr.AppendChild(del);
                 }
 
                 if(rPr.ChildNodes.Count >0 )
                 {
-                    _pPr.AppendChild(rPr);
+                    this._pPr.AppendChild(rPr);
                 }
             }
 
@@ -122,63 +122,63 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //rsid for paragraph property enditing (write to parent element)
                     case SinglePropertyModifier.OperationCode.sprmPRsid:
                         string rsid = string.Format("{0:x8}", System.BitConverter.ToInt32(sprm.Arguments, 0));
-                        _ctx.AddRsid(rsid);
-                        _writer.WriteAttributeString("w", "rsidP", OpenXmlNamespaces.WordprocessingML, rsid);
+                        this._ctx.AddRsid(rsid);
+                        this._writer.WriteAttributeString("w", "rsidP", OpenXmlNamespaces.WordprocessingML, rsid);
                         break;
 
                     //attributes
                     case SinglePropertyModifier.OperationCode.sprmPIpgp:
-                        var divId = _nodeFactory.CreateAttribute("w", "divId", OpenXmlNamespaces.WordprocessingML);
+                        var divId = this._nodeFactory.CreateAttribute("w", "divId", OpenXmlNamespaces.WordprocessingML);
                         divId.Value = System.BitConverter.ToUInt32(sprm.Arguments, 0).ToString();
-                        _pPr.Attributes.Append(divId);
+                        this._pPr.Attributes.Append(divId);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFAutoSpaceDE:
-                        appendFlagAttribute(_pPr, sprm, "autoSpaceDE");
+                        appendFlagAttribute(this._pPr, sprm, "autoSpaceDE");
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFAutoSpaceDN:
-                        appendFlagAttribute(_pPr, sprm, "autoSpaceDN");
+                        appendFlagAttribute(this._pPr, sprm, "autoSpaceDN");
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFContextualSpacing:
-                        appendFlagAttribute(_pPr, sprm, "contextualSpacing");
+                        appendFlagAttribute(this._pPr, sprm, "contextualSpacing");
                         break;
                     
                     //element flags
                     case SinglePropertyModifier.OperationCode.sprmPFBiDi:
                         isRightToLeft = true;
-                        appendFlagElement(_pPr, sprm, "bidi", true);
+                        appendFlagElement(this._pPr, sprm, "bidi", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFKeep:
-                        appendFlagElement(_pPr, sprm, "keepLines", true);
+                        appendFlagElement(this._pPr, sprm, "keepLines", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFKeepFollow:
-                        appendFlagElement(_pPr, sprm, "keepNext", true);
+                        appendFlagElement(this._pPr, sprm, "keepNext", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFKinsoku:
-                        appendFlagElement(_pPr, sprm, "kinsoku", true);
+                        appendFlagElement(this._pPr, sprm, "kinsoku", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFOverflowPunct:
-                        appendFlagElement(_pPr, sprm, "overflowPunct", true);
+                        appendFlagElement(this._pPr, sprm, "overflowPunct", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFPageBreakBefore:
-                        appendFlagElement(_pPr, sprm, "pageBreakBefore", true);
+                        appendFlagElement(this._pPr, sprm, "pageBreakBefore", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFNoAutoHyph:
-                        appendFlagElement(_pPr, sprm, "su_pPressAutoHyphens", true);
+                        appendFlagElement(this._pPr, sprm, "su_pPressAutoHyphens", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFNoLineNumb:
-                        appendFlagElement(_pPr, sprm, "su_pPressLineNumbers", true);
+                        appendFlagElement(this._pPr, sprm, "su_pPressLineNumbers", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFNoAllowOverlap:
-                        appendFlagElement(_pPr, sprm, "su_pPressOverlap", true);
+                        appendFlagElement(this._pPr, sprm, "su_pPressOverlap", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFTopLinePunct:
-                        appendFlagElement(_pPr, sprm, "topLinePunct", true);
+                        appendFlagElement(this._pPr, sprm, "topLinePunct", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFWidowControl:
-                        appendFlagElement(_pPr, sprm, "widowControl", true);
+                        appendFlagElement(this._pPr, sprm, "widowControl", true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFWordWrap:
-                        appendFlagElement(_pPr, sprm, "wordWrap", true);
+                        appendFlagElement(this._pPr, sprm, "wordWrap", true);
                         break;
 
                     //indentation
@@ -219,31 +219,31 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //spacing
                     case SinglePropertyModifier.OperationCode.sprmPDyaBefore:
-                        var before = _nodeFactory.CreateAttribute("w", "before", OpenXmlNamespaces.WordprocessingML);
+                        var before = this._nodeFactory.CreateAttribute("w", "before", OpenXmlNamespaces.WordprocessingML);
                         before.Value = System.BitConverter.ToUInt16(sprm.Arguments, 0).ToString();
                         spacing.Attributes.Append(before);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDyaAfter:
-                        var after = _nodeFactory.CreateAttribute("w", "after", OpenXmlNamespaces.WordprocessingML);
+                        var after = this._nodeFactory.CreateAttribute("w", "after", OpenXmlNamespaces.WordprocessingML);
                         after.Value = System.BitConverter.ToUInt16(sprm.Arguments, 0).ToString();
                         spacing.Attributes.Append(after);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFDyaAfterAuto:
-                        var afterAutospacing = _nodeFactory.CreateAttribute("w", "afterAutospacing", OpenXmlNamespaces.WordprocessingML);
+                        var afterAutospacing = this._nodeFactory.CreateAttribute("w", "afterAutospacing", OpenXmlNamespaces.WordprocessingML);
                         afterAutospacing.Value = sprm.Arguments[0].ToString();
                         spacing.Attributes.Append(afterAutospacing);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPFDyaBeforeAuto:
-                        var beforeAutospacing = _nodeFactory.CreateAttribute("w", "beforeAutospacing", OpenXmlNamespaces.WordprocessingML);
+                        var beforeAutospacing = this._nodeFactory.CreateAttribute("w", "beforeAutospacing", OpenXmlNamespaces.WordprocessingML);
                         beforeAutospacing.Value = sprm.Arguments[0].ToString();
                         spacing.Attributes.Append(beforeAutospacing);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDyaLine:
                         var lspd = new LineSpacingDescriptor(sprm.Arguments);
-                        var line = _nodeFactory.CreateAttribute("w", "line", OpenXmlNamespaces.WordprocessingML);
+                        var line = this._nodeFactory.CreateAttribute("w", "line", OpenXmlNamespaces.WordprocessingML);
                         line.Value = Math.Abs(lspd.dyaLine).ToString();
                         spacing.Attributes.Append(line);
-                        var lineRule = _nodeFactory.CreateAttribute("w", "lineRule", OpenXmlNamespaces.WordprocessingML);
+                        var lineRule = this._nodeFactory.CreateAttribute("w", "lineRule", OpenXmlNamespaces.WordprocessingML);
                         if(!lspd.fMultLinespace && lspd.dyaLine < 0)
                             lineRule.Value = "exact";
                         else if(!lspd.fMultLinespace && lspd.dyaLine > 0)
@@ -255,8 +255,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //justification code
                     case SinglePropertyModifier.OperationCode.sprmPJc:
                     case SinglePropertyModifier.OperationCode.sprmPJc80:
-                        jc = _nodeFactory.CreateElement("w", "jc", OpenXmlNamespaces.WordprocessingML);
-                        var jcVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                        jc = this._nodeFactory.CreateElement("w", "jc", OpenXmlNamespaces.WordprocessingML);
+                        var jcVal = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                         jcVal.Value = ((Global.JustificationCode)sprm.Arguments[0]).ToString();
                         jc.Attributes.Append(jcVal);
                         break;
@@ -266,7 +266,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmPBrcTop:
                     //case 0x4424:
                     case SinglePropertyModifier.OperationCode.sprmPBrcTop80:
-                        var topBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
+                        var topBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), topBorder);
                         addOrSetBorder(pBdr, topBorder);
                         break;
@@ -274,7 +274,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmPBrcLeft:
                     //case 0x4425:
                     case SinglePropertyModifier.OperationCode.sprmPBrcLeft80:
-                        var leftBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
+                        var leftBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), leftBorder);
                         addOrSetBorder(pBdr, leftBorder);
                         break;
@@ -282,7 +282,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmPBrcBottom:
                     //case 0x4426:
                     case SinglePropertyModifier.OperationCode.sprmPBrcBottom80:
-                        var bottomBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
+                        var bottomBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), bottomBorder);
                         addOrSetBorder(pBdr, bottomBorder);
                         break;
@@ -290,7 +290,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmPBrcRight:
                     //case 0x4427:
                     case SinglePropertyModifier.OperationCode.sprmPBrcRight80:
-                        var rightBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
+                        var rightBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), rightBorder);
                         addOrSetBorder(pBdr, rightBorder);
                         break;
@@ -298,7 +298,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmPBrcBetween:
                     //case 0x4428:
                     case SinglePropertyModifier.OperationCode.sprmPBrcBetween80:
-                        var betweenBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "between", OpenXmlNamespaces.WordprocessingML);
+                        var betweenBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "between", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), betweenBorder);
                         addOrSetBorder(pBdr, betweenBorder);
                         break;
@@ -306,7 +306,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmPBrcBar:
                     //case 0x4629:
                     case SinglePropertyModifier.OperationCode.sprmPBrcBar80:
-                        var barBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "bar", OpenXmlNamespaces.WordprocessingML);
+                        var barBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "bar", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), barBorder);
                         addOrSetBorder(pBdr, barBorder);
                         break;
@@ -315,7 +315,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmPShd80:
                     case SinglePropertyModifier.OperationCode.sprmPShd:
                         var desc = new ShadingDescriptor(sprm.Arguments);
-                        appendShading(_pPr, desc);
+                        appendShading(this._pPr, desc);
                         break;
                     
                     //numbering
@@ -343,20 +343,20 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //tabs
                     case SinglePropertyModifier.OperationCode.sprmPChgTabsPapx:
                     case SinglePropertyModifier.OperationCode.sprmPChgTabs:
-                        var tabs = _nodeFactory.CreateElement("w", "tabs", OpenXmlNamespaces.WordprocessingML);
+                        var tabs = this._nodeFactory.CreateElement("w", "tabs", OpenXmlNamespaces.WordprocessingML);
                         int pos = 0;
                         //read the removed tabs
                         byte itbdDelMax = sprm.Arguments[pos];
                         pos++;
                         for(int i=0; i<itbdDelMax; i++)
                         {
-                            var tab = _nodeFactory.CreateElement("w", "tab", OpenXmlNamespaces.WordprocessingML);
+                            var tab = this._nodeFactory.CreateElement("w", "tab", OpenXmlNamespaces.WordprocessingML);
                             //clear
-                            var tabsVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                            var tabsVal = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                             tabsVal.Value = "clear";
                             tab.Attributes.Append(tabsVal);
                             //position
-                            var tabsPos = _nodeFactory.CreateAttribute("w", "pos", OpenXmlNamespaces.WordprocessingML);
+                            var tabsPos = this._nodeFactory.CreateAttribute("w", "pos", OpenXmlNamespaces.WordprocessingML);
                             tabsPos.Value = System.BitConverter.ToInt16(sprm.Arguments, pos).ToString();
                             tab.Attributes.Append(tabsPos);
                             tabs.AppendChild(tab);
@@ -373,22 +373,22 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         for (int i = 0; i < itbdAddMax; i++)
                         {
                             var tbd = new TabDescriptor(sprm.Arguments[pos + (itbdAddMax * 2) + i]);
-                            var tab = _nodeFactory.CreateElement("w", "tab", OpenXmlNamespaces.WordprocessingML);
+                            var tab = this._nodeFactory.CreateElement("w", "tab", OpenXmlNamespaces.WordprocessingML);
                             //justification
-                            var tabsVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                            var tabsVal = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                             tabsVal.Value = ((Global.JustificationCode)tbd.jc).ToString();
                             tab.Attributes.Append(tabsVal);
                             //tab leader type
-                            var leader = _nodeFactory.CreateAttribute("w", "leader", OpenXmlNamespaces.WordprocessingML);
+                            var leader = this._nodeFactory.CreateAttribute("w", "leader", OpenXmlNamespaces.WordprocessingML);
                             leader.Value = ((Global.TabLeader)tbd.tlc).ToString();
                             tab.Attributes.Append(leader);
                             //position
-                            var tabsPos = _nodeFactory.CreateAttribute("w", "pos", OpenXmlNamespaces.WordprocessingML);
+                            var tabsPos = this._nodeFactory.CreateAttribute("w", "pos", OpenXmlNamespaces.WordprocessingML);
                             tabsPos.Value = System.BitConverter.ToInt16(sprm.Arguments, pos + (i * 2)).ToString();
                             tab.Attributes.Append(tabsPos);
                             tabs.AppendChild(tab);
                         }
-                        _pPr.AppendChild(tabs);
+                        this._pPr.AppendChild(tabs);
                         break;
 
                     //frame properties
@@ -398,41 +398,41 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         byte flag = sprm.Arguments[0];
                         var pcVert = (Global.VerticalPositionCode)((flag & 0x30) >> 4);
                         var pcHorz = (Global.HorizontalPositionCode)((flag & 0xC0) >> 6);
-                        appendValueAttribute(_framePr, "hAnchor", pcHorz.ToString());
-                        appendValueAttribute(_framePr, "vAnchor", pcVert.ToString());
+                        appendValueAttribute(this._framePr, "hAnchor", pcHorz.ToString());
+                        appendValueAttribute(this._framePr, "vAnchor", pcVert.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPWr:
                         var wrapping = (Global.TextFrameWrapping)sprm.Arguments[0];
-                        appendValueAttribute(_framePr, "wrap", wrapping.ToString());
+                        appendValueAttribute(this._framePr, "wrap", wrapping.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaAbs:
                         var frameX = System.BitConverter.ToInt16(sprm.Arguments, 0);
-                        appendValueAttribute(_framePr, "x", frameX.ToString());
+                        appendValueAttribute(this._framePr, "x", frameX.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDyaAbs:
                         var frameY = System.BitConverter.ToInt16(sprm.Arguments, 0);
-                        appendValueAttribute(_framePr, "y", frameY.ToString());
+                        appendValueAttribute(this._framePr, "y", frameY.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPWHeightAbs:
                         var frameHeight = System.BitConverter.ToInt16(sprm.Arguments, 0);
-                        appendValueAttribute(_framePr, "h", frameHeight.ToString());
+                        appendValueAttribute(this._framePr, "h", frameHeight.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaWidth:
                         var frameWidth = System.BitConverter.ToInt16(sprm.Arguments, 0);
-                        appendValueAttribute(_framePr, "w", frameWidth.ToString());
+                        appendValueAttribute(this._framePr, "w", frameWidth.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaFromText:
                         var frameSpaceH = System.BitConverter.ToInt16(sprm.Arguments, 0);
-                        appendValueAttribute(_framePr, "hSpace", frameSpaceH.ToString());
+                        appendValueAttribute(this._framePr, "hSpace", frameSpaceH.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDyaFromText:
                         var frameSpaceV = System.BitConverter.ToInt16(sprm.Arguments, 0);
-                        appendValueAttribute(_framePr, "vSpace", frameSpaceV.ToString());
+                        appendValueAttribute(this._framePr, "vSpace", frameSpaceV.ToString());
                         break;
 
                     //outline level
                     case SinglePropertyModifier.OperationCode.sprmPOutLvl:
-                        appendValueElement(_pPr, "outlineLvl", sprm.Arguments[0].ToString(), false);
+                        appendValueElement(this._pPr, "outlineLvl", sprm.Arguments[0].ToString(), false);
                         break;
 
                     default:
@@ -441,26 +441,26 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
 
             //append frame properties
-            if (_framePr.Attributes.Count > 0)
+            if (this._framePr.Attributes.Count > 0)
             {
-                _pPr.AppendChild(_framePr);
+                this._pPr.AppendChild(this._framePr);
             }
 
             //append section properties
-            if (_sepx != null)
+            if (this._sepx != null)
             {
-                var sectPr = _nodeFactory.CreateElement("w", "sectPr", OpenXmlNamespaces.WordprocessingML);
-                _sepx.Convert(new SectionPropertiesMapping(sectPr, _ctx, _sectionNr));
-                _pPr.AppendChild(sectPr);
+                var sectPr = this._nodeFactory.CreateElement("w", "sectPr", OpenXmlNamespaces.WordprocessingML);
+                this._sepx.Convert(new SectionPropertiesMapping(sectPr, this._ctx, this._sectionNr));
+                this._pPr.AppendChild(sectPr);
             }
 
             //append indent
             if (ind.Attributes.Count > 0)
-                _pPr.AppendChild(ind);
+                this._pPr.AppendChild(ind);
 
             //append spacing
             if (spacing.Attributes.Count > 0)
-                _pPr.AppendChild(spacing);
+                this._pPr.AppendChild(spacing);
 
             //append justification
             if (jc != null)
@@ -472,22 +472,22 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 }
                 else
                 {
-                    _pPr.AppendChild(jc);
+                    this._pPr.AppendChild(jc);
                 }
             }
 
             //append numPr
             if (numPr.ChildNodes.Count > 0)
-                _pPr.AppendChild(numPr);
+                this._pPr.AppendChild(numPr);
 
             //append borders
             if (pBdr.ChildNodes.Count > 0)
-                _pPr.AppendChild(pBdr);
+                this._pPr.AppendChild(pBdr);
 
             //write Properties
-            if (_pPr.ChildNodes.Count > 0 || _pPr.Attributes.Count > 0)
+            if (this._pPr.ChildNodes.Count > 0 || this._pPr.Attributes.Count > 0)
             {
-                _pPr.WriteTo(_writer);
+                this._pPr.WriteTo(this._writer);
             }
         }
 
@@ -507,7 +507,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         private bool isStyleRightToLeft(ushort istd)
         {
-            var style = _parentDoc.Styles.Styles[istd];
+            var style = this._parentDoc.Styles.Styles[istd];
             foreach (var sprm in style.papx.grpprl)
             {
                 if (sprm.OpCode == SinglePropertyModifier.OperationCode.sprmPFBiDi)

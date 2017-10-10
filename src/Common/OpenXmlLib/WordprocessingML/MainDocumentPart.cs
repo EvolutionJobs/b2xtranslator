@@ -48,10 +48,10 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         public MainDocumentPart(OpenXmlPartContainer parent, string contentType)
             : base(parent)
         {
-            _contentType = contentType;
+            this._contentType = contentType;
         }
 
-        public override string ContentType { get { return _contentType; } }
+        public override string ContentType { get { return this._contentType; } }
         public override string RelationshipType { get { return OpenXmlRelationshipTypes.OfficeDocument; } }
         public override string TargetName { get { return "document"; } }
         public override string TargetDirectory { get { return "word"; } }
@@ -62,12 +62,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get
             {
-                if (_customizationsPart == null)
+                if (this._customizationsPart == null)
                 {
-                    _customizationsPart = new KeyMapCustomizationsPart(this);
-                    this.AddPart(_customizationsPart);
+                    this._customizationsPart = new KeyMapCustomizationsPart(this);
+                    this.AddPart(this._customizationsPart);
                 }
-                return _customizationsPart;
+                return this._customizationsPart;
             }
         }
 
@@ -75,12 +75,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get
             {
-                if (_glossaryPart == null)
+                if (this._glossaryPart == null)
                 {
-                    _glossaryPart = new GlossaryPart(this, WordprocessingMLContentTypes.Glossary);
-                    this.AddPart(_glossaryPart);
+                    this._glossaryPart = new GlossaryPart(this, WordprocessingMLContentTypes.Glossary);
+                    this.AddPart(this._glossaryPart);
                 }
-                return _glossaryPart;
+                return this._glossaryPart;
             }
         }
 
@@ -88,12 +88,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get
             {
-                if (_styleDefinitionsPart == null)
+                if (this._styleDefinitionsPart == null)
                 {
-                    _styleDefinitionsPart = new StyleDefinitionsPart(this);
-                    this.AddPart(_styleDefinitionsPart);
+                    this._styleDefinitionsPart = new StyleDefinitionsPart(this);
+                    this.AddPart(this._styleDefinitionsPart);
                 }
-                return _styleDefinitionsPart;
+                return this._styleDefinitionsPart;
             }
         }
 
@@ -101,12 +101,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get
             {
-                if (_settingsPart == null)
+                if (this._settingsPart == null)
                 {
-                    _settingsPart = new SettingsPart(this);
-                    this.AddPart(_settingsPart);
+                    this._settingsPart = new SettingsPart(this);
+                    this.AddPart(this._settingsPart);
                 }
-                return _settingsPart;
+                return this._settingsPart;
             }
         }
 
@@ -114,12 +114,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get
             {
-                if (_numberingDefinitionsPart == null)
+                if (this._numberingDefinitionsPart == null)
                 {
-                    _numberingDefinitionsPart = new NumberingDefinitionsPart(this);
-                    this.AddPart(_numberingDefinitionsPart);
+                    this._numberingDefinitionsPart = new NumberingDefinitionsPart(this);
+                    this.AddPart(this._numberingDefinitionsPart);
                 }
-                return _numberingDefinitionsPart;
+                return this._numberingDefinitionsPart;
             }
         }
 
@@ -127,12 +127,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get
             {
-                if (_fontTablePart == null)
+                if (this._fontTablePart == null)
                 {
-                    _fontTablePart = new FontTablePart(this);
-                    this.AddPart(_fontTablePart);
+                    this._fontTablePart = new FontTablePart(this);
+                    this.AddPart(this._fontTablePart);
                 }
-                return _fontTablePart;
+                return this._fontTablePart;
             }
         }
 
@@ -140,12 +140,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get
             {
-                if (_endnotesPart == null)
+                if (this._endnotesPart == null)
                 {
-                    _endnotesPart = new EndnotesPart(this);
-                    this.AddPart(_endnotesPart);
+                    this._endnotesPart = new EndnotesPart(this);
+                    this.AddPart(this._endnotesPart);
                 }
-                return _endnotesPart;
+                return this._endnotesPart;
             }
         }
 
@@ -153,12 +153,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get
             {
-                if (_footnotesPart == null)
+                if (this._footnotesPart == null)
                 {
-                    _footnotesPart = new FootnotesPart(this);
-                    this.AddPart(_footnotesPart);
+                    this._footnotesPart = new FootnotesPart(this);
+                    this.AddPart(this._footnotesPart);
                 }
-                return _footnotesPart;
+                return this._footnotesPart;
             }
         }
 
@@ -166,12 +166,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get 
             {
-                if (_commentsPart == null)
+                if (this._commentsPart == null)
                 {
-                    _commentsPart = new CommentsPart(this);
-                    this.AddPart(_commentsPart);
+                    this._commentsPart = new CommentsPart(this);
+                    this.AddPart(this._commentsPart);
                 }
-                return _commentsPart;
+                return this._commentsPart;
             }
         }
 
@@ -179,11 +179,11 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
         {
             get 
             {
-                if(_vbaProjectPart == null)
+                if(this._vbaProjectPart == null)
                 {
-                    _vbaProjectPart = this.AddPart(new VbaProjectPart(this));
+                    this._vbaProjectPart = this.AddPart(new VbaProjectPart(this));
                 }
-                return _vbaProjectPart;
+                return this._vbaProjectPart;
             }
         }
 
@@ -191,12 +191,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
 
         public HeaderPart AddHeaderPart()
         {
-            return this.AddPart(new HeaderPart(this, ++_headerPartCount));
+            return this.AddPart(new HeaderPart(this, ++this._headerPartCount));
         }
 
         public FooterPart AddFooterPart()
         {
-            return this.AddPart(new FooterPart(this, ++_footerPartCount));
+            return this.AddPart(new FooterPart(this, ++this._footerPartCount));
         }
     }
 }

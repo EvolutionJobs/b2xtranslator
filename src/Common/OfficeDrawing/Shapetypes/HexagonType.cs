@@ -14,12 +14,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
             this.Path = "m@0,l,10800@0,21600@1,21600,21600,10800@1,xe";
 
             this.Formulas = new List<string>();
-            Formulas.Add("val #0");
-            Formulas.Add("sum width 0 #0");
-            Formulas.Add("sum height 0 #0");
-            Formulas.Add("prod @0 2929 10000");
-            Formulas.Add("sum width 0 @3");
-            Formulas.Add("sum height 0 @3");
+            this.Formulas.Add("val #0");
+            this.Formulas.Add("sum width 0 #0");
+            this.Formulas.Add("sum height 0 #0");
+            this.Formulas.Add("prod @0 2929 10000");
+            this.Formulas.Add("sum width 0 @3");
+            this.Formulas.Add("sum height 0 @3");
 
             this.AdjustmentValues = "5400";
             
@@ -33,7 +33,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
                 position = "#0,topLeft",
                 xrange = "0,10800"
             };
-            Handles.Add(HandleOne);
+            this.Handles.Add(HandleOne);
 
         }
     }

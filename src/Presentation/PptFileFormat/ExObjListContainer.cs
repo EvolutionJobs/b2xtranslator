@@ -31,7 +31,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public ExObjRefAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            exObjIdRef = this.Reader.ReadInt32();
+            this.exObjIdRef = this.Reader.ReadInt32();
         }
     }
 
@@ -46,9 +46,9 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         {
             var drawAspect = this.Reader.ReadInt32();
             var type = this.Reader.ReadInt32();
-            exObjId = this.Reader.ReadInt32();
+            this.exObjId = this.Reader.ReadInt32();
             var subType = this.Reader.ReadInt32();
-            persistIdRef = this.Reader.ReadUInt32();
+            this.persistIdRef = this.Reader.ReadUInt32();
             var unused = this.Reader.ReadInt32();            
         }
     }
@@ -89,28 +89,28 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             if (instance == 0)
             {
                 //uncompressed
-                data = this.Reader.ReadBytes((int)size);
+                this.data = this.Reader.ReadBytes((int)size);
             }
             else
             {
                 //compressed
-                decompressedSize = this.Reader.ReadUInt32();
-                len = size - 4;
-                data = this.Reader.ReadBytes((int)len);
+                this.decompressedSize = this.Reader.ReadUInt32();
+                this.len = size - 4;
+                this.data = this.Reader.ReadBytes((int)this.len);
             }
         }
 
         public byte[] DecompressData()
         {
             // create memory stream to the data
-            var msCompressed = new MemoryStream(data);
+            var msCompressed = new MemoryStream(this.data);
             
             // skip the first 2 bytes
             msCompressed.ReadByte();
             msCompressed.ReadByte();
 
             // decompress the bytes
-            var decompressedBytes = new byte[decompressedSize];
+            var decompressedBytes = new byte[this.decompressedSize];
             var deflateStream = new DeflateStream(msCompressed, CompressionMode.Decompress, true);
             deflateStream.Read(decompressedBytes, 0, decompressedBytes.Length);
 

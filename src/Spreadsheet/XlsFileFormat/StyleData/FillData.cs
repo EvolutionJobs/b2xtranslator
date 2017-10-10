@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
         private int icvFore;
         public int IcvFore
         {
-            get { return icvFore; }
+            get { return this.icvFore; }
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
         private int icvBack;
         public int IcvBack
         {
-            get { return icvBack; }
+            get { return this.icvBack; }
         }
 
         /// <summary>

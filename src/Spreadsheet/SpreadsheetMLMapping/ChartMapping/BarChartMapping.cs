@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
 
             // c:barChart / c:bar3DChart
-            _writer.WriteStartElement(Dml.Chart.Prefix, this._is3DChart ? Dml.Chart.ElBar3DChart : Dml.Chart.ElBarChart, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, this._is3DChart ? Dml.Chart.ElBar3DChart : Dml.Chart.ElBarChart, Dml.Chart.Ns);
             {
                 // EG_BarChartShared
                 // c:barDir
@@ -73,7 +73,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     if (seriesFormatSequence.SerToCrt != null && seriesFormatSequence.SerToCrt.id == crtSequence.ChartFormat.idx)
                     {
                         // c:ser
-                        _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSer, Dml.Chart.Ns);
+                        this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSer, Dml.Chart.Ns);
 
                         // EG_SerShared
                         seriesFormatSequence.Convert(new SeriesMapping(this.WorkbookContext, this.ChartContext));
@@ -110,7 +110,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                             insertShape(ssSeq.Chart3DBarShape);
                         }
 
-                        _writer.WriteEndElement(); // c:ser
+                        this._writer.WriteEndElement(); // c:ser
                     }
                 }
 
@@ -151,7 +151,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     writeValueElement(Dml.Chart.ElAxId, axisId.ToString());
                 }
             }
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
         #endregion
 

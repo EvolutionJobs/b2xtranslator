@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
 
         override internal ushort SectorSize
         {
-            get { return _header.SectorSize; }
+            get { return this._header.SectorSize; }
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>The new position in the stream.</returns>
         override internal long SeekToPositionInSector(long sector, long position)
         {
-            return _fileHandler.SeekToPositionInSector(sector, position);
+            return this._fileHandler.SeekToPositionInSector(sector, position);
         }
 
 
@@ -76,12 +76,12 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>The next sector in the chain</returns>
         override protected uint GetNextSectorInChain(uint currentSector)
         {
-            var sectorInFile = _sectorsUsedByFat[(int)(currentSector / _addressesPerSector)];
+            var sectorInFile = this._sectorsUsedByFat[(int)(currentSector / this._addressesPerSector)];
             // calculation of position:
             // currentSector % _addressesPerSector = number of address in the sector address
             // address uses 32 bit = 4 bytes
-            _fileHandler.SeekToPositionInSector(sectorInFile, 4 * (currentSector % _addressesPerSector));
-            return _fileHandler.ReadUInt32();
+            this._fileHandler.SeekToPositionInSector(sectorInFile, 4 * (currentSector % this._addressesPerSector));
+            return this._fileHandler.ReadUInt32();
         }
         
 
@@ -102,16 +102,16 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         private void ReadFirst109SectorsUsedByFAT()
         {
             // Header sector: -1
-            _fileHandler.SeekToPositionInSector(-1, 0x4C);
+            this._fileHandler.SeekToPositionInSector(-1, 0x4C);
             uint fatSector;
             for (int i = 0; i < 109; i++)
             {
-                fatSector = _fileHandler.ReadUInt32();
+                fatSector = this._fileHandler.ReadUInt32();
                 if (fatSector == SectorId.FREESECT)
                 {
                     break;
                 }
-                _sectorsUsedByFat.Add(fatSector);
+                this._sectorsUsedByFat.Add(fatSector);
             }
         }
 
@@ -121,27 +121,27 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         private void ReadSectorsUsedByFatFromDiFat()
         {
-            if (_header.DiFatStartSector == SectorId.ENDOFCHAIN || _header.NoSectorsInDiFatChain == 0x0)
+            if (this._header.DiFatStartSector == SectorId.ENDOFCHAIN || this._header.NoSectorsInDiFatChain == 0x0)
             {
                 return;
             }
 
-            _fileHandler.SeekToSector(_header.DiFatStartSector);
+            this._fileHandler.SeekToSector(this._header.DiFatStartSector);
             bool lastFatSectorFound = false;
-            _sectorsUsedByDiFat.Add(_header.DiFatStartSector);
+            this._sectorsUsedByDiFat.Add(this._header.DiFatStartSector);
 
             while (true)
             {
                 // Add all addresses contained in the current difat sector except the last address (it points to next difat sector)
-                for (int i = 0; i < _addressesPerSector - 1; i++)
+                for (int i = 0; i < this._addressesPerSector - 1; i++)
                 {
-                    var fatSector = _fileHandler.ReadUInt32();
+                    var fatSector = this._fileHandler.ReadUInt32();
                     if (fatSector == SectorId.FREESECT)
                     {
                         lastFatSectorFound = true;
                         break;
                     }
-                    _sectorsUsedByFat.Add(fatSector);
+                    this._sectorsUsedByFat.Add(fatSector);
                 }
 
                 if (lastFatSectorFound)
@@ -150,16 +150,16 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
                 }
 
                 // Last address in difat sector points to next difat sector
-                var nextDiFatSector = _fileHandler.ReadUInt32();
+                var nextDiFatSector = this._fileHandler.ReadUInt32();
                 if (nextDiFatSector == SectorId.FREESECT || nextDiFatSector == SectorId.ENDOFCHAIN)
                 {
                     break;
                 }
 
-                _sectorsUsedByDiFat.Add(nextDiFatSector);
-                _fileHandler.SeekToSector(nextDiFatSector);
+                this._sectorsUsedByDiFat.Add(nextDiFatSector);
+                this._fileHandler.SeekToSector(nextDiFatSector);
 
-                if (_sectorsUsedByDiFat.Count > _header.NoSectorsInDiFatChain)
+                if (this._sectorsUsedByDiFat.Count > this._header.NoSectorsInDiFatChain)
                 {
                     throw new ChainSizeMismatchException("DiFat");
                 }
@@ -172,8 +172,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         private void CheckConsistency()
         {
-            if (_sectorsUsedByDiFat.Count != _header.NoSectorsInDiFatChain
-                || _sectorsUsedByFat.Count != _header.NoSectorsInFatChain)
+            if (this._sectorsUsedByDiFat.Count != this._header.NoSectorsInDiFatChain
+                || this._sectorsUsedByFat.Count != this._header.NoSectorsInFatChain)
             {
                 throw new ChainSizeMismatchException("Fat/DiFat");
             }

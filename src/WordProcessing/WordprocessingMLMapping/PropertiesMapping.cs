@@ -42,17 +42,17 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         protected void appendFlagAttribute(XmlElement node, SinglePropertyModifier sprm, string attributeName)
         {
-            var att = _nodeFactory.CreateAttribute("w", attributeName, OpenXmlNamespaces.WordprocessingML);
+            var att = this._nodeFactory.CreateAttribute("w", attributeName, OpenXmlNamespaces.WordprocessingML);
             att.Value = sprm.Arguments[0].ToString();
             node.Attributes.Append(att);
         }
 
         protected virtual void appendFlagElement(XmlElement node, SinglePropertyModifier sprm, string elementName, bool unique)
         {
-            var ele = _nodeFactory.CreateElement("w", elementName, OpenXmlNamespaces.WordprocessingML);
+            var ele = this._nodeFactory.CreateElement("w", elementName, OpenXmlNamespaces.WordprocessingML);
             if (sprm.Arguments[0] == 0)
             {
-                var val = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                var val = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                 val.Value = "false";
                 ele.Attributes.Append(val);
             }
@@ -77,18 +77,18 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         protected void appendValueAttribute(XmlElement node, string prefix, string attributeName, string attributeValue, string ns)
         {
-            var att = _nodeFactory.CreateAttribute(prefix, attributeName, ns);
+            var att = this._nodeFactory.CreateAttribute(prefix, attributeName, ns);
             att.Value = attributeValue;
             node.Attributes.Append(att);
         }
 
         protected void appendValueElement(XmlElement node, string elementName, string elementValue, bool unique)
         {
-            var ele = _nodeFactory.CreateElement("w", elementName, OpenXmlNamespaces.WordprocessingML);
+            var ele = this._nodeFactory.CreateElement("w", elementName, OpenXmlNamespaces.WordprocessingML);
 
             if(elementValue != null && elementValue != "")
             {
-                var val = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                var val = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                 val.Value = elementValue;
                 ele.Attributes.Append(val);
             }
@@ -108,11 +108,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         protected void appendDxaElement(XmlElement node, string elementName, string elementValue, bool unique)
         {
-            var ele = _nodeFactory.CreateElement("w", elementName, OpenXmlNamespaces.WordprocessingML);
-            var val = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+            var ele = this._nodeFactory.CreateElement("w", elementName, OpenXmlNamespaces.WordprocessingML);
+            var val = this._nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
             val.Value = elementValue;
             ele.Attributes.Append(val);
-            var type = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+            var type = this._nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
             type.Value = "dxa";
             ele.Attributes.Append(type);
             if (unique)
@@ -149,31 +149,31 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             if (brc.fNil)
             {
-                var val = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                var val = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                 val.Value = "nil";
                 border.Attributes.Append(val);
             }
             else
             {
-                var val = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                var val = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                 val.Value = getBorderType(brc.brcType);
                 border.Attributes.Append(val);
 
-                var color = _nodeFactory.CreateAttribute("w", "color", OpenXmlNamespaces.WordprocessingML);
+                var color = this._nodeFactory.CreateAttribute("w", "color", OpenXmlNamespaces.WordprocessingML);
                 color.Value = new RGBColor(brc.cv, RGBColor.ByteOrder.RedFirst).SixDigitHexCode;
                 border.Attributes.Append(color);
 
-                var space = _nodeFactory.CreateAttribute("w", "space", OpenXmlNamespaces.WordprocessingML);
+                var space = this._nodeFactory.CreateAttribute("w", "space", OpenXmlNamespaces.WordprocessingML);
                 space.Value = brc.dptSpace.ToString();
                 border.Attributes.Append(space);
 
-                var sz = _nodeFactory.CreateAttribute("w", "sz", OpenXmlNamespaces.WordprocessingML);
+                var sz = this._nodeFactory.CreateAttribute("w", "sz", OpenXmlNamespaces.WordprocessingML);
                 sz.Value = brc.dptLineWidth.ToString();
                 border.Attributes.Append(sz);
 
                 if (brc.fShadow)
                 {
-                    var shadow = _nodeFactory.CreateAttribute("w", "shadow", OpenXmlNamespaces.WordprocessingML);
+                    var shadow = this._nodeFactory.CreateAttribute("w", "shadow", OpenXmlNamespaces.WordprocessingML);
                     shadow.Value = "1";
                     border.Attributes.Append(shadow);
                 }
@@ -182,10 +182,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         protected void appendShading(XmlElement parent, ShadingDescriptor desc)
         {
-            var shd = _nodeFactory.CreateElement("w", "shd", OpenXmlNamespaces.WordprocessingML);
+            var shd = this._nodeFactory.CreateElement("w", "shd", OpenXmlNamespaces.WordprocessingML);
 
             //fill color
-            var fill = _nodeFactory.CreateAttribute("w", "fill", OpenXmlNamespaces.WordprocessingML);
+            var fill = this._nodeFactory.CreateAttribute("w", "fill", OpenXmlNamespaces.WordprocessingML);
             if (desc.cvBack != 0)
                 fill.Value = new RGBColor((int)desc.cvBack, RGBColor.ByteOrder.RedLast).SixDigitHexCode;
             else
@@ -193,7 +193,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             shd.Attributes.Append(fill);
 
             //foreground color
-            var color = _nodeFactory.CreateAttribute("w", "color", OpenXmlNamespaces.WordprocessingML);
+            var color = this._nodeFactory.CreateAttribute("w", "color", OpenXmlNamespaces.WordprocessingML);
             if (desc.cvFore != 0)
                 color.Value = new RGBColor((int)desc.cvFore, RGBColor.ByteOrder.RedFirst).SixDigitHexCode;
             else
@@ -201,7 +201,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             shd.Attributes.Append(color);
 
             //pattern
-            var val = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+            var val = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
             val.Value = getShadingPattern(desc);
             shd.Attributes.Append(val);
 

@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         private int _gridSpan;
         public int GridSpan
         {
-            get { return _gridSpan; }
+            get { return this._gridSpan; }
         }
 
         private enum VerticalCellAlignment
@@ -72,12 +72,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public TableCellPropertiesMapping(XmlWriter writer, List<short> tableGrid, int gridIndex, int cellIndex)
             : base(writer)
         {
-            _tcPr = _nodeFactory.CreateElement("w", "tcPr", OpenXmlNamespaces.WordprocessingML);
-            _tcMar = _nodeFactory.CreateElement("w", "tcMar", OpenXmlNamespaces.WordprocessingML);
-            _tcBorders = _nodeFactory.CreateElement("w", "tcBorders", OpenXmlNamespaces.WordprocessingML);
-            _gridIndex = gridIndex;
-            _grid = tableGrid;
-            _cellIndex = cellIndex;
+            this._tcPr = this._nodeFactory.CreateElement("w", "tcPr", OpenXmlNamespaces.WordprocessingML);
+            this._tcMar = this._nodeFactory.CreateElement("w", "tcMar", OpenXmlNamespaces.WordprocessingML);
+            this._tcBorders = this._nodeFactory.CreateElement("w", "tcBorders", OpenXmlNamespaces.WordprocessingML);
+            this._gridIndex = gridIndex;
+            this._grid = tableGrid;
+            this._cellIndex = cellIndex;
         }
 
         public void Apply(TablePropertyExceptions tapx)
@@ -93,29 +93,29 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //Table definition SPRM
                     case  SinglePropertyModifier.OperationCode.sprmTDefTable:
                         var tdef = new SprmTDefTable(sprm.Arguments);
-                        _tGrid = tdef.rgdxaCenter;
-                        _tcDef = tdef.rgTc80[_cellIndex];
+                        this._tGrid = tdef.rgdxaCenter;
+                        this._tcDef = tdef.rgTc80[this._cellIndex];
 
-                        appendValueElement(_tcPr, "textDirection", _tcDef.textFlow.ToString(), false);
+                        appendValueElement(this._tcPr, "textDirection", this._tcDef.textFlow.ToString(), false);
 
-                        if (_tcDef.vertMerge == Global.VerticalMergeFlag.fvmMerge)
-                            appendValueElement(_tcPr, "vMerge", "continue", false);
-                        else if (_tcDef.vertMerge == Global.VerticalMergeFlag.fvmRestart)
-                            appendValueElement(_tcPr, "vMerge", "restart", false);
-                        else if (_tcDef.vertMerge == Global.VerticalMergeFlag.fvmRestart)
-                            appendValueElement(_tcPr, "vMerge", "restart", false);
+                        if (this._tcDef.vertMerge == Global.VerticalMergeFlag.fvmMerge)
+                            appendValueElement(this._tcPr, "vMerge", "continue", false);
+                        else if (this._tcDef.vertMerge == Global.VerticalMergeFlag.fvmRestart)
+                            appendValueElement(this._tcPr, "vMerge", "restart", false);
+                        else if (this._tcDef.vertMerge == Global.VerticalMergeFlag.fvmRestart)
+                            appendValueElement(this._tcPr, "vMerge", "restart", false);
 
-                        appendValueElement(_tcPr, "vAlign", _tcDef.vertAlign.ToString(), false);
+                        appendValueElement(this._tcPr, "vAlign", this._tcDef.vertAlign.ToString(), false);
 
-                        if (_tcDef.fFitText)
-                            appendValueElement(_tcPr, "tcFitText", "", false);
+                        if (this._tcDef.fFitText)
+                            appendValueElement(this._tcPr, "tcFitText", "", false);
 
-                        if (_tcDef.fNoWrap)
-                            appendValueElement(_tcPr, "noWrap", "", true);
+                        if (this._tcDef.fNoWrap)
+                            appendValueElement(this._tcPr, "noWrap", "", true);
 
                         //_width = _tcDef.wWidth;
-                        _width = (short)(tdef.rgdxaCenter[_cellIndex + 1] - tdef.rgdxaCenter[_cellIndex]);
-                        _ftsWidth = _tcDef.ftsWidth;
+                        this._width = (short)(tdef.rgdxaCenter[this._cellIndex + 1] - tdef.rgdxaCenter[this._cellIndex]);
+                        this._ftsWidth = this._tcDef.ftsWidth;
 
                         //borders
                         // if the sprm has a higher priority than the last sprmTTableBorder sprm in the list
@@ -136,42 +136,42 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         byte ftsMargin = sprm.Arguments[3];
                         var wMargin = System.BitConverter.ToInt16(sprm.Arguments, 4);
 
-                        if (_cellIndex >= first && _cellIndex < lim)
+                        if (this._cellIndex >= first && this._cellIndex < lim)
                         {
                             var borderBits = new BitArray(new byte[] { sprm.Arguments[2] });
                             if (borderBits[0] == true)
-                                appendDxaElement(_tcMar, "top", wMargin.ToString(), true);
+                                appendDxaElement(this._tcMar, "top", wMargin.ToString(), true);
                             if (borderBits[1] == true)
-                                appendDxaElement(_tcMar, "left", wMargin.ToString(), true);
+                                appendDxaElement(this._tcMar, "left", wMargin.ToString(), true);
                             if (borderBits[2] == true)
-                                appendDxaElement(_tcMar, "bottom", wMargin.ToString(), true);
+                                appendDxaElement(this._tcMar, "bottom", wMargin.ToString(), true);
                             if (borderBits[3] == true)
-                                appendDxaElement(_tcMar, "right", wMargin.ToString(), true);
+                                appendDxaElement(this._tcMar, "right", wMargin.ToString(), true);
                         }
                         break;
 
                     //shading
                     case SinglePropertyModifier.OperationCode.sprmTDefTableShd:
                         //cell shading for cells 0-20
-                        apppendCellShading(sprm.Arguments, _cellIndex);
+                        apppendCellShading(sprm.Arguments, this._cellIndex);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmTDefTableShd2nd:
                         //cell shading for cells 21-42
-                        apppendCellShading(sprm.Arguments, _cellIndex - 21);
+                        apppendCellShading(sprm.Arguments, this._cellIndex - 21);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmTDefTableShd3rd:
                         //cell shading for cells 43-62
-                        apppendCellShading(sprm.Arguments, _cellIndex - 43);
+                        apppendCellShading(sprm.Arguments, this._cellIndex - 43);
                         break;
 
                     //width
                     case SinglePropertyModifier.OperationCode.sprmTCellWidth:
                         first = sprm.Arguments[0];
                         lim = sprm.Arguments[1];
-                        if (_cellIndex >= first && _cellIndex < lim)
+                        if (this._cellIndex >= first && this._cellIndex < lim)
                         {
-                            _ftsWidth = (Global.CellWidthType)sprm.Arguments[2];
-                            _width = System.BitConverter.ToInt16(sprm.Arguments, 3);
+                            this._ftsWidth = (Global.CellWidthType)sprm.Arguments[2];
+                            this._width = System.BitConverter.ToInt16(sprm.Arguments, 3);
                         }
                         break;
 
@@ -179,16 +179,16 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmTVertAlign:
                         first = sprm.Arguments[0];
                         lim = sprm.Arguments[1];
-                        if (_cellIndex >= first && _cellIndex < lim)
-                            appendValueElement(_tcPr, "vAlign", ((VerticalCellAlignment)sprm.Arguments[2]).ToString(), true);
+                        if (this._cellIndex >= first && this._cellIndex < lim)
+                            appendValueElement(this._tcPr, "vAlign", ((VerticalCellAlignment)sprm.Arguments[2]).ToString(), true);
                         break;
 
                     //Autofit
                     case SinglePropertyModifier.OperationCode.sprmTFitText:
                         first = sprm.Arguments[0];
                         lim = sprm.Arguments[1];
-                        if (_cellIndex >= first && _cellIndex < lim)
-                            appendValueElement(_tcPr, "tcFitText", sprm.Arguments[2].ToString(), true);
+                        if (this._cellIndex >= first && this._cellIndex < lim)
+                            appendValueElement(this._tcPr, "tcFitText", sprm.Arguments[2].ToString(), true);
                         break;
 
                     //borders (cell definition)
@@ -197,26 +197,26 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         byte max = sprm.Arguments[1];
                         int bordersToApply = (int)sprm.Arguments[2] ;
 
-                        if (_cellIndex >= min && _cellIndex < max)
+                        if (this._cellIndex >= min && this._cellIndex < max)
                         {
                             var brcBytes = new byte[8];
                             Array.Copy(sprm.Arguments, 3, brcBytes, 0, 8);
                             var border = new BorderCode(brcBytes);
                             if(Utils.BitmaskToBool(bordersToApply, 0x01))
                             {
-                                _brcTop = border;
+                                this._brcTop = border;
                             }
                             if(Utils.BitmaskToBool(bordersToApply, 0x02))
                             {
-                                _brcLeft = border;
+                                this._brcLeft = border;
                             }
                             if (Utils.BitmaskToBool(bordersToApply, 0x04))
                             {
-                                _brcBottom = border;
+                                this._brcBottom = border;
                             }
                             if (Utils.BitmaskToBool(bordersToApply, 0x08))
                             {
-                                _brcRight = border;
+                                this._brcRight = border;
                             }
                         }
                         break;
@@ -224,72 +224,72 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
 
             //width
-            var tcW = _nodeFactory.CreateElement("w", "tcW", OpenXmlNamespaces.WordprocessingML);
-            var tcWType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
-            var tcWVal = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
-            tcWType.Value = _ftsWidth.ToString();
-            tcWVal.Value = _width.ToString();
+            var tcW = this._nodeFactory.CreateElement("w", "tcW", OpenXmlNamespaces.WordprocessingML);
+            var tcWType = this._nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+            var tcWVal = this._nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+            tcWType.Value = this._ftsWidth.ToString();
+            tcWVal.Value = this._width.ToString();
             tcW.Attributes.Append(tcWType);
             tcW.Attributes.Append(tcWVal);
-            _tcPr.AppendChild(tcW);
+            this._tcPr.AppendChild(tcW);
 
             //grid span
-            _gridSpan = 1;
-            if (_width > _grid[_gridIndex])
+            this._gridSpan = 1;
+            if (this._width > this._grid[this._gridIndex])
             {
                 //check the number of merged cells
-                int w = _grid[_gridIndex];
-                for (int i = _gridIndex+1; i < _grid.Count; i++)
+                int w = this._grid[this._gridIndex];
+                for (int i = this._gridIndex +1; i < this._grid.Count; i++)
                 {
-                    _gridSpan++;
-                    w += _grid[i];
-                    if (w >= _width)
+                    this._gridSpan++;
+                    w += this._grid[i];
+                    if (w >= this._width)
                         break;
                 }
 
-                appendValueElement(_tcPr, "gridSpan", _gridSpan.ToString(), true);
+                appendValueElement(this._tcPr, "gridSpan", this._gridSpan.ToString(), true);
             }
 
             //append margins
-            if (_tcMar.ChildNodes.Count > 0)
+            if (this._tcMar.ChildNodes.Count > 0)
             {
-                _tcPr.AppendChild(_tcMar);
+                this._tcPr.AppendChild(this._tcMar);
             }
 
             //append borders
-            if (_brcTop != null)
+            if (this._brcTop != null)
             {
-                var topBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(_brcTop, topBorder);
-                addOrSetBorder(_tcBorders, topBorder);
+                var topBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this._brcTop, topBorder);
+                addOrSetBorder(this._tcBorders, topBorder);
             }
-            if (_brcLeft != null)
+            if (this._brcLeft != null)
             {
-                var leftBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(_brcLeft, leftBorder);
-                addOrSetBorder(_tcBorders, leftBorder);
+                var leftBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this._brcLeft, leftBorder);
+                addOrSetBorder(this._tcBorders, leftBorder);
             }
-            if (_brcBottom != null)
+            if (this._brcBottom != null)
             {
-                var bottomBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(_brcBottom, bottomBorder);
-                addOrSetBorder(_tcBorders, bottomBorder);
+                var bottomBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this._brcBottom, bottomBorder);
+                addOrSetBorder(this._tcBorders, bottomBorder);
             }
-            if (_brcRight != null)
+            if (this._brcRight != null)
             {
-                var rightBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
-                appendBorderAttributes(_brcRight, rightBorder);
-                addOrSetBorder(_tcBorders, rightBorder);
+                var rightBorder = this._nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
+                appendBorderAttributes(this._brcRight, rightBorder);
+                addOrSetBorder(this._tcBorders, rightBorder);
             }
-            if (_tcBorders.ChildNodes.Count > 0)
+            if (this._tcBorders.ChildNodes.Count > 0)
             {
-                _tcPr.AppendChild(_tcBorders);
+                this._tcPr.AppendChild(this._tcBorders);
             }
 
             //write Properties
-            if (_tcPr.ChildNodes.Count > 0 || _tcPr.Attributes.Count > 0)
+            if (this._tcPr.ChildNodes.Count > 0 || this._tcPr.Attributes.Count > 0)
             {
-                _tcPr.WriteTo(_writer);
+                this._tcPr.WriteTo(this._writer);
             }
         }
 
@@ -313,7 +313,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             Array.Copy(sprmArg, cellIndex * shdBytes.Length, shdBytes, 0, shdBytes.Length);
             
             var shd = new ShadingDescriptor(shdBytes);
-            appendShading(_tcPr, shd);
+            appendShading(this._tcPr, shd);
         }
 
 

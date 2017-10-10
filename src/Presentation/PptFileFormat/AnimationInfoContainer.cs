@@ -40,29 +40,29 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             : base(_reader, size, typeCode, version, instance)
         {
 
-            dimColor = this.Reader.ReadBytes(4);
-            flags = this.Reader.ReadInt16();
+            this.dimColor = this.Reader.ReadBytes(4);
+            this.flags = this.Reader.ReadInt16();
 
-            fReverse = Tools.Utils.BitmaskToBool(flags, 0x1 << 0);
-            fAutomatic = Tools.Utils.BitmaskToBool(flags, 0x1 << 2);
-            fSound = Tools.Utils.BitmaskToBool(flags, 0x1 << 4);
-            fStopSound = Tools.Utils.BitmaskToBool(flags, 0x1 << 6);
-            fPlay = Tools.Utils.BitmaskToBool(flags, 0x1 << 8);
-            fSynchronous = Tools.Utils.BitmaskToBool(flags, 0x1 << 10);
-            fHide = Tools.Utils.BitmaskToBool(flags, 0x1 << 12);
-            fAnimateBg = Tools.Utils.BitmaskToBool(flags, 0x1 << 14);
+            this.fReverse = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 0);
+            this.fAutomatic = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 2);
+            this.fSound = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 4);
+            this.fStopSound = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 6);
+            this.fPlay = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 8);
+            this.fSynchronous = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 10);
+            this.fHide = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 12);
+            this.fAnimateBg = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 14);
 
             var reserved = this.Reader.ReadInt16();
-            soundIdRef = this.Reader.ReadBytes(4);
-            delayTime = this.Reader.ReadInt32();
-            orderID = this.Reader.ReadInt16();
-            slideCount = this.Reader.ReadUInt16();
-            animBuildType = (AnimBuildTypeEnum)this.Reader.ReadByte();
-            animEffect = this.Reader.ReadByte();
-            animEffectDirection = this.Reader.ReadByte();
-            animAfterEffect = (AnimAfterEffectEnum)this.Reader.ReadByte();
-            textBuildSubEffect = (TextBuildSubEffectEnum)this.Reader.ReadByte();
-            oleVerb = this.Reader.ReadByte();
+            this.soundIdRef = this.Reader.ReadBytes(4);
+            this.delayTime = this.Reader.ReadInt32();
+            this.orderID = this.Reader.ReadInt16();
+            this.slideCount = this.Reader.ReadUInt16();
+            this.animBuildType = (AnimBuildTypeEnum)this.Reader.ReadByte();
+            this.animEffect = this.Reader.ReadByte();
+            this.animEffectDirection = this.Reader.ReadByte();
+            this.animAfterEffect = (AnimAfterEffectEnum)this.Reader.ReadByte();
+            this.textBuildSubEffect = (TextBuildSubEffectEnum)this.Reader.ReadByte();
+            this.oleVerb = this.Reader.ReadByte();
 
             if (this.Reader.BaseStream.Position != this.Reader.BaseStream.Length)
             {

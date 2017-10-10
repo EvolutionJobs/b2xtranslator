@@ -12,26 +12,26 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         public override void Apply(WordDocument doc)
         {
-            _doc = doc;
+            this._doc = doc;
 
             //start the document
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("w", "document", OpenXmlNamespaces.WordprocessingML);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("w", "document", OpenXmlNamespaces.WordprocessingML);
 
             //write namespaces
-            _writer.WriteAttributeString("xmlns", "v", null, OpenXmlNamespaces.VectorML);
-            _writer.WriteAttributeString("xmlns", "o", null, OpenXmlNamespaces.Office);
-            _writer.WriteAttributeString("xmlns", "w10", null, OpenXmlNamespaces.OfficeWord);
-            _writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
+            this._writer.WriteAttributeString("xmlns", "v", null, OpenXmlNamespaces.VectorML);
+            this._writer.WriteAttributeString("xmlns", "o", null, OpenXmlNamespaces.Office);
+            this._writer.WriteAttributeString("xmlns", "w10", null, OpenXmlNamespaces.OfficeWord);
+            this._writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
 
-            _writer.WriteStartElement("w", "body", OpenXmlNamespaces.WordprocessingML);
+            this._writer.WriteStartElement("w", "body", OpenXmlNamespaces.WordprocessingML);
 
             //convert the document
-            _lastValidPapx = _doc.AllPapxFkps[0].grppapx[0];
+            this._lastValidPapx = this._doc.AllPapxFkps[0].grppapx[0];
             var cp = 0;
             while (cp < doc.FIB.ccpText)
             {
-                int fc = _doc.PieceTable.FileCharacterPositions[cp];
+                int fc = this._doc.PieceTable.FileCharacterPositions[cp];
                 var papx = findValidPapx(fc);
                 var tai = new TableInfo(papx);
 
@@ -49,19 +49,19 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             //write the section properties of the body with the last SEPX
             int lastSepxCp = 0;
-            foreach (int sepxCp in _doc.AllSepx.Keys)
+            foreach (int sepxCp in this._doc.AllSepx.Keys)
             {
                 lastSepxCp = sepxCp;
             }
-            var lastSepx = _doc.AllSepx[lastSepxCp];
-            lastSepx.Convert(new SectionPropertiesMapping(_writer, _ctx, _sectionNr));
+            var lastSepx = this._doc.AllSepx[lastSepxCp];
+            lastSepx.Convert(new SectionPropertiesMapping(this._writer, this._ctx, this._sectionNr));
 
             //end the document
-            _writer.WriteEndElement();
-            _writer.WriteEndElement();
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.Flush();
         }
     }
 }

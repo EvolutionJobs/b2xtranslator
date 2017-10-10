@@ -36,7 +36,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
     /// </summary>
     abstract internal class AbstractHeader
     {
-        protected const UInt64 MAGIC_NUMBER = 0xE11AB1A1E011CFD0;
+        protected const ulong MAGIC_NUMBER = 0xE11AB1A1E011CFD0;
 
         protected AbstractIOHandler _ioHandler;
 
@@ -44,22 +44,22 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private ushort _sectorShift;
         public ushort SectorShift
         {
-            get { return _sectorShift; }
+            get { return this._sectorShift; }
             set
             {
-                _sectorShift = value;
+                this._sectorShift = value;
                 // Calculate sector size
-                _sectorSize = (ushort)Math.Pow((double)2, (double)_sectorShift);
-                if (_sectorShift != 9 && _sectorShift != 12)
+                this._sectorSize = (ushort)Math.Pow((double)2, (double)this._sectorShift);
+                if (this._sectorShift != 9 && this._sectorShift != 12)
                 {
-                    throw new UnsupportedSizeException("SectorShift: " + _sectorShift);
+                    throw new UnsupportedSizeException("SectorShift: " + this._sectorShift);
                 }
             }
         }
         private ushort _sectorSize;
         public ushort SectorSize
         {
-            get { return _sectorSize; }
+            get { return this._sectorSize; }
         }
 
 
@@ -67,22 +67,22 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private ushort _miniSectorShift;
         public ushort MiniSectorShift
         {
-            get { return _miniSectorShift; }
+            get { return this._miniSectorShift; }
             set
             {
-                _miniSectorShift = value;
+                this._miniSectorShift = value;
                 // Calculate mini sector size
-                _miniSectorSize = (ushort)Math.Pow((double)2, (double)_miniSectorShift);
-                if (_miniSectorShift != 6)
+                this._miniSectorSize = (ushort)Math.Pow((double)2, (double)this._miniSectorShift);
+                if (this._miniSectorShift != 6)
                 {
-                    throw new UnsupportedSizeException("MiniSectorShift: " + _miniSectorShift);
+                    throw new UnsupportedSizeException("MiniSectorShift: " + this._miniSectorShift);
                 }
             }
         }
         private ushort _miniSectorSize;
         public ushort MiniSectorSize
         {
-            get { return _miniSectorSize; }
+            get { return this._miniSectorSize; }
         }
 
 
@@ -90,14 +90,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private uint _noSectorsInDirectoryChain4KB;
         public uint NoSectorsInDirectoryChain4KB
         {
-            get { return _noSectorsInDirectoryChain4KB; }
+            get { return this._noSectorsInDirectoryChain4KB; }
             set
             {
-                if (_sectorSize == 512 && value != 0)
+                if (this._sectorSize == 512 && value != 0)
                 {
                     throw new ValueNotZeroException("_csectDir");
                 }
-                _noSectorsInDirectoryChain4KB = value;
+                this._noSectorsInDirectoryChain4KB = value;
             }
         }
 
@@ -106,11 +106,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private uint _noSectorsInFatChain;
         public uint NoSectorsInFatChain
         {
-            get { return _noSectorsInFatChain; }
+            get { return this._noSectorsInFatChain; }
             set
             {
-                _noSectorsInFatChain = value;
-                if (value > _ioHandler.IOStreamSize / SectorSize)
+                this._noSectorsInFatChain = value;
+                if (value > this._ioHandler.IOStreamSize / this.SectorSize)
                 {
                     throw new InvalidValueInHeaderException("NoSectorsInFatChain");
                 }
@@ -123,11 +123,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private uint _directoryStartSector;
         public uint DirectoryStartSector
         {
-            get { return _directoryStartSector; }
+            get { return this._directoryStartSector; }
             set
             {
-                _directoryStartSector = value;
-                if (value > _ioHandler.IOStreamSize / SectorSize && value != SectorId.ENDOFCHAIN)
+                this._directoryStartSector = value;
+                if (value > this._ioHandler.IOStreamSize / this.SectorSize && value != SectorId.ENDOFCHAIN)
                 {
                     throw new InvalidValueInHeaderException("DirectoryStartSector");
                 }
@@ -139,10 +139,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private uint _miniSectorCutoff;
         public uint MiniSectorCutoff
         {
-            get { return _miniSectorCutoff; }
+            get { return this._miniSectorCutoff; }
             set
             {
-                _miniSectorCutoff = value;
+                this._miniSectorCutoff = value;
                 if (value != 0x1000)
                 {
                     throw new UnsupportedSizeException("MiniSectorCutoff");
@@ -156,11 +156,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private uint _miniFatStartSector;
         public uint MiniFatStartSector
         {
-            get { return _miniFatStartSector; }
+            get { return this._miniFatStartSector; }
             set
             {
-                _miniFatStartSector = value;
-                if (value > _ioHandler.IOStreamSize / SectorSize && value != SectorId.ENDOFCHAIN)
+                this._miniFatStartSector = value;
+                if (value > this._ioHandler.IOStreamSize / this.SectorSize && value != SectorId.ENDOFCHAIN)
                 {
                     throw new InvalidValueInHeaderException("MiniFatStartSector");
                 }
@@ -172,11 +172,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private uint _noSectorsInMiniFatChain;
         public uint NoSectorsInMiniFatChain
         {
-            get { return _noSectorsInMiniFatChain; }
+            get { return this._noSectorsInMiniFatChain; }
             set
             {
-                _noSectorsInMiniFatChain = value;
-                if (value > _ioHandler.IOStreamSize / SectorSize)
+                this._noSectorsInMiniFatChain = value;
+                if (value > this._ioHandler.IOStreamSize / this.SectorSize)
                 {
                     throw new InvalidValueInHeaderException("NoSectorsInMiniFatChain");
                 }
@@ -189,13 +189,13 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private uint _diFatStartSector;
         public uint DiFatStartSector
         {
-            get { return _diFatStartSector; }
+            get { return this._diFatStartSector; }
             set
             {
-                _diFatStartSector = value;
-                if (value > _ioHandler.IOStreamSize / SectorSize && value != SectorId.ENDOFCHAIN && value != SectorId.FREESECT)
+                this._diFatStartSector = value;
+                if (value > this._ioHandler.IOStreamSize / this.SectorSize && value != SectorId.ENDOFCHAIN && value != SectorId.FREESECT)
                 {
-                    throw new InvalidValueInHeaderException("DiFatStartSector", string.Format("Details: value={0};_ioHandler.IOStreamSize={1};SectorSize={2}; SectorId.ENDOFCHAIN: {3}", value, _ioHandler.IOStreamSize, SectorSize, SectorId.ENDOFCHAIN));
+                    throw new InvalidValueInHeaderException("DiFatStartSector", string.Format("Details: value={0};_ioHandler.IOStreamSize={1};SectorSize={2}; SectorId.ENDOFCHAIN: {3}", value, this._ioHandler.IOStreamSize, this.SectorSize, SectorId.ENDOFCHAIN));
                 }
             }
         }
@@ -205,11 +205,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         private uint _noSectorsInDiFatChain;
         public uint NoSectorsInDiFatChain
         {
-            get { return _noSectorsInDiFatChain; }
+            get { return this._noSectorsInDiFatChain; }
             set
             {
-                _noSectorsInDiFatChain = value;
-                if (value > _ioHandler.IOStreamSize / SectorSize)
+                this._noSectorsInDiFatChain = value;
+                if (value > this._ioHandler.IOStreamSize / this.SectorSize)
                 {
                     throw new InvalidValueInHeaderException("NoSectorsInDiFatChain");
                 }

@@ -62,10 +62,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public ListFormatOverrideLevel(VirtualStreamReader reader, int length)
             : base(reader, length)
         {
-            long startPos = _reader.BaseStream.Position;
+            long startPos = this._reader.BaseStream.Position;
 
-            this.iStartAt = _reader.ReadInt32();
-            int flag = (int)_reader.ReadInt16();
+            this.iStartAt = this._reader.ReadInt32();
+            int flag = (int)this._reader.ReadInt16();
             this.ilvl = (byte)(flag & 0x000F);
             this.fStartAt = Utils.BitmaskToBool(flag, 0x0010);
             this.fFormatting = Utils.BitmaskToBool(flag, 0x0020);
@@ -76,8 +76,8 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
             }
 
-            _reader.BaseStream.Seek(startPos, System.IO.SeekOrigin.Begin);
-            _rawBytes = _reader.ReadBytes(LFOLVL_LENGTH);
+            this._reader.BaseStream.Seek(startPos, System.IO.SeekOrigin.Begin);
+            this._rawBytes = this._reader.ReadBytes(LFOLVL_LENGTH);
         }
     }
 }

@@ -112,13 +112,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 if (firstOffset == 1)
                 {
                     // this is a boolean value 
-                    this.boolValue = val[2];
+                    this.boolValue = this.val[2];
                     this.boolValueSet = true; 
                 }
                 if (firstOffset == 2)
                 {
                     // this is a error value 
-                    this.errorValue = (int) val[2];      
+                    this.errorValue = (int)this.val[2];      
                 }
             }
             else
@@ -135,15 +135,15 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // reader.ReadBytes(this.cce);
 
             // check always calc mode 
-            this.fAlwaysCalc = Utils.BitmaskToBool((int)grbit, 0x01); 
+            this.fAlwaysCalc = Utils.BitmaskToBool((int)this.grbit, 0x01); 
 
             // check if shared formula
-            this.fShrFmla = Utils.BitmaskToBool((int)grbit, 0x08);
+            this.fShrFmla = Utils.BitmaskToBool((int)this.grbit, 0x08);
 
 
 
             oldStreamPosition = this.Reader.BaseStream.Position;
-            if (!fShrFmla)
+            if (!this.fShrFmla)
             {
                 try
                 {

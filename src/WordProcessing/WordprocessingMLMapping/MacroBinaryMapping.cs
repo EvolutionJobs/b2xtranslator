@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public MacroBinaryMapping(ConversionContext ctx)
             : base(ctx, ctx.Docx.MainDocumentPart.VbaProjectPart)
         {
-            _ctx = ctx;
+            this._ctx = ctx;
         }
 
         public override void Apply(WordDocument doc)
@@ -77,7 +77,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             storage.RootDirectoryEntry.AddStreamDirectoryEntry("PROJECTwm", doc.Storage.GetStream("\\Macros\\PROJECTwm"));
 
            //write the storage to the xml part
-            storage.write(_targetPart.GetStream());
+            storage.write(this._targetPart.GetStream());
         }
     }
 }

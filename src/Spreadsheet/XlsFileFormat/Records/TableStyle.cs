@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Currently not used, and set to 0
         /// </summary>
-        public UInt64 reserved0;
+        public ulong reserved0;
 
         /// <summary>
         /// A packed bit field
@@ -104,19 +104,19 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            rt = reader.ReadUInt16();
-            grbitFrt = reader.ReadUInt16();
-            reserved0 = reader.ReadUInt64();
-            grbitTS = reader.ReadUInt16();
+            this.rt = reader.ReadUInt16();
+            this.grbitFrt = reader.ReadUInt16();
+            this.reserved0 = reader.ReadUInt64();
+            this.grbitTS = reader.ReadUInt16();
 
-            fIsBuiltIn = Utils.BitmaskToBool(grbitTS, 0x0001);
-            fIsPivot = Utils.BitmaskToBool(grbitTS, 0x0002);
-            fIsTable = Utils.BitmaskToBool(grbitTS, 0x0004);
-            fReserved0 = (ushort)Utils.BitmaskToInt(grbitTS, 0xFFF8);
-            
-            ctse = reader.ReadUInt32();
-            cchName = reader.ReadUInt16();
-            rgchName = reader.ReadBytes(cchName * 2);
+            this.fIsBuiltIn = Utils.BitmaskToBool(this.grbitTS, 0x0001);
+            this.fIsPivot = Utils.BitmaskToBool(this.grbitTS, 0x0002);
+            this.fIsTable = Utils.BitmaskToBool(this.grbitTS, 0x0004);
+            this.fReserved0 = (ushort)Utils.BitmaskToInt(this.grbitTS, 0xFFF8);
+
+            this.ctse = reader.ReadUInt32();
+            this.cchName = reader.ReadUInt16();
+            this.rgchName = reader.ReadBytes(this.cchName * 2);
 
             // assert that the correct number of bytes has been read from the stream
             Debug.Assert(this.Offset + this.Length == this.Reader.BaseStream.Position); 

@@ -18,7 +18,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public ExHyperlinkAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            exHyperlinkId = this.Reader.ReadUInt32();
+            this.exHyperlinkId = this.Reader.ReadUInt32();
         }
     }
 

@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             var bytes = reader.ReadBytes(2);
 
-            fGXHide = BitConverter.ToBoolean(bytes, 0x1);
+            this.fGXHide = BitConverter.ToBoolean(bytes, 0x1);
 
         }
     }

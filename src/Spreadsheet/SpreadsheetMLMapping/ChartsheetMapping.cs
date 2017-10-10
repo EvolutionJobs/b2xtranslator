@@ -58,30 +58,30 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// <param name="bsd">WorkSheetData</param>
         public void Apply(ChartSheetSequence chartSheetSequence)
         {
-            _writer.WriteStartDocument();
+            this._writer.WriteStartDocument();
             // chartsheet
-            _writer.WriteStartElement(Sml.Sheet.ElChartsheet, Sml.Ns);
-            _writer.WriteAttributeString("xmlns", Sml.Ns);
-            _writer.WriteAttributeString("xmlns", "r", "", OpenXmlNamespaces.Relationships);
+            this._writer.WriteStartElement(Sml.Sheet.ElChartsheet, Sml.Ns);
+            this._writer.WriteAttributeString("xmlns", Sml.Ns);
+            this._writer.WriteAttributeString("xmlns", "r", "", OpenXmlNamespaces.Relationships);
             
             var chartSheetContentSequence = chartSheetSequence.ChartSheetContentSequence;
 
             // sheetPr
-            _writer.WriteStartElement(Sml.Sheet.ElSheetPr, Sml.Ns);
+            this._writer.WriteStartElement(Sml.Sheet.ElSheetPr, Sml.Ns);
             if (chartSheetContentSequence.CodeName != null)
             {
                 // code name
-                _writer.WriteAttributeString(Sml.Sheet.AttrCodeName, chartSheetContentSequence.CodeName.codeName.Value);
+                this._writer.WriteAttributeString(Sml.Sheet.AttrCodeName, chartSheetContentSequence.CodeName.codeName.Value);
             }
             // TODO: map SheetExtOptional to published and tab color
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
             
             // sheetViews
             if (chartSheetContentSequence.WindowSequences.Count > 0)
             {
-                _writer.WriteStartElement(Sml.Sheet.ElSheetViews, Sml.Ns);
+                this._writer.WriteStartElement(Sml.Sheet.ElSheetViews, Sml.Ns);
 
                 // Note: There is a Window2 record for each Window1 record in the beginning of the workbook.
                 // The index in the list corresponds to the 0-based workbookViewId attribute.
@@ -90,7 +90,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 {
                     chartSheetContentSequence.WindowSequences[window1Id].Convert(new WindowMapping(this._xlsContext, this._chartsheetPart, window1Id, true));
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
             // page setup
@@ -100,14 +100,14 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             // TODO: header and footer
 
             // drawing
-            _writer.WriteStartElement(Sml.Sheet.ElDrawing, Sml.Ns);
-            _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, this._chartsheetPart.DrawingsPart.RelIdToString);
+            this._writer.WriteStartElement(Sml.Sheet.ElDrawing, Sml.Ns);
+            this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, this._chartsheetPart.DrawingsPart.RelIdToString);
             chartSheetContentSequence.Convert(new DrawingMapping(this._xlsContext, this._chartsheetPart.DrawingsPart, true));
-            
-            _writer.WriteEndElement();
-            _writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndDocument();
+
+            this._writer.Flush();
         }
     }
 }

@@ -79,7 +79,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             // CT_ShapeProperties
 
             // c:spPr
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSpPr, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSpPr, Dml.Chart.Ns);
             {
                 // a:xfrm
 
@@ -97,7 +97,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
                 // a:sp3d
             }
-            _writer.WriteEndElement(); // c:spPr
+            this._writer.WriteEndElement(); // c:spPr
         }
 
         #endregion
@@ -109,7 +109,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             // CT_ShapeProperties
 
             // c:spPr
-            _writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSpPr, Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, Dml.Chart.ElSpPr, Dml.Chart.Ns);
             {
                 // a:xfrm
 
@@ -127,7 +127,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
                 // a:sp3d
             }
-            _writer.WriteEndElement(); // c:spPr
+            this._writer.WriteEndElement(); // c:spPr
         }
 
         #endregion
@@ -146,7 +146,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     if (areaFormat.fls == 0x0000)
                     {
                         // a:noFill (CT_NoFillProperties) 
-                        _writer.WriteElementString(Dml.Prefix, Dml.ShapeEffects.ElNoFill, Dml.Ns, string.Empty);
+                        this._writer.WriteElementString(Dml.Prefix, Dml.ShapeEffects.ElNoFill, Dml.Ns, string.Empty);
                     }
                     else if (areaFormat.fls == 0x0001)
                     {
@@ -161,9 +161,9 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                             fillColor = areaFormat.rgbFore;
                         }
                         // a:solidFill (CT_SolidColorFillProperties)
-                        _writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElSolidFill, Dml.Ns);
+                        this._writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElSolidFill, Dml.Ns);
                         writeValueElement(Dml.Prefix, Dml.BaseTypes.ElSrgbClr, Dml.Ns, fillColor.SixDigitHexCode.ToUpper());
-                        _writer.WriteEndElement(); // a:solidFill 
+                        this._writer.WriteEndElement(); // a:solidFill 
                     }
 
                     // a:gradFill (CT_GradientFillProperties)
@@ -213,7 +213,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 }
 
                 // CT_LineProperties
-                _writer.WriteStartElement(Dml.Prefix, Dml.ShapeProperties.ElLn, Dml.Ns);
+                this._writer.WriteStartElement(Dml.Prefix, Dml.ShapeProperties.ElLn, Dml.Ns);
 
                 // w (line width)
                 // map to the values used by the Compatibility Pack
@@ -235,7 +235,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 }
                 if (lineWidth != 0)
                 {
-                    _writer.WriteAttributeString(Dml.ShapeLineProperties.AttrW, lineWidth.ToString());
+                    this._writer.WriteAttributeString(Dml.ShapeLineProperties.AttrW, lineWidth.ToString());
                 }
 
                 // cap
@@ -246,30 +246,30 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     // EG_LineFillProperties
                     if (lineFormat.lns == LineFormat.LineStyle.None)
                     {
-                        _writer.WriteElementString(Dml.Prefix, Dml.ShapeEffects.ElNoFill, Dml.Ns, string.Empty);
+                        this._writer.WriteElementString(Dml.Prefix, Dml.ShapeEffects.ElNoFill, Dml.Ns, string.Empty);
                     }
                     else
                     {
                         if (string.IsNullOrEmpty(pattFillPrst))
                         {
                             // a:solidFill (CT_SolidColorFillProperties)
-                            _writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElSolidFill, Dml.Ns);
+                            this._writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElSolidFill, Dml.Ns);
                             writeValueElement(Dml.Prefix, Dml.BaseTypes.ElSrgbClr, Dml.Ns, lineFormat.rgb.SixDigitHexCode.ToUpper());
-                            _writer.WriteEndElement(); // a:solidFill 
+                            this._writer.WriteEndElement(); // a:solidFill 
                         }
                         else
                         {
                             // a:pattFill
-                            _writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElPattFill, Dml.Ns);
-                            _writer.WriteAttributeString(Dml.ShapeEffects.AttrPrst, pattFillPrst);
+                            this._writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElPattFill, Dml.Ns);
+                            this._writer.WriteAttributeString(Dml.ShapeEffects.AttrPrst, pattFillPrst);
 
-                            _writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElFgClr, Dml.Ns);
+                            this._writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElFgClr, Dml.Ns);
                             writeValueElement(Dml.Prefix, Dml.BaseTypes.ElSrgbClr, Dml.Ns, lineFormat.rgb.SixDigitHexCode.ToUpper());
-                            _writer.WriteEndElement();
-                            _writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElBgClr, Dml.Ns);
+                            this._writer.WriteEndElement();
+                            this._writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElBgClr, Dml.Ns);
                             writeValueElement(Dml.Prefix, Dml.BaseTypes.ElSrgbClr, Dml.Ns, "FFFFFF");
-                            _writer.WriteEndElement();
-                            _writer.WriteEndElement(); // a:pattFill 
+                            this._writer.WriteEndElement();
+                            this._writer.WriteEndElement(); // a:pattFill 
                         }
                     }
 
@@ -288,7 +288,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     // a:tailEnd
                     // (not supported by Excel 2003)
                 }
-                _writer.WriteEndElement(); // a:ln
+                this._writer.WriteEndElement(); // a:ln
             }
         }
 
@@ -306,14 +306,14 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             {
                 case 0x0: //solid
                     // a:solidFill (CT_SolidColorFillProperties)
-                    _writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElSolidFill, Dml.Ns);
+                    this._writer.WriteStartElement(Dml.Prefix, Dml.ShapeEffects.ElSolidFill, Dml.Ns);
                     {
                         // a:srgbColor
-                        _writer.WriteStartElement(Dml.Prefix, Dml.BaseTypes.ElSrgbClr, Dml.Ns);
-                        _writer.WriteAttributeString(Dml.BaseTypes.AttrVal, rgbFore.SixDigitHexCode.ToUpper());
-                        _writer.WriteEndElement(); // a:srgbColor
+                        this._writer.WriteStartElement(Dml.Prefix, Dml.BaseTypes.ElSrgbClr, Dml.Ns);
+                        this._writer.WriteAttributeString(Dml.BaseTypes.AttrVal, rgbFore.SixDigitHexCode.ToUpper());
+                        this._writer.WriteEndElement(); // a:srgbColor
                     }
-                    _writer.WriteEndElement(); // a:solidFill
+                    this._writer.WriteEndElement(); // a:solidFill
                     break;
                 case 0x1: //pattern
                     //uint blipIndex1 = so.OptionsByID[ShapeOptions.PropertyId.fillBlip].op;
@@ -431,54 +431,54 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 case 0x5: //shadecenter
                 case 0x6: //shadeshape
                 case 0x7: //shadescale
-                    _writer.WriteStartElement(Dml.Prefix, "gradFill", Dml.Ns);
-                    _writer.WriteAttributeString("rotWithShape", "1");
+                    this._writer.WriteStartElement(Dml.Prefix, "gradFill", Dml.Ns);
+                    this._writer.WriteAttributeString("rotWithShape", "1");
                     {
-                        _writer.WriteStartElement(Dml.Prefix, "gsLst", Dml.Ns);
+                        this._writer.WriteStartElement(Dml.Prefix, "gsLst", Dml.Ns);
                         {
-                            _writer.WriteStartElement(Dml.Prefix, "gs", Dml.Ns);
-                            _writer.WriteAttributeString("pos", "0");
+                            this._writer.WriteStartElement(Dml.Prefix, "gs", Dml.Ns);
+                            this._writer.WriteAttributeString("pos", "0");
 
-                            _writer.WriteStartElement(Dml.Prefix, "srgbClr", Dml.Ns);
-                            _writer.WriteAttributeString("val", rgbFore.SixDigitHexCode.ToUpper());
+                            this._writer.WriteStartElement(Dml.Prefix, "srgbClr", Dml.Ns);
+                            this._writer.WriteAttributeString("val", rgbFore.SixDigitHexCode.ToUpper());
                             //if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillOpacity))
                             //{
                             //    _writer.WriteStartElement(Dml.Prefix, "alpha", Dml.Ns);
                             //    _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
                             //    _writer.WriteEndElement();
                             //}
-                            _writer.WriteEndElement();
-                            _writer.WriteEndElement();
+                            this._writer.WriteEndElement();
+                            this._writer.WriteEndElement();
 
-                            _writer.WriteStartElement(Dml.Prefix, "gs", Dml.Ns);
-                            _writer.WriteAttributeString("pos", "100000");
-                            _writer.WriteStartElement(Dml.Prefix, "srgbClr", Dml.Ns);
-                            _writer.WriteAttributeString("val", rgbBack.SixDigitHexCode.ToUpper());
+                            this._writer.WriteStartElement(Dml.Prefix, "gs", Dml.Ns);
+                            this._writer.WriteAttributeString("pos", "100000");
+                            this._writer.WriteStartElement(Dml.Prefix, "srgbClr", Dml.Ns);
+                            this._writer.WriteAttributeString("val", rgbBack.SixDigitHexCode.ToUpper());
                             //if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillBackOpacity))
                             //{
                             //    _writer.WriteStartElement(Dml.Prefix, "alpha", Dml.Ns);
                             //    _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillBackOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
                             //    _writer.WriteEndElement();
                             //}
-                            _writer.WriteEndElement();
-                            _writer.WriteEndElement();
+                            this._writer.WriteEndElement();
+                            this._writer.WriteEndElement();
                         }
 
-                        _writer.WriteEndElement(); //gsLst
+                        this._writer.WriteEndElement(); //gsLst
 
                         switch (fillType)
                         {
                             case 0x5:
                             case 0x6:
-                                _writer.WriteStartElement(Dml.Prefix, "path", Dml.Ns);
-                                _writer.WriteAttributeString("path", "shape");
-                                _writer.WriteStartElement(Dml.Prefix, "fillToRect", Dml.Ns);
-                                _writer.WriteAttributeString("l", "50000");
-                                _writer.WriteAttributeString("t", "50000");
-                                _writer.WriteAttributeString("r", "50000");
-                                _writer.WriteAttributeString("b", "50000");
-                                _writer.WriteEndElement();
-                                _writer.WriteEndElement(); //path
+                                this._writer.WriteStartElement(Dml.Prefix, "path", Dml.Ns);
+                                this._writer.WriteAttributeString("path", "shape");
+                                this._writer.WriteStartElement(Dml.Prefix, "fillToRect", Dml.Ns);
+                                this._writer.WriteAttributeString("l", "50000");
+                                this._writer.WriteAttributeString("t", "50000");
+                                this._writer.WriteAttributeString("r", "50000");
+                                this._writer.WriteAttributeString("b", "50000");
+                                this._writer.WriteEndElement();
+                                this._writer.WriteEndElement(); //path
                                 break;
                             case 0x7:
                                 decimal angle = 90;
@@ -498,27 +498,27 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                                         }
                                     }
                                 }
-                                _writer.WriteStartElement(Dml.Prefix, "lin", Dml.Ns);
+                                this._writer.WriteStartElement(Dml.Prefix, "lin", Dml.Ns);
 
                                 angle *= 60000;
                                 if (angle > 5400000) angle = 5400000;
 
-                                _writer.WriteAttributeString("ang", angle.ToString());
-                                _writer.WriteAttributeString("scaled", "1");
-                                _writer.WriteEndElement();
+                                this._writer.WriteAttributeString("ang", angle.ToString());
+                                this._writer.WriteAttributeString("scaled", "1");
+                                this._writer.WriteEndElement();
                                 break;
                             default:
-                                _writer.WriteStartElement(Dml.Prefix, "path", Dml.Ns);
-                                _writer.WriteAttributeString("path", "rect");
-                                _writer.WriteStartElement(Dml.Prefix, "fillToRect", Dml.Ns);
-                                _writer.WriteAttributeString("r", "100000");
-                                _writer.WriteAttributeString("b", "100000");
-                                _writer.WriteEndElement();
-                                _writer.WriteEndElement(); //path
+                                this._writer.WriteStartElement(Dml.Prefix, "path", Dml.Ns);
+                                this._writer.WriteAttributeString("path", "rect");
+                                this._writer.WriteStartElement(Dml.Prefix, "fillToRect", Dml.Ns);
+                                this._writer.WriteAttributeString("r", "100000");
+                                this._writer.WriteAttributeString("b", "100000");
+                                this._writer.WriteEndElement();
+                                this._writer.WriteEndElement(); //path
                                 break;
                         }
                     }
-                    _writer.WriteEndElement(); //gradFill
+                    this._writer.WriteEndElement(); //gradFill
 
                     break;
 

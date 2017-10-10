@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.OlePropertySet
             }
 
             // seek to the end of the property set to avoid crashes
-            stream.BaseStream.Seek(pos + size, SeekOrigin.Begin);
+            stream.BaseStream.Seek(pos + this.size, SeekOrigin.Begin);
         }
     }
 }

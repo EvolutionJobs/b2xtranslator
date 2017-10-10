@@ -61,7 +61,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Currently not used, and set to 0
         /// </summary>
-        public UInt64 reserved0;
+        public ulong reserved0;
 
         /// <summary>
         /// A packed bit field

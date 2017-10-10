@@ -46,34 +46,34 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             TraceLogger.DebugInternal("TitleMasterMapping.Apply");
 
             // Start the document
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("p", "sldLayout", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("p", "sldLayout", OpenXmlNamespaces.PresentationML);
 
-            _writer.WriteAttributeString("showMasterSp", "0");
-            _writer.WriteAttributeString("type", "title");
-            _writer.WriteAttributeString("preserve", "1");
+            this._writer.WriteAttributeString("showMasterSp", "0");
+            this._writer.WriteAttributeString("type", "title");
+            this._writer.WriteAttributeString("preserve", "1");
 
             // Force declaration of these namespaces at document start
-            _writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
             // Force declaration of these namespaces at document start
-            _writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
+            this._writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
 
-            _writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
 
 
 
-            _writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
-            var stm = new ShapeTreeMapping(_ctx, _writer);
+            this._writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
+            var stm = new ShapeTreeMapping(this._ctx, this._writer);
             stm.parentSlideMapping = this;
             stm.Apply(slide.FirstChildWithType<PPDrawing>());
-            _writer.WriteEndElement();
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
             // End the document
-            _writer.WriteEndElement();
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.Flush();
         }
     }
 }

@@ -46,8 +46,8 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// </summary>
         public XmlWriterSettings WriterSettings
         {
-            get { return writerSettings; }
-            set { writerSettings = value; }
+            get { return this.writerSettings; }
+            set { this.writerSettings = value; }
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// </summary>
         public SpreadsheetDocument SpreadDoc
         {
-            get { return spreadDoc; }
+            get { return this.spreadDoc; }
             set { this.spreadDoc = value; }
         }
 
@@ -64,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// </summary>
         public XlsDocument XlsDoc
         {
-            get { return xlsDoc; }
+            get { return this.xlsDoc; }
             set { this.xlsDoc = value; }
         }
 

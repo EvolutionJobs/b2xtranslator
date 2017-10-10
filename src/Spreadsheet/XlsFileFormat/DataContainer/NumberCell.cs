@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 
         public override string getValue()
         {
-            return Convert.ToString(value, CultureInfo.GetCultureInfo("en-US"));
+            return Convert.ToString(this.value, CultureInfo.GetCultureInfo("en-US"));
         }
 
         public override void setValue(object obj)

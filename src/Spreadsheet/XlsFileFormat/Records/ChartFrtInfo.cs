@@ -90,7 +90,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.verOriginator = (OriginatorVersion)reader.ReadByte();
             this.verWriter = (WriterVersion)reader.ReadByte();
             this.cCFRTID = reader.ReadUInt16();
-            this.rgCFRTID = new CFrtId[cCFRTID];
+            this.rgCFRTID = new CFrtId[this.cCFRTID];
             for (int i = 0; i < this.cCFRTID; i++)
             {
                 this.rgCFRTID[i] = new CFrtId(reader);

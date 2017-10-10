@@ -55,23 +55,23 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         /// <param name="sd">StyleData Object</param>
         public void Apply(StyleData sd)
         {
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("styleSheet", OpenXmlNamespaces.SpreadsheetML);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("styleSheet", OpenXmlNamespaces.SpreadsheetML);
 
 
             // Format mapping 
-            _writer.WriteStartElement("numFmts");
-            _writer.WriteAttributeString("count", sd.FormatDataList.Count.ToString());
+            this._writer.WriteStartElement("numFmts");
+            this._writer.WriteAttributeString("count", sd.FormatDataList.Count.ToString());
             foreach (var format in sd.FormatDataList)
             {
-                _writer.WriteStartElement("numFmt");
-                _writer.WriteAttributeString("numFmtId", format.ifmt.ToString());
-                _writer.WriteAttributeString("formatCode", format.formatString);
-                _writer.WriteEndElement();
+                this._writer.WriteStartElement("numFmt");
+                this._writer.WriteAttributeString("numFmtId", format.ifmt.ToString());
+                this._writer.WriteAttributeString("formatCode", format.formatString);
+                this._writer.WriteEndElement();
             }
-            _writer.WriteEndElement(); 
+            this._writer.WriteEndElement();
 
-             
+
 
 
             /// Font Mapping
@@ -81,42 +81,42 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             //<name val="Arial"/>
             //</font>
             //</fonts>
-            _writer.WriteStartElement("fonts");
-            _writer.WriteAttributeString("count", sd.FontDataList.Count.ToString());
+            this._writer.WriteStartElement("fonts");
+            this._writer.WriteAttributeString("count", sd.FontDataList.Count.ToString());
             foreach (var font in sd.FontDataList)
             {
                 ///
-                StyleMappingHelper.addFontElement(_writer, font, FontElementType.NormalStyle); 
+                StyleMappingHelper.addFontElement(this._writer, font, FontElementType.NormalStyle); 
 
 
             }
             // write fonts end element 
-            _writer.WriteEndElement(); 
-            
+            this._writer.WriteEndElement();
+
             /// Fill Mapping 
             //<fills count="2">
             //<fill>
             //<patternFill patternType="none"/>
             //</fill>           
-            _writer.WriteStartElement("fills");
-            _writer.WriteAttributeString("count", sd.FillDataList.Count.ToString());
+            this._writer.WriteStartElement("fills");
+            this._writer.WriteAttributeString("count", sd.FillDataList.Count.ToString());
             foreach (var fd in sd.FillDataList)
             {
-                _writer.WriteStartElement("fill");
-                _writer.WriteStartElement("patternFill");
-                _writer.WriteAttributeString("patternType", StyleMappingHelper.getStringFromFillPatern(fd.Fillpatern));
+                this._writer.WriteStartElement("fill");
+                this._writer.WriteStartElement("patternFill");
+                this._writer.WriteAttributeString("patternType", StyleMappingHelper.getStringFromFillPatern(fd.Fillpatern));
 
                 // foreground color 
-                WriteRgbForegroundColor(_writer, StyleMappingHelper.convertColorIdToRGB(fd.IcvFore)); 
+                WriteRgbForegroundColor(this._writer, StyleMappingHelper.convertColorIdToRGB(fd.IcvFore)); 
 
                 // background color 
-                WriteRgbBackgroundColor(_writer, StyleMappingHelper.convertColorIdToRGB(fd.IcvBack));
+                WriteRgbBackgroundColor(this._writer, StyleMappingHelper.convertColorIdToRGB(fd.IcvBack));
 
-                _writer.WriteEndElement();
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
 
             /// Border Mapping 
@@ -129,25 +129,25 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             //      <diagonal/>
             //  </border>
             //</borders>
-            _writer.WriteStartElement("borders");
-            _writer.WriteAttributeString("count", sd.BorderDataList.Count.ToString());
+            this._writer.WriteStartElement("borders");
+            this._writer.WriteAttributeString("count", sd.BorderDataList.Count.ToString());
             foreach (var borderData in sd.BorderDataList)
             {
-                _writer.WriteStartElement("border");
+                this._writer.WriteStartElement("border");
 
                 // write diagonal settings 
                 if (borderData.diagonalValue == 1)
                 {
-                    _writer.WriteAttributeString("diagonalDown", "1");
+                    this._writer.WriteAttributeString("diagonalDown", "1");
                 }
                 else if (borderData.diagonalValue == 2)
                 {
-                    _writer.WriteAttributeString("diagonalUp", "1");
+                    this._writer.WriteAttributeString("diagonalUp", "1");
                 }
                 else if (borderData.diagonalValue == 3)
                 {
-                    _writer.WriteAttributeString("diagonalDown", "1");
-                    _writer.WriteAttributeString("diagonalUp", "1");
+                    this._writer.WriteAttributeString("diagonalDown", "1");
+                    this._writer.WriteAttributeString("diagonalUp", "1");
                 }
                 else
                 {
@@ -155,85 +155,85 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 }
 
                
-                string borderStyle = ""; 
+                string borderStyle = "";
 
                 // left border 
-                _writer.WriteStartElement("left");
+                this._writer.WriteStartElement("left");
                 borderStyle = StyleMappingHelper.convertBorderStyle(borderData.left.style); 
                 if (!borderStyle.Equals("none"))
                 {
-                    _writer.WriteAttributeString("style", borderStyle);
-                    WriteRgbColor(_writer, StyleMappingHelper.convertColorIdToRGB(borderData.left.colorId));
+                    this._writer.WriteAttributeString("style", borderStyle);
+                    WriteRgbColor(this._writer, StyleMappingHelper.convertColorIdToRGB(borderData.left.colorId));
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
 
                 // right border 
-                _writer.WriteStartElement("right");
+                this._writer.WriteStartElement("right");
                 borderStyle = StyleMappingHelper.convertBorderStyle(borderData.right.style);
                 if (!borderStyle.Equals("none"))
                 {
-                    _writer.WriteAttributeString("style", borderStyle);
-                    WriteRgbColor(_writer, StyleMappingHelper.convertColorIdToRGB(borderData.right.colorId));
+                    this._writer.WriteAttributeString("style", borderStyle);
+                    WriteRgbColor(this._writer, StyleMappingHelper.convertColorIdToRGB(borderData.right.colorId));
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
 
                 // top border 
-                _writer.WriteStartElement("top");
+                this._writer.WriteStartElement("top");
                 borderStyle = StyleMappingHelper.convertBorderStyle(borderData.top.style);
                 if (!borderStyle.Equals("none"))
                 {
-                    _writer.WriteAttributeString("style", borderStyle);
-                    WriteRgbColor(_writer, StyleMappingHelper.convertColorIdToRGB(borderData.top.colorId));
+                    this._writer.WriteAttributeString("style", borderStyle);
+                    WriteRgbColor(this._writer, StyleMappingHelper.convertColorIdToRGB(borderData.top.colorId));
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
 
                 // bottom border 
-                _writer.WriteStartElement("bottom");
+                this._writer.WriteStartElement("bottom");
                 borderStyle = StyleMappingHelper.convertBorderStyle(borderData.bottom.style);
                 if (!borderStyle.Equals("none"))
                 {
-                    _writer.WriteAttributeString("style", borderStyle);
-                    WriteRgbColor(_writer, StyleMappingHelper.convertColorIdToRGB(borderData.bottom.colorId));
+                    this._writer.WriteAttributeString("style", borderStyle);
+                    WriteRgbColor(this._writer, StyleMappingHelper.convertColorIdToRGB(borderData.bottom.colorId));
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
 
                 // diagonal border 
-                _writer.WriteStartElement("diagonal");
+                this._writer.WriteStartElement("diagonal");
                 borderStyle = StyleMappingHelper.convertBorderStyle(borderData.diagonal.style);
                 if (!borderStyle.Equals("none"))
                 {
-                    _writer.WriteAttributeString("style", borderStyle);
-                    WriteRgbColor(_writer, StyleMappingHelper.convertColorIdToRGB(borderData.diagonal.colorId));
+                    this._writer.WriteAttributeString("style", borderStyle);
+                    WriteRgbColor(this._writer, StyleMappingHelper.convertColorIdToRGB(borderData.diagonal.colorId));
                 }
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
 
-                _writer.WriteEndElement(); // end border 
+                this._writer.WriteEndElement(); // end border 
             }
-            _writer.WriteEndElement(); // end borders 
+            this._writer.WriteEndElement(); // end borders 
 
             ///<cellStyleXfs count="1">
             ///<xf numFmtId="0" fontId="0" fillId="0" borderId="0"/>
             ///</cellStyleXfs> 
             // xfcellstyle mapping 
-            _writer.WriteStartElement("cellStyleXfs");
-            _writer.WriteAttributeString("count", sd.XFCellStyleDataList.Count.ToString());
+            this._writer.WriteStartElement("cellStyleXfs");
+            this._writer.WriteAttributeString("count", sd.XFCellStyleDataList.Count.ToString());
             foreach (var xfcellstyle in sd.XFCellStyleDataList)
             {
-                _writer.WriteStartElement("xf");
-                _writer.WriteAttributeString("numFmtId", xfcellstyle.ifmt.ToString());
-                _writer.WriteAttributeString("fontId", xfcellstyle.fontId.ToString());
-                _writer.WriteAttributeString("fillId", xfcellstyle.fillId.ToString());
-                _writer.WriteAttributeString("borderId", xfcellstyle.borderId.ToString());
+                this._writer.WriteStartElement("xf");
+                this._writer.WriteAttributeString("numFmtId", xfcellstyle.ifmt.ToString());
+                this._writer.WriteAttributeString("fontId", xfcellstyle.fontId.ToString());
+                this._writer.WriteAttributeString("fillId", xfcellstyle.fillId.ToString());
+                this._writer.WriteAttributeString("borderId", xfcellstyle.borderId.ToString());
 
                 if (xfcellstyle.hasAlignment)
                 {
-                    StylesMapping.WriteCellAlignment(_writer, xfcellstyle);
+                    StylesMapping.WriteCellAlignment(this._writer, xfcellstyle);
                 }
 
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
 
 
@@ -241,49 +241,49 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             ///<cellXfs count="6">
             ///<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
             // xfcell mapping 
-            _writer.WriteStartElement("cellXfs");
-            _writer.WriteAttributeString("count", sd.XFCellDataList.Count.ToString());
+            this._writer.WriteStartElement("cellXfs");
+            this._writer.WriteAttributeString("count", sd.XFCellDataList.Count.ToString());
             foreach (var xfcell in sd.XFCellDataList)
             {
-                _writer.WriteStartElement("xf");
-                _writer.WriteAttributeString("numFmtId", xfcell.ifmt.ToString());
-                _writer.WriteAttributeString("fontId", xfcell.fontId.ToString());
-                _writer.WriteAttributeString("fillId", xfcell.fillId.ToString());
-                _writer.WriteAttributeString("borderId", xfcell.borderId.ToString());
-                _writer.WriteAttributeString("xfId", xfcell.ixfParent.ToString());
+                this._writer.WriteStartElement("xf");
+                this._writer.WriteAttributeString("numFmtId", xfcell.ifmt.ToString());
+                this._writer.WriteAttributeString("fontId", xfcell.fontId.ToString());
+                this._writer.WriteAttributeString("fillId", xfcell.fillId.ToString());
+                this._writer.WriteAttributeString("borderId", xfcell.borderId.ToString());
+                this._writer.WriteAttributeString("xfId", xfcell.ixfParent.ToString());
 
                 // applyNumberFormat="1"
                 if (xfcell.ifmt != 0)
                 {
-                    _writer.WriteAttributeString("applyNumberFormat", "1");
+                    this._writer.WriteAttributeString("applyNumberFormat", "1");
                 }
 
                 // applyBorder="1"
                 if (xfcell.borderId != 0)
                 {
-                    _writer.WriteAttributeString("applyBorder", "1");
+                    this._writer.WriteAttributeString("applyBorder", "1");
                 }
 
                 // applyFill="1"
                 if (xfcell.fillId != 0)
                 {
-                    _writer.WriteAttributeString("applyFill", "1");
+                    this._writer.WriteAttributeString("applyFill", "1");
                 }
 
                 // applyFont="1"
                 if (xfcell.fontId != 0)
                 {
-                    _writer.WriteAttributeString("applyFont", "1");
+                    this._writer.WriteAttributeString("applyFont", "1");
                 }
                 if (xfcell.hasAlignment)
                 {
-                    StylesMapping.WriteCellAlignment(_writer, xfcell); 
+                    StylesMapping.WriteCellAlignment(this._writer, xfcell); 
                 }
 
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
-            _writer.WriteEndElement(); 
+            this._writer.WriteEndElement();
 
 
 
@@ -293,32 +293,32 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
             /// <cellStyle name="Normal" xfId="0" builtinId="0"/>
             /// </cellStyles>
             /// 
-            _writer.WriteStartElement("cellStyles");
+            this._writer.WriteStartElement("cellStyles");
             //_writer.WriteAttributeString("count", sd.StyleList.Count.ToString());
             foreach (var style in sd.StyleList)
             {
-                _writer.WriteStartElement("cellStyle");
+                this._writer.WriteStartElement("cellStyle");
 
                 if (style.rgch != null)
-                { 
-                    _writer.WriteAttributeString("name", style.rgch); 
+                {
+                    this._writer.WriteAttributeString("name", style.rgch); 
                 }
                 // theres a bug with the zero based reading from the referenz id 
                 // so the style.ixfe value is reduzed by one
                 if (style.ixfe != 0)
                 {
-                    _writer.WriteAttributeString("xfId", (style.ixfe - 1).ToString());
+                    this._writer.WriteAttributeString("xfId", (style.ixfe - 1).ToString());
                 }
                 else
                 {
-                    _writer.WriteAttributeString("xfId", (style.ixfe).ToString());
+                    this._writer.WriteAttributeString("xfId", (style.ixfe).ToString());
                 }
-                _writer.WriteAttributeString("builtinId", style.istyBuiltIn.ToString());
+                this._writer.WriteAttributeString("builtinId", style.istyBuiltIn.ToString());
 
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
-            _writer.WriteEndElement(); 
+            this._writer.WriteEndElement(); 
             
             // close tags 
 
@@ -327,31 +327,31 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
             if (sd.ColorDataList != null && sd.ColorDataList.Count > 0)
             {
-                _writer.WriteStartElement("colors");
+                this._writer.WriteStartElement("colors");
 
-                _writer.WriteStartElement("indexedColors");
+                this._writer.WriteStartElement("indexedColors");
 
                 // <rgbColor rgb="00000000"/>
                 foreach (var item in sd.ColorDataList)
                 {
-                    _writer.WriteStartElement("rgbColor");
-                    _writer.WriteAttributeString("rgb", string.Format("{0:x2}", item.Alpha).ToString() + item.SixDigitHexCode); 
+                    this._writer.WriteStartElement("rgbColor");
+                    this._writer.WriteAttributeString("rgb", string.Format("{0:x2}", item.Alpha).ToString() + item.SixDigitHexCode);
 
-                    _writer.WriteEndElement(); 
+                    this._writer.WriteEndElement(); 
 
                 }
 
 
-                _writer.WriteEndElement(); 
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
             // end color 
 
-            _writer.WriteEndElement();      // close 
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement();      // close 
+            this._writer.WriteEndDocument();
 
             // close writer 
-            _writer.Flush();
+            this._writer.Flush();
         }
 
 

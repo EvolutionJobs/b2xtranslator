@@ -18,7 +18,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.cbDIB = reader.ReadInt32();
 
             //ToDo: Read TBCBitmap
-            reader.ReadBytes(cbDIB - 10);
+            reader.ReadBytes(this.cbDIB - 10);
         }
     }
 }

@@ -96,19 +96,19 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <param name="bytes">The bytes</param>
         public ListData(VirtualStreamReader reader, int length) : base(reader, length)
         {
-            long startPos = _reader.BaseStream.Position;
+            long startPos = this._reader.BaseStream.Position;
 
-            this.lsid = _reader.ReadInt32();
-            this.tplc = _reader.ReadInt32();
+            this.lsid = this._reader.ReadInt32();
+            this.tplc = this._reader.ReadInt32();
 
             this.rgistd = new short[9];
             for (int i = 0; i < 9; i++)
             {
-                this.rgistd[i] = _reader.ReadInt16();
+                this.rgistd[i] = this._reader.ReadInt16();
             }
 
             //parse flagbyte
-            int flag = (int)_reader.ReadByte();
+            int flag = (int)this._reader.ReadByte();
             this.fSimpleList = Utils.BitmaskToBool(flag, 0x01);
 
             if (this.fSimpleList)
@@ -121,10 +121,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.fPreRTF = Utils.BitmaskToBool(flag, 0x08);
             this.fHybrid = Utils.BitmaskToBool(flag, 0x10);
 
-            this.grfhic = _reader.ReadByte();
+            this.grfhic = this._reader.ReadByte();
 
-            _reader.BaseStream.Seek(startPos, System.IO.SeekOrigin.Begin);
-            _rawBytes = _reader.ReadBytes(LSTF_LENGTH);
+            this._reader.BaseStream.Seek(startPos, System.IO.SeekOrigin.Begin);
+            this._rawBytes = this._reader.ReadBytes(LSTF_LENGTH);
         }
     }
 }

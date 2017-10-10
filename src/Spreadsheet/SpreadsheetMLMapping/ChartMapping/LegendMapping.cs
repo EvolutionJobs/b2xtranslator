@@ -17,7 +17,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public void Apply(LdSequence ldSequence)
         {
             // c:legend
-            _writer.WriteStartElement(Dml.Chart.Prefix, "legend", Dml.Chart.Ns);
+            this._writer.WriteStartElement(Dml.Chart.Prefix, "legend", Dml.Chart.Ns);
             {
                 // c:legendPos
                 if (ldSequence.CrtLayout12 != null)
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     //
                     if (xmlTextProps.DocumentElement != null)
                     {
-                        xmlTextProps.DocumentElement.WriteTo(_writer);
+                        xmlTextProps.DocumentElement.WriteTo(this._writer);
                     }
                 }
                 else
@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     ldSequence.AttachedLabelSequence.Convert(new TextBodyMapping(this.WorkbookContext, this.ChartContext));
                 }
             }
-            _writer.WriteEndElement(); // c:legend
+            this._writer.WriteEndElement(); // c:legend
         }
 
         private string mapLegendPos(Pos pos)

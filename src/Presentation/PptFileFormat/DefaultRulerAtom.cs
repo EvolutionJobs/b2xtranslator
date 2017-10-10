@@ -40,36 +40,36 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public DefaultRulerAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            flags = Reader.ReadUInt32();
-            fDefaultTabSize = Utils.BitmaskToBool(flags, 0x1);
-            fCLevels = Utils.BitmaskToBool(flags, 0x1 << 1);
-            fTabStops = Utils.BitmaskToBool(flags, 0x1 << 2);
-            fLeftMargin1 = Utils.BitmaskToBool(flags, 0x1 << 3);
-            fLeftMargin2 = Utils.BitmaskToBool(flags, 0x1 << 4);
-            fLeftMargin3 = Utils.BitmaskToBool(flags, 0x1 << 5);
-            fLeftMargin4 = Utils.BitmaskToBool(flags, 0x1 << 6);
-            fLeftMargin5 = Utils.BitmaskToBool(flags, 0x1 << 7);
-            fIndent1 = Utils.BitmaskToBool(flags, 0x1 << 8);
-            fIndent2 = Utils.BitmaskToBool(flags, 0x1 << 9);
-            fIndent3 = Utils.BitmaskToBool(flags, 0x1 << 10);
-            fIndent4 = Utils.BitmaskToBool(flags, 0x1 << 11);
-            fIndent5 = Utils.BitmaskToBool(flags, 0x1 << 12);
+            this.flags = this.Reader.ReadUInt32();
+            this.fDefaultTabSize = Utils.BitmaskToBool(this.flags, 0x1);
+            this.fCLevels = Utils.BitmaskToBool(this.flags, 0x1 << 1);
+            this.fTabStops = Utils.BitmaskToBool(this.flags, 0x1 << 2);
+            this.fLeftMargin1 = Utils.BitmaskToBool(this.flags, 0x1 << 3);
+            this.fLeftMargin2 = Utils.BitmaskToBool(this.flags, 0x1 << 4);
+            this.fLeftMargin3 = Utils.BitmaskToBool(this.flags, 0x1 << 5);
+            this.fLeftMargin4 = Utils.BitmaskToBool(this.flags, 0x1 << 6);
+            this.fLeftMargin5 = Utils.BitmaskToBool(this.flags, 0x1 << 7);
+            this.fIndent1 = Utils.BitmaskToBool(this.flags, 0x1 << 8);
+            this.fIndent2 = Utils.BitmaskToBool(this.flags, 0x1 << 9);
+            this.fIndent3 = Utils.BitmaskToBool(this.flags, 0x1 << 10);
+            this.fIndent4 = Utils.BitmaskToBool(this.flags, 0x1 << 11);
+            this.fIndent5 = Utils.BitmaskToBool(this.flags, 0x1 << 12);
 
-            if (fCLevels) cLevels = Reader.ReadInt16();
-            if (fDefaultTabSize) defaultTabSize = Reader.ReadInt16();
+            if (this.fCLevels) this.cLevels = this.Reader.ReadInt16();
+            if (this.fDefaultTabSize) this.defaultTabSize = this.Reader.ReadInt16();
 
-            if (fTabStops) tabs = new TabStops(Reader);
+            if (this.fTabStops) this.tabs = new TabStops(this.Reader);
 
-            if (fLeftMargin1) leftMargin1 = Reader.ReadInt16();
-            if (fIndent1) indent1 = Reader.ReadInt16();
-            if (fLeftMargin2) leftMargin2 = Reader.ReadInt16();
-            if (fIndent2) indent3 = Reader.ReadInt16();
-            if (fLeftMargin3) leftMargin3 = Reader.ReadInt16();
-            if (fIndent3) indent3 = Reader.ReadInt16();
-            if (fLeftMargin4) leftMargin4 = Reader.ReadInt16();
-            if (fIndent4) indent4 = Reader.ReadInt16();
-            if (fLeftMargin5) leftMargin5 = Reader.ReadInt16();
-            if (fIndent5) indent5 = Reader.ReadInt16();
+            if (this.fLeftMargin1) this.leftMargin1 = this.Reader.ReadInt16();
+            if (this.fIndent1) this.indent1 = this.Reader.ReadInt16();
+            if (this.fLeftMargin2) this.leftMargin2 = this.Reader.ReadInt16();
+            if (this.fIndent2) this.indent3 = this.Reader.ReadInt16();
+            if (this.fLeftMargin3) this.leftMargin3 = this.Reader.ReadInt16();
+            if (this.fIndent3) this.indent3 = this.Reader.ReadInt16();
+            if (this.fLeftMargin4) this.leftMargin4 = this.Reader.ReadInt16();
+            if (this.fIndent4) this.indent4 = this.Reader.ReadInt16();
+            if (this.fLeftMargin5) this.leftMargin5 = this.Reader.ReadInt16();
+            if (this.fIndent5) this.indent5 = this.Reader.ReadInt16();
 
         }        
     }

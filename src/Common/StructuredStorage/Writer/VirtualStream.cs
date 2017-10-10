@@ -48,20 +48,20 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         uint _startSector = SectorId.FREESECT;
         public uint StartSector
         {
-            get { return _startSector; }
+            get { return this._startSector; }
         }
         
         // Lengh of the virtual stream.
-        public UInt64 Length
+        public ulong Length
         {
-            get { return (UInt64)_stream.Length; }
+            get { return (ulong)this._stream.Length; }
         }
 
         // Number of sectors used by the virtual stream.
         uint _sectorCount;
         public uint SectorCount
         {
-            get { return _sectorCount;  }
+            get { return this._sectorCount;  }
         }
 
 
@@ -74,11 +74,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="outputHander"></param>
         internal VirtualStream(Stream stream, AbstractFat fat, ushort sectorSize, OutputHandler outputHander)
         {
-            _stream = stream;
-            _fat = fat;
-            _sectorSize = sectorSize;
-            _outputHander = outputHander;
-            _sectorCount = (uint)Math.Ceiling((double)_stream.Length / (double)_sectorSize);
+            this._stream = stream;
+            this._fat = fat;
+            this._sectorSize = sectorSize;
+            this._outputHander = outputHander;
+            this._sectorCount = (uint)Math.Ceiling((double)this._stream.Length / (double)this._sectorSize);
         }
 
 
@@ -87,13 +87,13 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         internal void write()
         {
-            _startSector = _fat.writeChain(SectorCount);
-            var reader = new BinaryReader(_stream);
+            this._startSector = this._fat.writeChain(this.SectorCount);
+            var reader = new BinaryReader(this._stream);
             reader.BaseStream.Seek(0, SeekOrigin.Begin);
             while (true) {
-                var bytes = reader.ReadBytes((int)_sectorSize);
-                _outputHander.writeSectors(bytes, _sectorSize, (byte)0x0);
-                if (bytes.Length != _sectorSize)
+                var bytes = reader.ReadBytes((int)this._sectorSize);
+                this._outputHander.writeSectors(bytes, this._sectorSize, (byte)0x0);
+                if (bytes.Length != this._sectorSize)
                 {
                     break;
                 }

@@ -24,9 +24,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public VMLPictureMapping(XmlWriter writer, ContentPart targetPart, bool olePreview)
             : base(writer)
         {
-            _targetPart = targetPart;
-            _olePreview = olePreview;
-            _imageData = _nodeFactory.CreateElement("v", "imageData", OpenXmlNamespaces.VectorML);
+            this._targetPart = targetPart;
+            this._olePreview = olePreview;
+            this._imageData = this._nodeFactory.CreateElement("v", "imageData", OpenXmlNamespaces.VectorML);
         }
 
         public void Apply(PictureDescriptor pict)
@@ -39,11 +39,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                 //v:shapetype
                 var type = new PictureFrameType();
-                type.Convert(new VMLShapeTypeMapping(_writer));
+                type.Convert(new VMLShapeTypeMapping(this._writer));
 
                 //v:shape
-                _writer.WriteStartElement("v", "shape", OpenXmlNamespaces.VectorML);
-                _writer.WriteAttributeString("type", "#" + VMLShapeTypeMapping.GenerateTypeId(type));
+                this._writer.WriteStartElement("v", "shape", OpenXmlNamespaces.VectorML);
+                this._writer.WriteAttributeString("type", "#" + VMLShapeTypeMapping.GenerateTypeId(type));
                 
                 var style = new StringBuilder();
                 double xScaling = pict.mx / 1000.0;
@@ -54,13 +54,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 string heightString = Convert.ToString(height.ToPoints(), CultureInfo.GetCultureInfo("en-US"));
                 style.Append("width:").Append(widthString).Append("pt;");
                 style.Append("height:").Append(heightString).Append("pt;");
-                _writer.WriteAttributeString("style", style.ToString());
+                this._writer.WriteAttributeString("style", style.ToString());
 
-                _writer.WriteAttributeString("id", pict.ShapeContainer.GetHashCode().ToString());
+                this._writer.WriteAttributeString("id", pict.ShapeContainer.GetHashCode().ToString());
 
-                if (_olePreview)
+                if (this._olePreview)
                 {
-                    _writer.WriteAttributeString("o", "ole", OpenXmlNamespaces.Office, "");
+                    this._writer.WriteAttributeString("o", "ole", OpenXmlNamespaces.Office, "");
                 }
 
                 foreach (var entry in options)
@@ -71,19 +71,19 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                         case ShapeOptions.PropertyId.borderBottomColor:
                             var bottomColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
-                            _writer.WriteAttributeString("o", "borderbottomcolor", OpenXmlNamespaces.Office, "#" + bottomColor.SixDigitHexCode);
+                            this._writer.WriteAttributeString("o", "borderbottomcolor", OpenXmlNamespaces.Office, "#" + bottomColor.SixDigitHexCode);
                             break;
                         case ShapeOptions.PropertyId.borderLeftColor:
                             var leftColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
-                            _writer.WriteAttributeString("o", "borderleftcolor", OpenXmlNamespaces.Office, "#" + leftColor.SixDigitHexCode);
+                            this._writer.WriteAttributeString("o", "borderleftcolor", OpenXmlNamespaces.Office, "#" + leftColor.SixDigitHexCode);
                             break;
                         case ShapeOptions.PropertyId.borderRightColor:
                             var rightColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
-                            _writer.WriteAttributeString("o", "borderrightcolor", OpenXmlNamespaces.Office, "#" + rightColor.SixDigitHexCode);
+                            this._writer.WriteAttributeString("o", "borderrightcolor", OpenXmlNamespaces.Office, "#" + rightColor.SixDigitHexCode);
                             break;
                         case ShapeOptions.PropertyId.borderTopColor:
                             var topColor = new RGBColor((int)entry.op, RGBColor.ByteOrder.RedFirst);
-                            _writer.WriteAttributeString("o", "bordertopcolor", OpenXmlNamespaces.Office, "#" + topColor.SixDigitHexCode);
+                            this._writer.WriteAttributeString("o", "bordertopcolor", OpenXmlNamespaces.Office, "#" + topColor.SixDigitHexCode);
                             break;
 
                         //CROPPING
@@ -91,30 +91,30 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         case ShapeOptions.PropertyId.cropFromBottom:
                             //cast to signed integer
                             int cropBottom = (int)entry.op;
-                            appendValueAttribute(_imageData, null, "cropbottom", cropBottom + "f", null);
+                            appendValueAttribute(this._imageData, null, "cropbottom", cropBottom + "f", null);
                             break;
                         case ShapeOptions.PropertyId.cropFromLeft:
                             //cast to signed integer
                             int cropLeft = (int)entry.op;
-                            appendValueAttribute(_imageData, null, "cropleft", cropLeft + "f", null);
+                            appendValueAttribute(this._imageData, null, "cropleft", cropLeft + "f", null);
                             break;
                         case ShapeOptions.PropertyId.cropFromRight:
                             //cast to signed integer
                             int cropRight = (int)entry.op;
-                            appendValueAttribute(_imageData, null, "cropright", cropRight + "f", null);
+                            appendValueAttribute(this._imageData, null, "cropright", cropRight + "f", null);
                             break;
                         case ShapeOptions.PropertyId.cropFromTop:
                             //cast to signed integer
                             int cropTop = (int)entry.op;
-                            appendValueAttribute(_imageData, null, "croptop", cropTop + "f", null);
+                            appendValueAttribute(this._imageData, null, "croptop", cropTop + "f", null);
                             break;
                     }
                 }
 
                 //v:imageData
-                appendValueAttribute(_imageData, "r", "id", imgPart.RelIdToString, OpenXmlNamespaces.Relationships);
-                appendValueAttribute(_imageData, "o", "title", "", OpenXmlNamespaces.Office);
-                _imageData.WriteTo(_writer);
+                appendValueAttribute(this._imageData, "r", "id", imgPart.RelIdToString, OpenXmlNamespaces.Relationships);
+                appendValueAttribute(this._imageData, "o", "title", "", OpenXmlNamespaces.Office);
+                this._imageData.WriteTo(this._writer);
 
                 //borders
                 writePictureBorder("bordertop", pict.brcTop);
@@ -123,7 +123,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 writePictureBorder("borderright", pict.brcRight);
 
                 //close v:shape
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
         }
 
@@ -134,10 +134,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="brc">The BorderCode object</param>
         private void writePictureBorder(string name, BorderCode brc)
         {
-            _writer.WriteStartElement("w10", name, OpenXmlNamespaces.OfficeWord);
-            _writer.WriteAttributeString("type", getBorderType(brc.brcType));
-            _writer.WriteAttributeString("width", brc.dptLineWidth.ToString());
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement("w10", name, OpenXmlNamespaces.OfficeWord);
+            this._writer.WriteAttributeString("type", getBorderType(brc.brcType));
+            this._writer.WriteAttributeString("width", brc.dptLineWidth.ToString());
+            this._writer.WriteEndElement();
         }
 
 
@@ -156,20 +156,20 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 switch (bse.btWin32)
                 {
                     case BlipStoreEntry.BlipType.msoblipEMF:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Emf);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Emf);
                         break;
                     case BlipStoreEntry.BlipType.msoblipWMF:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Wmf);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Wmf);
                         break;
                     case BlipStoreEntry.BlipType.msoblipJPEG:
                     case BlipStoreEntry.BlipType.msoblipCMYKJPEG:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Jpeg);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Jpeg);
                         break;
                     case BlipStoreEntry.BlipType.msoblipPNG:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Png);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Png);
                         break;
                     case BlipStoreEntry.BlipType.msoblipTIFF:
-                        imgPart = _targetPart.AddImagePart(ImagePart.ImageType.Tiff);
+                        imgPart = this._targetPart.AddImagePart(ImagePart.ImageType.Tiff);
                         break;
                     case BlipStoreEntry.BlipType.msoblipPICT:
                     case BlipStoreEntry.BlipType.msoblipERROR:

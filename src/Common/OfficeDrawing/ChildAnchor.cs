@@ -18,13 +18,13 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public ChildAnchor(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            Left = this.Reader.ReadInt32();
-            Top = this.Reader.ReadInt32();
-            Right = this.Reader.ReadInt32();
-            Bottom = this.Reader.ReadInt32();
+            this.Left = this.Reader.ReadInt32();
+            this.Top = this.Reader.ReadInt32();
+            this.Right = this.Reader.ReadInt32();
+            this.Bottom = this.Reader.ReadInt32();
             this.rcgBounds = new Rectangle(
-                new Point(Left, Top),
-                new Size((Right-Left), (Bottom-Top))
+                new Point(this.Left, this.Top),
+                new Size((this.Right - this.Left), (this.Bottom - this.Top))
             );
         }
     }

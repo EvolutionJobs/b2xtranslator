@@ -45,8 +45,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// </summary>
 	    public int Row
 	    {
-		    get { return row;}
-		    set { row = value;}
+		    get { return this.row;}
+		    set { this.row = value;}
 	    }
 	
         /// <summary>
@@ -58,8 +58,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// </summary>
 	    public int Col
 	    {
-		    get { return col;}
-		    set { col = value;}
+		    get { return this.col;}
+		    set { this.col = value;}
 	    }
 
         /// <summary>
@@ -72,8 +72,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// </summary>
         public int TemplateID
         {
-            get { return templateID; }
-            set { templateID = value; }
+            get { return this.templateID; }
+            set { this.templateID = value; }
         }
 
 

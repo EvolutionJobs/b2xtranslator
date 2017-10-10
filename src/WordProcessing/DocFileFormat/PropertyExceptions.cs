@@ -112,7 +112,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
                             //parse
                             var sprm = new SinglePropertyModifier(sprmBytes);
-                            grpprl.Add(sprm);
+                            this.grpprl.Add(sprm);
 
                             sprmStart += sprmBytes.Length;
                         }

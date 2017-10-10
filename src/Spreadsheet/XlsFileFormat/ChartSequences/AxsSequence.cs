@@ -46,9 +46,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             {
                 this.FontX = (FontX)BiffRecord.ReadRecord(reader);
             }
-                        
+
             //*4(AxisLine LineFormat) 
-            AxisLineFormatGroups = new List<AxisLineFormatGroup>();
+            this.AxisLineFormatGroups = new List<AxisLineFormatGroup>();
             while (BiffRecord.GetNextRecordType(reader) == RecordType.AxisLine)
             {
                 this.AxisLineFormatGroups.Add(new AxisLineFormatGroup(reader));

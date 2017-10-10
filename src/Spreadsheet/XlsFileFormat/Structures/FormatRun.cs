@@ -53,8 +53,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 
         public FormatRun(IStreamReader reader)
         {
-            ich = reader.ReadUInt16();
-            ifnt = reader.ReadUInt16();
+            this.ich = reader.ReadUInt16();
+            this.ifnt = reader.ReadUInt16();
         }
     }
 }

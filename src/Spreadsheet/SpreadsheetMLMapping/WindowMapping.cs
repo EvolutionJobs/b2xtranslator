@@ -59,22 +59,22 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
         public void Apply(WindowSequence windowSequence)
         {
-            _writer.WriteStartElement(Sml.Sheet.ElSheetView, Sml.Ns);
+            this._writer.WriteStartElement(Sml.Sheet.ElSheetView, Sml.Ns);
 
-            _writer.WriteAttributeString(Sml.Sheet.AttrTabSelected, windowSequence.Window2.fSelected ? "1" : "0");
+            this._writer.WriteAttributeString(Sml.Sheet.AttrTabSelected, windowSequence.Window2.fSelected ? "1" : "0");
 
             // zoomScale
             if (windowSequence.Scl != null)
             {
                 // zoomScale is a percentage in the range 10-400
                 int zoomScale = Math.Min(400, Math.Max(10, windowSequence.Scl.nscl * 100 / windowSequence.Scl.dscl));
-                _writer.WriteAttributeString(Sml.Sheet.AttrZoomScale, zoomScale.ToString());
+                this._writer.WriteAttributeString(Sml.Sheet.AttrZoomScale, zoomScale.ToString());
             }
 
-            _writer.WriteAttributeString(Sml.Sheet.AttrWorkbookViewId, this._window1Id.ToString());
+            this._writer.WriteAttributeString(Sml.Sheet.AttrWorkbookViewId, this._window1Id.ToString());
             // TODO: complete mapping, certain fields must be ignored when in chart sheet substream
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
 
         #endregion

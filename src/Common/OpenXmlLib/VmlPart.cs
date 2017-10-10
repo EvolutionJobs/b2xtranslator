@@ -59,12 +59,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         {
             get
             {
-                return targetdirectory;
+                return this.targetdirectory;
             }
 
             set
             {
-                targetdirectory = value;
+                this.targetdirectory = value;
             }
 
         }

@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         protected AbstractHeader _header;
         protected InternalBitConverter _bitConverter;
 
-        abstract internal UInt64 IOStreamSize { get; }
+        abstract internal ulong IOStreamSize { get; }
 
         /// <summary>
         /// Initializes the internal bit converter
@@ -50,7 +50,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         /// <param name="isLittleEndian">flag whether big endian or little endian is used</param>
         internal void InitBitConverter(bool isLittleEndian)
         {
-            _bitConverter = new InternalBitConverter(isLittleEndian);
+            this._bitConverter = new InternalBitConverter(isLittleEndian);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         /// <param name="header"></param>
         internal void SetHeaderReference(AbstractHeader header)
         {
-            _header = header;
+            this._header = header;
         }
 
         /// <summary>
@@ -67,9 +67,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         /// </summary>
         public void CloseStream()
         {
-            if (_stream != null)
+            if (this._stream != null)
             {
-                _stream.Close();
+                this._stream.Close();
             }
         }
     }

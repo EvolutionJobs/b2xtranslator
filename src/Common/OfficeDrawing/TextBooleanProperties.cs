@@ -14,15 +14,15 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public TextBooleanProperties(uint entryOperand)
         {
             //1 is unused
-            fFitShapeToText = Utils.BitmaskToBool(entryOperand, 0x1 << 1);
+            this.fFitShapeToText = Utils.BitmaskToBool(entryOperand, 0x1 << 1);
             //1 is unused
-            fAutoTextMargin = Utils.BitmaskToBool(entryOperand, 0x1 << 3);
-            fSelectText = Utils.BitmaskToBool(entryOperand, 0x1 << 4);
+            this.fAutoTextMargin = Utils.BitmaskToBool(entryOperand, 0x1 << 3);
+            this.fSelectText = Utils.BitmaskToBool(entryOperand, 0x1 << 4);
             //12 unused
-            fUsefFitShapeToText = Utils.BitmaskToBool(entryOperand, 0x1 << 17);
+            this.fUsefFitShapeToText = Utils.BitmaskToBool(entryOperand, 0x1 << 17);
             //1 is unused
-            fUsefAutoTextMargin = Utils.BitmaskToBool(entryOperand, 0x1 << 19);
-            fUsefSelectText = Utils.BitmaskToBool(entryOperand, 0x1 << 20);
+            this.fUsefAutoTextMargin = Utils.BitmaskToBool(entryOperand, 0x1 << 19);
+            this.fUsefSelectText = Utils.BitmaskToBool(entryOperand, 0x1 << 20);
         }
     }
 }

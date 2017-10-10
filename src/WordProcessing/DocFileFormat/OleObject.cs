@@ -118,7 +118,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             try
             {
-                var reader = new VirtualStreamReader(_docStorage.GetStream(linkStream));
+                var reader = new VirtualStreamReader(this._docStorage.GetStream(linkStream));
 
                 //there are two versions of the Link string, one contains ANSI characters, the other contains
                 //unicode characters.
@@ -152,7 +152,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             try
             {
-                var reader = new VirtualStreamReader(_docStorage.GetStream(compStream));
+                var reader = new VirtualStreamReader(this._docStorage.GetStream(compStream));
 
                 //skip the CompObjHeader
                 reader.ReadBytes(28);
@@ -168,7 +168,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         {
             try
             {
-                var reader = new VirtualStreamReader(_docStorage.GetStream(oleStream));
+                var reader = new VirtualStreamReader(this._docStorage.GetStream(oleStream));
 
                 //skip version
                 reader.ReadBytes(4);

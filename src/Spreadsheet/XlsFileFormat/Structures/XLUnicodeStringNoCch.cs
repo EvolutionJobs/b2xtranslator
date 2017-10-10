@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         {
             this.fHighByte = Utils.BitmaskToBool(reader.ReadByte(), 0x0001);
 
-            if (fHighByte)
+            if (this.fHighByte)
             {
                 this.rgb = new byte[2 * cch];
             }
@@ -85,7 +85,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
             {
                 if (this.rgb != null)
                 {
-                    if (fHighByte)
+                    if (this.fHighByte)
                     {
                         return Encoding.Unicode.GetString(this.rgb);
                     }

@@ -48,11 +48,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         /// <param name="length">The recordlegth</param>
         public BiffRecord(IStreamReader reader, RecordType id, ushort length)
         {
-            _reader = reader;
-            _offset = _reader.BaseStream.Position;
+            this._reader = reader;
+            this._offset = this._reader.BaseStream.Position;
 
-            _id = id;
-            _length = length;
+            this._id = id;
+            this._length = length;
         }
 
         private static Dictionary<ushort, Type> TypeToRecordClassMapping = new Dictionary<ushort, Type>();
@@ -192,22 +192,22 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
 
         public RecordType Id
         {
-            get { return _id; }
+            get { return this._id; }
         }
 
         public uint Length
         {
-            get { return _length; }
+            get { return this._length; }
         }
 
         public long Offset
         {
-            get { return _offset; }
+            get { return this._offset; }
         }
 
         public IStreamReader Reader
         {
-            get { return _reader; }
+            get { return this._reader; }
             set { this._reader = value; }
         }
 

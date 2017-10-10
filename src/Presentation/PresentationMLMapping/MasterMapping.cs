@@ -55,11 +55,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             TraceLogger.DebugInternal("MasterMapping.Apply");
             uint masterId = master.PersistAtom.SlideId;
-            _ctx.RegisterMasterMapping(masterId, this);
+            this._ctx.RegisterMasterMapping(masterId, this);
 
             this.Master = master;
             this.MasterId = master.PersistAtom.SlideId;
-            this.LayoutManager = _ctx.GetOrCreateLayoutManagerByMasterId(this.MasterId);
+            this.LayoutManager = this._ctx.GetOrCreateLayoutManagerByMasterId(this.MasterId);
 
             // Add PPT2007 roundtrip slide layouts
             var rtSlideLayouts = this.Master.AllChildrenWithType<RoundTripContentMasterInfo12>();
@@ -87,13 +87,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public void Write()
         {
             // Start the document
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("p", "sldMaster", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("p", "sldMaster", OpenXmlNamespaces.PresentationML);
             // Force declaration of these namespaces at document start
-            _writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
+            this._writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
 
-            _writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
 
             var sc = this.Master.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<ShapeContainer>();
             if (sc != null)
@@ -103,12 +103,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                
                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillType))
                 {
-                    _writer.WriteStartElement("p", "bg", OpenXmlNamespaces.PresentationML);
-                    _writer.WriteStartElement("p", "bgPr", OpenXmlNamespaces.PresentationML);
-                    new FillMapping(_ctx, _writer, this).Apply(so);
-                    _writer.WriteElementString("a", "effectLst", OpenXmlNamespaces.DrawingML, "");
-                    _writer.WriteEndElement(); //p:bgPr
-                    _writer.WriteEndElement(); //p:bg
+                    this._writer.WriteStartElement("p", "bg", OpenXmlNamespaces.PresentationML);
+                    this._writer.WriteStartElement("p", "bgPr", OpenXmlNamespaces.PresentationML);
+                    new FillMapping(this._ctx, this._writer, this).Apply(so);
+                    this._writer.WriteElementString("a", "effectLst", OpenXmlNamespaces.DrawingML, "");
+                    this._writer.WriteEndElement(); //p:bgPr
+                    this._writer.WriteEndElement(); //p:bg
                 }
                 else if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillColor))
                 {
@@ -121,54 +121,54 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         colorval = "000000"; //TODO: find out which color to use in this case
                     }
-                    _writer.WriteStartElement("p", "bg", OpenXmlNamespaces.PresentationML);
-                    _writer.WriteStartElement("p", "bgPr", OpenXmlNamespaces.PresentationML);
-                    _writer.WriteStartElement("a", "solidFill", OpenXmlNamespaces.DrawingML);
-                    _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-                    _writer.WriteAttributeString("val", colorval);
+                    this._writer.WriteStartElement("p", "bg", OpenXmlNamespaces.PresentationML);
+                    this._writer.WriteStartElement("p", "bgPr", OpenXmlNamespaces.PresentationML);
+                    this._writer.WriteStartElement("a", "solidFill", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteAttributeString("val", colorval);
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillOpacity) && so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op != 65536)
                     {
-                        _writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
-                        _writer.WriteEndElement();
+                        this._writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.fillOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
+                        this._writer.WriteEndElement();
                     }
-                    _writer.WriteEndElement();
-                    _writer.WriteEndElement();
-                    _writer.WriteElementString("a", "effectLst", OpenXmlNamespaces.DrawingML, "");
-                    _writer.WriteEndElement(); //p:bgPr
-                    _writer.WriteEndElement(); //p:bg
+                    this._writer.WriteEndElement();
+                    this._writer.WriteEndElement();
+                    this._writer.WriteElementString("a", "effectLst", OpenXmlNamespaces.DrawingML, "");
+                    this._writer.WriteEndElement(); //p:bgPr
+                    this._writer.WriteEndElement(); //p:bg
                 }
             }
 
-            _writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
-            var stm = new ShapeTreeMapping(_ctx, _writer);
+            this._writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
+            var stm = new ShapeTreeMapping(this._ctx, this._writer);
             stm.parentSlideMapping = this;
             stm.Apply(this.Master.FirstChildWithType<PPDrawing>());
 
-            _writer.WriteEndElement();
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
             // Write clrMap
             var clrMap = this.Master.FirstChildWithType<ColorMappingAtom>();
             if (clrMap != null)
             {
                 // clrMap from ColorMappingAtom wrongly uses namespace DrawingML
-                _writer.WriteStartElement("p", "clrMap", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteStartElement("p", "clrMap", OpenXmlNamespaces.PresentationML);
 
                 foreach (XmlAttribute attr in clrMap.XmlDocumentElement.Attributes)
                     if (attr.Prefix != "xmlns")
-                        _writer.WriteAttributeString(attr.LocalName, attr.Value);
+                        this._writer.WriteAttributeString(attr.LocalName, attr.Value);
 
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
             else
             {
                 // In absence of ColorMappingAtom write default clrMap
-                Utils.GetDefaultDocument("clrMap").WriteTo(_writer);
+                Utils.GetDefaultDocument("clrMap").WriteTo(this._writer);
             }
 
             // Write slide layout part id list
-            _writer.WriteStartElement("p", "sldLayoutIdLst", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "sldLayoutIdLst", OpenXmlNamespaces.PresentationML);
 
             var layoutParts = this.LayoutManager.GetAllLayoutParts();
 
@@ -181,30 +181,30 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             foreach (var slideLayoutPart in layoutParts)
             {
-                _writer.WriteStartElement("p", "sldLayoutId", OpenXmlNamespaces.PresentationML);
-                _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, slideLayoutPart.RelIdToString);
-                _writer.WriteEndElement();
+                this._writer.WriteStartElement("p", "sldLayoutId", OpenXmlNamespaces.PresentationML);
+                this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, slideLayoutPart.RelIdToString);
+                this._writer.WriteEndElement();
             }
 
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
             if (this.Master.FirstChildWithType<SlideShowSlideInfoAtom>() != null)
             {
-                new SlideTransitionMapping(_ctx, _writer).Apply(this.Master.FirstChildWithType<SlideShowSlideInfoAtom>());
+                new SlideTransitionMapping(this._ctx, this._writer).Apply(this.Master.FirstChildWithType<SlideShowSlideInfoAtom>());
             }
 
             if (this.Master.FirstChildWithType<ProgTags>() != null)
                 if (this.Master.FirstChildWithType<ProgTags>().FirstChildWithType<ProgBinaryTag>() != null)
                     if (this.Master.FirstChildWithType<ProgTags>().FirstChildWithType<ProgBinaryTag>().FirstChildWithType<ProgBinaryTagDataBlob>() != null)
                     {
-                        new AnimationMapping(_ctx, _writer).Apply(this.Master.FirstChildWithType<ProgTags>().FirstChildWithType<ProgBinaryTag>().FirstChildWithType<ProgBinaryTagDataBlob>(), this, stm.animinfos, stm);
+                        new AnimationMapping(this._ctx, this._writer).Apply(this.Master.FirstChildWithType<ProgTags>().FirstChildWithType<ProgBinaryTag>().FirstChildWithType<ProgBinaryTagDataBlob>(), this, stm.animinfos, stm);
                     }
 
             // Write txStyles
             var roundTripTxStyles = this.Master.FirstChildWithType<RoundTripOArtTextStyles12>();
             if (false & roundTripTxStyles != null)
             {
-                roundTripTxStyles.XmlDocumentElement.WriteTo(_writer);
+                roundTripTxStyles.XmlDocumentElement.WriteTo(this._writer);
             }
             else
             {
@@ -213,7 +213,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 //XmlDocument slideLayoutDoc = Utils.GetDefaultDocument("txStyles");
                 //slideLayoutDoc.WriteTo(_writer);
 
-                new TextMasterStyleMapping(_ctx, _writer, this).Apply(this.Master);
+                new TextMasterStyleMapping(this._ctx, this._writer, this).Apply(this.Master);
             }
 
             // Write theme
@@ -222,7 +222,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             // even if it they have the same content.
             //
             // Otherwise PPT will complain about the structure of the file.
-            var themePart = _ctx.Pptx.PresentationPart.AddThemePart();
+            var themePart = this._ctx.Pptx.PresentationPart.AddThemePart();
 
             XmlNode xmlDoc;
             var theme = this.Master.FirstChildWithType<Theme>();
@@ -239,7 +239,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 var schemes = this.Master.AllChildrenWithType<ColorSchemeAtom>();
                 if (schemes.Count > 0)
                 {
-                    new ColorSchemeMapping(_ctx, themePart.XmlWriter).Apply(schemes);                    
+                    new ColorSchemeMapping(this._ctx, themePart.XmlWriter).Apply(schemes);                    
                 }
                 else
                 {
@@ -254,13 +254,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             this.MasterPart.ReferencePart(themePart);
 
-        
-        
-            // End the document
-            _writer.WriteEndElement();
-            _writer.WriteEndDocument();
 
-            _writer.Flush();
+
+            // End the document
+            this._writer.WriteEndElement();
+            this._writer.WriteEndDocument();
+
+            this._writer.Flush();
         }
     }
 }

@@ -44,14 +44,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         List<StreamDirectoryEntry> _streamDirectoryEntries = new List<StreamDirectoryEntry>();
         internal List<StreamDirectoryEntry> StreamDirectoryEntries
         {
-            get { return _streamDirectoryEntries; }            
+            get { return this._streamDirectoryEntries; }            
         }
 
         // The storage directory entries of this storage directory entry
         List<StorageDirectoryEntry> _storageDirectoryEntries = new List<StorageDirectoryEntry>();
         internal List<StorageDirectoryEntry> StorageDirectoryEntries
         {
-            get { return _storageDirectoryEntries; }            
+            get { return this._storageDirectoryEntries; }            
         }
 
         // The stream and storage directory entries of this storage directory entry
@@ -66,7 +66,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         internal StorageDirectoryEntry(string name, StructuredStorageContext context)
             : base(name, context)
         {
-            Type = DirectoryEntryType.STGTY_STORAGE;
+            this.Type = DirectoryEntryType.STGTY_STORAGE;
         }
 
 
@@ -77,13 +77,13 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="stream">The stream referenced by the stream directory entry</param>
         public void AddStreamDirectoryEntry(string name, Stream stream)
         {
-            if (_streamDirectoryEntries.Exists(delegate(StreamDirectoryEntry a) { return name == a.Name; }))
+            if (this._streamDirectoryEntries.Exists(delegate(StreamDirectoryEntry a) { return name == a.Name; }))
             {
                 return;
             }
-            var newDirEntry = new StreamDirectoryEntry(name, stream, Context);
-            _streamDirectoryEntries.Add(newDirEntry);
-            _allDirectoryEntries.Add(newDirEntry);
+            var newDirEntry = new StreamDirectoryEntry(name, stream, this.Context);
+            this._streamDirectoryEntries.Add(newDirEntry);
+            this._allDirectoryEntries.Add(newDirEntry);
         }
 
 
@@ -95,15 +95,15 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         public StorageDirectoryEntry AddStorageDirectoryEntry(string name)
         {
             StorageDirectoryEntry result = null;
-            result = _storageDirectoryEntries.Find(delegate(StorageDirectoryEntry a) { return name == a.Name; });
+            result = this._storageDirectoryEntries.Find(delegate(StorageDirectoryEntry a) { return name == a.Name; });
             if (result != null)
             {
                 // entry exists
                 return result;
             }
-            result = new StorageDirectoryEntry(name, Context);
-            _storageDirectoryEntries.Add(result);
-            _allDirectoryEntries.Add(result);
+            result = new StorageDirectoryEntry(name, this.Context);
+            this._storageDirectoryEntries.Add(result);
+            this._allDirectoryEntries.Add(result);
             return result;
         }
 
@@ -114,7 +114,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="clsId">The clsId to set.</param>
         public void setClsId(Guid clsId)
         {
-            ClsId = clsId;
+            this.ClsId = clsId;
         }
 
 
@@ -134,11 +134,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         private List<BaseDirectoryEntry> RecursiveGetAllDirectoryEntries(List<BaseDirectoryEntry> result)
         {
-            foreach (var entry in _storageDirectoryEntries)
+            foreach (var entry in this._storageDirectoryEntries)
             {
                 result.AddRange(entry.RecursiveGetAllDirectoryEntries());
             }
-            foreach (var entry in _streamDirectoryEntries)
+            foreach (var entry in this._streamDirectoryEntries)
             {
                 result.Add(entry);
             }
@@ -158,7 +158,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         {
             this.ChildSiblingSid = CreateRedBlackTree();
 
-            foreach (var entry in _storageDirectoryEntries)
+            foreach (var entry in this._storageDirectoryEntries)
             {
                 entry.RecursiveCreateRedBlackTrees();
             }
@@ -178,15 +178,15 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// Creates the red-black-tree for this directory entry
         /// </summary>
         private uint CreateRedBlackTree()
-        {          
-            _allDirectoryEntries.Sort(DirectoryEntryComparison);
+        {
+            this._allDirectoryEntries.Sort(this.DirectoryEntryComparison);
 
-            foreach (var entry in _allDirectoryEntries)
+            foreach (var entry in this._allDirectoryEntries)
             {
-                entry.Sid = Context.getNewSid();
+                entry.Sid = this.Context.getNewSid();
             }
             
-            return setRelationsAndColorRecursive(this._allDirectoryEntries, (int)Math.Floor(Math.Log(_allDirectoryEntries.Count, 2)), 0);
+            return setRelationsAndColorRecursive(this._allDirectoryEntries, (int)Math.Floor(Math.Log(this._allDirectoryEntries.Count, 2)), 0);
         }
 
 

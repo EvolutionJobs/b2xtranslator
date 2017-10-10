@@ -40,39 +40,39 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public GeometryTextBooleanProperties(uint entryOperand)
         {
-            gtextFStrikethrough = Utils.BitmaskToBool(entryOperand, 0x1);
-            gtextFSmallcaps = Utils.BitmaskToBool(entryOperand, 0x1 << 1);
-            gtextFShadow = Utils.BitmaskToBool(entryOperand, 0x1 << 2);
-            gtextFUnderline = Utils.BitmaskToBool(entryOperand, 0x1 << 3);
-            gtextFItalic = Utils.BitmaskToBool(entryOperand, 0x1 << 4);
-            gtextFBold = Utils.BitmaskToBool(entryOperand, 0x1 << 5);
-            gtextFDxMeasure = Utils.BitmaskToBool(entryOperand, 0x1 << 6);
-            gtextFNormalize = Utils.BitmaskToBool(entryOperand, 0x1 << 7);
-            gtextFBestFit = Utils.BitmaskToBool(entryOperand, 0x1 << 8);
-            gtextFShrinkFit = Utils.BitmaskToBool(entryOperand, 0x1 << 9);
-            gtextFStretch = Utils.BitmaskToBool(entryOperand, 0x1 << 10);
-            gtextFTight = Utils.BitmaskToBool(entryOperand, 0x1 << 11);
-            gtextFKern = Utils.BitmaskToBool(entryOperand, 0x1 << 12);
-            gtextFVertical = Utils.BitmaskToBool(entryOperand, 0x1 << 13);
-            fGtext = Utils.BitmaskToBool(entryOperand, 0x1 << 14);
-            gtextFReverseRows = Utils.BitmaskToBool(entryOperand, 0x1 << 15);
+            this.gtextFStrikethrough = Utils.BitmaskToBool(entryOperand, 0x1);
+            this.gtextFSmallcaps = Utils.BitmaskToBool(entryOperand, 0x1 << 1);
+            this.gtextFShadow = Utils.BitmaskToBool(entryOperand, 0x1 << 2);
+            this.gtextFUnderline = Utils.BitmaskToBool(entryOperand, 0x1 << 3);
+            this.gtextFItalic = Utils.BitmaskToBool(entryOperand, 0x1 << 4);
+            this.gtextFBold = Utils.BitmaskToBool(entryOperand, 0x1 << 5);
+            this.gtextFDxMeasure = Utils.BitmaskToBool(entryOperand, 0x1 << 6);
+            this.gtextFNormalize = Utils.BitmaskToBool(entryOperand, 0x1 << 7);
+            this.gtextFBestFit = Utils.BitmaskToBool(entryOperand, 0x1 << 8);
+            this.gtextFShrinkFit = Utils.BitmaskToBool(entryOperand, 0x1 << 9);
+            this.gtextFStretch = Utils.BitmaskToBool(entryOperand, 0x1 << 10);
+            this.gtextFTight = Utils.BitmaskToBool(entryOperand, 0x1 << 11);
+            this.gtextFKern = Utils.BitmaskToBool(entryOperand, 0x1 << 12);
+            this.gtextFVertical = Utils.BitmaskToBool(entryOperand, 0x1 << 13);
+            this.fGtext = Utils.BitmaskToBool(entryOperand, 0x1 << 14);
+            this.gtextFReverseRows = Utils.BitmaskToBool(entryOperand, 0x1 << 15);
 
-            fUsegtextFSStrikeThrough = Utils.BitmaskToBool(entryOperand, 0x1 << 16);
-            fUsegtextFSmallcaps = Utils.BitmaskToBool(entryOperand, 0x1 << 17);
-            fUsegtextFShadow = Utils.BitmaskToBool(entryOperand, 0x1 << 18);
-            fUsegtextFUnderline = Utils.BitmaskToBool(entryOperand, 0x1 << 19);
-            fUsegtextFItalic = Utils.BitmaskToBool(entryOperand, 0x1 << 20);
-            fUsegtextFBold = Utils.BitmaskToBool(entryOperand, 0x1 << 21);
-            fUsegtextFDxMeasure = Utils.BitmaskToBool(entryOperand, 0x1 << 22);
-            fUsegtextFNormalize = Utils.BitmaskToBool(entryOperand, 0x1 << 23);
-            fUsegtextFBestFit = Utils.BitmaskToBool(entryOperand, 0x1 << 24);
-            fUsegtextFShrinkFit = Utils.BitmaskToBool(entryOperand, 0x1 << 25);
-            fUsegtextFStretch = Utils.BitmaskToBool(entryOperand, 0x1 << 26);
-            fUsegtextFTight = Utils.BitmaskToBool(entryOperand, 0x1 << 27);
-            fUsegtextFKern = Utils.BitmaskToBool(entryOperand, 0x1 << 28);
-            fUsegtextFVertical = Utils.BitmaskToBool(entryOperand, 0x1 << 29);
-            fUsefGtext = Utils.BitmaskToBool(entryOperand, 0x1 << 30);
-            fUsegtextFReverseRows = Utils.BitmaskToBool(entryOperand, 0x40000000);
+            this.fUsegtextFSStrikeThrough = Utils.BitmaskToBool(entryOperand, 0x1 << 16);
+            this.fUsegtextFSmallcaps = Utils.BitmaskToBool(entryOperand, 0x1 << 17);
+            this.fUsegtextFShadow = Utils.BitmaskToBool(entryOperand, 0x1 << 18);
+            this.fUsegtextFUnderline = Utils.BitmaskToBool(entryOperand, 0x1 << 19);
+            this.fUsegtextFItalic = Utils.BitmaskToBool(entryOperand, 0x1 << 20);
+            this.fUsegtextFBold = Utils.BitmaskToBool(entryOperand, 0x1 << 21);
+            this.fUsegtextFDxMeasure = Utils.BitmaskToBool(entryOperand, 0x1 << 22);
+            this.fUsegtextFNormalize = Utils.BitmaskToBool(entryOperand, 0x1 << 23);
+            this.fUsegtextFBestFit = Utils.BitmaskToBool(entryOperand, 0x1 << 24);
+            this.fUsegtextFShrinkFit = Utils.BitmaskToBool(entryOperand, 0x1 << 25);
+            this.fUsegtextFStretch = Utils.BitmaskToBool(entryOperand, 0x1 << 26);
+            this.fUsegtextFTight = Utils.BitmaskToBool(entryOperand, 0x1 << 27);
+            this.fUsegtextFKern = Utils.BitmaskToBool(entryOperand, 0x1 << 28);
+            this.fUsegtextFVertical = Utils.BitmaskToBool(entryOperand, 0x1 << 29);
+            this.fUsefGtext = Utils.BitmaskToBool(entryOperand, 0x1 << 30);
+            this.fUsegtextFReverseRows = Utils.BitmaskToBool(entryOperand, 0x40000000);
         }
     }
 }

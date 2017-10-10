@@ -64,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         {
             this.fHighByte = Utils.BitmaskToBool(reader.ReadByte(), 0x0001);
 
-            if (fHighByte)
+            if (this.fHighByte)
             {
                 this.rgb = new byte[2 * cch];
             }
@@ -80,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         {
             get
             {
-                if (fHighByte)
+                if (this.fHighByte)
                 {
                     return Encoding.Unicode.GetString(this.rgb);
                 }

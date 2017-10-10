@@ -50,65 +50,65 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public NumberingMapping(ConversionContext ctx, WordDocument parentDoc)
             : base(XmlWriter.Create(ctx.Docx.MainDocumentPart.NumberingDefinitionsPart.GetStream(), ctx.WriterSettings))
         {
-            _ctx = ctx;
-            _parentDoc = parentDoc;
+            this._ctx = ctx;
+            this._parentDoc = parentDoc;
         }
 
         public void Apply(ListTable rglst)
         {
-            _writer.WriteStartElement("w", "numbering", OpenXmlNamespaces.WordprocessingML);
+            this._writer.WriteStartElement("w", "numbering", OpenXmlNamespaces.WordprocessingML);
 
             for (int i = 0; i < rglst.Count; i++)
             {
                 var lstf = rglst[i];
 
                 //start abstractNum
-                _writer.WriteStartElement("w", "abstractNum", OpenXmlNamespaces.WordprocessingML);
+                this._writer.WriteStartElement("w", "abstractNum", OpenXmlNamespaces.WordprocessingML);
 
-                _writer.WriteAttributeString("w", "abstractNumId", OpenXmlNamespaces.WordprocessingML, i.ToString());
+                this._writer.WriteAttributeString("w", "abstractNumId", OpenXmlNamespaces.WordprocessingML, i.ToString());
 
                 //nsid
-                _writer.WriteStartElement("w", "nsid", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, string.Format("{0:X8}", lstf.lsid));
-                _writer.WriteEndElement();
+                this._writer.WriteStartElement("w", "nsid", OpenXmlNamespaces.WordprocessingML);
+                this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, string.Format("{0:X8}", lstf.lsid));
+                this._writer.WriteEndElement();
 
                 //multiLevelType
-                _writer.WriteStartElement("w", "multiLevelType", OpenXmlNamespaces.WordprocessingML);
+                this._writer.WriteStartElement("w", "multiLevelType", OpenXmlNamespaces.WordprocessingML);
                 if (lstf.fHybrid)
-                    _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, "hybridMultilevel");
+                    this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, "hybridMultilevel");
                 else if (lstf.fSimpleList)
-                    _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, "singleLevel");
+                    this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, "singleLevel");
                 else
-                    _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, "multilevel");
-                _writer.WriteEndElement();
+                    this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, "multilevel");
+                this._writer.WriteEndElement();
 
                 //template
-                _writer.WriteStartElement("w", "tmpl", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, string.Format("{0:X8}", lstf.tplc));
-                _writer.WriteEndElement();
+                this._writer.WriteStartElement("w", "tmpl", OpenXmlNamespaces.WordprocessingML);
+                this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, string.Format("{0:X8}", lstf.tplc));
+                this._writer.WriteEndElement();
 
                 //writes the levels
                 for (int j = 0; j < lstf.rglvl.Length; j++)
                 {
                     var lvl = lstf.rglvl[j];
 
-                    _writer.WriteStartElement("w", "lvl", OpenXmlNamespaces.WordprocessingML);
-                    _writer.WriteAttributeString("w", "ilvl", OpenXmlNamespaces.WordprocessingML, j.ToString());
+                    this._writer.WriteStartElement("w", "lvl", OpenXmlNamespaces.WordprocessingML);
+                    this._writer.WriteAttributeString("w", "ilvl", OpenXmlNamespaces.WordprocessingML, j.ToString());
 
                     //starts at
-                    _writer.WriteStartElement("w", "start", OpenXmlNamespaces.WordprocessingML);
-                    _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, lvl.iStartAt.ToString());
-                    _writer.WriteEndElement();
+                    this._writer.WriteStartElement("w", "start", OpenXmlNamespaces.WordprocessingML);
+                    this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, lvl.iStartAt.ToString());
+                    this._writer.WriteEndElement();
 
                     //number format
-                    _writer.WriteStartElement("w", "numFmt", OpenXmlNamespaces.WordprocessingML);
-                    _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, GetNumberFormat(lvl.nfc));
-                    _writer.WriteEndElement();
+                    this._writer.WriteStartElement("w", "numFmt", OpenXmlNamespaces.WordprocessingML);
+                    this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, GetNumberFormat(lvl.nfc));
+                    this._writer.WriteEndElement();
 
                     //suffix
-                    _writer.WriteStartElement("w", "suff", OpenXmlNamespaces.WordprocessingML);
-                    _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, lvl.ixchFollow.ToString());
-                    _writer.WriteEndElement();
+                    this._writer.WriteStartElement("w", "suff", OpenXmlNamespaces.WordprocessingML);
+                    this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, lvl.ixchFollow.ToString());
+                    this._writer.WriteEndElement();
 
                     //style
                     //The style id is used for a reverse reference. 
@@ -116,54 +116,54 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     short styleIndex = lstf.rgistd[j];
                     if(styleIndex != ListData.ISTD_NIL)
                     {
-                        _writer.WriteStartElement("w", "pStyle", OpenXmlNamespaces.WordprocessingML);
-                        _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, StyleSheetMapping.MakeStyleId(_ctx.Doc.Styles.Styles[styleIndex]));
-                        _writer.WriteEndElement();
+                        this._writer.WriteStartElement("w", "pStyle", OpenXmlNamespaces.WordprocessingML);
+                        this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, StyleSheetMapping.MakeStyleId(this._ctx.Doc.Styles.Styles[styleIndex]));
+                        this._writer.WriteEndElement();
                     }
 
                     //Number level text
-                    _writer.WriteStartElement("w", "lvlText", OpenXmlNamespaces.WordprocessingML);
-                    _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, getLvlText(lvl.xst));
-                    _writer.WriteEndElement();
-                    
+                    this._writer.WriteStartElement("w", "lvlText", OpenXmlNamespaces.WordprocessingML);
+                    this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, getLvlText(lvl.xst));
+                    this._writer.WriteEndElement();
+
                     //jc
-                    _writer.WriteStartElement("w", "lvlJc", OpenXmlNamespaces.WordprocessingML);
-                    _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, ((LevelJustification)lvl.jc).ToString());
-                    _writer.WriteEndElement();
+                    this._writer.WriteStartElement("w", "lvlJc", OpenXmlNamespaces.WordprocessingML);
+                    this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, ((LevelJustification)lvl.jc).ToString());
+                    this._writer.WriteEndElement();
 
                     //pPr
-                    lvl.grpprlPapx.Convert(new ParagraphPropertiesMapping(_writer, _ctx, _parentDoc,  null));
+                    lvl.grpprlPapx.Convert(new ParagraphPropertiesMapping(this._writer, this._ctx, this._parentDoc,  null));
 
                     //rPr
-                    lvl.grpprlChpx.Convert(new CharacterPropertiesMapping(_writer, _parentDoc, new RevisionData(lvl.grpprlChpx), lvl.grpprlPapx, false));
+                    lvl.grpprlChpx.Convert(new CharacterPropertiesMapping(this._writer, this._parentDoc, new RevisionData(lvl.grpprlChpx), lvl.grpprlPapx, false));
 
-                    _writer.WriteEndElement();
+                    this._writer.WriteEndElement();
                 }
 
                 //end abstractNum
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
             //write the overrides
-            for (int i = 0; i < _ctx.Doc.ListFormatOverrideTable.Count; i++)
+            for (int i = 0; i < this._ctx.Doc.ListFormatOverrideTable.Count; i++)
             {
-                var lfo = _ctx.Doc.ListFormatOverrideTable[i];
+                var lfo = this._ctx.Doc.ListFormatOverrideTable[i];
 
                 //start num
-                _writer.WriteStartElement("w", "num", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "numId", OpenXmlNamespaces.WordprocessingML, (i+1).ToString());
+                this._writer.WriteStartElement("w", "num", OpenXmlNamespaces.WordprocessingML);
+                this._writer.WriteAttributeString("w", "numId", OpenXmlNamespaces.WordprocessingML, (i+1).ToString());
 
                 int index = FindIndexbyId(rglst, lfo.lsid);
 
-                _writer.WriteStartElement("w", "abstractNumId", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, index.ToString());
+                this._writer.WriteStartElement("w", "abstractNumId", OpenXmlNamespaces.WordprocessingML);
+                this._writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, index.ToString());
 
-                _writer.WriteEndElement();
-                _writer.WriteEndElement();
+                this._writer.WriteEndElement();
+                this._writer.WriteEndElement();
             }
 
-            _writer.WriteEndElement();
-            _writer.Flush();
+            this._writer.WriteEndElement();
+            this._writer.Flush();
         }
 
         public static int FindIndexbyId(List<ListData> list, int id)

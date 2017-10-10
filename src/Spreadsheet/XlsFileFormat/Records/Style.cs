@@ -97,23 +97,23 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            ixfe = reader.ReadUInt16();
-            fBuiltin = Utils.BitmaskToBool(ixfe, 0x8000);
+            this.ixfe = reader.ReadUInt16();
+            this.fBuiltin = Utils.BitmaskToBool(this.ixfe, 0x8000);
 
             // only bit 11-0 are used
             // TODO: check if the filtering mask need to be applied or not
-            ixfe = (ushort)(ixfe & 0x0FFF);
+            this.ixfe = (ushort)(this.ixfe & 0x0FFF);
 
-            if (fBuiltin)
+            if (this.fBuiltin)
             {
-                istyBuiltIn = reader.ReadByte();
-                iLevel = reader.ReadByte();
+                this.istyBuiltIn = reader.ReadByte();
+                this.iLevel = reader.ReadByte();
             }
             else
             {
-                cch = reader.ReadUInt16();
+                this.cch = reader.ReadUInt16();
                 int grbit = (int)reader.ReadByte();
-                rgch = ExcelHelperClass.getStringFromBiffRecord(reader, cch, grbit); 
+                this.rgch = ExcelHelperClass.getStringFromBiffRecord(reader, this.cch, grbit); 
             }
             
             // assert that the correct number of bytes has been read from the stream

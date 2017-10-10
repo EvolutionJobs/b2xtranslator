@@ -15,13 +15,13 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         public EmbeddedObjectPart(ObjectType format, OpenXmlPartContainer parent, int partIndex)
             : base(parent, partIndex)
         {
-            _format = format;
+            this._format = format;
         }
 
         public override string ContentType
         {
             get {
-                switch (_format)
+                switch (this._format)
                 {
                     case ObjectType.Excel:
                         return OpenXmlContentTypes.MSExcel;
@@ -57,12 +57,12 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         {
             get
             {
-                return targetdirectory;
+                return this.targetdirectory;
             }
 
             set
             {
-                targetdirectory = value;
+                this.targetdirectory = value;
             }
 
         }
@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         public override string TargetExt 
         { 
             get {
-                switch (_format)
+                switch (this._format)
                 {
                     case ObjectType.Excel:
                         return ".xls";

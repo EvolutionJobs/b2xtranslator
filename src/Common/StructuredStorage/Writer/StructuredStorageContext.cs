@@ -44,49 +44,49 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         Header _header;
         internal Header Header
         {
-            get { return _header; }            
+            get { return this._header; }            
         }
 
         // The fat of this context.
         Fat _fat;
         internal Fat Fat
         {
-            get { return _fat; }            
+            get { return this._fat; }            
         }
 
         // The mini fat of this context.
         MiniFat _miniFat;
         internal MiniFat MiniFat
         {
-            get { return _miniFat; }            
+            get { return this._miniFat; }            
         }
 
         // The handler of the output stream of this context.
         OutputHandler _tempOutputStream;
         internal OutputHandler TempOutputStream
         {
-            get { return _tempOutputStream; }            
+            get { return this._tempOutputStream; }            
         }
 
         // The handler of the directory stream of this context.
         OutputHandler _directoryStream;
         internal OutputHandler DirectoryStream
         {
-            get { return _directoryStream; }
+            get { return this._directoryStream; }
         }
 
         // The internal bit converter of this context.
         InternalBitConverter _internalBitConverter;
         internal InternalBitConverter InternalBitConverter
         {
-            get { return _internalBitConverter; }
+            get { return this._internalBitConverter; }
         }
 
         // The root directroy entry of this context.
         private RootDirectoryEntry _rootDirectoryEntry;
         public RootDirectoryEntry RootDirectoryEntry
         {
-            get { return _rootDirectoryEntry; }
+            get { return this._rootDirectoryEntry; }
         }
 
 
@@ -95,13 +95,13 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         internal StructuredStorageContext()
         {
-            _tempOutputStream = new OutputHandler(new MemoryStream());
-            _directoryStream = new OutputHandler(new MemoryStream());
-            _header = new Header(this);
-            _internalBitConverter = new InternalBitConverter(true);
-            _fat = new Fat(this);
-            _miniFat = new MiniFat(this);
-            _rootDirectoryEntry = new RootDirectoryEntry(this);
+            this._tempOutputStream = new OutputHandler(new MemoryStream());
+            this._directoryStream = new OutputHandler(new MemoryStream());
+            this._header = new Header(this);
+            this._internalBitConverter = new InternalBitConverter(true);
+            this._fat = new Fat(this);
+            this._miniFat = new MiniFat(this);
+            this._rootDirectoryEntry = new RootDirectoryEntry(this);
         }
 
 
@@ -111,7 +111,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <returns>The new sid.</returns>
         internal uint getNewSid()
         {
-            return ++_sidCounter;
+            return ++this._sidCounter;
         }
     }
 }

@@ -54,7 +54,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.fExAsc = Utils.BitmaskToBool(grbit, 0x04);
             this.fExDsc = Utils.BitmaskToBool(grbit, 0x08);
 
-            if (!fDyZero)
+            if (!this.fDyZero)
             {
                 this.miyRW = reader.ReadUInt16();
             }

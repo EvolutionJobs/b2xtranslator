@@ -44,11 +44,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         List<uint> _sectorsUsedByMiniStream = new List<uint>();
         Fat _fat;
         uint _miniStreamStart;
-        UInt64 _sizeOfMiniStream;
+        ulong _sizeOfMiniStream;
 
         override internal ushort SectorSize
         {
-            get { return _header.MiniSectorSize; }
+            get { return this._header.MiniSectorSize; }
         }
 
 
@@ -59,12 +59,12 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="header">Handle to the header of the compound file</param>
         /// <param name="fileHandler">Handle to the file handler of the compound file</param>
         /// <param name="miniStreamStart">Address of the sector where the mini stream starts</param>
-        internal MiniFat(Fat fat, Header header, InputHandler fileHandler, uint miniStreamStart, UInt64 sizeOfMiniStream)
+        internal MiniFat(Fat fat, Header header, InputHandler fileHandler, uint miniStreamStart, ulong sizeOfMiniStream)
             : base(header, fileHandler)
-        {                        
-            _fat = fat;
-            _miniStreamStart = miniStreamStart;
-            _sizeOfMiniStream = sizeOfMiniStream;
+        {
+            this._fat = fat;
+            this._miniStreamStart = miniStreamStart;
+            this._sizeOfMiniStream = sizeOfMiniStream;
             Init();
         }
 
@@ -77,15 +77,15 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>The new position in the stream.</returns>
         override internal long SeekToPositionInSector(long sector, long position)
         {
-            int sectorInMiniStreamChain = (int)((sector * _header.MiniSectorSize) / _fat.SectorSize);
-            int offsetInSector = (int)((sector * _header.MiniSectorSize) % _fat.SectorSize);     
+            int sectorInMiniStreamChain = (int)((sector * this._header.MiniSectorSize) / this._fat.SectorSize);
+            int offsetInSector = (int)((sector * this._header.MiniSectorSize) % this._fat.SectorSize);     
 
             if (position < 0)
             {
                 throw new ArgumentOutOfRangeException("position");
             }
 
-            return _fileHandler.SeekToPositionInSector(_sectorsUsedByMiniStream[sectorInMiniStreamChain], offsetInSector + position);
+            return this._fileHandler.SeekToPositionInSector(this._sectorsUsedByMiniStream[sectorInMiniStreamChain], offsetInSector + position);
         }
 
 
@@ -96,12 +96,12 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <returns>The next sector in the chain</returns>
         override protected uint GetNextSectorInChain(uint currentSector)
         {
-            var sectorInFile = _sectorsUsedByMiniFat[(int)(currentSector / _addressesPerSector)];
+            var sectorInFile = this._sectorsUsedByMiniFat[(int)(currentSector / this._addressesPerSector)];
             // calculation of position:
             // currentSector % _addressesPerSector = number of address in the sector address
             // address uses 32 bit = 4 bytes
-            _fileHandler.SeekToPositionInSector(sectorInFile, 4 * ((int)currentSector % _addressesPerSector));
-            return _fileHandler.ReadUInt32();
+            this._fileHandler.SeekToPositionInSector(sectorInFile, 4 * ((int)currentSector % this._addressesPerSector));
+            return this._fileHandler.ReadUInt32();
         }
 
 
@@ -121,11 +121,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         private void ReadSectorsUsedByMiniFAT()
         {
-            if (_header.MiniFatStartSector == SectorId.ENDOFCHAIN || _header.NoSectorsInMiniFatChain == 0x0)
+            if (this._header.MiniFatStartSector == SectorId.ENDOFCHAIN || this._header.NoSectorsInMiniFatChain == 0x0)
             {
                 return;
             }
-            _sectorsUsedByMiniFat = _fat.GetSectorChain(_header.MiniFatStartSector, _header.NoSectorsInMiniFatChain, "MiniFat");
+            this._sectorsUsedByMiniFat = this._fat.GetSectorChain(this._header.MiniFatStartSector, this._header.NoSectorsInMiniFatChain, "MiniFat");
         }
 
         /// <summary>
@@ -133,11 +133,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         private void ReadSectorsUsedByMiniStream()
         {
-            if (_miniStreamStart == SectorId.ENDOFCHAIN)
+            if (this._miniStreamStart == SectorId.ENDOFCHAIN)
             {
                 return;
             }
-            _sectorsUsedByMiniStream = _fat.GetSectorChain(_miniStreamStart, (UInt64)Math.Ceiling((double)_sizeOfMiniStream / _header.SectorSize), "MiniStream");
+            this._sectorsUsedByMiniStream = this._fat.GetSectorChain(this._miniStreamStart, (ulong)Math.Ceiling((double)this._sizeOfMiniStream / this._header.SectorSize), "MiniStream");
         }
 
 
@@ -146,14 +146,14 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         private void CheckConsistency()
         {
-            if (_sectorsUsedByMiniFat.Count != _header.NoSectorsInMiniFatChain)
+            if (this._sectorsUsedByMiniFat.Count != this._header.NoSectorsInMiniFatChain)
             {
                 throw new ChainSizeMismatchException("MiniFat");
             }
-            if (_sectorsUsedByMiniStream.Count != Math.Ceiling((double)_sizeOfMiniStream / _header.SectorSize))
+            if (this._sectorsUsedByMiniStream.Count != Math.Ceiling((double)this._sizeOfMiniStream / this._header.SectorSize))
             {
                 Trace.TraceWarning("StructuredStorage: The number of sectors used by MiniFat does not match the specified size.");
-                Trace.TraceInformation("StructuredStorage: _sectorsUsedByMiniStream.Count={0};_sizeOfMiniStream={1};_header.SectorSize={2}; Math.Ceiling={3}", _sectorsUsedByMiniStream.Count, _sizeOfMiniStream, _header.SectorSize, Math.Ceiling((double)_sizeOfMiniStream / _header.SectorSize));
+                Trace.TraceInformation("StructuredStorage: _sectorsUsedByMiniStream.Count={0};_sizeOfMiniStream={1};_header.SectorSize={2}; Math.Ceiling={3}", this._sectorsUsedByMiniStream.Count, this._sizeOfMiniStream, this._header.SectorSize, Math.Ceiling((double)this._sizeOfMiniStream / this._header.SectorSize));
                 //throw new ChainSizeMismatchException("MiniStream");
             }
         }

@@ -45,8 +45,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         private SSTData sstData;
         public SSTData SstData
         {
-            get { return sstData; }
-            set { sstData = value; }
+            get { return this.sstData; }
+            set { this.sstData = value; }
         }
 
 
@@ -74,8 +74,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
             this.externSheetDataList = new List<ExternSheetData>();
             this.supBookDataList = new LinkedList<SupBookData>();
             this.xtiDataList = new LinkedList<XTIData>();
-            this.definedNameList = new List<Lbl>(); 
-            refWorkBookNumber = 0;
+            this.definedNameList = new List<Lbl>();
+            this.refWorkBookNumber = 0;
 
             this.styleData = new StyleData.StyleData(); 
         }

@@ -151,12 +151,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public ListLevel(VirtualStreamReader reader, int length)
             : base(reader, length)
         {
-            long startPos = _reader.BaseStream.Position;
+            long startPos = this._reader.BaseStream.Position;
 
             //parse the fix part
-            this.iStartAt = _reader.ReadInt32();
-            this.nfc = _reader.ReadByte();
-            int flag = _reader.ReadByte();
+            this.iStartAt = this._reader.ReadInt32();
+            this.nfc = this._reader.ReadByte();
+            int flag = this._reader.ReadByte();
             this.jc = (byte)(flag & 0x03);
             this.fLegal = Utils.BitmaskToBool(flag, 0x04);
             this.fNoRestart = Utils.BitmaskToBool(flag, 0x08);
@@ -166,39 +166,39 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.rgbxchNums = new byte[9];
             for (int i = 0; i < 9; i++)
             {
-                rgbxchNums[i] = _reader.ReadByte();
+                this.rgbxchNums[i] = this._reader.ReadByte();
             }
-            this.ixchFollow = (FollowingChar)_reader.ReadByte();
+            this.ixchFollow = (FollowingChar)this._reader.ReadByte();
 
-            this.dxaSpace = _reader.ReadInt32();
-            this.dxaIndent = _reader.ReadInt32();
+            this.dxaSpace = this._reader.ReadInt32();
+            this.dxaIndent = this._reader.ReadInt32();
 
-            this.cbGrpprlChpx = _reader.ReadByte();
-            this.cbGrpprlPapx = _reader.ReadByte();
+            this.cbGrpprlChpx = this._reader.ReadByte();
+            this.cbGrpprlPapx = this._reader.ReadByte();
 
-            this.ilvlRestartLim = _reader.ReadByte();
-            this.grfhic = _reader.ReadByte();
+            this.ilvlRestartLim = this._reader.ReadByte();
+            this.grfhic = this._reader.ReadByte();
             
             //parse the variable part
 
             //read the group of papx sprms
             //this papx has no istd, so use PX to parse it
-            var px = new PropertyExceptions(_reader.ReadBytes(this.cbGrpprlPapx));
+            var px = new PropertyExceptions(this._reader.ReadBytes(this.cbGrpprlPapx));
             this.grpprlPapx = new ParagraphPropertyExceptions
             {
                 grpprl = px.grpprl
             };
 
             //read the group of chpx sprms
-            this.grpprlChpx = new CharacterPropertyExceptions(_reader.ReadBytes(this.cbGrpprlChpx));
+            this.grpprlChpx = new CharacterPropertyExceptions(this._reader.ReadBytes(this.cbGrpprlChpx));
 
             //read the number text
-            var strLen = _reader.ReadInt16();
-            this.xst = Encoding.Unicode.GetString(_reader.ReadBytes(strLen * 2));
+            var strLen = this._reader.ReadInt16();
+            this.xst = Encoding.Unicode.GetString(this._reader.ReadBytes(strLen * 2));
 
-            long endPos = _reader.BaseStream.Position;
-            _reader.BaseStream.Seek(startPos, System.IO.SeekOrigin.Begin);
-            _rawBytes = _reader.ReadBytes((int)(endPos - startPos));
+            long endPos = this._reader.BaseStream.Position;
+            this._reader.BaseStream.Seek(startPos, System.IO.SeekOrigin.Begin);
+            this._rawBytes = this._reader.ReadBytes((int)(endPos - startPos));
         }
     }
 }

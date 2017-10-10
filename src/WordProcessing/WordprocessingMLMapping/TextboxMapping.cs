@@ -14,48 +14,48 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             : base(ctx, targetpart, writer)
         {
             TextboxCount++;
-            _textboxIndex = textboxIndex;
+            this._textboxIndex = textboxIndex;
         }
 
         public TextboxMapping(ConversionContext ctx, ContentPart targetpart, XmlWriter writer)
             : base(ctx, targetpart, writer)
         {
             TextboxCount++;
-            _textboxIndex = TextboxCount - 1;
+            this._textboxIndex = TextboxCount - 1;
         }
 
         public override void Apply(WordDocument doc)
         {
-            _doc = doc;
+            this._doc = doc;
 
-            _writer.WriteStartElement("v", "textbox", OpenXmlNamespaces.VectorML);
-            _writer.WriteStartElement("w", "txbxContent", OpenXmlNamespaces.WordprocessingML);
+            this._writer.WriteStartElement("v", "textbox", OpenXmlNamespaces.VectorML);
+            this._writer.WriteStartElement("w", "txbxContent", OpenXmlNamespaces.WordprocessingML);
 
             var cp = 0;
             var cpEnd = 0;
             BreakDescriptor bkd = null;
             int txtbxSubdocStart = doc.FIB.ccpText + doc.FIB.ccpFtn + doc.FIB.ccpHdr + doc.FIB.ccpAtn + doc.FIB.ccpEdn;
 
-            if(_targetPart.GetType() == typeof(MainDocumentPart))
+            if(this._targetPart.GetType() == typeof(MainDocumentPart))
             {
-                cp = txtbxSubdocStart + doc.TextboxBreakPlex.CharacterPositions[_textboxIndex];
-                cpEnd = txtbxSubdocStart + doc.TextboxBreakPlex.CharacterPositions[_textboxIndex + 1];
-                bkd = (BreakDescriptor)doc.TextboxBreakPlex.Elements[_textboxIndex];
+                cp = txtbxSubdocStart + doc.TextboxBreakPlex.CharacterPositions[this._textboxIndex];
+                cpEnd = txtbxSubdocStart + doc.TextboxBreakPlex.CharacterPositions[this._textboxIndex + 1];
+                bkd = (BreakDescriptor)doc.TextboxBreakPlex.Elements[this._textboxIndex];
             }
-            if (_targetPart.GetType() == typeof(HeaderPart) || _targetPart.GetType() == typeof(FooterPart))
+            if (this._targetPart.GetType() == typeof(HeaderPart) || this._targetPart.GetType() == typeof(FooterPart))
             {
                 txtbxSubdocStart += doc.FIB.ccpTxbx;
-                cp = txtbxSubdocStart + doc.TextboxBreakPlexHeader.CharacterPositions[_textboxIndex];
-                cpEnd = txtbxSubdocStart + doc.TextboxBreakPlexHeader.CharacterPositions[_textboxIndex + 1];
-                bkd = (BreakDescriptor)doc.TextboxBreakPlexHeader.Elements[_textboxIndex];
+                cp = txtbxSubdocStart + doc.TextboxBreakPlexHeader.CharacterPositions[this._textboxIndex];
+                cpEnd = txtbxSubdocStart + doc.TextboxBreakPlexHeader.CharacterPositions[this._textboxIndex + 1];
+                bkd = (BreakDescriptor)doc.TextboxBreakPlexHeader.Elements[this._textboxIndex];
             }
 
             //convert the textbox text
-            _lastValidPapx = _doc.AllPapxFkps[0].grppapx[0];
+            this._lastValidPapx = this._doc.AllPapxFkps[0].grppapx[0];
 
             while (cp < cpEnd)
             {
-                int fc = _doc.PieceTable.FileCharacterPositions[cp];
+                int fc = this._doc.PieceTable.FileCharacterPositions[cp];
                 var papx = findValidPapx(fc);
                 var tai = new TableInfo(papx);
 
@@ -71,10 +71,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 }
             }
 
-            _writer.WriteEndElement();
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndElement();
 
-            _writer.Flush();
+            this._writer.Flush();
         }
     }
 }

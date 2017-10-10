@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         OutputHandler _miniStream = new OutputHandler(new MemoryStream());
         internal OutputHandler MiniStream
         {
-            get { return _miniStream; }
+            get { return this._miniStream; }
         }
 
 
@@ -51,9 +51,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="context">the current context</param>
         internal RootDirectoryEntry(StructuredStorageContext context)
             : base("Root Entry", context)
-        {            
-            Type = DirectoryEntryType.STGTY_ROOT;
-            Sid = 0x0;
+        {
+            this.Type = DirectoryEntryType.STGTY_ROOT;
+            this.Sid = 0x0;
         }
 
 
@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         internal override void writeReferencedStream()
         {
-            var virtualMiniStream = new VirtualStream(_miniStream.BaseStream, Context.Fat, Context.Header.SectorSize, Context.TempOutputStream);
+            var virtualMiniStream = new VirtualStream(this._miniStream.BaseStream, this.Context.Fat, this.Context.Header.SectorSize, this.Context.TempOutputStream);
             virtualMiniStream.write();
             this.StartSector = virtualMiniStream.StartSector;
             this.SizeOfStream = virtualMiniStream.Length;

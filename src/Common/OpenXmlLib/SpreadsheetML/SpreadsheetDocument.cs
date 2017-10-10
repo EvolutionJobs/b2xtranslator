@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML
                 //    workBookPart = new WorkbookPart(this, WordprocessingMLContentTypes.MainDocumentMacroTemplate);
                 //    break;
             }
-            _documentType = type;
+            this._documentType = type;
             this.AddPart(this.workBookPart);
         }
 
@@ -74,8 +74,8 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML
 
         public OpenXmlPackage.DocumentType DocumentType
         {
-            get { return _documentType; }
-            set { _documentType = value; }
+            get { return this._documentType; }
+            set { this._documentType = value; }
         }
 
         /// <summary>

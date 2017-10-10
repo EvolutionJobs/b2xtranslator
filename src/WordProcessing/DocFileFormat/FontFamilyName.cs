@@ -91,10 +91,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
         public FontFamilyName(VirtualStreamReader reader, int length) : base(reader, length)
         {
-            long startPos = _reader.BaseStream.Position;
+            long startPos = this._reader.BaseStream.Position;
 
             //FFID
-            int ffid = (int)_reader.ReadByte();
+            int ffid = (int)this._reader.ReadByte();
 
             int req = ffid;
             req = req << 6;
@@ -108,40 +108,40 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             family = family >> 4;
             this.ff = (byte)family;
 
-            this.wWeight = _reader.ReadInt16();
+            this.wWeight = this._reader.ReadInt16();
 
-            this.chs = _reader.ReadByte();
+            this.chs = this._reader.ReadByte();
 
             //skip byte 5
-            _reader.ReadByte();
+            this._reader.ReadByte();
 
             //read the 10 bytes panose
-            this.panose = _reader.ReadBytes(10);
+            this.panose = this._reader.ReadBytes(10);
 
             //read the 24 bytes FontSignature
             this.fs = new FontSignature
             {
-                UnicodeSubsetBitfield0 = _reader.ReadUInt32(),
-                UnicodeSubsetBitfield1 = _reader.ReadUInt32(),
-                UnicodeSubsetBitfield2 = _reader.ReadUInt32(),
-                UnicodeSubsetBitfield3 = _reader.ReadUInt32(),
-                CodePageBitfield0 = _reader.ReadUInt32(),
-                CodePageBitfield1 = _reader.ReadUInt32()
+                UnicodeSubsetBitfield0 = this._reader.ReadUInt32(),
+                UnicodeSubsetBitfield1 = this._reader.ReadUInt32(),
+                UnicodeSubsetBitfield2 = this._reader.ReadUInt32(),
+                UnicodeSubsetBitfield3 = this._reader.ReadUInt32(),
+                CodePageBitfield0 = this._reader.ReadUInt32(),
+                CodePageBitfield1 = this._reader.ReadUInt32()
             };
 
             //read the next \0 terminated string
             long strStart = reader.BaseStream.Position;
-            long strEnd = searchTerminationZero(_reader);
-            this.xszFtn = Encoding.Unicode.GetString(_reader.ReadBytes((int)(strEnd - strStart)));
+            long strEnd = searchTerminationZero(this._reader);
+            this.xszFtn = Encoding.Unicode.GetString(this._reader.ReadBytes((int)(strEnd - strStart)));
             this.xszFtn = this.xszFtn.Replace("\0", "");
 
-            long readBytes = _reader.BaseStream.Position - startPos;
-            if(readBytes < _length)
+            long readBytes = this._reader.BaseStream.Position - startPos;
+            if(readBytes < this._length)
             {
                 //read the next \0 terminated string
                 strStart = reader.BaseStream.Position;
-                strEnd = searchTerminationZero(_reader);
-                this.xszAlt = Encoding.Unicode.GetString(_reader.ReadBytes((int)(strEnd - strStart)));
+                strEnd = searchTerminationZero(this._reader);
+                this.xszAlt = Encoding.Unicode.GetString(this._reader.ReadBytes((int)(strEnd - strStart)));
                 this.xszAlt = this.xszAlt.Replace("\0", "");
             }
         }

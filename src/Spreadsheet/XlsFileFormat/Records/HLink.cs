@@ -65,11 +65,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.colFirst = this.Reader.ReadUInt16();
             this.colLast = this.Reader.ReadUInt16();
 
-            this.hlinkClsid = new byte[16]; 
+            this.hlinkClsid = new byte[16];
 
             // read 16 bytes hlinkClsid
-            hlinkClsid = this.Reader.ReadBytes(16);
-            streamVersion = this.Reader.ReadUInt32();
+            this.hlinkClsid = this.Reader.ReadBytes(16);
+            this.streamVersion = this.Reader.ReadUInt32();
 
             var buffer = this.Reader.ReadUInt32();
             bool hlstmfHasMoniker = Utils.BitmaskToBool(buffer, 0x01);

@@ -10,7 +10,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public Dictionary<string, string> Layouts = new Dictionary<string, string>();
         public MainMaster(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
-                foreach (var rec in Children)
+                foreach (var rec in this.Children)
                 {
                     if (rec is RoundTripContentMasterInfo12)
                     {
@@ -20,7 +20,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                         if (info.XmlDocumentElement.Attributes["type"] != null)
                         {
                             string title = info.XmlDocumentElement.Attributes["type"].InnerText;
-                            Layouts.Add(title, xml);
+                        this.Layouts.Add(title, xml);
                         }
                     }           
                 }

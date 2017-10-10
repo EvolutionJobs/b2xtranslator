@@ -22,15 +22,15 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public LanguageIdMapping(XmlWriter writer, LanguageType type)
             : base(writer)
         {
-            _type = type;
+            this._type = type;
         }
 
         public LanguageIdMapping(XmlElement parentElement, LanguageType type)
             : base(null)
         {
-            _nodeFactory = parentElement.OwnerDocument;
-            _parent = parentElement;
-            _type = type;
+            this._nodeFactory = parentElement.OwnerDocument;
+            this._parent = parentElement;
+            this._type = type;
         }
 
         public void Apply(LanguageId lid)
@@ -50,30 +50,30 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 }
 
                 XmlAttribute att;
-                switch (_type)
+                switch (this._type)
                 {
                     case LanguageType.Default:
-                        att = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                        att = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                         break;
                     case LanguageType.EastAsian:
-                        att = _nodeFactory.CreateAttribute("w", "eastAsia", OpenXmlNamespaces.WordprocessingML);
+                        att = this._nodeFactory.CreateAttribute("w", "eastAsia", OpenXmlNamespaces.WordprocessingML);
                         break;
                     case LanguageType.Complex:
-                        att = _nodeFactory.CreateAttribute("w", "bidi", OpenXmlNamespaces.WordprocessingML);
+                        att = this._nodeFactory.CreateAttribute("w", "bidi", OpenXmlNamespaces.WordprocessingML);
                         break;
                     default:
-                        att = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                        att = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                         break;
                 }
                 att.Value = langcode;
 
-                if (_writer != null)
+                if (this._writer != null)
                 {
-                    att.WriteTo(_writer);
+                    att.WriteTo(this._writer);
                 }
-                else if (_parent != null)
+                else if (this._parent != null)
                 {
-                    _parent.Attributes.Append(att);
+                    this._parent.Attributes.Append(att);
                 }
             }
         }

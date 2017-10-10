@@ -49,7 +49,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML
                     break;
             }
 
-            this.AddPart(_presentationPart);
+            this.AddPart(this._presentationPart);
         }
 
         public static PresentationDocument Create(string fileName, OpenXmlPackage.DocumentType type)
@@ -61,7 +61,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML
 
         public PresentationPart PresentationPart
         {
-            get { return _presentationPart; }
+            get { return this._presentationPart; }
         }
     }
 }

@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// <returns>Id of main master</returns>
         private uint GetMainMasterId(SlideAtom slideAtom)
         {
-            var masterSlide = _ctx.Ppt.FindMasterRecordById(slideAtom.MasterId);
+            var masterSlide = this._ctx.Ppt.FindMasterRecordById(slideAtom.MasterId);
             
             // Is our immediate master a title master?
             if (!(masterSlide is MainMaster))
@@ -73,7 +73,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             // Associate slide with slide layout
             var slideAtom = slide.FirstChildWithType<SlideAtom>();
             var mainMasterId = GetMainMasterId(slideAtom);
-            var layoutManager = _ctx.GetOrCreateLayoutManagerByMasterId(mainMasterId);
+            var layoutManager = this._ctx.GetOrCreateLayoutManagerByMasterId(mainMasterId);
 
             SlideLayoutPart layoutPart = null;
             var masterInfo = slide.FirstChildWithType<RoundTripContentMasterId12>();
@@ -91,7 +91,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             // Pre-PPT2007 SSlideLayoutAtom primitive SlideLayoutType layout
             else
             {
-                var m = (MainMaster)_ctx.Ppt.FindMasterRecordById(slideAtom.MasterId);
+                var m = (MainMaster)this._ctx.Ppt.FindMasterRecordById(slideAtom.MasterId);
                 if (m.Layouts.Count == 1 && slideAtom.Layout.Geom == SlideLayoutType.Blank)
                 {
                     foreach (string layout in m.Layouts.Values)
@@ -109,22 +109,22 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             this.targetPart.ReferencePart(layoutPart);
 
             // Start the document
-            _writer.WriteStartDocument();
-            _writer.WriteStartElement("p", "sld", OpenXmlNamespaces.PresentationML);
-                               
+            this._writer.WriteStartDocument();
+            this._writer.WriteStartElement("p", "sld", OpenXmlNamespaces.PresentationML);
+
             // Force declaration of these namespaces at document start
-            _writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
             // Force declaration of these namespaces at document start
-            _writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
+            this._writer.WriteAttributeString("xmlns", "r", null, OpenXmlNamespaces.Relationships);
 
 
             if (Tools.Utils.BitmaskToBool(slideAtom.Flags, 0x1 << 0) == false)
             {
-                _writer.WriteAttributeString("showMasterSp", "0");
+                this._writer.WriteAttributeString("showMasterSp", "0");
             }
 
             // TODO: Write slide data of master slide
-            _writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
+            this._writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
 
             var sc = slide.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<ShapeContainer>();
             if (sc != null)
@@ -150,52 +150,52 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                     if (!ignore)
                     {
-                        _writer.WriteStartElement("p", "bg", OpenXmlNamespaces.PresentationML);
-                        _writer.WriteStartElement("p", "bgPr", OpenXmlNamespaces.PresentationML);
+                        this._writer.WriteStartElement("p", "bg", OpenXmlNamespaces.PresentationML);
+                        this._writer.WriteStartElement("p", "bgPr", OpenXmlNamespaces.PresentationML);
                         var p = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
                         if (p.fUsefFilled & p.fFilled) //  so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillType))
                         {
-                            new FillMapping(_ctx, _writer, this).Apply(so);
+                            new FillMapping(this._ctx, this._writer, this).Apply(so);
                         }
-                        _writer.WriteElementString("a", "effectLst", OpenXmlNamespaces.DrawingML, "");
-                        _writer.WriteEndElement(); //p:bgPr
-                        _writer.WriteEndElement(); //p:bg
+                        this._writer.WriteElementString("a", "effectLst", OpenXmlNamespaces.DrawingML, "");
+                        this._writer.WriteEndElement(); //p:bgPr
+                        this._writer.WriteEndElement(); //p:bg
                     }
                 }                      
             }
-        
 
-            _writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
 
-            shapeTreeMapping = new ShapeTreeMapping(_ctx, _writer);
-            shapeTreeMapping.parentSlideMapping = this;
-            shapeTreeMapping.Apply(slide.FirstChildWithType<PPDrawing>());
+            this._writer.WriteStartElement("p", "spTree", OpenXmlNamespaces.PresentationML);
 
-            checkHeaderFooter(shapeTreeMapping);
-          
-            _writer.WriteEndElement(); //spTree
-            _writer.WriteEndElement(); //cSld
+            this.shapeTreeMapping = new ShapeTreeMapping(this._ctx, this._writer);
+            this.shapeTreeMapping.parentSlideMapping = this;
+            this.shapeTreeMapping.Apply(slide.FirstChildWithType<PPDrawing>());
+
+            checkHeaderFooter(this.shapeTreeMapping);
+
+            this._writer.WriteEndElement(); //spTree
+            this._writer.WriteEndElement(); //cSld
 
             // TODO: Write clrMapOvr
 
             if (slide.FirstChildWithType<SlideShowSlideInfoAtom>() != null)
             {
-                new SlideTransitionMapping(_ctx, _writer).Apply(slide.FirstChildWithType<SlideShowSlideInfoAtom>());
+                new SlideTransitionMapping(this._ctx, this._writer).Apply(slide.FirstChildWithType<SlideShowSlideInfoAtom>());
             }            
 
             if (slide.FirstChildWithType<ProgTags>() != null)
             if (slide.FirstChildWithType<ProgTags>().FirstChildWithType<ProgBinaryTag>() != null)
             if (slide.FirstChildWithType<ProgTags>().FirstChildWithType<ProgBinaryTag>().FirstChildWithType<ProgBinaryTagDataBlob>() != null)
             {
-                new AnimationMapping(_ctx, _writer).Apply(slide.FirstChildWithType<ProgTags>().FirstChildWithType<ProgBinaryTag>().FirstChildWithType<ProgBinaryTagDataBlob>(), this, shapeTreeMapping.animinfos, shapeTreeMapping);
+                new AnimationMapping(this._ctx, this._writer).Apply(slide.FirstChildWithType<ProgTags>().FirstChildWithType<ProgBinaryTag>().FirstChildWithType<ProgBinaryTagDataBlob>(), this, this.shapeTreeMapping.animinfos, this.shapeTreeMapping);
             }
-            
+
 
             // End the document
-            _writer.WriteEndElement(); //sld
-            _writer.WriteEndDocument();
+            this._writer.WriteEndElement(); //sld
+            this._writer.WriteEndDocument();
 
-            _writer.Flush();
+            this._writer.Flush();
         }
 
         private void InsertMasterStylePlaceholders(ShapeTreeMapping stm)
@@ -246,7 +246,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 {
                     case 0xf9e: //OutlineTextRefAtom
                         var otrAtom = (OutlineTextRefAtom)rec;
-                        var slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
+                        var slideListWithText = this._ctx.Ppt.DocumentRecord.RegularSlideListWithText;
 
                         var thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
                         thAtom = thAtoms[otrAtom.Index];
@@ -322,7 +322,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             bool slideNumber = false;
             bool date = false;
             //bool userDate = false;
-            if (!(_ctx.Ppt.DocumentRecord.FirstChildWithType<DocumentAtom>().OmitTitlePlace && this.Slide.FirstChildWithType<SlideAtom>().Layout.Geom == SlideLayoutType.TitleSlide))
+            if (!(this._ctx.Ppt.DocumentRecord.FirstChildWithType<DocumentAtom>().OmitTitlePlace && this.Slide.FirstChildWithType<SlideAtom>().Layout.Geom == SlideLayoutType.TitleSlide))
             foreach (var c in this._ctx.Ppt.DocumentRecord.AllChildrenWithType<SlideHeadersFootersContainer>())
             {
                 switch (c.Instance)

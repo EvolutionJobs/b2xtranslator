@@ -44,53 +44,53 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public ShadowMapping(ConversionContext ctx, XmlWriter writer)
             : base(writer)
         {
-            _ctx = ctx;
+            this._ctx = ctx;
         }
 
         private static int counter = 0;
         public void Apply(ShapeOptions pso)
         {
-            so = pso;
+            this.so = pso;
 
             counter++;
 
-            if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowType))
+            if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowType))
             {
-                switch (so.OptionsByID[ShapeOptions.PropertyId.shadowType].op)
+                switch (this.so.OptionsByID[ShapeOptions.PropertyId.shadowType].op)
                 {
                     case 0: //offset
                         writeOffset();
                         break;
                     case 1: //double
-                        _writer.WriteStartElement("a", "effectLst", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteStartElement("a", "prstShdw", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("prst", "shdw13");
-                        if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetX))
-                            if (so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op != 0)
+                        this._writer.WriteStartElement("a", "effectLst", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteStartElement("a", "prstShdw", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("prst", "shdw13");
+                        if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetX))
+                            if (this.so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op != 0)
                                 writeDistDir();
 
                         writeColor();
 
-                        _writer.WriteEndElement();
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
+                        this._writer.WriteEndElement();
                         break;
                     case 2: //rich
-                        //shadow offset and  a transformation
-                         _writer.WriteStartElement("a", "effectLst", OpenXmlNamespaces.DrawingML);
-                         _writer.WriteStartElement("a", "outerShdw", OpenXmlNamespaces.DrawingML);
+                            //shadow offset and  a transformation
+                        this._writer.WriteStartElement("a", "effectLst", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteStartElement("a", "outerShdw", OpenXmlNamespaces.DrawingML);
 
-                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetX))
-                             if (so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op != 0)
+                         if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetX))
+                             if (this.so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op != 0)
                                  writeDistDir();
-                         if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOriginX))
+                         if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOriginX))
                          {
-                             var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowOriginX].op);
+                             var bytes = BitConverter.GetBytes(this.so.OptionsByID[ShapeOptions.PropertyId.shadowOriginX].op);
                              int integral = BitConverter.ToInt16(bytes, 0);
                              uint fractional = BitConverter.ToUInt16(bytes, 2);
                              if (fractional == 0xffff) integral *= -1;
                              Decimal origX = integral; // +((decimal)fractional / (decimal)65536);
 
-                             bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowOriginY].op);
+                             bytes = BitConverter.GetBytes(this.so.OptionsByID[ShapeOptions.PropertyId.shadowOriginY].op);
                              integral = BitConverter.ToInt16(bytes, 0);
                              fractional = BitConverter.ToUInt16(bytes, 2);
                              if (fractional == 0xffff) integral *= -1;
@@ -100,11 +100,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                              {
                                  if (origY > 0)
                                  {
-                                     _writer.WriteAttributeString("algn", "tl");
+                                    this._writer.WriteAttributeString("algn", "tl");
                                  }
                                  else
                                  {
-                                     _writer.WriteAttributeString("algn", "b");
+                                    this._writer.WriteAttributeString("algn", "b");
                                  }
                              }
                              else
@@ -115,47 +115,47 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                  }
                                  else
                                  {
-                                     _writer.WriteAttributeString("algn", "br");
+                                    this._writer.WriteAttributeString("algn", "br");
                                  }
                              }
                          }
                          else
                          {
-                            _writer.WriteAttributeString("algn", "b");
+                            this._writer.WriteAttributeString("algn", "b");
                          }
 
                         
 
-                        if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleXToX))
+                        if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleXToX))
                         {
-                            var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowScaleXToX].op);
+                            var bytes = BitConverter.GetBytes(this.so.OptionsByID[ShapeOptions.PropertyId.shadowScaleXToX].op);
                             int integral = -1 * BitConverter.ToInt16(bytes, 0);
                             uint fractional = BitConverter.ToUInt16(bytes, 2);
                             if (fractional == 0xffff) integral *= -1;
                             var result = integral + ((decimal)fractional / (decimal)65536);
                             result = 1 - (result / 65536);
-                            _writer.WriteAttributeString("sx", Math.Floor(result * 100000).ToString());
+                            this._writer.WriteAttributeString("sx", Math.Floor(result * 100000).ToString());
                         }
-                        if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleXToY))
+                        if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleXToY))
                         {
-                            int scaleXY = Utils.EMUToMasterCoord((int)so.OptionsByID[ShapeOptions.PropertyId.shadowScaleXToY].op);
+                            int scaleXY = Utils.EMUToMasterCoord((int)this.so.OptionsByID[ShapeOptions.PropertyId.shadowScaleXToY].op);
                         }
-                        if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleYToX))
+                        if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleYToX))
                         {
-                            var scaleYX = (Decimal)(int)so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToX].op;
+                            var scaleYX = (Decimal)(int)this.so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToX].op;
                             //_writer.WriteAttributeString("kx", System.Math.Floor(scaleYX / 138790 * 100 * 60000).ToString()); //The 138790 comes from reverse engineering. I can't find a hint in the spec about how to convert this
                             if (scaleYX < 0)
                             {
-                                _writer.WriteAttributeString("kx", "-2453606");
+                                this._writer.WriteAttributeString("kx", "-2453606");
                             }
                             else
                             {
-                                _writer.WriteAttributeString("kx", "2453606");
+                                this._writer.WriteAttributeString("kx", "2453606");
                             }
                         }
-                        if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleYToY))
+                        if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleYToY))
                         {
-                            var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToY].op);
+                            var bytes = BitConverter.GetBytes(this.so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToY].op);
                             int integral = -1 * BitConverter.ToInt16(bytes, 0);
                             uint fractional = BitConverter.ToUInt16(bytes, 2);
                             if (fractional == 0xffff) integral *= -1;
@@ -170,7 +170,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             }
                             if (result == 0)
                             {
-                                if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleYToX))
+                                if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleYToX))
                                 {
                                     result = (Decimal)(-0.5);
                                 }
@@ -179,56 +179,56 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                     result = (Decimal)(-1);
                                 }
                             }
-                            _writer.WriteAttributeString("sy", Math.Floor(result * 100000).ToString());
+                            this._writer.WriteAttributeString("sy", Math.Floor(result * 100000).ToString());
                         }
                         else
                         {
-                            _writer.WriteAttributeString("sy","50000");
+                            this._writer.WriteAttributeString("sy","50000");
                         }
 
                         writeColor();
 
-                        _writer.WriteEndElement();
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
+                        this._writer.WriteEndElement();
                         break;
                     case 3: //shape
                         break;
                     case 4: //drawing
                         break;
                     case 5: //embossOrEngrave
-                        _writer.WriteStartElement("a", "effectLst", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteStartElement("a", "prstShdw", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteStartElement("a", "effectLst", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteStartElement("a", "prstShdw", OpenXmlNamespaces.DrawingML);
 
-                        if (so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op == 0x319c)
+                        if (this.so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op == 0x319c)
                         {
-                            _writer.WriteAttributeString("prst", "shdw17");
+                            this._writer.WriteAttributeString("prst", "shdw17");
                         }
                         else
                         {
-                            _writer.WriteAttributeString("prst", "shdw18");
+                            this._writer.WriteAttributeString("prst", "shdw18");
                         }
-                        if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetX))
-                            if (so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op != 0)
+                        if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetX))
+                            if (this.so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op != 0)
                                 writeDistDir();
 
-                        _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-                        string colorval = Utils.getRGBColorFromOfficeArtCOLORREF(so.OptionsByID[ShapeOptions.PropertyId.shadowColor].op, so.FirstAncestorWithType<Slide>(), so);
-                        _writer.WriteAttributeString("val", colorval);
-                        if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOpacity) && so.OptionsByID[ShapeOptions.PropertyId.shadowOpacity].op != 65536)
+                        this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+                        string colorval = Utils.getRGBColorFromOfficeArtCOLORREF(this.so.OptionsByID[ShapeOptions.PropertyId.shadowColor].op, this.so.FirstAncestorWithType<Slide>(), this.so);
+                        this._writer.WriteAttributeString("val", colorval);
+                        if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOpacity) && this.so.OptionsByID[ShapeOptions.PropertyId.shadowOpacity].op != 65536)
                         {
-                            _writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
-                            _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.shadowOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
-                            _writer.WriteEndElement();
+                            this._writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
+                            this._writer.WriteAttributeString("val", Math.Round(((decimal)this.so.OptionsByID[ShapeOptions.PropertyId.shadowOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
+                            this._writer.WriteEndElement();
                         }
-                        _writer.WriteElementString("a", "gamma", OpenXmlNamespaces.DrawingML, "");
-                        _writer.WriteStartElement("a", "shade", OpenXmlNamespaces.DrawingML);
-                        _writer.WriteAttributeString("val", "60000");
-                        _writer.WriteEndElement();
-                        _writer.WriteElementString("a", "invGamma", OpenXmlNamespaces.DrawingML, "");
-                        _writer.WriteEndElement();
+                        this._writer.WriteElementString("a", "gamma", OpenXmlNamespaces.DrawingML, "");
+                        this._writer.WriteStartElement("a", "shade", OpenXmlNamespaces.DrawingML);
+                        this._writer.WriteAttributeString("val", "60000");
+                        this._writer.WriteEndElement();
+                        this._writer.WriteElementString("a", "invGamma", OpenXmlNamespaces.DrawingML, "");
+                        this._writer.WriteEndElement();
 
-                        _writer.WriteEndElement();
-                        _writer.WriteEndElement();
+                        this._writer.WriteEndElement();
+                        this._writer.WriteEndElement();
                         break;
                 }
             }
@@ -243,36 +243,36 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void writeOffset()
         {
-            _writer.WriteStartElement("a", "effectLst", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "outerShdw", OpenXmlNamespaces.DrawingML);
-            writeDistDir();            
-            _writer.WriteAttributeString("algn", "ctr");
+            this._writer.WriteStartElement("a", "effectLst", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "outerShdw", OpenXmlNamespaces.DrawingML);
+            writeDistDir();
+            this._writer.WriteAttributeString("algn", "ctr");
             writeColor();
-            _writer.WriteEndElement();
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
 
         private void writeColor()
         {
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
             string colorval = "808080";
-            if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowColor)) colorval = Utils.getRGBColorFromOfficeArtCOLORREF(so.OptionsByID[ShapeOptions.PropertyId.shadowColor].op, so.FirstAncestorWithType<Slide>(), so);
-            _writer.WriteAttributeString("val", colorval);
-            if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOpacity) && so.OptionsByID[ShapeOptions.PropertyId.shadowOpacity].op != 65536)
+            if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowColor)) colorval = Utils.getRGBColorFromOfficeArtCOLORREF(this.so.OptionsByID[ShapeOptions.PropertyId.shadowColor].op, this.so.FirstAncestorWithType<Slide>(), this.so);
+            this._writer.WriteAttributeString("val", colorval);
+            if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOpacity) && this.so.OptionsByID[ShapeOptions.PropertyId.shadowOpacity].op != 65536)
             {
-                _writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
-                _writer.WriteAttributeString("val", Math.Round(((decimal)so.OptionsByID[ShapeOptions.PropertyId.shadowOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
-                _writer.WriteEndElement();
+                this._writer.WriteStartElement("a", "alpha", OpenXmlNamespaces.DrawingML);
+                this._writer.WriteAttributeString("val", Math.Round(((decimal)this.so.OptionsByID[ShapeOptions.PropertyId.shadowOpacity].op / 65536 * 100000)).ToString()); //we need the percentage of the opacity (65536 means 100%)
+                this._writer.WriteEndElement();
             }
-            _writer.WriteEndElement();
+            this._writer.WriteEndElement();
         }
 
         private void writeDistDir()
         {
             int distX = Utils.EMUToMasterCoord(0x6338);
             int distY = Utils.EMUToMasterCoord(0x6338);
-            if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetX)) distX = Utils.EMUToMasterCoord((int)so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op);
-            if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetY)) distY = Utils.EMUToMasterCoord((int)so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetY].op);
+            if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetX)) distX = Utils.EMUToMasterCoord((int)this.so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetX].op);
+            if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowOffsetY)) distY = Utils.EMUToMasterCoord((int)this.so.OptionsByID[ShapeOptions.PropertyId.shadowOffsetY].op);
             string dir = "18900000";
             if (distX < 0)
             {
@@ -308,8 +308,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             int dist = Utils.MasterCoordToEMU((int)System.Math.Round(System.Math.Sqrt(distX * distX + distY * distY)));
 
-            _writer.WriteAttributeString("dist", dist.ToString());
-            _writer.WriteAttributeString("dir", dir);
+            this._writer.WriteAttributeString("dist", dist.ToString());
+            this._writer.WriteAttributeString("dir", dir);
         }
                 
     }

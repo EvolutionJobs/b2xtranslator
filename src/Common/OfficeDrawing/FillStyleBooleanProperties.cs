@@ -21,21 +21,21 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         public FillStyleBooleanProperties(uint entryOperand)
         {
-            fNoFillHitTest = Utils.BitmaskToBool(entryOperand, 0x1);
-            fillUseRect = Utils.BitmaskToBool(entryOperand, 0x1 << 1);
-            fillShape = Utils.BitmaskToBool(entryOperand, 0x1 << 2);
-            fHitTestFill = Utils.BitmaskToBool(entryOperand, 0x1 << 3);
-            fFilled = Utils.BitmaskToBool(entryOperand, 0x1 << 4);
-            fUseShapeAnchor = Utils.BitmaskToBool(entryOperand, 0x1 << 5);
-            fRecolorFillAsPicture = Utils.BitmaskToBool(entryOperand, 0x1 << 6);
+            this.fNoFillHitTest = Utils.BitmaskToBool(entryOperand, 0x1);
+            this.fillUseRect = Utils.BitmaskToBool(entryOperand, 0x1 << 1);
+            this.fillShape = Utils.BitmaskToBool(entryOperand, 0x1 << 2);
+            this.fHitTestFill = Utils.BitmaskToBool(entryOperand, 0x1 << 3);
+            this.fFilled = Utils.BitmaskToBool(entryOperand, 0x1 << 4);
+            this.fUseShapeAnchor = Utils.BitmaskToBool(entryOperand, 0x1 << 5);
+            this.fRecolorFillAsPicture = Utils.BitmaskToBool(entryOperand, 0x1 << 6);
             // 0x1 << 7-15 is ununsed
-            fUsefNoFillHitTest = Utils.BitmaskToBool(entryOperand, 0x1 << 16);
-            fUsefillUseRect = Utils.BitmaskToBool(entryOperand, 0x1 << 17);
-            fUsefillShape = Utils.BitmaskToBool(entryOperand, 0x1 << 18);
-            fUseHitTestFill = Utils.BitmaskToBool(entryOperand, 0x1 << 19);
-            fUsefFilled = Utils.BitmaskToBool(entryOperand, 0x1 << 20);
-            fUsefUseShapeAnchor = Utils.BitmaskToBool(entryOperand, 0x1 << 21);
-            fUsefRecolorFillAsPicture = Utils.BitmaskToBool(entryOperand, 0x1 << 22);
+            this.fUsefNoFillHitTest = Utils.BitmaskToBool(entryOperand, 0x1 << 16);
+            this.fUsefillUseRect = Utils.BitmaskToBool(entryOperand, 0x1 << 17);
+            this.fUsefillShape = Utils.BitmaskToBool(entryOperand, 0x1 << 18);
+            this.fUseHitTestFill = Utils.BitmaskToBool(entryOperand, 0x1 << 19);
+            this.fUsefFilled = Utils.BitmaskToBool(entryOperand, 0x1 << 20);
+            this.fUsefUseShapeAnchor = Utils.BitmaskToBool(entryOperand, 0x1 << 21);
+            this.fUsefRecolorFillAsPicture = Utils.BitmaskToBool(entryOperand, 0x1 << 22);
 
         }
     }

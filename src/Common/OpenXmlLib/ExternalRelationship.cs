@@ -36,39 +36,39 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
         
         public ExternalRelationship(string id, string relationshipType, Uri targetUri)
         {
-            _id = id;
-            _relationshipType = relationshipType;
-            _target = targetUri.ToString();
+            this._id = id;
+            this._relationshipType = relationshipType;
+            this._target = targetUri.ToString();
         }
 
         public ExternalRelationship(string id, string relationshipType, string target)
         {
-            _id = id;
-            _relationshipType = relationshipType;
-            _target = target;
+            this._id = id;
+            this._relationshipType = relationshipType;
+            this._target = target;
         }
 
         public string Id
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return this._id; }
+            set { this._id = value; }
         }
         
         public string RelationshipType
         {
-            get { return _relationshipType; }
-            set { _relationshipType = value; }
+            get { return this._relationshipType; }
+            set { this._relationshipType = value; }
         }
 
         public string Target
         {
-            get { return _target; }
-            set { _target = value; }
+            get { return this._target; }
+            set { this._target = value; }
         }
 
         public Uri TargetUri
         {
-            get { return new Uri(_target, UriKind.RelativeOrAbsolute); }
+            get { return new Uri(this._target, UriKind.RelativeOrAbsolute); }
         }
     }
 }

@@ -77,16 +77,16 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
         protected void writeValueElement(string localName, string value)
         {
-            _writer.WriteStartElement(Dml.Chart.Prefix, localName, Dml.Chart.Ns);
-            _writer.WriteAttributeString(Dml.BaseTypes.AttrVal, value);
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement(Dml.Chart.Prefix, localName, Dml.Chart.Ns);
+            this._writer.WriteAttributeString(Dml.BaseTypes.AttrVal, value);
+            this._writer.WriteEndElement();
         }
 
         protected void writeValueElement(string prefix, string localName, string ns, string value)
         {
-            _writer.WriteStartElement(prefix, localName, ns);
-            _writer.WriteAttributeString(Dml.BaseTypes.AttrVal, value);
-            _writer.WriteEndElement();
+            this._writer.WriteStartElement(prefix, localName, ns);
+            this._writer.WriteAttributeString(Dml.BaseTypes.AttrVal, value);
+            this._writer.WriteEndElement();
         }
     }
 }

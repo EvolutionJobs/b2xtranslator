@@ -42,15 +42,15 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public ColorSchemeMapping(ConversionContext ctx, XmlWriter writer)
             : base(writer)
         {
-            _ctx = ctx;
+            this._ctx = ctx;
         }
 
         public void Apply(List<ColorSchemeAtom> schemes)
         {
-            _writer.WriteStartElement("a", "theme", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("name", "dummyTheme");
+            this._writer.WriteStartElement("a", "theme", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("name", "dummyTheme");
 
-            _writer.WriteStartElement("a", "themeElements", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "themeElements", OpenXmlNamespaces.DrawingML);
             var s = schemes[schemes.Count-1];
             writeScheme(s);
 
@@ -60,22 +60,22 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             //write fmtScheme
             writeFmtScheme();
 
-            _writer.WriteEndElement(); // themeElements
+            this._writer.WriteEndElement(); // themeElements
 
             if (schemes.Count > 1)
             {
-                _writer.WriteStartElement("a", "extraClrSchemeLst", OpenXmlNamespaces.DrawingML);
+                this._writer.WriteStartElement("a", "extraClrSchemeLst", OpenXmlNamespaces.DrawingML);
                 foreach (var scheme in schemes)
                 {
-                    _writer.WriteStartElement("a","extraClrScheme", OpenXmlNamespaces.DrawingML);
+                    this._writer.WriteStartElement("a","extraClrScheme", OpenXmlNamespaces.DrawingML);
                     writeScheme(scheme);
-                    _writer.WriteEndElement(); // extraClrScheme
+                    this._writer.WriteEndElement(); // extraClrScheme
                 }
-                _writer.WriteEndElement(); // extraClrSchemeLst
+                this._writer.WriteEndElement(); // extraClrSchemeLst
             }
 
 
-            _writer.WriteEndElement(); // theme
+            this._writer.WriteEndElement(); // theme
             
         }
 
@@ -85,7 +85,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             var xmlDoc = Utils.GetDefaultDocument("theme");
             var l = xmlDoc.GetElementsByTagName("fmtScheme", OpenXmlNamespaces.DrawingML);
 
-            l.Item(0).WriteTo(_writer);
+            l.Item(0).WriteTo(this._writer);
 
             //_writer.WriteStartElement("a", "fmtScheme", OpenXmlNamespaces.DrawingML);
             //_writer.WriteAttributeString("name", "dummyFmtScheme");
@@ -105,117 +105,117 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             //TODO: real implementation instead of default 
 
-            _writer.WriteStartElement("a", "fontScheme", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("name", "dummyFontScheme");
+            this._writer.WriteStartElement("a", "fontScheme", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("name", "dummyFontScheme");
 
-            _writer.WriteStartElement("a", "majorFont", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("typeface", "Arial Black");
-            _writer.WriteEndElement(); // latin
-            _writer.WriteStartElement("a", "ea", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("typeface", "");
-            _writer.WriteEndElement(); // ea
-            _writer.WriteStartElement("a", "cs", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("typeface", "");
-            _writer.WriteEndElement(); // cs
-            _writer.WriteEndElement(); // majorFont
+            this._writer.WriteStartElement("a", "majorFont", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("typeface", "Arial Black");
+            this._writer.WriteEndElement(); // latin
+            this._writer.WriteStartElement("a", "ea", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("typeface", "");
+            this._writer.WriteEndElement(); // ea
+            this._writer.WriteStartElement("a", "cs", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("typeface", "");
+            this._writer.WriteEndElement(); // cs
+            this._writer.WriteEndElement(); // majorFont
 
-            _writer.WriteStartElement("a", "minorFont", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("typeface", "Arial");
-            _writer.WriteEndElement(); // latin
-            _writer.WriteStartElement("a", "ea", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("typeface", "");
-            _writer.WriteEndElement(); // ea
-            _writer.WriteStartElement("a", "cs", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("typeface", "");
-            _writer.WriteEndElement(); // cs
-            _writer.WriteEndElement(); // minorFont
+            this._writer.WriteStartElement("a", "minorFont", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("typeface", "Arial");
+            this._writer.WriteEndElement(); // latin
+            this._writer.WriteStartElement("a", "ea", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("typeface", "");
+            this._writer.WriteEndElement(); // ea
+            this._writer.WriteStartElement("a", "cs", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("typeface", "");
+            this._writer.WriteEndElement(); // cs
+            this._writer.WriteEndElement(); // minorFont
 
-            _writer.WriteEndElement(); // fontScheme
+            this._writer.WriteEndElement(); // fontScheme
         }
 
         private void writeScheme(ColorSchemeAtom scheme)
         {
             //TODO: verify the mappings; at leat accent4 - 6 are wrong
 
-            _writer.WriteStartElement("a", "clrScheme", OpenXmlNamespaces.DrawingML);
-            
-            _writer.WriteAttributeString("name", "dummyScheme");
+            this._writer.WriteStartElement("a", "clrScheme", OpenXmlNamespaces.DrawingML);
 
-            _writer.WriteStartElement("a", "dk1", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.TextAndLines, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // dk1
+            this._writer.WriteAttributeString("name", "dummyScheme");
 
-            _writer.WriteStartElement("a", "lt1", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.Background, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // lt1
+            this._writer.WriteStartElement("a", "dk1", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.TextAndLines, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // dk1
 
-            _writer.WriteStartElement("a", "dk2", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.TitleText, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // dk2
+            this._writer.WriteStartElement("a", "lt1", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.Background, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // lt1
 
-            _writer.WriteStartElement("a", "lt2", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.Shadows, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // lt2
+            this._writer.WriteStartElement("a", "dk2", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.TitleText, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // dk2
 
-            _writer.WriteStartElement("a", "accent1", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.Fills, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // accent1
+            this._writer.WriteStartElement("a", "lt2", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.Shadows, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // lt2
 
-            _writer.WriteStartElement("a", "accent2", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.Accent, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // accent2
+            this._writer.WriteStartElement("a", "accent1", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.Fills, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // accent1
 
-            _writer.WriteStartElement("a", "accent3", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.Background, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // accent3
+            this._writer.WriteStartElement("a", "accent2", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.Accent, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // accent2
 
-            _writer.WriteStartElement("a", "accent4", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.Accent, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // accent4
+            this._writer.WriteStartElement("a", "accent3", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.Background, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // accent3
 
-            _writer.WriteStartElement("a", "accent5", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.Accent, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // accent5
+            this._writer.WriteStartElement("a", "accent4", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.Accent, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // accent4
 
-            _writer.WriteStartElement("a", "accent6", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.Accent, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // accent6
+            this._writer.WriteStartElement("a", "accent5", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.Accent, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // accent5
 
-            _writer.WriteStartElement("a", "hlink", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.AccentAndHyperlink, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // hlink
+            this._writer.WriteStartElement("a", "accent6", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.Accent, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // accent6
 
-            _writer.WriteStartElement("a", "folHlink", OpenXmlNamespaces.DrawingML);
-            _writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
-            _writer.WriteAttributeString("val", new RGBColor(scheme.AccentAndFollowedHyperlink, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
-            _writer.WriteEndElement(); // srgbClr
-            _writer.WriteEndElement(); // folHlink
+            this._writer.WriteStartElement("a", "hlink", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.AccentAndHyperlink, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // hlink
 
-            _writer.WriteEndElement(); // clrScheme
+            this._writer.WriteStartElement("a", "folHlink", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteStartElement("a", "srgbClr", OpenXmlNamespaces.DrawingML);
+            this._writer.WriteAttributeString("val", new RGBColor(scheme.AccentAndFollowedHyperlink, RGBColor.ByteOrder.RedFirst).SixDigitHexCode);
+            this._writer.WriteEndElement(); // srgbClr
+            this._writer.WriteEndElement(); // folHlink
+
+            this._writer.WriteEndElement(); // clrScheme
 
 
         }

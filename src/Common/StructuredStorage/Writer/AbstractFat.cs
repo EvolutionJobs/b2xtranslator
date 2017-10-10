@@ -48,7 +48,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         protected AbstractFat(StructuredStorageContext context)
         {
-            _context = context;
+            this._context = context;
         }
 
 
@@ -64,16 +64,16 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
                 return SectorId.FREESECT;
             }
 
-            var startSector = _currentEntry;
+            var startSector = this._currentEntry;
 
             for (int i = 0; i < entryCount - 1; i++)
             {
-                _currentEntry++;
-                _entries.Add(_currentEntry);
+                this._currentEntry++;
+                this._entries.Add(this._currentEntry);
             }
 
-            _currentEntry++;
-            _entries.Add(SectorId.ENDOFCHAIN);
+            this._currentEntry++;
+            this._entries.Add(SectorId.ENDOFCHAIN);
 
             return startSector;
         }

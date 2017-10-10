@@ -39,9 +39,9 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         public OpenXmlPart(OpenXmlPartContainer parent, int partIndex)
         {
-            _parent = parent;
-            _partIndex = partIndex;
-            _stream = new MemoryStream();
+            this._parent = parent;
+            this._partIndex = partIndex;
+            this._stream = new MemoryStream();
 
             var xws = new XmlWriterSettings
             {
@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
                 ConformanceLevel = ConformanceLevel.Document
             };
 
-            _xmlWriter = XmlWriter.Create(_stream, xws);
+            this._xmlWriter = XmlWriter.Create(this._stream, xws);
         }
 
         public override string TargetExt { get { return ".xml"; } }
@@ -63,32 +63,32 @@ namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 
         public Stream GetStream()
         {
-            _stream.Seek(0, SeekOrigin.Begin);
-            return _stream;
+            this._stream.Seek(0, SeekOrigin.Begin);
+            return this._stream;
         }
 
         public XmlWriter XmlWriter
         {
             get
             {
-                return _xmlWriter;
+                return this._xmlWriter;
             }
         }
 
         public int RelId
         {
-            get { return _relId; }
-            set { _relId = value; }
+            get { return this._relId; }
+            set { this._relId = value; }
         }
 
         public string RelIdToString
         {
-            get { return REL_PREFIX + _relId.ToString(); }
+            get { return REL_PREFIX + this._relId.ToString(); }
         }
 
         protected int PartIndex
         {
-            get { return _partIndex; }
+            get { return this._partIndex; }
         }
 
         public OpenXmlPackage Package

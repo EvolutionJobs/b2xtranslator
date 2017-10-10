@@ -52,11 +52,11 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
 
         public FontData()
         {
-            isBold = false;
-            isItalic = false;
-            isStrike = false;
-            isOutline = false;
-            isShadow = false; 
+            this.isBold = false;
+            this.isItalic = false;
+            this.isStrike = false;
+            this.isOutline = false;
+            this.isShadow = false; 
         }
     }
 }

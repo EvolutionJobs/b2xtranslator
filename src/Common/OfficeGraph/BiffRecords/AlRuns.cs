@@ -55,15 +55,15 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            cRuns = reader.ReadUInt16();
+            this.cRuns = reader.ReadUInt16();
 
-            if (cRuns > 0)
+            if (this.cRuns > 0)
             {
-                rgRuns = new FormatRun[cRuns];
+                this.rgRuns = new FormatRun[this.cRuns];
 
-                for (int i = 0; i < cRuns; i++)
+                for (int i = 0; i < this.cRuns; i++)
                 {
-                    rgRuns[i] = new FormatRun(reader);
+                    this.rgRuns[i] = new FormatRun(reader);
                 }
             }
 
