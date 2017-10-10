@@ -4,8 +4,6 @@
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Spreadsheet\SpreadsheetMLMapping\SpreadsheetMLMapping.csproj" />
-    <ProjectReference Include="..\Shell\Shell.csproj" />
     <ProjectReference Include="..\ZipUtils\ZipUtils.csproj" />
   </ItemGroup>
 </Project>

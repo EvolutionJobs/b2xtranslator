@@ -4,6 +4,8 @@
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonTranslatorLib\CommonTranslatorLib.csproj" />
     <ProjectReference Include="..\Tools\Tools.csproj" />
+    <ProjectReference Include="..\ZipUtils\ZipUtils.csproj" />
   </ItemGroup>
 </Project>

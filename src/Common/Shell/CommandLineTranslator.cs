@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.Shell
         {
             bool backup = TraceLogger.EnableTimeStamp;
             TraceLogger.EnableTimeStamp = false;
-            StringBuilder welcome = new StringBuilder();
+            var welcome = new StringBuilder();
             welcome.Append("Welcome to ");
             welcome.Append(toolname);
             welcome.Append(" (r");
@@ -74,7 +74,7 @@ namespace DIaLOGIKa.b2xtranslator.Shell
         /// </summary>
         public static void PrintUsage(string toolname)
         {
-            StringBuilder usage = new StringBuilder();
+            var usage = new StringBuilder();
             usage.AppendLine("Usage: " + toolname + " [-c | inputfile] [-o outputfile] [-v level] [-?]");
             usage.AppendLine("-o <outputfile>  change output filename");
             usage.AppendLine("-v <level>     set trace level, where <level> is one of the following:");
@@ -99,39 +99,41 @@ namespace DIaLOGIKa.b2xtranslator.Shell
 
             try
             {
-                Assembly a = Assembly.GetEntryAssembly();
-                Stream s = a.GetManifestResourceStream(revisionResource);
-                StreamReader reader = new StreamReader(s);
-                rev = Int32.Parse(reader.ReadLine());
-                s.Close();
+                var a = Assembly.GetEntryAssembly();
+                using (var s = a.GetManifestResourceStream(revisionResource))
+                using (var reader = new StreamReader(s))
+                {
+                    rev = int.Parse(reader.ReadLine());
+                    s.Close();
+                }
             }
             catch (Exception) { }
 
             return rev;
         }
 
-        public static RegistryKey GetContextMenuKey(string triggerExtension, string contextMenuText)
-        {
-            RegistryKey result = null;
-            try
-            {
-                string defaultWord = (string)Registry.ClassesRoot.OpenSubKey(triggerExtension).GetValue("");
-                result = Registry.ClassesRoot.CreateSubKey(defaultWord).CreateSubKey("shell").CreateSubKey(contextMenuText);
-            }
-            catch (Exception)
-            {
-            }
-            return result;
-        }
+        //public static RegistryKey GetContextMenuKey(string triggerExtension, string contextMenuText)
+        //{
+        //    RegistryKey result = null;
+        //    try
+        //    {
+        //        string defaultWord = (string)Registry.ClassesRoot.OpenSubKey(triggerExtension).GetValue("");
+        //        result = Registry.ClassesRoot.CreateSubKey(defaultWord).CreateSubKey("shell").CreateSubKey(contextMenuText);
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //    return result;
+        //}
 
-        public static void RegisterForContextMenu(RegistryKey entryKey)
-        {
-            if (entryKey != null)
-            {
-                RegistryKey convertCommand = entryKey.CreateSubKey("Command");
-                convertCommand.SetValue("", String.Format("\"{0}\" \"%1\"", Assembly.GetCallingAssembly().Location));
-            }
-        }
+        //public static void RegisterForContextMenu(RegistryKey entryKey)
+        //{
+        //    if (entryKey != null)
+        //    {
+        //        RegistryKey convertCommand = entryKey.CreateSubKey("Command");
+        //        convertCommand.SetValue("", String.Format("\"{0}\" \"%1\"", Assembly.GetCallingAssembly().Location));
+        //    }
+        //}
 
         /// <summary>
         /// Parses the arguments of the tool
@@ -162,7 +164,7 @@ namespace DIaLOGIKa.b2xtranslator.Shell
                         //parse verbose level
                         string verbose = args[i + 1].ToLower();
                         int vLvl;
-                        if (Int32.TryParse(verbose, out vLvl))
+                        if (int.TryParse(verbose, out vLvl))
                         {
                             TraceLogger.LogLevel = (TraceLogger.LoggingLevel)vLvl;
                         }
