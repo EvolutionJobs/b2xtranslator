@@ -27,15 +27,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
 using DIaLOGIKa.b2xtranslator.Tools;
-using System.Reflection;
-using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 {
@@ -74,11 +71,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             _writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
 
-            ShapeContainer sc = this.Master.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<ShapeContainer>();
+            var sc = this.Master.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<ShapeContainer>();
             if (sc != null)
             {
-                Shape sh = sc.FirstChildWithType<Shape>();
-                ShapeOptions so = sc.FirstChildWithType<ShapeOptions>();
+                var sh = sc.FirstChildWithType<Shape>();
+                var so = sc.FirstChildWithType<ShapeOptions>();
                
                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillType))
                 {
@@ -128,7 +125,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteEndElement();
 
             // Write clrMap
-            ColorMappingAtom clrMap = this.Master.FirstChildWithType<ColorMappingAtom>();
+            var clrMap = this.Master.FirstChildWithType<ColorMappingAtom>();
             if (clrMap != null)
             {
                 // clrMap from ColorMappingAtom wrongly uses namespace DrawingML
@@ -148,7 +145,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
 
             // Write txStyles
-            RoundTripOArtTextStyles12 roundTripTxStyles = this.Master.FirstChildWithType<RoundTripOArtTextStyles12>();
+            var roundTripTxStyles = this.Master.FirstChildWithType<RoundTripOArtTextStyles12>();
             if (false & roundTripTxStyles != null)
             {
                 roundTripTxStyles.XmlDocumentElement.WriteTo(_writer);
@@ -169,10 +166,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             // even if it they have the same content.
             //
             // Otherwise PPT will complain about the structure of the file.
-            ThemePart themePart = _ctx.Pptx.PresentationPart.AddThemePart();
+            var themePart = _ctx.Pptx.PresentationPart.AddThemePart();
 
             XmlNode xmlDoc;
-            Theme theme = this.Master.FirstChildWithType<Theme>();
+            var theme = this.Master.FirstChildWithType<Theme>();
 
             if (theme != null)
             {
@@ -181,7 +178,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
             else
             {
-                List<ColorSchemeAtom> schemes = this.Master.AllChildrenWithType<ColorSchemeAtom>();
+                var schemes = this.Master.AllChildrenWithType<ColorSchemeAtom>();
                 if (schemes.Count > 0)
                 {
                     new ColorSchemeMapping(_ctx, themePart.XmlWriter).Apply(schemes);                    

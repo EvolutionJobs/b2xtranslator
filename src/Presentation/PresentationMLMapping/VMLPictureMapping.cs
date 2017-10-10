@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.PptFileFormat;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using System.IO;
 using System.Drawing;
 using DIaLOGIKa.b2xtranslator.Tools;
-using System.Globalization;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes;
 using System.Collections;
@@ -77,7 +73,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     style.Append("height:").Append(new EmuValue(Utils.MasterCoordToEMU(bounds.Height)).ToPoints()).Append("pt;");
                     _writer.WriteAttributeString("style", style.ToString());
 
-                    foreach (ShapeOptions.OptionEntry entry in options.OptionsByID.Values)
+                    foreach (var entry in options.OptionsByID.Values)
                     {
                         switch (entry.pid)
                         {
@@ -159,9 +155,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
 
                 imgPart.TargetDirectory = "..\\media";
-                Stream outStream = imgPart.GetStream();
+                var outStream = imgPart.GetStream();
 
-                Record mb = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                var mb = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
 
                 //write the blip
                 if (mb != null)
@@ -176,7 +172,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             size = metaBlip.m_ptSize;
 
                             //meta images can be compressed
-                            byte[] decompressed = metaBlip.Decrompress();
+                            var decompressed = metaBlip.Decrompress();
                             outStream.Write(decompressed, 0, decompressed.Length);
 
                             break;

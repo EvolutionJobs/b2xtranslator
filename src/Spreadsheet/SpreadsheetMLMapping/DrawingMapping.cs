@@ -33,7 +33,6 @@ using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
 using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
 using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures;
 using DIaLOGIKa.b2xtranslator.Tools;
 
@@ -230,7 +229,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     _writer.WriteAttributeString(Dml.GraphicalObject.AttrUri, Dml.Chart.Ns);
 
                     // create and convert chart part
-                    ChartPart chartPart = this._drawingsPart.AddChartPart();
+                    var chartPart = this._drawingsPart.AddChartPart();
                     var chartContext = new ChartContext(chartPart, chartSheetContentSequence, this._isChartsheet ? ChartContext.ChartLocation.Chartsheet : ChartContext.ChartLocation.Embedded);
                     chartSheetContentSequence.Convert(new ChartMapping(this._xlsContext, chartContext));
 

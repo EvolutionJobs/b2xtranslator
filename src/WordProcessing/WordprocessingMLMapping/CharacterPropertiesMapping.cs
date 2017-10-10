@@ -27,7 +27,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
@@ -84,13 +83,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //apend revision changes
             if (_revisionData.Type == RevisionData.RevisionType.Changed)
             {
-                XmlElement rPrChange = _nodeFactory.CreateElement("w", "rPrChange", OpenXmlNamespaces.WordprocessingML);
+                var rPrChange = _nodeFactory.CreateElement("w", "rPrChange", OpenXmlNamespaces.WordprocessingML);
 
                 //date
                 _revisionData.Dttm.Convert(new DateMapping(rPrChange));
 
                 //author
-                XmlAttribute author = _nodeFactory.CreateAttribute("w", "author", OpenXmlNamespaces.WordprocessingML);
+                var author = _nodeFactory.CreateAttribute("w", "author", OpenXmlNamespaces.WordprocessingML);
                 author.Value = _doc.RevisionAuthorTable.Strings[_revisionData.Isbt];
                 rPrChange.Attributes.Append(author);
 
@@ -109,13 +108,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         private void convertSprms(List<SinglePropertyModifier> sprms, XmlElement parent)
         {
-            XmlElement shd = _nodeFactory.CreateElement("w", "shd", OpenXmlNamespaces.WordprocessingML);
-            XmlElement rFonts = _nodeFactory.CreateElement("w", "rFonts", OpenXmlNamespaces.WordprocessingML);
-            XmlElement color = _nodeFactory.CreateElement("w", "color", OpenXmlNamespaces.WordprocessingML);
-            XmlAttribute colorVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
-            XmlElement lang = _nodeFactory.CreateElement("w", "lang", OpenXmlNamespaces.WordprocessingML);
+            var shd = _nodeFactory.CreateElement("w", "shd", OpenXmlNamespaces.WordprocessingML);
+            var rFonts = _nodeFactory.CreateElement("w", "rFonts", OpenXmlNamespaces.WordprocessingML);
+            var color = _nodeFactory.CreateElement("w", "color", OpenXmlNamespaces.WordprocessingML);
+            var colorVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+            var lang = _nodeFactory.CreateElement("w", "lang", OpenXmlNamespaces.WordprocessingML);
 
-            foreach (SinglePropertyModifier sprm in sprms)
+            foreach (var sprm in sprms)
             {
                 switch ((int)sprm.OpCode)
                 {
@@ -226,11 +225,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         break;
                     case 0x6870:
                         //R
-                        colorVal.Value = String.Format("{0:x2}", sprm.Arguments[0]);
+                        colorVal.Value = string.Format("{0:x2}", sprm.Arguments[0]);
                         //G
-                        colorVal.Value += String.Format("{0:x2}", sprm.Arguments[1]);
+                        colorVal.Value += string.Format("{0:x2}", sprm.Arguments[1]);
                         //B
-                        colorVal.Value += String.Format("{0:x2}", sprm.Arguments[2]);
+                        colorVal.Value += string.Format("{0:x2}", sprm.Arguments[2]);
                         break;
 
                     //highlightning
@@ -256,32 +255,32 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     
                     //font family
                     case 0x4A4F:
-                        XmlAttribute ascii = _nodeFactory.CreateAttribute("w", "ascii", OpenXmlNamespaces.WordprocessingML);
+                        var ascii = _nodeFactory.CreateAttribute("w", "ascii", OpenXmlNamespaces.WordprocessingML);
                         var ffn = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
                         ascii.Value = ffn.xszFtn;
                         rFonts.Attributes.Append(ascii);
                         break;
                    case 0x4A50:
-                       XmlAttribute eastAsia = _nodeFactory.CreateAttribute("w", "eastAsia", OpenXmlNamespaces.WordprocessingML);
+                       var eastAsia = _nodeFactory.CreateAttribute("w", "eastAsia", OpenXmlNamespaces.WordprocessingML);
                        var ffnAsia = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
                        eastAsia.Value = ffnAsia.xszFtn;
                        rFonts.Attributes.Append(eastAsia);
                        break;
                     case 0x4A51:
-                        XmlAttribute ansi = _nodeFactory.CreateAttribute("w", "hAnsi", OpenXmlNamespaces.WordprocessingML);
+                        var ansi = _nodeFactory.CreateAttribute("w", "hAnsi", OpenXmlNamespaces.WordprocessingML);
                         var ffnAnsi = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
                         ansi.Value = ffnAnsi.xszFtn;
                         rFonts.Attributes.Append(ansi);
                         break;
                     case (int)SinglePropertyModifier.OperationCode.sprmCIdctHint:
                         // it's complex script 
-                        XmlAttribute hint = _nodeFactory.CreateAttribute("w", "hint", OpenXmlNamespaces.WordprocessingML);
+                        var hint = _nodeFactory.CreateAttribute("w", "hint", OpenXmlNamespaces.WordprocessingML);
                         hint.Value = "cs";
                         rFonts.Attributes.Append(hint);
                         break;
                     case (int)SinglePropertyModifier.OperationCode.sprmCFtcBi:
                         // complex script font
-                        XmlAttribute cs = _nodeFactory.CreateAttribute("w", "cs", OpenXmlNamespaces.WordprocessingML);
+                        var cs = _nodeFactory.CreateAttribute("w", "cs", OpenXmlNamespaces.WordprocessingML);
                         var ffnCs = (FontFamilyName)_doc.FontTable.Data[System.BitConverter.ToUInt16(sprm.Arguments, 0)];
                         cs.Value = ffnCs.xszFtn;
                         rFonts.Attributes.Append(cs);
@@ -336,8 +335,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             byte flag = sprm.Arguments[0];
             if(flag != 128)
             {
-                XmlElement ele = _nodeFactory.CreateElement("w", elementName, OpenXmlNamespaces.WordprocessingML);
-                XmlAttribute val = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                var ele = _nodeFactory.CreateElement("w", elementName, OpenXmlNamespaces.WordprocessingML);
+                var val = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
 
                 if (unique)
                 {
@@ -383,7 +382,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     //don't use the id of the chpx or the papx, use the baseOn style
                     if (_styleChpx)
                     {
-                        StyleSheetDescription thisStyle = _doc.Styles.Styles[styleId];
+                        var thisStyle = _doc.Styles.Styles[styleId];
                         styleId = (ushort)thisStyle.istdBase;
                     }
 
@@ -416,7 +415,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             {
                 try
                 {
-                    CharacterPropertyExceptions baseChpx = styleSheet.Styles[istd].chpx;
+                    var baseChpx = styleSheet.Styles[istd].chpx;
                     if (baseChpx != null)
                     {
                         hierarchy.Add(baseChpx);
@@ -439,9 +438,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         private bool applyToggleHierachy(SinglePropertyModifier sprm)
         {
             bool ret = false;
-            foreach (CharacterPropertyExceptions ancientChpx in _hierarchy)
+            foreach (var ancientChpx in _hierarchy)
             {
-                foreach (SinglePropertyModifier ancientSprm in ancientChpx.grpprl)
+                foreach (var ancientSprm in ancientChpx.grpprl)
                 {
                     if (ancientSprm.OpCode == sprm.OpCode)
                     {

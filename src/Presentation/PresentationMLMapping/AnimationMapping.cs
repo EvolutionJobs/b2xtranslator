@@ -25,15 +25,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.Tools;
 using System.Drawing;
 
 namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
@@ -56,19 +53,19 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _parentMapping = parentMapping;
             _stm = stm;
             var animAtoms = new Dictionary<AnimationInfoAtom, int>();
-            foreach (AnimationInfoContainer container in animations.Keys)
+            foreach (var container in animations.Keys)
             {
-                AnimationInfoAtom anim = container.FirstChildWithType<AnimationInfoAtom>();
+                var anim = container.FirstChildWithType<AnimationInfoAtom>();
                 animAtoms.Add(anim, animations[container]);
             }
 
-             ExtTimeNodeContainer c1 = blob.FirstChildWithType<ExtTimeNodeContainer>();
+             var c1 = blob.FirstChildWithType<ExtTimeNodeContainer>();
              if (c1 != null)
              {
-                 ExtTimeNodeContainer c2 = c1.FirstChildWithType<ExtTimeNodeContainer>();
+                 var c2 = c1.FirstChildWithType<ExtTimeNodeContainer>();
                  if (c2 != null)
                  {
-                     ExtTimeNodeContainer c3 = c2.FirstChildWithType<ExtTimeNodeContainer>();
+                     var c3 = c2.FirstChildWithType<ExtTimeNodeContainer>();
                      if (c3 != null)
                      {
                          writeTiming(animAtoms, blob);
@@ -112,21 +109,21 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             if (blob != null)
             {
 
-                ExtTimeNodeContainer c1 = blob.FirstChildWithType<ExtTimeNodeContainer>();
+                var c1 = blob.FirstChildWithType<ExtTimeNodeContainer>();
                 if (c1 != null)
                 {
-                    ExtTimeNodeContainer c2 = c1.FirstChildWithType<ExtTimeNodeContainer>();
+                    var c2 = c1.FirstChildWithType<ExtTimeNodeContainer>();
                     if (c2 != null)
                     {
 
-                        foreach (ExtTimeNodeContainer c3 in c2.AllChildrenWithType<ExtTimeNodeContainer>())
+                        foreach (var c3 in c2.AllChildrenWithType<ExtTimeNodeContainer>())
                         if (c3 != null)
                         {
 
                             int counter = 0;
                             AnimationInfoAtom a;
                             var atoms = new List<AnimationInfoAtom>();
-                            foreach (AnimationInfoAtom key in blindAtoms.Keys) atoms.Add(key);
+                            foreach (var key in blindAtoms.Keys) atoms.Add(key);
 
                             _writer.WriteStartElement("p", "par", OpenXmlNamespaces.PresentationML);
 
@@ -137,9 +134,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             _writer.WriteStartElement("p", "stCondLst", OpenXmlNamespaces.PresentationML);
 
 
-                            foreach (TimeConditionContainer c in c3.AllChildrenWithType<TimeConditionContainer>())
+                            foreach (var c in c3.AllChildrenWithType<TimeConditionContainer>())
                             {
-                                TimeConditionAtom t = c.FirstChildWithType<TimeConditionAtom>();
+                                var t = c.FirstChildWithType<TimeConditionAtom>();
 
                                 _writer.WriteStartElement("p", "cond", OpenXmlNamespaces.PresentationML);
 
@@ -200,7 +197,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             _writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
 
 
-                            foreach (ExtTimeNodeContainer c4 in c3.AllChildrenWithType<ExtTimeNodeContainer>())
+                            foreach (var c4 in c3.AllChildrenWithType<ExtTimeNodeContainer>())
                             {
                                 a = null;
                                 if (atoms.Count > counter) a = atoms[counter];
@@ -269,7 +266,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 _writer.WriteStartElement("p", "bldLst", OpenXmlNamespaces.PresentationML);
 
-                foreach (AnimationInfoAtom animinfo in blindAtoms.Keys)
+                foreach (var animinfo in blindAtoms.Keys)
                 {
                     _writer.WriteStartElement("p", "bldP", OpenXmlNamespaces.PresentationML);
                     _writer.WriteAttributeString("spid", blindAtoms[animinfo].ToString());
@@ -317,10 +314,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             _writer.WriteStartElement("p", "childTnLst", OpenXmlNamespaces.PresentationML);
 
-            foreach (ExtTimeNodeContainer c2 in container.AllChildrenWithType<ExtTimeNodeContainer>())
+            foreach (var c2 in container.AllChildrenWithType<ExtTimeNodeContainer>())
             {
                 var Attributes = new Dictionary<TimePropertyID4TimeNode, TimeVariantValue>();
-                foreach (TimeVariantValue tv in c2.FirstChildWithType<TimePropertyList4TimeNodeContainer>().AllChildrenWithType<TimeVariantValue>())
+                foreach (var tv in c2.FirstChildWithType<TimePropertyList4TimeNodeContainer>().AllChildrenWithType<TimeVariantValue>())
                 {
                     Attributes.Add((TimePropertyID4TimeNode)tv.Instance, tv);
                 }
@@ -331,11 +328,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 _writer.WriteAttributeString("id", (++lastID).ToString());
 
                 string filter = "";
-                foreach (ExtTimeNodeContainer c3 in c2.AllChildrenWithType<ExtTimeNodeContainer>())
+                foreach (var c3 in c2.AllChildrenWithType<ExtTimeNodeContainer>())
                 {
-                    foreach (TimeEffectBehaviorContainer c4 in c3.AllChildrenWithType<TimeEffectBehaviorContainer>())
+                    foreach (var c4 in c3.AllChildrenWithType<TimeEffectBehaviorContainer>())
                     {
-                        foreach (TimeVariantValue v in c4.AllChildrenWithType<TimeVariantValue>())
+                        foreach (var v in c4.AllChildrenWithType<TimeVariantValue>())
                         {
                             if (v.type == TimeVariantTypeEnum.String)
                             {
@@ -438,7 +435,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 if (c2.FirstChildWithType<TimeIterateDataAtom>() != null)
                 {
-                    TimeIterateDataAtom tida = c2.FirstChildWithType<TimeIterateDataAtom>();
+                    var tida = c2.FirstChildWithType<TimeIterateDataAtom>();
 
                     _writer.WriteStartElement("p", "iterate", OpenXmlNamespaces.PresentationML);
 
@@ -491,10 +488,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
 
                         _writer.WriteStartElement("p", "subTnLst", OpenXmlNamespaces.PresentationML);
-                        foreach (SlaveContainer sc in c2.AllChildrenWithType<SlaveContainer>())
+                        foreach (var sc in c2.AllChildrenWithType<SlaveContainer>())
                         {                           
 
-                            TimeColorBehaviorContainer tcbc = sc.FirstChildWithType<TimeColorBehaviorContainer>();
+                            var tcbc = sc.FirstChildWithType<TimeColorBehaviorContainer>();
                             if (tcbc != null)
                             {
                                 writeColor(sc, targetRun);                                                                
@@ -542,14 +539,14 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         private void writeSet(ExtTimeNodeContainer c, ref int targetRun)
         {           
 
-            TimeNodeAtom tna = c.FirstChildWithType<TimeNodeAtom>();
+            var tna = c.FirstChildWithType<TimeNodeAtom>();
 
-            TimeSetBehaviourContainer tsbc = c.FirstChildWithType<TimeSetBehaviourContainer>();
-            TimeVariantValue val = tsbc.FirstChildWithType<TimeVariantValue>();
-            TimeBehaviorContainer tbc = tsbc.FirstChildWithType<TimeBehaviorContainer>();
-            TimeBehaviorAtom tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
-            TimeVariantValue attrName = tbc.FirstChildWithType<TimeStringListContainer>().FirstChildWithType<TimeVariantValue>();
-            VisualShapeAtom vsa = tbc.FirstChildWithType<ClientVisualElementContainer>().FirstChildWithType<VisualShapeAtom>();
+            var tsbc = c.FirstChildWithType<TimeSetBehaviourContainer>();
+            var val = tsbc.FirstChildWithType<TimeVariantValue>();
+            var tbc = tsbc.FirstChildWithType<TimeBehaviorContainer>();
+            var tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
+            var attrName = tbc.FirstChildWithType<TimeStringListContainer>().FirstChildWithType<TimeVariantValue>();
+            var vsa = tbc.FirstChildWithType<ClientVisualElementContainer>().FirstChildWithType<VisualShapeAtom>();
 
             TimeConditionAtom tca = null;
             if (c.FirstChildWithType<TimeConditionContainer>() != null)
@@ -661,7 +658,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void writeAnimRot(ExtTimeNodeContainer c, ref int targetRun, TimeRotationBehaviorAtom trba)
         {
-            TimeNodeAtom tna = c.FirstChildWithType<TimeNodeAtom>();
+            var tna = c.FirstChildWithType<TimeNodeAtom>();
 
             _writer.WriteStartElement("p", "animRot", OpenXmlNamespaces.PresentationML);
             _writer.WriteAttributeString("by", (trba.fBy * 60000).ToString("#")); 
@@ -708,7 +705,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void writeAnimCmd(ExtTimeNodeContainer c, ref int targetRun, TimeCommandBehaviorAtom tcba)
         {
-            TimeNodeAtom tna = c.FirstChildWithType<TimeNodeAtom>();
+            var tna = c.FirstChildWithType<TimeNodeAtom>();
 
             _writer.WriteStartElement("p", "cmd", OpenXmlNamespaces.PresentationML);
 
@@ -770,13 +767,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void writeAnim(ExtTimeNodeContainer c, int targetRun)
         {
-            TimeNodeAtom tna = c.FirstChildWithType<TimeNodeAtom>();
-            TimeAnimateBehaviourContainer bc = c.FirstChildWithType<TimeAnimateBehaviourContainer>();
+            var tna = c.FirstChildWithType<TimeNodeAtom>();
+            var bc = c.FirstChildWithType<TimeAnimateBehaviourContainer>();
 
-            TimeBehaviorContainer tbc = bc.FirstChildWithType<TimeBehaviorContainer>();
-            TimeBehaviorAtom tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
-            TimeAnimateBehaviorAtom taba = bc.FirstChildWithType<TimeAnimateBehaviorAtom>();
-            TimeVariantValue attrName = tbc.FirstChildWithType<TimeStringListContainer>().FirstChildWithType<TimeVariantValue>();
+            var tbc = bc.FirstChildWithType<TimeBehaviorContainer>();
+            var tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
+            var taba = bc.FirstChildWithType<TimeAnimateBehaviorAtom>();
+            var attrName = tbc.FirstChildWithType<TimeStringListContainer>().FirstChildWithType<TimeVariantValue>();
 
             string filter = "";
             if (c.FirstChildWithType<TimePropertyList4TimeNodeContainer>() != null && c.FirstChildWithType<TimePropertyList4TimeNodeContainer>().FirstChildWithType<TimeVariantValue>() != null)
@@ -996,15 +993,15 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void writeMotion(ExtTimeNodeContainer c, int targetRun)
         {
-            TimeNodeAtom tna = c.FirstChildWithType<TimeNodeAtom>();
-            TimeMotionBehaviorContainer bc = c.FirstChildWithType<TimeMotionBehaviorContainer>();
+            var tna = c.FirstChildWithType<TimeNodeAtom>();
+            var bc = c.FirstChildWithType<TimeMotionBehaviorContainer>();
 
-            TimeBehaviorContainer tbc = bc.FirstChildWithType<TimeBehaviorContainer>();
-            TimeBehaviorAtom tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
-            TimeMotionBehaviorAtom tmba = bc.FirstChildWithType<TimeMotionBehaviorAtom>();
+            var tbc = bc.FirstChildWithType<TimeBehaviorContainer>();
+            var tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
+            var tmba = bc.FirstChildWithType<TimeMotionBehaviorAtom>();
 
             var attrNames = new List<string>();
-            foreach (TimeVariantValue attrName in tbc.FirstChildWithType<TimeStringListContainer>().AllChildrenWithType<TimeVariantValue>())
+            foreach (var attrName in tbc.FirstChildWithType<TimeStringListContainer>().AllChildrenWithType<TimeVariantValue>())
             {
                 attrNames.Add(attrName.stringValue);   
             }
@@ -1040,7 +1037,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             {
                 if (tbc.FirstChildWithType<TimePropertyList4TimeNodeContainer>() != null)
                 {
-                    foreach (TimeVariantValue v in tbc.FirstChildWithType<TimePropertyList4TimeNodeContainer>().AllChildrenWithType<TimeVariantValue>())
+                    foreach (var v in tbc.FirstChildWithType<TimePropertyList4TimeNodeContainer>().AllChildrenWithType<TimeVariantValue>())
                     {
                         if (v.type == TimeVariantTypeEnum.String)
                         {
@@ -1128,12 +1125,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void writeScale(ExtTimeNodeContainer c, int targetRun)
         {
-            TimeNodeAtom tna = c.FirstChildWithType<TimeNodeAtom>();
-            TimeScaleBehaviorContainer bc = c.FirstChildWithType<TimeScaleBehaviorContainer>();
+            var tna = c.FirstChildWithType<TimeNodeAtom>();
+            var bc = c.FirstChildWithType<TimeScaleBehaviorContainer>();
 
-            TimeBehaviorContainer tbc = bc.FirstChildWithType<TimeBehaviorContainer>();
-            TimeBehaviorAtom tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
-            TimeScaleBehaviorAtom tsba = bc.FirstChildWithType<TimeScaleBehaviorAtom>();
+            var tbc = bc.FirstChildWithType<TimeBehaviorContainer>();
+            var tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
+            var tsba = bc.FirstChildWithType<TimeScaleBehaviorAtom>();
 
              _writer.WriteStartElement("p", "animScale", OpenXmlNamespaces.PresentationML);
           
@@ -1217,15 +1214,15 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void writeColor(RegularContainer c, int targetRun)
         {
-            TimeNodeAtom tna = c.FirstChildWithType<TimeNodeAtom>();
-            TimeColorBehaviorContainer bc = c.FirstChildWithType<TimeColorBehaviorContainer>();
+            var tna = c.FirstChildWithType<TimeNodeAtom>();
+            var bc = c.FirstChildWithType<TimeColorBehaviorContainer>();
 
-            TimeBehaviorContainer tbc = bc.FirstChildWithType<TimeBehaviorContainer>();
-            TimeBehaviorAtom tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
-            TimeColorBehaviorAtom tcba = bc.FirstChildWithType<TimeColorBehaviorAtom>();
+            var tbc = bc.FirstChildWithType<TimeBehaviorContainer>();
+            var tba = tbc.FirstChildWithType<TimeBehaviorAtom>();
+            var tcba = bc.FirstChildWithType<TimeColorBehaviorAtom>();
 
             var attrNames = new List<string>();
-            foreach (TimeVariantValue attrName in tbc.FirstChildWithType<TimeStringListContainer>().AllChildrenWithType<TimeVariantValue>())
+            foreach (var attrName in tbc.FirstChildWithType<TimeStringListContainer>().AllChildrenWithType<TimeVariantValue>())
             {
                 attrNames.Add(attrName.stringValue);
             }
@@ -1354,7 +1351,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void writeAnimations(ExtTimeNodeContainer c, int targetRun)
         {
-            foreach (ExtTimeNodeContainer c2 in c.AllChildrenWithType<ExtTimeNodeContainer>())
+            foreach (var c2 in c.AllChildrenWithType<ExtTimeNodeContainer>())
             {
                 if (c2.FirstChildWithType<TimeAnimateBehaviourContainer>() != null)
                 {
@@ -1385,12 +1382,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void writeAnimEffect(ExtTimeNodeContainer c, int targetRun)
         {
-            TimeNodeAtom tna = c.FirstChildWithType<TimeNodeAtom>();
-            TimeEffectBehaviorContainer tebc = c.FirstChildWithType<TimeEffectBehaviorContainer>();
-            TimeEffectBehaviorAtom teba = tebc.FirstChildWithType<TimeEffectBehaviorAtom>();
+            var tna = c.FirstChildWithType<TimeNodeAtom>();
+            var tebc = c.FirstChildWithType<TimeEffectBehaviorContainer>();
+            var teba = tebc.FirstChildWithType<TimeEffectBehaviorAtom>();
             var Attributes = new Dictionary<TimePropertyID4TimeNode, TimeVariantValue>();
             
-            foreach (TimeVariantValue tv in ((RegularContainer)c.ParentRecord).FirstChildWithType<TimePropertyList4TimeNodeContainer>().AllChildrenWithType<TimeVariantValue>())
+            foreach (var tv in ((RegularContainer)c.ParentRecord).FirstChildWithType<TimePropertyList4TimeNodeContainer>().AllChildrenWithType<TimeVariantValue>())
             {
                 Attributes.Add((TimePropertyID4TimeNode)tv.Instance, tv);
             }
@@ -1458,7 +1455,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void CheckAndWriteStartEndRuns(RegularContainer c, ref int targetRun)
         {
-            VisualShapeAtom vsa = c.FirstDescendantWithType<VisualShapeAtom>(); 
+            var vsa = c.FirstDescendantWithType<VisualShapeAtom>(); 
 
             if (!_stm.spidToId.ContainsKey((int)vsa.shapeIdRef))
             {

@@ -26,8 +26,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Globalization;
 
 namespace DIaLOGIKa.b2xtranslator.Tools

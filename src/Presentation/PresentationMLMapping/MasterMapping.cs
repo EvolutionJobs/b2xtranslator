@@ -27,15 +27,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
 using DIaLOGIKa.b2xtranslator.Tools;
-using System.Reflection;
-using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 {
@@ -65,9 +62,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             this.LayoutManager = _ctx.GetOrCreateLayoutManagerByMasterId(this.MasterId);
 
             // Add PPT2007 roundtrip slide layouts
-            List<RoundTripContentMasterInfo12> rtSlideLayouts = this.Master.AllChildrenWithType<RoundTripContentMasterInfo12>();
+            var rtSlideLayouts = this.Master.AllChildrenWithType<RoundTripContentMasterInfo12>();
 
-            foreach (RoundTripContentMasterInfo12 slideLayout in rtSlideLayouts)
+            foreach (var slideLayout in rtSlideLayouts)
             {
                 var layoutPart = this.LayoutManager.AddLayoutPartWithInstanceId(slideLayout.Instance);
                 XmlNode e = slideLayout.XmlDocumentElement;
@@ -98,11 +95,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             _writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
 
-            ShapeContainer sc = this.Master.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<ShapeContainer>();
+            var sc = this.Master.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<ShapeContainer>();
             if (sc != null)
             {
-                Shape sh = sc.FirstChildWithType<Shape>();
-                ShapeOptions so = sc.FirstChildWithType<ShapeOptions>();
+                var sh = sc.FirstChildWithType<Shape>();
+                var so = sc.FirstChildWithType<ShapeOptions>();
                
                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillType))
                 {
@@ -152,7 +149,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteEndElement();
 
             // Write clrMap
-            ColorMappingAtom clrMap = this.Master.FirstChildWithType<ColorMappingAtom>();
+            var clrMap = this.Master.FirstChildWithType<ColorMappingAtom>();
             if (clrMap != null)
             {
                 // clrMap from ColorMappingAtom wrongly uses namespace DrawingML
@@ -182,7 +179,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 layoutParts.Add(layoutPart);
             }
 
-            foreach (SlideLayoutPart slideLayoutPart in layoutParts)
+            foreach (var slideLayoutPart in layoutParts)
             {
                 _writer.WriteStartElement("p", "sldLayoutId", OpenXmlNamespaces.PresentationML);
                 _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, slideLayoutPart.RelIdToString);
@@ -204,7 +201,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     }
 
             // Write txStyles
-            RoundTripOArtTextStyles12 roundTripTxStyles = this.Master.FirstChildWithType<RoundTripOArtTextStyles12>();
+            var roundTripTxStyles = this.Master.FirstChildWithType<RoundTripOArtTextStyles12>();
             if (false & roundTripTxStyles != null)
             {
                 roundTripTxStyles.XmlDocumentElement.WriteTo(_writer);
@@ -225,10 +222,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             // even if it they have the same content.
             //
             // Otherwise PPT will complain about the structure of the file.
-            ThemePart themePart = _ctx.Pptx.PresentationPart.AddThemePart();
+            var themePart = _ctx.Pptx.PresentationPart.AddThemePart();
 
             XmlNode xmlDoc;
-            Theme theme = this.Master.FirstChildWithType<Theme>();
+            var theme = this.Master.FirstChildWithType<Theme>();
 
             if (theme != null)
             {
@@ -239,7 +236,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
             else
             {
-                List<ColorSchemeAtom> schemes = this.Master.AllChildrenWithType<ColorSchemeAtom>();
+                var schemes = this.Master.AllChildrenWithType<ColorSchemeAtom>();
                 if (schemes.Count > 0)
                 {
                     new ColorSchemeMapping(_ctx, themePart.XmlWriter).Apply(schemes);                    

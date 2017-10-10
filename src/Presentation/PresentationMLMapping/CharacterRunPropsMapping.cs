@@ -27,7 +27,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
@@ -50,13 +49,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void Apply(CharacterRun run, string startElement, RegularContainer slide, ref string lastColor, ref string lastSize, ref string lastTypeface, string lang, string altLang, TextMasterStyleAtom defaultStyle, int lvl, List<MouseClickInteractiveInfoContainer> mciics, ShapeTreeMapping parentShapeTreeMapping, uint position, bool insideTable)
         {
-            
+
             _writer.WriteStartElement("a", startElement, OpenXmlNamespaces.DrawingML);
 
 
             if (lang.Length == 0)
             {
-                TextSIExceptionAtom siea = _ctx.Ppt.DocumentRecord.FirstDescendantWithType<TextSIExceptionAtom>();
+                var siea = _ctx.Ppt.DocumentRecord.FirstDescendantWithType<TextSIExceptionAtom>();
                 if (siea != null)
                 {
                     if (siea.si.lang)
@@ -86,7 +85,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             if (altLang.Length == 0)
             {
-                TextSIExceptionAtom siea = _ctx.Ppt.DocumentRecord.FirstDescendantWithType<TextSIExceptionAtom>();
+                var siea = _ctx.Ppt.DocumentRecord.FirstDescendantWithType<TextSIExceptionAtom>();
                 if (siea != null)
                 {
                     if (siea.si.altLang)
@@ -115,7 +114,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
             if (lang.Length > 0)
-            _writer.WriteAttributeString("lang", lang);
+                _writer.WriteAttributeString("lang", lang);
 
             if (altLang.Length > 0)
                 _writer.WriteAttributeString("altLang", altLang);
@@ -130,7 +129,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     lastSize = (run.Size * 100).ToString();
                 }
             }
-            else if (lastSize.Length > 0) {
+            else if (lastSize.Length > 0)
+            {
                 _writer.WriteAttributeString("sz", lastSize);
             }
             else if (defaultStyle != null)
@@ -252,8 +252,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
                 try
                 {
-                    FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-                    FontEntityAtom entity = fonts.entities[(int)run.TypefaceIdx];
+                    var fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                    var entity = fonts.entities[(int)run.TypefaceIdx];
                     if (entity.TypeFace.IndexOf('\0') > 0)
                     {
                         _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
@@ -266,7 +266,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     }
                     //_writer.WriteAttributeString("charset", "0");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -282,99 +282,87 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             else if (defaultStyle != null && defaultStyle.CRuns[lvl].TypefacePresent)
             {
                 _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
-                try
+
+                var fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                var entity = fonts.entities[(int)defaultStyle.CRuns[lvl].TypefaceIdx];
+                if (entity.TypeFace.IndexOf('\0') > 0)
                 {
-                    FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-                    FontEntityAtom entity = fonts.entities[(int)defaultStyle.CRuns[lvl].TypefaceIdx];
-                    if (entity.TypeFace.IndexOf('\0') > 0)
-                    {
-                        _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
-                        lastTypeface = entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0'));
-                    }
-                    else
-                    {
-                        _writer.WriteAttributeString("typeface", entity.TypeFace);
-                        lastTypeface = entity.TypeFace;
-                    }
-                    //_writer.WriteAttributeString("charset", "0");
+                    _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
+                    lastTypeface = entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0'));
                 }
-                catch (Exception ex)
+                else
                 {
-                    throw;
+                    _writer.WriteAttributeString("typeface", entity.TypeFace);
+                    lastTypeface = entity.TypeFace;
                 }
+                //_writer.WriteAttributeString("charset", "0");
 
                 _writer.WriteEndElement();
             }
             else
             {
                 if (insideTable)
-                if (slide.FirstChildWithType<SlideAtom>() != null && _ctx.Ppt.FindMasterRecordById(slide.FirstChildWithType<SlideAtom>().MasterId) != null)
-                foreach (TextMasterStyleAtom item in _ctx.Ppt.FindMasterRecordById(slide.FirstChildWithType<SlideAtom>().MasterId).AllChildrenWithType<TextMasterStyleAtom>())
-                {
-                    if (item.Instance == 1)
-                    {
-                        if (item.CRuns.Count > 0 && item.CRuns[0].TypefacePresent)
+                    if (slide.FirstChildWithType<SlideAtom>() != null && _ctx.Ppt.FindMasterRecordById(slide.FirstChildWithType<SlideAtom>().MasterId) != null)
+                        foreach (var item in _ctx.Ppt.FindMasterRecordById(slide.FirstChildWithType<SlideAtom>().MasterId).AllChildrenWithType<TextMasterStyleAtom>())
                         {
-                            _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
-                            try
+                            if (item.Instance == 1)
                             {
-                                FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-                                FontEntityAtom entity = fonts.entities[(int)item.CRuns[0].TypefaceIdx];
-                                if (entity.TypeFace.IndexOf('\0') > 0)
+                                if (item.CRuns.Count > 0 && item.CRuns[0].TypefacePresent)
                                 {
-                                    _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
-                                    lastTypeface = entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0'));
-                                }
-                                else
-                                {
-                                    _writer.WriteAttributeString("typeface", entity.TypeFace);
-                                    lastTypeface = entity.TypeFace;
-                                }
-                                //_writer.WriteAttributeString("charset", "0");
-                            }
-                            catch (Exception ex)
-                            {
-                                throw;
-                            }
+                                    _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
 
-                            _writer.WriteEndElement();
+                                    var fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                                    var entity = fonts.entities[(int)item.CRuns[0].TypefaceIdx];
+                                    if (entity.TypeFace.IndexOf('\0') > 0)
+                                    {
+                                        _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
+                                        lastTypeface = entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0'));
+                                    }
+                                    else
+                                    {
+                                        _writer.WriteAttributeString("typeface", entity.TypeFace);
+                                        lastTypeface = entity.TypeFace;
+                                    }
+                                    //_writer.WriteAttributeString("charset", "0");
+
+                                    _writer.WriteEndElement();
+                                }
+                            }
                         }
-                    }
-                }
-            //        try
-            //        {
-            //            CharacterRun cr = _ctx.Ppt.DocumentRecord.FirstChildWithType<PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>().CRuns[0];
-            //            if (cr.TypefacePresent)
-            //            {
-            //                    FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-            //                    FontEntityAtom entity = fonts.entities[(int)cr.TypefaceIdx];
-            //                    if (entity.TypeFace.IndexOf('\0') > 0)
-            //                    {
-            //                        _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
-            //                        _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
-            //                        _writer.WriteEndElement();
-            //                    }
-            //                    else
-            //                    {
-            //                        _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
-            //                        _writer.WriteAttributeString("typeface", entity.TypeFace);
-            //                        _writer.WriteEndElement();
-            //                    }
-            //                }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            //throw;
-            //        }
-                
+                //        try
+                //        {
+                //            CharacterRun cr = _ctx.Ppt.DocumentRecord.FirstChildWithType<PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>().CRuns[0];
+                //            if (cr.TypefacePresent)
+                //            {
+                //                    FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                //                    FontEntityAtom entity = fonts.entities[(int)cr.TypefaceIdx];
+                //                    if (entity.TypeFace.IndexOf('\0') > 0)
+                //                    {
+                //                        _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
+                //                        _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
+                //                        _writer.WriteEndElement();
+                //                    }
+                //                    else
+                //                    {
+                //                        _writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
+                //                        _writer.WriteAttributeString("typeface", entity.TypeFace);
+                //                        _writer.WriteEndElement();
+                //                    }
+                //                }
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //            //throw;
+                //        }
+
             }
 
             if (runExists && run.FEOldTypefacePresent)
             {
                 try
                 {
-                    FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-                    FontEntityAtom entity = fonts.entities[(int)run.FEOldTypefaceIdx];
+                    var fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                    var entity = fonts.entities[(int)run.FEOldTypefaceIdx];
                     if (entity.TypeFace.IndexOf('\0') > 0)
                     {
                         _writer.WriteStartElement("a", "ea", OpenXmlNamespaces.DrawingML);
@@ -388,48 +376,48 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         _writer.WriteEndElement();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //throw;
                 }
             }
             else
             {
-                 try
+                try
+                {
+                    var cr = _ctx.Ppt.DocumentRecord.FirstChildWithType<PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>().CRuns[0];
+                    if (cr.FEOldTypefacePresent)
                     {
-                        CharacterRun cr = _ctx.Ppt.DocumentRecord.FirstChildWithType<PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>().CRuns[0];
-                        if (cr.FEOldTypefacePresent)
-                        {                   
-                            FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-                            FontEntityAtom entity = fonts.entities[(int)cr.FEOldTypefaceIdx];
-                            if (entity.TypeFace.IndexOf('\0') > 0)
-                            {
-                                _writer.WriteStartElement("a", "ea", OpenXmlNamespaces.DrawingML);
-                                _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
-                                _writer.WriteEndElement();
-                            }
-                            else
-                            {
-                                _writer.WriteStartElement("a", "ea", OpenXmlNamespaces.DrawingML);
-                                _writer.WriteAttributeString("typeface", entity.TypeFace);
-                                _writer.WriteEndElement();
-                            }
+                        var fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                        var entity = fonts.entities[(int)cr.FEOldTypefaceIdx];
+                        if (entity.TypeFace.IndexOf('\0') > 0)
+                        {
+                            _writer.WriteStartElement("a", "ea", OpenXmlNamespaces.DrawingML);
+                            _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
+                            _writer.WriteEndElement();
+                        }
+                        else
+                        {
+                            _writer.WriteStartElement("a", "ea", OpenXmlNamespaces.DrawingML);
+                            _writer.WriteAttributeString("typeface", entity.TypeFace);
+                            _writer.WriteEndElement();
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        //throw;
-                    }
-                
+                }
+                catch (Exception)
+                {
+                    //throw;
+                }
+
             }
 
             if (runExists && run.SymbolTypefacePresent)
             {
-                
+
                 try
                 {
-                    FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-                    FontEntityAtom entity = fonts.entities[(int)run.SymbolTypefaceIdx];
+                    var fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                    var entity = fonts.entities[(int)run.SymbolTypefaceIdx];
                     if (entity.TypeFace.IndexOf('\0') > 0)
                     {
                         _writer.WriteStartElement("a", "sym", OpenXmlNamespaces.DrawingML);
@@ -443,34 +431,34 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         _writer.WriteEndElement();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //throw;
                 }
 
-                
+
             }
 
             if (mciics != null && mciics.Count > 0)
             {
-                foreach (MouseClickInteractiveInfoContainer mciic in mciics)
+                foreach (var mciic in mciics)
                 {
 
-                    InteractiveInfoAtom iia = mciic.FirstChildWithType<InteractiveInfoAtom>();
-                    MouseClickTextInteractiveInfoAtom tiia = mciic.Range;
+                    var iia = mciic.FirstChildWithType<InteractiveInfoAtom>();
+                    var tiia = mciic.Range;
 
                     if (tiia.begin <= position && tiia.end > position)
                         if (iia != null)
                         {
                             if (iia.action == InteractiveInfoActionEnum.Hyperlink)
                             {
-                                foreach (ExHyperlinkContainer c in _ctx.Ppt.DocumentRecord.FirstDescendantWithType<ExObjListContainer>().AllChildrenWithType<ExHyperlinkContainer>())
+                                foreach (var c in _ctx.Ppt.DocumentRecord.FirstDescendantWithType<ExObjListContainer>().AllChildrenWithType<ExHyperlinkContainer>())
                                 {
-                                    ExHyperlinkAtom a = c.FirstChildWithType<ExHyperlinkAtom>();
+                                    var a = c.FirstChildWithType<ExHyperlinkAtom>();
                                     if (a.exHyperlinkId == iia.exHyperlinkIdRef)
                                     {
-                                        CStringAtom s = c.FirstChildWithType<CStringAtom>();
-                                        ExternalRelationship er = parentShapeTreeMapping.parentSlideMapping.targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.HyperLink, s.Text);
+                                        var s = c.FirstChildWithType<CStringAtom>();
+                                        var er = parentShapeTreeMapping.parentSlideMapping.targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.HyperLink, s.Text);
 
                                         _writer.WriteStartElement("a", "hlinkClick", OpenXmlNamespaces.DrawingML);
                                         _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, er.Id.ToString());
@@ -541,19 +529,19 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
                 else
                 {
-                    
+
                     ColorSchemeAtom MasterScheme = null;
-                    SlideAtom ato = slide.FirstChildWithType<SlideAtom>();
+                    var ato = slide.FirstChildWithType<SlideAtom>();
                     List<ColorSchemeAtom> colors;
                     if (ato != null && Tools.Utils.BitmaskToBool(ato.Flags, 0x1 << 1) && ato.MasterId != 0)
                     {
-                        colors = _ctx.Ppt.FindMasterRecordById(ato.MasterId).AllChildrenWithType<ColorSchemeAtom>();                      
+                        colors = _ctx.Ppt.FindMasterRecordById(ato.MasterId).AllChildrenWithType<ColorSchemeAtom>();
                     }
                     else
                     {
                         colors = slide.AllChildrenWithType<ColorSchemeAtom>();
                     }
-                    foreach (ColorSchemeAtom color in colors)
+                    foreach (var color in colors)
                     {
                         if (color.Instance == 1) MasterScheme = color;
                     }

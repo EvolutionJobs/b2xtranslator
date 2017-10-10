@@ -25,13 +25,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
-using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using System.Collections;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
-using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 
@@ -51,7 +47,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
     <w:body><w:p><w:r><w:t>Hello world!</w:t></w:r></w:p></w:body>
 </w:document>";
 
-            Stream stream = part.GetStream();
+            var stream = part.GetStream();
             var buf = (new UTF8Encoding()).GetBytes(docXml);
             stream.Write(buf, 0, buf.Length);
         

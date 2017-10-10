@@ -27,14 +27,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.Tools;
-using System.Drawing;
 
 namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 {
@@ -67,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             uint idx = 0;
             runCount = 0;
 
-            foreach (ParagraphRun p in style.PRuns)
+            foreach (var p in style.PRuns)
             {
                 if (forIdx < idx + p.Length)
                     return p;
@@ -92,7 +89,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             uint idx = 0;
 
-            foreach (MasterTextPropRun p in style.MasterTextPropRuns)
+            foreach (var p in style.MasterTextPropRuns)
             {
                 if (forIdx < idx + p.count)
                     return p;
@@ -116,7 +113,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             uint idx = 0;
 
-            foreach (CharacterRun c in style.CRuns)
+            foreach (var c in style.CRuns)
             {
                 if (forIdx < idx + c.Length)
                     return c;
@@ -134,7 +131,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             uint idx = 0;
 
-            foreach (CharacterRun c in style.CRuns)
+            foreach (var c in style.CRuns)
             {
                 if (forIdx < idx + c.Length)
                     return idx;
@@ -154,7 +151,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             parentShapeTreeMapping = pparentShapeTreeMapping;
             var ms = new System.IO.MemoryStream(textbox.Bytes);
-            Record rec = Record.ReadRecord(ms);
+            var rec = Record.ReadRecord(ms);
             TextHeaderAtom thAtom = null;
             TextStyleAtom style = null;
             FooterMCAtom mca = null;
@@ -165,13 +162,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             MasterTextPropAtom masterTextProp = null;
             string text = "";
             string origText = "";
-            ShapeOptions so = textbox.FirstAncestorWithType<ShapeContainer>().FirstChildWithType<ShapeOptions>();
+            var so = textbox.FirstAncestorWithType<ShapeContainer>().FirstChildWithType<ShapeOptions>();
             TextMasterStyleAtom defaultStyle = null;
             int lvl = 0;
 
-            Slide parentSlide = textbox.FirstAncestorWithType<Slide>();
+            var parentSlide = textbox.FirstAncestorWithType<Slide>();
             if (parentSlide != null)
-            foreach (SlideListWithText container in _ctx.Ppt.DocumentRecord.AllChildrenWithType<SlideListWithText>())
+            foreach (var container in _ctx.Ppt.DocumentRecord.AllChildrenWithType<SlideListWithText>())
             {
                 if (container.Instance == 0)
                 {
@@ -273,7 +270,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                                 text = text.Replace(origText.Substring(d.Position, 1), "");
 
-                                foreach (CharacterRun run in style.CRuns)
+                                foreach (var run in style.CRuns)
                                 {
                                     run.Length += (uint)text.Length;
                                 }
@@ -282,7 +279,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 var hmca = (HeaderMCAtom)rec;
                                 text = text.Replace(origText.Substring(hmca.Position, 1), headertext);
 
-                                foreach (CharacterRun run in style.CRuns)
+                                foreach (var run in style.CRuns)
                                 {
                                     run.Length += (uint)text.Length;
                                 }
@@ -291,7 +288,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 mca = (FooterMCAtom)rec;
                                 text = text.Replace(origText.Substring(mca.Position, 1), footertext);
 
-                                foreach (CharacterRun run in style.CRuns)
+                                foreach (var run in style.CRuns)
                                 {
                                     run.Length += (uint)text.Length;
                                 }
@@ -300,7 +297,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 var gdmca = (GenericDateMCAtom)rec;
                                 text = text.Replace(origText.Substring(gdmca.Position, 1), datetext);
 
-                                foreach (CharacterRun run in style.CRuns)
+                                foreach (var run in style.CRuns)
                                 {
                                     run.Length += (uint)text.Length;
                                 }
@@ -315,9 +312,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     break;
                 case 3998:
                     var otrAtom = (OutlineTextRefAtom)rec;
-                    SlideListWithText slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
+                    var slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
                                   
-                    List<TextHeaderAtom> thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
+                    var thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
                     thAtom = thAtoms[otrAtom.Index];
 
                     if (thAtom.TextAtom != null) text = thAtom.TextAtom.Text;
@@ -343,17 +340,17 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             uint idx = 0;                      
 
-            Slide s = textbox.FirstAncestorWithType<Slide>();
+            var s = textbox.FirstAncestorWithType<Slide>();
            
             if (s != null)
             {
                 try
                 {
-                    SlideAtom a = s.FirstChildWithType<SlideAtom>();
+                    var a = s.FirstChildWithType<SlideAtom>();
                     if (Tools.Utils.BitmaskToBool(a.Flags, 0x01 << 1) && a.MasterId > 0)
                     {
-                        Slide m = _ctx.Ppt.FindMasterRecordById(a.MasterId);
-                        foreach (TextMasterStyleAtom at in m.AllChildrenWithType<TextMasterStyleAtom>())
+                        var m = _ctx.Ppt.FindMasterRecordById(a.MasterId);
+                        foreach (var at in m.AllChildrenWithType<TextMasterStyleAtom>())
                         {
                             if (at.Instance == (int)thAtom.TextType)
                             {
@@ -373,14 +370,14 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             var lstSIRuns = new Dictionary<TextSIRun, uint>();
             uint pos = 0;
             if (siaDefaults != null)
-            foreach (TextSIRun sirun in siaDefaults.Runs)
+            foreach (var sirun in siaDefaults.Runs)
             {
                 lstSIRuns.Add(sirun,pos);
                 pos += sirun.count;
             }
             pos = 0;
             if (sia != null)
-            foreach (TextSIRun sirun in sia.Runs)
+            foreach (var sirun in sia.Runs)
             {
                 lstSIRuns.Add(sirun, pos);
                 pos += sirun.count;
@@ -487,7 +484,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             }           
                             
                              //split runlines that partly contain a link
-                            foreach (MouseClickInteractiveInfoContainer mccic in mciics)
+                            foreach (var mccic in mciics)
                             {
                                 if (mccic.Range.begin <= idx + internalOffset && mccic.Range.end > idx + internalOffset)
                                 {
@@ -507,7 +504,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             //split runlines that contain a change of language
                             lang = "";
                             altLang = "";
-                            foreach (TextSIRun sirun in lstSIRuns.Keys)
+                            foreach (var sirun in lstSIRuns.Keys)
                             {
                                 uint start = lstSIRuns[sirun];
                                 uint end = start + sirun.count; //languageRuns[start];
@@ -720,8 +717,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             if (defaultStyle.PRuns[tp.indentLevel].BulletFontPresent)
                             {
                                 _writer.WriteStartElement("a", "buFont", OpenXmlNamespaces.DrawingML);
-                                FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-                                FontEntityAtom entity = fonts.entities[(int)defaultStyle.PRuns[tp.indentLevel].BulletTypefaceIdx];
+                                var fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                                var entity = fonts.entities[(int)defaultStyle.PRuns[tp.indentLevel].BulletTypefaceIdx];
                                 if (entity.TypeFace.IndexOf('\0') > 0)
                                 {
                                     _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
@@ -1056,8 +1053,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             if (!(p.BulletFlagsFieldPresent && (p.BulletFlags & 0x1 << 1) == 0))
                             {
                                 _writer.WriteStartElement("a", "buFont", OpenXmlNamespaces.DrawingML);
-                                FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-                                FontEntityAtom entity = fonts.entities[(int)p.BulletTypefaceIdx];
+                                var fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                                var entity = fonts.entities[(int)p.BulletTypefaceIdx];
                                 if (entity.TypeFace.IndexOf('\0') > 0)
                                 {
                                     _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
@@ -1078,11 +1075,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         bool bulletWritten = false;
                         if (_ctx.Ppt.DocumentRecord.DocInfoListContainer.FirstDescendantWithType<OutlineTextProps9Container>() != null)
                         {
-                            OutlineTextProps9Container c = _ctx.Ppt.DocumentRecord.DocInfoListContainer.FirstDescendantWithType<OutlineTextProps9Container>();
-                            Slide slide = so.FirstAncestorWithType<Slide>();
+                            var c = _ctx.Ppt.DocumentRecord.DocInfoListContainer.FirstDescendantWithType<OutlineTextProps9Container>();
+                            var slide = so.FirstAncestorWithType<Slide>();
 
                             if (slide != null)
-                            foreach (OutlineTextProps9Entry entry in c.OutlineTextProps9Entries)
+                            foreach (var entry in c.OutlineTextProps9Entries)
                             {
                                 if (slide.PersistAtom.SlideId == entry.outlineTextHeaderAtom.slideIdRef)
                                 {
@@ -1115,27 +1112,27 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                     }
                                     else if (entry.styleTextProp9Atom.P9Runs.Count > runCount && entry.styleTextProp9Atom.P9Runs[runCount].BulletBlipReferencePresent)
                                     {
-                                       BlipCollection9Container blips = ((RegularContainer)c.ParentRecord).FirstChildWithType<BlipCollection9Container>();
+                                       var blips = ((RegularContainer)c.ParentRecord).FirstChildWithType<BlipCollection9Container>();
                                         if (blips != null && blips.Children.Count > 0)
                                         {
                                             ImagePart imgPart = null;
 
-                                            BitmapBlip b = ((BlipEntityAtom)blips.Children[entry.styleTextProp9Atom.P9Runs[runCount].bulletblipref]).blip;
+                                            var b = ((BlipEntityAtom)blips.Children[entry.styleTextProp9Atom.P9Runs[runCount].bulletblipref]).blip;
 
                                             if (b == null)
                                             {
-                                                MetafilePictBlip mb = ((BlipEntityAtom)blips.Children[0]).mblip;
+                                                var mb = ((BlipEntityAtom)blips.Children[0]).mblip;
                                                 imgPart = this.parentShapeTreeMapping.parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(mb.TypeCode));
                                                 imgPart.TargetDirectory = "..\\media";
-                                                System.IO.Stream outStream = imgPart.GetStream();
-                                                byte[] decompressed = mb.Decrompress();
+                                                var outStream = imgPart.GetStream();
+                                                var decompressed = mb.Decrompress();
                                                 outStream.Write(decompressed, 0, decompressed.Length);
                                             }
                                             else
                                             {
                                                 imgPart = this.parentShapeTreeMapping.parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
                                                 imgPart.TargetDirectory = "..\\media";
-                                                System.IO.Stream outStream = imgPart.GetStream();
+                                                var outStream = imgPart.GetStream();
                                                 outStream.Write(b.m_pvBits, 0, b.m_pvBits.Length);
                                             }
 
@@ -1209,7 +1206,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 _writer.WriteAttributeString("char", p.BulletChar.ToString());
                                 _writer.WriteEndElement(); //buChar
 
-                                Slide s = so.FirstAncestorWithType<Slide>();
+                                var s = so.FirstAncestorWithType<Slide>();
                             }
                             else if (!bulletWritten && !p.BulletCharPresent)
                             {

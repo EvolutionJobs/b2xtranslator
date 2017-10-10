@@ -26,14 +26,10 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using System.IO;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Writer;
 
 namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
@@ -80,14 +76,14 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             if (ole.fLinked)
             {
                 var link = new Uri(ole.Link);
-                ExternalRelationship rel = _targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.OleObject, link);
+                var rel = _targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.OleObject, link);
                 _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, rel.Id);
                 _writer.WriteAttributeString("Type", "Link");
                 _writer.WriteAttributeString("UpdateMode", ole.UpdateMode.ToString());
             }
             else
             {
-                EmbeddedObjectPart part = _targetPart.AddEmbeddedObjectPart(type);
+                var part = _targetPart.AddEmbeddedObjectPart(type);
                 _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, part.RelIdToString);
                 _writer.WriteAttributeString("Type", "Embed");
 

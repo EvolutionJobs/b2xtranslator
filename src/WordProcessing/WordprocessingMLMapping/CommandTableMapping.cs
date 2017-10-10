@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
@@ -59,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             _writer.WriteEndElement();
 
             //copy the toolbar
-            Stream s = _ctx.Docx.MainDocumentPart.CustomizationsPart.ToolbarsPart.GetStream();
+            var s = _ctx.Docx.MainDocumentPart.CustomizationsPart.ToolbarsPart.GetStream();
             s.Write(toolbars.RawBytes, 0, toolbars.RawBytes.Length);
         }
 
@@ -73,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             {
                 _writer.WriteAttributeString("wne", "kcmPrimary",
                     OpenXmlNamespaces.MicrosoftWordML,
-                    String.Format("{0:x4}", kme.kcm1));
+                    string.Format("{0:x4}", kme.kcm1));
             }
 
             _writer.WriteStartElement("wne", "macro", OpenXmlNamespaces.MicrosoftWordML);

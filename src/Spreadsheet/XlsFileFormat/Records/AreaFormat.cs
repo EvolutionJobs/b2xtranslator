@@ -27,7 +27,6 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-using System;
 using System.Diagnostics;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;

@@ -25,7 +25,6 @@
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System.Xml;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
@@ -89,7 +88,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                 {
                     case BoundSheet8.SheetType.Worksheet:
                         {
-                            WorksheetPart worksheetPart = this._workbookPart.AddWorksheetPart();
+                            var worksheetPart = this._workbookPart.AddWorksheetPart();
                             sheet.Convert(new WorksheetMapping(this._xlsContext, worksheetPart));
                             sheetPart = worksheetPart;
                         }
@@ -97,7 +96,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 
                     case BoundSheet8.SheetType.Chartsheet:
                         {
-                            ChartsheetPart chartsheetPart = this._workbookPart.AddChartsheetPart();
+                            var chartsheetPart = this._workbookPart.AddChartsheetPart();
                             sheet.Convert(new ChartsheetMapping(this._xlsContext, chartsheetPart));
                             sheetPart = chartsheetPart;
                         }
@@ -106,7 +105,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     default:
                         {
                             sheet.emtpyWorksheet = true;
-                            WorksheetPart worksheetPart = this._workbookPart.AddWorksheetPart();
+                            var worksheetPart = this._workbookPart.AddWorksheetPart();
                             sheet.Convert(new WorksheetMapping(this._xlsContext, worksheetPart));
                             sheetPart = worksheetPart;
                         }

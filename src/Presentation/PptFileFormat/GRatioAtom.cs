@@ -26,8 +26,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
@@ -45,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         override public string ToString()
         {
-            return String.Format("RatioAtom({0}, {1})", this.Numer, this.Denom);
+            return string.Format("RatioAtom({0}, {1})", this.Numer, this.Denom);
         }
     }
 

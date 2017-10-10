@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
@@ -36,18 +35,18 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         public void Apply(DateAndTime dttm)
         {
             var date = new StringBuilder();
-            date.Append(String.Format("{0:0000}", dttm.yr));
+            date.Append(string.Format("{0:0000}", dttm.yr));
             date.Append("-");
-            date.Append(String.Format("{0:00}", dttm.mon));
+            date.Append(string.Format("{0:00}", dttm.mon));
             date.Append("-");
-            date.Append(String.Format("{0:00}", dttm.dom));
+            date.Append(string.Format("{0:00}", dttm.dom));
             date.Append("T");
-            date.Append(String.Format("{0:00}", dttm.hr));
+            date.Append(string.Format("{0:00}", dttm.hr));
             date.Append(":");
-            date.Append(String.Format("{0:00}", dttm.mint));
+            date.Append(string.Format("{0:00}", dttm.mint));
             date.Append(":00Z");
 
-            XmlAttribute xml = _nodeFactory.CreateAttribute("w", "date", OpenXmlNamespaces.WordprocessingML);
+            var xml = _nodeFactory.CreateAttribute("w", "date", OpenXmlNamespaces.WordprocessingML);
             xml.Value = date.ToString() ;
 
             //append or write

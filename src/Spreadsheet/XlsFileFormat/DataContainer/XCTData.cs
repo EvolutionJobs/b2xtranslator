@@ -25,14 +25,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
 using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
 
 
 namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 {
-     
+
     /// <summary>
     /// This class contains several information about the XCT BIFF Record 
     /// 

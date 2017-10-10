@@ -26,14 +26,11 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using DIaLOGIKa.b2xtranslator.Tools;
 using System.Reflection;
 using System.IO;
-using Microsoft.Win32;
 
 namespace DIaLOGIKa.b2xtranslator.Shell
 {

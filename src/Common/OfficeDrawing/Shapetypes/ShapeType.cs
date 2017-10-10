@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Reflection;
 using DIaLOGIKa.b2xtranslator.Tools;
@@ -186,7 +185,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 
                 if (constructor == null)
                 {
-                    throw new Exception(String.Format(
+                    throw new Exception(string.Format(
                         "Internal error: Could not find a matching constructor for class {0}",
                         cls));
                 }

@@ -27,11 +27,7 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using System.Diagnostics;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeGraph
 {

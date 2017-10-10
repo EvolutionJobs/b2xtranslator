@@ -25,13 +25,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
 using DIaLOGIKa.b2xtranslator.Tools;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 
@@ -48,26 +44,26 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             SlideMapping = slideMapping;
         }
 
-       
+
         override public void Apply(RegularContainer note)
-        {            
+        {
             this.Note = (Note)note;
             TraceLogger.DebugInternal("NoteMapping.Apply");
 
             // Associate slide with slide layout
-            NotesAtom notesAtom = note.FirstChildWithType<NotesAtom>();
-            
+            var notesAtom = note.FirstChildWithType<NotesAtom>();
+
             //Add relationship to slide
             this.targetPart.ReferencePart(SlideMapping.targetPart);
             SlideMapping.targetPart.ReferencePart(this.targetPart);
 
             //Add relationship to notes master
 
-            
+
             // Start the document
             _writer.WriteStartDocument();
             _writer.WriteStartElement("p", "notes", OpenXmlNamespaces.PresentationML);
-            
+
             // Force declaration of these namespaces at document start
             _writer.WriteAttributeString("xmlns", "a", null, OpenXmlNamespaces.DrawingML);
             // Force declaration of these namespaces at document start
@@ -85,7 +81,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             stm.Apply(note.FirstChildWithType<PPDrawing>());
 
             checkHeaderFooter(stm);
-         
+
             _writer.WriteEndElement(); //spTree
             _writer.WriteEndElement(); //cSld
 
@@ -96,20 +92,20 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteEndDocument();
 
             _writer.Flush();
-                
+
         }
 
         private void checkHeaderFooter(ShapeTreeMapping stm)
         {
-            NotesAtom slideAtom = this.Note.FirstChildWithType<NotesAtom>();
+            var slideAtom = this.Note.FirstChildWithType<NotesAtom>();
 
             string footertext = "";
             string headertext = "";
             string userdatetext = "";
-            SlideHeadersFootersContainer headersfooters = this.Note.FirstChildWithType<SlideHeadersFootersContainer>();
+            var headersfooters = this.Note.FirstChildWithType<SlideHeadersFootersContainer>();
             if (headersfooters != null)
             {
-                foreach (CStringAtom text in headersfooters.AllChildrenWithType<CStringAtom>())
+                foreach (var text in headersfooters.AllChildrenWithType<CStringAtom>())
                 {
                     switch (text.Instance)
                     {
@@ -132,65 +128,65 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
             bool footer = false;
-            bool header = false;
+            //bool header = false;
             bool slideNumber = false;
-            bool date = false;
-            bool userDate = false;
+            //bool date = false;
+            //bool userDate = false;
 
-            foreach (SlideHeadersFootersContainer c in this._ctx.Ppt.DocumentRecord.AllChildrenWithType<SlideHeadersFootersContainer>())
+            foreach (var c in this._ctx.Ppt.DocumentRecord.AllChildrenWithType<SlideHeadersFootersContainer>())
             {
                 switch (c.Instance)
                 {
                     case 0: //PerSlideHeadersFootersContainer
                         break;
                     case 3: //SlideHeadersFootersContainer
-                         break;
+                        break;
                     case 4: //NotesHeadersFootersContainer
-                        foreach (HeadersFootersAtom a in c.AllChildrenWithType<HeadersFootersAtom>())
+                        foreach (var a in c.AllChildrenWithType<HeadersFootersAtom>())
                         {
                             if (a.fHasFooter) footer = true;
-                            if (a.fHasHeader) header = true;
+                            //if (a.fHasHeader) header = true;
                             if (a.fHasSlideNumber) slideNumber = true;
-                            if (a.fHasDate) date = true;
-                            if (a.fHasUserDate) userDate = true;
+                            //if (a.fHasDate) date = true;
+                            //if (a.fHasUserDate) userDate = true;
                         }
                         break;
                 }
 
             }
 
-            Note master = _ctx.Ppt.NotesMasterRecords[0];
+            var master = _ctx.Ppt.NotesMasterRecords[0];
 
             if (slideNumber)
             {
                 //foreach (Slide master in this._ctx.Ppt.MainMasterRecords)
                 //{
-                    //if (master.PersistAtom.SlideId == slideAtom.MasterId)
-                    //{
-                        List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
-                        foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
+                //if (master.PersistAtom.SlideId == slideAtom.MasterId)
+                //{
+                var shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
+                foreach (var shapecontainer in shapes)
+                {
+                    foreach (var data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                    {
+                        var ms = new System.IO.MemoryStream(data.bytes);
+                        var rec = OfficeDrawing.Record.ReadRecord(ms);
+
+                        if (rec.TypeCode == 3011)
                         {
-                            foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                            var placeholder = (OEPlaceHolderAtom)rec;
+
+                            if (placeholder != null)
                             {
-                                var ms = new System.IO.MemoryStream(data.bytes);
-                                OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
-
-                                if (rec.TypeCode == 3011)
+                                if (placeholder.PlacementId == PlaceholderEnum.MasterSlideNumber)
                                 {
-                                    var placeholder = (OEPlaceHolderAtom)rec;
-
-                                    if (placeholder != null)
-                                    {
-                                        if (placeholder.PlacementId == PlaceholderEnum.MasterSlideNumber)
-                                        {
-                                            stm.Apply(shapecontainer, "", "", "");
-                                        }
-                                    }
+                                    stm.Apply(shapecontainer, "", "", "");
                                 }
                             }
                         }
+                    }
+                }
 
-                    //}
+                //}
                 //}
             }
 
@@ -230,125 +226,125 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             //  }
             //}
 
-            if (header)
-            {
-                string s = "";
-            }
+            //if (header)
+            //{
+            //    string s = "";
+            //}
 
-           // if (footer)
-           // //foreach (Note master in this._ctx.Ppt.NotesMasterRecords)
-           // {                    
-           //     List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
-           //     foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
-           //     {
-           //         foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
-           //         {
-           //             System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
-           //             OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
+            // if (footer)
+            // //foreach (Note master in this._ctx.Ppt.NotesMasterRecords)
+            // {                    
+            //     List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
+            //     foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
+            //     {
+            //         foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+            //         {
+            //             System.IO.MemoryStream ms = new System.IO.MemoryStream(data.bytes);
+            //             OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
 
-           //             if (rec.TypeCode == 3011)
-           //             {
-           //                 OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
+            //             if (rec.TypeCode == 3011)
+            //             {
+            //                 OEPlaceHolderAtom placeholder = (OEPlaceHolderAtom)rec;
 
-           //                 if (placeholder != null)
-           //                 {
-           //                     if (placeholder.PlacementId == PlaceholderEnum.MasterFooter)
-           //                     {
-           //                         stm.Apply(shapecontainer, footertext, "", "");
-           //                         footer = false;
-           //                     }
-           //                 }
-           //             }
-           //         }
-           //     }                    
-           //}
+            //                 if (placeholder != null)
+            //                 {
+            //                     if (placeholder.PlacementId == PlaceholderEnum.MasterFooter)
+            //                     {
+            //                         stm.Apply(shapecontainer, footertext, "", "");
+            //                         footer = false;
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }                    
+            //}
 
             if (footer)
             //foreach (Slide master in this._ctx.Ppt.TitleMasterRecords)
             {
                 //if (master.PersistAtom.SlideId == slideAtom.MasterId)
                 //{
-                    List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
-                    foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
+                var shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
+                foreach (var shapecontainer in shapes)
+                {
+                    foreach (var data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                     {
-                        foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                        var ms = new System.IO.MemoryStream(data.bytes);
+                        var rec = OfficeDrawing.Record.ReadRecord(ms);
+
+                        if (rec.TypeCode == 3011)
                         {
-                            var ms = new System.IO.MemoryStream(data.bytes);
-                            OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
+                            var placeholder = (OEPlaceHolderAtom)rec;
 
-                            if (rec.TypeCode == 3011)
+                            if (placeholder != null)
                             {
-                                var placeholder = (OEPlaceHolderAtom)rec;
-
-                                if (placeholder != null)
+                                if (placeholder.PlacementId == PlaceholderEnum.MasterFooter)
                                 {
-                                    if (placeholder.PlacementId == PlaceholderEnum.MasterFooter)
+                                    bool doit = footertext.Length > 0;
+                                    if (!doit)
                                     {
-                                        bool doit = footertext.Length > 0;
-                                        if (!doit)
-                                        {
-                                            foreach (ShapeOptions so in shapecontainer.AllChildrenWithType<ShapeOptions>())
-                                                if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
-                                                {
-                                                    var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
-                                                    if (props.fFilled && props.fUsefFilled) doit = true;
-                                                }
-                                        }
-                                        if (doit) stm.Apply(shapecontainer, footertext, "", "");
-                                        footer = false;
+                                        foreach (var so in shapecontainer.AllChildrenWithType<ShapeOptions>())
+                                            if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
+                                            {
+                                                var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                                                if (props.fFilled && props.fUsefFilled) doit = true;
+                                            }
                                     }
+                                    if (doit) stm.Apply(shapecontainer, footertext, "", "");
+                                    footer = false;
                                 }
                             }
                         }
                     }
+                }
 
                 //}
             }
 
             if (footer)
             //foreach (Slide master in this._ctx.Ppt.MainMasterRecords)
+            {
+                //if (master.PersistAtom.SlideId == slideAtom.MasterId)
+                //{
+                var shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
+                foreach (var shapecontainer in shapes)
                 {
-                    //if (master.PersistAtom.SlideId == slideAtom.MasterId)
-                    //{
-                        List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
-                        foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
+                    foreach (var data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                    {
+                        var ms = new System.IO.MemoryStream(data.bytes);
+                        var rec = OfficeDrawing.Record.ReadRecord(ms);
+
+                        if (rec.TypeCode == 3011)
                         {
-                            foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                            var placeholder = (OEPlaceHolderAtom)rec;
+
+                            if (placeholder != null)
                             {
-                                var ms = new System.IO.MemoryStream(data.bytes);
-                                OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
-
-                                if (rec.TypeCode == 3011)
+                                if (placeholder.PlacementId == PlaceholderEnum.MasterFooter)
                                 {
-                                    var placeholder = (OEPlaceHolderAtom)rec;
+                                    if (footertext.Length == 0 & shapecontainer.AllChildrenWithType<ClientTextbox>().Count > 0) footertext = new SlideMapping(_ctx).readFooterFromClientTextBox(shapecontainer.FirstChildWithType<ClientTextbox>());
 
-                                    if (placeholder != null)
+                                    bool doit = footertext.Length > 0;
+                                    if (!doit)
                                     {
-                                        if (placeholder.PlacementId == PlaceholderEnum.MasterFooter)
-                                        {
-                                            if (footertext.Length == 0 & shapecontainer.AllChildrenWithType<ClientTextbox>().Count > 0) footertext = new SlideMapping(_ctx).readFooterFromClientTextBox(shapecontainer.FirstChildWithType<ClientTextbox>());
-
-                                            bool doit = footertext.Length > 0;
-                                            if (!doit)
+                                        foreach (var so in shapecontainer.AllChildrenWithType<ShapeOptions>())
+                                            if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                                             {
-                                                foreach(ShapeOptions so in shapecontainer.AllChildrenWithType<ShapeOptions>())
-                                                    if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
-                                                    {
-                                                        var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
-                                                        if (props.fFilled && props.fUsefFilled) doit = true;
-                                                    }
+                                                var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
+                                                if (props.fFilled && props.fUsefFilled) doit = true;
                                             }
-                                            if (doit) stm.Apply(shapecontainer, footertext, "","");
-                                            footer = false;
-                                        }
                                     }
+                                    if (doit) stm.Apply(shapecontainer, footertext, "", "");
+                                    footer = false;
                                 }
                             }
                         }
-
                     }
                 }
-                        
+
+            }
+        }
+
         //}
     }
 }

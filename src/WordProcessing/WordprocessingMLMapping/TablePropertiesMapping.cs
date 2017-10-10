@@ -27,7 +27,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using System.Xml;
@@ -66,18 +65,18 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         public void Apply(TablePropertyExceptions tapx)
         {
-            XmlElement tblBorders = _nodeFactory.CreateElement("w", "tblBorders", OpenXmlNamespaces.WordprocessingML);
-            XmlElement tblCellMar = _nodeFactory.CreateElement("w", "tblCellMar", OpenXmlNamespaces.WordprocessingML);
-            XmlElement tblLayout = _nodeFactory.CreateElement("w", "tblLayout", OpenXmlNamespaces.WordprocessingML);
-            XmlElement tblpPr = _nodeFactory.CreateElement("w", "tblpPr", OpenXmlNamespaces.WordprocessingML);
-            XmlAttribute layoutType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+            var tblBorders = _nodeFactory.CreateElement("w", "tblBorders", OpenXmlNamespaces.WordprocessingML);
+            var tblCellMar = _nodeFactory.CreateElement("w", "tblCellMar", OpenXmlNamespaces.WordprocessingML);
+            var tblLayout = _nodeFactory.CreateElement("w", "tblLayout", OpenXmlNamespaces.WordprocessingML);
+            var tblpPr = _nodeFactory.CreateElement("w", "tblpPr", OpenXmlNamespaces.WordprocessingML);
+            var layoutType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
             layoutType.Value = "fixed";
             short tblIndent = 0;
             short gabHalf = 0;
             short marginLeft = 0;
             short marginRight = 0;
 
-            foreach (SinglePropertyModifier sprm in tapx.grpprl)
+            foreach (var sprm in tapx.grpprl)
             {
                 switch (sprm.OpCode)
                 {
@@ -102,10 +101,10 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmTTableWidth:
                         var fts = (WidthType)sprm.Arguments[0];
                         var width = System.BitConverter.ToInt16(sprm.Arguments, 1);
-                        XmlElement tblW = _nodeFactory.CreateElement("w", "tblW", OpenXmlNamespaces.WordprocessingML);
-                        XmlAttribute w = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                        var tblW = _nodeFactory.CreateElement("w", "tblW", OpenXmlNamespaces.WordprocessingML);
+                        var w = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                         w.Value = width.ToString();
-                        XmlAttribute type = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+                        var type = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
                         type.Value = fts.ToString();
                         tblW.Attributes.Append(type);
                         tblW.Attributes.Append(w);
@@ -145,7 +144,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //table look
                     case SinglePropertyModifier.OperationCode.sprmTTlp:
-                        appendValueElement(_tblPr, "tblLook", String.Format("{0:x4}", System.BitConverter.ToInt16(sprm.Arguments, 2)), true);
+                        appendValueElement(_tblPr, "tblLook", string.Format("{0:x4}", System.BitConverter.ToInt16(sprm.Arguments, 2)), true);
                         break;
 
                     //autofit
@@ -273,11 +272,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //indent
             if (tblIndent != 0)
             {
-                XmlElement tblInd = _nodeFactory.CreateElement("w", "tblInd", OpenXmlNamespaces.WordprocessingML);
-                XmlAttribute tblIndW = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                var tblInd = _nodeFactory.CreateElement("w", "tblInd", OpenXmlNamespaces.WordprocessingML);
+                var tblIndW = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                 tblIndW.Value = tblIndent.ToString();
                 tblInd.Attributes.Append(tblIndW);
-                XmlAttribute tblIndType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+                var tblIndType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
                 tblIndType.Value = "dxa";
                 tblInd.Attributes.Append(tblIndType);
                 _tblPr.AppendChild(tblInd);
@@ -292,37 +291,37 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //set borders
             if (brcTop != null)
             {
-                XmlNode topBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
+                var topBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(brcTop, topBorder);
                 addOrSetBorder(_tblBorders, topBorder);
             }
             if (brcLeft != null)
             {
-                XmlNode leftBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
+                var leftBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(brcLeft, leftBorder);
                 addOrSetBorder(_tblBorders, leftBorder);
             }
             if (brcBottom != null)
             {
-                XmlNode bottomBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
+                var bottomBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(brcBottom, bottomBorder);
                 addOrSetBorder(_tblBorders, bottomBorder);
             }
             if (brcRight != null)
             {
-                XmlNode rightBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
+                var rightBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(brcRight, rightBorder);
                 addOrSetBorder(_tblBorders, rightBorder);
             }
             if (brcHorz != null)
             {
-                XmlNode insideHBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "insideH", OpenXmlNamespaces.WordprocessingML);
+                var insideHBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "insideH", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(brcHorz, insideHBorder);
                 addOrSetBorder(_tblBorders, insideHBorder);
             }
             if (brcVert != null)
             {
-                XmlNode insideVBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "insideV", OpenXmlNamespaces.WordprocessingML);
+                var insideVBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "insideV", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(brcVert, insideVBorder);
                 addOrSetBorder(_tblBorders, insideVBorder);
             }
@@ -364,8 +363,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             _tblGrid = _nodeFactory.CreateElement("w", "tblGrid", OpenXmlNamespaces.WordprocessingML);
             foreach (var colW in _grid)
             {
-                XmlElement gridCol = _nodeFactory.CreateElement("w", "gridCol", OpenXmlNamespaces.WordprocessingML);
-                XmlAttribute gridColW = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                var gridCol = _nodeFactory.CreateElement("w", "gridCol", OpenXmlNamespaces.WordprocessingML);
+                var gridColW = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                 gridColW.Value = colW.ToString();
                 gridCol.Attributes.Append(gridColW);
                 _tblGrid.AppendChild(gridCol);

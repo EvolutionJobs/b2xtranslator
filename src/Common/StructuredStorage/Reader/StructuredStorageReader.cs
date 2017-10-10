@@ -28,9 +28,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Diagnostics;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
 
 [assembly: CLSCompliant(false)]

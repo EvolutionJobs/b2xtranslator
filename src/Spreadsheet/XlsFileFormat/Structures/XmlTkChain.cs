@@ -27,7 +27,6 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-using System;
 using System.Collections;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 
@@ -50,8 +49,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 
             this.xmltkParent = reader.ReadUInt16();
 
-            long pos;
-            XmlTkHeader h;
+            //long pos;
+            //XmlTkHeader h;
             switch (this.xmltkParent)
             {
                 case 0x01:

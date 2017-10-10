@@ -29,7 +29,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 {

@@ -26,8 +26,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using System.Xml;
@@ -78,7 +76,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             if (managerRels.Count != 1)
                 throw new Exception("Expected actly one Relationship for Theme manager");
 
-            var partPath = String.Format("{0}/{1}", managerDirectory, managerRels[0].Attributes["Target"].Value);
+            var partPath = string.Format("{0}/{1}", managerDirectory, managerRels[0].Attributes["Target"].Value);
             var partStream = zipReader.GetEntry(partPath);
 
             var partDoc = new XmlDocument();

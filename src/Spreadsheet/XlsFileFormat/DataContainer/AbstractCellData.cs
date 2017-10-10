@@ -109,7 +109,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// Sets the value 
         /// </summary>
         /// <param name="obj"></param>
-        public abstract void setValue(Object obj);
+        public abstract void setValue(object obj);
 
         /// <summary>
         /// Implements the compareble interface 

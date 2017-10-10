@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 
 namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
@@ -73,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
 
             //proof state
-            XmlElement proofState = _nodeFactory.CreateElement("w", "proofState", OpenXmlNamespaces.WordprocessingML);
+            var proofState = _nodeFactory.CreateElement("w", "proofState", OpenXmlNamespaces.WordprocessingML);
             if (dop.fGramAllClean)
                 appendValueAttribute(proofState, "grammar", "clean");
             if (proofState.Attributes.Count > 0)
@@ -83,7 +80,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             if (dop.grfFmtFilter != 0)
             {
                 _writer.WriteStartElement("w", "stylePaneFormatFilter", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, String.Format("{0:x4}", dop.grfFmtFilter));
+                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, string.Format("{0:x4}", dop.grfFmtFilter));
                 _writer.WriteEndElement();
             }
 
@@ -119,7 +116,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
 
             //footnote properties
-            XmlElement footnotePr = _nodeFactory.CreateElement("w", "footnotePr", OpenXmlNamespaces.WordprocessingML);
+            var footnotePr = _nodeFactory.CreateElement("w", "footnotePr", OpenXmlNamespaces.WordprocessingML);
             if (dop.nFtn != 0)
                 appendValueAttribute(footnotePr, "numStart", dop.nFtn.ToString());
             if (dop.rncFtn != 0)

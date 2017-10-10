@@ -26,11 +26,8 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
@@ -72,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         override public string ToString(uint depth)
         {
 
-            return String.Format("{0}\n{1}PsrRef = {2}\n{1}Flags = {3}, NumberText = {4}, SlideId = {5})",
+            return string.Format("{0}\n{1}PsrRef = {2}\n{1}Flags = {3}, NumberText = {4}, SlideId = {5})",
                 base.ToString(depth), IndentationForDepth(depth + 1),
                 this.PersistIdRef, this.Flags, this.NumberText, this.SlideId);
         }

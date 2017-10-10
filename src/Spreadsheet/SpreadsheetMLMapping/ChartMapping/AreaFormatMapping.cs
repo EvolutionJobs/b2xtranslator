@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
-using DIaLOGIKa.b2xtranslator.Tools;
-
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+﻿namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 {
     // TODO: no longer needed
     //public class AreaFormatMapping : AbstractChartMapping,

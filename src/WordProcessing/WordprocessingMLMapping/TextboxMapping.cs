@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;

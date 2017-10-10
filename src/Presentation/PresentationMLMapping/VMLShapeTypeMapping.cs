@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Text;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
@@ -127,7 +124,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 {
                     _writer.WriteStartElement("v", "handles", OpenXmlNamespaces.VectorML);
 
-                    foreach (ShapeType.Handle handle in shapeType.Handles)
+                    foreach (var handle in shapeType.Handles)
                     {
                         _writer.WriteStartElement("v", "h", OpenXmlNamespaces.VectorML);
 

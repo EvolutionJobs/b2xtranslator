@@ -26,11 +26,7 @@
  */
 
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
 
 namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
 {

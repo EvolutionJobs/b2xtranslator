@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
+﻿using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
-using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 
 namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
@@ -21,7 +17,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void Apply(ExOleObjStgAtom vbaProject)
         {
-            byte[] bytes = vbaProject.DecompressData();
+            var bytes = vbaProject.DecompressData();
             _targetPart.GetStream().Write(bytes, 0, bytes.Length);
             
         }

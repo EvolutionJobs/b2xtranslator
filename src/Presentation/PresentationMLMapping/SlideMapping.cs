@@ -24,12 +24,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
 using DIaLOGIKa.b2xtranslator.Tools;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
@@ -55,13 +52,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// <returns>Id of main master</returns>
         private uint GetMainMasterId(SlideAtom slideAtom)
         {
-            Slide masterSlide = _ctx.Ppt.FindMasterRecordById(slideAtom.MasterId);
+            var masterSlide = _ctx.Ppt.FindMasterRecordById(slideAtom.MasterId);
             
             // Is our immediate master a title master?
             if (!(masterSlide is MainMaster))
             {
                 // Then our main master is the title master's master
-                SlideAtom titleSlideAtom = masterSlide.FirstChildWithType<SlideAtom>();
+                var titleSlideAtom = masterSlide.FirstChildWithType<SlideAtom>();
                 return titleSlideAtom.MasterId;
             }
 
@@ -74,12 +71,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             TraceLogger.DebugInternal("SlideMapping.Apply");
 
             // Associate slide with slide layout
-            SlideAtom slideAtom = slide.FirstChildWithType<SlideAtom>();
+            var slideAtom = slide.FirstChildWithType<SlideAtom>();
             var mainMasterId = GetMainMasterId(slideAtom);
             var layoutManager = _ctx.GetOrCreateLayoutManagerByMasterId(mainMasterId);
 
             SlideLayoutPart layoutPart = null;
-            RoundTripContentMasterId12 masterInfo = slide.FirstChildWithType<RoundTripContentMasterId12>();
+            var masterInfo = slide.FirstChildWithType<RoundTripContentMasterId12>();
 
             // PPT2007 OOXML-Layout
             if (masterInfo != null)
@@ -129,18 +126,18 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             // TODO: Write slide data of master slide
             _writer.WriteStartElement("p", "cSld", OpenXmlNamespaces.PresentationML);
 
-            ShapeContainer sc = slide.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<ShapeContainer>();
+            var sc = slide.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<ShapeContainer>();
             if (sc != null)
             {
-                Shape sh = sc.FirstChildWithType<Shape>();
-                ShapeOptions so = sc.FirstChildWithType<ShapeOptions>();                
+                var sh = sc.FirstChildWithType<Shape>();
+                var so = sc.FirstChildWithType<ShapeOptions>();                
 
                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                 {
                     bool ignore = false;
                     if (sc.AllChildrenWithType<ShapeOptions>().Count > 1)
                     {
-                        ShapeOptions so2 = sc.AllChildrenWithType<ShapeOptions>()[1];
+                        var so2 = sc.AllChildrenWithType<ShapeOptions>()[1];
                         if (so2.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                         {
                             var p2 = new FillStyleBooleanProperties(so2.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
@@ -148,7 +145,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         }
                     }
 
-                    SlideAtom sa = slide.FirstChildWithType<SlideAtom>();
+                    var sa = slide.FirstChildWithType<SlideAtom>();
                     if (Tools.Utils.BitmaskToBool(sa.Flags, 0x1 << 2)) ignore = true; //this means the slide gets its background from the master
 
                     if (!ignore)
@@ -203,18 +200,18 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void InsertMasterStylePlaceholders(ShapeTreeMapping stm)
         {
-            SlideAtom slideAtom = this.Slide.FirstChildWithType<SlideAtom>();
-            foreach (Slide master in this._ctx.Ppt.MainMasterRecords)
+            var slideAtom = this.Slide.FirstChildWithType<SlideAtom>();
+            foreach (var master in this._ctx.Ppt.MainMasterRecords)
             {
                 if (master.PersistAtom.SlideId == slideAtom.MasterId)
                 {
-                    List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
-                    foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
+                    var shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
+                    foreach (var shapecontainer in shapes)
                     {
-                        foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                        foreach (var data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                         {
                             var ms = new System.IO.MemoryStream(data.bytes);
-                            OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
+                            var rec = OfficeDrawing.Record.ReadRecord(ms);
 
                             if (rec.TypeCode == 3011)
                             {
@@ -243,15 +240,15 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             var lst = new List<int>();
             while (ms.Position < ms.Length)
             {
-                Record rec = Record.ReadRecord(ms);
+                var rec = Record.ReadRecord(ms);
 
                 switch (rec.TypeCode)
                 {
                     case 0xf9e: //OutlineTextRefAtom
                         var otrAtom = (OutlineTextRefAtom)rec;
-                        SlideListWithText slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
+                        var slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
 
-                        List<TextHeaderAtom> thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
+                        var thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
                         thAtom = thAtoms[otrAtom.Index];
 
                         //if (thAtom.TextAtom != null) text = thAtom.TextAtom.Text;
@@ -291,15 +288,15 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void checkHeaderFooter(ShapeTreeMapping stm)
         {
-            SlideAtom slideAtom = this.Slide.FirstChildWithType<SlideAtom>();
+            var slideAtom = this.Slide.FirstChildWithType<SlideAtom>();
 
             string footertext = "";
             string headertext = "";
             string userdatetext = "";
-            SlideHeadersFootersContainer headersfooters = this.Slide.FirstChildWithType<SlideHeadersFootersContainer>();
+            var headersfooters = this.Slide.FirstChildWithType<SlideHeadersFootersContainer>();
             if (headersfooters != null)
             {
-                foreach (CStringAtom text in headersfooters.AllChildrenWithType<CStringAtom>())
+                foreach (var text in headersfooters.AllChildrenWithType<CStringAtom>())
                 {
                     switch (text.Instance)
                     {
@@ -324,21 +321,21 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             bool footer = false;
             bool slideNumber = false;
             bool date = false;
-            bool userDate = false;
+            //bool userDate = false;
             if (!(_ctx.Ppt.DocumentRecord.FirstChildWithType<DocumentAtom>().OmitTitlePlace && this.Slide.FirstChildWithType<SlideAtom>().Layout.Geom == SlideLayoutType.TitleSlide))
-            foreach (SlideHeadersFootersContainer c in this._ctx.Ppt.DocumentRecord.AllChildrenWithType<SlideHeadersFootersContainer>())
+            foreach (var c in this._ctx.Ppt.DocumentRecord.AllChildrenWithType<SlideHeadersFootersContainer>())
             {
                 switch (c.Instance)
                 {
                     case 0: //PerSlideHeadersFootersContainer
                         break;
                     case 3: //SlideHeadersFootersContainer
-                        foreach (HeadersFootersAtom a in c.AllChildrenWithType<HeadersFootersAtom>())
+                        foreach (var a in c.AllChildrenWithType<HeadersFootersAtom>())
                         {
                             if (a.fHasFooter) footer = true;
                             if (a.fHasSlideNumber) slideNumber = true;
                             if (a.fHasDate) date = true;
-                            if (a.fHasUserDate) userDate = true;
+                            //if (a.fHasUserDate) userDate = true;
 
                             //if (a.fHasHeader) header = true;
                         }
@@ -358,17 +355,17 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             if (slideNumber)
             {
-                foreach (Slide master in this._ctx.Ppt.MainMasterRecords)
+                foreach (var master in this._ctx.Ppt.MainMasterRecords)
                 {
                     if (master.PersistAtom.SlideId == slideAtom.MasterId)
                     {
-                        List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
-                        foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
+                        var shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
+                        foreach (var shapecontainer in shapes)
                         {
-                            foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                            foreach (var data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                             {
                                 var ms = new System.IO.MemoryStream(data.bytes);
-                                OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
+                                var rec = OfficeDrawing.Record.ReadRecord(ms);
 
                                 if (rec.TypeCode == 3011)
                                 {
@@ -393,17 +390,17 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             {
                 //if (!(userDate & userdatetext.Length == 0))
                 //{
-                    foreach (Slide master in this._ctx.Ppt.MainMasterRecords)
+                    foreach (var master in this._ctx.Ppt.MainMasterRecords)
                     {
                         if (master.PersistAtom.SlideId == slideAtom.MasterId)
                         {
-                            List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
-                            foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
+                            var shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
+                            foreach (var shapecontainer in shapes)
                             {
-                                foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                                foreach (var data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                                 {
                                     var ms = new System.IO.MemoryStream(data.bytes);
-                                    OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
+                                    var rec = OfficeDrawing.Record.ReadRecord(ms);
 
                                     if (rec.TypeCode == 3011)
                                     {
@@ -426,17 +423,17 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
             if (footer)
-            foreach (Slide master in this._ctx.Ppt.TitleMasterRecords)
+            foreach (var master in this._ctx.Ppt.TitleMasterRecords)
             {
                 if (master.PersistAtom.SlideId == slideAtom.MasterId)
                 {
-                    List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
-                    foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
+                    var shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
+                    foreach (var shapecontainer in shapes)
                     {
-                        foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                        foreach (var data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                         {
                             var ms = new System.IO.MemoryStream(data.bytes);
-                            OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
+                            var rec = OfficeDrawing.Record.ReadRecord(ms);
 
                             if (rec.TypeCode == 3011)
                             {
@@ -449,7 +446,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                         bool doit = footertext.Length > 0;
                                         if (!doit)
                                         {
-                                            foreach (ShapeOptions so in shapecontainer.AllChildrenWithType<ShapeOptions>())
+                                            foreach (var so in shapecontainer.AllChildrenWithType<ShapeOptions>())
                                                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                                                 {
                                                     var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);
@@ -468,17 +465,17 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
 
             if (footer)
-            foreach (Slide master in this._ctx.Ppt.MainMasterRecords)
+            foreach (var master in this._ctx.Ppt.MainMasterRecords)
                 {
                     if (master.PersistAtom.SlideId == slideAtom.MasterId)
                     {
-                        List<OfficeDrawing.ShapeContainer> shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
-                        foreach (OfficeDrawing.ShapeContainer shapecontainer in shapes)
+                        var shapes = master.AllChildrenWithType<PPDrawing>()[0].AllChildrenWithType<OfficeDrawing.DrawingContainer>()[0].AllChildrenWithType<OfficeDrawing.GroupContainer>()[0].AllChildrenWithType<OfficeDrawing.ShapeContainer>();
+                        foreach (var shapecontainer in shapes)
                         {
-                            foreach (OfficeDrawing.ClientData data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
+                            foreach (var data in shapecontainer.AllChildrenWithType<OfficeDrawing.ClientData>())
                             {
                                 var ms = new System.IO.MemoryStream(data.bytes);
-                                OfficeDrawing.Record rec = OfficeDrawing.Record.ReadRecord(ms);
+                                var rec = OfficeDrawing.Record.ReadRecord(ms);
 
                                 if (rec.TypeCode == 3011)
                                 {
@@ -493,7 +490,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                             bool doit = footertext.Length > 0;
                                             if (!doit)
                                             {
-                                                foreach(ShapeOptions so in shapecontainer.AllChildrenWithType<ShapeOptions>())
+                                                foreach(var so in shapecontainer.AllChildrenWithType<ShapeOptions>())
                                                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.FillStyleBooleanProperties))
                                                     {
                                                         var props = new FillStyleBooleanProperties(so.OptionsByID[ShapeOptions.PropertyId.FillStyleBooleanProperties].op);

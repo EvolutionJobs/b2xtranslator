@@ -27,8 +27,6 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common

@@ -60,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
         public void Apply(SupBookData sbd)
         {
             var uri = new Uri(sbd.VirtPath, UriKind.RelativeOrAbsolute);
-            ExternalRelationship er = this.xlsContext.SpreadDoc.WorkbookPart.GetExternalLinkPart().AddExternalRelationship(OpenXmlRelationshipTypes.ExternalLinkPath, uri);
+            var er = this.xlsContext.SpreadDoc.WorkbookPart.GetExternalLinkPart().AddExternalRelationship(OpenXmlRelationshipTypes.ExternalLinkPath, uri);
 
             
             

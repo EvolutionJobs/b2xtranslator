@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
+﻿using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 
 namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
@@ -24,7 +21,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             for (int i = 0; i < doc.CommandTable.MacroDatas.Count; i++)
             {
                 _writer.WriteStartElement("wne", "mcd", OpenXmlNamespaces.MicrosoftWordML);
-                MacroData mcd = doc.CommandTable.MacroDatas[i];
+                var mcd = doc.CommandTable.MacroDatas[i];
 
                 if (doc.CommandTable.MacroNames != null)
                 {

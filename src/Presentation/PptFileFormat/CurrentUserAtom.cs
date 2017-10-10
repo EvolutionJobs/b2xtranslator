@@ -26,11 +26,9 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
@@ -141,7 +139,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                     throw new NotSupportedException("Encryped PPT files aren't supported at this time");
 
                 default:
-                    throw new NotSupportedException(String.Format(
+                    throw new NotSupportedException(string.Format(
                         "File doesn't seem to be a PPT file. Magic Bytes = {0}", this.HeaderToken));
             }
 
@@ -168,7 +166,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         override public string ToString(uint depth)
         {
-            return String.Format("{0}\n{1}Size = {2}, Magic = {3}, OffsetToCurrentEdit = {4}\n{1}" +
+            return string.Format("{0}\n{1}Size = {2}, Magic = {3}, OffsetToCurrentEdit = {4}\n{1}" +
                 "LengthUserName = {5}, DocFileVersion = {6}, MajorVersion = {7}, MinorVersion = {8}\n{1}" +
                 "UserNameANSI = {9}, ReleaseVersion = {10}, UserNameUnicode = {11}",
 

@@ -27,18 +27,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
 using DIaLOGIKa.b2xtranslator.Tools;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using System.IO.Compression;
-using System.IO;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using System.Threading;
 
 namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 {
@@ -170,7 +164,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             var fcRowEnd = findRowEndFc(cp, nestingLevel);
             var rowEndPapx = findValidPapx(fcRowEnd);
             var tapx = new TablePropertyExceptions(rowEndPapx, _doc.DataStream);
-            List<CharacterPropertyExceptions> chpxs = _doc.GetCharacterPropertyExceptions(fcRowEnd, fcRowEnd + 1);
+            var chpxs = _doc.GetCharacterPropertyExceptions(fcRowEnd, fcRowEnd + 1);
 
             if (tapx != null)
             {
@@ -306,7 +300,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             while (tai.fInTable)
             {
                 //check all SPRMs of this TAPX
-                foreach (SinglePropertyModifier sprm in papx.grpprl)
+                foreach (var sprm in papx.grpprl)
                 {
                     //find the tDef SPRM
                     if (sprm.OpCode == SinglePropertyModifier.OperationCode.sprmTDefTable)
@@ -525,8 +519,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             var papx = findValidPapx(fc);
 
             //get all CHPX between these boundaries to determine the count of runs
-            List<CharacterPropertyExceptions> chpxs = _doc.GetCharacterPropertyExceptions(fc, fcEnd);
-            List<int> chpxFcs = _doc.GetFileCharacterPositions(fc, fcEnd);
+            var chpxs = _doc.GetCharacterPropertyExceptions(fc, fcEnd);
+            var chpxFcs = _doc.GetFileCharacterPositions(fc, fcEnd);
             chpxFcs.Add(fcEnd);
 
             //the last of these CHPX formats the paragraph end mark
@@ -577,7 +571,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 }
 
                 //read the chars that are formatted via this CHPX
-                List<char> chpxChars = _doc.PieceTable.GetChars(fcChpxStart, fcChpxEnd, _doc.WordDocumentStream);
+                var chpxChars = _doc.PieceTable.GetChars(fcChpxStart, fcChpxEnd, _doc.WordDocumentStream);
 
                 //search for bookmarks in the chars
                 var bookmarks = searchBookmarks(chpxChars, cp);
@@ -674,19 +668,19 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 //append rsids
                 if (rev.Rsid != 0)
                 {
-                    string rsid = String.Format("{0:x8}", rev.Rsid);
+                    string rsid = string.Format("{0:x8}", rev.Rsid);
                     _writer.WriteAttributeString("w", "rsidR", OpenXmlNamespaces.WordprocessingML, rsid);
                     _ctx.AddRsid(rsid);
                 }
                 if (rev.RsidDel != 0)
                 {
-                    string rsidDel = String.Format("{0:x8}", rev.RsidDel);
+                    string rsidDel = string.Format("{0:x8}", rev.RsidDel);
                     _writer.WriteAttributeString("w", "rsidDel", OpenXmlNamespaces.WordprocessingML, rsidDel);
                     _ctx.AddRsid(rsidDel);
                 }
                 if (rev.RsidProp != 0)
                 {
-                    string rsidProp = String.Format("{0:x8}", rev.RsidProp);
+                    string rsidProp = string.Format("{0:x8}", rev.RsidProp);
                     _writer.WriteAttributeString("w", "rsidRPr", OpenXmlNamespaces.WordprocessingML, rsidProp);
                     _ctx.AddRsid(rsidProp);
                 }
@@ -802,7 +796,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         if (cpPic < cpFieldEnd)
                         {
                             int fcPic = _doc.PieceTable.FileCharacterPositions[cpPic];
-                            CharacterPropertyExceptions chpxPic = _doc.GetCharacterPropertyExceptions(fcPic, fcPic + 1)[0];
+                            var chpxPic = _doc.GetCharacterPropertyExceptions(fcPic, fcPic + 1)[0];
                             var npbd = new NilPicfAndBinData(chpxPic, _doc.DataStream);
                             var ffdata = new FormFieldData(npbd.binData);
                             ffdata.Convert(new FormFieldDataMapping(_writer));
@@ -820,7 +814,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         if (cpPic < cpFieldEnd)
                         {
                             int fcPic = _doc.PieceTable.FileCharacterPositions[cpPic];
-                            CharacterPropertyExceptions chpxPic = _doc.GetCharacterPropertyExceptions(fcPic, fcPic + 1)[0];
+                            var chpxPic = _doc.GetCharacterPropertyExceptions(fcPic, fcPic + 1)[0];
                             var pic = new PictureDescriptor(chpxPic, _doc.DataStream);
 
                             //append the origin attributes
@@ -832,7 +826,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                             if (cpFieldSep < cpFieldEnd)
                             {
                                 int fcFieldSep = _doc.PieceTable.FileCharacterPositions[cpFieldSep];
-                                CharacterPropertyExceptions chpxSep = _doc.GetCharacterPropertyExceptions(fcFieldSep, fcFieldSep + 1)[0];
+                                var chpxSep = _doc.GetCharacterPropertyExceptions(fcFieldSep, fcFieldSep + 1)[0];
                                 var ole = new OleObject(chpxSep, _doc.Storage);
                                 ole.Convert(new OleObjectMapping(_writer, _doc, _targetPart, pic));
                             }
@@ -904,7 +898,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     }
                     if (fspa != null)
                     {
-                        ShapeContainer shape = _doc.OfficeArtContent.GetShapeContainer(fspa.spid);
+                        var shape = _doc.OfficeArtContent.GetShapeContainer(fspa.spid);
                         if (shape != null)
                         {
                             //close previous w:t ...
@@ -1083,8 +1077,8 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         protected bool isWordArtShape(ShapeContainer shape)
         {
             bool result = false;
-            List<ShapeOptions.OptionEntry> options = shape.ExtractOptions();
-            foreach (ShapeOptions.OptionEntry entry in options)
+            var options = shape.ExtractOptions();
+            foreach (var entry in options)
             {
                 if (entry.pid == ShapeOptions.PropertyId.gtextUNICODE)
                 {
@@ -1172,7 +1166,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         protected bool isOld(ParagraphPropertyExceptions papx)
         {
             bool ret = false;
-            foreach (SinglePropertyModifier sprm in papx.grpprl)
+            foreach (var sprm in papx.grpprl)
             {
                 if(sprm.OpCode == SinglePropertyModifier.OperationCode.sprmPWall)
                 {
@@ -1192,7 +1186,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         protected bool isSpecial(CharacterPropertyExceptions chpx)
         {
             bool ret = false;
-            foreach (SinglePropertyModifier sprm in chpx.grpprl)
+            foreach (var sprm in chpx.grpprl)
             {
                 if (sprm.OpCode == SinglePropertyModifier.OperationCode.sprmCPicLocation ||
                     sprm.OpCode == SinglePropertyModifier.OperationCode.sprmCHsp)
@@ -1225,7 +1219,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         private Symbol getSymbol(CharacterPropertyExceptions chpx)
         {
             Symbol ret = null;
-            foreach (SinglePropertyModifier sprm in chpx.grpprl)
+            foreach (var sprm in chpx.grpprl)
             {
                 if (sprm.OpCode == SinglePropertyModifier.OperationCode.sprmCSymbol)
                 {
@@ -1236,7 +1230,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     var ffn = (FontFamilyName)_doc.FontTable.Data[fontIndex];
                     ret.FontName = ffn.xszFtn;
-                    ret.HexValue = String.Format("{0:x4}", code);
+                    ret.HexValue = string.Format("{0:x4}", code);
                     break;
                 }
             }

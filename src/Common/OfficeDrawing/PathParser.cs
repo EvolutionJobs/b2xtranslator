@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DIaLOGIKa.b2xtranslator.Tools;
+﻿using System.Collections.Generic;
 using System.Drawing;
 
 namespace DIaLOGIKa.b2xtranslator.OfficeDrawing

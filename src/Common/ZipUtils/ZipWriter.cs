@@ -26,17 +26,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.ZipUtils
 {
-	/// <summary>
-	/// ZipWriter defines an abstract class to write entries into a ZIP file.
-	/// To add a file, first call AddEntry with the relative path, then
-	/// write the content of the file into the stream.
-	/// </summary>
-	public abstract class ZipWriter : Stream
+    /// <summary>
+    /// ZipWriter defines an abstract class to write entries into a ZIP file.
+    /// To add a file, first call AddEntry with the relative path, then
+    /// write the content of the file into the stream.
+    /// </summary>
+    public abstract class ZipWriter : Stream
 	{
         public string Filename = "";
 

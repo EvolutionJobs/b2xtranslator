@@ -25,9 +25,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using System.Xml;
@@ -159,38 +156,38 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="sepx"></param>
         public void Apply(SectionPropertyExceptions sepx)
         {
-            XmlElement pgMar = _nodeFactory.CreateElement("w", "pgMar", OpenXmlNamespaces.WordprocessingML);
-            XmlElement pgSz = _nodeFactory.CreateElement("w", "pgSz", OpenXmlNamespaces.WordprocessingML);
-            XmlElement docGrid = _nodeFactory.CreateElement("w", "docGrid", OpenXmlNamespaces.WordprocessingML);
-            XmlElement cols = _nodeFactory.CreateElement("w", "cols", OpenXmlNamespaces.WordprocessingML);
-            XmlElement pgBorders = _nodeFactory.CreateElement("w", "pgBorders", OpenXmlNamespaces.WordprocessingML);
-            XmlElement paperSrc = _nodeFactory.CreateElement("w", "paperSrc", OpenXmlNamespaces.WordprocessingML);
-            XmlElement footnotePr = _nodeFactory.CreateElement("w", "footnotePr", OpenXmlNamespaces.WordprocessingML);
-            XmlElement pgNumType = _nodeFactory.CreateElement("w", "pgNumType", OpenXmlNamespaces.WordprocessingML);
+            var pgMar = _nodeFactory.CreateElement("w", "pgMar", OpenXmlNamespaces.WordprocessingML);
+            var pgSz = _nodeFactory.CreateElement("w", "pgSz", OpenXmlNamespaces.WordprocessingML);
+            var docGrid = _nodeFactory.CreateElement("w", "docGrid", OpenXmlNamespaces.WordprocessingML);
+            var cols = _nodeFactory.CreateElement("w", "cols", OpenXmlNamespaces.WordprocessingML);
+            var pgBorders = _nodeFactory.CreateElement("w", "pgBorders", OpenXmlNamespaces.WordprocessingML);
+            var paperSrc = _nodeFactory.CreateElement("w", "paperSrc", OpenXmlNamespaces.WordprocessingML);
+            var footnotePr = _nodeFactory.CreateElement("w", "footnotePr", OpenXmlNamespaces.WordprocessingML);
+            var pgNumType = _nodeFactory.CreateElement("w", "pgNumType", OpenXmlNamespaces.WordprocessingML);
             
             //convert headers of this section
             if (_ctx.Doc.HeaderAndFooterTable.OddHeaders.Count > 0)
             {
-                CharacterRange evenHdr = _ctx.Doc.HeaderAndFooterTable.EvenHeaders[_sectNr];
+                var evenHdr = _ctx.Doc.HeaderAndFooterTable.EvenHeaders[_sectNr];
                 if (evenHdr != null)
                 {
-                    HeaderPart evenPart = _ctx.Docx.MainDocumentPart.AddHeaderPart();
+                    var evenPart = _ctx.Docx.MainDocumentPart.AddHeaderPart();
                     _ctx.Doc.Convert(new HeaderMapping(_ctx, evenPart, evenHdr));
                     appendRef(_sectPr, "headerReference", "even", evenPart.RelIdToString);
                 }
 
-                CharacterRange oddHdr = _ctx.Doc.HeaderAndFooterTable.OddHeaders[_sectNr];
+                var oddHdr = _ctx.Doc.HeaderAndFooterTable.OddHeaders[_sectNr];
                 if (oddHdr != null)
                 {
-                    HeaderPart oddPart = _ctx.Docx.MainDocumentPart.AddHeaderPart();
+                    var oddPart = _ctx.Docx.MainDocumentPart.AddHeaderPart();
                     _ctx.Doc.Convert(new HeaderMapping(_ctx, oddPart, oddHdr));
                     appendRef(_sectPr, "headerReference", "default", oddPart.RelIdToString);
                 }
 
-                CharacterRange firstHdr = _ctx.Doc.HeaderAndFooterTable.FirstHeaders[_sectNr];
+                var firstHdr = _ctx.Doc.HeaderAndFooterTable.FirstHeaders[_sectNr];
                 if (firstHdr != null)
                 {
-                    HeaderPart firstPart = _ctx.Docx.MainDocumentPart.AddHeaderPart();
+                    var firstPart = _ctx.Docx.MainDocumentPart.AddHeaderPart();
                     _ctx.Doc.Convert(new HeaderMapping(_ctx, firstPart, firstHdr));
                     appendRef(_sectPr, "headerReference", "first", firstPart.RelIdToString);
                 }
@@ -199,33 +196,33 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //convert footers of this section
             if (_ctx.Doc.HeaderAndFooterTable.OddFooters.Count > 0)
             {
-                CharacterRange evenFtr = _ctx.Doc.HeaderAndFooterTable.EvenFooters[_sectNr];
+                var evenFtr = _ctx.Doc.HeaderAndFooterTable.EvenFooters[_sectNr];
                 if (evenFtr != null)
                 {
-                    FooterPart evenPart = _ctx.Docx.MainDocumentPart.AddFooterPart();
+                    var evenPart = _ctx.Docx.MainDocumentPart.AddFooterPart();
                     _ctx.Doc.Convert(new FooterMapping(_ctx, evenPart, evenFtr));
                     appendRef(_sectPr, "footerReference", "even", evenPart.RelIdToString);
                 }
 
-                CharacterRange oddFtr = _ctx.Doc.HeaderAndFooterTable.OddFooters[_sectNr];
+                var oddFtr = _ctx.Doc.HeaderAndFooterTable.OddFooters[_sectNr];
                 if (oddFtr != null)
                 {
-                    FooterPart oddPart = _ctx.Docx.MainDocumentPart.AddFooterPart();
+                    var oddPart = _ctx.Docx.MainDocumentPart.AddFooterPart();
                     _ctx.Doc.Convert(new FooterMapping(_ctx, oddPart, oddFtr));
                     appendRef(_sectPr, "footerReference", "default", oddPart.RelIdToString);
                 }
 
 
-                CharacterRange firstFtr = _ctx.Doc.HeaderAndFooterTable.FirstFooters[_sectNr];
+                var firstFtr = _ctx.Doc.HeaderAndFooterTable.FirstFooters[_sectNr];
                 if (firstFtr != null)
                 {
-                    FooterPart firstPart = _ctx.Docx.MainDocumentPart.AddFooterPart();
+                    var firstPart = _ctx.Docx.MainDocumentPart.AddFooterPart();
                     _ctx.Doc.Convert(new FooterMapping(_ctx, firstPart, firstFtr));
                     appendRef(_sectPr, "footerReference", "first", firstPart.RelIdToString);
                 }
             }
 
-            foreach (SinglePropertyModifier sprm in sepx.grpprl)
+            foreach (var sprm in sepx.grpprl)
             {
                 switch (sprm.OpCode)
                 {
@@ -288,28 +285,28 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmSBrcTop80:
                     case SinglePropertyModifier.OperationCode.sprmSBrcTop:
                         //top
-                        XmlElement topBorder = _nodeFactory.CreateElement("w", "top", OpenXmlNamespaces.WordprocessingML);
+                        var topBorder = _nodeFactory.CreateElement("w", "top", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), topBorder);
                         addOrSetBorder(pgBorders, topBorder);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSBrcLeft80:
                     case SinglePropertyModifier.OperationCode.sprmSBrcLeft:
                         //left
-                        XmlElement leftBorder = _nodeFactory.CreateElement("w", "left", OpenXmlNamespaces.WordprocessingML);
+                        var leftBorder = _nodeFactory.CreateElement("w", "left", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), leftBorder);
                         addOrSetBorder(pgBorders, leftBorder);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSBrcBottom80:
                     case SinglePropertyModifier.OperationCode.sprmSBrcBottom:
                         //left
-                        XmlElement bottomBorder = _nodeFactory.CreateElement("w", "bottom", OpenXmlNamespaces.WordprocessingML);
+                        var bottomBorder = _nodeFactory.CreateElement("w", "bottom", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), bottomBorder);
                         addOrSetBorder(pgBorders, bottomBorder);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSBrcRight80:
                     case SinglePropertyModifier.OperationCode.sprmSBrcRight:
                         //left
-                        XmlElement rightBorder = _nodeFactory.CreateElement("w", "right", OpenXmlNamespaces.WordprocessingML);
+                        var rightBorder = _nodeFactory.CreateElement("w", "right", OpenXmlNamespaces.WordprocessingML);
                         appendBorderAttributes(new BorderCode(sprm.Arguments), rightBorder);
                         addOrSetBorder(pgBorders, rightBorder);
                         break;
@@ -430,7 +427,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             if (_colWidth != null)
             {
                 //set to unequal width
-                XmlAttribute equalWidth = _nodeFactory.CreateAttribute("w", "equalWidth", OpenXmlNamespaces.WordprocessingML);
+                var equalWidth = _nodeFactory.CreateAttribute("w", "equalWidth", OpenXmlNamespaces.WordprocessingML);
                 equalWidth.Value = "0";
                 cols.Attributes.Append(equalWidth);
 
@@ -450,9 +447,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 //append the xml elements
                 for (int i = 0; i < _colWidth.Length; i++)
                 {
-                    XmlElement col = _nodeFactory.CreateElement("w", "col", OpenXmlNamespaces.WordprocessingML);
-                    XmlAttribute w = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
-                    XmlAttribute space = _nodeFactory.CreateAttribute("w", "space", OpenXmlNamespaces.WordprocessingML);
+                    var col = _nodeFactory.CreateElement("w", "col", OpenXmlNamespaces.WordprocessingML);
+                    var w = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                    var space = _nodeFactory.CreateAttribute("w", "space", OpenXmlNamespaces.WordprocessingML);
                     w.Value = _colWidth[i].ToString();
                     space.Value = _colSpace[i].ToString();
                     col.Attributes.Append(w);
@@ -522,13 +519,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         private void appendRef(XmlElement parent, string element, string refType, string refId)
         {
-            XmlElement headerRef = _nodeFactory.CreateElement("w", element, OpenXmlNamespaces.WordprocessingML);
+            var headerRef = _nodeFactory.CreateElement("w", element, OpenXmlNamespaces.WordprocessingML);
             
-            XmlAttribute headerRefType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+            var headerRefType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
             headerRefType.Value = refType;
             headerRef.Attributes.Append(headerRefType);
 
-            XmlAttribute headerRefId = _nodeFactory.CreateAttribute("r", "id", OpenXmlNamespaces.Relationships);
+            var headerRefId = _nodeFactory.CreateAttribute("r", "id", OpenXmlNamespaces.Relationships);
             headerRefId.Value = refId;
             headerRef.Attributes.Append(headerRefId);
 

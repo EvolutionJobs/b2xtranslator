@@ -26,23 +26,17 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using System.Xml;
 using System.IO;
 using DIaLOGIKa.b2xtranslator.Tools;
-using System.Diagnostics;
 using System.Globalization;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
 using DIaLOGIKa.b2xtranslator.PresentationMLMapping;
 using DIaLOGIKa.b2xtranslator.ZipUtils;
-using System.Reflection;
 using System.Threading;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
-using Microsoft.Win32;
 using DIaLOGIKa.b2xtranslator.Shell;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 
@@ -104,7 +98,7 @@ namespace DIaLOGIKa.b2xtranslator.ppt2x
             {
                 TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
             }
-            catch (InvalidStreamException e)
+            catch (InvalidStreamException)
             {
                 TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
             }
@@ -112,7 +106,7 @@ namespace DIaLOGIKa.b2xtranslator.ppt2x
             {
                 TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
             }
-            catch (StreamNotFoundException e)
+            catch (StreamNotFoundException)
             {
                 TraceLogger.Error("Input file {0} is not a valid PowerPoint 97-2007 file.", InputFile);
             }
@@ -150,11 +144,11 @@ namespace DIaLOGIKa.b2xtranslator.ppt2x
                 var ppt = new PowerpointDocument(reader);
 
                 // detect document type and name
-                OpenXmlPackage.DocumentType outType = Converter.DetectOutputType(ppt);
+                var outType = Converter.DetectOutputType(ppt);
                 string conformOutputFile = Converter.GetConformFilename(ChoosenOutputFile, outType);
 
                 // create the pptx document
-                PresentationDocument pptx = PresentationDocument.Create(conformOutputFile, outType);
+                var pptx = PresentationDocument.Create(conformOutputFile, outType);
 
                 //start time
                 var start = DateTime.Now;

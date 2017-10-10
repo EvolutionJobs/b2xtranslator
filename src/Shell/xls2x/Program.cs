@@ -77,9 +77,9 @@ namespace DIaLOGIKa.b2xtranslator.xls2x
                 {
                     var xlsDoc = new XlsDocument(reader);
 
-                    OpenXmlPackage.DocumentType outType = Converter.DetectOutputType(xlsDoc);
+                    var outType = Converter.DetectOutputType(xlsDoc);
                     string conformOutputFile = Converter.GetConformFilename(ChoosenOutputFile, outType);
-                    using (SpreadsheetDocument spreadx = SpreadsheetDocument.Create(conformOutputFile, outType))
+                    using (var spreadx = SpreadsheetDocument.Create(conformOutputFile, outType))
                     {
                         //start time
                         var start = DateTime.Now;

@@ -27,7 +27,6 @@
 
 using System;
 using System.Globalization;
-using System.Xml;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
@@ -411,7 +410,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                         if (link.url != null)
                         {
 
-                            ExternalRelationship er = this._xlsContext.SpreadDoc.WorkbookPart.GetWorksheetPart().AddExternalRelationship(OpenXmlRelationshipTypes.HyperLink, link.url.Replace(" ", ""));
+                            var er = this._xlsContext.SpreadDoc.WorkbookPart.GetWorksheetPart().AddExternalRelationship(OpenXmlRelationshipTypes.HyperLink, link.url.Replace(" ", ""));
 
                             _writer.WriteStartElement("hyperlink");
                             _writer.WriteAttributeString("ref", refstring);

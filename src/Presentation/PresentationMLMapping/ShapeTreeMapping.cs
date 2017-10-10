@@ -27,7 +27,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO.Compression;
 using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
@@ -76,7 +75,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             try
             {
-                method.Invoke(this, new Object[] { record });
+                method.Invoke(this, new object[] { record });
             }
             catch (TargetInvocationException e)
             {
@@ -93,7 +92,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void Apply(DrawingContainer drawingContainer)
         {
-            GroupContainer group = drawingContainer.FirstChildWithType<GroupContainer>();
+            var group = drawingContainer.FirstChildWithType<GroupContainer>();
             IEnumerator<Record> iter = group.Children.GetEnumerator();
             iter.MoveNext();
 
@@ -108,11 +107,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         private int groupcounter = -10;
         public void Apply(GroupContainer group)
         {
-            GroupShapeRecord gsr = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<GroupShapeRecord>();
-            ClientAnchor anchor = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<ClientAnchor>();
-            ChildAnchor chanchor = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<ChildAnchor>();
+            var gsr = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<GroupShapeRecord>();
+            var anchor = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<ClientAnchor>();
+            var chanchor = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<ChildAnchor>();
 
-            foreach (ShapeOptions ops in group.FirstChildWithType<ShapeContainer>().AllChildrenWithType<ShapeOptions>())
+            foreach (var ops in group.FirstChildWithType<ShapeContainer>().AllChildrenWithType<ShapeOptions>())
             {
                 if (ops.OptionsByID.ContainsKey(ShapeOptions.PropertyId.tableProperties))
                 {
@@ -195,7 +194,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteEndElement(); //grpSpPr
 
             bool first = true;
-            foreach (Record record in group.Children)
+            foreach (var record in group.Children)
             {
                 //ignore first
                 if (first)
@@ -251,17 +250,17 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void ApplyTable(GroupContainer group, uint TABLEFLAGS)
         {
-            GroupShapeRecord gsr = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<GroupShapeRecord>();
-            Shape sh = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<Shape>();
-            ClientAnchor anchor = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<ClientAnchor>();
+            var gsr = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<GroupShapeRecord>();
+            var sh = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<Shape>();
+            var anchor = group.FirstChildWithType<ShapeContainer>().FirstChildWithType<ClientAnchor>();
 
             RowHeights = new List<int>();
-            foreach (ShapeOptions ops in group.FirstChildWithType<ShapeContainer>().AllChildrenWithType<ShapeOptions>())
+            foreach (var ops in group.FirstChildWithType<ShapeContainer>().AllChildrenWithType<ShapeOptions>())
             {
                 if (ops.OptionsByID.ContainsKey(ShapeOptions.PropertyId.tableRowProperties))
                 {
                     uint TableRowPropertiesCount = ops.OptionsByID[ShapeOptions.PropertyId.tableRowProperties].op;
-                    byte[] data = ops.OptionsByID[ShapeOptions.PropertyId.tableRowProperties].opComplex;
+                    var data = ops.OptionsByID[ShapeOptions.PropertyId.tableRowProperties].opComplex;
                     var nElems = BitConverter.ToUInt16(data, 0);
                     var nElemsAlloc = BitConverter.ToUInt16(data, 2);
                     var cbElem = BitConverter.ToUInt16(data, 4);
@@ -291,12 +290,12 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             horizontallinelist = new SortedList<int, SortedList<int, ShapeContainer>>();
 
 
-            foreach (ShapeContainer scontainer in group.AllChildrenWithType<ShapeContainer>())
+            foreach (var scontainer in group.AllChildrenWithType<ShapeContainer>())
             {
-                ChildAnchor anch = scontainer.FirstChildWithType<ChildAnchor>();
-                ClientData cd = scontainer.FirstChildWithType<ClientData>();
+                var anch = scontainer.FirstChildWithType<ChildAnchor>();
+                var cd = scontainer.FirstChildWithType<ClientData>();
 
-                foreach (Shape shape in scontainer.AllChildrenWithType<Shape>())
+                foreach (var shape in scontainer.AllChildrenWithType<Shape>())
                 {
                     if (Utils.getPrstForShape(shape.Instance) == "rect")
                     {
@@ -417,15 +416,15 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         try
                         {
-                            Slide master = _ctx.Ppt.FindMasterRecordById(group.FirstAncestorWithType<Slide>().FirstChildWithType<SlideAtom>().MasterId);
-                            foreach (ShapeContainer cont in master.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<GroupContainer>().AllChildrenWithType<ShapeContainer>())
+                            var master = _ctx.Ppt.FindMasterRecordById(group.FirstAncestorWithType<Slide>().FirstChildWithType<SlideAtom>().MasterId);
+                            foreach (var cont in master.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<GroupContainer>().AllChildrenWithType<ShapeContainer>())
                             {
-                                Shape s = cont.FirstChildWithType<Shape>();
-                                ClientData d = cont.FirstChildWithType<ClientData>();
+                                var s = cont.FirstChildWithType<Shape>();
+                                var d = cont.FirstChildWithType<ClientData>();
                                 if (d != null)
                                 {
                                     var ms = new System.IO.MemoryStream(d.bytes);
-                                    Record rec = Record.ReadRecord(ms);
+                                    var rec = Record.ReadRecord(ms);
                                     if (rec is OEPlaceHolderAtom)
                                     {
                                         var placeholder2 = (OEPlaceHolderAtom)rec;
@@ -500,7 +499,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         var container = table[row, col];
 
-                        ChildAnchor anch = container.FirstChildWithType<ChildAnchor>();
+                        var anch = container.FirstChildWithType<ChildAnchor>();
                         int colWidth = ColumnWidthsByYPos[anch.Left];
 
                         if (anch.rcgBounds.Height > RowHeights[row] && GetRowSpanCount(anch, row) > 1)
@@ -516,7 +515,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             _writer.WriteAttributeString("gridSpan", GetGridSpanCount(anch, col).ToString());
                         }
 
-                        foreach (Record record in container.Children)
+                        foreach (var record in container.Children)
                         {
                             if (record is ClientTextbox)
                             {
@@ -597,7 +596,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         if (col > 0 && table[row, col - 1] != null)
                         {
                             var previouscontainer = table[row, col-1];
-                            ChildAnchor anch = previouscontainer.FirstChildWithType<ChildAnchor>();
+                            var anch = previouscontainer.FirstChildWithType<ChildAnchor>();
 
                             if (anch.rcgBounds.Height > RowHeights[row] && GetRowSpanCount(anch, row) > 1)
                             {
@@ -617,7 +616,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         else if (row > 0 && col > 0 && table[row - 1, col - 1] != null) //this checks the cell above on the left
                         {
                             var previouscontainer = table[row - 1, col - 1];
-                            ChildAnchor anch = previouscontainer.FirstChildWithType<ChildAnchor>();
+                            var anch = previouscontainer.FirstChildWithType<ChildAnchor>();
 
                             if (anch.rcgBounds.Width > ColumnWidthsByYPos[anch.Left])
                             {
@@ -628,7 +627,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         if (row > 0 && table[row-1, col] != null) //this checks the cell on the left
                         {
                             var previouscontainer = table[row-1, col];
-                            ChildAnchor anch = previouscontainer.FirstChildWithType<ChildAnchor>();
+                            var anch = previouscontainer.FirstChildWithType<ChildAnchor>();
                             int colWidth = ColumnWidthsByYPos[anch.Left];
 
                             if (anch.rcgBounds.Width > colWidth)
@@ -645,7 +644,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         else if (row > 0 && col > 0  && table[row - 1, col - 1] != null) //this checks the cell above on the left
                         {
                             var previouscontainer = table[row - 1, col-1];
-                            ChildAnchor anch = previouscontainer.FirstChildWithType<ChildAnchor>();
+                            var anch = previouscontainer.FirstChildWithType<ChildAnchor>();
 
                             if (anch.rcgBounds.Height > RowHeights[row - 1])
                             {
@@ -682,8 +681,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         private void WriteTableLineProperties(int row, int col, ShapeContainer[,] table)
         {
             var container = table[row, col];
-            ChildAnchor anch = container.FirstChildWithType<ChildAnchor>();
-            ShapeOptions so = container.FirstChildWithType<ShapeOptions>();
+            var anch = container.FirstChildWithType<ChildAnchor>();
+            var so = container.FirstChildWithType<ShapeOptions>();
 
             ShapeContainer leftLine = null;
             ShapeContainer rightLine = null;
@@ -833,7 +832,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 return;
             }
 
-            foreach (ShapeOptions soline in lineCont.AllChildrenWithType<ShapeOptions>())
+            foreach (var soline in lineCont.AllChildrenWithType<ShapeOptions>())
             {
                 if (soline.OptionsByID.ContainsKey(ShapeOptions.PropertyId.lineWidth))
                 {
@@ -1107,7 +1106,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _footertext = footertext;
             _headertext = headertext;
             _datetext = datetext;
-            ClientData clientData = container.FirstChildWithType<ClientData>();
+            var clientData = container.FirstChildWithType<ClientData>();
 
             RegularContainer slide = container.FirstAncestorWithType<Slide>();
             if (slide == null) slide = container.FirstAncestorWithType<Note>();
@@ -1115,7 +1114,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             bool continueShape = true;
 
-            Shape sh = container.FirstChildWithType<Shape>();
+            var sh = container.FirstChildWithType<Shape>();
 
             so = container.FirstChildWithType<ShapeOptions>();
             //if (clientData == null)
@@ -1128,7 +1127,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                             OEPlaceHolderAtom placeholder = null;
                             int exObjIdRef = -1;
                             CheckClientData(container.FirstChildWithType<ClientData>(), ref placeholder, ref exObjIdRef);
-                            ExOleEmbedContainer oleContainer = this._ctx.Ppt.OleObjects[exObjIdRef];
+                            var oleContainer = this._ctx.Ppt.OleObjects[exObjIdRef];
                             if (oleContainer.FirstChildWithType<CStringAtom>() != null)
                             if (oleContainer.FirstChildWithType<CStringAtom>().Text == "Chart")
                             {
@@ -1159,8 +1158,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     ZipUtils.ZipReader reader = null;
                     try
                     {
-                        ShapeOptions.OptionEntry metroBlob = sndSo.OptionsByID[ShapeOptions.PropertyId.metroBlob];
-                        byte[] code = metroBlob.opComplex;
+                        var metroBlob = sndSo.OptionsByID[ShapeOptions.PropertyId.metroBlob];
+                        var code = metroBlob.opComplex;
                         string path = System.IO.Path.GetTempFileName();
                         var fs = new System.IO.FileStream(path, System.IO.FileMode.Create);
                         fs.Write(code, 0, code.Length);
@@ -1183,7 +1182,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         //continueShape = false;
                         reader.Close();
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         continueShape = true;
                         if (reader != null) reader.Close();
@@ -1199,7 +1198,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     string idEnd = "";
                     string idxStart = "0";
                     string idxEnd = "0";
-                    foreach (FConnectorRule rule in container.FirstAncestorWithType<DrawingContainer>().FirstChildWithType<SolverContainer>().AllChildrenWithType<FConnectorRule>())
+                    foreach (var rule in container.FirstAncestorWithType<DrawingContainer>().FirstChildWithType<SolverContainer>().AllChildrenWithType<FConnectorRule>())
                     {
                         if (rule.spidC == sh.spid) //spidC marks the connector shape
                         {
@@ -1260,8 +1259,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 // Visible shape properties
                 _writer.WriteStartElement("p", "spPr", OpenXmlNamespaces.PresentationML);
 
-                ClientAnchor anchor = container.FirstChildWithType<ClientAnchor>();
-                ChildAnchor chAnchor = container.FirstChildWithType<ChildAnchor>();
+                var anchor = container.FirstChildWithType<ClientAnchor>();
+                var chAnchor = container.FirstChildWithType<ChildAnchor>();
 
                 bool swapHeightWidth = false;
                 Double dc = 0;
@@ -1327,7 +1326,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     }
                     else
                     {
-                        ClientAnchor clanchor = container.FirstChildWithType<ClientAnchor>();
+                        var clanchor = container.FirstChildWithType<ClientAnchor>();
                         if (clanchor == null)
                         {
                             _writer.WriteStartElement("a", "off", OpenXmlNamespaces.DrawingML);
@@ -1373,8 +1372,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
                 else if (chAnchor != null && chAnchor.Right >= chAnchor.Left && chAnchor.Bottom >= chAnchor.Top)
                 {
-                    ClientAnchor groupAnchor = container.FirstAncestorWithType<GroupContainer>().FirstChildWithType<ShapeContainer>().FirstChildWithType<ClientAnchor>();
-                    Rectangle rec = container.FirstAncestorWithType<GroupContainer>().FirstChildWithType<ShapeContainer>().FirstChildWithType<GroupShapeRecord>().rcgBounds;
+                    var groupAnchor = container.FirstAncestorWithType<GroupContainer>().FirstChildWithType<ShapeContainer>().FirstChildWithType<ClientAnchor>();
+                    var rec = container.FirstAncestorWithType<GroupContainer>().FirstChildWithType<ShapeContainer>().FirstChildWithType<GroupShapeRecord>().rcgBounds;
 
                     _writer.WriteStartElement("a", "xfrm", OpenXmlNamespaces.DrawingML);
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.rotation))
@@ -1450,7 +1449,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 bool TextBoxFound = false;
 
                 // Descend into unsupported records
-                foreach (Record record in container.Children)
+                foreach (var record in container.Children)
                 {
                     DynamicApply(record);
                     if (record is ClientTextbox) TextBoxFound = true;
@@ -1473,7 +1472,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     //check if there is text in so
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.gtextUNICODE))
                     {
-                        byte[] bytes = so.OptionsByID[ShapeOptions.PropertyId.gtextUNICODE].opComplex;
+                        var bytes = so.OptionsByID[ShapeOptions.PropertyId.gtextUNICODE].opComplex;
                         string sText = Encoding.Unicode.GetString(bytes);
                         if (sText.Contains("\0")) sText = sText.Substring(0, sText.IndexOf("\0"));
                         _writer.WriteStartElement("a", "r", OpenXmlNamespaces.DrawingML);
@@ -1883,7 +1882,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public Point scanEMFPictureForSize(BlipStoreEntry bse)
         {
-            Record mb = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+            var mb = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
             var size = new Point();
 
             //write the blip
@@ -1899,7 +1898,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         size = metaBlip.m_ptSize;
 
                         //meta images can be compressed
-                        byte[] decompressed = metaBlip.Decrompress();
+                        var decompressed = metaBlip.Decrompress();
 
                         break;
                 }
@@ -1911,8 +1910,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void writeOle(ShapeContainer container, ExOleEmbedContainer oleContainer)
         {
-            Shape sh = container.FirstChildWithType<Shape>();
-            ShapeOptions so = container.FirstChildWithType<ShapeOptions>();
+            var sh = container.FirstChildWithType<Shape>();
+            var so = container.FirstChildWithType<ShapeOptions>();
 
             _writer.WriteStartElement("p", "graphicFrame", OpenXmlNamespaces.PresentationML);
             _writer.WriteStartElement("p", "nvGraphicFramePr", OpenXmlNamespaces.PresentationML);
@@ -1936,10 +1935,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteEndElement(); //nvGraphicFramePr   
 
             var anchor = new Rectangle();
-            ClientAnchor clanchor = container.FirstChildWithType<ClientAnchor>();
+            var clanchor = container.FirstChildWithType<ClientAnchor>();
             if (clanchor == null)
             {
-                 ChildAnchor chanchor = container.FirstChildWithType<ChildAnchor>();
+                 var chanchor = container.FirstChildWithType<ChildAnchor>();
                  anchor = new Rectangle(chanchor.Left, chanchor.Top, chanchor.rcgBounds.Width, chanchor.rcgBounds.Height);
                  if (anchor != null && anchor.Right >= anchor.Left && anchor.Bottom >= anchor.Top)
                  {
@@ -1987,7 +1986,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             EmbeddedObjectPart embPart = null;
             embPart = parentSlideMapping.targetPart.AddEmbeddedObjectPart(EmbeddedObjectPart.ObjectType.Other);
             embPart.TargetDirectory = "..\\embeddings";
-            System.IO.Stream outStream = embPart.GetStream();
+            var outStream = embPart.GetStream();
             if (oleContainer.stgAtom.Instance == 1)
             {
                 outStream.Write(oleContainer.stgAtom.DecompressData(), 0, (int)oleContainer.stgAtom.decompressedSize);
@@ -2011,11 +2010,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             //vmlPart.TargetDirectory = "..\\drawings";
             //System.IO.Stream vmlStream = vmlPart.GetStream();
 
-            GroupShapeRecord gsr = container.FirstAncestorWithType<GroupContainer>().FirstChildWithType<ShapeContainer>().FirstChildWithType<GroupShapeRecord>();
+            var gsr = container.FirstAncestorWithType<GroupContainer>().FirstChildWithType<ShapeContainer>().FirstChildWithType<GroupShapeRecord>();
 
-            ClientAnchor anch = container.FirstChildWithType<ClientAnchor>();
+            var anch = container.FirstChildWithType<ClientAnchor>();
             if (anch == null) anch = container.FirstAncestorWithType<GroupContainer>().FirstChildWithType<ShapeContainer>().FirstChildWithType<ClientAnchor>();
-            ChildAnchor chanch = container.FirstChildWithType<ChildAnchor>();
+            var chanch = container.FirstChildWithType<ChildAnchor>();
 
             Rectangle rec;
             if (chanch != null)
@@ -2078,10 +2077,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 VmlPart vmlPart = null;
                 vmlPart = parentSlideMapping.targetPart.AddVmlPart();
                 vmlPart.TargetDirectory = "..\\drawings";
-                System.IO.Stream vmlStream = vmlPart.GetStream();
+                var vmlStream = vmlPart.GetStream();
 
                 var vm = new VMLPictureMapping(vmlPart, _ctx.WriterSettings);
-                var size = new Point();
+                //var size = new Point();
 
                 vm.Apply(VMLEntries, _ctx);
                 //vm.Apply(bse, sh, so, rec, _ctx, spid, ref size);
@@ -2090,8 +2089,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void writePic(ShapeContainer container)
         {
-            Shape sh = container.FirstChildWithType<Shape>();
-            ShapeOptions so = container.FirstChildWithType<ShapeOptions>();
+            var sh = container.FirstChildWithType<Shape>();
+            var so = container.FirstChildWithType<ShapeOptions>();
 
             uint indexOfPicture = 0;
             //TODO: read these infos from so
@@ -2100,7 +2099,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             string name = "";
             string descr = "";
             string rId = "";
-            foreach (ShapeOptions.OptionEntry en in so.Options)
+            foreach (var en in so.Options)
             {
                 switch (en.pid)
                 {
@@ -2133,7 +2132,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     return;
                 }
 
-                Record recBlip = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                var recBlip = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
                 if (recBlip is BitmapBlip)
                 {
                     var b = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
@@ -2141,7 +2140,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     ImagePart imgPart = null;
                     imgPart = parentSlideMapping.targetPart.AddImagePart(getImageType(b.TypeCode));
                     imgPart.TargetDirectory = "..\\media";
-                    System.IO.Stream outStream = imgPart.GetStream();
+                    var outStream = imgPart.GetStream();
                     outStream.Write(b.m_pvBits, 0, b.m_pvBits.Length);
 
                     rId = imgPart.RelIdToString;
@@ -2153,9 +2152,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     ImagePart imgPart = null;
                     imgPart = parentSlideMapping.targetPart.AddImagePart(getImageType(mb.TypeCode));
                     imgPart.TargetDirectory = "..\\media";
-                    System.IO.Stream outStream = imgPart.GetStream();
+                    var outStream = imgPart.GetStream();
 
-                    byte[] decompressed = mb.Decrompress();
+                    var decompressed = mb.Decrompress();
                     outStream.Write(decompressed, 0, decompressed.Length);
                     //outStream.Write(mb.m_pvBits, 0, mb.m_pvBits.Length);
 
@@ -2290,7 +2289,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             // Visible shape properties
             _writer.WriteStartElement("p", "spPr", OpenXmlNamespaces.PresentationML);
-            ClientAnchor anchor = container.FirstChildWithType<ClientAnchor>();
+            var anchor = container.FirstChildWithType<ClientAnchor>();
             if (anchor != null && anchor.Right >= anchor.Left && anchor.Bottom >= anchor.Top)
             {
                 _writer.WriteStartElement("a", "xfrm", OpenXmlNamespaces.DrawingML);
@@ -2309,7 +2308,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             }
             else
             {
-                ChildAnchor chanchor = container.FirstChildWithType<ChildAnchor>();
+                var chanchor = container.FirstChildWithType<ChildAnchor>();
 
                 _writer.WriteStartElement("a", "xfrm", OpenXmlNamespaces.DrawingML);
 
@@ -2643,7 +2642,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
 
                 string s = "";
-                foreach (ShapeOptions.OptionEntry en in so.Options)
+                foreach (var en in so.Options)
                 {
                     switch (en.pid)
                     {
@@ -2869,7 +2868,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 if (ms.Length > 0)
                 {
-                    Record rec = Record.ReadRecord(ms);
+                    var rec = Record.ReadRecord(ms);
                     bool blnContinue = true; 
                     if (rec.TypeCode == 4116 && output)
                     {
@@ -2927,11 +2926,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                     {
                                         try
                                         {
-                                            Slide master = _ctx.Ppt.FindMasterRecordById(clientData.FirstAncestorWithType<Slide>().FirstChildWithType<SlideAtom>().MasterId);
-                                            foreach (ShapeContainer cont in master.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<GroupContainer>().AllChildrenWithType<ShapeContainer>())
+                                            var master = _ctx.Ppt.FindMasterRecordById(clientData.FirstAncestorWithType<Slide>().FirstChildWithType<SlideAtom>().MasterId);
+                                            foreach (var cont in master.FirstChildWithType<PPDrawing>().FirstChildWithType<DrawingContainer>().FirstChildWithType<GroupContainer>().AllChildrenWithType<ShapeContainer>())
                                             {
-                                                Shape s = cont.FirstChildWithType<Shape>();
-                                                ClientData d = cont.FirstChildWithType<ClientData>();
+                                                var s = cont.FirstChildWithType<Shape>();
+                                                var d = cont.FirstChildWithType<ClientData>();
                                                 if (d != null)
                                                 {
                                                     ms = new System.IO.MemoryStream(d.bytes);
@@ -2968,11 +2967,11 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 break;
                             case 5000:
                                 var con = (RegularContainer)rec;
-                                foreach (ProgBinaryTag t in con.AllChildrenWithType<ProgBinaryTag>())
+                                foreach (var t in con.AllChildrenWithType<ProgBinaryTag>())
                                 {
-                                    CStringAtom c = t.FirstChildWithType<CStringAtom>();
-                                    ProgBinaryTagDataBlob b = t.FirstChildWithType<ProgBinaryTagDataBlob>();
-                                    StyleTextProp9Atom p = b.FirstChildWithType<StyleTextProp9Atom>();
+                                    var c = t.FirstChildWithType<CStringAtom>();
+                                    var b = t.FirstChildWithType<ProgBinaryTagDataBlob>();
+                                    var p = b.FirstChildWithType<StyleTextProp9Atom>();
                                     ShapeStyleTextProp9Atom = p;
                                 }
                                 break;
@@ -2991,7 +2990,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 }
             
                 var container = (RegularContainer)(clientData.ParentRecord);
-                foreach (ClientTextbox b in container.AllChildrenWithType<ClientTextbox>())
+                foreach (var b in container.AllChildrenWithType<ClientTextbox>())
                 {
                     ms = new System.IO.MemoryStream(b.Bytes);
                     Record rec;
@@ -3061,15 +3060,15 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             string altLang = "";
             while (ms.Position < ms.Length)
             {
-                Record rec = Record.ReadRecord(ms);
+                var rec = Record.ReadRecord(ms);
 
                 switch (rec.TypeCode)
                 {
                     case 0xf9e: //OutlineTextRefAtom
                         var otrAtom = (OutlineTextRefAtom)rec;
-                        SlideListWithText slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
+                        var slideListWithText = _ctx.Ppt.DocumentRecord.RegularSlideListWithText;
 
-                        List<TextHeaderAtom> thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
+                        var thAtoms = slideListWithText.SlideToPlaceholderTextHeaders[textbox.FirstAncestorWithType<Slide>().PersistAtom];
                         thAtom = thAtoms[otrAtom.Index];
 
                         //if (thAtom.TextAtom != null) text = thAtom.TextAtom.Text;
@@ -3088,7 +3087,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         break;
                     case 0xfa2: //MasterTextPropAtom
                         var m = (MasterTextPropAtom)rec;
-                        foreach(MasterTextPropRun r in m.MasterTextPropRuns)
+                        foreach(var r in m.MasterTextPropRuns)
                         {
                             if (!lst.Contains(r.indentLevel))
                             {
@@ -3165,7 +3164,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     case 0xffa: //FooterMCAtom
                     case 0xff8: //GenericDateMCAtom
                         if (!lvlRprWritten)
-                        foreach (ParagraphRun r in style.PRuns)
+                        foreach (var r in style.PRuns)
                         {
                             _writer.WriteStartElement("a", "lvl" + (r.IndentLevel + 1) + "pPr", OpenXmlNamespaces.DrawingML);
                             if (r.AlignmentPresent)
@@ -3244,7 +3243,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public void Apply(RegularContainer container)
         {
             // Descend into container records by default
-            foreach (Record record in container.Children)
+            foreach (var record in container.Children)
             {
                 DynamicApply(record);
             }
@@ -3258,7 +3257,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void WriteGroupShapeProperties(ShapeContainer header)
         {
-            GroupShapeRecord groupShape = header.FirstChildWithType<GroupShapeRecord>();
+            var groupShape = header.FirstChildWithType<GroupShapeRecord>();
 
             // Write non-visible Group Shape properties
             _writer.WriteStartElement("p", "nvGrpSpPr", OpenXmlNamespaces.PresentationML);
@@ -3295,25 +3294,25 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             _writer.WriteStartElement("a", "cxnLst", OpenXmlNamespaces.DrawingML);
 
-            ShapeOptions.OptionEntry pVertices = so.OptionsByID[ShapeOptions.PropertyId.pVertices];
+            var pVertices = so.OptionsByID[ShapeOptions.PropertyId.pVertices];
             
             uint shapepath = 1;
             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shapePath))
             {
-                ShapeOptions.OptionEntry ShapePath = so.OptionsByID[ShapeOptions.PropertyId.shapePath];
+                var ShapePath = so.OptionsByID[ShapeOptions.PropertyId.shapePath];
                 shapepath = ShapePath.op;
             }
             else
             {
                 //shapepath = 4; //complex
             }
-            ShapeOptions.OptionEntry SegementInfo = so.OptionsByID[ShapeOptions.PropertyId.pSegmentInfo];
+            var SegementInfo = so.OptionsByID[ShapeOptions.PropertyId.pSegmentInfo];
 
 
             PathParser pp;
             if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.pGuides))
             {
-                ShapeOptions.OptionEntry pGuides = so.OptionsByID[ShapeOptions.PropertyId.pGuides];
+                var pGuides = so.OptionsByID[ShapeOptions.PropertyId.pGuides];
                 pp = new PathParser(SegementInfo.opComplex, pVertices.opComplex, pGuides.opComplex);
             } else 
             {
@@ -3323,7 +3322,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             
 
-            foreach (Point point in pp.Values)
+            foreach (var point in pp.Values)
             {
                 _writer.WriteStartElement("a", "cxn", OpenXmlNamespaces.DrawingML);
                 _writer.WriteAttributeString("ang", "0");
@@ -3349,7 +3348,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             int minY = 1000;
             int maxX = -1000;
             int maxY = -1000;
-            foreach (Point p in pp.Values)
+            foreach (var p in pp.Values)
             {
                 if (p.X > 0)
                 {
@@ -3413,7 +3412,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     int i = 0;
                     int start = 0;
                     int end;
-                    foreach (PathSegment seg in pp.Segments)
+                    foreach (var seg in pp.Segments)
                     {
                         if (seg.Type == PathSegment.SegmentType.msopathEscape)
                         {
@@ -3434,7 +3433,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     }
 
                     i = 0;
-                    foreach (PathSegment seg in pp.Segments)
+                    foreach (var seg in pp.Segments)
                     {
                         if (valuePointer >= pp.Values.Count) break;
 

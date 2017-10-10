@@ -26,7 +26,6 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using System.Xml;
@@ -87,7 +86,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             for (int i=0; i< tapx.grpprl.Count; i++)
             {
-                SinglePropertyModifier sprm = tapx.grpprl[i];
+                var sprm = tapx.grpprl[i];
 
                 switch (sprm.OpCode)
 	            {
@@ -225,9 +224,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             }
 
             //width
-            XmlElement tcW = _nodeFactory.CreateElement("w", "tcW", OpenXmlNamespaces.WordprocessingML);
-            XmlAttribute tcWType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
-            XmlAttribute tcWVal = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+            var tcW = _nodeFactory.CreateElement("w", "tcW", OpenXmlNamespaces.WordprocessingML);
+            var tcWType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+            var tcWVal = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
             tcWType.Value = _ftsWidth.ToString();
             tcWVal.Value = _width.ToString();
             tcW.Attributes.Append(tcWType);
@@ -260,25 +259,25 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //append borders
             if (_brcTop != null)
             {
-                XmlNode topBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
+                var topBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "top", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(_brcTop, topBorder);
                 addOrSetBorder(_tcBorders, topBorder);
             }
             if (_brcLeft != null)
             {
-                XmlNode leftBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
+                var leftBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "left", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(_brcLeft, leftBorder);
                 addOrSetBorder(_tcBorders, leftBorder);
             }
             if (_brcBottom != null)
             {
-                XmlNode bottomBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
+                var bottomBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "bottom", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(_brcBottom, bottomBorder);
                 addOrSetBorder(_tcBorders, bottomBorder);
             }
             if (_brcRight != null)
             {
-                XmlNode rightBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
+                var rightBorder = _nodeFactory.CreateNode(XmlNodeType.Element, "w", "right", OpenXmlNamespaces.WordprocessingML);
                 appendBorderAttributes(_brcRight, rightBorder);
                 addOrSetBorder(_tcBorders, rightBorder);
             }

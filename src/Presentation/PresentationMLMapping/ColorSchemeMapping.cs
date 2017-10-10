@@ -25,14 +25,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
@@ -68,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             if (schemes.Count > 1)
             {
                 _writer.WriteStartElement("a", "extraClrSchemeLst", OpenXmlNamespaces.DrawingML);
-                foreach (ColorSchemeAtom scheme in schemes)
+                foreach (var scheme in schemes)
                 {
                     _writer.WriteStartElement("a","extraClrScheme", OpenXmlNamespaces.DrawingML);
                     writeScheme(scheme);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
@@ -13,7 +12,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
     {
         public static OpenXmlPackage.DocumentType DetectOutputType(PowerpointDocument ppt)
         {
-            OpenXmlPackage.DocumentType returnType = OpenXmlPackage.DocumentType.Document;
+            var returnType = OpenXmlPackage.DocumentType.Document;
 
             try
             {

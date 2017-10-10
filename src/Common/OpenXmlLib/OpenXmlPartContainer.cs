@@ -26,11 +26,7 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using DIaLOGIKa.b2xtranslator.ZipUtils;
 using System.IO;
-using System.Xml;
 
 namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
 {

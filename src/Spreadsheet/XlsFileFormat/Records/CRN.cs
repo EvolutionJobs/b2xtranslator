@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public ushort rw;
 
-        public List<Object> oper; 
+        public List<object> oper; 
 
 
         public CRN(IStreamReader reader, RecordType id, ushort length)

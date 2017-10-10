@@ -4,10 +4,8 @@ using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using System.IO;
-using System.Drawing;
 using DIaLOGIKa.b2xtranslator.Tools;
 using System.Globalization;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
@@ -37,7 +35,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             if (imgPart != null)
             {
                 var shape = (Shape)pict.ShapeContainer.Children[0];
-                List<ShapeOptions.OptionEntry> options = pict.ShapeContainer.ExtractOptions();
+                var options = pict.ShapeContainer.ExtractOptions();
 
                 //v:shapetype
                 var type = new PictureFrameType();
@@ -65,7 +63,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                     _writer.WriteAttributeString("o", "ole", OpenXmlNamespaces.Office, "");
                 }
 
-                foreach (ShapeOptions.OptionEntry entry in options)
+                foreach (var entry in options)
                 {
                     switch (entry.pid)
                     {
@@ -185,7 +183,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                 if (imgPart != null)
                 {
-                    Stream outStream = imgPart.GetStream();
+                    var outStream = imgPart.GetStream();
 
                     //write the blip
                     if (bse.Blip != null)
@@ -199,7 +197,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                                 var metaBlip = (MetafilePictBlip)bse.Blip;
 
                                 //meta images can be compressed
-                                byte[] decompressed = metaBlip.Decrompress();
+                                var decompressed = metaBlip.Decrompress();
                                 outStream.Write(decompressed, 0, decompressed.Length);
 
                                 break;

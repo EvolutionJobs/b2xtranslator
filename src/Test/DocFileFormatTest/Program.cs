@@ -26,12 +26,9 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using System.IO;
-using System.Collections;
 
 namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
 {
@@ -124,7 +121,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
             foreach (var pcd in doc.PieceTable.Pieces)
             {
                 //Console.WriteLine("\t"+pcd.cpStart + " - " + pcd.cpEnd + " : " + pcd.encoding.ToString() + " , starts at 0x" + String.Format("{0:x04}", pcd.fc));
-                Console.WriteLine("Piece starts at "+ String.Format("{0:X04}", pcd.fc) + " and hast encoding "+pcd.encoding.ToString());
+                Console.WriteLine("Piece starts at "+ string.Format("{0:X04}", pcd.fc) + " and hast encoding "+pcd.encoding.ToString());
             }
         }
 
@@ -194,7 +191,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
                         Console.WriteLine("\t\tPAPX modifier:");
                         foreach (var sprm in std.papx.grpprl)
                         {
-                            Console.WriteLine(String.Format("\t\tSPRM: modifies " + sprm.Type + " property 0x{0:x4} (" + sprm.Arguments.Length + " bytes)", sprm.OpCode));
+                            Console.WriteLine(string.Format("\t\tSPRM: modifies " + sprm.Type + " property 0x{0:x4} (" + sprm.Arguments.Length + " bytes)", sprm.OpCode));
                         }
                     }
 
@@ -203,7 +200,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
                         Console.WriteLine("\t\tCHPX modifier:");
                         foreach (var sprm in std.chpx.grpprl)
                         {
-                            Console.WriteLine(String.Format("\t\tSPRM: modifies " + sprm.Type + " property 0x{0:x4} (" + sprm.Arguments.Length + " bytes)", sprm.OpCode));
+                            Console.WriteLine(string.Format("\t\tSPRM: modifies " + sprm.Type + " property 0x{0:x4} (" + sprm.Arguments.Length + " bytes)", sprm.OpCode));
                         }
                     }
 

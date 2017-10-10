@@ -25,15 +25,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
 
 namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 {
@@ -69,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 writeNormalTableStyle();
             }
 
-            foreach (StyleSheetDescription style in sheet.Styles)
+            foreach (var style in sheet.Styles)
             {
                 if (style != null)
                 {

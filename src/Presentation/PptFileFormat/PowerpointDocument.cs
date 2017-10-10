@@ -33,7 +33,6 @@ using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using System.Reflection;
 using System.IO;
-using System.IO.Compression;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
@@ -179,7 +178,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                 this.DocumentSummaryInformationStream = file.GetStream("DocumentSummaryInformation");
                 ScanDocumentSummaryInformation();
             }
-            catch (StructuredStorage.Common.StreamNotFoundException e)
+            catch (StructuredStorage.Common.StreamNotFoundException)
             {
                 //ignore
             }
@@ -380,7 +379,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             {
                 this.DocumentRecord = this.GetPersistObject<DocumentContainer>(this.LastUserEdit.DocPersistIdRef);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new InvalidStreamException();
             }
@@ -444,7 +443,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
                 var vbaInfo = this.DocumentRecord.DocInfoListContainer.FirstChildWithType<VBAInfoContainer>();
                 this.VbaProject = GetPersistObject<ExOleObjStgAtom>(vbaInfo.objStgDataRef);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 
             }

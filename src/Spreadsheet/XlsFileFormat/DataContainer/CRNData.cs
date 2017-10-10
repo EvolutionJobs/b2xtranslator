@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 
         public ushort rw;
 
-        public List<Object> oper;
+        public List<object> oper;
 
         public CRNData(CRN crn)
         {

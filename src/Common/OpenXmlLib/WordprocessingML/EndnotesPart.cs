@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
+﻿namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
 {
     public class EndnotesPart : ContentPart
     {

@@ -27,11 +27,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 
 namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
@@ -62,7 +60,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
             for (int i = 0; i < rglst.Count; i++)
             {
-                ListData lstf = rglst[i];
+                var lstf = rglst[i];
 
                 //start abstractNum
                 _writer.WriteStartElement("w", "abstractNum", OpenXmlNamespaces.WordprocessingML);
@@ -71,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                 //nsid
                 _writer.WriteStartElement("w", "nsid", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, String.Format("{0:X8}", lstf.lsid));
+                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, string.Format("{0:X8}", lstf.lsid));
                 _writer.WriteEndElement();
 
                 //multiLevelType
@@ -86,13 +84,13 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                 //template
                 _writer.WriteStartElement("w", "tmpl", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, String.Format("{0:X8}", lstf.tplc));
+                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, string.Format("{0:X8}", lstf.tplc));
                 _writer.WriteEndElement();
 
                 //writes the levels
                 for (int j = 0; j < lstf.rglvl.Length; j++)
                 {
-                    ListLevel lvl = lstf.rglvl[j];
+                    var lvl = lstf.rglvl[j];
 
                     _writer.WriteStartElement("w", "lvl", OpenXmlNamespaces.WordprocessingML);
                     _writer.WriteAttributeString("w", "ilvl", OpenXmlNamespaces.WordprocessingML, j.ToString());
@@ -149,7 +147,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //write the overrides
             for (int i = 0; i < _ctx.Doc.ListFormatOverrideTable.Count; i++)
             {
-                ListFormatOverride lfo = _ctx.Doc.ListFormatOverrideTable[i];
+                var lfo = _ctx.Doc.ListFormatOverrideTable[i];
 
                 //start num
                 _writer.WriteStartElement("w", "num", OpenXmlNamespaces.WordprocessingML);

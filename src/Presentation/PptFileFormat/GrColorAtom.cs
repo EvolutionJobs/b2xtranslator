@@ -26,8 +26,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
@@ -54,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public override string ToString()
         {
-            return String.Format("GrColorAtom({0}, {1}, {2}): Index = {3}",
+            return string.Format("GrColorAtom({0}, {1}, {2}): Index = {3}",
                 this.Red, this.Green, this.Blue, this.Index);
         }
     }

@@ -27,9 +27,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
-using System.Xml;
 
 namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 {
@@ -65,7 +63,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             bool collectRevisionData = true;
             this.Changes = new List<SinglePropertyModifier>();
 
-            foreach (SinglePropertyModifier sprm in chpx.grpprl)
+            foreach (var sprm in chpx.grpprl)
             {
                 switch ((int)sprm.OpCode)
                 {

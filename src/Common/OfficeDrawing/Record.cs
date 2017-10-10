@@ -121,7 +121,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                 if (!isFirst)
                     result.Insert(0, " - ");
 
-                result.Insert(0, String.Format("{2}.{0}i{1}p", r.FormatType(), r.Instance, r.SiblingIdx));
+                result.Insert(0, string.Format("{2}.{0}i{1}p", r.FormatType(), r.Instance, r.SiblingIdx));
 
                 r = r.ParentRecord;
                 isFirst = false;
@@ -133,12 +133,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public string FormatType()
         {
             bool isEscherRecord = (this.TypeCode >= 0xF000 && this.TypeCode <= 0xFFFF);
-            return String.Format(isEscherRecord ? "0x{0:X}" : "{0}", this.TypeCode);
+            return string.Format(isEscherRecord ? "0x{0:X}" : "{0}", this.TypeCode);
         }
 
         public virtual string ToString(uint depth)
         {
-            return String.Format("{0}{2}:\n{1}Type = {3}, Version = {4}, Instance = {5}, BodySize = {6}",
+            return string.Format("{0}{2}:\n{1}Type = {3}, Version = {4}, Instance = {5}, BodySize = {6}",
                 IndentationForDepth(depth), IndentationForDepth(depth + 1),
                 this.GetType(), this.FormatType(), this.Version, this.Instance, this.BodySize
             );
@@ -261,7 +261,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                         {
                             if (TypeToRecordClassMapping.ContainsKey(typeCode))
                             {
-                                throw new Exception(String.Format(
+                                throw new Exception(string.Format(
                                     "Tried to register TypeCode {0} to {1}, but it is already registered to {2}",
                                     typeCode, t, TypeToRecordClassMapping[typeCode]));
                             }
@@ -300,7 +300,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
                     if (constructor == null)
                     {
-                        throw new Exception(String.Format(
+                        throw new Exception(string.Format(
                             "Internal error: Could not find a matching constructor for class {0}",
                             cls));
                     }

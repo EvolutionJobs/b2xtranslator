@@ -25,15 +25,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
-using DIaLOGIKa.b2xtranslator.Tools;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 
 namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
@@ -72,7 +66,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
 
             //NormalViewSetInfoAtom a = _ctx.Ppt.DocumentRecord.DocInfoListContainer.FirstChildWithType<NormalViewSetInfoContainer>().FirstChildWithType<NormalViewSetInfoAtom>();
-            ZoomViewInfoAtom z = _ctx.Ppt.DocumentRecord.DocInfoListContainer.FirstChildWithType<SlideViewInfoContainer>().FirstChildWithType<ZoomViewInfoAtom>();
+            var z = _ctx.Ppt.DocumentRecord.DocInfoListContainer.FirstChildWithType<SlideViewInfoContainer>().FirstChildWithType<ZoomViewInfoAtom>();
 
             _writer.WriteStartElement("p", "slideViewPr", OpenXmlNamespaces.PresentationML);
             _writer.WriteStartElement("p", "cSldViewPr", OpenXmlNamespaces.PresentationML);

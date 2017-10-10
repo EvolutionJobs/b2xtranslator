@@ -25,7 +25,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
 using System.IO;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
@@ -49,7 +48,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public List<ExternSheet> externSheets;
         public List<SupBook> supBooks;
         public List<XCT> XCTList;
-        public List<CRN> CRNList; 
+        public List<CRN> CRNList;
 
         public WorkBookData workBookData;
 
@@ -61,10 +60,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             : base(reader)
         {
             this.boundsheets = new List<BoundSheet8>();
-            this.supBooks = new List<SupBook>(); 
+            this.supBooks = new List<SupBook>();
             this.externSheets = new List<ExternSheet>();
             this.XCTList = new List<XCT>();
-            this.CRNList = new List<CRN>(); 
+            this.CRNList = new List<CRN>();
             this.workBookData = workBookData;
             this.oldOffset = 0;
 
@@ -77,226 +76,224 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         public override void extractData()
         {
             BiffHeader bh;
-            
+
             //try
             //{
-                while (this.StreamReader.BaseStream.Position < this.StreamReader.BaseStream.Length)
+            while (this.StreamReader.BaseStream.Position < this.StreamReader.BaseStream.Length)
+            {
+                bh.id = (RecordType)this.StreamReader.ReadUInt16();
+                bh.length = this.StreamReader.ReadUInt16();
+                // Debugging output 
+                TraceLogger.DebugInternal("BIFF {0}\t{1}\t", bh.id, bh.length);
+
+                switch (bh.id)
                 {
-                    bh.id = (RecordType)this.StreamReader.ReadUInt16();
-                    bh.length = this.StreamReader.ReadUInt16();
-                    // Debugging output 
-                    TraceLogger.DebugInternal("BIFF {0}\t{1}\t", bh.id, bh.length);
+                    case RecordType.BoundSheet8:
+                        {
+                            // Extracts the Boundsheet data 
+                            var bs = new BoundSheet8(this.StreamReader, bh.id, bh.length);
+                            TraceLogger.DebugInternal(bs.ToString());
 
-                    switch (bh.id)
-                    {
-                        case RecordType.BoundSheet8:
+                            SheetData sheetData = null;
+
+                            switch (bs.dt)
                             {
-                                // Extracts the Boundsheet data 
-                                var bs = new BoundSheet8(this.StreamReader, bh.id, bh.length);
-                                TraceLogger.DebugInternal(bs.ToString());
+                                case BoundSheet8.SheetType.Worksheet:
+                                    sheetData = new WorkSheetData();
+                                    this.oldOffset = this.StreamReader.BaseStream.Position;
+                                    this.StreamReader.BaseStream.Seek(bs.lbPlyPos, SeekOrigin.Begin);
+                                    var se = new WorksheetExtractor(this.StreamReader, sheetData as WorkSheetData);
+                                    this.StreamReader.BaseStream.Seek(oldOffset, SeekOrigin.Begin);
+                                    break;
 
-                                SheetData sheetData = null;
+                                case BoundSheet8.SheetType.Chartsheet:
+                                    var chartSheetData = new ChartSheetData();
 
-                                switch (bs.dt)
-                                {
-                                    case BoundSheet8.SheetType.Worksheet:
-                                        sheetData = new WorkSheetData();
-                                        this.oldOffset = this.StreamReader.BaseStream.Position;
-                                        this.StreamReader.BaseStream.Seek(bs.lbPlyPos, SeekOrigin.Begin);
-                                        var se = new WorksheetExtractor(this.StreamReader, sheetData as WorkSheetData);
-                                        this.StreamReader.BaseStream.Seek(oldOffset, SeekOrigin.Begin);
-                                        break;
+                                    this.oldOffset = this.StreamReader.BaseStream.Position;
+                                    this.StreamReader.BaseStream.Seek(bs.lbPlyPos, SeekOrigin.Begin);
+                                    chartSheetData.ChartSheetSequence = new ChartSheetSequence(this.StreamReader);
+                                    this.StreamReader.BaseStream.Seek(oldOffset, SeekOrigin.Begin);
 
-                                    case BoundSheet8.SheetType.Chartsheet:
-                                        var chartSheetData = new ChartSheetData();
+                                    sheetData = chartSheetData;
+                                    break;
 
-                                        this.oldOffset = this.StreamReader.BaseStream.Position;
-                                        this.StreamReader.BaseStream.Seek(bs.lbPlyPos, SeekOrigin.Begin);
-                                        chartSheetData.ChartSheetSequence = new ChartSheetSequence(this.StreamReader);
-                                        this.StreamReader.BaseStream.Seek(oldOffset, SeekOrigin.Begin);
-
-                                        sheetData = chartSheetData;
-                                        break;
-
-                                    default:
-                                        TraceLogger.Info("Unsupported sheet type: {0}", bs.dt);
-                                        break;
-                                }
-                                
-                                if (sheetData != null)
-                                {
-                                    // add general sheet info
-                                    sheetData.boundsheetRecord = bs;
-                                }
-                                this.workBookData.addBoundSheetData(sheetData);
+                                default:
+                                    TraceLogger.Info("Unsupported sheet type: {0}", bs.dt);
+                                    break;
                             }
-                            break;
 
-                        case RecordType.Template:
+                            if (sheetData != null)
                             {
-                                this.workBookData.Template = true;
+                                // add general sheet info
+                                sheetData.boundsheetRecord = bs;
                             }
-                            break;
+                            this.workBookData.addBoundSheetData(sheetData);
+                        }
+                        break;
 
-                        case RecordType.SST:
+                    case RecordType.Template:
+                        {
+                            this.workBookData.Template = true;
+                        }
+                        break;
+
+                    case RecordType.SST:
+                        {
+                            /* reads the shared string table biff record and following continue records 
+                             * creates an array of bytes and then puts that into a memory stream 
+                             * this all is used to create a longer biffrecord then 8224 bytes. If theres a string 
+                             * beginning in the SST that is then longer then the 8224 bytes, it continues in the 
+                             * CONTINUE BiffRecord, so the parser has to read over the SST border. 
+                             * The problem here is, that the parser has to overread the continue biff record header 
+                            */
+                            SST sst;
+                            var length = bh.length;
+
+                            // save the old offset from this record begin 
+                            this.oldOffset = this.StreamReader.BaseStream.Position;
+                            // create a list of bytearrays to store the following continue records 
+                            // List<byte[]> byteArrayList = new List<byte[]>();
+                            var buffer = new byte[length];
+                            var vsrList = new LinkedList<VirtualStreamReader>();
+                            buffer = this.StreamReader.ReadBytes((int)length);
+                            // byteArrayList.Add(buffer);
+
+                            // create a new memory stream and a new virtualstreamreader 
+                            var bufferstream = new MemoryStream(buffer);
+                            var binreader = new VirtualStreamReader(bufferstream);
+                            BiffHeader bh2;
+                            bh2.id = (RecordType)this.StreamReader.ReadUInt16();
+
+                            while (bh2.id == RecordType.Continue)
                             {
-                                /* reads the shared string table biff record and following continue records 
-                                 * creates an array of bytes and then puts that into a memory stream 
-                                 * this all is used to create a longer biffrecord then 8224 bytes. If theres a string 
-                                 * beginning in the SST that is then longer then the 8224 bytes, it continues in the 
-                                 * CONTINUE BiffRecord, so the parser has to read over the SST border. 
-                                 * The problem here is, that the parser has to overread the continue biff record header 
-                                */
-                                SST sst;
-                                var length = bh.length;
+                                bh2.length = (ushort)(this.StreamReader.ReadUInt16());
 
-                                // save the old offset from this record begin 
-                                this.oldOffset = this.StreamReader.BaseStream.Position;
-                                // create a list of bytearrays to store the following continue records 
-                                // List<byte[]> byteArrayList = new List<byte[]>();
-                                var buffer = new byte[length];
-                                var vsrList = new LinkedList<VirtualStreamReader>();
-                                buffer = this.StreamReader.ReadBytes((int)length);
+                                buffer = new byte[bh2.length];
+
+                                // create a buffer with the bytes from the records and put that array into the 
+                                // list 
+                                buffer = this.StreamReader.ReadBytes((int)bh2.length);
                                 // byteArrayList.Add(buffer);
 
-                                // create a new memory stream and a new virtualstreamreader 
-                                var bufferstream = new MemoryStream(buffer);
-                                var binreader = new VirtualStreamReader(bufferstream);
-                                BiffHeader bh2;
+                                // create for each continue record a new streamreader !! 
+                                var contbufferstream = new MemoryStream(buffer);
+                                var contreader = new VirtualStreamReader(contbufferstream);
+                                vsrList.AddLast(contreader);
+
+
+                                // take next Biffrecord ID 
                                 bh2.id = (RecordType)this.StreamReader.ReadUInt16();
+                            }
+                            // set the old position of the stream 
+                            this.StreamReader.BaseStream.Position = this.oldOffset;
 
-                                while (bh2.id == RecordType.Continue)
-                                {
-                                    bh2.length = (ushort)(this.StreamReader.ReadUInt16());
+                            sst = new SST(binreader, bh.id, length, vsrList);
+                            this.StreamReader.BaseStream.Position = this.oldOffset + bh.length;
+                            this.workBookData.SstData = new SSTData(sst);
+                        }
+                        break;
 
-                                    buffer = new byte[bh2.length];
+                    case RecordType.EOF:
+                        {
+                            // Reads the end of the internal file !!! 
+                            this.StreamReader.BaseStream.Seek(0, SeekOrigin.End);
+                        }
+                        break;
 
-                                    // create a buffer with the bytes from the records and put that array into the 
-                                    // list 
-                                    buffer = this.StreamReader.ReadBytes((int)bh2.length);
-                                    // byteArrayList.Add(buffer);
+                    case RecordType.ExternSheet:
+                        {
+                            var extsheet = new ExternSheet(this.StreamReader, bh.id, bh.length);
+                            this.externSheets.Add(extsheet);
+                            this.workBookData.addExternSheetData(extsheet);
+                        }
+                        break;
+                    case RecordType.SupBook:
+                        {
+                            var supbook = new SupBook(this.StreamReader, bh.id, bh.length);
+                            this.supBooks.Add(supbook);
+                            this.workBookData.addSupBookData(supbook);
+                        }
+                        break;
+                    case RecordType.XCT:
+                        {
+                            var xct = new XCT(this.StreamReader, bh.id, bh.length);
+                            this.XCTList.Add(xct);
+                            this.workBookData.addXCT(xct);
+                        }
+                        break;
+                    case RecordType.CRN:
+                        {
+                            var crn = new CRN(this.StreamReader, bh.id, bh.length);
+                            this.CRNList.Add(crn);
+                            this.workBookData.addCRN(crn);
+                        }
+                        break;
+                    case RecordType.ExternName:
+                        {
+                            var externname = new ExternName(this.StreamReader, bh.id, bh.length);
+                            this.workBookData.addEXTERNNAME(externname);
+                        }
+                        break;
+                    case RecordType.Format:
+                        {
+                            var format = new Format(this.StreamReader, bh.id, bh.length);
+                            this.workBookData.styleData.addFormatValue(format);
+                        }
+                        break;
+                    case RecordType.XF:
+                        {
+                            var xf = new XF(this.StreamReader, bh.id, bh.length);
+                            this.workBookData.styleData.addXFDataValue(xf);
+                        }
+                        break;
+                    case RecordType.Style:
+                        {
+                            var style = new Style(this.StreamReader, bh.id, bh.length);
+                            this.workBookData.styleData.addStyleValue(style);
+                        }
+                        break;
+                    case RecordType.Font:
+                        {
+                            var font = new Font(this.StreamReader, bh.id, bh.length);
+                            this.workBookData.styleData.addFontData(font);
+                        }
+                        break;
+                    case RecordType.NAME:
+                    case RecordType.Lbl:
+                        {
+                            var name = new Lbl(this.StreamReader, bh.id, bh.length);
+                            this.workBookData.addDefinedName(name);
+                        }
+                        break;
+                    case RecordType.BOF:
+                        {
+                            this.workBookData.BOF = new BOF(this.StreamReader, bh.id, bh.length);
+                        }
+                        break;
+                    case RecordType.CodeName:
+                        {
+                            this.workBookData.CodeName = new CodeName(this.StreamReader, bh.id, bh.length);
+                        }
+                        break;
+                    case RecordType.FilePass:
+                        throw new ExtractorException(ExtractorException.FILEENCRYPTED);
 
-                                    // create for each continue record a new streamreader !! 
-                                    var contbufferstream = new MemoryStream(buffer);
-                                    var contreader = new VirtualStreamReader(contbufferstream);
-                                    vsrList.AddLast(contreader);
-
-
-                                    // take next Biffrecord ID 
-                                    bh2.id = (RecordType)this.StreamReader.ReadUInt16();
-                                }
-                                // set the old position of the stream 
-                                this.StreamReader.BaseStream.Position = this.oldOffset;
-
-                                sst = new SST(binreader, bh.id, length, vsrList);
-                                this.StreamReader.BaseStream.Position = this.oldOffset + bh.length;
-                                this.workBookData.SstData = new SSTData(sst);
-                            }
-                            break;
-
-                        case RecordType.EOF:
-                            {
-                                // Reads the end of the internal file !!! 
-                                this.StreamReader.BaseStream.Seek(0, SeekOrigin.End);
-                            }
-                            break;
-
-                        case RecordType.ExternSheet:
-                            {
-                                var extsheet = new ExternSheet(this.StreamReader, bh.id, bh.length);
-                                this.externSheets.Add(extsheet);
-                                this.workBookData.addExternSheetData(extsheet);
-                            }
-                            break;
-                        case RecordType.SupBook:
-                            {
-                                var supbook = new SupBook(this.StreamReader, bh.id, bh.length);
-                                this.supBooks.Add(supbook);
-                                this.workBookData.addSupBookData(supbook);
-                            }
-                            break;
-                        case RecordType.XCT:
-                            {
-                                var xct = new XCT(this.StreamReader, bh.id, bh.length);
-                                this.XCTList.Add(xct);
-                                this.workBookData.addXCT(xct);
-                            }
-                            break;
-                        case RecordType.CRN:
-                            {
-                                var crn = new CRN(this.StreamReader, bh.id, bh.length);
-                                this.CRNList.Add(crn);
-                                this.workBookData.addCRN(crn);
-                            }
-                            break;
-                        case RecordType.ExternName:
-                            {
-                                var externname = new ExternName(this.StreamReader, bh.id, bh.length);
-                                this.workBookData.addEXTERNNAME(externname);
-                            }
-                            break;
-                        case RecordType.Format:
-                            {
-                                var format = new Format(this.StreamReader, bh.id, bh.length);
-                                this.workBookData.styleData.addFormatValue(format);
-                            }
-                            break;
-                        case RecordType.XF:
-                            {
-                                var xf = new XF(this.StreamReader, bh.id, bh.length);
-                                this.workBookData.styleData.addXFDataValue(xf);
-                            }
-                            break;
-                        case RecordType.Style:
-                            {
-                                var style = new Style(this.StreamReader, bh.id, bh.length);
-                                this.workBookData.styleData.addStyleValue(style);
-                            }
-                            break;
-                        case RecordType.Font:
-                            {
-                                var font = new Font(this.StreamReader, bh.id, bh.length);
-                                this.workBookData.styleData.addFontData(font);
-                            }
-                            break;
-                        case RecordType.NAME:
-                        case RecordType.Lbl:
-                            {
-                                var name = new Lbl(this.StreamReader, bh.id, bh.length);
-                                this.workBookData.addDefinedName(name);
-                            }
-                            break;
-                        case RecordType.BOF:
-                            {
-                                this.workBookData.BOF = new BOF(this.StreamReader, bh.id, bh.length);
-                            }
-                            break;
-                        case RecordType.CodeName:
-                            {
-                                this.workBookData.CodeName = new CodeName(this.StreamReader, bh.id, bh.length);
-                            }
-                            break;
-                        case RecordType.FilePass:
-                            {
-                                throw new ExtractorException(ExtractorException.FILEENCRYPTED);
-                            }
-                            break;
-                        case RecordType.Palette:
-                            {
-                                var palette = new Palette(this.StreamReader, bh.id, bh.length);
-                                workBookData.styleData.setColorList(palette.rgbColorList);
-                            }
-                            break;
-                        default:
-                            {
-                                // this else statement is used to read BiffRecords which aren't implemented 
-                                var buffer = new byte[bh.length];
-                                buffer = this.StreamReader.ReadBytes(bh.length);
-                                TraceLogger.Debug("Unknown record found. ID {0}", bh.id);
-                            }
-                            break;
-                    }
+                    case RecordType.Palette:
+                        {
+                            var palette = new Palette(this.StreamReader, bh.id, bh.length);
+                            workBookData.styleData.setColorList(palette.rgbColorList);
+                        }
+                        break;
+                    default:
+                        {
+                            // this else statement is used to read BiffRecords which aren't implemented 
+                            var buffer = new byte[bh.length];
+                            buffer = this.StreamReader.ReadBytes(bh.length);
+                            TraceLogger.Debug("Unknown record found. ID {0}", bh.id);
+                        }
+                        break;
                 }
+            }
             //}
             //catch (Exception ex)
             //{

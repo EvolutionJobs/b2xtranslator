@@ -26,8 +26,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Writer;
@@ -47,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             //get the Class IDs of the directories
             var macroClsid = new Guid();
             var vbaClsid = new Guid();
-            foreach (DirectoryEntry entry in doc.Storage.AllEntries)
+            foreach (var entry in doc.Storage.AllEntries)
             {
                 if (entry.Path == "\\Macros")
                 {
@@ -64,9 +62,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             storage.RootDirectoryEntry.setClsId(macroClsid);
 
             //copy the VBA directory
-            StorageDirectoryEntry vba = storage.RootDirectoryEntry.AddStorageDirectoryEntry("VBA");
+            var vba = storage.RootDirectoryEntry.AddStorageDirectoryEntry("VBA");
             vba.setClsId(vbaClsid);
-            foreach (DirectoryEntry entry in doc.Storage.AllStreamEntries)
+            foreach (var entry in doc.Storage.AllStreamEntries)
             {
                 if (entry.Path.StartsWith("\\Macros\\VBA"))
                 {

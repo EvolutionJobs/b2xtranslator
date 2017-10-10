@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
-using System.Collections;
 using DIaLOGIKa.b2xtranslator.Tools;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes;
 
@@ -102,7 +99,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
 
         override public string ToString(uint depth)
         {
-            return String.Format("{0}\n{1}Id = {2}, isGroup = {3}, isChild = {4}, isPatriarch = {5}",
+            return string.Format("{0}\n{1}Id = {2}, isGroup = {3}, isChild = {4}, isPatriarch = {5}",
                 base.ToString(depth), IndentationForDepth(depth + 1),
                 this.spid,
                 this.fGroup, this.fChild, this.fPatriarch);

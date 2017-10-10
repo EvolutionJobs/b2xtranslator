@@ -26,8 +26,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
@@ -161,11 +159,11 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         public override string ToString()
         {
-            string s = String.Join(", ",
+            string s = string.Join(", ",
                 Array.ConvertAll<PlaceholderEnum, string>(this.PlaceholderTypes,
                 delegate(PlaceholderEnum pid) { return pid.ToString(); }));
 
-            return String.Format("SSlideLayoutAtom(Geom = {0}, PlaceholderTypes = [{1}])",
+            return string.Format("SSlideLayoutAtom(Geom = {0}, PlaceholderTypes = [{1}])",
                 this.Geom, s);
         }
     }

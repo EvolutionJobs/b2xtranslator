@@ -27,9 +27,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
-using System.IO;
 using System.Xml;
 using System.Reflection;
 using DIaLOGIKa.b2xtranslator.Tools;
@@ -54,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public static XmlDocument GetDefaultDocument(string filename)
         {
             var a = Assembly.GetExecutingAssembly();
-            var s = a.GetManifestResourceStream(String.Format("{0}.Defaults.{1}.xml",
+            var s = a.GetManifestResourceStream(string.Format("{0}.Defaults.{1}.xml",
                 typeof(Utils).Namespace, filename));
 
             var doc = new XmlDocument();
@@ -90,7 +88,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 default:
                     throw new NotImplementedException(
-                        String.Format("Can't convert slide size type {0} to XML value", sst));
+                        string.Format("Can't convert slide size type {0} to XML value", sst));
             }
         }
 
@@ -251,7 +249,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         }
                         else
                         {
-                            throw new NotImplementedException(String.Format(
+                            throw new NotImplementedException(string.Format(
                                 "Don't know how to map TwoColumnLeftTwoRows with rightType = {0}",
                                 rightType
                             ));
@@ -272,7 +270,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         }
                         else
                         {
-                            throw new NotImplementedException(String.Format(
+                            throw new NotImplementedException(string.Format(
                                 "Don't know how to map TwoColumnRightTwoRows with leftType = {0}",
                                 leftType
                             ));
@@ -294,7 +292,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         }
                         else
                         {
-                            throw new NotImplementedException(String.Format(
+                            throw new NotImplementedException(string.Format(
                                 "Don't know how to map TwoRowsAndTitle with topType = {0} and bottomType = {1}",
                                 topType, bottomType
                             ));
@@ -326,9 +324,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             bool fSchemeIndex = (bytes[3] & (1 << 3)) != 0;
             bool fSysIndex = (bytes[3] & (1 << 4)) != 0;
 
-            List<ColorSchemeAtom> colors = slide.AllChildrenWithType<ColorSchemeAtom>();
+            var colors = slide.AllChildrenWithType<ColorSchemeAtom>();
             ColorSchemeAtom MasterScheme = null;
-            foreach (ColorSchemeAtom color in colors)
+            foreach (var color in colors)
             {
                 if (color.Instance == 1) MasterScheme = color;
             }
@@ -404,7 +402,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 int green = int.Parse(result.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
                 int blue = int.Parse(result.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
                 int v = (int)bytes[2];
-                int res;
+                //int res;
                 return result;
                 //switch (val & 0xff00)
                 //{

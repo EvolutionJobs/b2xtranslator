@@ -26,7 +26,6 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
 

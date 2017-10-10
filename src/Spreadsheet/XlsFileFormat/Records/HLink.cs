@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-using System;
 using System.Diagnostics;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 using DIaLOGIKa.b2xtranslator.Tools;
@@ -155,7 +154,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
                         // read 20 unused bytes 
                         this.Reader.ReadBytes(20);
                         var cbUnicodePathSize = this.Reader.ReadUInt32();
-                        string unicodePath = ""; 
+                        //string unicodePath = ""; 
 
                         if (cbUnicodePathSize != 0)
                         {

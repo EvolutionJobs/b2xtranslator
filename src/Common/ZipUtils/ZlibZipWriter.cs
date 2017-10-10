@@ -69,7 +69,7 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
                 this.entryOpened = false;
             }
 
-            int result = ZipLib.zipOpenNewFileInZip(this.handle, resolvedPath, out info, null, 0, null, 0, String.Empty, (int)CompressionMethod.Deflated, (int)CompressionLevel.Default);
+            int result = ZipLib.zipOpenNewFileInZip(this.handle, resolvedPath, out info, null, 0, null, 0, string.Empty, (int)CompressionMethod.Deflated, (int)CompressionLevel.Default);
             if (result < 0)
             {
                 throw new ZipException("Error while opening entry for writing: " + relativePath + " - Errorcode: " + result);

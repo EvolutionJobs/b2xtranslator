@@ -26,11 +26,8 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.Tools;
 
 namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
@@ -130,7 +127,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
         override public string ToString(uint depth)
         {
-            return String.Format("{0}\n{1}LastSlideIdRef = {2}, BuildVersion = {3}, MinorVersion = {4}\n{1}" +
+            return string.Format("{0}\n{1}LastSlideIdRef = {2}, BuildVersion = {3}, MinorVersion = {4}\n{1}" +
                 "MajorVersion = {5}, OffsetLastEdit = {6}, OffsetPersistDirectory = {7}, DocPersistIdRef = {8}\n{1}" +
                 "PersistIdSeed = {9}, LastView = {10}, EncryptSessionPersistIdRef = {11}",
 

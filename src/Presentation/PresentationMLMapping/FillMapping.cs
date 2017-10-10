@@ -167,7 +167,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                     if (strUrl.Length > 0)
                     {
-                        ExternalRelationship er = _parentSlideMapping.targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.Image, strUrl);
+                        var er = _parentSlideMapping.targetPart.AddExternalRelationship(OpenXmlRelationshipTypes.Image, strUrl);
 
                         rId = er.Id;
 
@@ -210,14 +210,14 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                         if (_ctx.Ppt.PicturesContainer._pictures.ContainsKey(bse.foDelay))
                         {
-                            Record rec = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
+                            var rec = _ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
                            
                             if (rec is BitmapBlip)
                             {
                                 var b = (BitmapBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];                                
                                 imgPart = _parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
                                 imgPart.TargetDirectory = "..\\media";
-                                System.IO.Stream outStream = imgPart.GetStream();
+                                var outStream = imgPart.GetStream();
                                 outStream.Write(b.m_pvBits, 0, b.m_pvBits.Length);
                             }
                             else
@@ -225,8 +225,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 var b = (MetafilePictBlip)_ctx.Ppt.PicturesContainer._pictures[bse.foDelay];
                                 imgPart = _parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
                                 imgPart.TargetDirectory = "..\\media";
-                                System.IO.Stream outStream = imgPart.GetStream();
-                                byte[] decompressed = b.Decrompress();
+                                var outStream = imgPart.GetStream();
+                                var decompressed = b.Decrompress();
                                 outStream.Write(decompressed, 0, decompressed.Length);
                             }
 
@@ -278,13 +278,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.fillShadeColors))
                     {
 
-                        byte[] colors = so.OptionsByID[ShapeOptions.PropertyId.fillShadeColors].opComplex;
+                        var colors = so.OptionsByID[ShapeOptions.PropertyId.fillShadeColors].opComplex;
 
                         if (colors != null && colors.Length > 0)
                         {
 
                             useFillAndBack = false;
-                            ShapeOptions.OptionEntry type = so.OptionsByID[ShapeOptions.PropertyId.fillShadeType];
+                            var type = so.OptionsByID[ShapeOptions.PropertyId.fillShadeType];
 
                             var nElems = System.BitConverter.ToUInt16(colors, 0);
                             var nElemsAlloc = System.BitConverter.ToUInt16(colors, 2);
@@ -474,7 +474,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                         //An IMsoArray record that specifies colors and their relative positions. 
                         //Each element of the array contains an OfficeArtCOLORREF record color and a FixedPoint, as specified in [MS-OSHARED] 
                         //section 2.2.1.6, that specifies its relative position along the gradient vector.
-                        byte[] data = so.OptionsByID[ShapeOptions.PropertyId.fillShadeColors].opComplex;
+                        var data = so.OptionsByID[ShapeOptions.PropertyId.fillShadeColors].opComplex;
 
                         int pos = 0;
                         string colval;

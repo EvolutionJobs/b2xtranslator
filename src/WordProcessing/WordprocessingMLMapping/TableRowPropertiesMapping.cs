@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
@@ -34,11 +31,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             var rev = new RevisionData(_rowEndChpx);
             if (_rowEndChpx != null && rev.Type == RevisionData.RevisionType.Deleted)
             {
-                XmlElement del = _nodeFactory.CreateElement("w", "del", OpenXmlNamespaces.WordprocessingML);
+                var del = _nodeFactory.CreateElement("w", "del", OpenXmlNamespaces.WordprocessingML);
                 _trPr.AppendChild(del);
             }
 
-            foreach (SinglePropertyModifier sprm in tapx.grpprl)
+            foreach (var sprm in tapx.grpprl)
             {
                 switch (sprm.OpCode)  
                 {
@@ -51,18 +48,18 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         bool fHeader = Utils.ByteToBool(sprm.Arguments[0]);
                         if(fHeader)
                         {
-                            XmlElement header = _nodeFactory.CreateElement("w", "tblHeader", OpenXmlNamespaces.WordprocessingML);
+                            var header = _nodeFactory.CreateElement("w", "tblHeader", OpenXmlNamespaces.WordprocessingML);
                             _trPr.AppendChild(header);
                         }
                         break;
 
                     //width after
                     case SinglePropertyModifier.OperationCode.sprmTWidthAfter:
-                        XmlElement wAfter = _nodeFactory.CreateElement("w", "wAfter", OpenXmlNamespaces.WordprocessingML);
-                        XmlAttribute wAfterValue = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                        var wAfter = _nodeFactory.CreateElement("w", "wAfter", OpenXmlNamespaces.WordprocessingML);
+                        var wAfterValue = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                         wAfterValue.Value = System.BitConverter.ToInt16(sprm.Arguments, 1).ToString();
                         wAfter.Attributes.Append(wAfterValue);
-                        XmlAttribute wAfterType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+                        var wAfterType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
                         wAfterType.Value = "dxa";
                         wAfter.Attributes.Append(wAfterType);
                         _trPr.AppendChild(wAfter);
@@ -73,11 +70,11 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                         var before = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         if (before != 0)
                         {
-                            XmlElement wBefore = _nodeFactory.CreateElement("w", "wBefore", OpenXmlNamespaces.WordprocessingML);
-                            XmlAttribute wBeforeValue = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
+                            var wBefore = _nodeFactory.CreateElement("w", "wBefore", OpenXmlNamespaces.WordprocessingML);
+                            var wBeforeValue = _nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                             wBeforeValue.Value = before.ToString();
                             wBefore.Attributes.Append(wBeforeValue);
-                            XmlAttribute wBeforeType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
+                            var wBeforeType = _nodeFactory.CreateAttribute("w", "type", OpenXmlNamespaces.WordprocessingML);
                             wBeforeType.Value = "dxa";
                             wBefore.Attributes.Append(wBeforeType);
                             _trPr.AppendChild(wBefore);
@@ -86,9 +83,9 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                     //row height
                     case SinglePropertyModifier.OperationCode.sprmTDyaRowHeight:
-                        XmlElement rowHeight = _nodeFactory.CreateElement("w", "trHeight", OpenXmlNamespaces.WordprocessingML);
-                        XmlAttribute rowHeightVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
-                        XmlAttribute rowHeightRule = _nodeFactory.CreateAttribute("w", "hRule", OpenXmlNamespaces.WordprocessingML);
+                        var rowHeight = _nodeFactory.CreateElement("w", "trHeight", OpenXmlNamespaces.WordprocessingML);
+                        var rowHeightVal = _nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
+                        var rowHeightRule = _nodeFactory.CreateAttribute("w", "hRule", OpenXmlNamespaces.WordprocessingML);
                         var rH = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         if (rH > 0)
                         {

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using DIaLOGIKa.b2xtranslator.Tools;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
@@ -34,7 +32,7 @@ namespace DIaLOGIKa.b2xtranslator.PptDump
             {
                 if (record is UnknownRecord)
                 {
-                    string filename = String.Format(@"{0}\{1}.record", outputDir, record.GetIdentifier());
+                    string filename = string.Format(@"{0}\{1}.record", outputDir, record.GetIdentifier());
 
                     using (var fs = new FileStream(filename, FileMode.Create))
                     {

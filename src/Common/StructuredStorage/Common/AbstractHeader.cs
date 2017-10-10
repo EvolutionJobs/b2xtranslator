@@ -27,11 +27,9 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
-{   
+{
     /// <summary>
     /// Abstract class fo the header of a compound file.
     /// Author: math
@@ -197,7 +195,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
                 _diFatStartSector = value;
                 if (value > _ioHandler.IOStreamSize / SectorSize && value != SectorId.ENDOFCHAIN && value != SectorId.FREESECT)
                 {
-                    throw new InvalidValueInHeaderException("DiFatStartSector", String.Format("Details: value={0};_ioHandler.IOStreamSize={1};SectorSize={2}; SectorId.ENDOFCHAIN: {3}", value, _ioHandler.IOStreamSize, SectorSize, SectorId.ENDOFCHAIN));
+                    throw new InvalidValueInHeaderException("DiFatStartSector", string.Format("Details: value={0};_ioHandler.IOStreamSize={1};SectorSize={2}; SectorId.ENDOFCHAIN: {3}", value, _ioHandler.IOStreamSize, SectorSize, SectorId.ENDOFCHAIN));
                 }
             }
         }

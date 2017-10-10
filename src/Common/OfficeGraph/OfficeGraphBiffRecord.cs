@@ -84,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
                         {
                             if (TypeToRecordClassMapping.ContainsKey(typeCode))
                             {
-                                throw new Exception(String.Format(
+                                throw new Exception(string.Format(
                                     "Tried to register TypeCode {0} to {1}, but it is already registered to {2}",
                                     typeCode, t, TypeToRecordClassMapping[typeCode]));
                             }

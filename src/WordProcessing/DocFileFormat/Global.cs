@@ -25,14 +25,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel;
 
 namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 {
-	public class Global
+    public class Global
 	{
         public enum JustificationCode
         {

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 
@@ -35,7 +32,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 if (doc.AnnotationReferenceExtraTable != null && 
                     doc.AnnotationReferenceExtraTable.Count > index)
                 {
-                    AnnotationReferenceDescriptorExtra atrdPost10 = doc.AnnotationReferenceExtraTable[index];
+                    var atrdPost10 = doc.AnnotationReferenceExtraTable[index];
                     atrdPost10.Date.Convert(new DateMapping(_writer));
                 }
 

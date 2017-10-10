@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
-using System.Xml;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 
@@ -58,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
             {
                 lastSepxCp = sepxCp;
             }
-            SectionPropertyExceptions lastSepx = _doc.AllSepx[lastSepxCp];
+            var lastSepx = _doc.AllSepx[lastSepxCp];
             lastSepx.Convert(new SectionPropertiesMapping(_writer, _ctx, _sectionNr));
 
             //end the document

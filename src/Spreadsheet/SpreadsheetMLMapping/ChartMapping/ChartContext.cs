@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
+﻿using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
 using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
 
 namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 {

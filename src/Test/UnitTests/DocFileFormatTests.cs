@@ -16,25 +16,25 @@ namespace UnitTests
     {
         private Application word2007 = null;
         private List<FileInfo> files;
-        private Object confirmConversions = Type.Missing;
-        private Object readOnly = true;
-        private Object addToRecentFiles = Type.Missing;
-        private Object passwordDocument = Type.Missing;
-        private Object passwordTemplate = Type.Missing;
-        private Object revert = Type.Missing;
-        private Object writePasswordDocument = Type.Missing;
-        private Object writePasswordTemplate = Type.Missing;
-        private Object format = Type.Missing;
-        private Object encoding = Type.Missing;
-        private Object visible = Type.Missing;
-        private Object openConflictDocument = Type.Missing;
-        private Object openAndRepair = Type.Missing;
-        private Object documentDirection = Type.Missing;
-        private Object noEncodingDialog = Type.Missing;
+        private object confirmConversions = Type.Missing;
+        private object readOnly = true;
+        private object addToRecentFiles = Type.Missing;
+        private object passwordDocument = Type.Missing;
+        private object passwordTemplate = Type.Missing;
+        private object revert = Type.Missing;
+        private object writePasswordDocument = Type.Missing;
+        private object writePasswordTemplate = Type.Missing;
+        private object format = Type.Missing;
+        private object encoding = Type.Missing;
+        private object visible = Type.Missing;
+        private object openConflictDocument = Type.Missing;
+        private object openAndRepair = Type.Missing;
+        private object documentDirection = Type.Missing;
+        private object noEncodingDialog = Type.Missing;
 
-        private Object saveChanges = false;
-        private Object originalFormat = false;
-        private Object routeDocument = false;
+        private object saveChanges = false;
+        private object originalFormat = false;
+        private object routeDocument = false;
 
 
         [TestFixtureSetUp]
@@ -299,7 +299,7 @@ namespace UnitTests
             }
         }
 
-        private Document loadDocument(Object filename)
+        private Document loadDocument(object filename)
         {
             return this.word2007.Documents.Open(
                 ref filename,

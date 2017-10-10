@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                     {
                         if (child != null)
                         {
-                            string filename = String.Format(@"{0}\{1}.record", "dumps", child.GetIdentifier());
+                            string filename = string.Format(@"{0}\{1}.record", "dumps", child.GetIdentifier());
 
                             using (var fs = new FileStream(filename, FileMode.Create))
                             {

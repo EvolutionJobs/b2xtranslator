@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;

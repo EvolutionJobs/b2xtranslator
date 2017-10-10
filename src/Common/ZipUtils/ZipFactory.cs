@@ -26,14 +26,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 
 namespace DIaLOGIKa.b2xtranslator.ZipUtils
 {
-	/// <summary>
-	/// ZipFactory provides instances of IZipReader and IZipWriter.
-	/// </summary>
-	public class ZipFactory
+    /// <summary>
+    /// ZipFactory provides instances of IZipReader and IZipWriter.
+    /// </summary>
+    public class ZipFactory
 	{
 	    /// <summary>
 	    /// Provides an instance of IZipWriter.

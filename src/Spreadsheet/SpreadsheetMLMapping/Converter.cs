@@ -5,8 +5,6 @@ using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML;
 using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
 
 namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
 {
@@ -14,7 +12,7 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
     {
         public static OpenXmlPackage.DocumentType DetectOutputType(XlsDocument xls)
         {
-            OpenXmlPackage.DocumentType returnType = OpenXmlPackage.DocumentType.Document;
+            var returnType = OpenXmlPackage.DocumentType.Document;
             try
             {
                 //ToDo: Find better way to detect macro type

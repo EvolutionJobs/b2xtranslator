@@ -26,13 +26,10 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
 
 namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 {
@@ -73,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                 //charset
                 _writer.WriteStartElement("w", "charset", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, String.Format("{0:x2}", font.chs));
+                _writer.WriteAttributeString("w", "val", OpenXmlNamespaces.WordprocessingML, string.Format("{0:x2}", font.chs));
                 _writer.WriteEndElement();
 
                 //font family
@@ -86,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
                 _writer.WriteStartAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                 foreach (byte b in font.panose)
                 {
-                    _writer.WriteString(String.Format("{0:x2}", b));
+                    _writer.WriteString(string.Format("{0:x2}", b));
                 }
                 _writer.WriteEndAttribute();
                 _writer.WriteEndElement();
@@ -106,12 +103,12 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
                 //font signature
                 _writer.WriteStartElement("w", "sig", OpenXmlNamespaces.WordprocessingML);
-                _writer.WriteAttributeString("w", "usb0", OpenXmlNamespaces.WordprocessingML, String.Format("{0:x8}", font.fs.UnicodeSubsetBitfield0));
-                _writer.WriteAttributeString("w", "usb1", OpenXmlNamespaces.WordprocessingML, String.Format("{0:x8}", font.fs.UnicodeSubsetBitfield1));
-                _writer.WriteAttributeString("w", "usb2", OpenXmlNamespaces.WordprocessingML, String.Format("{0:x8}", font.fs.UnicodeSubsetBitfield2));
-                _writer.WriteAttributeString("w", "usb3", OpenXmlNamespaces.WordprocessingML, String.Format("{0:x8}", font.fs.UnicodeSubsetBitfield3));
-                _writer.WriteAttributeString("w", "csb0", OpenXmlNamespaces.WordprocessingML, String.Format("{0:x8}", font.fs.CodePageBitfield0));
-                _writer.WriteAttributeString("w", "csb1", OpenXmlNamespaces.WordprocessingML, String.Format("{0:x8}", font.fs.CodePageBitfield1));
+                _writer.WriteAttributeString("w", "usb0", OpenXmlNamespaces.WordprocessingML, string.Format("{0:x8}", font.fs.UnicodeSubsetBitfield0));
+                _writer.WriteAttributeString("w", "usb1", OpenXmlNamespaces.WordprocessingML, string.Format("{0:x8}", font.fs.UnicodeSubsetBitfield1));
+                _writer.WriteAttributeString("w", "usb2", OpenXmlNamespaces.WordprocessingML, string.Format("{0:x8}", font.fs.UnicodeSubsetBitfield2));
+                _writer.WriteAttributeString("w", "usb3", OpenXmlNamespaces.WordprocessingML, string.Format("{0:x8}", font.fs.UnicodeSubsetBitfield3));
+                _writer.WriteAttributeString("w", "csb0", OpenXmlNamespaces.WordprocessingML, string.Format("{0:x8}", font.fs.CodePageBitfield0));
+                _writer.WriteAttributeString("w", "csb1", OpenXmlNamespaces.WordprocessingML, string.Format("{0:x8}", font.fs.CodePageBitfield1));
                 _writer.WriteEndElement();
 
                 _writer.WriteEndElement();

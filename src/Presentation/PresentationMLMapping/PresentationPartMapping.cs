@@ -25,16 +25,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
-using System.IO;
-using System.IO.Compression;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 
 namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 {
@@ -50,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public override void Apply(PowerpointDocument ppt)
         {
-            DocumentContainer documentRecord = ppt.DocumentRecord;
+            var documentRecord = ppt.DocumentRecord;
 
             // Start the document
             _writer.WriteStartDocument();
@@ -94,7 +87,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteEndElement(); //defPPr
 
 
-            TextMasterStyleAtom defaultStyle = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>();
+            var defaultStyle = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>();
 
             var map = new TextMasterStyleMapping(_ctx, _writer, null);
             
@@ -113,7 +106,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void WriteSizeInfo(PowerpointDocument ppt, DocumentContainer documentRecord)
         {
-            DocumentAtom doc = documentRecord.FirstChildWithType<DocumentAtom>();
+            var doc = documentRecord.FirstChildWithType<DocumentAtom>();
 
             // Write slide size and type
             WriteSlideSizeInfo(doc);
@@ -154,13 +147,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
        
        private void CreateSlides(PowerpointDocument ppt, DocumentContainer documentRecord)
         {
-            foreach (SlideListWithText lst in ppt.DocumentRecord.AllChildrenWithType<SlideListWithText>())
+            foreach (var lst in ppt.DocumentRecord.AllChildrenWithType<SlideListWithText>())
             {
                 if (lst.Instance == 0)
                 {
-                    foreach (SlidePersistAtom at in lst.SlidePersistAtoms)
+                    foreach (var at in lst.SlidePersistAtoms)
                     {
-                        foreach (Slide slide in ppt.SlideRecords)
+                        foreach (var slide in ppt.SlideRecords)
                         {
                             if (slide.PersistAtom == at)
                             {
@@ -173,17 +166,17 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                     }
                 }
-                bool found = false;
+                //bool found = false;
                 if (lst.Instance == 2) //notes
                 {
-                    foreach (SlidePersistAtom at in lst.SlidePersistAtoms)
+                    foreach (var at in lst.SlidePersistAtoms)
                     {
-                        found = false;
-                        foreach (Note note in ppt.NoteRecords)
+                        //found = false;
+                        foreach (var note in ppt.NoteRecords)
                         {
                             if (note.PersistAtom.SlideId == at.SlideId)
                             {
-                                NotesAtom a = note.FirstChildWithType<NotesAtom>();
+                                var a = note.FirstChildWithType<NotesAtom>();
                                 foreach (var slideMapping in this.SlideMappings)
                                 {
                                     if (slideMapping.Slide.PersistAtom.SlideId == a.SlideIdRef)
@@ -191,16 +184,16 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                         var nMapping = new NoteMapping(_ctx, slideMapping);
                                         nMapping.Apply(note);
                                         this.NoteMappings.Add(nMapping);
-                                        found = true;
+                                        //found = true;
                                     }
                                 }
                                 
                             }
                         }
-                        if (!found)
-                        {
-                            string s = "";
-                        }
+                        //if (!found)
+                        //{
+                        //    string s = "";
+                        //}
 
                     }
                 }
@@ -226,7 +219,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             _writer.WriteStartElement("p", "sldId", OpenXmlNamespaces.PresentationML);
 
-            SlideAtom slideAtom = slide.FirstChildWithType<SlideAtom>();
+            var slideAtom = slide.FirstChildWithType<SlideAtom>();
 
             _writer.WriteAttributeString("id", slide.PersistAtom.SlideId.ToString());
             _writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, sMapping.targetPart.RelIdToString);
@@ -244,7 +237,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void CreateMainMasters(PowerpointDocument ppt)
         {
-            foreach (Slide m in ppt.MainMasterRecords)
+            foreach (var m in ppt.MainMasterRecords)
             {
                  _ctx.GetOrCreateMasterMappingByMasterId(m.PersistAtom.SlideId).Apply(m);
             }
@@ -252,7 +245,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void CreateNotesMasters(PowerpointDocument ppt)
         {
-            foreach (Note m in ppt.NotesMasterRecords)
+            foreach (var m in ppt.NotesMasterRecords)
             {
                 _ctx.GetOrCreateNotesMasterMappingByMasterId(0).Apply(m);
             }
@@ -260,7 +253,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         private void CreateHandoutMasters(PowerpointDocument ppt)
         {
-            foreach (Handout m in ppt.HandoutMasterRecords)
+            foreach (var m in ppt.HandoutMasterRecords)
             {
                 _ctx.GetOrCreateHandoutMasterMappingByMasterId(0).Apply(m);
             }
@@ -270,7 +263,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             _writer.WriteStartElement("p", "sldMasterIdLst", OpenXmlNamespaces.PresentationML);
 
-            foreach (MainMaster m in ppt.MainMasterRecords)
+            foreach (var m in ppt.MainMasterRecords)
             {
                 this.WriteMainMaster(ppt, m);
             }
@@ -307,7 +300,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             {
                 _writer.WriteStartElement("p", "notesMasterIdLst", OpenXmlNamespaces.PresentationML);
 
-                foreach (Note m in ppt.NotesMasterRecords)
+                foreach (var m in ppt.NotesMasterRecords)
                 {
                     this.WriteNoteMaster2(ppt, m);
                 }
@@ -342,7 +335,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 _writer.WriteStartElement("p", "handoutMasterIdLst", OpenXmlNamespaces.PresentationML);
 
-                foreach (Handout m in ppt.HandoutMasterRecords)
+                foreach (var m in ppt.HandoutMasterRecords)
                 {
                     this.WriteHandoutMaster2(ppt, m);
                 }

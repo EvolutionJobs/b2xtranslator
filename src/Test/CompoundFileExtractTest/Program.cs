@@ -28,13 +28,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
 using System.IO;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using DIaLOGIKa.b2xtranslator.Tools;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
 
 namespace CompoundFileExtractTest
 {
@@ -121,7 +118,7 @@ namespace CompoundFileExtractTest
                     storageReader = null;
 
                     extractionTime = DateTime.Now - begin;                                        
-                    Console.WriteLine("Streams extracted in " + String.Format("{0:N2}", extractionTime.TotalSeconds) + "s. (File: " + file + ")");
+                    Console.WriteLine("Streams extracted in " + string.Format("{0:N2}", extractionTime.TotalSeconds) + "s. (File: " + file + ")");
                 }
                 catch (Exception e)
                 {

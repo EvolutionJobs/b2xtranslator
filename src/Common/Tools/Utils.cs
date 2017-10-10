@@ -26,7 +26,6 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Collections;
@@ -328,7 +327,7 @@ namespace DIaLOGIKa.b2xtranslator.Tools
         public static string GetHashDump(byte[] bytes)
         {
             int colCount = 16;
-            string ret = String.Format("({0:X04}) ", 0);
+            string ret = string.Format("({0:X04}) ", 0);
 
             int colCounter = 0;
             for (int i = 0; i < bytes.Length; i++)
@@ -336,9 +335,9 @@ namespace DIaLOGIKa.b2xtranslator.Tools
                 if (colCounter == colCount)
                 {
                     colCounter = 0;
-                    ret += Environment.NewLine + String.Format("({0:X04}) ", i);
+                    ret += Environment.NewLine + string.Format("({0:X04}) ", i);
                 }
-                ret += String.Format("{0:X02} ", bytes[i]);
+                ret += string.Format("{0:X02} ", bytes[i]);
                 colCounter++;
             }
 

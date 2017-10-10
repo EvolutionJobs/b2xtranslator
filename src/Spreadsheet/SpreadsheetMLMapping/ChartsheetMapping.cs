@@ -29,7 +29,6 @@
 
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 

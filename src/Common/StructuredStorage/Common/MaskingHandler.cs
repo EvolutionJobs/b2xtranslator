@@ -27,8 +27,6 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Globalization;
 
 namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
@@ -51,7 +49,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
             string result = text;
             foreach (var character in CharsToMask)
 	        {
-                result = result.Replace(new string((char)character,1), String.Format(CultureInfo.InvariantCulture, "%{0:X4}", character));
+                result = result.Replace(new string((char)character,1), string.Format(CultureInfo.InvariantCulture, "%{0:X4}", character));
 	        }
             return result;
         }
@@ -65,7 +63,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
             string result = text;
             foreach (var character in CharsToMask)
             {
-                result = result.Replace(String.Format("%{0:X4}", character), new string((char)character, 1));
+                result = result.Replace(string.Format("%{0:X4}", character), new string((char)character, 1));
             }
             return result;
         }

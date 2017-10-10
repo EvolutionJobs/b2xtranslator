@@ -25,9 +25,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using DIaLOGIKa.b2xtranslator.Tools;
 
@@ -62,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
 
         public TableInfo(ParagraphPropertyExceptions papx)
         {
-            foreach (SinglePropertyModifier sprm in papx.grpprl)
+            foreach (var sprm in papx.grpprl)
             {
                 if (sprm.OpCode == SinglePropertyModifier.OperationCode.sprmPFInTable)
                 {

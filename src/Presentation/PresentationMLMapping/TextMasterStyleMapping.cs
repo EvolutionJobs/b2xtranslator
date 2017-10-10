@@ -25,9 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
 using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
 using System.Xml;
@@ -67,17 +65,17 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         {
             _Master = Master;
 
-            List<TextMasterStyleAtom> atoms = Master.AllChildrenWithType<TextMasterStyleAtom>();            
+            var atoms = Master.AllChildrenWithType<TextMasterStyleAtom>();            
 
             var body9atoms = new List<TextMasterStyle9Atom>();
             var title9atoms = new List<TextMasterStyle9Atom>();
-            foreach (ProgTags progtags in Master.AllChildrenWithType<ProgTags>())
+            foreach (var progtags in Master.AllChildrenWithType<ProgTags>())
 	        {
-        		foreach (ProgBinaryTag progbinarytag in progtags.AllChildrenWithType<ProgBinaryTag>())
+        		foreach (var progbinarytag in progtags.AllChildrenWithType<ProgBinaryTag>())
 	            {
-                    foreach (ProgBinaryTagDataBlob blob in progbinarytag.AllChildrenWithType<ProgBinaryTagDataBlob>())
+                    foreach (var blob in progbinarytag.AllChildrenWithType<ProgBinaryTagDataBlob>())
                     {
-                        foreach (TextMasterStyle9Atom atom in blob.AllChildrenWithType<TextMasterStyle9Atom>())
+                        foreach (var atom in blob.AllChildrenWithType<TextMasterStyle9Atom>())
                         {
                             if (atom.Instance == 0) title9atoms.Add(atom);
                             if (atom.Instance == 1) body9atoms.Add(atom);
@@ -86,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 	            }
 	        }
             
-            foreach (TextMasterStyleAtom atom in atoms)
+            foreach (var atom in atoms)
             {
                 if (atom.Instance == 0) titleAtoms.Add(atom);   
                 if (atom.Instance == 1) bodyAtoms.Add(atom);
@@ -99,7 +97,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteStartElement("p", "titleStyle", OpenXmlNamespaces.PresentationML);
 
             ParagraphRun9 pr9 = null;
-            foreach (TextMasterStyleAtom atom in titleAtoms)
+            foreach (var atom in titleAtoms)
             {
                 lastSpaceBefore = 0;
                 lastBulletFont = "";
@@ -125,7 +123,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             _writer.WriteStartElement("p", "bodyStyle", OpenXmlNamespaces.PresentationML);
 
-            foreach (TextMasterStyleAtom atom in bodyAtoms)
+            foreach (var atom in bodyAtoms)
             {
                 lastSpaceBefore = 0;
                 lastColor = "";
@@ -155,9 +153,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public void ApplyNotesMaster(RegularContainer notesMaster)
         {
             _Master = notesMaster;
-            MainMaster m = this._ctx.Ppt.MainMasterRecords[0];
-            List<TextMasterStyleAtom> atoms = m.AllChildrenWithType<TextMasterStyleAtom>();
-            foreach (TextMasterStyleAtom atom in atoms)
+            var m = this._ctx.Ppt.MainMasterRecords[0];
+            var atoms = m.AllChildrenWithType<TextMasterStyleAtom>();
+            foreach (var atom in atoms)
             {
                 if (atom.Instance == 2) noteAtoms.Add(atom);
             }
@@ -165,7 +163,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteStartElement("p", "notesStyle", OpenXmlNamespaces.PresentationML);
 
             ParagraphRun9 pr9 = null;
-            foreach (TextMasterStyleAtom atom in noteAtoms)
+            foreach (var atom in noteAtoms)
             {
                 lastSpaceBefore = 0;
                 lastBulletFont = "";
@@ -191,9 +189,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public void ApplyHandoutMaster(RegularContainer handoutMaster)
         {
             _Master = handoutMaster;
-            MainMaster m = this._ctx.Ppt.MainMasterRecords[0];
-            List<TextMasterStyleAtom> atoms = m.AllChildrenWithType<TextMasterStyleAtom>();
-            foreach (TextMasterStyleAtom atom in atoms)
+            var m = this._ctx.Ppt.MainMasterRecords[0];
+            var atoms = m.AllChildrenWithType<TextMasterStyleAtom>();
+            foreach (var atom in atoms)
             {
                 if (atom.Instance == 2) noteAtoms.Add(atom);
             }
@@ -201,7 +199,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             _writer.WriteStartElement("p", "handoutStyle", OpenXmlNamespaces.PresentationML);
 
             ParagraphRun9 pr9 = null;
-            foreach (TextMasterStyleAtom atom in noteAtoms)
+            foreach (var atom in noteAtoms)
             {
                 lastSpaceBefore = 0;
                 lastBulletFont = "";
@@ -385,27 +383,27 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             if (pr9 != null)
             {
                 if (pr9.BulletBlipReferencePresent)
-                    foreach (ProgTags progtags in _ctx.Ppt.DocumentRecord.FirstChildWithType<List>().AllChildrenWithType<ProgTags>())
+                    foreach (var progtags in _ctx.Ppt.DocumentRecord.FirstChildWithType<List>().AllChildrenWithType<ProgTags>())
                     {
-                        foreach (ProgBinaryTag bintags in progtags.AllChildrenWithType<ProgBinaryTag>())
+                        foreach (var bintags in progtags.AllChildrenWithType<ProgBinaryTag>())
                         {
-                            foreach (ProgBinaryTagDataBlob data in bintags.AllChildrenWithType<ProgBinaryTagDataBlob>())
+                            foreach (var data in bintags.AllChildrenWithType<ProgBinaryTagDataBlob>())
                             {
-                                foreach (BlipCollection9Container blips in data.AllChildrenWithType<BlipCollection9Container>())
+                                foreach (var blips in data.AllChildrenWithType<BlipCollection9Container>())
                                 {
                                     if (blips.Children.Count > pr9.bulletblipref & pr9.bulletblipref > -1)
                                     {
                                         ImagePart imgPart = null;
 
-                                        BitmapBlip b = ((BlipEntityAtom)blips.Children[pr9.bulletblipref]).blip;
+                                        var b = ((BlipEntityAtom)blips.Children[pr9.bulletblipref]).blip;
 
                                         if (b == null)
                                         {
-                                            MetafilePictBlip mb = ((BlipEntityAtom)blips.Children[pr9.bulletblipref]).mblip;
+                                            var mb = ((BlipEntityAtom)blips.Children[pr9.bulletblipref]).mblip;
                                             imgPart = _parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(mb.TypeCode));
                                             imgPart.TargetDirectory = "..\\media";
-                                            System.IO.Stream outStream = imgPart.GetStream();
-                                            byte[] decompressed = mb.Decrompress();
+                                            var outStream = imgPart.GetStream();
+                                            var decompressed = mb.Decrompress();
                                             outStream.Write(decompressed, 0, decompressed.Length);
                                             //outStream.Write(mb.m_pvBits, 0, mb.m_pvBits.Length);
                                         }
@@ -413,7 +411,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                         {
                                             imgPart = _parentSlideMapping.targetPart.AddImagePart(ShapeTreeMapping.getImageType(b.TypeCode));
                                             imgPart.TargetDirectory = "..\\media";
-                                            System.IO.Stream outStream = imgPart.GetStream();
+                                            var outStream = imgPart.GetStream();
                                             outStream.Write(b.m_pvBits, 0, b.m_pvBits.Length);
                                         }
 
@@ -470,8 +468,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                      if (pr.BulletFontPresent)
                      {
                         _writer.WriteStartElement("a", "buFont", OpenXmlNamespaces.DrawingML);
-                        FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
-                        FontEntityAtom entity = fonts.entities[(int)pr.BulletTypefaceIdx];
+                        var fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                        var entity = fonts.entities[(int)pr.BulletTypefaceIdx];
                         if (entity.TypeFace.IndexOf('\0') > 0)
                         {
                             _writer.WriteAttributeString("typeface", entity.TypeFace.Substring(0, entity.TypeFace.IndexOf('\0')));
@@ -576,7 +574,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 else
                 {
                     ColorSchemeAtom MasterScheme = null;
-                    SlideAtom ato = slide.FirstChildWithType<SlideAtom>();
+                    var ato = slide.FirstChildWithType<SlideAtom>();
                     List<ColorSchemeAtom> colors;
                     if (ato != null && Tools.Utils.BitmaskToBool(ato.Flags, 0x1 << 1) && ato.MasterId != 0)
                     {
@@ -586,7 +584,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     {
                         colors = slide.AllChildrenWithType<ColorSchemeAtom>();
                     }
-                    foreach (ColorSchemeAtom colorsch in colors)
+                    foreach (var colorsch in colors)
                     {
                         if (colorsch.Instance == 1) MasterScheme = colorsch;
                     }

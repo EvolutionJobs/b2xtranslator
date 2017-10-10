@@ -27,7 +27,6 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-using System;
 using System.Collections.Generic;
 using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg;
 using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;

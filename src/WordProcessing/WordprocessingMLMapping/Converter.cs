@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Text;
 using DIaLOGIKa.b2xtranslator.DocFileFormat;
 using System.Xml;
@@ -13,7 +11,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
     {
         public static OpenXmlPackage.DocumentType DetectOutputType(WordDocument doc)
         {
-            OpenXmlPackage.DocumentType returnType = OpenXmlPackage.DocumentType.Document;
+            var returnType = OpenXmlPackage.DocumentType.Document;
 
             //detect the document type
             if (doc.FIB.fDot)

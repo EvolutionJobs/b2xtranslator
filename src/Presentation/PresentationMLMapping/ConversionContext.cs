@@ -25,10 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
 using System.Xml;
 using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
 using DIaLOGIKa.b2xtranslator.PptFileFormat;
@@ -250,7 +247,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         public SlideLayoutPart AddLayoutPartWithInstanceId(uint instanceId)
         {
             var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
-            SlideLayoutPart layoutPart = masterPart.AddSlideLayoutPart();
+            var layoutPart = masterPart.AddSlideLayoutPart();
 
             this.InstanceIdToLayoutPart.Add(instanceId, layoutPart);
             return layoutPart;
@@ -272,7 +269,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             {
                 var slideLayoutDoc = Utils.GetDefaultDocument("slideLayouts." + layoutFilename);
 
-                SlideLayoutPart layoutPart = masterPart.AddSlideLayoutPart();
+                var layoutPart = masterPart.AddSlideLayoutPart();
                 slideLayoutDoc.WriteTo(layoutPart.XmlWriter);
                 layoutPart.XmlWriter.Flush();
 
@@ -292,7 +289,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 var doc = new XmlDocument();
                 doc.LoadXml(xml);
 
-                SlideLayoutPart layoutPart = masterPart.AddSlideLayoutPart();
+                var layoutPart = masterPart.AddSlideLayoutPart();
                 doc.WriteTo(layoutPart.XmlWriter);
                 layoutPart.XmlWriter.Flush();
                 CodeToLayoutPart.Add(xml, layoutPart);
@@ -307,8 +304,8 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
             if (!this.TitleMasterIdToLayoutPart.ContainsKey(titleMasterId))
             {
-                Slide titleMaster = _ctx.Ppt.FindMasterRecordById(titleMasterId);
-                SlideLayoutPart layoutPart = masterPart.AddSlideLayoutPart();
+                var titleMaster = _ctx.Ppt.FindMasterRecordById(titleMasterId);
+                var layoutPart = masterPart.AddSlideLayoutPart();
                 new TitleMasterMapping(_ctx, layoutPart).Apply(titleMaster);
                 this.TitleMasterIdToLayoutPart.Add(titleMasterId, layoutPart);
             }

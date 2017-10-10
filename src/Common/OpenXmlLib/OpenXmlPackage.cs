@@ -25,11 +25,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 using System;
-
-using DIaLOGIKa.b2xtranslator.ZipUtils;
-using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using System.IO;
 using System.Collections.Generic;
 
 namespace DIaLOGIKa.b2xtranslator.OpenXmlLib

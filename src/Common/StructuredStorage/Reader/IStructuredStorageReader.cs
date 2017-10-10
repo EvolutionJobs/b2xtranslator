@@ -28,7 +28,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
 {
     public interface IStructuredStorageReader : IDisposable

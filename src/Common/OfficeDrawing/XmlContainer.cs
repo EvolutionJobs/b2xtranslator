@@ -26,10 +26,7 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
-using System.IO.Compression;
 using DIaLOGIKa.b2xtranslator.ZipUtils;
 using System.Xml;
 
@@ -123,7 +120,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
                 filePath = Path.GetFileName(forPartPath);
             }
 
-            string relPath = String.Format("{0}_rels/{1}.rels", directoryPath, filePath);
+            string relPath = string.Format("{0}_rels/{1}.rels", directoryPath, filePath);
             return relPath;
         }
 
