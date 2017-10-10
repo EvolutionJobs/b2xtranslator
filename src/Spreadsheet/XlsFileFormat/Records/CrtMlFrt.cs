@@ -15,7 +15,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// including the data contained in the optional CrtMlFrtContinue records.<br/> 
         /// MUST be less than or equal to 0x7FFFFFEB.
         /// </summary>
-        public UInt32 cb;
+        public uint cb;
 
         public XmlTkChain xmltkChain;
 

@@ -12,11 +12,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
     {
         public OfficeShapeTypeAttribute() { }
 
-        public OfficeShapeTypeAttribute(UInt32 typecode)
+        public OfficeShapeTypeAttribute(uint typecode)
         {
             this.TypeCode = typecode;
         }
 
-        public UInt32 TypeCode;
+        public uint TypeCode;
     }
 }

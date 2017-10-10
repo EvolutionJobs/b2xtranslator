@@ -33,7 +33,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         {
         }
 
-        public ProtectionBooleans(UInt32 entryOperand)
+        public ProtectionBooleans(uint entryOperand)
         {
             fLockAgainstGrouping = Utils.BitmaskToBool(entryOperand, 0x1);
             fLockAdjustHandles = Utils.BitmaskToBool(entryOperand, 0x2);

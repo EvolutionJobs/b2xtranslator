@@ -24,7 +24,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         {
             double num = 0;
             int high = 1023;
-            UInt32 number;
+            uint number;
             number = System.BitConverter.ToUInt32(rk, 0);
             // Select which type of number 
             var type = number & 0x00000003;
@@ -33,13 +33,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             if (type == 0 || type == 1)
             {
 
-                UInt32 mant = 0;
+                uint mant = 0;
                 // masking the mantisse 
                 mant = number & 0x000ffffc;
                 // shifting the result by 2  
                 mant = mant >> 2;
 
-                UInt32 exp = 0;
+                uint exp = 0;
                 // masking the exponent 
                 exp = number & 0x7ff00000;
                 // shifting the exponent by 20 
@@ -67,7 +67,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             else if (type == 2 || type == 3)
             {
                 // 30 bits for the integer value, 2 bits for the type identification 
-                UInt32 unumber = 0;
+                uint unumber = 0;
                 unumber = number & 0xfffffffc;
                 // shifting the value by two 
                 unumber = unumber >> 2;

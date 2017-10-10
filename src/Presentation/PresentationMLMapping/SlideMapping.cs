@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="slideAtom">SlideAtom of slide to find main master id for</param>
         /// <returns>Id of main master</returns>
-        private UInt32 GetMainMasterId(SlideAtom slideAtom)
+        private uint GetMainMasterId(SlideAtom slideAtom)
         {
             Slide masterSlide = _ctx.Ppt.FindMasterRecordById(slideAtom.MasterId);
             

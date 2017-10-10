@@ -185,12 +185,12 @@ namespace DIaLOGIKa.b2xtranslator.Tools
             return ((value & mask) == mask);
         }
 
-        public static bool BitmaskToBool(UInt32 value, UInt32 mask)
+        public static bool BitmaskToBool(uint value, uint mask)
         {
             return ((value & mask) == mask);
         }
 
-        public static byte BitmaskToByte(UInt32 value, UInt32 mask)
+        public static byte BitmaskToByte(uint value, uint mask)
         {
             value = value & mask;
             while ((mask & 0x1) != 0x1)
@@ -227,7 +227,7 @@ namespace DIaLOGIKa.b2xtranslator.Tools
             return value;
         }
 
-        public static UInt32 BitmaskToUInt32(UInt32 value, UInt32 mask)
+        public static uint BitmaskToUInt32(uint value, uint mask)
         {
             value = value & mask;
             while ((mask & 0x1) != 0x1)
@@ -238,7 +238,7 @@ namespace DIaLOGIKa.b2xtranslator.Tools
             return value;
         }
 
-        public static ushort BitmaskToUInt16(UInt32 value, UInt32 mask)
+        public static ushort BitmaskToUInt16(uint value, uint mask)
         {
             return Convert.ToUInt16(BitmaskToUInt32(value, mask));
         }
@@ -298,7 +298,7 @@ namespace DIaLOGIKa.b2xtranslator.Tools
             return ret;
         }
 
-        public static UInt32 BitArrayToUInt32(BitArray bits)
+        public static uint BitArrayToUInt32(BitArray bits)
         {
             double ret = 0;
             for (int i = 0; i < bits.Count; i++)
@@ -308,7 +308,7 @@ namespace DIaLOGIKa.b2xtranslator.Tools
                     ret += Math.Pow((double)2, (double)i);
                 }
             }
-            return (UInt32)ret;
+            return (uint)ret;
         }
 
         public static BitArray BitArrayCopy(BitArray source, int sourceIndex, int copyCount)

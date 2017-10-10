@@ -39,7 +39,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// File offset of beginning of piece. <br/>
         /// This is relative to the beginning of the WordDocument stream.
         /// </summary>
-        public UInt32 fc;
+        public uint fc;
 
         /// <summary>
         /// The encoding of the piece
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 if (flag)
                 {
                     this.encoding = Encoding.GetEncoding(1252);
-                    this.fc = (UInt32)(fcValue / 2);
+                    this.fc = (uint)(fcValue / 2);
                 }
                 else
                 {

@@ -14,7 +14,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsefAutoTextMargin;
         public bool fUsefSelectText;
 
-        public TextBooleanProperties(UInt32 entryOperand)
+        public TextBooleanProperties(uint entryOperand)
         {
             //1 is unused
             fFitShapeToText = Utils.BitmaskToBool(entryOperand, 0x1 << 1);

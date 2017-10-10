@@ -16,9 +16,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// </summary>
         public FrtHeader frtHeader;
 
-        public UInt32 dwChecksum;
+        public uint dwChecksum;
 
-        public UInt32 cb;
+        public uint cb;
 
         public string rgb;
 

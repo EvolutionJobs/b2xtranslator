@@ -34,8 +34,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     [OfficeRecord(4083)]
     public class InteractiveInfoAtom : Record
     {
-        public UInt32 SoundIdRef;
-        public UInt32 exHyperlinkIdRef;
+        public uint SoundIdRef;
+        public uint exHyperlinkIdRef;
         public InteractiveInfoActionEnum action;
         public byte oleVerb;
         public byte jump;

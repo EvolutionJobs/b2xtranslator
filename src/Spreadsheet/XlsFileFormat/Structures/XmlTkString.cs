@@ -36,7 +36,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
     {
         public XmlTkHeader xtHeader;
 
-        public UInt32 cchValue;
+        public uint cchValue;
 
         public byte[] rgbValue;
 

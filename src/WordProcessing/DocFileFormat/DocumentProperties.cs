@@ -1183,7 +1183,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 grf;
+        public uint grf;
 
         /// <summary>
         /// Reading mode: ink lock down

@@ -38,7 +38,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     public class SlideAtom : Record
     {
         public SSlideLayoutAtom Layout;
-        public UInt32 MasterId;
+        public uint MasterId;
         public int NotesId;
         public ushort Flags;
 

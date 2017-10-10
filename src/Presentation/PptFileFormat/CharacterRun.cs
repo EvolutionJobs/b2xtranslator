@@ -8,7 +8,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 {
     public class CharacterRun
     {
-        public UInt32 Length;
+        public uint Length;
         public CharacterMask Mask;
 
         #region Presence flag getters

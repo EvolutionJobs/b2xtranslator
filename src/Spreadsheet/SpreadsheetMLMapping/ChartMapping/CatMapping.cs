@@ -83,8 +83,8 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     var dataMatrix = seriesDataSequence.DataMatrix[(ushort)seriesGroup.SIIndex.numIndex - 1];
                     // TODO: c:formatCode
 
-                    UInt32 ptCount = 0;
-                    for (UInt32 i = 0; i < dataMatrix.GetLength(1); i++)
+                    uint ptCount = 0;
+                    for (uint i = 0; i < dataMatrix.GetLength(1); i++)
                     {
                         if (dataMatrix[seriesFormatSequence.order, i] != null)
                         {
@@ -95,8 +95,8 @@ namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
                     // c:ptCount
                     writeValueElement(Dml.Chart.ElPtCount, ptCount.ToString());
 
-                    UInt32 idx = 0;
-                    for (UInt32 i = 0; i < dataMatrix.GetLength(1); i++)
+                    uint idx = 0;
+                    for (uint i = 0; i < dataMatrix.GetLength(1); i++)
                     {
                         var cellContent = dataMatrix[seriesFormatSequence.order, i];
                         if (cellContent != null)

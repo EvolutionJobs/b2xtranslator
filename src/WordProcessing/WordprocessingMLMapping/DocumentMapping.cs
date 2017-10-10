@@ -99,7 +99,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="cp">The cp at where the table begins</param>
         /// <returns>The character pointer to the first character after this table</returns>
-        protected int writeTable(int initialCp, UInt32 nestingLevel)
+        protected int writeTable(int initialCp, uint nestingLevel)
         {
             var cp = initialCp;
             int fc = _doc.PieceTable.FileCharacterPositions[cp];
@@ -156,7 +156,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="initialCp">The cp at where the row begins</param>
         /// <returns>The character pointer to the first character after this row</returns>
-        protected int writeTableRow(int initialCp, List<short> grid, UInt32 nestingLevel)
+        protected int writeTableRow(int initialCp, List<short> grid, uint nestingLevel)
         {
             var cp = initialCp;
             int fc = _doc.PieceTable.FileCharacterPositions[cp];
@@ -229,7 +229,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="gridIndex">The index of this cell in the grid</param>
         /// <param name="gridIndex">The grid</param>
         /// <returns>The character pointer to the first character after this cell</returns>
-        protected int writeTableCell(int initialCp, TablePropertyExceptions tapx, List<short> grid, ref int gridIndex, int cellIndex, UInt32 nestingLevel)
+        protected int writeTableCell(int initialCp, TablePropertyExceptions tapx, List<short> grid, ref int gridIndex, int cellIndex, uint nestingLevel)
         {
             var cp = initialCp;
 
@@ -290,7 +290,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="initialCp"></param>
         /// <returns></returns>
-        protected List<short> buildTableGrid(int initialCp, UInt32 nestingLevel)
+        protected List<short> buildTableGrid(int initialCp, uint nestingLevel)
         {
             var backup = _lastValidPapx;
 
@@ -348,7 +348,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <param name="initialCp">Some CP before the row end</param>
         /// <param name="rowEndCp">The CP of the next row end mark</param>
         /// <returns>The FC of the next row end mark</returns>
-        protected int findRowEndFc(int initialCp, out int rowEndCp, UInt32 nestingLevel)
+        protected int findRowEndFc(int initialCp, out int rowEndCp, uint nestingLevel)
         {
             int cp = initialCp;
             int fc = _doc.PieceTable.FileCharacterPositions[cp];
@@ -397,7 +397,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// </summary>
         /// <param name="cp"></param>
         /// <returns></returns>
-        protected int findRowEndFc(int initialCp, UInt32 nestingLevel)
+        protected int findRowEndFc(int initialCp, uint nestingLevel)
         {
             int cp = initialCp;
             int fc = _doc.PieceTable.FileCharacterPositions[cp];
@@ -441,7 +441,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         }
 
 
-        protected int findCellEndCp(int initialCp, UInt32 nestingLevel)
+        protected int findCellEndCp(int initialCp, uint nestingLevel)
         {
             int cpCellEnd = initialCp;
 

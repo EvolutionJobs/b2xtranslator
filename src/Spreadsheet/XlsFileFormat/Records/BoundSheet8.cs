@@ -88,7 +88,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// A FilePointer as specified in [MS-OSHARED] section 2.2.1.5 that specifies the 
         /// stream position of the start of the BOF record for the sheet.
         /// </summary>
-        public UInt32 lbPlyPos;
+        public uint lbPlyPos;
 
         /// <summary>
         /// A ShortXLUnicodeString that specifies the unique case-insensitive name of the sheet. 

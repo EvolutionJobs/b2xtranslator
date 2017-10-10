@@ -178,7 +178,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <summary>
         /// Creates the red-black-tree for this directory entry
         /// </summary>
-        private UInt32 CreateRedBlackTree()
+        private uint CreateRedBlackTree()
         {          
             _allDirectoryEntries.Sort(DirectoryEntryComparison);
 
@@ -198,7 +198,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="treeHeight">The height of the balanced red-black-tree</param>
         /// <param name="treeLevel">The current tree level</param>
         /// <returns>The root of this red-black-tree</returns>
-        private UInt32 setRelationsAndColorRecursive(List<BaseDirectoryEntry> entryList, int treeHeight, int treeLevel)
+        private uint setRelationsAndColorRecursive(List<BaseDirectoryEntry> entryList, int treeHeight, int treeLevel)
         {
             if (entryList.Count < 1)
             {                
@@ -263,9 +263,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
 
             for (int i = 0; i < aU.Length; i++)
             {
-                if ((UInt32)aU[i] != (UInt32)bU[i])
+                if ((uint)aU[i] != (uint)bU[i])
                 {
-                    return ((UInt32)aU[i]).CompareTo((UInt32)bU[i]);
+                    return ((uint)aU[i]).CompareTo((uint)bU[i]);
                 }
             }
 

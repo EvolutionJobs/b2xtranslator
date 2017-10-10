@@ -52,8 +52,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public GPointAtom NotesSize;
         public GRatioAtom ServerZoom;
 
-        public UInt32 NotesMasterPersist;
-        public UInt32 HandoutMasterPersist;
+        public uint NotesMasterPersist;
+        public uint HandoutMasterPersist;
         public ushort FirstSlideNum;
         public SlideSizeType SlideSizeType;
 

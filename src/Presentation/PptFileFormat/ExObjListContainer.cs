@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     [OfficeRecord(4035)]
     public class ExOleObjAtom : Record
     {
-        public UInt32 persistIdRef;
+        public uint persistIdRef;
         public int exObjId;
 
         public ExOleObjAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
@@ -83,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     public class ExOleObjStgAtom : Record, IVisitable
     {
         public uint len = 0;
-        public UInt32 decompressedSize = 0;
+        public uint decompressedSize = 0;
         public byte[] data;
 
         public ExOleObjStgAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)

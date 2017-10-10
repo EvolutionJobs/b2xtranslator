@@ -47,7 +47,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// MUST be less than or equal to 0x00000F9F.
         /// </summary>
-        public UInt32 rwMac;
+        public uint rwMac;
 
         /// <summary>
         /// An unsigned integer that specifies the number of non-empty rows in the 

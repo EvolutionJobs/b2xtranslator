@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
     /// </summary>
     internal class StructuredStorageContext
     {
-        private UInt32 _sidCounter = 0x0;
+        private uint _sidCounter = 0x0;
 
         // The header of this context.
         Header _header;
@@ -112,7 +112,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         ///  Returns a new sid for directory entries in this context.
         /// </summary>
         /// <returns>The new sid.</returns>
-        internal UInt32 getNewSid()
+        internal uint getNewSid()
         {
             return ++_sidCounter;
         }

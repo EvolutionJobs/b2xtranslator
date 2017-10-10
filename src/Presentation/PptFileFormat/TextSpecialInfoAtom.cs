@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             if (lang) lid = reader.ReadUInt16();
             if (altLang) altLid = reader.ReadUInt16();
             if (fBidi) bidi = reader.ReadUInt16();
-            UInt32 dummy;
+            uint dummy;
             if (fPp10ext) dummy = reader.ReadUInt32();
             byte[] smartTags;
             if (smartTag) smartTags = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));

@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
     {
         public HandoutMasterPart MasterPart;
         protected Handout Master;
-        protected UInt32 MasterId;
+        protected uint MasterId;
 
         public HandoutMasterMapping(ConversionContext ctx)
             : base(ctx, ctx.Pptx.PresentationPart.AddHandoutMasterPart())
@@ -56,7 +56,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             var master = (Handout)pmaster;
 
             TraceLogger.DebugInternal("HandoutMasterMapping.Apply");
-            UInt32 masterId = 0; // master.PersistAtom.SlideId;
+            uint masterId = 0; // master.PersistAtom.SlideId;
             _ctx.RegisterHandoutMasterMapping(masterId, this);
 
             this.Master = master;

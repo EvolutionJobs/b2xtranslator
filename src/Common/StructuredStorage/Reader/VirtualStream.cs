@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         protected long _position;
         protected long _length;
         string _name;
-        List<UInt32> _sectors;
+        List<uint> _sectors;
 
         /// <summary>
         /// Initializes a virtual stream
@@ -53,7 +53,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="startSector">Start sector of the stream (sector 0 is sector immediately following the header)</param>
         /// <param name="sizeOfStream">Size of the stream in bytes</param>
         /// <param name="name">Name of the stream</param>
-        internal VirtualStream(AbstractFat fat, UInt32 startSector, long sizeOfStream, string name)
+        internal VirtualStream(AbstractFat fat, uint startSector, long sizeOfStream, string name)
         {
             _fat = fat;
             _length = sizeOfStream;
@@ -245,11 +245,11 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         }
 
         [Obsolete("Use IStreamReader.ReadUInt32() instead.")]
-        public UInt32 ReadUInt32()
+        public uint ReadUInt32()
         {
-            var buffer = new byte[sizeof(UInt32)];
+            var buffer = new byte[sizeof(uint)];
 
-            if (sizeof(UInt32) != Read(buffer))
+            if (sizeof(uint) != Read(buffer))
             {
                 throw new ReadBytesAmountMismatchException();
             }
@@ -324,7 +324,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <summary>
         /// Initalizes the stream.
         /// </summary>
-        private void Init(UInt32 startSector)
+        private void Init(uint startSector)
         {
             _sectors = _fat.GetSectorChain(startSector, (UInt64)Math.Ceiling((double)_length / _fat.SectorSize), _name);
             CheckConsistency();

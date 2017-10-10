@@ -43,13 +43,13 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
     /// </summary>
     internal static class SectorId
 	{      
-        internal const UInt32 MAXREGSECT = 0xFFFFFFFA;
-        internal const UInt32 DIFSECT = 0xFFFFFFFC;
-        internal const UInt32 FATSECT = 0xFFFFFFFD;
-        internal const UInt32 ENDOFCHAIN = 0xFFFFFFFE;
-        internal const UInt32 FREESECT = 0xFFFFFFFF;
+        internal const uint MAXREGSECT = 0xFFFFFFFA;
+        internal const uint DIFSECT = 0xFFFFFFFC;
+        internal const uint FATSECT = 0xFFFFFFFD;
+        internal const uint ENDOFCHAIN = 0xFFFFFFFE;
+        internal const uint FREESECT = 0xFFFFFFFF;
 
-        internal const UInt32 NOSTREAM = 0xFFFFFFFF;
+        internal const uint NOSTREAM = 0xFFFFFFFF;
 	}
 
 

@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         Fat _fat;
         Header _header;
         InputHandler _fileHandler;
-        List<UInt32> _sectorsUsedByDirectory;      
+        List<uint> _sectorsUsedByDirectory;      
 
         List<DirectoryEntry> _directoryEntries = new List<DirectoryEntry>();
 
@@ -66,7 +66,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// Inits the directory
         /// </summary>
         /// <param name="startSector">The sector containing the root of the directory</param>
-        private void Init(UInt32 startSector)
+        private void Init(uint startSector)
         {
             if (_header.NoSectorsInDirectoryChain4KB > 0)
             {
@@ -84,7 +84,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// Determines the directory _entries in a compound file recursively
         /// </summary>
         /// <param name="sid">start sid</param>
-        private void GetAllDirectoryEntriesRecursive(UInt32 sid, string path)
+        private void GetAllDirectoryEntriesRecursive(uint sid, string path)
         {
             var entry = ReadDirectoryEntry(sid, path);            
             var left = entry.LeftSiblingSid;
@@ -122,7 +122,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <summary>
         /// Returns a directory entry for a given sid
         /// </summary>
-        private DirectoryEntry ReadDirectoryEntry(UInt32 sid, string path)
+        private DirectoryEntry ReadDirectoryEntry(uint sid, string path)
         {
             SeekToDirectoryEntry(sid);
             var result = new DirectoryEntry(_header, _fileHandler, sid, path);            
@@ -133,7 +133,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <summary>
         /// Seeks to the start sector of the directory entry of the given sid
         /// </summary>        
-        private void SeekToDirectoryEntry(UInt32 sid)
+        private void SeekToDirectoryEntry(uint sid)
         {
             int sectorInDirectoryChain = (int)(sid * Measures.DirectoryEntrySize) / _header.SectorSize;
             if (sectorInDirectoryChain < 0)
@@ -166,7 +166,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <summary>
         /// Returns the directory entry with the given sid
         /// </summary>
-        internal DirectoryEntry GetDirectoryEntry(UInt32 sid)
+        internal DirectoryEntry GetDirectoryEntry(uint sid)
         {
             return _directoryEntries.Find(delegate(DirectoryEntry entry) { return entry.Sid == sid; });
         }
@@ -175,7 +175,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <summary>
         /// Returns the start sector of the mini stream
         /// </summary>
-        internal UInt32 GetMiniStreamStart()
+        internal uint GetMiniStreamStart()
         {
             var root = GetDirectoryEntry(0);
             if (root == null)

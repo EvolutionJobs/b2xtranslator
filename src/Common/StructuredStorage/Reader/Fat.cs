@@ -38,8 +38,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
     /// </summary>
     internal class Fat : AbstractFat
     {        
-        List<UInt32> _sectorsUsedByFat = new List<UInt32>();
-        List<UInt32> _sectorsUsedByDiFat = new List<UInt32>();        
+        List<uint> _sectorsUsedByFat = new List<uint>();
+        List<uint> _sectorsUsedByDiFat = new List<uint>();        
 
         override internal ushort SectorSize
         {
@@ -75,7 +75,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         /// <param name="currentSector">The current sector in the chain</param>
         /// <returns>The next sector in the chain</returns>
-        override protected UInt32 GetNextSectorInChain(UInt32 currentSector)
+        override protected uint GetNextSectorInChain(uint currentSector)
         {
             var sectorInFile = _sectorsUsedByFat[(int)(currentSector / _addressesPerSector)];
             // calculation of position:
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         {
             // Header sector: -1
             _fileHandler.SeekToPositionInSector(-1, 0x4C);
-            UInt32 fatSector;
+            uint fatSector;
             for (int i = 0; i < 109; i++)
             {
                 fatSector = _fileHandler.ReadUInt32();

@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     [OfficeRecord(1009)]
     public class NotesAtom : Record
     {
-        public UInt32 SlideIdRef;
+        public uint SlideIdRef;
         public ushort Flags;
 
         public NotesAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)

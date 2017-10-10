@@ -17,7 +17,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsefReverse;
         public bool fUsefDoFormat;
 
-        public DiagramBooleans(UInt32 entryOperand)
+        public DiagramBooleans(uint entryOperand)
         {
             this.fPseudoInline = Utils.BitmaskToBool(entryOperand, 0x1);
             this.fDoLayout = Utils.BitmaskToBool(entryOperand, 0x2);

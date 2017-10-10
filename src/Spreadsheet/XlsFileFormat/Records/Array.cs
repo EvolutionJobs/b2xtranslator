@@ -65,7 +65,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// used for performance reasons only 
         /// can be ignored 
         /// </summary>
-        public UInt32 chn;
+        public uint chn;
 
         /// <summary>
         /// length of the formular data !!

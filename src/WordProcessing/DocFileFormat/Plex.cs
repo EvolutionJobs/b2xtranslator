@@ -40,7 +40,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public List<int> CharacterPositions;
         public List<T> Elements;
 
-        public Plex(int structureLength, VirtualStream tableStream, UInt32 fc, UInt32 lcb)
+        public Plex(int structureLength, VirtualStream tableStream, uint fc, uint lcb)
         {
             tableStream.Seek((long)fc, System.IO.SeekOrigin.Begin);
             var reader = new VirtualStreamReader(tableStream);

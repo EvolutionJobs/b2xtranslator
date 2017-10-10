@@ -9,9 +9,9 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     [OfficeRecord(0x03FF)]
     public class VBAInfoContainer : Record
     {
-        public UInt32 objStgDataRef;
-        public UInt32 hasMacros;
-        public UInt32 vbaVersion;
+        public uint objStgDataRef;
+        public uint hasMacros;
+        public uint vbaVersion;
 
         public VBAInfoContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

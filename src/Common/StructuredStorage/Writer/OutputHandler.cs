@@ -90,7 +90,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// Writes a UInt32 to the stream.
         /// </summary>
         /// <param name="value">The UInt32 to write.</param>
-        internal void writeUInt32(UInt32 value)
+        internal void writeUInt32(uint value)
         {
             _stream.Write(_bitConverter.getBytes(value), 0, 4);
         }
@@ -143,7 +143,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// <param name="data">The data to write.</param>
         /// <param name="sectorSize">The size of a sector.</param>
         /// <param name="padding">The UInt32 which is used for padding</param>
-        internal void writeSectors(byte[] data, ushort sectorSize, UInt32 padding)
+        internal void writeSectors(byte[] data, ushort sectorSize, uint padding)
         {
             uint remaining = (uint)(data.LongLength % sectorSize);
             _stream.Write(data, 0, data.Length);
@@ -153,12 +153,12 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             }
 
             // consistency check
-            if ((sectorSize - remaining) % sizeof(UInt32) != 0)
+            if ((sectorSize - remaining) % sizeof(uint) != 0)
             {
                 throw new InvalidSectorSizeException();
             }
 
-            for (uint i = 0; i < ((sectorSize - remaining)/sizeof(UInt32)); i++)
+            for (uint i = 0; i < ((sectorSize - remaining)/sizeof(uint)); i++)
             {                                
                 writeUInt32(padding);
             }

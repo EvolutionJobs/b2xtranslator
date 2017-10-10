@@ -12,7 +12,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsefshadowObscured;
         public bool fUsefShadow;
 
-        public ShadowStyleBooleanProperties(UInt32 entryOperand)
+        public ShadowStyleBooleanProperties(uint entryOperand)
         {
             fShadowObscured = Utils.BitmaskToBool(entryOperand, 0x1);
             fShadow = Utils.BitmaskToBool(entryOperand, 0x2);

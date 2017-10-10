@@ -61,7 +61,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// index into the SST record  
         /// </summary>
-        public UInt32 isst;     
+        public uint isst;     
 
         /// <summary>
         /// Ctor 

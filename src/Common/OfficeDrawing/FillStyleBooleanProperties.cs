@@ -22,7 +22,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsefUseShapeAnchor;
         public bool fUsefRecolorFillAsPicture;
 
-        public FillStyleBooleanProperties(UInt32 entryOperand)
+        public FillStyleBooleanProperties(uint entryOperand)
         {
             fNoFillHitTest = Utils.BitmaskToBool(entryOperand, 0x1);
             fillUseRect = Utils.BitmaskToBool(entryOperand, 0x1 << 1);

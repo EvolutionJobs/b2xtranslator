@@ -89,8 +89,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // CSectDir
-        private UInt32 _noSectorsInDirectoryChain4KB;
-        public UInt32 NoSectorsInDirectoryChain4KB
+        private uint _noSectorsInDirectoryChain4KB;
+        public uint NoSectorsInDirectoryChain4KB
         {
             get { return _noSectorsInDirectoryChain4KB; }
             set
@@ -105,8 +105,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // CSectFat
-        private UInt32 _noSectorsInFatChain;
-        public UInt32 NoSectorsInFatChain
+        private uint _noSectorsInFatChain;
+        public uint NoSectorsInFatChain
         {
             get { return _noSectorsInFatChain; }
             set
@@ -122,8 +122,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // SectDirStart
-        private UInt32 _directoryStartSector;
-        public UInt32 DirectoryStartSector
+        private uint _directoryStartSector;
+        public uint DirectoryStartSector
         {
             get { return _directoryStartSector; }
             set
@@ -138,8 +138,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // UInt32ULMiniSectorCutoff
-        private UInt32 _miniSectorCutoff;
-        public UInt32 MiniSectorCutoff
+        private uint _miniSectorCutoff;
+        public uint MiniSectorCutoff
         {
             get { return _miniSectorCutoff; }
             set
@@ -155,8 +155,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // SectMiniFatStart
-        private UInt32 _miniFatStartSector;
-        public UInt32 MiniFatStartSector
+        private uint _miniFatStartSector;
+        public uint MiniFatStartSector
         {
             get { return _miniFatStartSector; }
             set
@@ -171,8 +171,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // CSectMiniFat
-        private UInt32 _noSectorsInMiniFatChain;
-        public UInt32 NoSectorsInMiniFatChain
+        private uint _noSectorsInMiniFatChain;
+        public uint NoSectorsInMiniFatChain
         {
             get { return _noSectorsInMiniFatChain; }
             set
@@ -188,8 +188,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // SectDifStart
-        private UInt32 _diFatStartSector;
-        public UInt32 DiFatStartSector
+        private uint _diFatStartSector;
+        public uint DiFatStartSector
         {
             get { return _diFatStartSector; }
             set
@@ -204,8 +204,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // CSectDif
-        private UInt32 _noSectorsInDiFatChain;
-        public UInt32 NoSectorsInDiFatChain
+        private uint _noSectorsInDiFatChain;
+        public uint NoSectorsInDiFatChain
         {
             get { return _noSectorsInDiFatChain; }
             set

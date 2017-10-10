@@ -16,7 +16,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     [OfficeRecord(4051)]
     public class ExHyperlinkAtom : Record
     {
-        public UInt32 exHyperlinkId;
+        public uint exHyperlinkId;
 
         public ExHyperlinkAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

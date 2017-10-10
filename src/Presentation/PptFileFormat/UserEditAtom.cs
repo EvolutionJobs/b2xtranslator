@@ -42,7 +42,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// UserEditAtom record in the PowerPoint DocumentRecord Stream. In all other cases the value of this field 
         /// is undefined and MUST be ignored.
         /// </summary>
-        public UInt32 LastSlideIdRef;
+        public uint LastSlideIdRef;
 
         /// <summary>
         /// An unsigned integer that specifies a build version of the executable that wrote the 
@@ -68,7 +68,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// be less than the offset, in bytes, of this UserEditAtom record. The value 0x00000000 specifies that 
         /// no previous user edit exists. 
         /// </summary>
-        public UInt32 OffsetLastEdit;
+        public uint OffsetLastEdit;
 
         /// <summary>
         /// An unsigned integer that specifies an offset, in bytes, from the 
@@ -76,21 +76,21 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// edit. It MUST be greater than offsetLastEdit and less than the offset, in bytes, of this 
         /// UserEditAtom record.   
         /// </summary>
-        public UInt32 OffsetPersistDirectory;
+        public uint OffsetPersistDirectory;
 
         /// <summary>
         /// A PersistIdRef that specifies the value to look up in the persist object
         /// directory to find the offset of the DocumentContainer record.
         /// It MUST be 0x00000001.
         /// </summary>
-        public UInt32 DocPersistIdRef;
+        public uint DocPersistIdRef;
 
         /// <summary>
         /// An unsigned integer that specifies a seed for creating a new persist 
         /// object identifier. It MUST be greater than or equal to all persist object
         /// identifiers in the file as specified by the PersistDirectoryAtom records. 
         /// </summary>
-        public UInt32 PersistIdSeed;
+        public uint PersistIdSeed;
 
         /// <summary>
         /// A ViewTypeEnum enumeration that specifies the last view used to display the file. 
@@ -104,7 +104,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// in the persist object directory to find the offset of the CryptSession10Container record.
         /// It MAY be omitted. It MUST exist if the document is an encrypted document. 
         /// </summary>
-        public UInt32? EncryptSessionPersistIdRef;
+        public uint? EncryptSessionPersistIdRef;
 
         public UserEditAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

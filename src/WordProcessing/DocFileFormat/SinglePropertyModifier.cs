@@ -510,7 +510,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.OpCode = (OperationCode)System.BitConverter.ToUInt16(bytes, 0);
 
             //... whereof bit 9 is fSpec ...
-            var j = (UInt32)this.OpCode << 22;
+            var j = (uint)this.OpCode << 22;
             j = j >> 31;
             if (j == 1)
                 this.fSpec = true;
@@ -518,7 +518,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 this.fSpec = false;
 
             //... and bits 10,11,12 are the type ...
-            var i = (UInt32)this.OpCode << 19;
+            var i = (uint)this.OpCode << 19;
             i = i >> 29;
             this.Type = (SprmType)i;
 

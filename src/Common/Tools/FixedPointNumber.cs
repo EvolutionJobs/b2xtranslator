@@ -55,7 +55,7 @@ namespace DIaLOGIKa.b2xtranslator.Tools
             this.Fractional = fractional;
         }
 
-        public FixedPointNumber(UInt32 value)
+        public FixedPointNumber(uint value)
         {
             var bytes = System.BitConverter.GetBytes(value);
             this.Integral = System.BitConverter.ToUInt16(bytes, 0);

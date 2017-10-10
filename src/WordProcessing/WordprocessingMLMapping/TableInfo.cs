@@ -58,7 +58,7 @@ namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 iTap;
+        public uint iTap;
 
         public TableInfo(ParagraphPropertyExceptions papx)
         {

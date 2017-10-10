@@ -41,9 +41,9 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         private XmlWriterSettings _writerSettings;
         private PowerpointDocument _ppt;
 
-        private Dictionary<UInt32, MasterMapping> MasterIdToMapping = new Dictionary<UInt32, MasterMapping>();
-        private Dictionary<UInt32, NotesMasterMapping> NotesMasterIdToMapping = new Dictionary<UInt32, NotesMasterMapping>();
-        private Dictionary<UInt32, HandoutMasterMapping> HandoutMasterIdToMapping = new Dictionary<UInt32, HandoutMasterMapping>();
+        private Dictionary<uint, MasterMapping> MasterIdToMapping = new Dictionary<uint, MasterMapping>();
+        private Dictionary<uint, NotesMasterMapping> NotesMasterIdToMapping = new Dictionary<uint, NotesMasterMapping>();
+        private Dictionary<uint, HandoutMasterMapping> HandoutMasterIdToMapping = new Dictionary<uint, HandoutMasterMapping>();
         public Dictionary<long, string> AddedImages = new Dictionary<long, string>();
         public int lastImageID = 1000;
 
@@ -85,7 +85,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="masterId">Master id with which to associate the MasterMapping.</param>
         /// <param name="mapping">MasterMapping to be registered.</param>
-        public void RegisterNotesMasterMapping(UInt32 masterId, NotesMasterMapping mapping)
+        public void RegisterNotesMasterMapping(uint masterId, NotesMasterMapping mapping)
         {
             this.NotesMasterIdToMapping[masterId] = mapping;
         }
@@ -95,7 +95,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="masterId">Master id with which to associate the MasterMapping.</param>
         /// <param name="mapping">MasterMapping to be registered.</param>
-        public void RegisterHandoutMasterMapping(UInt32 masterId, HandoutMasterMapping mapping)
+        public void RegisterHandoutMasterMapping(uint masterId, HandoutMasterMapping mapping)
         {
             this.HandoutMasterIdToMapping[masterId] = mapping;
         }
@@ -105,7 +105,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="masterId">Master ID for which to find a MasterMapping.</param>
         /// <returns>Found MasterMapping or null if none was found.</returns>
-        public NotesMasterMapping GetNotesMasterMappingByMasterId(UInt32 masterId)
+        public NotesMasterMapping GetNotesMasterMappingByMasterId(uint masterId)
         {
             return this.NotesMasterIdToMapping[masterId];
         }
@@ -115,7 +115,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="masterId">Master ID for which to find a MasterMapping.</param>
         /// <returns>Found MasterMapping or null if none was found.</returns>
-        public HandoutMasterMapping GetHandoutMasterMappingByMasterId(UInt32 masterId)
+        public HandoutMasterMapping GetHandoutMasterMappingByMasterId(uint masterId)
         {
             return this.HandoutMasterIdToMapping[masterId];
         }
@@ -125,7 +125,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="masterId">Master id with which to associate the MasterMapping.</param>
         /// <param name="mapping">MasterMapping to be registered.</param>
-        public void RegisterMasterMapping(UInt32 masterId, MasterMapping mapping)
+        public void RegisterMasterMapping(uint masterId, MasterMapping mapping)
         {
             this.MasterIdToMapping[masterId] = mapping;
         }
@@ -135,7 +135,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="masterId">Master ID for which to find a MasterMapping.</param>
         /// <returns>Found MasterMapping or null if none was found.</returns>
-        public MasterMapping GetMasterMappingByMasterId(UInt32 masterId)
+        public MasterMapping GetMasterMappingByMasterId(uint masterId)
         {
             return this.MasterIdToMapping[masterId];
         }
@@ -146,7 +146,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="masterId">Master ID for which to find or create a MasterMapping.</param>
         /// <returns>Found or created MasterMapping.</returns>
-        public MasterMapping GetOrCreateMasterMappingByMasterId(UInt32 masterId)
+        public MasterMapping GetOrCreateMasterMappingByMasterId(uint masterId)
         {
             if (!this.MasterIdToMapping.ContainsKey(masterId))
                 this.MasterIdToMapping[masterId] = new MasterMapping(this);
@@ -160,7 +160,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="masterId">Master ID for which to find or create a NotesMasterMapping.</param>
         /// <returns>Found or created NotesMasterMapping.</returns>
-        public NotesMasterMapping GetOrCreateNotesMasterMappingByMasterId(UInt32 masterId)
+        public NotesMasterMapping GetOrCreateNotesMasterMappingByMasterId(uint masterId)
         {
             if (!this.NotesMasterIdToMapping.ContainsKey(masterId))
                 this.NotesMasterIdToMapping[masterId] = new NotesMasterMapping(this);
@@ -174,7 +174,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// </summary>
         /// <param name="masterId">Master ID for which to find or create a HandoutMasterMapping.</param>
         /// <returns>Found or created HandoutMasterMapping.</returns>
-        public HandoutMasterMapping GetOrCreateHandoutMasterMappingByMasterId(UInt32 masterId)
+        public HandoutMasterMapping GetOrCreateHandoutMasterMappingByMasterId(uint masterId)
         {
             if (!this.HandoutMasterIdToMapping.ContainsKey(masterId))
                 this.HandoutMasterIdToMapping[masterId] = new HandoutMasterMapping(this);
@@ -182,10 +182,10 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             return this.HandoutMasterIdToMapping[masterId];
         }
 
-        protected Dictionary<UInt32, MasterLayoutManager> MasterIdToLayoutManager =
-            new Dictionary<UInt32, MasterLayoutManager>();
+        protected Dictionary<uint, MasterLayoutManager> MasterIdToLayoutManager =
+            new Dictionary<uint, MasterLayoutManager>();
 
-        public MasterLayoutManager GetOrCreateLayoutManagerByMasterId(UInt32 masterId)
+        public MasterLayoutManager GetOrCreateLayoutManagerByMasterId(uint masterId)
         {
             if (!this.MasterIdToLayoutManager.ContainsKey(masterId))
                 this.MasterIdToLayoutManager[masterId] = new MasterLayoutManager(this, masterId);
@@ -197,14 +197,14 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
     public class MasterLayoutManager
     {
         protected ConversionContext _ctx;
-        protected UInt32 MasterId;
+        protected uint MasterId;
 
         /// <summary>
         /// PPT2007 layouts are stored inline with the master and
         /// have an instance id for associating them with slides.
         /// </summary>
-        public Dictionary<UInt32, SlideLayoutPart> InstanceIdToLayoutPart =
-            new Dictionary<UInt32, SlideLayoutPart>();
+        public Dictionary<uint, SlideLayoutPart> InstanceIdToLayoutPart =
+            new Dictionary<uint, SlideLayoutPart>();
 
         /// <summary>
         /// Pre-PPT2007 layouts are specified in SSlideLayoutAtom
@@ -223,13 +223,13 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
         /// SlideLayoutParts for OOXML. The SlideLayoutParts for
         /// TitleMaster slides are stored in this dictionary.
         /// </summary>
-        public Dictionary<UInt32, SlideLayoutPart> TitleMasterIdToLayoutPart =
-            new Dictionary<UInt32, SlideLayoutPart>();
+        public Dictionary<uint, SlideLayoutPart> TitleMasterIdToLayoutPart =
+            new Dictionary<uint, SlideLayoutPart>();
 
         public Dictionary<string, SlideLayoutPart> CodeToLayoutPart =
             new Dictionary<string, SlideLayoutPart>();
 
-        public MasterLayoutManager(ConversionContext ctx, UInt32 masterId)
+        public MasterLayoutManager(ConversionContext ctx, uint masterId)
         {
             this._ctx = ctx;
             this.MasterId = masterId;
@@ -247,7 +247,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             return result;
         }
 
-        public SlideLayoutPart AddLayoutPartWithInstanceId(UInt32 instanceId)
+        public SlideLayoutPart AddLayoutPartWithInstanceId(uint instanceId)
         {
             var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
             SlideLayoutPart layoutPart = masterPart.AddSlideLayoutPart();
@@ -256,7 +256,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             return layoutPart;
         }
 
-        public SlideLayoutPart GetLayoutPartByInstanceId(UInt32 instanceId)
+        public SlideLayoutPart GetLayoutPartByInstanceId(uint instanceId)
         {
             return this.InstanceIdToLayoutPart[instanceId];
         }
@@ -301,7 +301,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             return CodeToLayoutPart[xml];
         }
 
-        public SlideLayoutPart GetOrCreateLayoutPartForTitleMasterId(UInt32 titleMasterId)
+        public SlideLayoutPart GetOrCreateLayoutPartForTitleMasterId(uint titleMasterId)
         {
             var masterPart = _ctx.GetOrCreateMasterMappingByMasterId(this.MasterId).MasterPart;
 

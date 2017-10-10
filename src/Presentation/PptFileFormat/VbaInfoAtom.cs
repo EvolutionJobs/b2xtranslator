@@ -9,11 +9,11 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     [OfficeRecord(0x0400)]
     public class VbaInfoAtom: Record
     {
-        public UInt32 persistIdRef;
+        public uint persistIdRef;
 
         public bool fHasMacros;
 
-        public UInt32 version;
+        public uint version;
 
         public VbaInfoAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

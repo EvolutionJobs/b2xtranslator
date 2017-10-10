@@ -44,7 +44,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// A RwLongU that specifies the first row in the sheet that contains a used cell.
         /// </summary>
-        public UInt32 rwMic;
+        public uint rwMic;
 
         /// <summary>
         /// An unsigned integer that specifies the number of non-empty cells in the 
@@ -52,7 +52,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// 
         /// MUST be less than or equal to 0x00000F9F.
         /// </summary>
-        public UInt32 rwMac;
+        public uint rwMac;
 
         /// <summary>
         /// A ColU that specifies the first column in the sheet that contains a used cell.

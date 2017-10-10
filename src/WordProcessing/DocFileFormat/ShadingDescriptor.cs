@@ -97,7 +97,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// 24-bit foreground color
         /// </summary>
-        public UInt32 cvFore;
+        public uint cvFore;
 
         /// <summary>
         /// Foreground color.<br/>
@@ -108,7 +108,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// 24-bit background color
         /// </summary>
-        public UInt32 cvBack;
+        public uint cvBack;
 
         /// <summary>
         /// Background color.<br/>

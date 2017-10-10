@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
         IStreamReader _reader;
 
         RecordType _id;
-        UInt32 _length;
+        uint _length;
         long _offset;
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
             get { return _id; }
         }
 
-        public UInt32 Length
+        public uint Length
         {
             get { return _length; }
         }

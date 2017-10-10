@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         public ushort rwLast;
         public ushort colFirst;
         public ushort colLast;
-        public UInt32 streamVersion;
+        public uint streamVersion;
 
         public bool hlstmfIsAbsolute;
 

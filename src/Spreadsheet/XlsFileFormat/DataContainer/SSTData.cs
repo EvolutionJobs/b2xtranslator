@@ -37,8 +37,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <summary>
         /// Total and unique number of strings in this SST-Biffrecord 
         /// </summary>
-        public UInt32 cstTotal;
-        public UInt32 cstUnique;
+        public uint cstTotal;
+        public uint cstUnique;
 
         /// <summary>
         /// Two lists to store the shared String Data 

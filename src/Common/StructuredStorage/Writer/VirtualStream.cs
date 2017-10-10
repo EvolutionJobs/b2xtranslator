@@ -48,8 +48,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         OutputHandler _outputHander;
 
         // Start sector of the virtual stream.
-        UInt32 _startSector = SectorId.FREESECT;
-        public UInt32 StartSector
+        uint _startSector = SectorId.FREESECT;
+        public uint StartSector
         {
             get { return _startSector; }
         }
@@ -61,8 +61,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         }
 
         // Number of sectors used by the virtual stream.
-        UInt32 _sectorCount;
-        public UInt32 SectorCount
+        uint _sectorCount;
+        public uint SectorCount
         {
             get { return _sectorCount;  }
         }
@@ -81,7 +81,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             _fat = fat;
             _sectorSize = sectorSize;
             _outputHander = outputHander;
-            _sectorCount = (UInt32)Math.Ceiling((double)_stream.Length / (double)_sectorSize);
+            _sectorCount = (uint)Math.Ceiling((double)_stream.Length / (double)_sectorSize);
         }
 
 

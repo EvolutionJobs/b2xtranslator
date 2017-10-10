@@ -1,140 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4CB51274-367D-46AA-A170-4827053A1C7D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnitTests</RootNamespace>
-    <AssemblyName>UnitTests</AssemblyName>
-    <StartupObject>
-    </StartupObject>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
-    <Reference Include="nunit-console-runner, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit-console.tests, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="nunit-gui-runner, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit-gui.tests, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="nunit.core, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.core.extensions, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.core.interfaces, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.core.tests, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="nunit.extensions.tests, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="nunit.fixtures, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="nunit.fixtures.tests, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="nunit.framework, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.framework.extensions, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.framework.tests, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="nunit.mocks, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.mocks.tests, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="nunit.uikit, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.uikit.tests, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="nunit.util, Version=2.4.5.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.util.tests, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="NUnit" Version="3.8.1" />
+    <PackageReference Include="NUnit.Console" Version="3.7.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DocFileFormatTests.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj" />
+    <ProjectReference Include="..\..\Common\OpenXmlLib\OpenXmlLib.csproj" />
+    <ProjectReference Include="..\..\Common\StructuredStorage\StructuredStorage.csproj" />
+    <ProjectReference Include="..\..\Common\Tools\Tools.csproj" />
+    <ProjectReference Include="..\..\WordProcessing\DocFileFormat\DocFileFormat.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj">
-      <Project>{0F0F6BAF-BC5D-4DC6-AE53-8257305EE5CA}</Project>
-      <Name>CommonTranslatorLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\StructuredStorage\StructuredStorage.csproj">
-      <Project>{CBD9BEE2-1E01-477A-BB44-1EC9F8C91AB7}</Project>
-      <Name>StructuredStorage</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\WordProcessing\DocFileFormat\DocFileFormat.csproj">
-      <Project>{70A244FD-C90E-4474-9E70-82BCF5147FF9}</Project>
-      <Name>DocFileFormat</Name>
-    </ProjectReference>
+    <Reference Include="Microsoft.Office.Interop.Word">
+      <HintPath>Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Config.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Microsoft.Office.Interop.Word.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

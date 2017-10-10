@@ -56,7 +56,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     
     public struct MasterTextPropRun
     {
-        public UInt32 count;
+        public uint count;
         public ushort indentLevel;
     }
 

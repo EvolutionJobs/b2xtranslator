@@ -40,7 +40,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
     /// </summary>
     static internal class MaskingHandler
     {
-        static readonly UInt32[] CharsToMask = { '%', '\\' };
+        static readonly uint[] CharsToMask = { '%', '\\' };
         
 
         /// <summary>

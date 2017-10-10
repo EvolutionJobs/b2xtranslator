@@ -9,7 +9,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 {
     public class StwStructure : Dictionary<string, string>
     {
-        public StwStructure(VirtualStream tableStream, UInt32 fc, UInt32 lcb) : base()
+        public StwStructure(VirtualStream tableStream, uint fc, uint lcb) : base()
         {
             tableStream.Seek((long)fc, System.IO.SeekOrigin.Begin);
 

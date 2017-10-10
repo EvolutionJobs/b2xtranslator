@@ -47,7 +47,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsefIsBullet;
         public bool fUsefLayoutInCell;
 
-        public GroupShapeBooleans(UInt32 entryOperand)
+        public GroupShapeBooleans(uint entryOperand)
         {
             fPrint = Utils.BitmaskToBool(entryOperand, 0x1);
             fHidden = Utils.BitmaskToBool(entryOperand, 0x2);

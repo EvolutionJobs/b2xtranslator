@@ -39,8 +39,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
     /// </summary>
     abstract class AbstractFat
     {
-        protected List<UInt32> _entries = new List<UInt32>();
-        protected UInt32 _currentEntry = 0;
+        protected List<uint> _entries = new List<uint>();
+        protected uint _currentEntry = 0;
         protected StructuredStorageContext _context;
 
 
@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         /// <param name="entryCount">number of entries in the chain</param>
         /// <returns></returns>
-        internal UInt32 writeChain(UInt32 entryCount)
+        internal uint writeChain(uint entryCount)
         {
             if (entryCount == 0)
             {

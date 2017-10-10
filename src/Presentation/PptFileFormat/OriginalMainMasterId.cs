@@ -10,7 +10,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     [OfficeRecord(1052)]
     public class OriginalMainMasterId : Record
     {
-        public UInt32 MainMasterId;
+        public uint MainMasterId;
 
         public OriginalMainMasterId(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

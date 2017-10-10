@@ -9,10 +9,10 @@ namespace DIaLOGIKa.b2xtranslator.OlePropertySet
 {
     public class PropertySet : List<object>
     {
-        private UInt32 size;
-        private UInt32 numProperties;
-        private UInt32[] identifiers;
-        private UInt32[] offsets;
+        private uint size;
+        private uint numProperties;
+        private uint[] identifiers;
+        private uint[] offsets;
 
         public PropertySet(VirtualStreamReader stream)
         {
@@ -23,8 +23,8 @@ namespace DIaLOGIKa.b2xtranslator.OlePropertySet
             this.numProperties = stream.ReadUInt32();
 
             //read the identifier and offsets
-            this.identifiers = new UInt32[this.numProperties];
-            this.offsets = new UInt32[this.numProperties];
+            this.identifiers = new uint[this.numProperties];
+            this.offsets = new uint[this.numProperties];
             for (int i = 0; i < this.numProperties; i++)
             {
                 this.identifiers[i] = stream.ReadUInt32();

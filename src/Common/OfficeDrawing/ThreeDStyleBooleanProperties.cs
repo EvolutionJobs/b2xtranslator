@@ -19,7 +19,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsefc3DRotationCenterAuto;
         public bool fUsefc3DConstrainRotation;
 
-        public ThreeDStyleProperties(UInt32 entryOperand)
+        public ThreeDStyleProperties(uint entryOperand)
         {
 
             fc3DFillHarsh = Utils.BitmaskToBool(entryOperand, 0x1 << 0);

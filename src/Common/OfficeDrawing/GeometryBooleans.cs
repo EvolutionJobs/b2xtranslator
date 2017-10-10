@@ -21,7 +21,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsef3DOK;
         public bool fUsefShadowOK;
 
-        public GeometryBooleans(UInt32 entryOperand)
+        public GeometryBooleans(uint entryOperand)
         {
             fFillOK = Utils.BitmaskToBool(entryOperand, 0x1);
             fFillShadeShapeOK = Utils.BitmaskToBool(entryOperand, 0x2);

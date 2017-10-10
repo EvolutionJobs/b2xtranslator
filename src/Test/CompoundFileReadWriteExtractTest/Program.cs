@@ -18,8 +18,8 @@ namespace CompoundFileReadWriteExtractTest
             var invalidChars = Path.GetInvalidFileNameChars();
 
             TraceLogger.LogLevel = TraceLogger.LoggingLevel.Error;
-            var consoleTracer = new ConsoleTraceListener();
-            Trace.Listeners.Add(consoleTracer);
+            //var consoleTracer = new ConsoleTraceListener();
+            //Trace.Listeners.Add(consoleTracer);
             Trace.AutoFlush = true;
 
             if (args.Length < 1)

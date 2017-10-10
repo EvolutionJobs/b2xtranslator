@@ -39,7 +39,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// An unsigned integer that MUST be 0xFFFFFFFF.
         /// </summary>
-        public UInt32 version;
+        public uint version;
 
         /// <summary>
         /// Specifies the type of the form field.

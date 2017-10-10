@@ -39,8 +39,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
     /// </summary>
     abstract public class AbstractDirectoryEntry
     {
-        UInt32 _sid;
-        public UInt32 Sid
+        uint _sid;
+        public uint Sid
         {
             get { return _sid; }
             internal set { _sid = value; }
@@ -119,8 +119,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // Left sibling sid
-        UInt32 _leftSiblingSid;
-        public UInt32 LeftSiblingSid
+        uint _leftSiblingSid;
+        public uint LeftSiblingSid
         {
             get { return _leftSiblingSid; }
             internal set { _leftSiblingSid = value; }
@@ -128,8 +128,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // Right sibling sid
-        UInt32 _rightSiblingSid;
-        public UInt32 RightSiblingSid
+        uint _rightSiblingSid;
+        public uint RightSiblingSid
         {
             get { return _rightSiblingSid; }
             internal set { _rightSiblingSid = value; }
@@ -137,8 +137,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // Child sibling sid
-        UInt32 _childSiblingSid;
-        public UInt32 ChildSiblingSid
+        uint _childSiblingSid;
+        public uint ChildSiblingSid
         {
             get { return _childSiblingSid; }
             protected set { _childSiblingSid = value; }
@@ -155,8 +155,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // User flags
-        UInt32 _userFlags;
-        public UInt32 UserFlags
+        uint _userFlags;
+        public uint UserFlags
         {
             get { return _userFlags; }
             protected set { _userFlags = value; }
@@ -164,8 +164,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
 
 
         // Start sector
-        UInt32 _startSector;
-        public UInt32 StartSector
+        uint _startSector;
+        public uint StartSector
         {
             get { return _startSector; }
             protected set { _startSector = value; }
@@ -183,7 +183,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         internal AbstractDirectoryEntry() : this(0x0)
         {}
 
-        internal AbstractDirectoryEntry(UInt32 sid)
+        internal AbstractDirectoryEntry(uint sid)
         {
             _sid = sid;
         }

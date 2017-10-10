@@ -76,14 +76,14 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <summary>
         /// Blip size in stream
         /// </summary>
-        public UInt32 size;
+        public uint size;
 
         /// <summary>
         /// Reference count on the blip
         /// </summary>
-        public UInt32 cRef;
+        public uint cRef;
 
-        public UInt32 foDelay; // File offset in the delay stream 
+        public uint foDelay; // File offset in the delay stream 
 
         /// <summary>
         /// How this blip is used (MSOBLIPUSAGE)

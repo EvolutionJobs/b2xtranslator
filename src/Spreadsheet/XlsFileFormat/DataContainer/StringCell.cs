@@ -59,9 +59,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
             {
                 this.valueString = (string) obj; 
             }
-            if (obj is UInt32)
+            if (obj is uint)
             {
-                this.valueString = ((UInt32)obj).ToString(); 
+                this.valueString = ((uint)obj).ToString(); 
             }
         }
 

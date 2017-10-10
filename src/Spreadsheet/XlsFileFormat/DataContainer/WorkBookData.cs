@@ -243,7 +243,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <param name="supIndex"></param>
         /// <param name="nameIndex"></param>
         /// <returns></returns>
-        public string getExternNameByRef(ushort supIndex, UInt32 nameIndex)
+        public string getExternNameByRef(ushort supIndex, uint nameIndex)
         {
             var extSheet = this.externSheetDataList[supIndex];
             SupBookData supData = null;

@@ -37,8 +37,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
     {
         public class FileIdCluster
         {
-            public UInt32 DrawingGroupId;
-            public UInt32 CSpIdCur;
+            public uint DrawingGroupId;
+            public uint CSpIdCur;
 
             public FileIdCluster(BinaryReader reader)
             {
@@ -58,10 +58,10 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
             }
         }
 
-        public UInt32 MaxShapeId;           // Maximum shape ID
-        public UInt32 IdClustersCount;      // Number of FileIdClusters
-        public UInt32 ShapesSavedCount;     // Total number of shapes saved
-        public UInt32 DrawingsSavedCount;   // Total number of drawings saved
+        public uint MaxShapeId;           // Maximum shape ID
+        public uint IdClustersCount;      // Number of FileIdClusters
+        public uint ShapesSavedCount;     // Total number of shapes saved
+        public uint DrawingsSavedCount;   // Total number of drawings saved
 
         public List<FileIdCluster> Clusters = new List<FileIdCluster>();
 

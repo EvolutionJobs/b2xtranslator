@@ -81,7 +81,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// <summary>
         /// The persist object directory is used for mapping persist object identifiers to document stream offsets.
         /// </summary>
-        public Dictionary<UInt32, UInt32> PersistObjectDirectory = new Dictionary<uint,uint>();
+        public Dictionary<uint, uint> PersistObjectDirectory = new Dictionary<uint,uint>();
 
         /// <summary>
         /// The DocumentContainer record for this document.
@@ -111,8 +111,8 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// <summary>
         /// Dictionary used for finding MasterRecords (title / main masters) by master id.
         /// </summary>
-        private Dictionary<UInt32, Slide> MasterRecordsById =
-            new Dictionary<UInt32, Slide>();
+        private Dictionary<uint, Slide> MasterRecordsById =
+            new Dictionary<uint, Slide>();
 
         /// <summary>
         /// List of all slide records for this document.
@@ -341,7 +341,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// </summary>
         /// <param name="masterId">id of master to find</param>
         /// <returns>Slide or main master with the specified masterId or null if none exists</returns>
-        public Slide FindMasterRecordById(UInt32 masterId)
+        public Slide FindMasterRecordById(uint masterId)
         {
             if (this.MasterRecordsById.ContainsKey(masterId))
             {

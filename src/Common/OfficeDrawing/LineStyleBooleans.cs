@@ -25,7 +25,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsefInsetPen;
         public bool fUsefLineOpaqueBackColor;
 
-        public LineStyleBooleans(UInt32 entryOperand)
+        public LineStyleBooleans(uint entryOperand)
         {
             fNoLineDrawDash = Utils.BitmaskToBool(entryOperand, 0x1);
             fLineFillShape = Utils.BitmaskToBool(entryOperand, 0x2);

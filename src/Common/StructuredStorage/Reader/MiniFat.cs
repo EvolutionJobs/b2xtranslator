@@ -40,10 +40,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
     /// </summary>
     internal class MiniFat : AbstractFat
     {
-        List<UInt32> _sectorsUsedByMiniFat = new List<UInt32>();
-        List<UInt32> _sectorsUsedByMiniStream = new List<UInt32>();
+        List<uint> _sectorsUsedByMiniFat = new List<uint>();
+        List<uint> _sectorsUsedByMiniStream = new List<uint>();
         Fat _fat;
-        UInt32 _miniStreamStart;
+        uint _miniStreamStart;
         UInt64 _sizeOfMiniStream;
 
         override internal ushort SectorSize
@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="header">Handle to the header of the compound file</param>
         /// <param name="fileHandler">Handle to the file handler of the compound file</param>
         /// <param name="miniStreamStart">Address of the sector where the mini stream starts</param>
-        internal MiniFat(Fat fat, Header header, InputHandler fileHandler, UInt32 miniStreamStart, UInt64 sizeOfMiniStream)
+        internal MiniFat(Fat fat, Header header, InputHandler fileHandler, uint miniStreamStart, UInt64 sizeOfMiniStream)
             : base(header, fileHandler)
         {                        
             _fat = fat;
@@ -94,7 +94,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         /// <param name="currentSector">The current sector in the chain</param>
         /// <returns>The next sector in the chain</returns>
-        override protected UInt32 GetNextSectorInChain(UInt32 currentSector)
+        override protected uint GetNextSectorInChain(uint currentSector)
         {
             var sectorInFile = _sectorsUsedByMiniFat[(int)(currentSector / _addressesPerSector)];
             // calculation of position:

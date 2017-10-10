@@ -57,13 +57,13 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// Each entry in PersistOffsetEntries is associated with a persist object identifier in this manner,
         /// with the final entry associated with StartPersistId + PersistCount – 1. 
         /// </summary>
-        public UInt32 StartPersistId;
+        public uint StartPersistId;
 
         /// <summary>
         /// An unsigned integer that specifies the count of items in PersistOffsetEntries. (12 bit)
         /// It MUST be greater than or equal to 0x001. 
         /// </summary>
-        public UInt32 PersistCount;
+        public uint PersistCount;
 
         /// <summary>
         /// An array of PersistOffsetEntry that specifies stream offsets to persist 
@@ -73,7 +73,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// in the corresponding user edit and MUST be less than the offset, in bytes,
         /// of the corresponding persist object directory. 
         /// </summary>
-        public List<UInt32> PersistOffsetEntries = new List<UInt32>();
+        public List<uint> PersistOffsetEntries = new List<uint>();
 
         public PersistDirectoryEntry(BinaryReader reader)
         {

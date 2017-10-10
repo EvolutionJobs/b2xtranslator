@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public ushort rt;
         public ushort grbitFrt;
-        public UInt32 dwThemeVersion; 
+        public uint dwThemeVersion; 
 
         public Theme(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)

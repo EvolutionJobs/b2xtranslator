@@ -58,7 +58,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         }
 
 
-        internal UInt32 ToUInt32(byte[] value)
+        internal uint ToUInt32(byte[] value)
         {
             if (BitConverter.IsLittleEndian ^ _IsLittleEndian)
             {
@@ -107,7 +107,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
         }
 
 
-        internal byte[] getBytes(UInt32 value)
+        internal byte[] getBytes(uint value)
         {
             var result = BitConverter.GetBytes(value);
 
@@ -130,7 +130,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
             return result;
         }
 
-        internal List<byte> getBytes(List <UInt32> input)
+        internal List<byte> getBytes(List <uint> input)
         {
             var output = new List<byte>();
 

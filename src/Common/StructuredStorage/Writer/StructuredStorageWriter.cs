@@ -120,7 +120,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
 
             // Directory Entry: 128 bytes            
             var dirEntriesPerSector = _context.Header.SectorSize / 128u;
-            var numToPad = dirEntriesPerSector - ((UInt32)allEntries.Count % dirEntriesPerSector);
+            var numToPad = dirEntriesPerSector - ((uint)allEntries.Count % dirEntriesPerSector);
 
             var emptyEntry = new EmptyDirectoryEntry(_context);
             for (int i = 0; i < numToPad; i++)
@@ -134,7 +134,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             _context.Header.DirectoryStartSector = virtualDirectoryStream.StartSector;
             if (_context.Header.SectorSize == 0x1000)
             {
-                _context.Header.NoSectorsInDirectoryChain4KB = (UInt32)virtualDirectoryStream.SectorCount;
+                _context.Header.NoSectorsInDirectoryChain4KB = (uint)virtualDirectoryStream.SectorCount;
             }
             
             // write MiniFat

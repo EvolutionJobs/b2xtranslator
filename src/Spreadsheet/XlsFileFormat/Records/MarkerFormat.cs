@@ -118,7 +118,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// MUST be greater than or equal to 40 and less than or equal to 1440. <br/>
         /// The default value for this field is 100.
         /// </summary>
-        public UInt32 miSize;
+        public uint miSize;
 
         public MarkerFormat(IStreamReader reader, RecordType id, ushort length)
             : base(reader, id, length)

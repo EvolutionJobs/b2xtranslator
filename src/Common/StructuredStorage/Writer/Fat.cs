@@ -40,28 +40,28 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
     /// </summary>
     class Fat : AbstractFat
     {
-        List<UInt32> _diFatEntries = new List<UInt32>();
+        List<uint> _diFatEntries = new List<uint>();
 
-    
+
         // Number of sectors used by the fat.
-        UInt32 _numFatSectors;
-        internal UInt32 NumFatSectors
+        uint _numFatSectors;
+        internal uint NumFatSectors
         {
             get { return _numFatSectors; }
         }
 
 
         // Number of sectors used by the difat.
-        UInt32 _numDiFatSectors;
-        internal UInt32 NumDiFatSectors
+        uint _numDiFatSectors;
+        internal uint NumDiFatSectors
         {
             get { return _numDiFatSectors; }
         }
 
 
         // Start sector of the difat.
-        UInt32 _diFatStartSector;
-        internal UInt32 DiFatStartSector
+        uint _diFatStartSector;
+        internal uint DiFatStartSector
         {
             get { return _diFatStartSector; }            
         }
@@ -82,7 +82,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         /// <param name="sectorCount">Number of difat sectors.</param>
         /// <returns>Start sector of the difat.</returns>
-        private UInt32 writeDiFatEntriesToFat(UInt32 sectorCount)
+        private uint writeDiFatEntriesToFat(uint sectorCount)
         {
             if (sectorCount == 0)
             {
@@ -105,10 +105,10 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// Writes the difat sectors to the output stream of the current context
         /// </summary>
         /// <param name="fatStartSector"></param>
-        private void writeDiFatSectorsToStream(UInt32 fatStartSector)
+        private void writeDiFatSectorsToStream(uint fatStartSector)
         {
             // Add all entries of the difat
-            for (UInt32 i = 0; i < _numFatSectors; i++)
+            for (uint i = 0; i < _numFatSectors; i++)
             {
                 _diFatEntries.Add(fatStartSector + i);
             }
@@ -133,7 +133,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
 
             // handle remaining difat entries 
 
-            var greaterDiFatEntries = new List<UInt32>();
+            var greaterDiFatEntries = new List<uint>();
             
             for (int i = 0; i < _diFatEntries.Count - 109; i++)
             {
@@ -185,8 +185,8 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
             while (true)
             {
                 var numDiFatSectorsOld = _numDiFatSectors;
-                _numFatSectors = (UInt32)Math.Ceiling((double)(_entries.Count * 4) / (double)_context.Header.SectorSize) + _numDiFatSectors;
-                _numDiFatSectors = (_numFatSectors <= 109) ? 0 : (UInt32)Math.Ceiling((double)((_numFatSectors - 109) * 4) / (double)(_context.Header.SectorSize - 1));
+                _numFatSectors = (uint)Math.Ceiling((double)(_entries.Count * 4) / (double)_context.Header.SectorSize) + _numDiFatSectors;
+                _numDiFatSectors = (_numFatSectors <= 109) ? 0 : (uint)Math.Ceiling((double)((_numFatSectors - 109) * 4) / (double)(_context.Header.SectorSize - 1));
                 if (numDiFatSectorsOld == _numDiFatSectors)
                 {
                     break;

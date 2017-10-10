@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
     {
         public struct LatentStyleData
         {
-            public UInt32 grflsd;
+            public uint grflsd;
             public bool fLocked;
         }
 

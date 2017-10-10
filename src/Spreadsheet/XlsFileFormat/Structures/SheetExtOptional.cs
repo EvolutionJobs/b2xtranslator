@@ -45,7 +45,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
         /// equal to icvPlain of the associated SheetExt, the value of icvPlain takes precedence. 
         /// If the tab has no color assigned to it, the value of this field MUST be 0x7F, and MUST be ignored.
         /// </summary>
-        public UInt32 icvPlain;
+        public uint icvPlain;
 
         /// <summary>
         /// A bit that specifies whether conditional formatting formulas are evaluated. 

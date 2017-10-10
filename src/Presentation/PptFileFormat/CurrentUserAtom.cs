@@ -46,7 +46,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// An unsigned integer that specifies the length, in bytes, of the fixed-length portion of the record. 
         /// It MUST be 0x00000014.  
         /// </summary>
-        public UInt32 Size;
+        public uint Size;
 
         /// <summary>
         /// An unsigned integer that specifies a token used to identify whether the file is encrypted.
@@ -55,13 +55,13 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         ///     0xE391C05F: The file SHOULD NOT be an encrypted document. 
         ///     0xF3D1C4DF: The file MUST be an encrypted document.
         /// </summary>
-        public UInt32 HeaderToken;
+        public uint HeaderToken;
 
         /// <summary>
         /// An unsigned integer that specifies an offset, in bytes, from the beginning of the
         /// PowerPoint DocumentRecord Stream to the UserEditAtom record for the most recent user edit. 
         /// </summary>
-        public UInt32 OffsetToCurrentEdit;
+        public uint OffsetToCurrentEdit;
 
         /// <summary>
         /// An unsigned integer that specifies the length, in bytes, of the  ansiUserName field.
@@ -101,7 +101,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         ///     0x00000008: The file contains one or more main master slide.
         ///     0x00000009: The file contains more than one main master slide. It SHOULD NOT be used. 
         /// </summary>
-        public UInt32 ReleaseVersion;
+        public uint ReleaseVersion;
 
         /// <summary>
         /// An optional PrintableUnicodeString that specifies the user name of the

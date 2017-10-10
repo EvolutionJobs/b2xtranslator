@@ -75,7 +75,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// Writes the next difat sector (which is one of the first 109) to the header.
         /// </summary>
         /// <param name="sector"></param>
-        internal void writeNextDiFatSector(UInt32 sector)
+        internal void writeNextDiFatSector(uint sector)
         {
             if (_diFatSectorCount >= 109)
             {

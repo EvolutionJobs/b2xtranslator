@@ -49,7 +49,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="header">Handle to the header of the compound file</param>
         /// <param name="fileHandler">Handle to the file handler of the compound file</param>
         /// <param name="sid">The sid of the directory entry</param>
-        internal DirectoryEntry(Header header, InputHandler fileHandler, UInt32 sid, string path) : base(sid)
+        internal DirectoryEntry(Header header, InputHandler fileHandler, uint sid, string path) : base(sid)
         {
             _header = header;
             _fileHandler = fileHandler;

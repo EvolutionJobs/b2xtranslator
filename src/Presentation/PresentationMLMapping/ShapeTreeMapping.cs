@@ -2227,7 +2227,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 if (so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.pictureBrightness))
                 {
-                    UInt32 b = so.OptionsByID[ShapeOptions.PropertyId.pictureBrightness].op;
+                    uint b = so.OptionsByID[ShapeOptions.PropertyId.pictureBrightness].op;
                     if (b == 0xFFF8000) b = 0;
 
                     Decimal b1 = 0;

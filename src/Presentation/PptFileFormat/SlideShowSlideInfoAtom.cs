@@ -753,7 +753,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         public bool fTypePropertyUsed;
         public bool fCommandPropertyUsed;
 
-        public UInt32 commandBehaviorType;
+        public uint commandBehaviorType;
 
         public TimeCommandBehaviorAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

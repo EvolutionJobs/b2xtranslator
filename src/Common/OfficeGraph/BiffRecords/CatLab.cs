@@ -83,7 +83,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeGraph
         /// 
         /// This structure specifies a future record.
         /// </summary>
-        public UInt32 frtHeaderOld;
+        public uint frtHeaderOld;
 
         /// <summary>
         /// An unsigned integer that specifies the distance between the axis and axis label. 

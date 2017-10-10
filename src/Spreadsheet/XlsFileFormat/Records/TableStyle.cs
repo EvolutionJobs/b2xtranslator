@@ -64,7 +64,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Count of TABLESTYLEELEMENT records to follow.
         /// </summary>
-        public UInt32 ctse;
+        public uint ctse;
 
         /// <summary>
         /// Length of Table style name in 2 byte characters.

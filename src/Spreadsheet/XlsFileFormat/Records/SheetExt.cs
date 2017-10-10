@@ -38,9 +38,9 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
         public FrtHeader frtHeader;
 
-        public UInt32 cb;
+        public uint cb;
 
-        public UInt32 icvPlain;
+        public uint icvPlain;
 
         public SheetExtOptional sheetExtOptional;
 

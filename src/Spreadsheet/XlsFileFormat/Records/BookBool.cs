@@ -53,13 +53,13 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
 	    public bool fHasEnvelope; 	    //  2	    0004h    xl9:   =1 if book has envelope (File | Send To | Mail Recipient ) 
 	    public bool fEnvelopeVisible;   // 	3	    0008h    xl9:   =1 if envelope is visible
 	    public bool fEnvelopeInitDone; 	//  4	    0010h    xl10:  =1 if envelope has been initialized
-	    public UInt32 grbitUpdateLinks; //  6-5	    0060h    xl10: Update external links:
+	    public uint grbitUpdateLinks; //  6-5	    0060h    xl10: Update external links:
                                         //                          0= prompt user to update
                                         //                          1= do not prompt, do not update
                                         //                          2= do not prompt, do update 
 	    public bool reserved1;	        //  7	    0080h
 	    public bool fHideBorderUnsels; 	//  8	    0100h    xl11:  1= hide borders of unselected Tables 
-	    public UInt32 reserved2;	    //  15-9	FE00h
+	    public uint reserved2;	    //  15-9	FE00h
 
 
         public BookBool(IStreamReader reader, RecordType id, ushort length)

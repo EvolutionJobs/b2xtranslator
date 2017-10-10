@@ -38,7 +38,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         /// <summary>
         /// The number of shapes in this drawing
         /// </summary>
-        public UInt32 csp;
+        public uint csp;
 
         /// <summary>
         /// The last MSOSPID given to an SP in this DG

@@ -21,7 +21,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
             }
         }
 
-        public UInt32 Length;
+        public uint Length;
         public ushort IndentLevel;
         public ParagraphMask Mask;
 

@@ -47,12 +47,12 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// An unsigned integer that specifies the checksum of the shape formatting properties related to this record.
         /// </summary>
-        public UInt32 dwChecksum;
+        public uint dwChecksum;
 
         /// <summary>
         /// An unsigned integer that specifies the length of the character array in the rgb field.
         /// </summary>
-        public UInt32 cb;
+        public uint cb;
 
         /// <summary>
         /// An array of ANSI characters, whose length is specified by cb, 

@@ -116,10 +116,10 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.fStyle = ((int)this.ixfParent & 0x04) >> 2; 
             this.f123Prefix = ((int)this.ixfParent & 0x08) >> 3; 
 
-            this.ixfParent = this.ixfParent & 0xFFF0; 
-   
+            this.ixfParent = this.ixfParent & 0xFFF0;
+
             /// create a buffer value 
-            UInt32 buffer = reader.ReadUInt16(); 
+            uint buffer = reader.ReadUInt16(); 
 
             /// alc - fWrap - alcV - fJustLast - trot
             /// Offset 10

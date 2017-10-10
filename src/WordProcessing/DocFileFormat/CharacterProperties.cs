@@ -95,11 +95,11 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public bool fItalicPresent;
         public int fcPic;
         public int fcObj;
-        public UInt32 lTagObj;
+        public uint lTagObj;
         public int fcData;
         public bool fDirty;
         public Global.HyphenationRule hresOld;
-        public UInt32 chHresOld;
+        public uint chHresOld;
         public int dxpKashida;
         public int dxpSpace;
         public short ibstRMarkDel;

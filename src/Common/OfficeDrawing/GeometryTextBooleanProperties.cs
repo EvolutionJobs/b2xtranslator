@@ -41,7 +41,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsefGtext;
         public bool fUsegtextFReverseRows;
 
-        public GeometryTextBooleanProperties(UInt32 entryOperand)
+        public GeometryTextBooleanProperties(uint entryOperand)
         {
             gtextFStrikethrough = Utils.BitmaskToBool(entryOperand, 0x1);
             gtextFSmallcaps = Utils.BitmaskToBool(entryOperand, 0x1 << 1);

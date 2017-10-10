@@ -38,12 +38,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
     {
         public struct FontSignature
         {
-            public UInt32 UnicodeSubsetBitfield0;
-            public UInt32 UnicodeSubsetBitfield1;
-            public UInt32 UnicodeSubsetBitfield2;
-            public UInt32 UnicodeSubsetBitfield3;
-            public UInt32 CodePageBitfield0;
-            public UInt32 CodePageBitfield1;
+            public uint UnicodeSubsetBitfield0;
+            public uint UnicodeSubsetBitfield1;
+            public uint UnicodeSubsetBitfield2;
+            public uint UnicodeSubsetBitfield3;
+            public uint CodePageBitfield0;
+            public uint CodePageBitfield1;
         }
 
         /// <summary>

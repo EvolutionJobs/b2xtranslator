@@ -48,8 +48,8 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <summary>
         /// Total and unique number of strings in this SST-Biffrecord 
         /// </summary>
-        public UInt32 cstTotal;
-        public UInt32 cstUnique;
+        public uint cstTotal;
+        public uint cstUnique;
 
         public List<string> StringList;
         public List<StringFormatAssignment> FormatList;
@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.FormatList = new List<StringFormatAssignment>();
             var buffer = new byte[length];
             int counti = 0;
-            this.cstTotal = (UInt32)this.Reader.ReadUInt32();
+            this.cstTotal = (uint)this.Reader.ReadUInt32();
             this.cstUnique = this.Reader.ReadUInt32();
             
             try

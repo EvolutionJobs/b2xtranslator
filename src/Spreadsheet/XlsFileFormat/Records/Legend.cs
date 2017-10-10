@@ -44,26 +44,26 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// of the upper-left corner of the bounding rectangle of the legend. <br/>
         /// MUST be ignored and the x1 field from the following Pos record MUST be used instead.
         /// </summary>
-        public UInt32 x;
+        public uint x;
 
         /// <summary>
         /// An unsigned integer that specifies the y-position, in SPRC, 
         /// of the upper-left corner of the bounding rectangle of the legend. <br/>
         /// MUST be ignored and the y1 field from the following Pos record MUST be used instead.
         /// </summary>
-        public UInt32 y;
+        public uint y;
 
         /// <summary>
         /// An unsigned integer that specifies the width, in SPRC, of the bounding rectangle of the legend.<br/>
         /// MUST be ignored and the x2 field from the following Pos record MUST be used instead.
         /// </summary>
-        public UInt32 dx;
+        public uint dx;
 
         /// <summary>
         /// An unsigned integer that specifies the height, in SPRC, of the bounding rectangle of the legend.<br/>
         /// MUST be ignored and the y2 field from the following Pos record MUST be used instead.
         /// </summary>
-        public UInt32 dy;
+        public uint dy;
 
         /// <summary>
         /// An unsigned integer that specifies the space between legend entries.<br/>

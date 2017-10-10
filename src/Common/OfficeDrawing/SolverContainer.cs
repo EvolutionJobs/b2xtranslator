@@ -53,12 +53,12 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
     [OfficeRecord(0xF012)]
     public class FConnectorRule : Record
     {
-        public UInt32 ruid;
-        public UInt32 spidA;
-        public UInt32 spidB;
-        public UInt32 spidC;
-        public UInt32 cptiA;
-        public UInt32 cptiB;
+        public uint ruid;
+        public uint spidA;
+        public uint spidB;
+        public uint spidC;
+        public uint cptiA;
+        public uint cptiB;
 
         public FConnectorRule(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
@@ -75,8 +75,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
     [OfficeRecord(0xF014)]
     public class FArcRule : Record
     {
-        public UInt32 ruid;
-        public UInt32 spid;
+        public uint ruid;
+        public uint spid;
 
         public FArcRule(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {
@@ -89,8 +89,8 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
     [OfficeRecord(0xF017)]
     public class FCalloutRule : Record
     {
-        public UInt32 ruid;
-        public UInt32 spid;
+        public uint ruid;
+        public uint spid;
 
         public FCalloutRule(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance) {

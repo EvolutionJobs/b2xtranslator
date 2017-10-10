@@ -43,7 +43,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
     {
         public SlideMasterPart MasterPart;
         protected Slide Master;
-        protected UInt32 MasterId;
+        protected uint MasterId;
         protected MasterLayoutManager LayoutManager;
 
         public MasterMapping(ConversionContext ctx)
@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             var master = (Slide)pmaster;
 
             TraceLogger.DebugInternal("MasterMapping.Apply");
-            UInt32 masterId = master.PersistAtom.SlideId;
+            uint masterId = master.PersistAtom.SlideId;
             _ctx.RegisterMasterMapping(masterId, this);
 
             this.Master = master;

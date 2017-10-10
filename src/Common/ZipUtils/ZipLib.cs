@@ -386,22 +386,22 @@ namespace DIaLOGIKa.b2xtranslator.ZipUtils
     internal struct ZipDateTimeInfo
     {
         /// <summary>Seconds after the minute - [0,59]</summary>
-        public UInt32 Seconds;
+        public uint Seconds;
 
         /// <summary>Minutes after the hour - [0,59]</summary>
-        public UInt32 Minutes;
+        public uint Minutes;
 
         /// <summary>Hours since midnight - [0,23]</summary>
-        public UInt32 Hours;
+        public uint Hours;
 
         /// <summary>Day of the month - [1,31]</summary>
-        public UInt32 Day;
+        public uint Day;
 
         /// <summary>Months since January - [0,11]</summary>
-        public UInt32 Month;
+        public uint Month;
 
         /// <summary>Years - [1980..2044]</summary>
-        public UInt32 Year;
+        public uint Year;
 
         // implicit conversion from DateTime to ZipDateTimeInfo
         public static implicit operator ZipDateTimeInfo(DateTime date)

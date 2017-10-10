@@ -72,7 +72,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="startSector">The start sector of the chain</param>
         /// <param name="maxCount">The maximum count of sectors in a chain</param>
         /// <param name="name">The name of a chain</param>
-        internal List<UInt32> GetSectorChain(UInt32 startSector, UInt64 maxCount, string name)
+        internal List<uint> GetSectorChain(uint startSector, UInt64 maxCount, string name)
         {
             return GetSectorChain(startSector, maxCount, name, false);
         }
@@ -84,9 +84,9 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// <param name="maxCount">The maximum count of sectors in a chain</param>
         /// <param name="name">The name of a chain</param>
         /// <param name="immediateCycleCheck">Flag whether to check for cycles in every loop</param>
-        internal List<UInt32> GetSectorChain(UInt32 startSector, UInt64 maxCount, string name, bool immediateCycleCheck)
+        internal List<uint> GetSectorChain(uint startSector, UInt64 maxCount, string name, bool immediateCycleCheck)
         {
-            var result = new List<UInt32>();
+            var result = new List<uint>();
 
             result.Add(startSector);
             while (true)
@@ -151,7 +151,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// </summary>
         /// <param name="currentSector">The current sector in the chain</param>
         /// <returns>The next sector in the chain</returns>
-        abstract protected UInt32 GetNextSectorInChain(UInt32 currentSector);
+        abstract protected uint GetNextSectorInChain(uint currentSector);
 
 
         /// <summary>

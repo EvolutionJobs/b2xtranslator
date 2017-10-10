@@ -38,7 +38,7 @@ namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// An unsigned integer that specifies the checksum. <br/>
         /// MUST be a value from the following table:
         /// </summary>
-        public UInt32 dwCheckSum;
+        public uint dwCheckSum;
 
         /// <summary>
         /// A bit that specifies the type of plot area for the layout target.<br/>

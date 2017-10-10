@@ -141,11 +141,11 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 
         public bool TextKerning;
 
-        public UInt32 TypeCode
+        public uint TypeCode
         {
             get 
-            { 
-                UInt32 ret = 0;
+            {
+                uint ret = 0;
 
                 var attrs = this.GetType().GetCustomAttributes(typeof(OfficeShapeTypeAttribute), false);
                 OfficeShapeTypeAttribute attr = null;
@@ -166,7 +166,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
 	
 
 
-        private static Dictionary<UInt32, Type> TypeToShapeClassMapping = new Dictionary<UInt32, Type>();
+        private static Dictionary<uint, Type> TypeToShapeClassMapping = new Dictionary<uint, Type>();
 
 
         static ShapeType()
@@ -175,7 +175,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
         }
 
 
-        public static ShapeType GetShapeType(UInt32 typeCode)
+        public static ShapeType GetShapeType(uint typeCode)
         {
             ShapeType result;
             Type cls;

@@ -21,7 +21,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
 
             //FSPA has size 26 + 4 byte for the FC = 30 byte
             int n = 0;
-            UInt32 startFc = 0;
+            uint startFc = 0;
             if(type == OfficeDrawingTableType.MainDocument)
             {
                 startFc = doc.FIB.fcPlcSpaMom;

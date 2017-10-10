@@ -37,7 +37,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
     [OfficeRecord(1055)]
     public class RoundTripShapeId12 : Record
     {
-        public UInt32 ShapeId;
+        public uint ShapeId;
 
         public RoundTripShapeId12(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

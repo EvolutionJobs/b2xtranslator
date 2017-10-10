@@ -17,7 +17,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
         public bool fUsefc3DMetallic;
         public bool fUsefc3D;
 
-        public ThreeDObjectProperties(UInt32 entryOperand)
+        public ThreeDObjectProperties(uint entryOperand)
         {
 
             fc3DLightFace = Utils.BitmaskToBool(entryOperand, 0x1 << 0);

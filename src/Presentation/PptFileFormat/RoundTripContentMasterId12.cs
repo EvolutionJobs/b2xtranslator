@@ -39,12 +39,12 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// <summary>
         /// Round-trip id of the main master
         /// </summary>
-        public UInt32 MainMasterId;
+        public uint MainMasterId;
 
         /// <summary>
         /// Instance id of the content master (unique for main master)
         /// </summary>
-        public UInt32 ContentMasterInstanceId;
+        public uint ContentMasterInstanceId;
 
         public RoundTripContentMasterId12(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

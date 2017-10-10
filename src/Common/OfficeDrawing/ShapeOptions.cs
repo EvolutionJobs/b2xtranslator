@@ -552,7 +552,7 @@ namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
             public PropertyId pid;
             public bool fBid;
             public bool fComplex;
-            public UInt32 op;
+            public uint op;
             public byte[] opComplex;
         }
 

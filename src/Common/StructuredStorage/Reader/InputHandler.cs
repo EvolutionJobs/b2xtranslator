@@ -251,7 +251,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// Advances the stream pointer accordingly.
         /// </summary>
         /// <returns>The UInt32 value read from the stream.</returns>
-        internal UInt32 ReadUInt32()
+        internal uint ReadUInt32()
         {
             if (_bitConverter == null)
             {
@@ -312,7 +312,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
         /// Advances the stream pointer accordingly.
         /// </summary>
         /// <returns>The UInt32 value read at the given position.</returns>
-        internal UInt32 ReadUInt32(long position)
+        internal uint ReadUInt32(long position)
         {
             if (_bitConverter == null)
             {

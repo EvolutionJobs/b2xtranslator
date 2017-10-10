@@ -55,10 +55,10 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             this.Strings = new List<string>();
             this.Data = new List<ByteStructure>();
 
-            parse(dataType, reader, (UInt32)reader.BaseStream.Position);
+            parse(dataType, reader, (uint)reader.BaseStream.Position);
         }
 
-        public StringTable(Type dataType, VirtualStream tableStream, UInt32 fc, UInt32 lcb)
+        public StringTable(Type dataType, VirtualStream tableStream, uint fc, uint lcb)
         {
             this.Strings = new List<string>();
             this.Data = new List<ByteStructure>();
@@ -70,7 +70,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             }
         }
 
-        private void parse(Type dataType, VirtualStreamReader reader, UInt32 fc)
+        private void parse(Type dataType, VirtualStreamReader reader, uint fc)
         {
             //read fExtend
             if (reader.ReadUInt16() == 0xFFFF)

@@ -40,13 +40,13 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// <summary>
         /// logical reference to the slide persist object
         /// </summary>
-        public UInt32 PersistIdRef;
+        public uint PersistIdRef;
 
         /// <summary>
         /// Bit 1: Slide outline view is collapsed
         /// Bit 2: Slide contains shapes other than placeholders
         /// </summary>
-        public UInt32 Flags;
+        public uint Flags;
 
         /// <summary>
         /// number of placeholder texts stored with the persist object.
@@ -57,7 +57,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
         /// <summary>
         /// Unique slide identifier, used for OLE link monikers for example
         /// </summary>
-        public UInt32 SlideId;
+        public uint SlideId;
 
         public SlidePersistAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)

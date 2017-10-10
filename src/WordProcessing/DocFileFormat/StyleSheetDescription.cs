@@ -247,7 +247,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// base style 
         /// </summary>
-        public UInt32 istdBase;
+        public uint istdBase;
 
         /// <summary>
         /// number of UPXs (and UPEs) 
@@ -257,7 +257,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// next style
         /// </summary>
-        public UInt32 istdNext;
+        public uint istdNext;
 
         /// <summary>
         /// offset to end of upx's, start of upe's 
@@ -323,7 +323,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// Is this style linked to another?
         /// </summary>
-        public UInt32 istdLink;
+        public uint istdLink;
 
         /// <summary>
         /// Style has RevMarking history 
@@ -333,12 +333,12 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         /// <summary>
         /// marks during merge which doc's style changed 
         /// </summary>
-        public UInt32 rsid;
+        public uint rsid;
 
         /// <summary>
         /// used temporarily during html export 
         /// </summary>
-        public UInt32 iftcHtml;
+        public uint iftcHtml;
 
         /// <summary>
         /// A StyleSheetDescription can have a PAPX. <br/>
@@ -396,7 +396,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 this.stk = (StyleKind)Utils.BitArrayToUInt32(stkBits);
                 //istdBase
                 var istdBits = Utils.BitArrayCopy(bits, 20, 12);
-                this.istdBase = (UInt32)Utils.BitArrayToUInt32(istdBits);
+                this.istdBase = (uint)Utils.BitArrayToUInt32(istdBits);
             }
             if (cbStdBase >= 6)
             {
@@ -405,7 +405,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
                 this.cupx = (ushort)Utils.BitArrayToUInt32(cupxBits);
                 //istdNext
                 var istdNextBits = Utils.BitArrayCopy(bits, 36, 12);
-                this.istdNext = (UInt32)Utils.BitArrayToUInt32(istdNextBits);
+                this.istdNext = (uint)Utils.BitArrayToUInt32(istdNextBits);
             }
             if (cbStdBase >= 8)
             {
@@ -432,7 +432,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
             {
                 //istdLink
                 var istdLinkBits = Utils.BitArrayCopy(bits, 80, 12);
-                this.istdLink = (UInt32)Utils.BitArrayToUInt32(istdLinkBits);
+                this.istdLink = (uint)Utils.BitArrayToUInt32(istdLinkBits);
                 //fHasOriginalStyle
                 this.fHasOriginalStyle = bits[92];
             }

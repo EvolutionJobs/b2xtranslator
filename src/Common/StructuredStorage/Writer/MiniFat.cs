@@ -42,16 +42,16 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
     internal class MiniFat : AbstractFat
     {
         // Start sector of the minifat.
-        UInt32 _miniFatStart = SectorId.FREESECT;
-        internal UInt32 MiniFatStart
+        uint _miniFatStart = SectorId.FREESECT;
+        internal uint MiniFatStart
         {
             get { return _miniFatStart; }            
         }
 
 
         // Number of sectors in the mini fat.
-        UInt32 _numMiniFatSectors = 0x0;
-        internal UInt32 NumMiniFatSectors
+        uint _numMiniFatSectors = 0x0;
+        internal uint NumMiniFatSectors
         {
             get { return _numMiniFatSectors; }            
         }
@@ -71,7 +71,7 @@ namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
         /// </summary>
         override internal void write()
         {
-            _numMiniFatSectors = (UInt32)Math.Ceiling((double)(_entries.Count * 4) / (double)_context.Header.SectorSize);
+            _numMiniFatSectors = (uint)Math.Ceiling((double)(_entries.Count * 4) / (double)_context.Header.SectorSize);
             _miniFatStart = _context.Fat.writeChain(_numMiniFatSectors);
          
             _context.TempOutputStream.writeSectors(_context.InternalBitConverter.getBytes(_entries).ToArray(), _context.Header.SectorSize, SectorId.FREESECT);
