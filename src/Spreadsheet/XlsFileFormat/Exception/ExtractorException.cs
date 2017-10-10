@@ -1,6 +1,6 @@
 using System;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     public class ExtractorException: Exception 
     {

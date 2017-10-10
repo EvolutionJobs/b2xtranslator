@@ -1,6 +1,6 @@
 using System.Xml;
 
-namespace DIaLOGIKa.b2xtranslator.CommonTranslatorLib
+namespace b2xtranslator.CommonTranslatorLib
 {
     public abstract class AbstractOpenXmlMapping
     {

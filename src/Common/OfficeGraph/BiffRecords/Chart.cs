@@ -1,9 +1,9 @@
 ﻿
 
 using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeGraph
+namespace b2xtranslator.OfficeGraph
 {
     /// <summary>
     /// This record specifies the position and size of the chart area and specifies the beginning 

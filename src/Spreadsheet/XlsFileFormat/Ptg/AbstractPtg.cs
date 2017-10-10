@@ -1,8 +1,8 @@
 using System;
 using System.Globalization;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
 {
     public abstract class AbstractPtg
     {

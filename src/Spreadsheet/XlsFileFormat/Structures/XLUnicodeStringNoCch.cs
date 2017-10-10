@@ -1,10 +1,10 @@
 ﻿
 
 using System.Text;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 {
     /// <summary>
     /// This structure specifies a Unicode string. 

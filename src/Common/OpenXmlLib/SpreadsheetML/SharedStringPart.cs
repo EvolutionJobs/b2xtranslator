@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML
+namespace b2xtranslator.OpenXmlLib.SpreadsheetML
 {
     public class SharedStringPart : OpenXmlPart
     {

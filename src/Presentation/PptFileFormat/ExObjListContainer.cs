@@ -1,9 +1,9 @@
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
+using b2xtranslator.OfficeDrawing;
 using System.IO;
 using System.IO.Compression;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.CommonTranslatorLib;
 
-namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+namespace b2xtranslator.PptFileFormat
 {
     [OfficeRecord(1033)]
     public class ExObjListContainer : RegularContainer

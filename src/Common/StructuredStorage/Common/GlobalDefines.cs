@@ -2,7 +2,7 @@
 /// Global definitions
 /// Author: math
 /// </summary>
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
+namespace b2xtranslator.StructuredStorage.Common
 {
 
     /// <summary>

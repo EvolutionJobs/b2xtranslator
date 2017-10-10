@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     /// <summary>
     /// An internal helper class for generating unique axis ids to be used in OpenXML

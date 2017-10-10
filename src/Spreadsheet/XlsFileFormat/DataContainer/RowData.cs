@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.Tools; 
+using b2xtranslator.Tools; 
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 {
     /// <summary>
     /// This class stores the rowdata from a specific row 

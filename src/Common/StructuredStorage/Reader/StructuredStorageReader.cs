@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.StructuredStorage.Common;
 
 [assembly: CLSCompliant(false)]
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
+namespace b2xtranslator.StructuredStorage.Reader
 {
 
     /// <summary>

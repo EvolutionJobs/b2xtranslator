@@ -1,12 +1,12 @@
 using System;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.Tools;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.PptFileFormat;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.Shell;
+using b2xtranslator.Tools;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.PptFileFormat;
+using b2xtranslator.OfficeDrawing;
+using b2xtranslator.Shell;
 
-namespace DIaLOGIKa.b2xtranslator.PptDump
+namespace b2xtranslator.PptDump
 {
     class Program
     {

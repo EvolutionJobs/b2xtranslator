@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 {
     /// <summary>
     /// a simple class to hold the format data from strings 

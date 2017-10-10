@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.Tools
+namespace b2xtranslator.Tools
 {
     public class TwipsValue
     {

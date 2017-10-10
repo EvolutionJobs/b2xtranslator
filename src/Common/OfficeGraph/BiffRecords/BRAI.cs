@@ -1,10 +1,10 @@
 ﻿
 
 using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeGraph
+namespace b2xtranslator.OfficeGraph
 {
     /// <summary>
     /// This record specifies a reference to data in a sheet that is used by a part of a series or by a legend entry.

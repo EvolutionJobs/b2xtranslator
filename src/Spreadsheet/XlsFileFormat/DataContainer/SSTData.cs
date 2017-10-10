@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Records;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 {
     public class SSTData: IVisitable
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
+using b2xtranslator.OfficeDrawing;
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+namespace b2xtranslator.PptFileFormat
 {
     [OfficeRecord(2040)]
     public class BlipCollection9Container : RegularContainer

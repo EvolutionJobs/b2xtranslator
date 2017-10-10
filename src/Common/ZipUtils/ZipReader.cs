@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.ZipUtils
+namespace b2xtranslator.ZipUtils
 {
 	/// <summary>
 	/// ZipReader defines an abstract class to read entries from a ZIP file.

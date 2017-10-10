@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     /// <summary>
     /// Class is / was used to extract different binary file internal files 

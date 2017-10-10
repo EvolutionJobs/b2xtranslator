@@ -1,11 +1,11 @@
 
 
 using System;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Writer;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.StructuredStorage.Writer;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     public class MacroBinaryMapping : AbstractOpenXmlMapping,
         IMapping<XlsDocument>

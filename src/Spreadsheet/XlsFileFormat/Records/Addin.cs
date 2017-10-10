@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
     // TODO: No longer used
     //[BiffRecordAttribute(RecordType.ADDIN)] 

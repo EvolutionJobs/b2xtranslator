@@ -2,10 +2,10 @@
 
 using System;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.ZipUtils;
+using b2xtranslator.ZipUtils;
 using System.Xml;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     /// <summary>
     /// XML containers are containers with a zipped XML payload.

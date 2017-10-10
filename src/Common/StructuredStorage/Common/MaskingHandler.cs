@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
+namespace b2xtranslator.StructuredStorage.Common
 {
 
     /// <summary>

@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Structures;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
     /// <summary>
     /// This record specifies the versions of the application that originally created 

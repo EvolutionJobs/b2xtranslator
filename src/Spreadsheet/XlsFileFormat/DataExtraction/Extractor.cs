@@ -1,7 +1,7 @@
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     /// <summary>
     /// Simple struct to hold the biff record data 

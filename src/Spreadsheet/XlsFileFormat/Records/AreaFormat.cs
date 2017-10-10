@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
     /// <summary>
     /// This record specifies the patterns and colors used in a filled region of a chart. 

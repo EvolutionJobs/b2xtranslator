@@ -1,6 +1,6 @@
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.CommonTranslatorLib;
 
-namespace DIaLOGIKa.b2xtranslator.DocFileFormat
+namespace b2xtranslator.DocFileFormat
 {
 
     public class CharacterPropertyExceptions : PropertyExceptions

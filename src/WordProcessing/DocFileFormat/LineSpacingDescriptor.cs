@@ -1,4 +1,4 @@
-﻿namespace DIaLOGIKa.b2xtranslator.DocFileFormat
+﻿namespace b2xtranslator.DocFileFormat
 {
     public class LineSpacingDescriptor
     {

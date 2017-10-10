@@ -1,8 +1,8 @@
 ﻿
 
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 {
     /// <summary>
     /// This structure specifies the properties of the edit box Obj record that contains this FtEdoData.

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
+namespace b2xtranslator.OfficeDrawing.Shapetypes
 {
     [OfficeShapeType(60)]
     class Seal32Type : ShapeType

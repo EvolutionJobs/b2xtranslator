@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 {
     /// <summary>
     /// This class is used  to store the data from a mergecell biffrecord 

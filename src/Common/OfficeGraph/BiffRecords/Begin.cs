@@ -1,9 +1,9 @@
 ﻿
 
 using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeGraph
+namespace b2xtranslator.OfficeGraph
 {
     /// <summary>
     /// This record specifies the beginning of a collection of records as defined by the Chart Sheet Substream ABNF. The collection of records specifies properties of a chart.

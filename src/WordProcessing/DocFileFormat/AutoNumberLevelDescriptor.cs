@@ -1,7 +1,7 @@
 ﻿using System;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.DocFileFormat
+namespace b2xtranslator.DocFileFormat
 {
     public class AutoNumberLevelDescriptor
     {

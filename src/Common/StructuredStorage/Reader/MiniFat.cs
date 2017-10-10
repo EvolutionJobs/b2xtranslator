@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.StructuredStorage.Common;
 using System.Diagnostics;
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
+namespace b2xtranslator.StructuredStorage.Reader
 {
 
     /// <summary>

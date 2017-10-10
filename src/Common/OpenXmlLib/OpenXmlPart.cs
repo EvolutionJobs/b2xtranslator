@@ -2,7 +2,7 @@
 using System.Xml;
 using System.Text;
 
-namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
+namespace b2xtranslator.OpenXmlLib
 {
     public abstract class OpenXmlPart : OpenXmlPartContainer
     {

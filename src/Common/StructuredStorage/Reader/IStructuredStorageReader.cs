@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
+namespace b2xtranslator.StructuredStorage.Reader
 {
     public interface IStructuredStorageReader : IDisposable
     {

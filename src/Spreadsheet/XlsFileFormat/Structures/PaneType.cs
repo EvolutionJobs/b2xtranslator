@@ -1,5 +1,5 @@
 ﻿
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 {
     public enum PaneType : byte
     {

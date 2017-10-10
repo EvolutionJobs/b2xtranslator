@@ -2,10 +2,10 @@
 
 using System.Collections.Generic;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
-using DIaLOGIKa.b2xtranslator.PptFileFormat;
+using b2xtranslator.OpenXmlLib.PresentationML;
+using b2xtranslator.PptFileFormat;
 
-namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
+namespace b2xtranslator.PresentationMLMapping
 {
     public class ConversionContext
     {

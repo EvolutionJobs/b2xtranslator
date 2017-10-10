@@ -1,12 +1,12 @@
 
 
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.OpenXmlLib;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
 
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     public abstract class ExcelMapping :
         AbstractOpenXmlMapping,

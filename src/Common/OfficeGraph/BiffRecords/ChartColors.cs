@@ -1,9 +1,9 @@
 ﻿
 
 using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeGraph
+namespace b2xtranslator.OfficeGraph
 {
     /// <summary>
     /// This record specifies the number of colors in the palette that are available.

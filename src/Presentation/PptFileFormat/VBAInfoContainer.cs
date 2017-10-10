@@ -1,7 +1,7 @@
-﻿using DIaLOGIKa.b2xtranslator.OfficeDrawing;
+﻿using b2xtranslator.OfficeDrawing;
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+namespace b2xtranslator.PptFileFormat
 {
     [OfficeRecord(0x03FF)]
     public class VBAInfoContainer : Record

@@ -2,7 +2,7 @@
 
 using System;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeGraph
+namespace b2xtranslator.OfficeGraph
 {
     /// <summary>
     /// Used for mapping Office record TypeCodes to the classes implementing them.

@@ -2,9 +2,9 @@
 
 using System;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
+using b2xtranslator.OfficeDrawing;
 
-namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+namespace b2xtranslator.PptFileFormat
 {
     /// <summary>
     /// An atom record that specifies a reference to text contained in the SlideListWithTextContainer record. 

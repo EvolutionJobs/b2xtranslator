@@ -1,9 +1,9 @@
 using System;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.DocFileFormat;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.DocFileFormat;
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
+namespace b2xtranslator.DocFileFormatTest
 {
     class Program
     {

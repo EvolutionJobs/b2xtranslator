@@ -3,21 +3,21 @@
 using System;
 using System.Globalization;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.Shell;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.Tools;
-using DIaLOGIKa.b2xtranslator.ZipUtils;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML;
+using b2xtranslator.OpenXmlLib;
+using b2xtranslator.Shell;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.SpreadsheetMLMapping;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
+using b2xtranslator.ZipUtils;
+using b2xtranslator.OpenXmlLib.SpreadsheetML;
 
-namespace DIaLOGIKa.b2xtranslator.xls2x
+namespace b2xtranslator.xls2x
 {
     class Program : CommandLineTranslator
     {
         public static string ToolName = "xls2x";
-        public static string RevisionResource = "DIaLOGIKa.b2xtranslator.xls2x.revision.txt";
+        public static string RevisionResource = "b2xtranslator.xls2x.revision.txt";
         public static string ContextMenuInputExtension = ".xls";
         public static string ContextMenuText = "Convert to .xlsx";
 

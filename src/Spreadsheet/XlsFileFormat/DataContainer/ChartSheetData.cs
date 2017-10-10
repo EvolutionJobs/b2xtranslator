@@ -1,5 +1,5 @@
-﻿using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+﻿using b2xtranslator.CommonTranslatorLib;
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     public class ChartSheetData : SheetData
     {

@@ -1,10 +1,10 @@
 using System.Text;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes;
+using b2xtranslator.OpenXmlLib;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.OfficeDrawing.Shapetypes;
 
-namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
+namespace b2xtranslator.PresentationMLMapping
 {
     public class VMLShapeTypeMapping : AbstractOpenXmlMapping,
         IMapping<ShapeType>
@@ -16,7 +16,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
         public void Apply(ShapeType shapeType)
         {
-            if (!(shapeType is DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes.OvalType))
+            if (!(shapeType is b2xtranslator.OfficeDrawing.Shapetypes.OvalType))
             {
                 this._writer.WriteStartElement("v", "shapetype", OpenXmlNamespaces.VectorML);
 

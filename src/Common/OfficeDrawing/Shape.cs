@@ -1,9 +1,9 @@
 using System;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.Tools;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes;
+using b2xtranslator.Tools;
+using b2xtranslator.OfficeDrawing.Shapetypes;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     [OfficeRecord(0xF00A)]
     public class Shape : Record

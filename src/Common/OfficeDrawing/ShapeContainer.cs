@@ -2,9 +2,9 @@
 
 using System.Collections.Generic;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.CommonTranslatorLib;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     [OfficeRecord(0xF004)]
     public class ShapeContainer : RegularContainer, IVisitable

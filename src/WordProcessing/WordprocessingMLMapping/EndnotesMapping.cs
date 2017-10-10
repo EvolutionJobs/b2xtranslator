@@ -1,7 +1,7 @@
-﻿using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.DocFileFormat;
+﻿using b2xtranslator.OpenXmlLib;
+using b2xtranslator.DocFileFormat;
 
-namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
+namespace b2xtranslator.WordprocessingMLMapping
 {
     public class EndnotesMapping : DocumentMapping
     {

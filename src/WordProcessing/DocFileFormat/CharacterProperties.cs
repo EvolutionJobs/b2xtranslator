@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.DocFileFormat
+namespace b2xtranslator.DocFileFormat
 {
     public class CharacterProperties
     {
@@ -149,7 +149,7 @@ namespace DIaLOGIKa.b2xtranslator.DocFileFormat
         public byte ffm;
         public bool fSdtVanish;
         public FontFamilyName FontAscii;
-        public DIaLOGIKa.b2xtranslator.DocFileFormat.Global.UnderlineCode UnderlineStyle;
+        public b2xtranslator.DocFileFormat.Global.UnderlineCode UnderlineStyle;
 
         /// <summary>
         /// Creates a CHP with default properties

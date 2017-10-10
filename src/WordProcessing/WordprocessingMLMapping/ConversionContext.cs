@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.DocFileFormat;
+using b2xtranslator.DocFileFormat;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
+using b2xtranslator.OpenXmlLib.WordprocessingML;
 
-namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
+namespace b2xtranslator.WordprocessingMLMapping
 {
     public class ConversionContext
     {

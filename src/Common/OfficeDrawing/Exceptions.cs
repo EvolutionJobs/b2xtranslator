@@ -1,6 +1,6 @@
 using System;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     public class InvalidRecordException : Exception
     {

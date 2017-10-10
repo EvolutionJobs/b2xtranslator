@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Ptg
 {
     public enum FtabValues : ushort
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace DIaLOGIKa.b2xtranslator.ZipUtils 
+namespace b2xtranslator.ZipUtils 
 {
 
 	/// <summary>Thrown whenever an error occurs during the build.</summary>

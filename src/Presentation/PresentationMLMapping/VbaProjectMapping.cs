@@ -1,8 +1,8 @@
-﻿using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.PptFileFormat;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
+﻿using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.PptFileFormat;
+using b2xtranslator.OpenXmlLib;
 
-namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
+namespace b2xtranslator.PresentationMLMapping
 {
     public class VbaProjectMapping : AbstractOpenXmlMapping,
         IMapping<ExOleObjStgAtom>

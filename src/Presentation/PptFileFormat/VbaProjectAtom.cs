@@ -1,4 +1,4 @@
-﻿namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+﻿namespace b2xtranslator.PptFileFormat
 {
     //[OfficeRecordAttribute(0x1011)]
     //public class VbaProjectAtom : Record

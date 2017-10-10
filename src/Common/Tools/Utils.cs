@@ -4,7 +4,7 @@ using System.IO;
 using System.Collections;
 using System.Xml;
 
-namespace DIaLOGIKa.b2xtranslator.Tools
+namespace b2xtranslator.Tools
 {
     public class Utils
     {

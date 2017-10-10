@@ -2,9 +2,9 @@
 using System;
 using System.Globalization;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData;
+using b2xtranslator.Spreadsheet.XlsFileFormat.StyleData;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     public class StyleMappingHelper
     {

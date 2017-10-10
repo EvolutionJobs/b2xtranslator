@@ -1,8 +1,8 @@
 ﻿
 
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 {
     /// <summary>
     /// Specifies an approximation of a real number, where the approximation has a fixed number of digits after the radix point. 

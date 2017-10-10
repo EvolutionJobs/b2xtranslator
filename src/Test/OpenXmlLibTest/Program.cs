@@ -1,10 +1,10 @@
 using System.Text;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
+using b2xtranslator.OpenXmlLib.WordprocessingML;
+using b2xtranslator.OpenXmlLib.PresentationML;
+using b2xtranslator.OpenXmlLib;
 
-namespace DIaLOGIKa.b2xtranslator.DocFileFormatTest
+namespace b2xtranslator.DocFileFormatTest
 {
     class Program
     {

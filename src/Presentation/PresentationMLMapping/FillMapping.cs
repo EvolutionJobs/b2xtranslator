@@ -3,14 +3,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DIaLOGIKa.b2xtranslator.PptFileFormat;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.PptFileFormat;
+using b2xtranslator.CommonTranslatorLib;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.OpenXmlLib;
+using b2xtranslator.OfficeDrawing;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
+namespace b2xtranslator.PresentationMLMapping
 {
     class FillMapping :
         AbstractOpenXmlMapping

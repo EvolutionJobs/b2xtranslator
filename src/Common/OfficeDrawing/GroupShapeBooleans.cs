@@ -1,6 +1,6 @@
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     public class GroupShapeBooleans
     {

@@ -1,14 +1,14 @@
 ﻿
 
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.OpenXmlLib.DrawingML;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Records;
 using System;
-using DIaLOGIKa.b2xtranslator.Tools;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
+using b2xtranslator.Tools;
+using b2xtranslator.OfficeDrawing;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     /// <summary>
     /// A class for generating shape properties as defined by CT_ShapeProperties

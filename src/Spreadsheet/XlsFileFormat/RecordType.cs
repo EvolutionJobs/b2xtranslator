@@ -1,6 +1,6 @@
 ﻿
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     public enum RecordType : ushort
     {

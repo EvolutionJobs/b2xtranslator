@@ -1,4 +1,4 @@
-﻿namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+﻿namespace b2xtranslator.SpreadsheetMLMapping
 {
     // TODO: no longer needed
     //public class AreaFormatMapping : AbstractChartMapping,

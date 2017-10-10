@@ -1,22 +1,22 @@
 using System;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.DocFileFormat;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
-using DIaLOGIKa.b2xtranslator.WordprocessingMLMapping;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.DocFileFormat;
+using b2xtranslator.OpenXmlLib.WordprocessingML;
+using b2xtranslator.WordprocessingMLMapping;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.ZipUtils;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.ZipUtils;
+using b2xtranslator.Tools;
 using System.Globalization;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
-using DIaLOGIKa.b2xtranslator.Shell;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
+using b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.Shell;
+using b2xtranslator.OpenXmlLib;
 
-namespace DIaLOGIKa.b2xtranslator.doc2x
+namespace b2xtranslator.doc2x
 {
     public class Program : CommandLineTranslator
     {
         public static string ToolName = "doc2x";
-        public static string RevisionResource = "DIaLOGIKa.b2xtranslator.doc2x.revision.txt";
+        public static string RevisionResource = "b2xtranslator.doc2x.revision.txt";
         public static string ContextMenuInputExtension = ".doc";
         public static string ContextMenuText = "Convert to .docx";
 

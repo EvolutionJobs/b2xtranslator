@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Records;
 
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 {
     /// <summary>
     /// This class contains several information about the CRN BIFF Record 

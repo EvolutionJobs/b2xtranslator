@@ -1,8 +1,8 @@
-using DIaLOGIKa.b2xtranslator.DocFileFormat;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
+using b2xtranslator.DocFileFormat;
+using b2xtranslator.OpenXmlLib.WordprocessingML;
+using b2xtranslator.OpenXmlLib;
 
-namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
+namespace b2xtranslator.WordprocessingMLMapping
 {
     public class FooterMapping : DocumentMapping
     {

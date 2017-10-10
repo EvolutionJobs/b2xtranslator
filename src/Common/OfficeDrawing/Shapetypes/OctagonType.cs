@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
+namespace b2xtranslator.OfficeDrawing.Shapetypes
 {
     [OfficeShapeType(10)]
     public class OctagonType : ShapeType

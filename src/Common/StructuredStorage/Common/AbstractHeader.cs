@@ -1,6 +1,6 @@
 using System;
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
+namespace b2xtranslator.StructuredStorage.Common
 {
     /// <summary>
     /// Abstract class fo the header of a compound file.

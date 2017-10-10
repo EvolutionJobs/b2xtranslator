@@ -1,11 +1,11 @@
 ﻿
 
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
+using b2xtranslator.OpenXmlLib.DrawingML;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Records;
 using System;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     public class PieChartMapping : AbstractChartGroupMapping
     {

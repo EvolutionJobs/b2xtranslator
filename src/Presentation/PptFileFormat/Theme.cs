@@ -2,11 +2,11 @@
 
 using System;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
+using b2xtranslator.OfficeDrawing;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.ZipUtils;
+using b2xtranslator.ZipUtils;
 
-namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+namespace b2xtranslator.PptFileFormat
 {
     [OfficeRecord(1038)]
     public class Theme : XmlContainer
@@ -59,7 +59,7 @@ namespace DIaLOGIKa.b2xtranslator.PptFileFormat
 
             XmlNode e = partDoc.DocumentElement;
             
-            DIaLOGIKa.b2xtranslator.Tools.Utils.replaceOutdatedNamespaces(ref e);
+            b2xtranslator.Tools.Utils.replaceOutdatedNamespaces(ref e);
             
             return (XmlElement)e;
         }

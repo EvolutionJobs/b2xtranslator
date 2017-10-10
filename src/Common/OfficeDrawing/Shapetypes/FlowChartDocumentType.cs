@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
+namespace b2xtranslator.OfficeDrawing.Shapetypes
 {
     [OfficeShapeType(114)]
     public class FlowChartDocumentType : ShapeType

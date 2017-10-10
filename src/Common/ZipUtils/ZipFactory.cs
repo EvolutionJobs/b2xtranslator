@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.ZipUtils
+namespace b2xtranslator.ZipUtils
 {
     /// <summary>
     /// ZipFactory provides instances of IZipReader and IZipWriter.

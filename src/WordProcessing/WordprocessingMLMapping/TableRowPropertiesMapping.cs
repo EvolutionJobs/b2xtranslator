@@ -1,10 +1,10 @@
-using DIaLOGIKa.b2xtranslator.DocFileFormat;
+using b2xtranslator.DocFileFormat;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.OpenXmlLib;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
+namespace b2xtranslator.WordprocessingMLMapping
 {
     class TableRowPropertiesMapping :
         PropertiesMapping,

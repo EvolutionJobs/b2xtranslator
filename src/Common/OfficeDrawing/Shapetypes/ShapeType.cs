@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.CommonTranslatorLib;
 using System.Reflection;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
+namespace b2xtranslator.OfficeDrawing.Shapetypes
 {
     public class ShapeType : IVisitable
     {

@@ -1,9 +1,9 @@
 ﻿
 
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 {
     /// <summary>
     /// This structure specifies sheet specific data including sheet tab color and the published state of this sheet.

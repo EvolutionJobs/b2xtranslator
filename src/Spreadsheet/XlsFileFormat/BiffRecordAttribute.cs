@@ -2,7 +2,7 @@
 
 using System;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     /// <summary>
     /// Used for mapping Office record TypeCodes to the classes implementing them.

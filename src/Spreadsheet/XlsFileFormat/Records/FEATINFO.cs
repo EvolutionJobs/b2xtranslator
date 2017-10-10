@@ -1,6 +1,6 @@
 
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
     // TODO: no longer needed?
     //[BiffRecordAttribute(RecordType.FEATINFO)] 

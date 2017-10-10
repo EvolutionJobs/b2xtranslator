@@ -1,5 +1,5 @@
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
 {
     /// <summary>
     /// This object stores the data from a format biff record 

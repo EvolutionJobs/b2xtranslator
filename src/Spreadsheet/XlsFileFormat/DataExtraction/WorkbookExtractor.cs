@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Records;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
 
     /// <summary>

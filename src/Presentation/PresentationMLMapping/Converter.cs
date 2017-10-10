@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.PptFileFormat;
+using b2xtranslator.OpenXmlLib;
+using b2xtranslator.PptFileFormat;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML;
+using b2xtranslator.OpenXmlLib.PresentationML;
 using System.Xml;
 
-namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
+namespace b2xtranslator.PresentationMLMapping
 {
     public class Converter
     {

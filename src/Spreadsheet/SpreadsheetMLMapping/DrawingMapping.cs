@@ -1,15 +1,15 @@
 ﻿
 
 using System;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.OfficeDrawing;
+using b2xtranslator.OpenXmlLib;
+using b2xtranslator.OpenXmlLib.DrawingML;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Structures;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     public class DrawingMapping : AbstractOpenXmlMapping,
         IMapping<ChartSheetContentSequence>,

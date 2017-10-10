@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
     [BiffRecord(RecordType.Chart3DBarShape)]
     public class Chart3DBarShape : BiffRecord

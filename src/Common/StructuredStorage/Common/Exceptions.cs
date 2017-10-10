@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 /// Author: math
 /// </summary>
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Common
+namespace b2xtranslator.StructuredStorage.Common
 {
     [Serializable]
     public class MagicNumberException : Exception

@@ -1,8 +1,8 @@
-﻿using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
+﻿using b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.OpenXmlLib.DrawingML;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     public class DataPointMapping : AbstractChartMapping,
           IMapping<SsSequence>

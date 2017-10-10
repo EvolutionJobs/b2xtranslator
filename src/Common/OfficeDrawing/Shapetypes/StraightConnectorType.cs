@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
+namespace b2xtranslator.OfficeDrawing.Shapetypes
 {
     [OfficeShapeType(32)]
     public class StraightConnectorType : ShapeType

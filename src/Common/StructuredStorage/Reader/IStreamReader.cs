@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
+namespace b2xtranslator.StructuredStorage.Reader
 {
     public interface IStreamReader
     {

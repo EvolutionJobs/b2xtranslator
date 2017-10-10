@@ -6,10 +6,10 @@ using System.Text;
 using System.IO;
 using System.Collections;
 using System.Reflection;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     public class Record : IEnumerable<Record>, IVisitable
     {

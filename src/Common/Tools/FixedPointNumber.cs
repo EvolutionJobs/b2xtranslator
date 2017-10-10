@@ -1,4 +1,4 @@
-﻿namespace DIaLOGIKa.b2xtranslator.Tools
+﻿namespace b2xtranslator.Tools
 {
     /// <summary>
     /// Specifies an approximation of a real number, where the approximation has a fixed number of digits after the radix point. 

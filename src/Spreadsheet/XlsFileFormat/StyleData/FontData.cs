@@ -1,9 +1,9 @@
 
 
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Records;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
 {
     public class FontData
     {

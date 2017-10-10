@@ -1,10 +1,10 @@
 using System;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Records;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     /// <summary>
     /// This class should extract the specific worksheet data. 

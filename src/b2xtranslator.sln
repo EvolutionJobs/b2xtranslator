@@ -67,6 +67,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OlePropertySet", "Common\Ol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfficeGraph", "Common\OfficeGraph\OfficeGraph.csproj", "{598B4D7A-F1DB-496F-BC79-5F7BE596A239}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC08F5E1-1AD6-43BA-A9E2-6245DA2DA769}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

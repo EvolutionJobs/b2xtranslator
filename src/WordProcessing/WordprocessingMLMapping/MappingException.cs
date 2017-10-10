@@ -1,6 +1,6 @@
 using System;
 
-namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
+namespace b2xtranslator.WordprocessingMLMapping
 {
     public class MappingException : Exception
     {

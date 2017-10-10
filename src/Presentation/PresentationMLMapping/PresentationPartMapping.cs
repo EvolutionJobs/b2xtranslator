@@ -1,10 +1,10 @@
 
 
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.PptFileFormat;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
+using b2xtranslator.PptFileFormat;
+using b2xtranslator.OpenXmlLib;
 
-namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
+namespace b2xtranslator.PresentationMLMapping
 {
     public class PresentationPartMapping : PresentationMapping<PowerpointDocument>
     {
@@ -62,7 +62,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             this._writer.WriteEndElement(); //defPPr
 
 
-            var defaultStyle = this._ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>();
+            var defaultStyle = this._ctx.Ppt.DocumentRecord.FirstChildWithType<b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>();
 
             var map = new TextMasterStyleMapping(this._ctx, this._writer, null);
             

@@ -1,5 +1,5 @@
 ﻿
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 {
     /// <summary>
     /// The DateUnit enumeration specifies the unit of measurement of a date value.

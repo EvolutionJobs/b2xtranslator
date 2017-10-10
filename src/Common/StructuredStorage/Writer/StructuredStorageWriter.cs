@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Writer
+namespace b2xtranslator.StructuredStorage.Writer
 {
     /// <summary>
     /// The root class for creating a structured storage

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
 using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Tools;
 using System.Reflection;
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.Shell
+namespace b2xtranslator.Shell
 {
     public class CommandLineTranslator
     {

@@ -1,11 +1,11 @@
 
 
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
+using b2xtranslator.OfficeDrawing;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+namespace b2xtranslator.PptFileFormat
 {
     [OfficeRecord(4009)]
     public class TextSIExceptionAtom : Record

@@ -1,10 +1,10 @@
 
 
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.OpenXmlLib;
 using System.Xml;
 
-namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
+namespace b2xtranslator.PresentationMLMapping
 {
     public abstract class PresentationMapping<T> :
         AbstractOpenXmlMapping,

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing.Shapetypes
+namespace b2xtranslator.OfficeDrawing.Shapetypes
 {
     [OfficeShapeType(159)]
     public class TextWave4 : ShapeType

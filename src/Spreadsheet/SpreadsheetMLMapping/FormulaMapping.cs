@@ -2,11 +2,11 @@
 
 using System;
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Ptg;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     public class FormulaInfixMapping
     {

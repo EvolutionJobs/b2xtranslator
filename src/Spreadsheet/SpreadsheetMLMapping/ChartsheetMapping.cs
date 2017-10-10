@@ -1,11 +1,11 @@
 ﻿
 
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.OpenXmlLib.SpreadsheetML;
+using b2xtranslator.OpenXmlLib;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     public class ChartsheetMapping : AbstractOpenXmlMapping,
           IMapping<ChartSheetSequence>

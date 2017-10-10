@@ -1,6 +1,6 @@
 using System.IO;
 using System.Xml;
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     /// <summary>
     /// XML records are containers with a XML payload.

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Ptg;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     /// <summary>
     /// Assembly of some static methods 

@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.CommonTranslatorLib
+namespace b2xtranslator.CommonTranslatorLib
 {
     public interface IVisitable
     {

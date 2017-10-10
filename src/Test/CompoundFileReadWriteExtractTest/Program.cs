@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.Tools;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Writer;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.Tools;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Writer;
+using b2xtranslator.StructuredStorage.Common;
 
 namespace CompoundFileReadWriteExtractTest
 {

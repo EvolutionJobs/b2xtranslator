@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.ZipUtils
+namespace b2xtranslator.ZipUtils
 {
     /// <summary>
     /// ZipWriter defines an abstract class to write entries into a ZIP file.

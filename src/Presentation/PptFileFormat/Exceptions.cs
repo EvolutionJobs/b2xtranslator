@@ -1,6 +1,6 @@
 using System;
 
-namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+namespace b2xtranslator.PptFileFormat
 {
     public class InvalidStreamException : Exception
     {

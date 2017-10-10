@@ -1,13 +1,13 @@
 
 
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.OpenXmlLib;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
+using b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer;
+using b2xtranslator.OpenXmlLib.SpreadsheetML;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Records;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     public class WorkbookMapping : AbstractOpenXmlMapping,
           IMapping<WorkBookData>

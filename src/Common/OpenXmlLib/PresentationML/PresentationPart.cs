@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML
+namespace b2xtranslator.OpenXmlLib.PresentationML
 {
     public class PresentationPart : ContentPart
     {

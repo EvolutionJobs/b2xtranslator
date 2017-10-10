@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.ZipUtils;
+using b2xtranslator.ZipUtils;
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.OpenXmlLib
+namespace b2xtranslator.OpenXmlLib
 {
     public class OpenXmlWriter : XmlWriter
     {

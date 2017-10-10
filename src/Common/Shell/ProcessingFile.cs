@@ -1,7 +1,7 @@
 
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.Shell
+namespace b2xtranslator.Shell
 {
     public class ProcessingFile
     {

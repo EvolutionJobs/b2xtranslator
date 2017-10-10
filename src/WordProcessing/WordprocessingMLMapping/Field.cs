@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.DocFileFormat;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.DocFileFormat;
 
-namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
+namespace b2xtranslator.WordprocessingMLMapping
 {
     public class Field : IVisitable
     {

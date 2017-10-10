@@ -1,4 +1,4 @@
-namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.PresentationML
+namespace b2xtranslator.OpenXmlLib.PresentationML
 {
     public class NotePart : SlidePart
     {

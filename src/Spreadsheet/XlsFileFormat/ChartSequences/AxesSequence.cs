@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Records;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat
+namespace b2xtranslator.Spreadsheet.XlsFileFormat
 {
     public class AxesSequence : BiffRecordSequence, IVisitable
     {

@@ -2,7 +2,7 @@
 
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     [OfficeRecord(0xF000)]
     public class DrawingGroup : RegularContainer

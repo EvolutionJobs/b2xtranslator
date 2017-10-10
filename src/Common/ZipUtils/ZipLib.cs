@@ -26,7 +26,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Collections;
 
-namespace DIaLOGIKa.b2xtranslator.ZipUtils
+namespace b2xtranslator.ZipUtils
 {
     /// <summary>Support methods for uncompressing zip files.</summary>
     /// <remarks>

@@ -1,9 +1,9 @@
 using System.IO;
 using System.Drawing;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Tools;
 using System.IO.Compression;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     [OfficeRecord(new ushort[] { 0xF01A, 0xF01B, 0xF01C })]
     public class MetafilePictBlip : Record

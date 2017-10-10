@@ -1,4 +1,4 @@
-﻿namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.WordprocessingML
+﻿namespace b2xtranslator.OpenXmlLib.WordprocessingML
 {
     public class CustomXmlPropertiesPart : OpenXmlPart
     {

@@ -2,14 +2,14 @@
 
 using System;
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.PptFileFormat;
-using DIaLOGIKa.b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.PptFileFormat;
+using b2xtranslator.CommonTranslatorLib;
 using System.Xml;
-using DIaLOGIKa.b2xtranslator.OpenXmlLib;
-using DIaLOGIKa.b2xtranslator.OfficeDrawing;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.OpenXmlLib;
+using b2xtranslator.OfficeDrawing;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
+namespace b2xtranslator.PresentationMLMapping
 {
     class CharacterRunPropsMapping :
         AbstractOpenXmlMapping
@@ -227,7 +227,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 this._writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
                 try
                 {
-                    var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                    var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
                     var entity = fonts.entities[(int)run.TypefaceIdx];
                     if (entity.TypeFace.IndexOf('\0') > 0)
                     {
@@ -258,7 +258,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             {
                 this._writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
 
-                var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
                 var entity = fonts.entities[(int)defaultStyle.CRuns[lvl].TypefaceIdx];
                 if (entity.TypeFace.IndexOf('\0') > 0)
                 {
@@ -286,7 +286,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                                 {
                                     this._writer.WriteStartElement("a", "latin", OpenXmlNamespaces.DrawingML);
 
-                                    var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                                    var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
                                     var entity = fonts.entities[(int)item.CRuns[0].TypefaceIdx];
                                     if (entity.TypeFace.IndexOf('\0') > 0)
                                     {
@@ -309,7 +309,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                 //            CharacterRun cr = _ctx.Ppt.DocumentRecord.FirstChildWithType<PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>().CRuns[0];
                 //            if (cr.TypefacePresent)
                 //            {
-                //                    FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                //                    FontCollection fonts = _ctx.Ppt.DocumentRecord.FirstChildWithType<b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
                 //                    FontEntityAtom entity = fonts.entities[(int)cr.TypefaceIdx];
                 //                    if (entity.TypeFace.IndexOf('\0') > 0)
                 //                    {
@@ -336,7 +336,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
             {
                 try
                 {
-                    var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                    var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
                     var entity = fonts.entities[(int)run.FEOldTypefaceIdx];
                     if (entity.TypeFace.IndexOf('\0') > 0)
                     {
@@ -363,7 +363,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
                     var cr = this._ctx.Ppt.DocumentRecord.FirstChildWithType<PptFileFormat.Environment>().FirstChildWithType<TextMasterStyleAtom>().CRuns[0];
                     if (cr.FEOldTypefacePresent)
                     {
-                        var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                        var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
                         var entity = fonts.entities[(int)cr.FEOldTypefaceIdx];
                         if (entity.TypeFace.IndexOf('\0') > 0)
                         {
@@ -391,7 +391,7 @@ namespace DIaLOGIKa.b2xtranslator.PresentationMLMapping
 
                 try
                 {
-                    var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<DIaLOGIKa.b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
+                    var fonts = this._ctx.Ppt.DocumentRecord.FirstChildWithType<b2xtranslator.PptFileFormat.Environment>().FirstChildWithType<FontCollection>();
                     var entity = fonts.entities[(int)run.SymbolTypefaceIdx];
                     if (entity.TypeFace.IndexOf('\0') > 0)
                     {

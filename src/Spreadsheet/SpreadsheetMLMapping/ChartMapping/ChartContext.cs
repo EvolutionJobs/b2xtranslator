@@ -1,7 +1,7 @@
-﻿using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat;
+﻿using b2xtranslator.OpenXmlLib.DrawingML;
+using b2xtranslator.Spreadsheet.XlsFileFormat;
 
-namespace DIaLOGIKa.b2xtranslator.SpreadsheetMLMapping
+namespace b2xtranslator.SpreadsheetMLMapping
 {
     /// <summary>
     /// A container class storing information required by the chart mapping classes 

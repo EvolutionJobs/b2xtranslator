@@ -1,7 +1,7 @@
 using System.IO;
 using System.Drawing;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     [OfficeRecord(0xF00F)]
     public class ChildAnchor : Record

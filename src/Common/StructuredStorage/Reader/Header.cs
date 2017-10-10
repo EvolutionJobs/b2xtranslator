@@ -1,7 +1,7 @@
 using System;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.StructuredStorage.Common;
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
+namespace b2xtranslator.StructuredStorage.Reader
 {
     /// <summary>
     /// Encapsulates the header of a compound file

@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Drawing;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     [OfficeRecord(0xF009)]
     public class GroupShapeRecord : Record

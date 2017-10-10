@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Ptg;
+using b2xtranslator.Spreadsheet.XlsFileFormat.Ptg;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
 {
     /// <summary>
     /// This class stores the data about cell with a reference to a value in the 

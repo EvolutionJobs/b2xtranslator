@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     [OfficeRecord(0xF00B, 0xF121, 0xF122)]
     public class ShapeOptions : Record

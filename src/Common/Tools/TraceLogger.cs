@@ -1,6 +1,6 @@
 using System;
 
-namespace DIaLOGIKa.b2xtranslator.Tools
+namespace b2xtranslator.Tools
 {
     public static class TraceLogger
     {

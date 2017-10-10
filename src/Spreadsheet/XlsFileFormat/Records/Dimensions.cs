@@ -1,9 +1,9 @@
 
 
 using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
     /// <summary>
     /// This record specifies the number of non-empty rows and the number of non-empty cells in the longest row of a Graph object.

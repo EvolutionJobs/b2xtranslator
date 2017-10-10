@@ -1,7 +1,7 @@
 
 
 
-namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+namespace b2xtranslator.PptFileFormat
 {
     /// <summary>
     /// Marker interface used for marking Records that contain text data

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 using System.IO;
 using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Tools;
 
 namespace CompoundFileExtractTest
 {

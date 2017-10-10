@@ -1,7 +1,7 @@
 ﻿
 
 
-namespace DIaLOGIKa.b2xtranslator.OfficeGraph
+namespace b2xtranslator.OfficeGraph
 {
     public enum GraphRecordNumber : ushort
     {

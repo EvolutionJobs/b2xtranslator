@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.StructuredStorage.Common;
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
+namespace b2xtranslator.StructuredStorage.Reader
 {
     /// <summary>
     /// Represents the Fat in a compound file

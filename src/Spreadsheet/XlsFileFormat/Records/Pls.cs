@@ -1,9 +1,9 @@
 
 using System.Diagnostics;
 using System.IO;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
     [BiffRecord(RecordType.Pls)] 
     public class Pls : BiffRecord

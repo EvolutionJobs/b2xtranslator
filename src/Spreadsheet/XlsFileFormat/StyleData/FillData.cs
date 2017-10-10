@@ -1,6 +1,6 @@
 
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.StyleData
 {
     public class FillData : System.Object
     {

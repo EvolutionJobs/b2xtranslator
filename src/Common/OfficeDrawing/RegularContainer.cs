@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     /// <summary>
     /// Regular containers are containers with Record children.<br/>

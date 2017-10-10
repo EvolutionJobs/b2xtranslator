@@ -1,8 +1,8 @@
 using System;
-using DIaLOGIKa.b2xtranslator.Tools;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.Tools;
+using b2xtranslator.StructuredStorage.Common;
 
-namespace DIaLOGIKa.b2xtranslator.StructuredStorage.Reader
+namespace b2xtranslator.StructuredStorage.Reader
 {
     /// <summary>
     /// Encapsulates a directory entry

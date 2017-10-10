@@ -1,6 +1,6 @@
-using DIaLOGIKa.b2xtranslator.OpenXmlLib.DrawingML;
+using b2xtranslator.OpenXmlLib.DrawingML;
 
-namespace DIaLOGIKa.b2xtranslator.OpenXmlLib.SpreadsheetML
+namespace b2xtranslator.OpenXmlLib.SpreadsheetML
 {
 
     public class WorksheetPart : OpenXmlPart

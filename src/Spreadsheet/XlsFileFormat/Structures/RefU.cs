@@ -1,6 +1,6 @@
-﻿using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
+﻿using b2xtranslator.StructuredStorage.Reader;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Structures
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 {
     /// <summary>
     /// A structure that specifies a range of cells on the sheet.

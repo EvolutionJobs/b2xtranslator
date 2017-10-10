@@ -3,7 +3,7 @@
 using System;
 using System.IO;
 
-namespace DIaLOGIKa.b2xtranslator.PptFileFormat
+namespace b2xtranslator.PptFileFormat
 {
     public enum SlideLayoutType
     {

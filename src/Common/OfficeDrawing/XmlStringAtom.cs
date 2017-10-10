@@ -1,7 +1,7 @@
 using System.IO;
 using System.Xml;
 
-namespace DIaLOGIKa.b2xtranslator.OfficeDrawing
+namespace b2xtranslator.OfficeDrawing
 {
     /// <summary>
     /// XML string atoms are atom elements which have a XML payload string as their content.

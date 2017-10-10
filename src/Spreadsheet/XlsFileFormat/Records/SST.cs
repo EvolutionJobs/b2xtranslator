@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.Tools;
+using b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
 
-namespace DIaLOGIKa.b2xtranslator.Spreadsheet.XlsFileFormat.Records
+namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 {
     /// <summary>
     /// This class extracts the SST-Record Data from the specific biffrecord 

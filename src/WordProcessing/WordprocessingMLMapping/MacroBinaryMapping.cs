@@ -1,9 +1,9 @@
 using System;
-using DIaLOGIKa.b2xtranslator.DocFileFormat;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Reader;
-using DIaLOGIKa.b2xtranslator.StructuredStorage.Writer;
+using b2xtranslator.DocFileFormat;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.StructuredStorage.Writer;
 
-namespace DIaLOGIKa.b2xtranslator.WordprocessingMLMapping
+namespace b2xtranslator.WordprocessingMLMapping
 {
     public class MacroBinaryMapping : DocumentMapping
     {
