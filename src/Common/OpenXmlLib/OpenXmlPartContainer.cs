@@ -18,27 +18,27 @@ namespace b2xtranslator.OpenXmlLib
 
         protected OpenXmlPartContainer _parent = null;
 
-        public virtual string TargetName 
-        { 
-            get 
-            { 
-                return ""; 
-            } 
-        }
-        
-        public virtual string TargetExt 
+        public virtual string TargetName
         {
             get
-            { 
-                return ""; 
-            } 
+            {
+                return "";
+            }
         }
-        
-        public virtual string TargetDirectory 
-        { 
-            get 
-            { 
-                return ""; 
+
+        public virtual string TargetExt
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        public virtual string TargetDirectory
+        {
+            get
+            {
+                return "";
             }
             set
             {
@@ -142,8 +142,8 @@ namespace b2xtranslator.OpenXmlLib
             else
             {
                 string path = "/" + part.TargetFullName.Replace('\\', '/');
-                path = path.Replace("/ppt/slideMasters/media/", "/ppt/media/").Replace("/ppt/slideMasters/../slideLayouts/media/", "/ppt/media/").Replace("/ppt/notesSlides/../media/", "/ppt/media/").Replace("/ppt/slides/../drawings/../media", "ppt/media/").Replace("/ppt/slides/../drawings","/ppt/drawings");
-                part.Package.AddContentTypeOverride(path , part.ContentType);
+                path = path.Replace("/ppt/slideMasters/media/", "/ppt/media/").Replace("/ppt/slideMasters/../slideLayouts/media/", "/ppt/media/").Replace("/ppt/notesSlides/../media/", "/ppt/media/").Replace("/ppt/slides/../drawings/../media", "ppt/media/").Replace("/ppt/slides/../drawings", "/ppt/drawings");
+                part.Package.AddContentTypeOverride(path, part.ContentType);
             }
 
             return part;
@@ -203,7 +203,7 @@ namespace b2xtranslator.OpenXmlLib
                     writer.WriteStartElement("Relationship", OpenXmlNamespaces.RelationsshipsPackage);
                     writer.WriteAttributeString("Id", rel.Id);
                     writer.WriteAttributeString("Type", rel.RelationshipType);
-                    if (Uri.IsWellFormedUriString(rel.Target,UriKind.RelativeOrAbsolute))
+                    if (Uri.IsWellFormedUriString(rel.Target, UriKind.RelativeOrAbsolute))
                     {
                         if (rel.TargetUri.IsAbsoluteUri)
                         {

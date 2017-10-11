@@ -6,7 +6,7 @@ using System.IO.Compression; // Replaces using b2xtranslator.ZipUtils;
 
 namespace b2xtranslator.OpenXmlLib
 {
-    public sealed class OpenXmlWriter : XmlWriter
+    public sealed class OpenXmlWriter : IDisposable
     {
         /// <summary>Hold the settings required in Open XML ZIP files.</summary>
         readonly static XmlWriterSettings xmlWriterSettings = new XmlWriterSettings
@@ -38,13 +38,7 @@ namespace b2xtranslator.OpenXmlLib
         {
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-                this.Close();
-
-            base.Dispose(disposing);
-        }
+        public void Dispose() => this.Close();
 
         public void Open(string fileName)
         {
@@ -59,7 +53,7 @@ namespace b2xtranslator.OpenXmlLib
             this.outputArchive = new ZipArchive(output, ZipArchiveMode.Update);
         }
 
-        public override void Close()
+        public void Close()
         {
             // close streams
             if (this.xmlEntryWriter != null)
@@ -127,79 +121,85 @@ namespace b2xtranslator.OpenXmlLib
                 this.entryStream.Write(buffer, 0, bytesRead);
         }
 
-        public override void WriteStartElement(string prefix, string localName, string ns) =>
+        public void WriteStartElement(string prefix, string localName, string ns) =>
             this.XmlWriter.WriteStartElement(prefix, localName, ns);
 
-        public override void WriteEndElement() =>
+        public void WriteStartElement(string localName, string ns) =>
+            this.XmlWriter.WriteStartElement(localName, ns);
+
+        public void WriteEndElement() =>
             this.XmlWriter.WriteEndElement();
 
-        public override void WriteStartAttribute(string prefix, string localName, string ns) =>
+        public void WriteStartAttribute(string prefix, string localName, string ns) =>
             this.XmlWriter.WriteStartAttribute(prefix, localName, ns);
 
         public void WriteAttributeValue(string prefix, string localName, string ns, string value) =>
             this.XmlWriter.WriteAttributeString(prefix, localName, ns, value);
 
-        public override void WriteEndAttribute() =>
+        public void WriteAttributeString(string localName, string value) =>
+            this.XmlWriter.WriteAttributeString(localName, value);
+
+        public void WriteEndAttribute() =>
             this.XmlWriter.WriteEndAttribute();
 
-        public override void WriteString(string text) =>
+        public void WriteString(string text) =>
             this.XmlWriter.WriteString(text);
 
-        public override void WriteFullEndElement() =>
+        public void WriteFullEndElement() =>
             this.XmlWriter.WriteFullEndElement();
 
-        public override void WriteCData(string s) =>
+        public void WriteCData(string s) =>
             this.XmlWriter.WriteCData(s);
 
-        public override void WriteComment(string s) =>
+        public void WriteComment(string s) =>
             this.XmlWriter.WriteComment(s);
 
-        public override void WriteProcessingInstruction(string name, string text) =>
+        public void WriteProcessingInstruction(string name, string text) =>
             this.XmlWriter.WriteProcessingInstruction(name, text);
 
-        public override void WriteEntityRef(string name) =>
+        public void WriteEntityRef(string name) =>
             this.XmlWriter.WriteEntityRef(name);
 
-        public override void WriteCharEntity(char c) =>
+        public void WriteCharEntity(char c) =>
             this.XmlWriter.WriteCharEntity(c);
 
-        public override void WriteWhitespace(string s) =>
+        public void WriteWhitespace(string s) =>
             this.XmlWriter.WriteWhitespace(s);
 
-        public override void WriteSurrogateCharEntity(char lowChar, char highChar) =>
+        public void WriteSurrogateCharEntity(char lowChar, char highChar) =>
             this.XmlWriter.WriteSurrogateCharEntity(lowChar, highChar);
 
-        public override void WriteChars(char[] buffer, int index, int count) =>
+        public void WriteChars(char[] buffer, int index, int count) =>
             this.XmlWriter.WriteChars(buffer, index, count);
 
-        public override void WriteRaw(char[] buffer, int index, int count) =>
+        public void WriteRaw(char[] buffer, int index, int count) =>
             this.XmlWriter.WriteRaw(buffer, index, count);
 
-        public override void WriteRaw(string data) =>
+        public void WriteRaw(string data) =>
             this.XmlWriter.WriteRaw(data);
 
-        public override void WriteBase64(byte[] buffer, int index, int count) =>
+        public void WriteBase64(byte[] buffer, int index, int count) =>
             this.XmlWriter.WriteBase64(buffer, index, count);
 
-        public override WriteState WriteState =>
+        public WriteState WriteState =>
             this.XmlWriter.WriteState;
 
-        public override void Flush() =>
+        public void Flush() =>
             this.XmlWriter.Flush();
 
-        public override string LookupPrefix(string ns) =>
+        public string LookupPrefix(string ns) =>
             this.XmlWriter.LookupPrefix(ns);
 
-        public override void WriteDocType(string name, string pubid, string sysid, string subset) =>
+        public void WriteDocType(string name, string pubid, string sysid, string subset) =>
             throw new NotImplementedException();
 
-        public override void WriteEndDocument() =>
+        public void WriteEndDocument() =>
             this.XmlWriter.WriteEndDocument();
 
-        public override void WriteStartDocument(bool standalone) =>
+        public void WriteStartDocument(bool standalone) =>
             this.XmlWriter.WriteStartDocument(standalone);
 
-        public override void WriteStartDocument() =>
+        public void WriteStartDocument() =>
             this.XmlWriter.WriteStartDocument();
     }
 }
