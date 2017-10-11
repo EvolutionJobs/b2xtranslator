@@ -10,7 +10,8 @@ namespace b2xtranslator.DocFileFormat
 {
     public class WordDocument : IVisitable
     {
-        static WordDocument() {
+        static WordDocument()
+        {
             Record.UpdateTypeToRecordClassMapping(Assembly.GetExecutingAssembly(), typeof(WordDocument).Namespace);
         }
 
@@ -200,27 +201,17 @@ namespace b2xtranslator.DocFileFormat
             if ((int)this.FIB.nFib != 0)
             {
                 if (this.FIB.nFib < FileInformationBlock.FibVersion.Fib1997Beta)
-                {
                     throw new ByteParseException("Could not parse the file because it was created by an unsupported application (Word 95 or older).");
-                }
             }
             else
             {
                 if (this.FIB.nFibNew < FileInformationBlock.FibVersion.Fib1997Beta)
-                {
                     throw new ByteParseException("Could not parse the file because it was created by an unsupported application (Word 95 or older).");
-                }
             }
 
             //get the streams
-            if (this.FIB.fWhichTblStm)
-            {
-                this.TableStream = reader.GetStream("1Table");
-            }
-            else
-            {
-                this.TableStream = reader.GetStream("0Table");
-            }
+            this.TableStream = reader.GetStream(this.FIB.fWhichTblStm ? "1Table" : "0Table");
+
             try
             {
                 this.DataStream = reader.GetStream("Data");
@@ -237,7 +228,8 @@ namespace b2xtranslator.DocFileFormat
             this.AutoTextNames = new StringTable(typeof(string), this.TableStream, this.FIB.fcSttbfGlsy, this.FIB.lcbSttbfGlsy);
             //this.ProtectionUsers = new StringTable(typeof(String), this.TableStream, this.FIB.fcSttbProtUser, this.FIB.lcbSttbProtUser);
             //
-            this.UserVariables = new StwStructure(this.TableStream, this.FIB.fcStwUser, this.FIB.lcbStwUser);
+
+            //this.UserVariables = new StwStructure(this.TableStream, this.FIB.fcStwUser, this.FIB.lcbStwUser);
 
             //Read all needed PLCFs
             this.AnnotationsReferencePlex = new Plex<AnnotationReferenceDescriptor>(30, this.TableStream, this.FIB.fcPlcfandRef, this.FIB.lcbPlcfandRef);
@@ -247,7 +239,7 @@ namespace b2xtranslator.DocFileFormat
             this.OfficeDrawingPlexHeader = new Plex<FileShapeAddress>(26, this.TableStream, this.FIB.fcPlcSpaHdr, this.FIB.lcbPlcSpaHdr);
             this.SectionPlex = new Plex<SectionDescriptor>(12, this.TableStream, this.FIB.fcPlcfSed, this.FIB.lcbPlcfSed);
             this.BookmarkStartPlex = new Plex<BookmarkFirst>(4, this.TableStream, this.FIB.fcPlcfBkf, this.FIB.lcbPlcfBkf);
-            this.EndnoteReferencePlex = new Plex<short>( 2, this.TableStream, this.FIB.fcPlcfendRef, this.FIB.lcbPlcfendRef);
+            this.EndnoteReferencePlex = new Plex<short>(2, this.TableStream, this.FIB.fcPlcfendRef, this.FIB.lcbPlcfendRef);
             this.FootnoteReferencePlex = new Plex<short>(2, this.TableStream, this.FIB.fcPlcffndRef, this.FIB.lcbPlcffndRef);
             // PLCFs without types
             this.BookmarkEndPlex = new Plex<Exception>(0, this.TableStream, this.FIB.fcPlcfBkl, this.FIB.lcbPlcfBkl);
@@ -316,7 +308,7 @@ namespace b2xtranslator.DocFileFormat
         {
             var list = new List<int>();
 
-            for (int i = 0; i < this.AllChpxFkps.Count; i++ )
+            for (int i = 0; i < this.AllChpxFkps.Count; i++)
             {
                 var fkp = this.AllChpxFkps[i];
 
@@ -339,7 +331,7 @@ namespace b2xtranslator.DocFileFormat
 
                 //last fkp? 
                 //use full table
-                if (i == (this.AllChpxFkps.Count-1))
+                if (i == (this.AllChpxFkps.Count - 1))
                 {
                     max = fkp.rgfc.Length;
                 }
@@ -374,7 +366,7 @@ namespace b2xtranslator.DocFileFormat
         {
             var list = new List<CharacterPropertyExceptions>();
 
-            foreach(var fkp in this.AllChpxFkps)
+            foreach (var fkp in this.AllChpxFkps)
             {
                 //get the CHPX
                 for (int j = 0; j < fkp.grpchpx.Length; j++)

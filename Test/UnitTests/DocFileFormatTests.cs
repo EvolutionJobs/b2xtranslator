@@ -1,13 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
 using b2xtranslator.DocFileFormat;
 using b2xtranslator.StructuredStorage.Reader;
-using System.IO;
-using System.Xml;
 using Microsoft.Office.Interop.Word;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
+using System.Text;
+using System.Xml;
 
 namespace UnitTests
 {
@@ -76,16 +76,8 @@ namespace UnitTests
         {
             foreach (var inputFile in this.files)
             {
-                try
-                {
-                    var reader = new StructuredStorageReader(inputFile.FullName);
-                    var doc = new WordDocument(reader);
-                    Console.WriteLine("PASSED TestParseability " + inputFile.FullName);
-                }
-                catch (Exception e)
-                {
-                    throw new AssertionException(e.Message + inputFile.FullName, e);
-                }
+                var reader = new StructuredStorageReader(inputFile.FullName);
+                var doc = new WordDocument(reader);
             }
         }
 
@@ -95,40 +87,27 @@ namespace UnitTests
         {
             foreach (var inputFile in this.files)
             {
-                var omDoc = loadDocument(inputFile.FullName);
+                var omDoc = LoadDocument(inputFile.FullName);
                 var dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
 
                 string dffRevisionNumber = dffDoc.DocumentProperties.nRevision.ToString();
                 string omRevisionNumber = (string)getDocumentProperty(omDoc, "Revision number");
 
-                object omCreationDate = (DateTime)getDocumentProperty(omDoc, "Creation date");
+                var omCreationDate = (DateTime?)getDocumentProperty(omDoc, "Creation date");
                 var dffCreationDate = dffDoc.DocumentProperties.dttmCreated.ToDateTime();
-                
-                object omLastPrintedDate = getDocumentProperty(omDoc, "Last print date");
+
+                var omLastPrintedDate = (DateTime?)getDocumentProperty(omDoc, "Last print date");
                 var dffLastPrintedDate = dffDoc.DocumentProperties.dttmLastPrint.ToDateTime();
 
                 omDoc.Close(ref this.saveChanges, ref this.originalFormat, ref this.routeDocument);
 
-                try
-                {
-                    Assert.AreEqual(omRevisionNumber, dffRevisionNumber);
+                Assert.AreEqual(omRevisionNumber, dffRevisionNumber, $"Invalid revision number for {inputFile.FullName}");
 
-                    if (omCreationDate != null && ((DateTime)omCreationDate).Year != 1601)
-                    {
-                        Assert.AreEqual((DateTime)omCreationDate, dffCreationDate);
-                    }
+                if ((omCreationDate?.Year ?? 1601) != 1601)
+                    Assert.AreEqual(omCreationDate.Value, dffCreationDate, $"Invalid creation date for {inputFile.FullName}");
 
-                    if (omLastPrintedDate != null && ((DateTime)omLastPrintedDate).Year != 1601)
-                    {
-                        Assert.AreEqual((DateTime)omLastPrintedDate, dffLastPrintedDate);
-                    }
-
-                    Console.WriteLine("PASSED TestProperties " + inputFile.FullName);
-                }
-                catch (AssertionException e)
-                {
-                    throw new AssertionException(e.Message + inputFile.FullName, e);
-                }
+                if ((omLastPrintedDate?.Year ?? 1601) != 1601)
+                    Assert.AreEqual(omLastPrintedDate.Value, dffLastPrintedDate, $"Invalid print date for {inputFile.FullName}");
             }
         }
 
@@ -137,43 +116,26 @@ namespace UnitTests
         /// 
         /// </summary>
         public void TestCharacters()
-        { 
+        {
             foreach (var inputFile in this.files)
             {
-                var omDoc = loadDocument(inputFile.FullName);
+                var omDoc = LoadDocument(inputFile.FullName);
                 var dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
                 omDoc.Fields.ToggleShowCodes();
 
                 var omText = new StringBuilder();
                 var omMainText = omDoc.StoryRanges[WdStoryType.wdMainTextStory].Text.ToCharArray();
-                foreach(char c in omMainText)
-                {
+                foreach (char c in omMainText)
                     if ((int)c > 0x20)
-                    {
                         omText.Append(c);
-                    }
-                }
 
                 var dffText = new StringBuilder();
                 var dffMainText = dffDoc.Text.GetRange(0, dffDoc.FIB.ccpText);
                 foreach (char c in dffMainText)
-                {
                     if ((int)c > 0x20)
-                    {
                         dffText.Append(c);
-                    }
-                }
 
-                try
-                {
-                    Assert.AreEqual(omText.ToString(), dffText.ToString());
-
-                    Console.WriteLine("PASSED TestCharacters " + inputFile.FullName);
-                }
-                catch (AssertionException e)
-                {
-                    throw new AssertionException(e.Message + inputFile.FullName, e);
-                }
+                Assert.AreEqual(omText.ToString(), dffText.ToString(), $"Invalid characters for {inputFile.FullName}");
             }
         }
 
@@ -187,7 +149,7 @@ namespace UnitTests
         {
             foreach (var inputFile in this.files)
             {
-                var omDoc = loadDocument(inputFile.FullName);
+                var omDoc = LoadDocument(inputFile.FullName);
                 var dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
                 omDoc.Bookmarks.ShowHidden = true;
 
@@ -212,39 +174,29 @@ namespace UnitTests
                     //get the bookmark with the same name from DFF
                     int dffIndex = 0;
                     for (int i = 0; i < dffDoc.BookmarkNames.Strings.Count; i++)
-                    {
                         if (dffDoc.BookmarkNames.Strings[i] == omBookmark.Name)
                         {
                             dffIndex = i;
                             break;
                         }
-                    }
+
                     dffBookmarkStart = dffDoc.BookmarkStartPlex.CharacterPositions[dffIndex];
                     dffBookmarkEnd = dffDoc.BookmarkEndPlex.CharacterPositions[dffIndex];
                 }
 
                 omDoc.Close(ref this.saveChanges, ref this.originalFormat, ref this.routeDocument);
 
-                try
-                {
-                    //compare bookmark count
-                    Assert.AreEqual(omBookmarkCount, dffBookmarkCount);
+                //compare bookmark count
+                Assert.AreEqual(omBookmarkCount, dffBookmarkCount, $"Invalid count of bookmarks for {inputFile.FullName}");
 
-                    //compare bookmark start
-                    Assert.AreEqual(omBookmarkStart, dffBookmarkStart);
+                //compare bookmark start
+                Assert.AreEqual(omBookmarkStart, dffBookmarkStart, $"Invalid bookmark start for {inputFile.FullName}");
 
-                    //compare bookmark end
-                    Assert.AreEqual(omBookmarkEnd, dffBookmarkEnd);
-
-                    Console.WriteLine("PASSED TestBookmarks " + inputFile.FullName);
-                }
-                catch (AssertionException e)
-                {
-                    throw new AssertionException(e.Message + inputFile.FullName, e);
-                }
+                //compare bookmark end
+                Assert.AreEqual(omBookmarkEnd, dffBookmarkEnd, $"Invalid bookmark end for {inputFile.FullName}");
             }
         }
-        
+
 
         /// <summary>
         /// Tests the count of of comments in the documents.
@@ -255,7 +207,7 @@ namespace UnitTests
         {
             foreach (var inputFile in this.files)
             {
-                var omDoc = loadDocument(inputFile.FullName);
+                var omDoc = LoadDocument(inputFile.FullName);
                 var dffDoc = new WordDocument(new StructuredStorageReader(inputFile.FullName));
 
                 int dffCommentCount = dffDoc.AnnotationsReferencePlex.Elements.Count;
@@ -268,7 +220,7 @@ namespace UnitTests
                 if (dffCommentCount > 0 && omCommentCount > 0)
                 {
                     var omFirstComment = omDoc.Comments[1];
-                    var dffFirstComment = (AnnotationReferenceDescriptor)dffDoc.AnnotationsReferencePlex.Elements[0];
+                    var dffFirstComment = dffDoc.AnnotationsReferencePlex.Elements[0];
 
                     omFirstCommentInitial = omFirstComment.Initial;
                     omFirstCommentAuthor = omFirstComment.Author;
@@ -276,30 +228,21 @@ namespace UnitTests
                     dffFirstCommentInitial = dffFirstComment.UserInitials;
                     dffFirstCommentAuthor = dffDoc.AnnotationOwners[dffFirstComment.AuthorIndex];
                 }
-                
+
                 omDoc.Close(ref this.saveChanges, ref this.originalFormat, ref this.routeDocument);
 
-                try
-                {
-                    //compare comment count
-                    Assert.AreEqual(omCommentCount, dffCommentCount);
+                //compare comment count
+                Assert.AreEqual(omCommentCount, dffCommentCount, $"Invalid comment count for {inputFile.FullName}");
 
-                    //compare initials
-                    Assert.AreEqual(omFirstCommentInitial, dffFirstCommentInitial);
+                //compare initials
+                Assert.AreEqual(omFirstCommentInitial, dffFirstCommentInitial, $"Invalid first comment for {inputFile.FullName}");
 
-                    //compate the author names
-                    Assert.AreEqual(omFirstCommentAuthor, dffFirstCommentAuthor);
-
-                    Console.WriteLine("PASSED TestComments " + inputFile.FullName);
-                }
-                catch (AssertionException e)
-                {
-                    throw new AssertionException(e.Message + inputFile.FullName, e);
-                }
+                //compate the author names
+                Assert.AreEqual(omFirstCommentAuthor, dffFirstCommentAuthor, $"Invalid author name for {inputFile.FullName}");
             }
         }
 
-        private Document loadDocument(object filename)
+        Document LoadDocument(object filename)
         {
             return this.word2007.Documents.Open(
                 ref filename,
@@ -320,7 +263,7 @@ namespace UnitTests
                 ref this.noEncodingDialog);
         }
 
-        private object getDocumentProperty(Document document, string propertyName)
+        object getDocumentProperty(Document document, string propertyName)
         {
             object propertyValue = null;
             try
@@ -339,6 +282,5 @@ namespace UnitTests
 
             return propertyValue;
         }
-
     }
 }

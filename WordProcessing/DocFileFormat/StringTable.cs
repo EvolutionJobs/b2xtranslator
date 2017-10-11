@@ -27,7 +27,7 @@ namespace b2xtranslator.DocFileFormat
             this.Strings = new List<string>();
             this.Data = new List<ByteStructure>();
 
-            this.parse(dataType, reader, (uint)reader.BaseStream.Position);
+            this.Parse(dataType, reader, (uint)reader.BaseStream.Position);
         }
 
         public StringTable(Type dataType, VirtualStream tableStream, uint fc, uint lcb)
@@ -38,11 +38,11 @@ namespace b2xtranslator.DocFileFormat
             if (lcb > 0)
             {
                 tableStream.Seek((long)fc, System.IO.SeekOrigin.Begin);
-                this.parse(dataType, new VirtualStreamReader(tableStream), fc);
+                this.Parse(dataType, new VirtualStreamReader(tableStream), fc);
             }
         }
 
-        void parse(Type dataType, VirtualStreamReader reader, uint fc)
+        void Parse(Type dataType, VirtualStreamReader reader, uint fc)
         {
             //read fExtend
             if (reader.ReadUInt16() == 0xFFFF)
