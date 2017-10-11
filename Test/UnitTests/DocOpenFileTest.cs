@@ -12,29 +12,29 @@ using System.Xml;
 namespace UnitTests
 {
     [TestFixture]
-    public class DocFileFormatTests
+    public class DocOpenFileTest
     {
-        private Application word2007 = null;
-        private List<FileInfo> files;
-        private object confirmConversions = Type.Missing;
-        private object readOnly = true;
-        private object addToRecentFiles = Type.Missing;
-        private object passwordDocument = Type.Missing;
-        private object passwordTemplate = Type.Missing;
-        private object revert = Type.Missing;
-        private object writePasswordDocument = Type.Missing;
-        private object writePasswordTemplate = Type.Missing;
-        private object format = Type.Missing;
-        private object encoding = Type.Missing;
-        private object visible = Type.Missing;
-        private object openConflictDocument = Type.Missing;
-        private object openAndRepair = Type.Missing;
-        private object documentDirection = Type.Missing;
-        private object noEncodingDialog = Type.Missing;
+        Application word2007 = null;
+        List<FileInfo> files;
+        object confirmConversions = Type.Missing;
+        object readOnly = true;
+        object addToRecentFiles = Type.Missing;
+        object passwordDocument = Type.Missing;
+        object passwordTemplate = Type.Missing;
+        object revert = Type.Missing;
+        object writePasswordDocument = Type.Missing;
+        object writePasswordTemplate = Type.Missing;
+        object format = Type.Missing;
+        object encoding = Type.Missing;
+        object visible = Type.Missing;
+        object openConflictDocument = Type.Missing;
+        object openAndRepair = Type.Missing;
+        object documentDirection = Type.Missing;
+        object noEncodingDialog = Type.Missing;
 
-        private object saveChanges = false;
-        private object originalFormat = false;
-        private object routeDocument = false;
+        object saveChanges = false;
+        object originalFormat = false;
+        object routeDocument = false;
 
 
         [OneTimeSetUp]

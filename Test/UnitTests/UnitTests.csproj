@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Config.xml" />
+    <None Remove="files\simple.xls" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.xml">
@@ -14,7 +15,10 @@
     <Content Include="files\simple.doc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="files\simple.docx" />
+    <Content Include="files\simple.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="files\simple.xls" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />

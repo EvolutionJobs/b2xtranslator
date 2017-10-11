@@ -1,16 +1,18 @@
-using System.Text;
-using System.IO;
-using b2xtranslator.OpenXmlLib.WordprocessingML;
-using b2xtranslator.OpenXmlLib.PresentationML;
 using b2xtranslator.OpenXmlLib;
+using b2xtranslator.OpenXmlLib.PresentationML;
+using b2xtranslator.OpenXmlLib.WordprocessingML;
+using NUnit.Framework;
+using System.Text;
 
-namespace b2xtranslator.DocFileFormatTest
+namespace UnitTests
 {
-    class Program
+    [TestFixture]
+    public class OpenXmlLibTest
     {
-        static void Main(string[] args)
+        [Test]
+        public void DirectWrite()
         {
-            var doc = WordprocessingDocument.Create(@"C:\tmp\testOpenXmlLib.docx", OpenXmlPackage.DocumentType.Document);
+            var doc = WordprocessingDocument.Create(@"files\testOpenXmlLib.docx", OpenXmlPackage.DocumentType.Document);
 
             var part = doc.MainDocumentPart;
 
@@ -28,7 +30,7 @@ namespace b2xtranslator.DocFileFormatTest
             doc.Close();
 
 
-            var presentation = PresentationDocument.Create(@"C:\tmp\testOpenXmlLib.pptx", OpenXmlPackage.DocumentType.Document);
+            var presentation = PresentationDocument.Create(@"files\testOpenXmlLib.pptx", OpenXmlPackage.DocumentType.Document);
             var presentationPart = presentation.PresentationPart;
 
             var slide = presentationPart.AddSlidePart();
