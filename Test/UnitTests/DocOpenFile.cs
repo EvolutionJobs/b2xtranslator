@@ -1,4 +1,5 @@
 using b2xtranslator.DocFileFormat;
+using b2xtranslator.OpenXmlLib.WordprocessingML;
 using b2xtranslator.StructuredStorage.Reader;
 using Microsoft.Office.Interop.Word;
 using NUnit.Framework;
@@ -8,11 +9,12 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Xml;
+using static b2xtranslator.OpenXmlLib.OpenXmlPackage;
 
 namespace UnitTests
 {
     [TestFixture]
-    public class DocOpenFileTest
+    public class DocOpenFile
     {
         Application word2007 = null;
         List<FileInfo> files;
@@ -72,7 +74,7 @@ namespace UnitTests
         /// Tests if the inputfile is parsable
         /// </summary>
         [Test]
-        public void TestParseability()
+        public void ParseabilityTest()
         {
             foreach (var inputFile in this.files)
             {
@@ -83,7 +85,21 @@ namespace UnitTests
 
 
         [Test]
-        public void TestProperties()
+        public void SaveTest()
+        {
+            foreach (var inputFile in this.files)
+            {
+                var reader = new StructuredStorageReader(inputFile.FullName);
+                var doc = new WordDocument(reader);
+
+                // Create the output DOCX
+                var docx = WordprocessingDocument.Create(inputFile.FullName + "x", DocumentType.Document);
+                b2xtranslator.WordprocessingMLMapping.Converter.Convert(doc, docx);
+            }
+        }
+
+        [Test]
+        public void PropertiesTest()
         {
             foreach (var inputFile in this.files)
             {
@@ -115,7 +131,7 @@ namespace UnitTests
         /// <summary>
         /// 
         /// </summary>
-        public void TestCharacters()
+        public void CharactersTest()
         {
             foreach (var inputFile in this.files)
             {
@@ -145,7 +161,7 @@ namespace UnitTests
         /// Also tests the start and the end position a randomly selected bookmark.
         /// </summary>
         [Test]
-        public void TestBookmarks()
+        public void BookmarksTest()
         {
             foreach (var inputFile in this.files)
             {
@@ -203,7 +219,7 @@ namespace UnitTests
         /// Also compares the author of the first comment.
         /// </summary>
         [Test]
-        public void TestComments()
+        public void CommentsTest()
         {
             foreach (var inputFile in this.files)
             {

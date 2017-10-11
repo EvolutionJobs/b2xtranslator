@@ -6,7 +6,7 @@ using System;
 namespace UnitTests
 {
     [TestFixture]
-    public class FileFormatTest
+    public class DocFileFormat
     {
         string file = @"files\simple.doc";
         StructuredStorageReader reader;
@@ -28,7 +28,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void FirstCHP()
+        public void FirstCHPTest()
         {
             var chpx = this.doc.AllChpxFkps[0].grpchpx[0];
             var papx = this.doc.AllPapxFkps[0].grppapx[0];
@@ -36,7 +36,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void PieceTable()
+        public void PieceTableTest()
         {
             Console.WriteLine("There are " + this.doc.PieceTable.Pieces.Count + " pieces in the table");
 
@@ -48,7 +48,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void DOP()
+        public void DOPTest()
         {
             var dopBytes = new byte[(int)this.doc.FIB.lcbDop];
             this.doc.TableStream.Read(dopBytes, dopBytes.Length, (int)this.doc.FIB.fcDop);
@@ -61,7 +61,7 @@ namespace UnitTests
         /// prints the contents of the stylesheet
         /// </summary>
         [Test]
-        public void STSH()
+        public void STSHTest()
         {
             var stsh = new StyleSheet(this.doc.FIB, this.doc.TableStream, this.doc.DataStream);
             Console.WriteLine("Stylesheet contains " + stsh.Styles.Count + " Styles");
@@ -107,7 +107,7 @@ namespace UnitTests
         /// Method for testing FKP PAPX
         /// </summary>
         [Test]
-        public void FKPPAPX()
+        public void FKPPAPXTest()
         {
             //Get all PAPX FKPs
             var papxFkps = FormattedDiskPagePAPX.GetAllPAPXFKPs(this.doc.FIB, this.doc.WordDocumentStream, this.doc.TableStream, this.doc.DataStream);
@@ -138,7 +138,7 @@ namespace UnitTests
         /// Method for testing FKP CHPX
         /// </summary>
         [Test]
-        public void FKPCHPX()
+        public void FKPCHPXTest()
         {
             var chpxFkps = FormattedDiskPageCHPX.GetAllCHPXFKPs(this.doc.FIB, this.doc.WordDocumentStream, this.doc.TableStream);
             Console.WriteLine("There are " + chpxFkps.Count + " FKPs with CHPX in this file: \n");

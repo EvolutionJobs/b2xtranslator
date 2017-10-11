@@ -1,16 +1,16 @@
+using b2xtranslator.OfficeDrawing;
+using b2xtranslator.PptFileFormat;
+using b2xtranslator.Shell;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
 using System;
 using System.IO;
-using b2xtranslator.Tools;
-using b2xtranslator.StructuredStorage.Reader;
-using b2xtranslator.PptFileFormat;
-using b2xtranslator.OfficeDrawing;
-using b2xtranslator.Shell;
 
-namespace b2xtranslator.PptDump
+namespace UnitTests
 {
-    class Program
+    public class PptDump
     {
-        static void Main(string[] args)
+        static void RunPptTest(string inputFile)
         {
             TraceLogger.LogLevel = TraceLogger.LoggingLevel.DebugInternal;
 
@@ -21,7 +21,6 @@ namespace b2xtranslator.PptDump
 
             Directory.CreateDirectory(outputDir);
 
-            string inputFile = args[0];
             var procFile = new ProcessingFile(inputFile);
 
             var file = new StructuredStorageReader(procFile.File.FullName);

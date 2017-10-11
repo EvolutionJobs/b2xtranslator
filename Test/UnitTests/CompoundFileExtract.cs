@@ -1,11 +1,11 @@
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
 using System;
 using System.Collections.Generic;
-using b2xtranslator.StructuredStorage.Reader;
-using System.IO;
 using System.Diagnostics;
-using b2xtranslator.Tools;
+using System.IO;
 
-namespace CompoundFileExtractTest
+namespace UnitTests
 {
 
 
@@ -13,9 +13,9 @@ namespace CompoundFileExtractTest
     /// Test application which extracts streams from compound files.
     /// Author: math
     /// </summary>
-    class Program
+    public class CompoundFileExtract
     {
-        static void Main(string[] args)
+        static void RunCompoundTests(string[] args)
         {            
             const int bytesToReadAtOnce = 1024;
             var invalidChars = Path.GetInvalidFileNameChars();

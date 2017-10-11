@@ -7,10 +7,10 @@ using System.Text;
 namespace UnitTests
 {
     [TestFixture]
-    public class OpenXmlLibTest
+    public class OpenXmlLib
     {
         [Test]
-        public void DirectWrite()
+        public void DirectWriteTest()
         {
             var doc = WordprocessingDocument.Create(@"files\testOpenXmlLib.docx", OpenXmlPackage.DocumentType.Document);
 

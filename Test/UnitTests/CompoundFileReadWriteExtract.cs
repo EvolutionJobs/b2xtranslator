@@ -1,17 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Diagnostics;
-using b2xtranslator.Tools;
+using b2xtranslator.StructuredStorage.Common;
 using b2xtranslator.StructuredStorage.Reader;
 using b2xtranslator.StructuredStorage.Writer;
-using b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.Tools;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 
-namespace CompoundFileReadWriteExtractTest
+namespace UnitTests
 {
-    class Program
+    public class CompoundFileReadWriteExtract
     {
-        static void Main(string[] args)
+        static void RunCompoundTests(string[] testFiles)
         {
             const int bytesToReadAtOnce = 512;
             var invalidChars = Path.GetInvalidFileNameChars();
@@ -21,13 +21,13 @@ namespace CompoundFileReadWriteExtractTest
             //Trace.Listeners.Add(consoleTracer);
             Trace.AutoFlush = true;
 
-            if (args.Length < 1)
+            if (testFiles.Length < 1)
             {
                 Console.WriteLine("No parameter found. Please specify one or more compound document file(s).");
                 return;
             }
 
-            foreach (string file in args)
+            foreach (string file in testFiles)
             {
 
                 StructuredStorageReader storageReader = null;
