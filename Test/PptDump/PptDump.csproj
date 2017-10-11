@@ -5,11 +5,6 @@
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj" />
-    <ProjectReference Include="..\..\Common\OfficeDrawing\OfficeDrawing.csproj" />
-    <ProjectReference Include="..\..\Common\Shell\Shell.csproj" />
-    <ProjectReference Include="..\..\Common\StructuredStorage\StructuredStorage.csproj" />
-    <ProjectReference Include="..\..\Common\Tools\Tools.csproj" />
     <ProjectReference Include="..\..\Presentation\PptFileFormat\PptFileFormat.csproj" />
   </ItemGroup>
 </Project>

@@ -7,10 +7,6 @@
     <Compile Remove="Records\NumberChart.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj" />
-    <ProjectReference Include="..\..\Common\OfficeDrawing\OfficeDrawing.csproj" />
-    <ProjectReference Include="..\..\Common\OfficeGraph\OfficeGraph.csproj" />
-    <ProjectReference Include="..\..\Common\StructuredStorage\StructuredStorage.csproj" />
-    <ProjectReference Include="..\..\Common\Tools\Tools.csproj" />
+    <ProjectReference Include="..\..\Common\b2xtranslator.csproj" />
   </ItemGroup>
 </Project>

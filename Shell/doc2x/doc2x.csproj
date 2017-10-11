@@ -6,10 +6,6 @@
     <ApplicationIcon>doc2x.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj" />
-    <ProjectReference Include="..\..\Common\OpenXmlLib\OpenXmlLib.csproj" />
-    <ProjectReference Include="..\..\Common\Shell\Shell.csproj" />
-    <ProjectReference Include="..\..\WordProcessing\DocFileFormat\DocFileFormat.csproj" />
     <ProjectReference Include="..\..\WordProcessing\WordprocessingMLMapping\WordprocessingMLMapping.csproj" />
   </ItemGroup>
 </Project>
