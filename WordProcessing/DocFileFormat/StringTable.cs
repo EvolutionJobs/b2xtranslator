@@ -1,12 +1,14 @@
+using b2xtranslator.CommonTranslatorLib;
+using b2xtranslator.StructuredStorage.Reader;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
-using b2xtranslator.StructuredStorage.Reader;
-using b2xtranslator.CommonTranslatorLib;
 
 namespace b2xtranslator.DocFileFormat
 {
-    public class StringTable : IVisitable
+    public class StringTable :
+        IVisitable
     {
         public bool fExtend;
 
@@ -17,8 +19,6 @@ namespace b2xtranslator.DocFileFormat
         public List<string> Strings;
 
         public List<ByteStructure> Data;
-
-        //public List<ByteStructure> ExtraData;
 
         Encoding _enc;
 
@@ -37,7 +37,7 @@ namespace b2xtranslator.DocFileFormat
 
             if (lcb > 0)
             {
-                tableStream.Seek((long)fc, System.IO.SeekOrigin.Begin);
+                tableStream.Seek((long)fc, SeekOrigin.Begin);
                 this.Parse(dataType, new VirtualStreamReader(tableStream), fc);
             }
         }
@@ -57,7 +57,7 @@ namespace b2xtranslator.DocFileFormat
                 //seek back to the beginning
                 this.fExtend = false;
                 this._enc = Encoding.ASCII;
-                reader.BaseStream.Seek((long)fc, System.IO.SeekOrigin.Begin);
+                reader.BaseStream.Seek((long)fc, SeekOrigin.Begin);
             }
 
             //read cData
@@ -71,7 +71,7 @@ namespace b2xtranslator.DocFileFormat
             else
             {
                 //cData is a 4byte signed Integer, so we need to seek back
-                reader.BaseStream.Seek((long)fc + cDataStart, System.IO.SeekOrigin.Begin);
+                reader.BaseStream.Seek((long)fc + cDataStart, SeekOrigin.Begin);
                 this.cData = reader.ReadInt32();
             }
 
@@ -109,14 +109,17 @@ namespace b2xtranslator.DocFileFormat
                     this.Data.Add(data);
                 }
 
-                reader.BaseStream.Seek(posBeforeType + cbData, System.IO.SeekOrigin.Begin);
+                reader.BaseStream.Seek(posBeforeType + cbData, SeekOrigin.Begin);
 
                 //skip the extra byte
                 reader.ReadBytes(this.cbExtra);
+
+                if (reader.BaseStream.Position == reader.BaseStream.Length)
+                    break; // At EoF
             }
         }
 
-        public void Convert<T>(T mapping) => 
+        public void Convert<T>(T mapping) =>
             ((IMapping<StringTable>)mapping).Apply(this);
     }
 }

@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using b2xtranslator.StructuredStorage.Reader;
 using b2xtranslator.CommonTranslatorLib;
 using b2xtranslator.OfficeDrawing;
-using System.Reflection;
 using b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.StructuredStorage.Reader;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace b2xtranslator.DocFileFormat
 {
@@ -178,17 +178,12 @@ namespace b2xtranslator.DocFileFormat
 
         public WordDocument Glossary;
 
-        public WordDocument(StructuredStorageReader reader)
+        public WordDocument(StructuredStorageReader reader, int fibFC = 0)
         {
-            parse(reader, 0);
+            Parse(reader, fibFC);
         }
 
-        public WordDocument(StructuredStorageReader reader, int fibFC)
-        {
-            parse(reader, fibFC);
-        }
-
-        private void parse(StructuredStorageReader reader, int fibFC)
+        void Parse(StructuredStorageReader reader, int fibFC)
         {
             this.Storage = reader;
             this.WordDocumentStream = reader.GetStream("WordDocument");
@@ -228,8 +223,7 @@ namespace b2xtranslator.DocFileFormat
             this.AutoTextNames = new StringTable(typeof(string), this.TableStream, this.FIB.fcSttbfGlsy, this.FIB.lcbSttbfGlsy);
             //this.ProtectionUsers = new StringTable(typeof(String), this.TableStream, this.FIB.fcSttbProtUser, this.FIB.lcbSttbProtUser);
             //
-
-            //this.UserVariables = new StwStructure(this.TableStream, this.FIB.fcStwUser, this.FIB.lcbStwUser);
+            this.UserVariables = new StwStructure(this.TableStream, this.FIB.fcStwUser, this.FIB.lcbStwUser);
 
             //Read all needed PLCFs
             this.AnnotationsReferencePlex = new Plex<AnnotationReferenceDescriptor>(30, this.TableStream, this.FIB.fcPlcfandRef, this.FIB.lcbPlcfandRef);

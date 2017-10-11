@@ -2,23 +2,13 @@ using System.IO;
 
 namespace b2xtranslator.StructuredStorage.Reader
 {
-    public class VirtualStreamReader : BinaryReader, IStreamReader
+    public class VirtualStreamReader : 
+        BinaryReader, 
+        IStreamReader
     {
-        /// <summary>
-        /// Ctor 
-        /// 
-        /// </summary>
+        /// <summary>Create a StreamReader with a Stream.</summary>
         /// <param name="stream"></param>
-        public VirtualStreamReader(VirtualStream stream)
-            : base(stream)
-        {
-        }
-
-        /// <summary>
-        /// Second constructor to create a StreamReader with a MemoryStream. 
-        /// </summary>
-        /// <param name="stream"></param>
-        public VirtualStreamReader(MemoryStream stream)
+        public VirtualStreamReader(Stream stream)
             : base(stream)
         {
         }
@@ -31,10 +21,8 @@ namespace b2xtranslator.StructuredStorage.Reader
         /// <returns>The total number of bytes read into the buffer. 
         /// This might be less than the length of the array if that number 
         /// of bytes are not currently available, or zero if the end of the stream is reached.</returns>
-        public int Read(byte[] buffer)
-        {
-            return this.BaseStream.Read(buffer, 0, buffer.Length);
-        }
+        public int Read(byte[] buffer) =>
+            base.BaseStream.Read(buffer, 0, buffer.Length);
 
         /// <summary>
         /// Reads bytes from the current position in the virtual stream.
@@ -44,11 +32,9 @@ namespace b2xtranslator.StructuredStorage.Reader
         /// <returns>The total number of bytes read into the buffer. 
         /// This might be less than the number of bytes requested if that number 
         /// of bytes are not currently available, or zero if the end of the stream is reached.</returns>
-        public int Read(byte[] buffer, int count)
-        {
-            return this.BaseStream.Read(buffer, 0, count);
-        }
-
+        public int Read(byte[] buffer, int count) =>
+            base.BaseStream.Read(buffer, 0, count);
+        
         /// <summary>
         /// Reads count bytes from the current stream into a byte array and advances
         ///     the current position by count bytes.
@@ -62,8 +48,8 @@ namespace b2xtranslator.StructuredStorage.Reader
         /// <exception cref="System.ArgumentOutOfRangeException">count is negative.</exception>
         public byte[] ReadBytes(long position, int count)
         {
-            this.BaseStream.Seek(position, SeekOrigin.Begin);
-            return ReadBytes(count);
+            base.BaseStream.Seek(position, SeekOrigin.Begin);
+            return base.ReadBytes(count);
         }
     }
 }
