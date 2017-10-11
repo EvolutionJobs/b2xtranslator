@@ -120,7 +120,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             for (int noOfTries = 1; noOfTries < 3; noOfTries++)
             {
                 // initialize class members from stream
-                var flags = reader.ReadUInt16();
+                ushort flags = reader.ReadUInt16();
                 this.hAlignment = (HorizontalAlignment)Utils.BitmaskToInt(flags, 0xE);
                 this.vAlignment = (VerticalAlignment)Utils.BitmaskToInt(flags, 0x70);
                 this.rot = (TextRotation)reader.ReadUInt16();

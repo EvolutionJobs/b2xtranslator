@@ -118,11 +118,11 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
             }
             while (listenum.MoveNext());
 
-            var back = ""; 
+            string back = ""; 
             if (supData != null && supData.SelfRef)
             {
-                var first = this.boundSheetDataList[extSheet.itabFirst].boundsheetRecord.stName.Value;
-                var last = this.boundSheetDataList[extSheet.itabLast].boundsheetRecord.stName.Value;
+                string first = this.boundSheetDataList[extSheet.itabFirst].boundsheetRecord.stName.Value;
+                string last = this.boundSheetDataList[extSheet.itabLast].boundsheetRecord.stName.Value;
                 if (first.Equals(last))
                 {
                     back = first;
@@ -134,8 +134,8 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
             }
             else
             {
-                var first = supData.getRgstString(extSheet.itabFirst);
-                var last = supData.getRgstString(extSheet.itabLast);
+                string first = supData.getRgstString(extSheet.itabFirst);
+                string last = supData.getRgstString(extSheet.itabLast);
                 if (first.Equals(last))
                 {
                     back = first;
@@ -221,7 +221,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
             SupBookData supData = null;
             var listenum = this.supBookDataList.GetEnumerator();
 
-            var back = ""; 
+            string back = ""; 
             int count = 0;
             int counttwo = 0; 
             listenum.MoveNext();

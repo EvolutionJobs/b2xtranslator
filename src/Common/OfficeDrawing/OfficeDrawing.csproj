@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonTranslatorLib\CommonTranslatorLib.csproj" />
+    <ProjectReference Include="..\OpenXmlLib\OpenXmlLib.csproj" />
     <ProjectReference Include="..\Tools\Tools.csproj" />
-    <ProjectReference Include="..\ZipUtils\ZipUtils.csproj" />
   </ItemGroup>
 </Project>

@@ -71,7 +71,7 @@ namespace b2xtranslator.OfficeGraph
             // initialize class members from stream
             this.ptyp = (LayoutType)reader.ReadInt16();
             reader.ReadBytes(2); //unused
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             // first 9 bits are reserved
             this.fTopBottom = Utils.BitmaskToBool(flags, 0x200);
             this.fBackFront = Utils.BitmaskToBool(flags, 0x400);

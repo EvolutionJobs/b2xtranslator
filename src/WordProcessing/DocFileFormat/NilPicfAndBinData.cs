@@ -36,7 +36,7 @@ namespace b2xtranslator.DocFileFormat
         public NilPicfAndBinData(CharacterPropertyExceptions chpx, VirtualStream dataStream)
         {
             //Get start of the NilPicfAndBinData structure
-            var fc = PictureDescriptor.GetFcPic(chpx);
+            int fc = PictureDescriptor.GetFcPic(chpx);
             if (fc >= 0)
             {
                 parse(dataStream, fc);

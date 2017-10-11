@@ -96,8 +96,8 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 this.rgst = new string[this.ctab];
                 for (int i = 0; i < this.ctab; i++)
                 {
-                   
-                        var cch2 = this.Reader.ReadUInt16(); 
+
+                    ushort cch2 = this.Reader.ReadUInt16(); 
                         byte firstbyte = this.Reader.ReadByte();
                         int firstbit = firstbyte & 0x1;
                         for (int j = 0; j < cch2; j++)

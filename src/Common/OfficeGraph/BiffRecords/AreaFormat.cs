@@ -75,7 +75,7 @@ namespace b2xtranslator.OfficeGraph
             // TODO: Read optional GelFrame
             this.fls = reader.ReadUInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fAuto = Utils.BitmaskToBool(flags, 0x1);
             this.fInvertNeg = Utils.BitmaskToBool(flags, 0x2);
 

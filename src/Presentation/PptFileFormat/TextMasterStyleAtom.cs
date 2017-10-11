@@ -25,7 +25,7 @@ namespace b2xtranslator.PptFileFormat
 
                 if ((this.Instance >= 5)) // & (this.Instance < this.IndentLevelCount))
                 {
-                    var level = this.Reader.ReadUInt16(); 
+                    ushort level = this.Reader.ReadUInt16(); 
                 }                
              
                 this.PRuns.Add(new ParagraphRun(this.Reader, true));

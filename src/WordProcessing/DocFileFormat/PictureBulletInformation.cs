@@ -13,7 +13,7 @@ namespace b2xtranslator.DocFileFormat
         {
             if (bytes.Length == 6)
             {
-                var flag = System.BitConverter.ToInt16(bytes, 0);
+                short flag = System.BitConverter.ToInt16(bytes, 0);
                 this.fPicBullet = Tools.Utils.BitmaskToBool(flag, 0x0001);
                 this.fNoAutoSize = Tools.Utils.BitmaskToBool(flag, 0x0002);
                 this.fDefaultPic = Tools.Utils.BitmaskToBool(flag, 0x0004);

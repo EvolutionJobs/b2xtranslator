@@ -50,7 +50,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // initialize class members from stream
             this.anStart = reader.ReadUInt16();
             this.pcDonut = reader.ReadUInt16();
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fHasShadow = Utils.BitmaskToBool(flags, 0x1);
             this.fShowLdrLines = Utils.BitmaskToBool(flags, 0x2);
 

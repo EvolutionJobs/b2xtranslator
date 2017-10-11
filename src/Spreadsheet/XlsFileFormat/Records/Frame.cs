@@ -61,7 +61,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // initialize class members from stream
             this.frt = (FrameStyle)reader.ReadUInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
 
             this.fAutoSize = Utils.BitmaskToBool(flags, 0x0001);
             this.fAutoPosition = Utils.BitmaskToBool(flags, 0x0002);

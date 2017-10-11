@@ -39,12 +39,12 @@ namespace b2xtranslator.DocFileFormat
                 if(sprm.OpCode == SinglePropertyModifier.OperationCode.sprmPHugePapx || (int)sprm.OpCode == 0x6646)
                 {
                     IStreamReader reader = new VirtualStreamReader(dataStream);
-                    var fc = System.BitConverter.ToUInt32(sprm.Arguments, 0);
+                    uint fc = System.BitConverter.ToUInt32(sprm.Arguments, 0);
 
                     //parse the size of the external grpprl
                     var sizebytes = new byte[2];
                     dataStream.Read(sizebytes, 0, 2, (int)fc);
-                    var size = System.BitConverter.ToUInt16(sizebytes, 0);
+                    ushort size = System.BitConverter.ToUInt16(sizebytes, 0);
                     
                     //parse the external grpprl
                     //byte[] grpprlBytes = new byte[size];

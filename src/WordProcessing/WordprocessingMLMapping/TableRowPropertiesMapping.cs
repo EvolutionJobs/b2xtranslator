@@ -67,7 +67,7 @@ namespace b2xtranslator.WordprocessingMLMapping
 
                     //width before
                     case SinglePropertyModifier.OperationCode.sprmTWidthBefore:
-                        var before = System.BitConverter.ToInt16(sprm.Arguments, 1);
+                        short before = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         if (before != 0)
                         {
                             var wBefore = this._nodeFactory.CreateElement("w", "wBefore", OpenXmlNamespaces.WordprocessingML);
@@ -86,7 +86,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                         var rowHeight = this._nodeFactory.CreateElement("w", "trHeight", OpenXmlNamespaces.WordprocessingML);
                         var rowHeightVal = this._nodeFactory.CreateAttribute("w", "val", OpenXmlNamespaces.WordprocessingML);
                         var rowHeightRule = this._nodeFactory.CreateAttribute("w", "hRule", OpenXmlNamespaces.WordprocessingML);
-                        var rH = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short rH = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         if (rH > 0)
                         {
                             rowHeightRule.Value = "atLeast";

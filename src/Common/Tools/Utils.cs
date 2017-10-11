@@ -49,7 +49,7 @@ namespace b2xtranslator.Tools
         {
             var cchBytes = new byte[4];
             stream.Read(cchBytes, 0, cchBytes.Length);
-            var cch = System.BitConverter.ToInt32(cchBytes, 0);
+            int cch = System.BitConverter.ToInt32(cchBytes, 0);
 
             //dont read the terminating zero
             var stringBytes = new byte[cch*2];
@@ -70,7 +70,7 @@ namespace b2xtranslator.Tools
         {
             var cchBytes = new byte[4];
             stream.Read(cchBytes, 0, cchBytes.Length);
-            var cch = System.BitConverter.ToInt32(cchBytes, 0);
+            int cch = System.BitConverter.ToInt32(cchBytes, 0);
 
             //dont read the terminating zero
             var stringBytes = new byte[cch];
@@ -94,7 +94,7 @@ namespace b2xtranslator.Tools
             // read the char count
             var cch = new byte[2];
             stream.Read(cch, 0, cch.Length);
-            var charCount = System.BitConverter.ToUInt16(cch, 0);
+            ushort charCount = System.BitConverter.ToUInt16(cch, 0);
 
             // read the string
             var xst = new byte[charCount * 2];

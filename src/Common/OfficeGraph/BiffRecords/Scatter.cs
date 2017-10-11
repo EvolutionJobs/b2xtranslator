@@ -62,7 +62,7 @@ namespace b2xtranslator.OfficeGraph
             // initialize class members from stream
             this.pcBubbleSizeRatio = reader.ReadUInt16();
             this.wBubbleSize = reader.ReadUInt16();
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fBubbles = Utils.BitmaskToBool(flags, 0x1);
             this.fShowNegBubbles = Utils.BitmaskToBool(flags, 0x2);
             this.fHasShadow = Utils.BitmaskToBool(flags, 0x4);

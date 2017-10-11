@@ -106,7 +106,7 @@ namespace b2xtranslator.StructuredStorage.Common
         {
             var output = new List<byte>();
 
-            foreach (var entry in input)
+            foreach (uint entry in input)
 	        {
                 output.AddRange(getBytes(entry));
             }

@@ -262,7 +262,7 @@ namespace b2xtranslator.DocFileFormat
                         }
                         if (fCustomBtnFace)
                         {
-                            var iBtnFace = reader.ReadUInt16();
+                            ushort iBtnFace = reader.ReadUInt16();
                         }
                         if (fAccelerator)
                         {
@@ -276,7 +276,7 @@ namespace b2xtranslator.DocFileFormat
                     case ToolbarControlType.SplitButtonMRUPopup:
 
                         //TBC Menu Specific
-                        var tbid = reader.ReadInt32();
+                        int tbid = reader.ReadInt32();
                         string name = Utils.ReadWString(reader.BaseStream);
 
                         break;
@@ -291,12 +291,12 @@ namespace b2xtranslator.DocFileFormat
                         //TBC Combo Dropdown Specific
                         if (this.tcid == 1)
                         {
-                            var cwstrItems = reader.ReadInt16();
+                            short cwstrItems = reader.ReadInt16();
                             string wstrList = Utils.ReadWString(reader.BaseStream);
-                            var cwstrMRU = reader.ReadInt16();
-                            var iSel = reader.ReadInt16();
-                            var cLines = reader.ReadInt16();
-                            var dxWidth = reader.ReadInt16();
+                            short cwstrMRU = reader.ReadInt16();
+                            short iSel = reader.ReadInt16();
+                            short cLines = reader.ReadInt16();
+                            short dxWidth = reader.ReadInt16();
                             string wstrEdit = Utils.ReadWString(reader.BaseStream);
                         }
 

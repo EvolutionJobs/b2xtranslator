@@ -24,7 +24,7 @@ namespace b2xtranslator.DocFileFormat
             : base(reader, length)
         {
             //read the user initials (LPXCharBuffer9)
-            var cch = this._reader.ReadInt16( );
+            short cch = this._reader.ReadInt16( );
             var chars = this._reader.ReadBytes(18);
             this.UserInitials = Encoding.Unicode.GetString(chars, 0, cch * 2);
 

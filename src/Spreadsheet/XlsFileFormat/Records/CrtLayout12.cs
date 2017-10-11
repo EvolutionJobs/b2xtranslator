@@ -120,7 +120,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
         {
             this.frtHeader = new FrtHeader(reader);
             this.dwCheckSum = reader.ReadUInt32();
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fLayoutTargetInner = Utils.BitmaskToBool(flags, 0x1);
             this.autolayouttype = (AutoLayoutType)Utils.BitmaskToInt(flags, 0xE);
             if (id == RecordType.CrtLayout12A)

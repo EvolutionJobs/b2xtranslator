@@ -81,7 +81,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.pcOverlap = reader.ReadInt16();
             this.pcGap = reader.ReadUInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fTranspose = Utils.BitmaskToBool(flags, 0x1);
             this.fStacked = Utils.BitmaskToBool(flags, 0x2);
             this.f100 = Utils.BitmaskToBool(flags, 0x4);

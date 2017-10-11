@@ -86,8 +86,8 @@ namespace b2xtranslator.StructuredStorage.Writer
             }
 
             // Directory Entry: 128 bytes            
-            var dirEntriesPerSector = this._context.Header.SectorSize / 128u;
-            var numToPad = dirEntriesPerSector - ((uint)allEntries.Count % dirEntriesPerSector);
+            uint dirEntriesPerSector = this._context.Header.SectorSize / 128u;
+            uint numToPad = dirEntriesPerSector - ((uint)allEntries.Count % dirEntriesPerSector);
 
             var emptyEntry = new EmptyDirectoryEntry(this._context);
             for (int i = 0; i < numToPad; i++)

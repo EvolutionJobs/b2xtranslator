@@ -1,10 +1,8 @@
-
-
+using b2xtranslator.OfficeDrawing;
+using b2xtranslator.OpenXmlLib;
 using System;
 using System.IO;
-using b2xtranslator.OfficeDrawing;
 using System.Xml;
-using b2xtranslator.ZipUtils;
 
 namespace b2xtranslator.PptFileFormat
 {
@@ -27,13 +25,13 @@ namespace b2xtranslator.PptFileFormat
         /// <param name="zipReader">ZipReader for reading from the OOXML package</param>
         /// <param name="rootRels">List of Relationship nodes belonging to root part</param>
         /// <returns>The XmlElement that will become this record's XmlDocumentElement</returns>
-        protected override XmlElement ExtractDocumentElement(ZipReader zipReader, XmlNodeList rootRels)
+        protected override XmlElement ExtractDocumentElement(IZipReader zipReader, XmlNodeList rootRels)
         {
             if (rootRels.Count != 1)
                 throw new Exception("Expected actly one Relationship in Theme OOXML doc");
 
-            var managerPath = rootRels[0].Attributes["Target"].Value;
-            var managerDirectory = Path.GetDirectoryName(managerPath).Replace("\\", "/");
+            string managerPath = rootRels[0].Attributes["Target"].Value;
+            string managerDirectory = Path.GetDirectoryName(managerPath).Replace("\\", "/");
             XmlNodeList managerRels;
 
             try
@@ -46,12 +44,10 @@ namespace b2xtranslator.PptFileFormat
                 return null;
             }
            
-    
-
             if (managerRels.Count != 1)
                 throw new Exception("Expected actly one Relationship for Theme manager");
 
-            var partPath = string.Format("{0}/{1}", managerDirectory, managerRels[0].Attributes["Target"].Value);
+            string partPath = string.Format("{0}/{1}", managerDirectory, managerRels[0].Attributes["Target"].Value);
             var partStream = zipReader.GetEntry(partPath);
 
             var partDoc = new XmlDocument();

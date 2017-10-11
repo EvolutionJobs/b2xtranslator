@@ -96,7 +96,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // initialize class members from stream
             this.frtHeader = new FrtHeader(reader);
             this.guidSView = new Guid(reader.ReadBytes(16));
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.cchHeaderEven = reader.ReadUInt16();
             this.cchFooterEven = reader.ReadUInt16();
             this.cchHeaderFirst = reader.ReadUInt16();

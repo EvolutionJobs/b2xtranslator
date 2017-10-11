@@ -102,7 +102,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.rgbFore = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
             this.rgbBack = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
             this.imk = (MarkerType)reader.ReadUInt16();
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fAuto = Utils.BitmaskToBool(flags, 0x1);
             //0x2 - 0x8 are reserved
             this.fNotShowInt = Utils.BitmaskToBool(flags, 0x10);

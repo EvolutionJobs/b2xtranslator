@@ -72,7 +72,7 @@ namespace b2xtranslator.OfficeGraph
             this.axmid = (AxisMultiplier)reader.ReadInt16();
             this.numLabelMultiplier = reader.ReadDouble();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fAutoShowMultiplier = Utils.BitmaskToBool(flags, 0x0002);
             this.fBeingEdited = Utils.BitmaskToBool(flags, 0x0004);
 

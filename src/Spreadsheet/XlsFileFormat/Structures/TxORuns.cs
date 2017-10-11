@@ -33,8 +33,8 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
                 if (i == 1028 && BiffRecord.GetNextRecordType(reader) == RecordType.Continue)
                 {
                     // yet another Continue record to be parsed -> skip record header
-                    var id = reader.ReadUInt16();
-                    var size = reader.ReadUInt16();
+                    ushort id = reader.ReadUInt16();
+                    ushort size = reader.ReadUInt16();
                 }
                 this.rgTxoRuns[i] = new Run(reader);
             }

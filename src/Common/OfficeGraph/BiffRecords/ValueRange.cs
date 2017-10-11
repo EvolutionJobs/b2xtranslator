@@ -155,7 +155,7 @@ namespace b2xtranslator.OfficeGraph
             this.numMinor = reader.ReadDouble();
             this.numCross = reader.ReadDouble();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fAutoMin = Utils.BitmaskToBool(flags, 0x0001);
             this.fAutoMax = Utils.BitmaskToBool(flags, 0x0002);
             this.fAutoMajor = Utils.BitmaskToBool(flags, 0x0004);

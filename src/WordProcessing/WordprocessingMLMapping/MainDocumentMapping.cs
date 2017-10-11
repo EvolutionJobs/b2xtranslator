@@ -28,7 +28,7 @@ namespace b2xtranslator.WordprocessingMLMapping
 
             //convert the document
             this._lastValidPapx = this._doc.AllPapxFkps[0].grppapx[0];
-            var cp = 0;
+            int cp = 0;
             while (cp < doc.FIB.ccpText)
             {
                 int fc = this._doc.PieceTable.FileCharacterPositions[cp];

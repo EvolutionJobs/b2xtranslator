@@ -43,13 +43,13 @@ namespace b2xtranslator.DocFileFormat
                     IStreamReader reader = new VirtualStreamReader(dataStream);
 
                     //there is a native TAP in the data stream
-                    var fc = System.BitConverter.ToUInt32(sprm.Arguments, 0);
+                    uint fc = System.BitConverter.ToUInt32(sprm.Arguments, 0);
                     
                     //get the size of the following grpprl
                     //byte[] sizebytes = new byte[2];
                     //dataStream.Read(sizebytes, 2, (int)fc);
                     var sizebytes = reader.ReadBytes(fc, 2);
-                    var grpprlSize = System.BitConverter.ToUInt16(sizebytes, 0);
+                    ushort grpprlSize = System.BitConverter.ToUInt16(sizebytes, 0);
 
                     //read the grpprl
                     //byte[] grpprlBytes = new byte[grpprlSize];

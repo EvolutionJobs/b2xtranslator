@@ -86,8 +86,8 @@ namespace b2xtranslator.OfficeGraph
             OfficeGraphBiffRecord result = null;
             try
             {
-                var id = reader.ReadUInt16();
-                var size = reader.ReadUInt16();
+                ushort id = reader.ReadUInt16();
+                ushort size = reader.ReadUInt16();
                 Type cls;
                 if (TypeToRecordClassMapping.TryGetValue(id, out cls))
                 {

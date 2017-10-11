@@ -16,7 +16,7 @@ namespace b2xtranslator.DocFileFormat
                 reader.BaseStream.Seek((long)fib.fcPlfLfo, System.IO.SeekOrigin.Begin);
 
                 //read the count of LFOs
-                var count = reader.ReadInt32();
+                int count = reader.ReadInt32();
 
                 //read the LFOs
                 for (int i = 0; i < count; i++)

@@ -46,7 +46,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
             this._writer.WriteAttributeString("r", "id", OpenXmlNamespaces.Relationships, er.Id.ToString());
 
             this._writer.WriteStartElement("sheetNames");
-            foreach (var var in sbd.RGST)
+            foreach (string var in sbd.RGST)
             {
                 this._writer.WriteStartElement("sheetName");
                 this._writer.WriteAttributeString("val", var);
@@ -58,7 +58,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
             if (sbd.ExternNames.Count > 0)
             {
                 this._writer.WriteStartElement("definedNames");
-                foreach (var var in sbd.ExternNames)
+                foreach (string var in sbd.ExternNames)
                 {
                     this._writer.WriteStartElement("definedName");
                     this._writer.WriteAttributeString("name", var);

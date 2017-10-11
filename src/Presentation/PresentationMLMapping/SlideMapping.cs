@@ -46,7 +46,7 @@ namespace b2xtranslator.PresentationMLMapping
 
             // Associate slide with slide layout
             var slideAtom = slide.FirstChildWithType<SlideAtom>();
-            var mainMasterId = GetMainMasterId(slideAtom);
+            uint mainMasterId = GetMainMasterId(slideAtom);
             var layoutManager = this._ctx.GetOrCreateLayoutManagerByMasterId(mainMasterId);
 
             SlideLayoutPart layoutPart = null;

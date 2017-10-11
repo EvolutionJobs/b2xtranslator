@@ -88,7 +88,7 @@ namespace b2xtranslator.DocFileFormat
             this.cid = reader.ReadInt32();
             this.fc = reader.ReadInt32();
 
-            var flags2 = reader.ReadUInt16();
+            ushort flags2 = reader.ReadUInt16();
             this.fOnDisk = Utils.BitmaskToBool((int)flags2, 0x0001);
             this.iTB = Utils.BitmaskToInt((int)flags2, 0x3FFE);
             this.fDead = Utils.BitmaskToBool((int)flags2, 0x8000);

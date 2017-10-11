@@ -36,7 +36,7 @@ namespace b2xtranslator.StructuredStorage.Writer
                 return SectorId.FREESECT;
             }
 
-            var startSector = this._currentEntry;
+            uint startSector = this._currentEntry;
 
             for (int i = 0; i < entryCount - 1; i++)
             {

@@ -39,10 +39,10 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
             // read four unused bytes 
             reader.ReadUInt32();
-            var tv = new TwipsValue(this.miyRw); 
+            var tv = new TwipsValue(this.miyRw);
 
             // read 2 byte for some bit operations 
-            var buffer = reader.ReadUInt16();
+            ushort buffer = reader.ReadUInt16();
 
 
             ///

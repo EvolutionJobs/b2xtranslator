@@ -7,6 +7,7 @@
     <ProjectReference Include="..\..\Common\CommonTranslatorLib\CommonTranslatorLib.csproj" />
     <ProjectReference Include="..\..\Common\OfficeDrawing\OfficeDrawing.csproj" />
     <ProjectReference Include="..\..\Common\OfficeGraph\OfficeGraph.csproj" />
+    <ProjectReference Include="..\..\Common\OpenXmlLib\OpenXmlLib.csproj" />
     <ProjectReference Include="..\..\Common\StructuredStorage\StructuredStorage.csproj" />
     <ProjectReference Include="..\..\Common\Tools\Tools.csproj" />
   </ItemGroup>

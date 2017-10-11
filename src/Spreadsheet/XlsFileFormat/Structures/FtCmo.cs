@@ -118,7 +118,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
             this.ot = (ObjectType)reader.ReadUInt16();
             this.id = reader.ReadUInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fLocked = Utils.BitmaskToBool(flags, 0x0001);
 
             this.fDefaultSize = Utils.BitmaskToBool(flags, 0x0004);

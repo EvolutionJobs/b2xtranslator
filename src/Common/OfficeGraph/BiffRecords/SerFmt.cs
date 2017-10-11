@@ -46,7 +46,7 @@ namespace b2xtranslator.OfficeGraph
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fSmoothedLine = Utils.BitmaskToBool(flags, 0x1);
             this.f3DBubbles = Utils.BitmaskToBool(flags, 0x2);
             this.fArShadow = Utils.BitmaskToBool(flags, 0x4);

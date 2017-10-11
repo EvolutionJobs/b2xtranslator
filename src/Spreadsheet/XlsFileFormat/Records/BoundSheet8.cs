@@ -128,7 +128,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <returns>String from the object</returns>
         public override string ToString()
         {
-            var returnvalue = "BOUNDSHEET - RECORD: \n";
+            string returnvalue = "BOUNDSHEET - RECORD: \n";
             returnvalue += "-- Name: " + this.stName.Value + "\n";
             returnvalue += "-- Offset: " + this.lbPlyPos + "\n";
             returnvalue += "-- HiddenState: " + this.hsState + "\n";

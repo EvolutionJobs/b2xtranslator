@@ -19,7 +19,7 @@ namespace b2xtranslator.StructuredStorage.Common
         internal static string Mask(string text)
         {
             string result = text;
-            foreach (var character in CharsToMask)
+            foreach (uint character in CharsToMask)
 	        {
                 result = result.Replace(new string((char)character,1), string.Format(CultureInfo.InvariantCulture, "%{0:X4}", character));
 	        }
@@ -33,7 +33,7 @@ namespace b2xtranslator.StructuredStorage.Common
         internal static string UnMask(string text)
         {
             string result = text;
-            foreach (var character in CharsToMask)
+            foreach (uint character in CharsToMask)
             {
                 result = result.Replace(string.Format("%{0:X4}", character), new string((char)character, 1));
             }

@@ -44,7 +44,7 @@ namespace b2xtranslator.OfficeGraph
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
 
             this.fHasBordHorz = Utils.BitmaskToBool(flags, 0x0001);
             this.fHasBordVert = Utils.BitmaskToBool(flags, 0x0002);

@@ -37,7 +37,7 @@ namespace b2xtranslator.DocFileFormat
                         byte spra = (byte)((int)opCode >> 13);
 
                         // get size of operand
-                        var opSize = (short)SinglePropertyModifier.GetOperandSize(spra);
+                        short opSize = (short)SinglePropertyModifier.GetOperandSize(spra);
                         byte lenByte = 0;
 
                         //operand has variable size

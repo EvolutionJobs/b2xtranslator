@@ -232,7 +232,7 @@ namespace b2xtranslator.OfficeDrawing
                     if (attr != null)
                     {
                         // Add the type codes of the array
-                        foreach (var typeCode in attr.TypeCodes)
+                        foreach (ushort typeCode in attr.TypeCodes)
                         {
                             if (TypeToRecordClassMapping.ContainsKey(typeCode))
                             {
@@ -256,12 +256,12 @@ namespace b2xtranslator.OfficeDrawing
         {
             try
             {
-                var verAndInstance = reader.ReadUInt16();
+                ushort verAndInstance = reader.ReadUInt16();
                 uint version = verAndInstance & 0x000FU;         // first 4 bit of field verAndInstance
                 uint instance = (verAndInstance & 0xFFF0U) >> 4; // last 12 bit of field verAndInstance
 
-                var typeCode = reader.ReadUInt16();
-                var size = reader.ReadUInt32();
+                ushort typeCode = reader.ReadUInt16();
+                uint size = reader.ReadUInt32();
 
                 bool isContainer = (version == 0xF);
 

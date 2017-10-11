@@ -190,7 +190,7 @@ namespace b2xtranslator.PptFileFormat
 
                 if (this.TabStopsPresent)
                 {
-                    var tabStopsCount = reader.ReadUInt16();
+                    ushort tabStopsCount = reader.ReadUInt16();
                     this.TabStops = new TabStop[tabStopsCount];
 
                     for (int i = 0; i < tabStopsCount; i++)

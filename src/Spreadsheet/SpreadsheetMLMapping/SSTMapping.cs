@@ -42,7 +42,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
 
             int count = 0;
             // create the string _entries 
-            foreach (var var in sstData.StringList)
+            foreach (string var in sstData.StringList)
             {
                 count++;
                 var list = sstData.getFormatingRuns(count);

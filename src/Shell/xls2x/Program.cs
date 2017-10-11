@@ -1,16 +1,12 @@
-
-
-using System;
-using System.Globalization;
-using System.IO;
-using b2xtranslator.OpenXmlLib;
+using b2xtranslator.OpenXmlLib.SpreadsheetML;
 using b2xtranslator.Shell;
 using b2xtranslator.Spreadsheet.XlsFileFormat;
 using b2xtranslator.SpreadsheetMLMapping;
 using b2xtranslator.StructuredStorage.Reader;
 using b2xtranslator.Tools;
-using b2xtranslator.ZipUtils;
-using b2xtranslator.OpenXmlLib.SpreadsheetML;
+using System;
+using System.Globalization;
+using System.IO;
 
 namespace b2xtranslator.xls2x
 {
@@ -81,11 +77,6 @@ namespace b2xtranslator.xls2x
             catch (FileNotFoundException ex)
             {
                 TraceLogger.Error(ex.Message);
-                TraceLogger.Debug(ex.ToString());
-            }
-            catch (ZipCreationException ex)
-            {
-                TraceLogger.Error("Could not create output file {0}.", ChoosenOutputFile);
                 TraceLogger.Debug(ex.ToString());
             }
             catch (Exception ex)

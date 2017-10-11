@@ -244,16 +244,16 @@ namespace b2xtranslator.PptFileFormat
                         }
                         break;
                     case 0x4: //4 byte float
-                        var v3 = s.ReadSingle();
+                        float v3 = s.ReadSingle();
                         break;
                     case 0x5: //8 byte float
-                        var v4 = s.ReadDouble();
+                        double v4 = s.ReadDouble();
                         break;
                     case 0x6: //CURRENCY
-                        var v5 = s.ReadInt64();
+                        long v5 = s.ReadInt64();
                         break;
                     case 0x7: //DATE
-                        var v6 = s.ReadDouble();
+                        double v6 = s.ReadDouble();
                         break;
                     case 0x8: //CodePageString
                     case 0x1e:
@@ -271,8 +271,8 @@ namespace b2xtranslator.PptFileFormat
                         int wReserved = s.ReadInt16();
                         byte scale = s.ReadByte();
                         byte sign = s.ReadByte();
-                        var Hi32 = s.ReadInt32();
-                        var Lo64 = s.ReadInt64();
+                        int Hi32 = s.ReadInt32();
+                        long Lo64 = s.ReadInt64();
                         break;
                     case 0x10: //1 byte signed int
                         int v10 = (int)s.ReadByte();
@@ -288,10 +288,10 @@ namespace b2xtranslator.PptFileFormat
                         uint v13 = s.ReadUInt32();
                         break;
                     case 0x14: //8 byte int
-                        var v14 = s.ReadInt64();
+                        long v14 = s.ReadInt64();
                         break;
                     case 0x15: //8 byte unsigned int
-                        var v15 = s.ReadUInt64();
+                        ulong v15 = s.ReadUInt64();
                         break;
                     case 0x16: //4 byte int
                         int v16 = s.ReadInt32();
@@ -338,7 +338,7 @@ namespace b2xtranslator.PptFileFormat
             if (!this.PersistObjectDirectory.ContainsKey(persistId))
                 return null;
 
-            var offset = this.PersistObjectDirectory[persistId];
+            uint offset = this.PersistObjectDirectory[persistId];
             this.PowerpointDocumentStream.Seek(offset, SeekOrigin.Begin);
             return (T)Record.ReadRecord(this.PowerpointDocumentStream);
         }
@@ -459,7 +459,7 @@ namespace b2xtranslator.PptFileFormat
                 {
                     uint pid = pdEntry.StartPersistId;
 
-                    foreach (var poff in pdEntry.PersistOffsetEntries)
+                    foreach (uint poff in pdEntry.PersistOffsetEntries)
                     {
                         this.PersistObjectDirectory[pid] = poff;
                         pid++;
@@ -543,7 +543,7 @@ namespace b2xtranslator.PptFileFormat
 
         public IEnumerator<Record> GetEnumerator()
         {
-            foreach (var persistId in this.PersistObjectDirectory.Keys)
+            foreach (uint persistId in this.PersistObjectDirectory.Keys)
             {
                 yield return this.GetPersistObject<Record>(persistId);
             }

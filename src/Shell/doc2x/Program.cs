@@ -1,15 +1,13 @@
-using System;
-using b2xtranslator.StructuredStorage.Reader;
 using b2xtranslator.DocFileFormat;
 using b2xtranslator.OpenXmlLib.WordprocessingML;
-using b2xtranslator.WordprocessingMLMapping;
-using System.IO;
-using b2xtranslator.ZipUtils;
-using b2xtranslator.Tools;
-using System.Globalization;
-using b2xtranslator.StructuredStorage.Common;
 using b2xtranslator.Shell;
-using b2xtranslator.OpenXmlLib;
+using b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
+using b2xtranslator.WordprocessingMLMapping;
+using System;
+using System.Globalization;
+using System.IO;
 
 namespace b2xtranslator.doc2x
 {
@@ -103,12 +101,6 @@ namespace b2xtranslator.doc2x
             catch (MappingException ex)
             {
                 TraceLogger.Error("There was an error while converting file {0}: {1}", InputFile, ex.Message);
-                TraceLogger.Debug(ex.ToString());
-            }
-            catch (ZipCreationException ex)
-            {
-                TraceLogger.Error("Could not create output file {0}.", ChoosenOutputFile);
-                //TraceLogger.Error("Perhaps the specified outputfile was a directory or contained invalid characters.");
                 TraceLogger.Debug(ex.ToString());
             }
             catch (Exception ex)

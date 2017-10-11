@@ -51,7 +51,7 @@ namespace b2xtranslator.PptFileFormat
 
         public PersistDirectoryEntry(BinaryReader reader)
         {
-            var StartPersistIdAndPersistCount = reader.ReadUInt32();
+            uint StartPersistIdAndPersistCount = reader.ReadUInt32();
             this.StartPersistId = (StartPersistIdAndPersistCount & 0x000FFFFFU); // First 20 bit
             this.PersistCount   = (StartPersistIdAndPersistCount & 0xFFF00000U) >> 20; // Last 12 bit
 
@@ -69,7 +69,7 @@ namespace b2xtranslator.PptFileFormat
 
             bool isFirst = true;
 
-            foreach (var entry in this.PersistOffsetEntries)
+            foreach (uint entry in this.PersistOffsetEntries)
             {
                 if (!isFirst)
                     sb.Append(", ");

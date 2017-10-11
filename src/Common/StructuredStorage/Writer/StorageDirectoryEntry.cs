@@ -229,8 +229,8 @@ namespace b2xtranslator.StructuredStorage.Writer
                 return a.Name.Length.CompareTo(b.Name.Length);
             }
 
-            var aU = a.Name.ToUpper();
-            var bU = b.Name.ToUpper();
+            string aU = a.Name.ToUpper();
+            string bU = b.Name.ToUpper();
 
             for (int i = 0; i < aU.Length; i++)
             {

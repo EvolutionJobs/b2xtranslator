@@ -37,7 +37,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 if (BiffRecord.GetNextRecordType(reader) == RecordType.GelFrame)
                 {
                     var nextId = (RecordType)reader.ReadUInt16();
-                    var nextLength = reader.ReadUInt16();
+                    ushort nextLength = reader.ReadUInt16();
 
                     buffer = reader.ReadBytes(nextLength);
                     ms.Write(buffer, 0, nextLength);
@@ -46,7 +46,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 while (BiffRecord.GetNextRecordType(reader) == RecordType.Continue)
                 {
                     var nextId = (RecordType)reader.ReadUInt16();
-                    var nextLength = reader.ReadUInt16();
+                    ushort nextLength = reader.ReadUInt16();
 
                     buffer = reader.ReadBytes(nextLength);
                     ms.Write(buffer, 0, nextLength);

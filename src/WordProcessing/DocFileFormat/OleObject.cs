@@ -99,7 +99,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                 //The length prefix is a character count EXCLUDING the terminating zero
 
                 //Read the ANSI version
-                var cch = reader.ReadInt16();
+                short cch = reader.ReadInt16();
                 var str = reader.ReadBytes(cch);
                 this.Link = Encoding.ASCII.GetString(str);
                 
@@ -147,7 +147,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                 reader.ReadBytes(4);
 
                 //read the embedded/linked flag
-                var flag = reader.ReadInt32();
+                int flag = reader.ReadInt32();
                 this.fLinked = Utils.BitmaskToBool(flag, 0x1);
 
                 //Link update option

@@ -130,7 +130,7 @@ namespace b2xtranslator.OfficeGraph
             // initialize class members from stream
             this.dyHeight = reader.ReadUInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
 
             // 0x0001 is unused
             this.fItalic = Utils.BitmaskToBool(flags, 0x0002);

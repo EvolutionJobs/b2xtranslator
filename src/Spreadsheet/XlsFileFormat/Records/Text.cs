@@ -203,7 +203,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.y = reader.ReadInt32();
             this.dx = reader.ReadInt32();
             this.dy = reader.ReadInt32();
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fAutoColor = Utils.BitmaskToBool(flags, 0x1);
             this.fShowKey = Utils.BitmaskToBool(flags, 0x2);
             this.fShowValue = Utils.BitmaskToBool(flags, 0x4);
@@ -219,7 +219,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.fShowLabel = Utils.BitmaskToBool(flags, 0x4000); 
             //0x8000 is reserved
             this.icvText = reader.ReadUInt16();
-            var values = reader.ReadUInt16();
+            ushort values = reader.ReadUInt16();
             this.dlp = Utils.BitmaskToInt(values, 0xF);
             this.iReadingOrder = (ReadingOrder)Utils.BitmaskToInt(values, 0xC000);
             this.trot = reader.ReadUInt16();

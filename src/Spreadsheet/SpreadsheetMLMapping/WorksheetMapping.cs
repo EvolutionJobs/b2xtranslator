@@ -227,7 +227,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                             this._writer.WriteStartElement("f");
                             if (!fcell.isSharedFormula)
                             {
-                                var value = FormulaInfixMapping.mapFormula(fcell.PtgStack, this._xlsContext);
+                                string value = FormulaInfixMapping.mapFormula(fcell.PtgStack, this._xlsContext);
 
 
                                 if (fcell.usesArrayRecord)
@@ -263,7 +263,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                                         /// Write value and reference 
                                         this._writer.WriteAttributeString("ref", sfd.getOXMLFormatedData());
 
-                                        var value = FormulaInfixMapping.mapFormula(sfd.PtgStack, this._xlsContext, sfd.rwFirst, sfd.colFirst);
+                                        string value = FormulaInfixMapping.mapFormula(sfd.PtgStack, this._xlsContext, sfd.rwFirst, sfd.colFirst);
                                         this._writer.WriteString(value);
 
                                         sfd.RefCount++;

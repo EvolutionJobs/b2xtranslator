@@ -308,7 +308,7 @@ namespace b2xtranslator.PresentationMLMapping
 
             if (fSysIndex)
             {
-                var val = BitConverter.ToUInt16(bytes, 0);
+                ushort val = BitConverter.ToUInt16(bytes, 0);
                 string result = "";
                 switch (val & 0x00ff)
                 {

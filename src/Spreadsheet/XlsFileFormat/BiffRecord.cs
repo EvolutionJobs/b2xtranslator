@@ -77,7 +77,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat
                 
             // read type of the next record
             var nextRecord = (RecordType)reader.ReadUInt16();
-            var length = reader.ReadUInt16();
+            ushort length = reader.ReadUInt16();
 
             // skip leading StartBlock/EndBlock records
             if (nextRecord == RecordType.StartBlock
@@ -112,7 +112,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat
             try
             {
                 var id = (RecordType)reader.ReadUInt16();
-                var length = reader.ReadUInt16();
+                ushort length = reader.ReadUInt16();
 
                 // skip leading StartBlock/EndBlock records
                 if (id == RecordType.StartBlock ||

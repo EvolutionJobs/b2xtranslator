@@ -212,7 +212,7 @@ namespace b2xtranslator.PresentationMLMapping
                                 break;
                             case 0xff7: //DateTimeMCAtom
                                 var d = (DateTimeMCAtom)rec;
-                                var date = System.DateTime.Now.ToString();
+                                string date = System.DateTime.Now.ToString();
 
                                 //_writer.WriteStartElement("a", "p", OpenXmlNamespaces.DrawingML);
 
@@ -375,7 +375,7 @@ namespace b2xtranslator.PresentationMLMapping
             {
                 var parlines = text.Split(new char[] { '\r' }); //text.Split(new char[] { '\v', '\r' });
                 int internalOffset = 0;
-                foreach (var parline in parlines)
+                foreach (string parline in parlines)
                 {
                     var runlines = parline.Split(new char[] { '\v' });
 

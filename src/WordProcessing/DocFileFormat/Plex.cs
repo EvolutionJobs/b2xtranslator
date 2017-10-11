@@ -43,7 +43,7 @@ namespace b2xtranslator.DocFileFormat
                 this.Elements = new List<T>();
                 for (int i = 0; i < n; i++)
                 {
-                    var value = reader.ReadInt16();
+                    short value = reader.ReadInt16();
                     var genericValue = (T)Convert.ChangeType(value, typeof(T));
                     this.Elements.Add(genericValue);
                 }
@@ -53,7 +53,7 @@ namespace b2xtranslator.DocFileFormat
                 for (int i = 0; i < n; i++)
                 {
                     var constructor = genericType.GetConstructor(new Type[] { typeof(VirtualStreamReader), typeof(int) });
-                    var value = constructor.Invoke(new object[] { reader, structureLength });
+                    object value = constructor.Invoke(new object[] { reader, structureLength });
                     var genericValue = (T)Convert.ChangeType(value, typeof(T));
                     this.Elements.Add(genericValue);
                 }

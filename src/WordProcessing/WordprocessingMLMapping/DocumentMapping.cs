@@ -68,7 +68,7 @@ namespace b2xtranslator.WordprocessingMLMapping
         /// <returns>The character pointer to the first character after this table</returns>
         protected int writeTable(int initialCp, uint nestingLevel)
         {
-            var cp = initialCp;
+            int cp = initialCp;
             int fc = this._doc.PieceTable.FileCharacterPositions[cp];
             var papx = findValidPapx(fc);
             var tai = new TableInfo(papx);
@@ -77,7 +77,7 @@ namespace b2xtranslator.WordprocessingMLMapping
             var grid = buildTableGrid(cp, nestingLevel);
 
             //find first row end
-            var fcRowEnd = findRowEndFc(cp, nestingLevel);
+            int fcRowEnd = findRowEndFc(cp, nestingLevel);
             var row1Tapx = new TablePropertyExceptions(findValidPapx(fcRowEnd), this._doc.DataStream);
 
             //start table
@@ -125,7 +125,7 @@ namespace b2xtranslator.WordprocessingMLMapping
         /// <returns>The character pointer to the first character after this row</returns>
         protected int writeTableRow(int initialCp, List<short> grid, uint nestingLevel)
         {
-            var cp = initialCp;
+            int cp = initialCp;
             int fc = this._doc.PieceTable.FileCharacterPositions[cp];
             var papx = findValidPapx(fc);
             var tai = new TableInfo(papx);
@@ -134,7 +134,7 @@ namespace b2xtranslator.WordprocessingMLMapping
             this._writer.WriteStartElement("w", "tr", OpenXmlNamespaces.WordprocessingML);
 
             //convert the properties
-            var fcRowEnd = findRowEndFc(cp, nestingLevel);
+            int fcRowEnd = findRowEndFc(cp, nestingLevel);
             var rowEndPapx = findValidPapx(fcRowEnd);
             var tapx = new TablePropertyExceptions(rowEndPapx, this._doc.DataStream);
             var chpxs = this._doc.GetCharacterPropertyExceptions(fcRowEnd, fcRowEnd + 1);
@@ -198,13 +198,13 @@ namespace b2xtranslator.WordprocessingMLMapping
         /// <returns>The character pointer to the first character after this cell</returns>
         protected int writeTableCell(int initialCp, TablePropertyExceptions tapx, List<short> grid, ref int gridIndex, int cellIndex, uint nestingLevel)
         {
-            var cp = initialCp;
+            int cp = initialCp;
 
             //start w:tc
             this._writer.WriteStartElement("w", "tc", OpenXmlNamespaces.WordprocessingML);
 
             //find cell end
-            var cpCellEnd = findCellEndCp(initialCp, nestingLevel);
+            int cpCellEnd = findCellEndCp(initialCp, nestingLevel);
             
             //convert the properties
             var mapping = new TableCellPropertiesMapping(this._writer, grid, gridIndex, cellIndex);
@@ -263,12 +263,12 @@ namespace b2xtranslator.WordprocessingMLMapping
 
             var boundaries = new List<short>();
             var grid = new List<short>();
-            var cp = initialCp;
+            int cp = initialCp;
             int fc = this._doc.PieceTable.FileCharacterPositions[cp];
             var papx = findValidPapx(fc);
             var tai = new TableInfo(papx);
 
-            var fcRowEnd = findRowEndFc(cp, out cp, nestingLevel);
+            int fcRowEnd = findRowEndFc(cp, out cp, nestingLevel);
 
             while (tai.fInTable)
             {
@@ -281,11 +281,11 @@ namespace b2xtranslator.WordprocessingMLMapping
                         byte itcMac = sprm.Arguments[0];
                         for (int i = 0; i < itcMac; i++)
                         {
-                            var boundary1 = System.BitConverter.ToInt16(sprm.Arguments, 1 + (i * 2));
+                            short boundary1 = System.BitConverter.ToInt16(sprm.Arguments, 1 + (i * 2));
                             if (!boundaries.Contains(boundary1))
                                 boundaries.Add(boundary1);
 
-                            var boundary2 = System.BitConverter.ToInt16(sprm.Arguments, 1 + ((i + 1) * 2));
+                            short boundary2 = System.BitConverter.ToInt16(sprm.Arguments, 1 + ((i + 1) * 2));
                             if (!boundaries.Contains(boundary2))
                                 boundaries.Add(boundary2);
                         }
@@ -453,7 +453,7 @@ namespace b2xtranslator.WordprocessingMLMapping
         protected int writeParagraph(int cp) 
         {
             //search the paragraph end
-            var cpParaEnd = cp;
+            int cpParaEnd = cp;
             while (this._doc.Text[cpParaEnd] != TextMark.ParagraphEnd &&
                 this._doc.Text[cpParaEnd] != TextMark.CellOrRowMark &&
                 !(this._doc.Text[cpParaEnd] == TextMark.PageBreakOrSectionMark && isSectionEnd(cpParaEnd)))
@@ -486,7 +486,7 @@ namespace b2xtranslator.WordprocessingMLMapping
         /// <returns></returns>
         protected int writeParagraph(int initialCp, int cpEnd, bool sectionEnd)
         {
-            var cp = initialCp;
+            int cp = initialCp;
             int fc = this._doc.PieceTable.FileCharacterPositions[cp];
             int fcEnd = this._doc.PieceTable.FileCharacterPositions[cpEnd];
             var papx = findValidPapx(fc);
@@ -614,7 +614,7 @@ namespace b2xtranslator.WordprocessingMLMapping
         /// </summary>
         protected int writeRun(List<char> chars, CharacterPropertyExceptions chpx, int initialCp)
         {
-            var cp = initialCp;
+            int cp = initialCp;
 
             if (this._skipRuns <= 0 && chars.Count > 0)
             {
@@ -689,7 +689,7 @@ namespace b2xtranslator.WordprocessingMLMapping
         /// <param name="chars"></param>
         protected void writeText(List<char> chars, int initialCp, CharacterPropertyExceptions chpx, bool writeDeletedText)
         {
-            var cp = initialCp;
+            int cp = initialCp;
             bool fSpec = isSpecial(chpx);
 
             //detect text type
@@ -1097,7 +1097,7 @@ namespace b2xtranslator.WordprocessingMLMapping
         protected List<int> searchBookmarks(List<char> chars, int initialCp)
         {
             var ret = new List<int>();
-            var cp = initialCp;
+            int cp = initialCp;
             for (int i = 0; i < chars.Count; i++)
             {
                 if (this._doc.BookmarkStartPlex.CharacterPositions.Contains(cp) ||
@@ -1119,8 +1119,8 @@ namespace b2xtranslator.WordprocessingMLMapping
         /// <returns>The position of the next FieldEnd mark</returns>
         protected int searchNextTextMark(List<char> chars, int initialCp, char mark)
         {
-            var ret = initialCp;
-            for (var i = initialCp; i < chars.Count; i++)
+            int ret = initialCp;
+            for (int i = initialCp; i < chars.Count; i++)
             {
                 if (chars[i] == mark)
                 {
@@ -1198,8 +1198,8 @@ namespace b2xtranslator.WordprocessingMLMapping
                 {
                     //special symbol
                     ret = new Symbol();
-                    var fontIndex = System.BitConverter.ToInt16(sprm.Arguments, 0);
-                    var code = System.BitConverter.ToInt16(sprm.Arguments, 2);
+                    short fontIndex = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                    short code = System.BitConverter.ToInt16(sprm.Arguments, 2);
 
                     var ffn = (FontFamilyName)this._doc.FontTable.Data[fontIndex];
                     ret.FontName = ffn.xszFtn;

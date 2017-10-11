@@ -166,7 +166,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaLeft1:
                     case SinglePropertyModifier.OperationCode.sprmPDxaLeft180:
-                        var flValue = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short flValue = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         string flName;
                         if (flValue >= 0)
                         {
@@ -296,7 +296,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                         appendValueElement(numPr, "ilvl", sprm.Arguments[0].ToString(), true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPIlfo:
-                        var val  = System.BitConverter.ToUInt16(sprm.Arguments, 0);
+                        ushort val  = System.BitConverter.ToUInt16(sprm.Arguments, 0);
                         appendValueElement(numPr, "numId", val.ToString(), true);
 
                         ////check if there is a ilvl reference, if not, check the count of LVLs.
@@ -379,27 +379,27 @@ namespace b2xtranslator.WordprocessingMLMapping
                         appendValueAttribute(this._framePr, "wrap", wrapping.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaAbs:
-                        var frameX = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short frameX = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(this._framePr, "x", frameX.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDyaAbs:
-                        var frameY = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short frameY = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(this._framePr, "y", frameY.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPWHeightAbs:
-                        var frameHeight = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short frameHeight = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(this._framePr, "h", frameHeight.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaWidth:
-                        var frameWidth = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short frameWidth = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(this._framePr, "w", frameWidth.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDxaFromText:
-                        var frameSpaceH = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short frameSpaceH = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(this._framePr, "hSpace", frameSpaceH.ToString());
                         break;
                     case SinglePropertyModifier.OperationCode.sprmPDyaFromText:
-                        var frameSpaceV = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short frameSpaceV = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueAttribute(this._framePr, "vSpace", frameSpaceV.ToString());
                         break;
 

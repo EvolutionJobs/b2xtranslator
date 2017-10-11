@@ -142,7 +142,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // assert that the correct record type is instantiated
             //Debug.Assert(this.Id == ID);
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fHidden = Utils.BitmaskToBool(flags, 0x0001);
             this.fFunc = Utils.BitmaskToBool(flags, 0x0002);
             this.fOB = Utils.BitmaskToBool(flags, 0x0004);

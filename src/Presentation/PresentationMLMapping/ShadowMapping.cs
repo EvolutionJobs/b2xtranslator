@@ -107,7 +107,7 @@ namespace b2xtranslator.PresentationMLMapping
                             int integral = -1 * BitConverter.ToInt16(bytes, 0);
                             uint fractional = BitConverter.ToUInt16(bytes, 2);
                             if (fractional == 0xffff) integral *= -1;
-                            var result = integral + ((decimal)fractional / (decimal)65536);
+                            decimal result = integral + ((decimal)fractional / (decimal)65536);
                             result = 1 - (result / 65536);
                             this._writer.WriteAttributeString("sx", Math.Floor(result * 100000).ToString());
                         }
@@ -117,7 +117,7 @@ namespace b2xtranslator.PresentationMLMapping
                         }
                         if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.shadowScaleYToX))
                         {
-                            var scaleYX = (Decimal)(int)this.so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToX].op;
+                            decimal scaleYX = (Decimal)(int)this.so.OptionsByID[ShapeOptions.PropertyId.shadowScaleYToX].op;
                             //_writer.WriteAttributeString("kx", System.Math.Floor(scaleYX / 138790 * 100 * 60000).ToString()); //The 138790 comes from reverse engineering. I can't find a hint in the spec about how to convert this
                             if (scaleYX < 0)
                             {

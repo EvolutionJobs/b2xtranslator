@@ -60,9 +60,9 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                         this.switchStream(); 
                     }
                     // first get the char count of this string 
-                    var cch = this.Reader.ReadUInt16();
+                    ushort cch = this.Reader.ReadUInt16();
                     // get the grbit mask 
-                    var grbit = this.Reader.ReadByte();
+                    byte grbit = this.Reader.ReadByte();
                     bool isCompressedString = false;
                     bool isExtString = false;
                     bool isRichString = false;
@@ -100,7 +100,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                         charcount = 1;
                     else
                         charcount = 2;
-                    var stringbuffer = "";
+                    string stringbuffer = "";
                     // read chars !!! 
                     while (this.Reader.BaseStream.Length < this.Reader.BaseStream.Position + cch * charcount)
                     {
@@ -224,11 +224,11 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
         /// <returns></returns>
         public override string ToString()
         {
-            var back = "";
+            string back = "";
             back += "Number Strings Total: " + this.cstTotal + "\n";
             back += "Number Unique Strings: " + this.cstUnique + "\n";
             back += "Strings: \n";
-            foreach (var var in this.StringList)
+            foreach (string var in this.StringList)
             {
                 back += var + "\n";
             }

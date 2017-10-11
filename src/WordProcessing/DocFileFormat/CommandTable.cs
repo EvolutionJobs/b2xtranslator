@@ -79,8 +79,8 @@ namespace b2xtranslator.DocFileFormat
                         int iMacMn = reader.ReadInt16();
                         for (int i = 0; i < iMacMn; i++)
                         {
-                            var ibst = reader.ReadInt16();
-                            var cch = reader.ReadInt16();
+                            short ibst = reader.ReadInt16();
+                            short cch = reader.ReadInt16();
                             this.MacroNames[ibst] = Encoding.Unicode.GetString(reader.ReadBytes(cch * 2));
                             //skip the terminating zero
                             reader.ReadBytes(2);

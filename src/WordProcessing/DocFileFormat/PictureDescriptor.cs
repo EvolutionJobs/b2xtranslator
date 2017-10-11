@@ -155,7 +155,7 @@ namespace b2xtranslator.DocFileFormat
         public PictureDescriptor(CharacterPropertyExceptions chpx, VirtualStream stream)
         {
             //Get start and length of the PICT
-            var fc = GetFcPic(chpx);
+            int fc = GetFcPic(chpx);
             if (fc >= 0)
             {
                 parse(stream, fc);
@@ -167,11 +167,11 @@ namespace b2xtranslator.DocFileFormat
             stream.Seek(fc, System.IO.SeekOrigin.Begin);
             var reader = new VirtualStreamReader(stream);
 
-            var lcb = reader.ReadInt32();
+            int lcb = reader.ReadInt32();
 
             if (lcb > 0)
             {
-                var cbHeader = reader.ReadUInt16();
+                ushort cbHeader = reader.ReadUInt16();
 
                 this.mfp = new MetafilePicture
                 {
@@ -197,7 +197,7 @@ namespace b2xtranslator.DocFileFormat
                     this.dxaCropRight = reader.ReadInt16();
                     this.dyaCropBottom = reader.ReadInt16();
 
-                    var brcl = reader.ReadInt16();
+                    short brcl = reader.ReadInt16();
 
                     //borders
                     this.brcTop = new BorderCode(reader.ReadBytes(4));
@@ -238,7 +238,7 @@ namespace b2xtranslator.DocFileFormat
         /// <returns></returns>
         public static int GetFcPic(CharacterPropertyExceptions chpx)
         {
-            var ret = -1;
+            int ret = -1;
             foreach (var sprm in chpx.grpprl)
             {
                 switch (sprm.OpCode)

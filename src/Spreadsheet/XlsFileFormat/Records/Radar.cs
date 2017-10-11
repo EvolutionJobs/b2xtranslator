@@ -26,7 +26,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             : base(reader, id, length)
         {
             // initialize class members from stream
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fRdrAxLab = Utils.BitmaskToBool(flags, 0x1);
             this.fHasShadow = Utils.BitmaskToBool(flags, 0x2);
             reader.ReadBytes(2); //unused

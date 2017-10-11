@@ -29,7 +29,7 @@ namespace b2xtranslator.DocFileFormat
             if (bytes.Length == 8)
             {
                 //get the fc value
-                var fcValue = System.BitConverter.ToUInt32(bytes, 2);
+                uint fcValue = System.BitConverter.ToUInt32(bytes, 2);
 
                 //get the flag
                 bool flag = Utils.BitmaskToBool((int)fcValue, 0x40000000);

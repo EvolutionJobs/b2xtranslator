@@ -48,7 +48,7 @@ namespace b2xtranslator.DocFileFormat
                     //check if the type of the entry is a piece table
                     if (type == 2)
                     {
-                        var lcb = System.BitConverter.ToInt32(bytes, pos + 1);
+                        int lcb = System.BitConverter.ToInt32(bytes, pos + 1);
   
                         //read the piece table
                         var piecetable = new byte[lcb];
@@ -62,11 +62,11 @@ namespace b2xtranslator.DocFileFormat
                         {
                             //read the CP 
                             int indexCp = i * 4;
-                            var cp = System.BitConverter.ToInt32(piecetable, indexCp);
+                            int cp = System.BitConverter.ToInt32(piecetable, indexCp);
 
                             //read the next CP
                             int indexCpNext = (i+1) * 4;
-                            var cpNext = System.BitConverter.ToInt32(piecetable, indexCpNext);
+                            int cpNext = System.BitConverter.ToInt32(piecetable, indexCpNext);
 
                             //read the PCD
                             int indexPcd = ((n + 1) * 4) + (i * 8);
@@ -82,8 +82,8 @@ namespace b2xtranslator.DocFileFormat
                             this.Pieces.Add(pcd);
 
                             //add positions
-                            var f = (int)pcd.fc;
-                            var multi = 1;
+                            int f = (int)pcd.fc;
+                            int multi = 1;
                             if (pcd.encoding == Encoding.Unicode)
                             {
                                 multi = 2;
@@ -108,7 +108,7 @@ namespace b2xtranslator.DocFileFormat
                     //entry is no piecetable so goon
                     else if (type == 1)
                     {
-                        var cb = System.BitConverter.ToInt16(bytes, pos + 1);
+                        short cb = System.BitConverter.ToInt16(bytes, pos + 1);
                         pos = pos + 1 + 2 + cb;
                     }
                     else
@@ -130,7 +130,7 @@ namespace b2xtranslator.DocFileFormat
             foreach (var pcd in this.Pieces)
             {
                 //get the FC end of this piece
-                var pcdFcEnd = pcd.cpEnd - pcd.cpStart;
+                int pcdFcEnd = pcd.cpEnd - pcd.cpStart;
                 if (pcd.encoding == Encoding.Unicode)
                     pcdFcEnd *= 2;
                 pcdFcEnd += (int)pcd.fc;
@@ -161,7 +161,7 @@ namespace b2xtranslator.DocFileFormat
                 var pcd = this.Pieces[i];
 
                 //get the FC end of this piece
-                var pcdFcEnd = pcd.cpEnd - pcd.cpStart;
+                int pcdFcEnd = pcd.cpEnd - pcd.cpStart;
                 if (pcd.encoding == Encoding.Unicode)
                     pcdFcEnd *= 2;
                 pcdFcEnd += (int)pcd.fc;

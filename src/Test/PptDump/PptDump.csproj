@@ -10,7 +10,6 @@
     <ProjectReference Include="..\..\Common\Shell\Shell.csproj" />
     <ProjectReference Include="..\..\Common\StructuredStorage\StructuredStorage.csproj" />
     <ProjectReference Include="..\..\Common\Tools\Tools.csproj" />
-    <ProjectReference Include="..\..\Common\ZipUtils\ZipUtils.csproj" />
     <ProjectReference Include="..\..\Presentation\PptFileFormat\PptFileFormat.csproj" />
   </ItemGroup>
 </Project>

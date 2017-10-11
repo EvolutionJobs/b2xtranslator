@@ -46,7 +46,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.hlinkClsid = this.Reader.ReadBytes(16);
             this.streamVersion = this.Reader.ReadUInt32();
 
-            var buffer = this.Reader.ReadUInt32();
+            uint buffer = this.Reader.ReadUInt32();
             bool hlstmfHasMoniker = Utils.BitmaskToBool(buffer, 0x01);
             this.hlstmfIsAbsolute = Utils.BitmaskToBool(buffer, 0x02);
             bool hlstmfSiteGaveDisplayName = Utils.BitmaskToBool(buffer, 0x04);
@@ -77,9 +77,9 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 {
                     // OleMoniker 
                     // read monikerClsid
-                    var Part1MonikerClsid = this.Reader.ReadUInt32();
-                    var Part2MonikerClsid = this.Reader.ReadUInt16();
-                    var Part3MonikerClsid = this.Reader.ReadUInt16();
+                    uint Part1MonikerClsid = this.Reader.ReadUInt32();
+                    ushort Part2MonikerClsid = this.Reader.ReadUInt16();
+                    ushort Part3MonikerClsid = this.Reader.ReadUInt16();
 
                     byte Part4MonikerClsid = this.Reader.ReadByte();
                     byte Part5MonikerClsid = this.Reader.ReadByte();
@@ -93,7 +93,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                     // URL Moniker
                     if (Part1MonikerClsid == 0x79EAC9E0)
                     {
-                        var lenght = reader.ReadUInt32();
+                        uint lenght = reader.ReadUInt32();
                         string value = "";
                         // read until the \0 value 
 
@@ -112,8 +112,8 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                     }
                     else if (Part1MonikerClsid == 0x00000303)
                     {
-                        var cAnti = this.Reader.ReadUInt16();
-                        var ansiLength = this.Reader.ReadUInt32();
+                        ushort cAnti = this.Reader.ReadUInt16();
+                        uint ansiLength = this.Reader.ReadUInt32();
                         string ansiPath = "";
                         for (int i = 0; i < ansiLength; i++)
                         {
@@ -123,18 +123,18 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
 
 
                         ansiPath = ansiPath.Remove(ansiPath.Length - 1);
-                        var endServer = this.Reader.ReadUInt16();
-                        var versionNumber = this.Reader.ReadUInt16();
+                        ushort endServer = this.Reader.ReadUInt16();
+                        ushort versionNumber = this.Reader.ReadUInt16();
                         this.monikerString = ansiPath; 
                         // read 20 unused bytes 
                         this.Reader.ReadBytes(20);
-                        var cbUnicodePathSize = this.Reader.ReadUInt32();
+                        uint cbUnicodePathSize = this.Reader.ReadUInt32();
                         //string unicodePath = ""; 
 
                         if (cbUnicodePathSize != 0)
                         {
-                            var cbUnicodePathBytes = this.Reader.ReadUInt32();
-                            var usKeyValue = this.Reader.ReadUInt16();
+                            uint cbUnicodePathBytes = this.Reader.ReadUInt32();
+                            ushort usKeyValue = this.Reader.ReadUInt16();
 
                             string value = "";
 

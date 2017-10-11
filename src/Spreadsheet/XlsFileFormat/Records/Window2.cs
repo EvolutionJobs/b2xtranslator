@@ -175,7 +175,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             bool inChartSubstream = (length == 10);
 
             // initialize class members from stream
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fDspFmlaRt = Utils.BitmaskToBool(flags, 0x0001);
             this.fDspGridRt = Utils.BitmaskToBool(flags, 0x0002);
             this.fDspRwColRt = Utils.BitmaskToBool(flags, 0x0004);

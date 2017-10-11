@@ -288,12 +288,12 @@ namespace b2xtranslator.DocFileFormat
             {
                 //Read the SED
                 var sed = (SectionDescriptor)this.SectionPlex.Elements[i];
-                var cp = this.SectionPlex.CharacterPositions[i + 1];
+                int cp = this.SectionPlex.CharacterPositions[i + 1];
 
                 //Get the SEPX
                 var wordReader = new VirtualStreamReader(this.WordDocumentStream);
                 this.WordDocumentStream.Seek(sed.fcSepx, System.IO.SeekOrigin.Begin);
-                var cbSepx = wordReader.ReadInt16();
+                short cbSepx = wordReader.ReadInt16();
                 var sepx = new SectionPropertyExceptions(wordReader.ReadBytes(cbSepx - 2));
 
                 this.AllSepx.Add(cp, sepx);

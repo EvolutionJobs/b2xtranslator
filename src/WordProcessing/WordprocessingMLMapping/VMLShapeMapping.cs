@@ -482,13 +482,13 @@ namespace b2xtranslator.WordprocessingMLMapping
                     // TEXT PATH (Word Art)
 
                     case ShapeOptions.PropertyId.gtextUNICODE:
-                        var text = Encoding.Unicode.GetString(entry.opComplex);
+                        string text = Encoding.Unicode.GetString(entry.opComplex);
                         text = text.Replace("\n", "");
                         text = text.Replace("\0", "");
                         appendValueAttribute(this._textpath, "", "string", text, "");
                         break;
                     case ShapeOptions.PropertyId.gtextFont:
-                        var font = Encoding.Unicode.GetString(entry.opComplex);
+                        string font = Encoding.Unicode.GetString(entry.opComplex);
                         font = font.Replace("\0", "");
                         appendStyleProperty(this._textPathStyle, "font-family", "\""+font+"\"");
                         break;
@@ -704,7 +704,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                 //This record stores the index of the textbox.
 
                 var box = (ClientTextbox)recTextbox;
-                var textboxIndex = System.BitConverter.ToInt16(box.Bytes, 2);
+                short textboxIndex = System.BitConverter.ToInt16(box.Bytes, 2);
                 textboxIndex--;
                 this._ctx.Doc.Convert(new TextboxMapping(this._ctx, textboxIndex, this._targetPart, this._writer));
             }
@@ -729,15 +729,15 @@ namespace b2xtranslator.WordprocessingMLMapping
             var result = new StringBuilder();
 
             // parse the IMsoArray
-            var nElems = System.BitConverter.ToUInt16(p, 0);
-            var nElemsAlloc = System.BitConverter.ToUInt16(p, 2);
-            var cbElem = System.BitConverter.ToUInt16(p, 4);
+            ushort nElems = System.BitConverter.ToUInt16(p, 0);
+            ushort nElemsAlloc = System.BitConverter.ToUInt16(p, 2);
+            ushort cbElem = System.BitConverter.ToUInt16(p, 4);
             for (int i = 0; i < nElems; i++)
             {
                 int pos = 6 + i * cbElem;
 
                 var color = new RGBColor(System.BitConverter.ToInt32(p, pos), RGBColor.ByteOrder.RedFirst);
-                var colorPos = System.BitConverter.ToInt32(p, pos + 4);
+                int colorPos = System.BitConverter.ToInt32(p, pos + 4);
 
                 result.Append(colorPos);
                 result.Append("f #");
@@ -1053,7 +1053,7 @@ namespace b2xtranslator.WordprocessingMLMapping
 
         private string getFillMethod(uint p)
         {
-            var val = (short)((p & 0xFFFF0000) >> 28);
+            short val = (short)((p & 0xFFFF0000) >> 28);
             switch (val)
             {
                 case 0:
@@ -1179,7 +1179,7 @@ namespace b2xtranslator.WordprocessingMLMapping
 
             //build the string
             var coords = new StringBuilder();
-            foreach (var coord in pVertices)
+            foreach (int coord in pVertices)
             {
                 coords.Append(coord);
                 coords.Append(" ");

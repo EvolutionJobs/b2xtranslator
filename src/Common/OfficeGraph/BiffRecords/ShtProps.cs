@@ -50,7 +50,7 @@ namespace b2xtranslator.OfficeGraph
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fManSerAlloc = Utils.BitmaskToBool(flags, 0x1);
             // 0x2 and 0x4 are reserved
             this.fManPlotArea = Utils.BitmaskToBool(flags, 0x8);

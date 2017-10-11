@@ -85,7 +85,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             reader.ReadByte(); // undefined
             this.wSpace = reader.ReadByte();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fAutoPosition = Utils.BitmaskToBool(flags, 0x1);
             //0x2 is reserved
             this.fAutoPosX = Utils.BitmaskToBool(flags, 0x4);

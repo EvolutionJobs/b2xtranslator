@@ -1,19 +1,15 @@
-
-
-using System;
-using b2xtranslator.StructuredStorage.Reader;
-using System.IO;
-using b2xtranslator.Tools;
-using System.Globalization;
-using b2xtranslator.PptFileFormat;
-using b2xtranslator.OpenXmlLib.PresentationML;
-using b2xtranslator.PresentationMLMapping;
-using b2xtranslator.ZipUtils;
-using System.Threading;
 using b2xtranslator.OfficeDrawing;
-using b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.OpenXmlLib.PresentationML;
+using b2xtranslator.PptFileFormat;
+using b2xtranslator.PresentationMLMapping;
 using b2xtranslator.Shell;
-using b2xtranslator.OpenXmlLib;
+using b2xtranslator.StructuredStorage.Common;
+using b2xtranslator.StructuredStorage.Reader;
+using b2xtranslator.Tools;
+using System;
+using System.Globalization;
+using System.IO;
+using System.Threading;
 
 namespace b2xtranslator.ppt2x
 {
@@ -41,7 +37,7 @@ namespace b2xtranslator.ppt2x
 
                     var files = Directory.GetFiles(InputFile.Replace("*.ppt", ""), "*.ppt");
 
-                    foreach (var file in files)
+                    foreach (string file in files)
                     {
                         if (new FileInfo(file).Extension.ToLower().EndsWith("ppt"))
                         {
@@ -57,12 +53,6 @@ namespace b2xtranslator.ppt2x
                 }
 
 
-            }
-            catch (ZipCreationException ex)
-            {
-                TraceLogger.Error("Could not create output file {0}.", ChoosenOutputFile);
-                //TraceLogger.Error("Perhaps the specified outputfile was a directory or contained invalid characters.");
-                TraceLogger.Debug(ex.ToString());
             }
             catch (FileNotFoundException ex)
             {

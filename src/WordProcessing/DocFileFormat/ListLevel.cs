@@ -166,7 +166,7 @@ namespace b2xtranslator.DocFileFormat
             this.grpprlChpx = new CharacterPropertyExceptions(this._reader.ReadBytes(this.cbGrpprlChpx));
 
             //read the number text
-            var strLen = this._reader.ReadInt16();
+            short strLen = this._reader.ReadInt16();
             this.xst = Encoding.Unicode.GetString(this._reader.ReadBytes(strLen * 2));
 
             long endPos = this._reader.BaseStream.Position;

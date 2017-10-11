@@ -28,7 +28,7 @@ namespace b2xtranslator.DocFileFormat
             //read size of the STSHI
             var stshiLengthBytes = new byte[2];
             tableStream.Read(stshiLengthBytes, 0, stshiLengthBytes.Length, fib.fcStshf);
-            var cbStshi = System.BitConverter.ToInt16(stshiLengthBytes, 0);
+            short cbStshi = System.BitConverter.ToInt16(stshiLengthBytes, 0);
 
             //read the bytes of the STSHI
             var stshi = tableReader.ReadBytes(fib.fcStshf + 2, cbStshi);
@@ -41,7 +41,7 @@ namespace b2xtranslator.DocFileFormat
             for (int i = 0; i < this.stshi.cstd; i++)
             {
                 //get the cbStd
-                var cbStd = tableReader.ReadUInt16();
+                ushort cbStd = tableReader.ReadUInt16();
 
                 if (cbStd != 0)
                 {

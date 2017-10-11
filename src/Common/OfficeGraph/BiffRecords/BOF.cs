@@ -146,7 +146,7 @@ namespace b2xtranslator.OfficeGraph
             this.rupBuild = reader.ReadUInt16();
             this.rupYear = reader.ReadUInt16();
 
-            var flags = reader.ReadUInt32();
+            uint flags = reader.ReadUInt32();
             this.fWin = Utils.BitmaskToBool(flags, 0x0001);
             this.fRisc = Utils.BitmaskToBool(flags, 0x0002);
             this.fBeta = Utils.BitmaskToBool(flags, 0x0004);

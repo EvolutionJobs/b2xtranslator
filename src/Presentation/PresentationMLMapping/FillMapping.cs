@@ -261,9 +261,9 @@ namespace b2xtranslator.PresentationMLMapping
                             useFillAndBack = false;
                             var type = so.OptionsByID[ShapeOptions.PropertyId.fillShadeType];
 
-                            var nElems = System.BitConverter.ToUInt16(colors, 0);
-                            var nElemsAlloc = System.BitConverter.ToUInt16(colors, 2);
-                            var cbElem = System.BitConverter.ToUInt16(colors, 4);
+                            ushort nElems = System.BitConverter.ToUInt16(colors, 0);
+                            ushort nElemsAlloc = System.BitConverter.ToUInt16(colors, 2);
+                            ushort cbElem = System.BitConverter.ToUInt16(colors, 4);
 
                             var positions = new List<string>();
 
@@ -429,7 +429,7 @@ namespace b2xtranslator.PresentationMLMapping
                             var bytes = BitConverter.GetBytes(so.OptionsByID[ShapeOptions.PropertyId.fillAngle].op);
                             int integral = BitConverter.ToInt16(bytes, 0);
                             uint fractional = BitConverter.ToUInt16(bytes, 2);
-                            var result = integral + ((decimal)fractional / (decimal)65536);
+                            decimal result = integral + ((decimal)fractional / (decimal)65536);
                             angle = 65536 - fractional; //I have no idea why this works!!                    
                             angle = angle - 90;
                             if (angle < 0)
@@ -454,11 +454,11 @@ namespace b2xtranslator.PresentationMLMapping
                         int pos = 0;
                         string colval;
                         FixedPointNumber fixedpoint;
-                        var nElems = BitConverter.ToUInt16(data, pos);
+                        ushort nElems = BitConverter.ToUInt16(data, pos);
                         pos += 2;
-                        var nElemsAlloc = BitConverter.ToUInt16(data, pos);
+                        ushort nElemsAlloc = BitConverter.ToUInt16(data, pos);
                         pos += 2;
-                        var cbElem = BitConverter.ToUInt16(data, pos);
+                        ushort cbElem = BitConverter.ToUInt16(data, pos);
                         pos += 2;
 
                         if (cbElem == 0xFFF0)

@@ -63,7 +63,7 @@ namespace b2xtranslator.StructuredStorage.Reader
             result.Add(startSector);
             while (true)
             {
-                var nextSectorInStream = this.GetNextSectorInChain(result[result.Count - 1]);
+                uint nextSectorInStream = this.GetNextSectorInChain(result[result.Count - 1]);
 
                 // Check for invalid sectors in chain
                 if (nextSectorInStream == SectorId.DIFSECT || nextSectorInStream == SectorId.FATSECT || nextSectorInStream == SectorId.FREESECT)

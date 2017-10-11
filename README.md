@@ -26,13 +26,6 @@ We have chosen to use an Open Source development model that allows developers fr
 
 ## Main Contributors
 
-### [Evolution](https://www.evolutionjobs.com/) (.NET Core Port)
-Fork and port of .NET 2.0 Mono original to .NET Standard 2.0
-
-### [DIaLOGIKa](http://www.dialogika.de/) (Analysis and Development)
-
-DIaLOGIKa - a German systems and software house founded in 1982 - conducts projects on behalf of industry, finance, and governmental and supranational clients such as the institutions of the European Union (EU).
-
-From the beginning DIaLOGIKa has focused – among others – on technically demanding projects in the field of multilingual text and data processing such as document format conversion. DIaLOGIKa has also contributed to the OpenXML/ODF Translator project.
-
-### [Microsoft](http://www.microsoft.com/interop) (Architectural Guidance, Technical Support & Project Management)
+* [Evolution](https://www.evolutionjobs.com/): .NET Core Port
+* [DI<sup><u>a</u></sup>LOGIK<sup><u>a</u></sup>](http://www.dialogika.de/): Analysis and Development
+* [Microsoft](http://www.microsoft.com/interop): Architectural Guidance, Technical Support & Project Management

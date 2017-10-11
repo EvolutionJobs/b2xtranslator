@@ -120,7 +120,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat
                              * The problem here is, that the parser has to overread the continue biff record header 
                             */
                             SST sst;
-                            var length = bh.length;
+                            ushort length = bh.length;
 
                             // save the old offset from this record begin 
                             this.oldOffset = this.StreamReader.BaseStream.Position;

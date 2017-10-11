@@ -12,6 +12,7 @@ using b2xtranslator.OpenXmlLib;
 using System.Drawing;
 using b2xtranslator.Tools;
 using System.Collections;
+using System.IO;
 
 namespace b2xtranslator.PresentationMLMapping
 {
@@ -236,12 +237,12 @@ namespace b2xtranslator.PresentationMLMapping
                 {
                     uint TableRowPropertiesCount = ops.OptionsByID[ShapeOptions.PropertyId.tableRowProperties].op;
                     var data = ops.OptionsByID[ShapeOptions.PropertyId.tableRowProperties].opComplex;
-                    var nElems = BitConverter.ToUInt16(data, 0);
-                    var nElemsAlloc = BitConverter.ToUInt16(data, 2);
-                    var cbElem = BitConverter.ToUInt16(data, 4);
+                    ushort nElems = BitConverter.ToUInt16(data, 0);
+                    ushort nElemsAlloc = BitConverter.ToUInt16(data, 2);
+                    ushort cbElem = BitConverter.ToUInt16(data, 4);
                     for (int i = 0; i < nElems; i++)
                     {
-                        var height = BitConverter.ToInt32(data, 6 + i * cbElem);
+                        int height = BitConverter.ToInt32(data, 6 + i * cbElem);
                         //this is a workaround for a bug
                         //it should be analysed when to use 0 height
                         if (height > 53)
@@ -1124,24 +1125,24 @@ namespace b2xtranslator.PresentationMLMapping
                 }
 
             ShapeOptions sndSo = null;
-            var prstGeom = "";
+            string prstGeom = "";
             if (container.AllChildrenWithType<ShapeOptions>().Count > 1)
             {
                 sndSo = ((RegularContainer)sh.ParentRecord).AllChildrenWithType<ShapeOptions>()[1];
                 if (sndSo.OptionsByID.ContainsKey(ShapeOptions.PropertyId.metroBlob))
                 {
-                    ZipUtils.ZipReader reader = null;
+                    IZipReader reader = null;
                     try
                     {
                         var metroBlob = sndSo.OptionsByID[ShapeOptions.PropertyId.metroBlob];
                         var code = metroBlob.opComplex;
-                        string path = System.IO.Path.GetTempFileName();
-                        var fs = new System.IO.FileStream(path, System.IO.FileMode.Create);
+                        string path = Path.GetTempFileName();
+                        var fs = new FileStream(path, FileMode.Create);
                         fs.Write(code, 0, code.Length);
                         fs.Close();
 
-                        reader = ZipUtils.ZipFactory.OpenArchive(path);
-                        var mems = new System.IO.StreamReader(reader.GetEntry("drs/shapexml.xml"));
+                        reader = ZipFactory.OpenArchive(path);
+                        var mems = new StreamReader(reader.GetEntry("drs/shapexml.xml"));
                         string xml = mems.ReadToEnd();
                         xml = Tools.Utils.replaceOutdatedNamespaces(xml);
                         //xml = xml.Substring(xml.IndexOf("<p:sp")); //remove xml declaration
@@ -1249,7 +1250,7 @@ namespace b2xtranslator.PresentationMLMapping
                         var bytes = BitConverter.GetBytes(this.so.OptionsByID[ShapeOptions.PropertyId.rotation].op);
                         int integral = BitConverter.ToInt16(bytes, 2);
                         uint fractional = BitConverter.ToUInt16(bytes, 0);
-                        var result = integral +((decimal)fractional / (decimal)65536);
+                        decimal result = integral +((decimal)fractional / (decimal)65536);
 
                         Double w = anchor.Bottom - anchor.Top;
                         Double h = anchor.Right - anchor.Left;
@@ -1356,7 +1357,7 @@ namespace b2xtranslator.PresentationMLMapping
                         var bytes = BitConverter.GetBytes(this.so.OptionsByID[ShapeOptions.PropertyId.rotation].op);
                         int integral = BitConverter.ToInt16(bytes, 2);
                         uint fractional = BitConverter.ToUInt16(bytes, 0);
-                        var result = integral + ((decimal)fractional / (decimal)65536);
+                        decimal result = integral + ((decimal)fractional / (decimal)65536);
 
                         //if (result < 0 && sh.fFlipH == false) result = result * -1;
 
@@ -3555,8 +3556,8 @@ namespace b2xtranslator.PresentationMLMapping
                     else if ((prst == "wedgeRectCallout" || prst == "cloudCallout" || prst == "wedgeEllipseCallout") && this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.adjustValue))
                     {
                         //the following computations are based on experiments using Powerpoint 2003 and are not part of the spec
-                        var val = (Decimal)(int)this.so.OptionsByID[ShapeOptions.PropertyId.adjustValue].op;
-                        var percent = val / 21600 * 100;
+                        decimal val = (Decimal)(int)this.so.OptionsByID[ShapeOptions.PropertyId.adjustValue].op;
+                        decimal percent = val / 21600 * 100;
                         int newVal = 0;
                         if (percent >= 50)
                         {

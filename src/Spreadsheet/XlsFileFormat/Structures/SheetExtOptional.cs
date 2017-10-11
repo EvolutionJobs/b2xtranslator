@@ -47,7 +47,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 
         public SheetExtOptional(IStreamReader reader)
         {
-            var field = reader.ReadUInt32();
+            uint field = reader.ReadUInt32();
             this.icvPlain = Utils.BitmaskToUInt32(field, 0x003F);
             this.fCondFmtCalc = Utils.BitmaskToBool(field, 0x0040);
             this.fNotPublished = Utils.BitmaskToBool(field, 0x0080);

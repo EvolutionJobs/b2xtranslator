@@ -17,7 +17,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             // assert that the correct record type is instantiated
             Debug.Assert(this.Id == ID);
 
-            var buffer = this.Reader.ReadUInt16();
+            ushort buffer = this.Reader.ReadUInt16();
             if (buffer == 1)
             {
                 this.hcenter = true;

@@ -1,8 +1,6 @@
-
-
+using b2xtranslator.OpenXmlLib;
 using System;
 using System.IO;
-using b2xtranslator.ZipUtils;
 using System.Xml;
 
 namespace b2xtranslator.OfficeDrawing
@@ -15,50 +13,18 @@ namespace b2xtranslator.OfficeDrawing
         public XmlContainer(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            // Note: XmlContainers contain the data of a partial "unfinished"
-            // OOXML file (.zip based) as their body.
+            // Note: XmlContainers contain the data of a partial "unfinished" OOXML file (.zip based) as their body.
             //
-            // I really don't like writing the data to a temp file just to
-            // be able to open it via ZipUtils.
+            // I really don't like writing the data to a temp file just to be able to open it via ZipUtils.
             //
             // Possible alternatives:
             // 1) Using System.IO.Compression -- supports inflation, but can't parse Zip header data
-            // 2) Modifying zlib + minizlib + ZipLib so I can pass in bytes, possible, but not worth the effort            
+            // 2) Modifying zlib + minizlib + ZipLib so I can pass in bytes, possible, but not worth the effort       
+            
+            // KH - I've left the original comment above, but I've ported this to use option (1) as the IZipLib result can't read headers anyway - it can only open entries.
 
-            string tempPath = Path.GetTempFileName();
-
-            try
-            {
-                using (var fs = new FileStream(tempPath, FileMode.Create))
-                {
-                    using (var tempStream = new BinaryWriter(fs))
-                    {
-                        int count = (int)this.Reader.BaseStream.Length;
-                        var bytes = this.Reader.ReadBytes(count);
-
-                        tempStream.Write(bytes);
-
-                        tempStream.Flush();
-                        fs.Flush();
-
-                        tempStream.Close();
-                        fs.Close();
-                    }
-                }
-
-                using (var zipReader = ZipFactory.OpenArchive(tempPath))
-                {
-                    this.XmlDocumentElement = ExtractDocumentElement(zipReader, GetRelations(zipReader, ""));
-                }
-            }
-            finally
-            {
-                try
-                {
-                    File.Delete(tempPath);
-                }
-                catch (IOException) { /* OK */ }
-            }
+            using (var zipReader = ZipFactory.OpenArchive(this.Reader.BaseStream))
+                this.XmlDocumentElement = ExtractDocumentElement(zipReader, GetRelations(zipReader, ""));
         }
 
         /// <summary>
@@ -67,7 +33,7 @@ namespace b2xtranslator.OfficeDrawing
         /// <param name="zipReader">ZipReader for reading from the OOXML package</param>
         /// <param name="forPartPath">Part for which to get relations</param>
         /// <returns>List of Relationship nodes belonging to forFile</returns>
-        protected static XmlNodeList GetRelations(ZipReader zipReader, string forPartPath)
+        protected static XmlNodeList GetRelations(IZipReader zipReader, string forPartPath)
         {
             string relPath = GetRelationPath(forPartPath);
             var relStream = zipReader.GetEntry(relPath);
@@ -86,8 +52,8 @@ namespace b2xtranslator.OfficeDrawing
         /// <returns>Relation path</returns>
         protected static string GetRelationPath(string forPartPath)
         {
-            var directoryPath = "";
-            var filePath = "";
+            string directoryPath = "";
+            string filePath = "";
 
             if (forPartPath.Length > 0)
             {
@@ -111,7 +77,7 @@ namespace b2xtranslator.OfficeDrawing
         /// <param name="zipReader">ZipReader for reading from the OOXML package</param>
         /// <param name="rels">List of Relationship nodes belonging to root part</param>
         /// <returns>The XmlElement that will become this record's XmlDocumentElement</returns>
-        protected virtual XmlElement ExtractDocumentElement(ZipReader zipReader, XmlNodeList rels)
+        protected virtual XmlElement ExtractDocumentElement(IZipReader zipReader, XmlNodeList rels)
         {
             if (rels.Count != 1)
                 throw new Exception("Expected actly one Relationship in XmlContainer OOXML doc");

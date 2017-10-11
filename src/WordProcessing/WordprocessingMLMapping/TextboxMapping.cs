@@ -31,8 +31,8 @@ namespace b2xtranslator.WordprocessingMLMapping
             this._writer.WriteStartElement("v", "textbox", OpenXmlNamespaces.VectorML);
             this._writer.WriteStartElement("w", "txbxContent", OpenXmlNamespaces.WordprocessingML);
 
-            var cp = 0;
-            var cpEnd = 0;
+            int cp = 0;
+            int cpEnd = 0;
             BreakDescriptor bkd = null;
             int txtbxSubdocStart = doc.FIB.ccpText + doc.FIB.ccpFtn + doc.FIB.ccpHdr + doc.FIB.ccpAtn + doc.FIB.ccpEdn;
 

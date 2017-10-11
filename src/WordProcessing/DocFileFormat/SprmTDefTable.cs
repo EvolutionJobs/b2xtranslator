@@ -43,7 +43,7 @@ namespace b2xtranslator.DocFileFormat
                 if (pointer < bytes.Length)
                 {
                     //the flags
-                    var flags = System.BitConverter.ToUInt16(bytes, pointer);
+                    ushort flags = System.BitConverter.ToUInt16(bytes, pointer);
                     tc.horzMerge = (byte)Utils.BitmaskToInt((int)flags, 0x3);
                     tc.textFlow = (Global.TextFlow)Utils.BitmaskToInt((int)flags, 0x1C);
                     tc.vertMerge = (Global.VerticalMergeFlag)Utils.BitmaskToInt((int)flags, 0x60);

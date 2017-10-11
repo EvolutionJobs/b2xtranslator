@@ -68,7 +68,7 @@ namespace b2xtranslator.StructuredStorage.Reader
         /// <returns>The next sector in the chain</returns>
         override protected uint GetNextSectorInChain(uint currentSector)
         {
-            var sectorInFile = this._sectorsUsedByMiniFat[(int)(currentSector / this._addressesPerSector)];
+            uint sectorInFile = this._sectorsUsedByMiniFat[(int)(currentSector / this._addressesPerSector)];
             // calculation of position:
             // currentSector % _addressesPerSector = number of address in the sector address
             // address uses 32 bit = 4 bytes

@@ -85,7 +85,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             Debug.Assert(this.Id == ID);
 
             // initialize class members from stream
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fShowValue = Utils.BitmaskToBool(flags, 0x1);
             this.fShowPercent = Utils.BitmaskToBool(flags, 0x2);
             this.fShowLabelAndPerc = Utils.BitmaskToBool(flags, 0x4);

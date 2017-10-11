@@ -85,7 +85,7 @@ namespace b2xtranslator.OfficeGraph
             // initialize class members from stream
             this.frtHeader = new FrtHeader(reader);
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fSerName = Utils.BitmaskToBool(flags, 0x0001);
             this.fCatName = Utils.BitmaskToBool(flags, 0x0002);
             this.fValue = Utils.BitmaskToBool(flags, 0x0004);

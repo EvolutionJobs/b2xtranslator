@@ -108,7 +108,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                         byte first = sprm.Arguments[0];
                         byte lim = sprm.Arguments[1];
                         byte ftsMargin = sprm.Arguments[3];
-                        var wMargin = System.BitConverter.ToInt16(sprm.Arguments, 4);
+                        short wMargin = System.BitConverter.ToInt16(sprm.Arguments, 4);
 
                         if (this._cellIndex >= first && this._cellIndex < lim)
                         {

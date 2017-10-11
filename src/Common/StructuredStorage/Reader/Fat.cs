@@ -48,7 +48,7 @@ namespace b2xtranslator.StructuredStorage.Reader
         /// <returns>The next sector in the chain</returns>
         override protected uint GetNextSectorInChain(uint currentSector)
         {
-            var sectorInFile = this._sectorsUsedByFat[(int)(currentSector / this._addressesPerSector)];
+            uint sectorInFile = this._sectorsUsedByFat[(int)(currentSector / this._addressesPerSector)];
             // calculation of position:
             // currentSector % _addressesPerSector = number of address in the sector address
             // address uses 32 bit = 4 bytes
@@ -107,7 +107,7 @@ namespace b2xtranslator.StructuredStorage.Reader
                 // Add all addresses contained in the current difat sector except the last address (it points to next difat sector)
                 for (int i = 0; i < this._addressesPerSector - 1; i++)
                 {
-                    var fatSector = this._fileHandler.ReadUInt32();
+                    uint fatSector = this._fileHandler.ReadUInt32();
                     if (fatSector == SectorId.FREESECT)
                     {
                         lastFatSectorFound = true;
@@ -122,7 +122,7 @@ namespace b2xtranslator.StructuredStorage.Reader
                 }
 
                 // Last address in difat sector points to next difat sector
-                var nextDiFatSector = this._fileHandler.ReadUInt32();
+                uint nextDiFatSector = this._fileHandler.ReadUInt32();
                 if (nextDiFatSector == SectorId.FREESECT || nextDiFatSector == SectorId.ENDOFCHAIN)
                 {
                     break;

@@ -91,7 +91,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.DataContainer
         /// <returns></returns>
         public string getOXMLFormatedData()
         {
-            var returnvalue = "";
+            string returnvalue = "";
             returnvalue += ExcelHelperClass.intToABCString(this.colFirst, (this.rwFirst + 1).ToString());
             returnvalue += ":";
             returnvalue += ExcelHelperClass.intToABCString(this.colLast, (this.rwLast + 1).ToString());

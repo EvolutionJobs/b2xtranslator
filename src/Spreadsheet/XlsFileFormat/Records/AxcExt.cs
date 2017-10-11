@@ -185,7 +185,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.duBase = (DateUnit)reader.ReadUInt16();
             this.catCrossDate = reader.ReadUInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fAutoMin = Utils.BitmaskToBool(flags, 0x0001);
             this.fAutoMax = Utils.BitmaskToBool(flags, 0x0002);
             this.fAutoMajor = Utils.BitmaskToBool(flags, 0x0004);

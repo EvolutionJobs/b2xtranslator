@@ -99,7 +99,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgUplus || ptg is PtgUminus)
                     {
-                        var buffer = "";
+                        string buffer = "";
                         if (ptg.PopSize() > resultStack.Count)
                         {
                             throw new ExtractorException(ExtractorException.PARSEDFORMULAEXCEPTION);
@@ -110,7 +110,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgParen)
                     {
-                        var buffer = "";
+                        string buffer = "";
                         if (ptg.PopSize() > resultStack.Count)
                         {
                             throw new ExtractorException(ExtractorException.PARSEDFORMULAEXCEPTION);
@@ -121,7 +121,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgPercent)
                     {
-                        var buffer = "";
+                        string buffer = "";
                         if (ptg.PopSize() > resultStack.Count)
                         {
                             throw new ExtractorException(ExtractorException.PARSEDFORMULAEXCEPTION);
@@ -137,7 +137,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                                 ptg is PtgUnion || ptg is PtgIsect
                         )
                     {
-                        var buffer = "";
+                        string buffer = "";
                         if (ptg.PopSize() > resultStack.Count)
                         {
                             throw new ExtractorException(ExtractorException.PARSEDFORMULAEXCEPTION);
@@ -152,7 +152,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgArea)
                     {
-                        var buffer = "";
+                        string buffer = "";
                         var ptgarea = (PtgArea)ptg;
                         buffer = ExcelHelperClass.intToABCString((int)ptgarea.colFirst, (ptgarea.rwFirst + 1).ToString(), ptgarea.colFirstRelative, ptgarea.rwFirstRelative);
                         buffer = buffer + ":" + ExcelHelperClass.intToABCString((int)ptgarea.colLast, (ptgarea.rwLast + 1).ToString(), ptgarea.colLastRelative, ptgarea.rwLastRelative);
@@ -162,7 +162,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgAreaN)
                     {
-                        var buffer = "";
+                        string buffer = "";
                         var ptgarean = (PtgAreaN)ptg;
                         int realRwFirst;
                         int realRwLast;
@@ -215,7 +215,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                     }
                     else if (ptg is PtgAttrSum)
                     {
-                        var buffer = "";
+                        string buffer = "";
                         var ptgref = (PtgAttrSum)ptg;
                         buffer = ptg.getData() + "(" + resultStack.Pop() + ")";
                         resultStack.Push(buffer);
@@ -238,8 +238,8 @@ namespace b2xtranslator.SpreadsheetMLMapping
                         try
                         {
                             var ptgr3d = (PtgRef3d)ptg;
-                            var refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgr3d.ixti));
-                            var cellref = ExcelHelperClass.intToABCString((int)ptgr3d.col, (ptgr3d.rw + 1).ToString(), ptgr3d.colRelative, ptgr3d.rwRelative);
+                            string refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgr3d.ixti));
+                            string cellref = ExcelHelperClass.intToABCString((int)ptgr3d.col, (ptgr3d.rw + 1).ToString(), ptgr3d.colRelative, ptgr3d.rwRelative);
 
                             resultStack.Push("'" + refstring + "'" + "!" + cellref);
                         }
@@ -253,8 +253,8 @@ namespace b2xtranslator.SpreadsheetMLMapping
                         try
                         {
                             var ptga3d = (PtgArea3d)ptg;
-                            var refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptga3d.ixti));
-                            var buffer = "";
+                            string refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptga3d.ixti));
+                            string buffer = "";
                             buffer = ExcelHelperClass.intToABCString((int)ptga3d.colFirst, (ptga3d.rwFirst + 1).ToString(), ptga3d.colFirstRelative, ptga3d.rwFirstRelative);
                             buffer = buffer + ":" + ExcelHelperClass.intToABCString((int)ptga3d.colLast, (ptga3d.rwLast + 1).ToString(), ptga3d.colLastRelative, ptga3d.rwLastRelative);
 
@@ -269,13 +269,13 @@ namespace b2xtranslator.SpreadsheetMLMapping
                     else if (ptg is PtgNameX)
                     {
                         var ptgnx = (PtgNameX)ptg;
-                        var opstring = xlsContext.XlsDoc.WorkBookData.getExternNameByRef(ptgnx.ixti, ptgnx.nameindex);
+                        string opstring = xlsContext.XlsDoc.WorkBookData.getExternNameByRef(ptgnx.ixti, ptgnx.nameindex);
                         resultStack.Push(opstring);
                     }
                     else if (ptg is PtgName)
                     {
                         var ptgn = (PtgName)ptg;
-                        var opstring = xlsContext.XlsDoc.WorkBookData.getDefinedNameByRef(ptgn.nameindex);
+                        string opstring = xlsContext.XlsDoc.WorkBookData.getDefinedNameByRef(ptgn.nameindex);
                         resultStack.Push(opstring);
                     }
                     else if (ptg is PtgRefErr)
@@ -289,7 +289,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                         {
                             var ptgreferr3d = (PtgRefErr3d)ptg;
 
-                            var refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgreferr3d.ixti));
+                            string refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgreferr3d.ixti));
                             resultStack.Push("'" + refstring + "'" + "!" + ptgreferr3d.getData());
                         }
                         catch (Exception)
@@ -302,7 +302,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                         try
                         {
                             var ptgareaerr3d = (PtgAreaErr3d)ptg;
-                            var refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgareaerr3d.ixti));
+                            string refstring = ExcelHelperClass.EscapeFormulaString(xlsContext.XlsDoc.WorkBookData.getIXTIString(ptgareaerr3d.ixti));
                             resultStack.Push("'" + refstring + "'" + "!" + ptgareaerr3d.getData());
                         }
                         catch (Exception)
@@ -314,7 +314,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                     {
                         var ptgf = (PtgFunc)ptg;
                         var value = (FtabValues)ptgf.tab;
-                        var buffer = value.ToString();
+                        string buffer = value.ToString();
                         buffer.Replace("_", ".");
 
                         // no param 
@@ -392,7 +392,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                             )
                         {
                             buffer += "(";
-                            var buffer2 = resultStack.Pop();
+                            string buffer2 = resultStack.Pop();
                             buffer2 = resultStack.Pop() + "," + buffer2;
 
                             buffer += buffer2 + ")";
@@ -418,7 +418,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                             )
                         {
                             buffer += "(";
-                            var buffer2 = resultStack.Pop();
+                            string buffer2 = resultStack.Pop();
                             buffer2 = resultStack.Pop() + "," + buffer2;
                             buffer2 = resultStack.Pop() + "," + buffer2;
                             buffer += buffer2 + ")";
@@ -433,7 +433,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                             )
                         {
                             buffer += "(";
-                            var buffer2 = resultStack.Pop();
+                            string buffer2 = resultStack.Pop();
                             buffer2 = resultStack.Pop() + "," + buffer2;
                             buffer2 = resultStack.Pop() + "," + buffer2;
                             buffer2 = resultStack.Pop() + "," + buffer2;
@@ -453,7 +453,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                         if (!ptgfv.fCelFunc)
                         {
                             var value = (FtabValues)ptgfv.tab;
-                            var buffer = value.ToString();
+                            string buffer = value.ToString();
                             buffer.Replace("_", ".");
                             // 1 to x parameter
                             if (value == FtabValues.COUNT || value == FtabValues.IF ||
@@ -505,7 +505,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                                 )
                             {
                                 buffer += "(";
-                                var buffer2 = resultStack.Pop();
+                                string buffer2 = resultStack.Pop();
                                 for (int i = 1; i < ptgfv.cparams; i++)
                                 {
                                     buffer2 = resultStack.Pop() + "," + buffer2;
@@ -516,7 +516,7 @@ namespace b2xtranslator.SpreadsheetMLMapping
                             else if ((int)value == 0xFF)
                             {
                                 buffer = "(";
-                                var buffer2 = resultStack.Pop();
+                                string buffer2 = resultStack.Pop();
                                 for (int i = 1; i < ptgfv.cparams - 1; i++)
                                 {
                                     buffer2 = resultStack.Pop() + "," + buffer2;

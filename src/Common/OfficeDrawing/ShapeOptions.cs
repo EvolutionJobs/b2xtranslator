@@ -575,7 +575,7 @@ namespace b2xtranslator.OfficeDrawing
             for (int i = 0; i < instance; i++)
             {
                 var entry = new OptionEntry();
-                var flag = this.Reader.ReadUInt16();
+                ushort flag = this.Reader.ReadUInt16();
                 entry.pid = (PropertyId)Utils.BitmaskToInt(flag, 0x3FFF);
                 entry.fBid = Utils.BitmaskToBool(flag, 0x4000);
                 entry.fComplex = Utils.BitmaskToBool(flag, 0x8000);
@@ -600,9 +600,9 @@ namespace b2xtranslator.OfficeDrawing
 
                     if (this.Options[i].pid == PropertyId.pVertices)
                     {
-                        var nElemsVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 0);
-                        var nElemsAllocVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 2);
-                        var cbElemVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 4);
+                        ushort nElemsVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 0);
+                        ushort nElemsAllocVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 2);
+                        ushort cbElemVert = System.BitConverter.ToUInt16(this.Options[i].opComplex, 4);
                         if (cbElemVert == 0xfff0) cbElemVert = 4;
                         if (nElemsVert * cbElemVert == this.Options[i].op)
                         {

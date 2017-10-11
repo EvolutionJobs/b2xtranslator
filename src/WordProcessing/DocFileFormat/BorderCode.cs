@@ -126,8 +126,8 @@ namespace b2xtranslator.DocFileFormat
 
                 this.dptLineWidth = bytes[4];
                 this.brcType = bytes[5];
- 
-                var val = System.BitConverter.ToInt16(bytes, 6);
+
+                short val = System.BitConverter.ToInt16(bytes, 6);
                 this.dptSpace = val & 0x001F;
 
                 //not sure if this is correct, the values from the spec are definitly wrong:
@@ -137,7 +137,7 @@ namespace b2xtranslator.DocFileFormat
             else if (bytes.Length == 4)
             {
                 //it's a border code of Word 97
-                var val = System.BitConverter.ToUInt16(bytes, 0);
+                ushort val = System.BitConverter.ToUInt16(bytes, 0);
                 this.dptLineWidth = (byte)(val & 0x00FF);
                 this.brcType = (byte)((val & 0xFF00) >> 8);
                 val = System.BitConverter.ToUInt16(bytes, 2);

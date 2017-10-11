@@ -32,7 +32,7 @@ namespace b2xtranslator.PptFileFormat
         {
             this.formatId = this.Reader.ReadInt16();
 
-            var mask = this.Reader.ReadInt16();
+            short mask = this.Reader.ReadInt16();
             this.fHasDate = ((mask & (1)) != 0);
             this.fHasTodayDate = ((mask & (1 << 1)) != 0);
             this.fHasUserDate = ((mask & (1 << 2)) != 0);

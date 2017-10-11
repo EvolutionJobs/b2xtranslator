@@ -119,7 +119,7 @@ namespace b2xtranslator.DocFileFormat
             this.xaRight = this._reader.ReadInt32();
             this.yaBottom = this._reader.ReadInt32();
 
-            var flag = this._reader.ReadUInt16();
+            ushort flag = this._reader.ReadUInt16();
             this.fHdr = Tools.Utils.BitmaskToBool(flag, 0x0001);
             this.bx = (AnchorType)Tools.Utils.BitmaskToInt(flag, 0x0006);
             this.by = (AnchorType)Tools.Utils.BitmaskToInt(flag, 0x0018);

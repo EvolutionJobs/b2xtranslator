@@ -19,7 +19,7 @@ namespace b2xtranslator.DocFileFormat
             this.ParentOffset = this._reader.ReadInt32();
             if (length > 16)
             {
-                var flag = this._reader.ReadInt32();
+                int flag = this._reader.ReadInt32();
             }
         }
     }

@@ -42,8 +42,8 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 }
                 else if (grbit == 0x02)
                 {
-                    var Data = "";
-                    var cch = this.Reader.ReadUInt16();
+                    string Data = "";
+                    ushort cch = this.Reader.ReadUInt16();
                     byte firstbyte = this.Reader.ReadByte();
                     int firstbit = firstbyte & 0x1;
                     for (int i = 0; i < cch; i++)
@@ -70,7 +70,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
                 else if (grbit == 0x04)
                 {
                     // bool 
-                    var boolvalue = this.Reader.ReadUInt16();
+                    ushort boolvalue = this.Reader.ReadUInt16();
                     bool value = false;
                     if (boolvalue == 1)
                         value = true;

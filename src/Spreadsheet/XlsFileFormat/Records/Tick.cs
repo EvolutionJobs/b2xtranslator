@@ -128,7 +128,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.wBkgMode = (BackgroundMode)reader.ReadByte();
             this.rgb = new RGBColor(reader.ReadInt32(), RGBColor.ByteOrder.RedFirst);
             reader.ReadBytes(16); // rerserved
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fAutoCo = Utils.BitmaskToBool(flags, 0x1);
             this.fAutoMode = Utils.BitmaskToBool(flags, 0x2);
             this.rot = (TextRotation)Utils.BitmaskToInt(flags, 0x1C);

@@ -73,7 +73,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                     //preferred table width
                     case SinglePropertyModifier.OperationCode.sprmTTableWidth:
                         var fts = (WidthType)sprm.Arguments[0];
-                        var width = System.BitConverter.ToInt16(sprm.Arguments, 1);
+                        short width = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         var tblW = this._nodeFactory.CreateElement("w", "tblW", OpenXmlNamespaces.WordprocessingML);
                         var w = this._nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);
                         w.Value = width.ToString();
@@ -98,7 +98,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                     //style
                     case SinglePropertyModifier.OperationCode.sprmTIstd:
                     case SinglePropertyModifier.OperationCode.sprmTIstdPermute:
-                        var styleIndex = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short styleIndex = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         if(this._styles.Styles.Count> styleIndex)
                         {
                             string id = StyleSheetMapping.MakeStyleId(this._styles.Styles[styleIndex]);
@@ -131,7 +131,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                     case SinglePropertyModifier.OperationCode.sprmTCellPaddingDefault:
                     case SinglePropertyModifier.OperationCode.sprmTCellPaddingOuter:
                         byte grfbrc = sprm.Arguments[2];
-                        var wMar = System.BitConverter.ToInt16(sprm.Arguments, 4);
+                        short wMar = System.BitConverter.ToInt16(sprm.Arguments, 4);
                         if (Utils.BitmaskToBool((int)grfbrc, 0x01))
                             appendDxaElement(tblCellMar, "top", wMar.ToString(), true);
                         if (Utils.BitmaskToBool((int)grfbrc, 0x02))
@@ -334,7 +334,7 @@ namespace b2xtranslator.WordprocessingMLMapping
 
             //append the grid
             this._tblGrid = this._nodeFactory.CreateElement("w", "tblGrid", OpenXmlNamespaces.WordprocessingML);
-            foreach (var colW in this._grid)
+            foreach (short colW in this._grid)
             {
                 var gridCol = this._nodeFactory.CreateElement("w", "gridCol", OpenXmlNamespaces.WordprocessingML);
                 var gridColW = this._nodeFactory.CreateAttribute("w", "w", OpenXmlNamespaces.WordprocessingML);

@@ -58,10 +58,10 @@ namespace b2xtranslator.StructuredStorage.Reader
         /// <param name="sid">start sid</param>
         private void GetAllDirectoryEntriesRecursive(uint sid, string path)
         {
-            var entry = ReadDirectoryEntry(sid, path);            
-            var left = entry.LeftSiblingSid;
-            var right = entry.RightSiblingSid;
-            var child = entry.ChildSiblingSid;
+            var entry = ReadDirectoryEntry(sid, path);
+            uint left = entry.LeftSiblingSid;
+            uint right = entry.RightSiblingSid;
+            uint child = entry.ChildSiblingSid;
             //Console.WriteLine("{0:X02}: Left: {2:X02}, Right: {3:X02}, Child: {4:X02}, Name: {1}, Color: {5}", entry.Sid, entry.Name, (left > 0xFF)? 0xFF : left, (right > 0xFF)? 0xFF : right, (child > 0xFF)? 0xFF : child, entry.Color.ToString() );
 
             // Check for cycle

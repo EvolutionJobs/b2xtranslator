@@ -115,7 +115,7 @@ namespace b2xtranslator.DocFileFormat
             else if (bytes.Length == 2)
             {
                 //it's a Word 97 SPRM
-                var val = System.BitConverter.ToInt16(bytes, 0);
+                short val = System.BitConverter.ToInt16(bytes, 0);
                 this.icoFore = (Global.ColorIdentifier)((val << 11) >> 11);
                 this.icoBack = (Global.ColorIdentifier)((val << 2) >> 7);
                 this.ipat = (ShadingPattern)(val >> 10);

@@ -154,7 +154,7 @@ namespace b2xtranslator.OfficeGraph
             this.pcDepth = reader.ReadInt16();
             this.pcGap = reader.ReadUInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fPerspective = Utils.BitmaskToBool(flags, 0x0001);
             this.fCluster = Utils.BitmaskToBool(flags, 0x0002);
             this.f3DScaling = (ScalingType)Utils.BitmaskToUInt16(flags, 0x0004);

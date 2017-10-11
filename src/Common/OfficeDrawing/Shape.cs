@@ -81,7 +81,7 @@ namespace b2xtranslator.OfficeDrawing
         {
             this.spid = this.Reader.ReadInt32();
 
-            var flag = this.Reader.ReadUInt32();
+            uint flag = this.Reader.ReadUInt32();
             this.fGroup = Utils.BitmaskToBool(flag, 0x1);
             this.fChild = Utils.BitmaskToBool(flag, 0x2);
             this.fPatriarch = Utils.BitmaskToBool(flag, 0x4);

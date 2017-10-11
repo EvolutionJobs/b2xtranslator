@@ -18,7 +18,7 @@ namespace b2xtranslator.DocFileFormat
                 //followed by the array of LVLF structs
 
                 //read count
-                var count = reader.ReadInt16();
+                short count = reader.ReadInt16();
 
                 //read the LSTF structs
                 for (int i = 0; i < count; i++)

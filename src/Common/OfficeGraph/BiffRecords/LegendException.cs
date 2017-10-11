@@ -52,7 +52,7 @@ namespace b2xtranslator.OfficeGraph
 
             // initialize class members from stream
             this.iss = reader.ReadUInt16();
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fDeleted = Utils.BitmaskToBool(flags, 0x1);
             this.fLabel = Utils.BitmaskToBool(flags, 0x2);
 

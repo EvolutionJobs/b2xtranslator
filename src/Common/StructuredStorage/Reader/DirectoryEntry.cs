@@ -37,7 +37,7 @@ namespace b2xtranslator.StructuredStorage.Reader
             this.Name = this._fileHandler.ReadString(64);
 
             // Name length check: lengthOfName = length of the element in bytes including Unicode NULL
-            var lengthOfName = this._fileHandler.ReadUInt16();
+            ushort lengthOfName = this._fileHandler.ReadUInt16();
             // Commented out due to trouble with odd unicode-named streams in PowerPoint -- flgr
             /*if (lengthOfName != (_name.Length + 1) * 2)
             {
@@ -67,8 +67,8 @@ namespace b2xtranslator.StructuredStorage.Reader
             this._fileHandler.ReadUInt64();
             this.StartSector = this._fileHandler.ReadUInt32();
 
-            var sizeLow = this._fileHandler.ReadUInt32();
-            var sizeHigh = this._fileHandler.ReadUInt32();
+            uint sizeLow = this._fileHandler.ReadUInt32();
+            uint sizeHigh = this._fileHandler.ReadUInt32();
 
             if (this._header.SectorSize == 512 && sizeHigh != 0x0)
             {

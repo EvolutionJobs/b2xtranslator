@@ -73,7 +73,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.catLabel = reader.ReadInt16();
             this.catMark = reader.ReadInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fBetween = Utils.BitmaskToBool(flags, 0x0001);
             this.fMaxCross = Utils.BitmaskToBool(flags, 0x0002);
             this.fReverse = Utils.BitmaskToBool(flags, 0x0004);

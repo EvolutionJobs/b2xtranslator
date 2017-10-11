@@ -313,11 +313,11 @@ namespace b2xtranslator.WordprocessingMLMapping
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSNfcFtnRef:
                         //number format
-                        var nfc = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short nfc = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueElement(footnotePr, "numFmt", NumberingMapping.GetNumberFormat(nfc), true);
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSNFtn:
-                        var nFtn = System.BitConverter.ToInt16(sprm.Arguments, 0);
+                        short nFtn = System.BitConverter.ToInt16(sprm.Arguments, 0);
                         appendValueElement(footnotePr, "numStart", nFtn.ToString(), true);
                         break;
 
@@ -348,7 +348,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                             this._colWidth = new short[this._colNumber];
 
                         byte index = sprm.Arguments[0];
-                        var w = System.BitConverter.ToInt16(sprm.Arguments, 1);
+                        short w = System.BitConverter.ToInt16(sprm.Arguments, 1);
                         this._colWidth[index] = w;
                         break;
                     case SinglePropertyModifier.OperationCode.sprmSDxaColSpacing:
@@ -408,7 +408,7 @@ namespace b2xtranslator.WordprocessingMLMapping
                 //the last column width is not written to the document because it can be calculated.
                 if (this._colWidth[this._colWidth.Length - 1] == 0)
                 {
-                    var lastColWidth = (short)(this._pgWidth - this._marLeft - this._marRight);
+                    short lastColWidth = (short)(this._pgWidth - this._marLeft - this._marRight);
                     for (int i = 0; i < this._colWidth.Length - 1; i++)
                     {
                         lastColWidth -= this._colSpace[i];

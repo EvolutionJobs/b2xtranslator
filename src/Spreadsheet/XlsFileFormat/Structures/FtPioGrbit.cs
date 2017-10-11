@@ -43,7 +43,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
             this.ft = reader.ReadUInt16();
             this.cb = reader.ReadUInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fAutoPict = Utils.BitmaskToBool(flags, 0x0001);
             this.fDde = Utils.BitmaskToBool(flags, 0x0002);
             this.fPrintCalc = Utils.BitmaskToBool(flags, 0x0004);

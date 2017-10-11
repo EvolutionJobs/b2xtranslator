@@ -55,7 +55,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.frtHeader = new FrtHeader(reader);
             this.wScalePLV = reader.ReadUInt16();
 
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fPageLayoutView = Utils.BitmaskToBool(flags, 0x0001);
             this.fRulerVisible = Utils.BitmaskToBool(flags, 0x0002);
             this.fWhitespaceHidden = Utils.BitmaskToBool(flags, 0x0004);

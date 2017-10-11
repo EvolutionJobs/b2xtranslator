@@ -49,7 +49,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Structures
 
         public ControlInfo(IStreamReader reader)
         {
-            var flags = reader.ReadUInt16();
+            ushort flags = reader.ReadUInt16();
             this.fDefault = Utils.BitmaskToBool(flags, 0x0001);
             this.fHelp = Utils.BitmaskToBool(flags, 0x0002);
             this.fCancel = Utils.BitmaskToBool(flags, 0x0004);

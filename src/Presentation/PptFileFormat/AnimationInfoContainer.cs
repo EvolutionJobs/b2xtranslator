@@ -52,7 +52,7 @@ namespace b2xtranslator.PptFileFormat
             this.fHide = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 12);
             this.fAnimateBg = Tools.Utils.BitmaskToBool(this.flags, 0x1 << 14);
 
-            var reserved = this.Reader.ReadInt16();
+            short reserved = this.Reader.ReadInt16();
             this.soundIdRef = this.Reader.ReadBytes(4);
             this.delayTime = this.Reader.ReadInt32();
             this.orderID = this.Reader.ReadInt16();

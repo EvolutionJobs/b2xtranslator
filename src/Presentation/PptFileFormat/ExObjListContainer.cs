@@ -44,12 +44,12 @@ namespace b2xtranslator.PptFileFormat
         public ExOleObjAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            var drawAspect = this.Reader.ReadInt32();
-            var type = this.Reader.ReadInt32();
+            int drawAspect = this.Reader.ReadInt32();
+            int type = this.Reader.ReadInt32();
             this.exObjId = this.Reader.ReadInt32();
-            var subType = this.Reader.ReadInt32();
+            int subType = this.Reader.ReadInt32();
             this.persistIdRef = this.Reader.ReadUInt32();
-            var unused = this.Reader.ReadInt32();            
+            int unused = this.Reader.ReadInt32();            
         }
     }
 
@@ -68,7 +68,7 @@ namespace b2xtranslator.PptFileFormat
         public ExOleEmbedAtom(BinaryReader _reader, uint size, uint typeCode, uint version, uint instance)
             : base(_reader, size, typeCode, version, instance)
         {
-            var exColorFollow = this.Reader.ReadInt32();
+            int exColorFollow = this.Reader.ReadInt32();
             byte fCantLockServer = this.Reader.ReadByte();
             byte fNoSizeToServer = this.Reader.ReadByte();
             byte fIsTable = this.Reader.ReadByte();

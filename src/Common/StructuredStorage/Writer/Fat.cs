@@ -60,7 +60,7 @@ namespace b2xtranslator.StructuredStorage.Writer
                 return SectorId.ENDOFCHAIN;
             }
 
-            var startSector = this._currentEntry;
+            uint startSector = this._currentEntry;
 
             for (int i = 0; i < sectorCount; i++)
             {
@@ -109,9 +109,9 @@ namespace b2xtranslator.StructuredStorage.Writer
             for (int i = 0; i < this._diFatEntries.Count - 109; i++)
             {
                 greaterDiFatEntries.Add(this._diFatEntries[i + 109]);
-            }          
+            }
 
-            var diFatLink = this._diFatStartSector + 1;
+            uint diFatLink = this._diFatStartSector + 1;
             int addressesInSector = this._context.Header.SectorSize / 4;
             int sectorSplit = addressesInSector;
 
@@ -155,7 +155,7 @@ namespace b2xtranslator.StructuredStorage.Writer
             this._numDiFatSectors = 0;            
             while (true)
             {
-                var numDiFatSectorsOld = this._numDiFatSectors;
+                uint numDiFatSectorsOld = this._numDiFatSectors;
                 this._numFatSectors = (uint)Math.Ceiling((double)(this._entries.Count * 4) / (double)this._context.Header.SectorSize) + this._numDiFatSectors;
                 this._numDiFatSectors = (this._numFatSectors <= 109) ? 0 : (uint)Math.Ceiling((double)((this._numFatSectors - 109) * 4) / (double)(this._context.Header.SectorSize - 1));
                 if (numDiFatSectorsOld == this._numDiFatSectors)
