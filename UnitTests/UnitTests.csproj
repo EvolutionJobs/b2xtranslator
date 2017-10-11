@@ -27,9 +27,9 @@
     <PackageReference Include="NUnit3TestAdapter" Version="3.8.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Presentation\PresentationMLMapping\PresentationMLMapping.csproj" />
-    <ProjectReference Include="..\..\Spreadsheet\SpreadsheetMLMapping\SpreadsheetMLMapping.csproj" />
-    <ProjectReference Include="..\..\WordProcessing\WordprocessingMLMapping\WordprocessingMLMapping.csproj" />
+    <ProjectReference Include="..\Presentation\PresentationMLMapping\PresentationMLMapping.csproj" />
+    <ProjectReference Include="..\Spreadsheet\SpreadsheetMLMapping\SpreadsheetMLMapping.csproj" />
+    <ProjectReference Include="..\WordProcessing\WordprocessingMLMapping\WordprocessingMLMapping.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Word">
