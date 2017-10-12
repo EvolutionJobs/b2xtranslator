@@ -1,31 +1,14 @@
 # Binary(doc,xls,ppt) to OpenXMLTranslator
-Port and update of http://b2xtranslator.sourceforge.net/
 
-Original code: https://sourceforge.net/projects/b2xtranslator/
+.NET Core library to convert Microsoft Office binary files (`doc`, `xls` and `ppt`) to Open XML (`docx`, `xlsx` and `pptx`).
+You can use the [Open XML SDK](https://github.com/OfficeDev/Open-XML-SDK) to mainpulate those.
 
-The main goal of the Office Binary (doc, xls, ppt) Translator to Open XML Project is to create software tools, plus guidance, showing how a document written using the Binary Formats (doc, xls, ppt) can be translated to Office Open XML.
+Forked from a [.NET 2 Mono implementation](https://sourceforge.net/projects/b2xtranslator/) under the BSD license. 
 
-## Overview
+* [Microsoft Office binary files documentation](https://msdn.microsoft.com/en-us/library/cc313105.aspx)
+* [Open XML Standard](http://www.ecma-international.org/publications/standards/Ecma-376.htm)
+* [Microsoft article on this implementation](https://blogs.msdn.microsoft.com/interoperability/2009/05/11/binary-to-open-xml-b2x-translator-interoperability-for-the-office-binary-file-formats/)
+* [.NET 2 Mono implementation architecture](http://b2xtranslator.sourceforge.net/architecture.html)
 
-The main goal of the Office Binary (doc, xls, ppt) Translator to Open XML project is to create software tools, plus guidance, showing how a document written using the Binary Formats (doc, xls, ppt) can be translated into the Office Open XML format (aka OpenXML). As a result customers can use these tools to migrate from the binary formats to OpenXML; thus, enabling them to more easily access their existing content in the new world of XML. The Translator will be available under the open source Berkeley Software Distribution (BSD) license, which allows that anyone can use the mapping and code, submit bugs and feedback, or contribute to the project.
-
-On February 15th 2008, Microsoft has made it even easier to get access to the binary formats documentation. This documentation has been completely revamped by June 30, 2008 and the latest version can be downloaded [from here](https://msdn.microsoft.com/en-us/library/dd208104.aspx). All these specifications are available under the [Open Specification Promise](http://www.microsoft.com/interop/osp).
-
-The Office Open XML file formats have been approved and published as ISO/IEC 29500. The pre-ISO version or ECMA-376 1st Edition, which is implemented in Office 2007 SP2, and ECMA-376 2nd edition, which is technically aligned with ISO/IEC 29500, are available free of charge from Ecma-International. ISO/IEC 29500 can be purchased from ISO/IEC.
-
-Microsoft also published a set of document-format implementation notes for ECMA-376 1st Edition. The goal of publishing these notes is to help other implementers improve interoperability with Office, by transparently documenting the details of Microsoft's OpenXML implementation. To get to the ECMA-376 implementer notes, go to the DII home page and click on Reference and then select ECMA-376 1st Edition from the dropdown list.
-
-While Microsoft provides with Office 2007 and the File Format Compatibiliy pack for earlier Office versions a migration path from binary Office formats to OpenXML, the Office Binary (doc, xls, ppt) Translator to Open XML project is still necessary due to the following reasons
-
-* Enables the back-office / batch scenario due to its a command-line-based architecture
-* Provides a cross-platform story via .Net/Mono, i.e. it the translators run, for example, on SUSE Linux
-* Proves the usability and completeness of the file format specifications
-* Allows that anyone uses the mapping, code snippets, etc. due to the open source development approach based on the liberate BSD license
-
-We have chosen to use an Open Source development model that allows developers from all around the world to participate and contribute to the project.
-
-## Main Contributors
-
-* [Evolution](https://www.evolutionjobs.com/): .NET Core Port
-* [DI<sup><u>a</u></sup>LOGIK<sup><u>a</u></sup>](http://www.dialogika.de/): Analysis and Development
-* [Microsoft](http://www.microsoft.com/interop): Architectural Guidance, Technical Support & Project Management
+All code retained from that version ©2009 DI<sup><u>a</u></sup>LOGIK<sup><u>a</u></sup> http://www.dialogika.de/  
+.NET core port work and move to `System.IO.Compression` ©2017 Evolution https://www.evolutionjobs.com/

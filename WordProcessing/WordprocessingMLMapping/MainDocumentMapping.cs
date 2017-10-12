@@ -36,23 +36,18 @@ namespace b2xtranslator.WordprocessingMLMapping
                 var tai = new TableInfo(papx);
 
                 if (tai.fInTable)
-                {
                     //this PAPX is for a table
                     cp = writeTable(cp, tai.iTap);
-                }
                 else
-                {
                     //this PAPX is for a normal paragraph
                     cp = writeParagraph(cp);
-                }
             }
 
             //write the section properties of the body with the last SEPX
             int lastSepxCp = 0;
             foreach (int sepxCp in this._doc.AllSepx.Keys)
-            {
                 lastSepxCp = sepxCp;
-            }
+            
             var lastSepx = this._doc.AllSepx[lastSepxCp];
             lastSepx.Convert(new SectionPropertiesMapping(this._writer, this._ctx, this._sectionNr));
 
