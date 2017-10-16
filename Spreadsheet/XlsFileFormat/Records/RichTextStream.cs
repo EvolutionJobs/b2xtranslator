@@ -21,7 +21,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.frtHeader = new FrtHeader(reader);
             this.dwCheckSum = reader.ReadUInt32();
             this.cb = reader.ReadUInt32();
-            var codepage = Encoding.GetEncoding(1252);
+            var codepage = Encoding.GetEncoding("ISO-8859-1"); // windows-1252 not supported by platform
             this.rgb = codepage.GetString(reader.ReadBytes((int)this.cb));
         }
     }

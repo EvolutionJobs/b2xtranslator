@@ -34,7 +34,7 @@ namespace b2xtranslator.Spreadsheet.XlsFileFormat.Records
             this.cb = reader.ReadUInt32();
 
             var rgbBytes = reader.ReadBytes((int)this.cb);
-            var codepage = Encoding.GetEncoding(1252);
+            var codepage = Encoding.GetEncoding("ISO-8859-1"); // windows-1252 not supported by platform
             this.rgb = codepage.GetString(rgbBytes);
 
             // assert that the correct number of bytes has been read from the stream
