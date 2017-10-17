@@ -4,6 +4,6 @@
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\b2xtranslator.csproj" />
+    <ProjectReference Include="..\Common\b2xtranslator.csproj" />
   </ItemGroup>
 </Project>

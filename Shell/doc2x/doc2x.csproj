@@ -6,6 +6,6 @@
     <ApplicationIcon>doc2x.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WordProcessing\WordprocessingMLMapping\WordprocessingMLMapping.csproj" />
+    <ProjectReference Include="..\..\Doc\b2xtranslator.doc.csproj" />
   </ItemGroup>
 </Project>

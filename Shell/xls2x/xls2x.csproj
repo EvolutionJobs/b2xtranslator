@@ -5,6 +5,6 @@
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Spreadsheet\SpreadsheetMLMapping\SpreadsheetMLMapping.csproj" />
+    <ProjectReference Include="..\..\Xls\b2xtranslator.xls.csproj" />
   </ItemGroup>
 </Project>

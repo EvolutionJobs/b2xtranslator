@@ -4,6 +4,9 @@
     <AssemblyOriginatorKeyFile>..\..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PptFileFormat\PptFileFormat.csproj" />
+    <Compile Remove="Records\NumberChart.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\b2xtranslator.csproj" />
   </ItemGroup>
 </Project>

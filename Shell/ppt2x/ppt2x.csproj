@@ -6,6 +6,6 @@
     <ApplicationIcon>ppt2x.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Presentation\PresentationMLMapping\PresentationMLMapping.csproj" />
+    <ProjectReference Include="..\..\Ppt\b2xtranslator.ppt.csproj" />
   </ItemGroup>
 </Project>
