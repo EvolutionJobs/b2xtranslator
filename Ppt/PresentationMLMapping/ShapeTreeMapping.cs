@@ -1450,14 +1450,14 @@ namespace b2xtranslator.PresentationMLMapping
                     {
                         var bytes = this.so.OptionsByID[ShapeOptions.PropertyId.gtextUNICODE].opComplex;
                         string sText = Encoding.Unicode.GetString(bytes);
-                        if (sText.Contains("\0")) sText = sText.Substring(0, sText.IndexOf("\0"));
+                        if (sText.Contains("\0")) sText = sText.TrimEnd('\0');
                         this._writer.WriteStartElement("a", "r", OpenXmlNamespaces.DrawingML);
 
                         if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.gtextFont))
                         {
                             bytes = this.so.OptionsByID[ShapeOptions.PropertyId.gtextFont].opComplex;
                             string sFont = Encoding.Unicode.GetString(bytes);
-                            if (sFont.Contains("\0")) sFont = sFont.Substring(0, sFont.IndexOf("\0"));
+                            if (sFont.Contains("\0")) sFont = sFont.TrimEnd('\0');
 
                             this._writer.WriteStartElement("a", "rPr", OpenXmlNamespaces.DrawingML);
                             if (this.so.OptionsByID.ContainsKey(ShapeOptions.PropertyId.gtextSize))

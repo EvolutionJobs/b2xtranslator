@@ -17,7 +17,7 @@ namespace b2xtranslator.PptFileFormat
                         
             var facename = this.Reader.ReadBytes(64);
             this.TypeFace = Encoding.Unicode.GetString(facename);
-            this.TypeFace = this.TypeFace.Substring(0, this.TypeFace.IndexOf("\0"));
+            this.TypeFace = this.TypeFace.TrimEnd('\0');
 
             //TODO: read other flags
 

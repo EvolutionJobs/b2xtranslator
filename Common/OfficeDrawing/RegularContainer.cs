@@ -25,7 +25,6 @@ namespace b2xtranslator.OfficeDrawing
             while (readSize < this.BodySize)
             {
                 Record child = null;
-
                 try
                 {
                     child = Record.ReadRecord(this.Reader);

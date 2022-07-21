@@ -57,13 +57,8 @@ namespace b2xtranslator.StructuredStorage.Common
                 Array.Reverse(value);
             }
 
-            var enc = new UnicodeEncoding();            
-            string result = enc.GetString(value);
-            if (result.Contains("\0"))
-            {
-                result = result.Remove(result.IndexOf("\0"));
-            }
-            return result;
+            string result = Encoding.Unicode.GetString(value);
+            return result.TrimEnd('\0');
         }
 
 

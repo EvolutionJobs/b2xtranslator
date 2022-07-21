@@ -68,7 +68,7 @@ namespace b2xtranslator.OpenXmlLib
                         path = resolvedPath.Substring(rootPath.Length + 1);
                     }
                 }
-
+                path = path.Replace("/", "\\");
                 if (path == "ppt\\slides\\media") return "ppt\\media";
                 if (path == "ppt\\slideLayouts\\media") return "ppt\\media";
                 if (path == "ppt\\notesSlides\\media") return "ppt\\media";
@@ -211,7 +211,7 @@ namespace b2xtranslator.OpenXmlLib
                             {
                                 //reform the URI path for Word
                                 //Word does not accept forward slahes in the path of a local file
-                                writer.WriteAttributeString("Target", "file:///" + rel.TargetUri.AbsolutePath.Replace("/", "\\"));
+                                writer.WriteAttributeString("Target", "file:///" + rel.TargetUri.AbsolutePath);
                             }
                             else
                             {
