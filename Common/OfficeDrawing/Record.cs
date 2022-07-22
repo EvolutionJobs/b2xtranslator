@@ -131,13 +131,20 @@ namespace b2xtranslator.OfficeDrawing
 
         public void VerifyReadToEnd()
         {
-            long streamPos = this.Reader.BaseStream.Position;
-            long streamLen = this.Reader.BaseStream.Length;
-
-            if (streamPos != streamLen)
+            try
             {
-                TraceLogger.DebugInternal("Record {3} didn't read to end: (stream position: {1} of {2})\n{0}",
-                    this, streamPos, streamLen, this.GetIdentifier());
+                long streamPos = this.Reader.BaseStream.Position;
+                long streamLen = this.Reader.BaseStream.Length;
+
+                if (streamPos != streamLen)
+                {
+                    TraceLogger.DebugInternal("Record {3} didn't read to end: (stream position: {1} of {2})\n{0}",
+                        this, streamPos, streamLen, this.GetIdentifier());
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -295,6 +302,7 @@ namespace b2xtranslator.OfficeDrawing
                         TraceLogger.DebugInternal(e.InnerException.ToString());
                         throw e.InnerException;
                     }
+
                 }
                 else
                 {
