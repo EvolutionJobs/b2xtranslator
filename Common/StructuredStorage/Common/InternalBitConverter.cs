@@ -61,7 +61,7 @@ namespace b2xtranslator.StructuredStorage.Common
             string result = enc.GetString(value);
             if (result.Contains("\0"))
             {
-                result = result.Remove(result.IndexOf("\0"));
+                result = result.TrimEnd('\0');
             }
             return result;
         }
