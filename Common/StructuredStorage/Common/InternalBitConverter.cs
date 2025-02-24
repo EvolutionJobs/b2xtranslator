@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace b2xtranslator.StructuredStorage.Common
@@ -59,9 +60,9 @@ namespace b2xtranslator.StructuredStorage.Common
 
             var enc = new UnicodeEncoding();            
             string result = enc.GetString(value);
-            if (result.Contains("\0"))
+            if (result.Contains('\0'))
             {
-                result = result.Remove(result.IndexOf("\0"));
+                result = result.Remove(result.IndexOf('\0'));
             }
             return result;
         }

@@ -1,3 +1,4 @@
+////添加注释3
 namespace b2xtranslator.CommonTranslatorLib
 {
     public interface IMapping<T> where T : IVisitable

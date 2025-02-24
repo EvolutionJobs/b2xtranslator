@@ -1,3 +1,4 @@
+//添加注释2
 namespace b2xtranslator.CommonTranslatorLib
 {
     public abstract class BinaryDocument : IVisitable

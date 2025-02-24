@@ -1,5 +1,5 @@
 using System.Xml;
-
+//添加注释1
 namespace b2xtranslator.CommonTranslatorLib
 {
     public abstract class AbstractOpenXmlMapping
